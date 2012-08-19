@@ -8,9 +8,10 @@
 
 #import "RainDropViewController.h"
 #import "RainDropView.h"
+#import "SettingManager.h"
 
 @implementation RainDropView
-@synthesize delegate;
+@synthesize delegate,backgroundColor,needsShadow;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -24,12 +25,27 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    // Drawing code here.
-	//[[NSColor redColor] setFill];
-    //NSRectFill(dirtyRect);
+	if(backgroundColor){
+		[backgroundColor setFill];
+		NSRectFill(dirtyRect);
+	}
 }
 - (void)viewDidMoveToSuperview{
-	[delegate viewDidMovedToSuperview:self];
+	if(self.superview){
+		[delegate viewDidMovedToSuperview:self];
+	}
+}
+- (void)mouseUp:(NSEvent *)theEvent{
+	[delegate viewDidClicked:self];
+	[super mouseUp:theEvent];
+}
+-(void)mouseEntered:(NSEvent *)theEvent{
+	NSLog(@"entered");
+	[super mouseEntered:theEvent];
+}
+-(void)mouseExited:(NSEvent *)theEvent{
+	NSLog(@"out");
+	[super mouseExited:theEvent];
 }
 
 @end

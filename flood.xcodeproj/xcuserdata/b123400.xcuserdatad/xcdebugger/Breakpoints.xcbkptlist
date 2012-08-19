@@ -95,16 +95,29 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "FloodWindowController.m"
-         timestampString = "366494110.529094"
+         filePath = "SettingViewController.m"
+         timestampString = "367095279.323929"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
-         landmarkName = "-clicked:"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
+         landmarkName = "-underlineTweetsWithURLCheckBoxChanged:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SettingViewController.m"
+         timestampString = "367095285.310044"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "-removeURLCheckBoxChanged:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

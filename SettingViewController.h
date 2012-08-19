@@ -13,6 +13,18 @@
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate,NewTwitterAccountWindowControllerDelegate> {
 	IBOutlet NSView *accountsSettingView;
 	IBOutlet NSTableView *accountsTableView;
+	
+	IBOutlet NSView *appearanceSettingView;
+	IBOutlet NSButton *overlapsMenuBarCheckBox;
+	IBOutlet NSButtonCell *hideTweetAroundCursorCheckBox;
+	IBOutlet NSButton *showProfileImageCheckBox;
+	IBOutlet NSButton *removeURLCheckBox;
+	IBOutlet NSButton *underlineTweetsWithURLCheckBox;
+	IBOutlet NSSlider *opacitySlider;
+	IBOutlet NSColorWell *textColorWell;
+	IBOutlet NSColorWell *shadowColorWell;
+	IBOutlet NSColorWell *hoverBackgroundColorWell;
+	IBOutlet NSTextField *fontLabel;
 }
 
 -(void)newTwitterAccount;

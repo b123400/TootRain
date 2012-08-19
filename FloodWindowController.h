@@ -13,7 +13,11 @@
 	IBOutlet NSButton *moveButton;
 	
 	NSMutableArray *rainDrops;
+	
+	CGPoint lastMousePosition;
+	NSTimer *timer;
 }
-- (IBAction)clicked:(id)sender;
+
+-(void)resetFrame;
 
 @end

@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "SettingViewController.h"
-
-#define kFacebookOAuthConsumerKey @"60bc92d0f31a3fef049f954b91377759"
+#import "FloodWindowController.h"
 
 @interface FloodAppDelegate : NSObject <NSApplicationDelegate> {
-	IBOutlet id theWebview;
+	FloodWindowController *windowController;
 	SettingViewController *settingController;
 }
+
+-(FloodWindowController*)windowController;
 
 -(IBAction)newWindow:(id)sender;
 -(IBAction)openSettingWindow:(id)sender;

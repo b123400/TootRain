@@ -18,6 +18,7 @@
 	
 	BOOL liked;
 	
+	NSMutableDictionary *entities;
 	NSMutableDictionary *otherInfos;
 }
 @property (retain,nonatomic) User *user;
@@ -27,6 +28,7 @@
 
 @property (assign,nonatomic) BOOL liked;
 
+@property (retain,nonatomic) NSMutableDictionary *entities;
 @property (retain,nonatomic) NSMutableDictionary *otherInfos;
 
 -(NSMutableDictionary*)dictionaryRepresentation;

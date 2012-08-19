@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface FloodWindow : NSWindow
+@interface FloodWindow : NSWindow{
+	
+}
 
 @end

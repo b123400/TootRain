@@ -36,7 +36,7 @@
 -(void) process:(NSString*)data{
 	[holderString appendString:[data stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 	
-	NSLog(@"holderString %@",holderString);
+	//NSLog(@"holderString %@",holderString);
 	
 	NSRange range;
 	

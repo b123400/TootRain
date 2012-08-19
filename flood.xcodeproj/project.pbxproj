@@ -31,13 +31,7 @@
 		CF0EA5E41370205C001AA404 /* StreamingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA5DF1370205C001AA404 /* StreamingDelegate.m */; };
 		CF0EA5E61370205C001AA404 /* StreamingConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA5E31370205C001AA404 /* StreamingConsumer.m */; };
 		CF16DC3C1535592800F0AB54 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16DC3B1535592800F0AB54 /* UserRequest.m */; };
-		CF17CBE415582DF700F9FFC9 /* MKAbeFook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF17CBE315582DF700F9FFC9 /* MKAbeFook.framework */; };
-		CF17CBE615582E3D00F9FFC9 /* MKAbeFook.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = CF17CBE515582E3D00F9FFC9 /* MKAbeFook.framework */; };
 		CF1C1C2A1531633E000D1994 /* StatusesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1C1C291531633E000D1994 /* StatusesManager.m */; };
-		CF24026A136C07AB0020648C /* titleBarLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = CF240267136C07AB0020648C /* titleBarLeft.png */; };
-		CF24026B136C07AB0020648C /* titleBarMiddle.png in Resources */ = {isa = PBXBuildFile; fileRef = CF240268136C07AB0020648C /* titleBarMiddle.png */; };
-		CF24026C136C07AB0020648C /* titleBarRight.png in Resources */ = {isa = PBXBuildFile; fileRef = CF240269136C07AB0020648C /* titleBarRight.png */; };
-		CF240274136C0B240020648C /* resizeindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = CF240273136C0B240020648C /* resizeindicator.png */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
 		CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2F8BDC1390E11500D733CA /* SettingViewController.xib */; };
@@ -53,12 +47,7 @@
 		CF5785931530AC380077CDA0 /* canvas.js in Resources */ = {isa = PBXBuildFile; fileRef = CF57858F15309D7C0077CDA0 /* canvas.js */; };
 		CF5D8C931531FE200058628F /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5D8C921531FE200058628F /* Account.m */; };
 		CF6639D71540808B00BF39F0 /* SearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6639D61540808B00BF39F0 /* SearchRequest.m */; };
-		CF66A5441372C38A000B1AFF /* close-active.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF66A5401372C38A000B1AFF /* close-active.tiff */; };
-		CF66A5451372C38A000B1AFF /* close-rollover.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF66A5411372C38A000B1AFF /* close-rollover.tiff */; };
-		CF66A5461372C38A000B1AFF /* minimize-active.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF66A5421372C38A000B1AFF /* minimize-active.tiff */; };
-		CF66A5471372C38A000B1AFF /* minimize-rollover.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF66A5431372C38A000B1AFF /* minimize-rollover.tiff */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; };
-		CF75434713685F3A009E7292 /* WebKit+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75434613685F3A009E7292 /* WebKit+Transparent.m */; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; };
 		CF75C5D71371950C0099F8E0 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = CF75C5D61371950C0099F8E0 /* test.html */; };
@@ -68,7 +57,6 @@
 		CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
 		CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */; };
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
-		CF9F61E81563A60A004C6514 /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9F61E71563A60A004C6514 /* trash.png */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
 		CF9F9E441534A225000AE741 /* TwitterConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E431534A225000AE741 /* TwitterConnector.m */; };
 		CF9F9E471534A281000AE741 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E461534A281000AE741 /* Request.m */; };
@@ -109,12 +97,14 @@
 		CFC65A9914D32A8F008299B3 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A8C14D32A8F008299B3 /* CJSONDeserializer.m */; };
 		CFC65A9A14D32A8F008299B3 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A8E14D32A8F008299B3 /* CJSONScanner.m */; };
 		CFC65A9B14D32A8F008299B3 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */; };
-		CFDC49CB15605D0500AD7A08 /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = CFDC49CA15605D0500AD7A08 /* dummy.png */; };
 		CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */; };
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
 		CFF5C490156ABED1000B7F0B /* StatusesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C48F156ABED0000B7F0B /* StatusesRequest.m */; };
+		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
+		CFFAE5E115E02D3400389518 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFAE5DF15E02D3400389518 /* RainDropDetailViewController.xib */; };
+		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,7 +114,6 @@
 			dstPath = .;
 			dstSubfolderSpec = 10;
 			files = (
-				CF17CBE615582E3D00F9FFC9 /* MKAbeFook.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,14 +178,8 @@
 		CF0EA5E31370205C001AA404 /* StreamingConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingConsumer.m; sourceTree = "<group>"; };
 		CF16DC3A1535592800F0AB54 /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		CF16DC3B1535592800F0AB54 /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
-		CF17CBE315582DF700F9FFC9 /* MKAbeFook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAbeFook.framework; sourceTree = "<group>"; };
-		CF17CBE515582E3D00F9FFC9 /* MKAbeFook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAbeFook.framework; sourceTree = "<group>"; };
 		CF1C1C281531633E000D1994 /* StatusesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusesManager.h; sourceTree = "<group>"; };
 		CF1C1C291531633E000D1994 /* StatusesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusesManager.m; sourceTree = "<group>"; };
-		CF240267136C07AB0020648C /* titleBarLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleBarLeft.png; path = image/titleBarLeft.png; sourceTree = "<group>"; };
-		CF240268136C07AB0020648C /* titleBarMiddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleBarMiddle.png; path = image/titleBarMiddle.png; sourceTree = "<group>"; };
-		CF240269136C07AB0020648C /* titleBarRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = titleBarRight.png; path = image/titleBarRight.png; sourceTree = "<group>"; };
-		CF240273136C0B240020648C /* resizeindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resizeindicator.png; path = image/resizeindicator.png; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -222,14 +205,8 @@
 		CF5D8C921531FE200058628F /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		CF6639D51540808B00BF39F0 /* SearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRequest.h; sourceTree = "<group>"; };
 		CF6639D61540808B00BF39F0 /* SearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRequest.m; sourceTree = "<group>"; };
-		CF66A5401372C38A000B1AFF /* close-active.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "close-active.tiff"; path = "image/close-active.tiff"; sourceTree = "<group>"; };
-		CF66A5411372C38A000B1AFF /* close-rollover.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "close-rollover.tiff"; path = "image/close-rollover.tiff"; sourceTree = "<group>"; };
-		CF66A5421372C38A000B1AFF /* minimize-active.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "minimize-active.tiff"; path = "image/minimize-active.tiff"; sourceTree = "<group>"; };
-		CF66A5431372C38A000B1AFF /* minimize-rollover.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "minimize-rollover.tiff"; path = "image/minimize-rollover.tiff"; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
-		CF75434513685F3A009E7292 /* WebKit+Transparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebKit+Transparent.h"; sourceTree = "<group>"; };
-		CF75434613685F3A009E7292 /* WebKit+Transparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WebKit+Transparent.m"; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
@@ -242,7 +219,6 @@
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodAppDelegate.m; sourceTree = "<group>"; };
-		CF9F61E71563A60A004C6514 /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash.png; path = image/trash.png; sourceTree = "<group>"; };
 		CF9F9E33153455CB000AE741 /* SocialNetworkConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialNetworkConnector.h; sourceTree = "<group>"; };
 		CF9F9E351534567B000AE741 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		CF9F9E361534567B000AE741 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
@@ -325,7 +301,6 @@
 		CFC65A8F14D32A8F008299B3 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		CFC65A9114D32A8F008299B3 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
-		CFDC49CA15605D0500AD7A08 /* dummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dummy.png; sourceTree = "<group>"; };
 		CFE8F5B615D7CBFA00815830 /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
 		CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
 		CFE8F5BC15D7E88600815830 /* RainDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropViewController.m; sourceTree = "<group>"; };
@@ -335,6 +310,11 @@
 		CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropTextFieldCell.m; sourceTree = "<group>"; };
 		CFF5C48E156ABED0000B7F0B /* StatusesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusesRequest.h; sourceTree = "<group>"; };
 		CFF5C48F156ABED0000B7F0B /* StatusesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusesRequest.m; sourceTree = "<group>"; };
+		CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
+		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
+		CFFAE5DF15E02D3400389518 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
+		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
+		CFFAE5F215E0E9DD00389518 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,7 +327,6 @@
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
 				CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */,
 				CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */,
-				CF17CBE415582DF700F9FFC9 /* MKAbeFook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +352,9 @@
 				CFE8F5BF15D7E9F100815830 /* RainDropView.m */,
 				CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */,
 				CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */,
+				CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */,
+				CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */,
+				CFFAE5DF15E02D3400389518 /* RainDropDetailViewController.xib */,
 				CF9F9E4115349CFA000AE741 /* SocialNetworkConnectors */,
 				CF9F62081563D548004C6514 /* Settings */,
 			);
@@ -395,8 +377,6 @@
 				CF8FDEAC15D4124900DD6DEA /* WebKit.framework */,
 				CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */,
 				CF8FDEA815D4123700DD6DEA /* Cocoa.framework */,
-				CF17CBE515582E3D00F9FFC9 /* MKAbeFook.framework */,
-				CF17CBE315582DF700F9FFC9 /* MKAbeFook.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
@@ -430,8 +410,6 @@
 			children = (
 				256AC3F00F4B6AF500CF3369 /* flood_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				CF75434513685F3A009E7292 /* WebKit+Transparent.h */,
-				CF75434613685F3A009E7292 /* WebKit+Transparent.m */,
 				CF75438C13686342009E7292 /* TransparentView.h */,
 				CF75438D13686342009E7292 /* TransparentView.m */,
 				CFA5111E1369AD11004A81D7 /* CustomTitleBar.h */,
@@ -444,6 +422,8 @@
 				CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */,
 				CFBEFE17155FCFA700E8A015 /* NSObject+Identifier.h */,
 				CFBEFE18155FCFA700E8A015 /* NSObject+Identifier.m */,
+				CFFAE5F115E0E9DD00389518 /* WebImageView.h */,
+				CFFAE5F215E0E9DD00389518 /* WebImageView.m */,
 				CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */,
 				CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */,
 				CFC3791C139A7FB10072F001 /* CenteredTextCell.h */,
@@ -555,16 +535,6 @@
 		CF240265136C07980020648C /* image */ = {
 			isa = PBXGroup;
 			children = (
-				CF9F61E71563A60A004C6514 /* trash.png */,
-				CF66A5401372C38A000B1AFF /* close-active.tiff */,
-				CF66A5411372C38A000B1AFF /* close-rollover.tiff */,
-				CF66A5421372C38A000B1AFF /* minimize-active.tiff */,
-				CF66A5431372C38A000B1AFF /* minimize-rollover.tiff */,
-				CF240267136C07AB0020648C /* titleBarLeft.png */,
-				CF240268136C07AB0020648C /* titleBarMiddle.png */,
-				CF240269136C07AB0020648C /* titleBarRight.png */,
-				CF240273136C0B240020648C /* resizeindicator.png */,
-				CFDC49CA15605D0500AD7A08 /* dummy.png */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -815,23 +785,14 @@
 				CF5785931530AC380077CDA0 /* canvas.js in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				CF24026A136C07AB0020648C /* titleBarLeft.png in Resources */,
-				CF24026B136C07AB0020648C /* titleBarMiddle.png in Resources */,
-				CF24026C136C07AB0020648C /* titleBarRight.png in Resources */,
-				CF240274136C0B240020648C /* resizeindicator.png in Resources */,
 				CF75C5D71371950C0099F8E0 /* test.html in Resources */,
-				CF66A5441372C38A000B1AFF /* close-active.tiff in Resources */,
-				CF66A5451372C38A000B1AFF /* close-rollover.tiff in Resources */,
-				CF66A5461372C38A000B1AFF /* minimize-active.tiff in Resources */,
-				CF66A5471372C38A000B1AFF /* minimize-rollover.tiff in Resources */,
 				CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */,
 				CF4FD85F13B4D20C002D7C28 /* NewTwitterAccountWindowController.xib in Resources */,
 				CFC65A1914D32A32008299B3 /* OATestServer.rb in Resources */,
 				CFC65A1C14D32A32008299B3 /* README in Resources */,
-				CFDC49CB15605D0500AD7A08 /* dummy.png in Resources */,
-				CF9F61E81563A60A004C6514 /* trash.png in Resources */,
 				CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */,
 				CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */,
+				CFFAE5E115E02D3400389518 /* RainDropDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,7 +804,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				CF75434713685F3A009E7292 /* WebKit+Transparent.m in Sources */,
 				CF75438E13686342009E7292 /* TransparentView.m in Sources */,
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
@@ -923,6 +883,8 @@
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
 				CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */,
+				CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */,
+				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

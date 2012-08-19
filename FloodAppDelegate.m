@@ -11,7 +11,6 @@
 #import "StreamingConsumer.h"
 #import "StreamingDelegate.h"
 #import "SettingManager.h"
-#import "FloodWindowController.h"
 
 @implementation FloodAppDelegate
 
@@ -38,13 +37,22 @@
 		[(SettingViewController*)[SettingViewController sharedPrefsWindowController] newTwitterAccount];
 		return;
 	}else{
-		[[[[FloodWindowController alloc]init]autorelease] showWindow:self];
+		if(!windowController){
+			windowController=[[FloodWindowController alloc]init];
+		}
+		[windowController showWindow:self];
 	}
 }
 -(IBAction)openSettingWindow:(id)sender{
 	[[SettingViewController sharedPrefsWindowController] showWindow:self];
 }
+-(FloodWindowController*)windowController{
+	return windowController;
+}
 -(void)dealloc{
+	if(windowController){
+		[windowController release];
+	}
 	[super dealloc];
 }
 

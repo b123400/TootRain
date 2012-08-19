@@ -106,5 +106,48 @@ static NSMutableArray *cachedThemes=nil;
 	return savedAccounts;
 }
 
-
+#pragma mark
+-(BOOL)overlapsMenuBar{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"overlapsMenuBar"];
+}
+-(BOOL)hideTweetAroundCursor{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
+}
+-(BOOL)showProfileImage{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
+}
+-(BOOL)removeURL{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
+}
+-(BOOL)underlineTweetsWithURL{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
+}
+-(float)opacity{
+	float opacity=[[NSUserDefaults standardUserDefaults]floatForKey:@"opacity"];
+	if(opacity==0){
+		//opacity isn't set
+		opacity=1;
+	}
+	return opacity;
+}
+-(NSColor*)textColor{
+	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"textColor"];
+	if (theData == nil)return [NSColor whiteColor];
+	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+}
+-(NSColor*)shadowColor{
+	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"shadowColor"];
+	if (theData == nil)return [NSColor blackColor];
+	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+}
+-(NSColor*)hoverBackgroundColor{
+	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"hoverBackgroundColor"];
+	if (theData == nil)return [NSColor whiteColor];
+	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+}
+-(NSFont*)font{
+	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"font"];
+	if (theData == nil)return [NSFont fontWithName:@"Arial" size:20];
+	return (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
+}
 @end

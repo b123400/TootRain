@@ -13,12 +13,19 @@
 
 +(SettingManager*)sharedManager;
 
-+(NSString*)tempPath;
-+(NSString*)themePath;
--(void)clearCachedThemes;
-
 -(void)addAccount:(User*)account;
 -(void)deleteAccount:(User*)account;
 -(NSMutableArray*)accounts;
+
+-(BOOL)overlapsMenuBar;
+-(BOOL)hideTweetAroundCursor;
+-(BOOL)showProfileImage;
+-(BOOL)removeURL;
+-(BOOL)underlineTweetsWithURL;
+-(float)opacity;
+-(NSColor*)textColor;
+-(NSColor*)shadowColor;
+-(NSColor*)hoverBackgroundColor;
+-(NSFont*)font;
 
 @end

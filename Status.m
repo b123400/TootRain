@@ -11,7 +11,7 @@
 #import "NSString+UUID.h"
 
 @implementation Status
-@synthesize user,statusID,createdAt,text,liked,otherInfos;
+@synthesize user,statusID,createdAt,text,liked,otherInfos,entities;
 
 -(id)init{
 	self=[super init];

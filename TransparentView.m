@@ -26,14 +26,9 @@
     [[NSColor clearColor] setFill];
     NSRectFill(dirtyRect);
 	
-	CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
-	CGContextClipToRect(ctx, NSRectToCGRect(dirtyRect));
-	[[self layer] renderInContext:ctx];
-}
-
--(void)mouseMoved:(NSEvent *)theEvent{
-	NSLog(@"view called");
-	[super mouseMoved:theEvent];
+	//CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+	//CGContextClipToRect(ctx, NSRectToCGRect(dirtyRect));
+	//[[self layer] renderInContext:ctx];
 }
 
 @end

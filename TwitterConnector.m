@@ -259,7 +259,7 @@
 	static NSDateFormatter *df=nil;
 	
 	Status *thisStatus=[[[Status alloc]init]autorelease];
-	thisStatus.statusID=[NSString stringWithFormat:@"%@@twitter",[dictionary objectForKey:@"id_str"]];
+	thisStatus.statusID=[dictionary objectForKey:@"id_str"];
 	
 	Status *cachedStatus=[[StatusesManager sharedManager]cachedObjectWhichDuplicate:thisStatus];
 	if(cachedStatus)return cachedStatus;
@@ -300,6 +300,10 @@
 	thisStatus.text=[dictionary objectForKey:@"text"];
 	
 	thisStatus.liked=[[dictionary objectForKey:@"favorited"] boolValue];
+	
+	if([dictionary objectForKey:@"entities"]){
+		thisStatus.entities=[dictionary objectForKey:@"entities"];
+	}
 	
 	NSArray *keys=[NSArray arrayWithObjects:@"coordinates",@"retweet_count",@"geo",@"retweeted",@"source",@"place",@"in_reply_to_screen_name",@"in_reply_to_status_id", nil];
 	for(NSString *key in keys){
