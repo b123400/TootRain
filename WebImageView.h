@@ -21,9 +21,9 @@
 	
 	BOOL didLoadedImage;
 	
-	id <WebImageViewDelegate> delegate;
+	id <WebImageViewDelegate> __unsafe_unretained delegate;
 }
-@property (assign,nonatomic) id <WebImageViewDelegate> delegate;
+@property (unsafe_unretained,nonatomic) id <WebImageViewDelegate> delegate;
 
 -(void)setImageURL:(NSURL*)url;
 

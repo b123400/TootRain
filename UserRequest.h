@@ -15,9 +15,9 @@
 	NSString *targetUserID;
 	BRUserType type;
 }
-@property (retain,nonatomic) User *user;
-@property (retain,nonatomic) NSString *targetUsername;
-@property (retain,nonatomic) NSString *targetUserID;
+@property (strong,nonatomic) User *user;
+@property (strong,nonatomic) NSString *targetUsername;
+@property (strong,nonatomic) NSString *targetUserID;
 @property (assign,nonatomic) BRUserType type;
 
 @end

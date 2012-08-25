@@ -28,20 +28,10 @@
     return self;
 }
 - (id)initWithStatus:(Status*)_status{
-	status=[_status retain];
+	status=_status;
 	paused=YES;
 	margin=5;
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
-}
--(void)dealloc{
-	[status release];
-	if(animationEnd){
-		[animationEnd release];
-	}
-	if(popover){
-		[popover release];
-	}
-	[super dealloc];
 }
 -(void)loadView{
 	[super loadView];
@@ -69,7 +59,7 @@
 	NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
 	[attributes setObject:newFont forKey:NSFontAttributeName];
 	
-	NSShadow *kShadow = [[[NSShadow alloc] init] autorelease];
+	NSShadow *kShadow = [[NSShadow alloc] init];
     [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
     [kShadow setShadowBlurRadius:5.0f];
     [kShadow setShadowOffset:NSMakeSize(0, 0)];
@@ -81,7 +71,7 @@
 		[attributes setObject:[NSNumber numberWithInt:NSSingleUnderlineStyle] forKey:NSUnderlineStyleAttributeName];
 	}
 	
-	NSAttributedString *attributedString=[[[NSAttributedString alloc]initWithString:contentString attributes:attributes] autorelease];
+	NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];
 	
 	[contentTextField setAttributedStringValue:attributedString];
 	[contentTextField sizeToFit];
@@ -130,9 +120,6 @@
 		return;
 	}
 	paused=NO;
-	if(animationEnd){
-		[animationEnd release];
-	}
 	CGPoint target=CGPointMake(self.view.frame.size.width*-1, self.view.frame.origin.y);
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
     animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
@@ -142,7 +129,7 @@
 	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
 	[[self.view animator] setFrameOrigin:target];
 	
-	animationEnd=[[NSDate dateWithTimeIntervalSinceNow:animation.duration] retain];
+	animationEnd=[[NSDate alloc] initWithTimeIntervalSinceNow:animation.duration];
 }
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
 	if(flag){
@@ -164,7 +151,6 @@
 	self.view.frame=target;
 	
 	if(animationEnd){
-		[animationEnd release];
 		animationEnd=nil;
 	}
 }
@@ -185,7 +171,7 @@
 	return [self animationDuration]*[[NSScreen mainScreen] frame].size.width/([[NSScreen mainScreen] frame].size.width+self.view.frame.size.width);
 }
 -(BOOL)willCollideWithRainDrop:(RainDropViewController*)controller{
-	if(paused){
+	if(paused||[self isPopoverShown]){
 		return YES;
 	}
 	CGRect frame=[self visibleFrame];
@@ -240,7 +226,7 @@
 	}
 	if(!popover){
 		popover=[[NSPopover alloc] init];
-		NSViewController *newController=[[[RainDropDetailViewController alloc]initWithStatus:status] autorelease];
+		NSViewController *newController=[[RainDropDetailViewController alloc]initWithStatus:status];
 		popover.contentViewController=newController;
 		popover.behavior=NSPopoverBehaviorTransient;
 		popover.delegate=self;

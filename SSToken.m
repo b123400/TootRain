@@ -49,24 +49,12 @@
 }
 
 -(NSDictionary *)parameters{
-	NSMutableDictionary *params = [[[super parameters] mutableCopy] autorelease];
+	NSMutableDictionary *params = [[super parameters] mutableCopy];
 	if([self verifier]){
 		[params setObject:[self verifier] forKey:@"oauth_verifier"];
 	}
 	return params;
 }
 
--(void)dealloc{
-	[tokenBody release];
-	tokenBody = nil;
-	
-	[pin release];
-	pin = nil;
-	
-	[screenName release];
-	screenName = nil;
-	
-	[super dealloc];
-}
 
 @end

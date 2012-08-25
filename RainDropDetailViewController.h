@@ -12,15 +12,17 @@
 
 @interface RainDropDetailViewController : NSViewController{
 	Status *status;
-	NSTextField *contentTextField;
-	WebImageView *profileImageView;
-	NSTextField *nameField;
-	NSTextField *usernameField;
+	NSTextField *__weak contentTextField;
+	WebImageView *__weak profileImageView;
+	NSTextField *__weak nameField;
+	NSTextField *__weak usernameField;
 }
-@property (assign) IBOutlet NSTextField *contentTextField;
-@property (assign) IBOutlet NSImageView *profileImageView;
-@property (assign) IBOutlet NSTextField *nameField;
-@property (assign) IBOutlet NSTextField *usernameField;
+@property (weak) IBOutlet NSTextField *contentTextField;
+@property (weak) IBOutlet NSImageView *profileImageView;
+@property (weak) IBOutlet NSTextField *nameField;
+@property (weak) IBOutlet NSTextField *usernameField;
+@property (weak) IBOutlet NSButton *retweetButton;
+@property (weak) IBOutlet NSButton *favButton;
 
 -(id)initWithStatus:(Status*)status;
 

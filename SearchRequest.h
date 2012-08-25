@@ -11,6 +11,6 @@
 @interface SearchRequest : Request{
 	NSString *searchTerm;
 }
-@property (nonatomic,retain) NSString *searchTerm;
+@property (nonatomic,strong) NSString *searchTerm;
 
 @end

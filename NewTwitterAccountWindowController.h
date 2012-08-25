@@ -28,9 +28,9 @@
 	
 	BRTwitterOAuthTokenGetter *twitterTokenGetter;
 	
-	id <NewTwitterAccountWindowControllerDelegate> delegate;
+	id <NewTwitterAccountWindowControllerDelegate> __unsafe_unretained delegate;
 }
-@property (nonatomic,assign) id <NewTwitterAccountWindowControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id <NewTwitterAccountWindowControllerDelegate> delegate;
 
 -(IBAction)cancelButtonClicked:(id)sender;
 -(IBAction)nextButtonClicked:(id)sender;

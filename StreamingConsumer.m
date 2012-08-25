@@ -39,28 +39,28 @@
 	//NSLog(@"holderString %@",holderString);
 	
 	NSRange range;
-	
-	range.location = [self parseStringWithDelimiter:@"%0D%0A" forString:holderString].location;
-	range.length = [self parseStringWithDelimiter:@"%0D%0A" forString:holderString].length;
-	
-	if (range.location != NSNotFound){
-		NSString* jsonString = [holderString substringWithRange:range];
-				
-		if ( [delegate respondsToSelector:@selector(consumerDidProcessStatus:)] ) {
-			[delegate consumerDidProcessStatus:[jsonString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];		
-		}
+	while(range.location!=NSNotFound){
+		range=[self parseStringWithDelimiter:@"%0D%0A" forString:holderString];
 		
-		if (range.location == 0 && range.length == 0){
-			//this means there is a carriage return, but it's at the ver begining of the string (duplicate carriage return for example)
-			//so we have to remove it right away.
-			NSRange carriageReturnRange;
-			carriageReturnRange.location = range.location;
-			carriageReturnRange.length = 6;
-			[holderString deleteCharactersInRange:carriageReturnRange];
-		}else{
-			//delete the status that was parsed plus the carriage return character
-			range.length = range.length + 6;
-			[holderString deleteCharactersInRange:range];			
+		if (range.location != NSNotFound){
+			NSString* jsonString = [[holderString substringWithRange:range]stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			if ( [delegate respondsToSelector:@selector(consumerDidProcessStatus:)] ) {
+				[delegate consumerDidProcessStatus:jsonString];
+			}
+			
+			if (range.location == 0 && range.length == 0){
+				//this means there is a carriage return, but it's at the ver begining of the string (duplicate carriage return for example)
+				//so we have to remove it right away.
+				NSRange carriageReturnRange;
+				carriageReturnRange.location = range.location;
+				carriageReturnRange.length = 6;
+				[holderString deleteCharactersInRange:carriageReturnRange];
+			}else{
+				//delete the status that was parsed plus the carriage return character
+				range.length = range.length + 6;
+				[holderString deleteCharactersInRange:range];			
+			}
+			NSLog(@"%@",holderString);
 		}
 	}
 }
@@ -80,16 +80,11 @@
 
 #pragma mark operation
 - (NSOperation*)taskWithData:(NSString*)data {
-    NSInvocationOperation* theOp = [[[NSInvocationOperation alloc] initWithTarget:self
-																		 selector:@selector(process:) object:data] autorelease];
+    NSInvocationOperation* theOp = [[NSInvocationOperation alloc] initWithTarget:self
+																		 selector:@selector(process:) object:data];
 	
 	return theOp;
 }
 
--(void)dealloc{
-	[operationQue release];
-	[holderString release];
-	[super dealloc];
-}
 
 @end

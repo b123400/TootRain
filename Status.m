@@ -55,7 +55,7 @@
 	}
 	NSError *error=nil;
 	NSData *jsonData=[[CJSONSerializer serializer] serializeDictionary:selfDict error:&error];
-	NSString *jsonString=[[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding]autorelease];
+	NSString *jsonString=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
 	
 	for(NSString *key in randomStringDict){
 		jsonString=[jsonString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"\"%@\"",key] withString:[[randomStringDict objectForKey:key] javascriptRepresentation]];

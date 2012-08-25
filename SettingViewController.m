@@ -77,12 +77,10 @@
 -(void)didCanceledAddingTwitterAccount:(NewTwitterAccountWindowController*)sender{
 	[[sender window] orderOut:self];
 	[NSApp endSheet:[sender window]];
-	[sender release];
 }
 -(void)didAddedTwitterAccount:(User*)account sender:(id)sender{
 	[[sender window] orderOut:self];
 	[NSApp endSheet:[sender window]];
-	[sender release];
 	
 	[[SettingManager sharedManager] addAccount:account];
 	[accountsTableView reloadData];

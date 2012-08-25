@@ -20,6 +20,8 @@
 +(TwitterConnector*)sharedConnector;
 -(TwitterEngine*)engineForAccount:(Account*)account;
 
+-(void)retweetStatus:(ComposeRequest*)request;
+
 -(void)cancelRequest:(Request*)request;
 
 -(void)didReceivedStreamResult:(id)object forTimelineFromEngine:(TwitterEngine*)engine;

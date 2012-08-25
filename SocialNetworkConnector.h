@@ -13,20 +13,20 @@
 #import "UserRequest.h"
 #import "StatusesRequest.h"
 #import "SearchRequest.h"
+#import "ComposeRequest.h"
 
 @protocol SocialNetworkConnector <NSObject>
 
-/*-(void)favouriteStatus:(Status*)status;
--(void)unfavouriteStatus:(Status*)status;*/
+-(void)favouriteStatus:(ComposeRequest*)request;
 
 -(void)getUserProfile:(UserRequest*)request;
 -(void)getUserStatuses:(StatusesRequest*)request;
-
--(void)searchTerm:(SearchRequest*)request;
 
 @optional
 
 -(void)startStreaming:(Request*)request;
 -(void)searchTermUsingStream:(SearchRequest*)request;
+
+-(void)sendStatus:(ComposeRequest*)request;
 
 @end

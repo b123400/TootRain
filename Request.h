@@ -11,12 +11,12 @@
 
 @interface Request : NSObject{
 	Account *account;
-	id target;
+	id __unsafe_unretained target;
 	SEL successSelector;
 	SEL failSelector;
 }
-@property (retain,nonatomic) Account *account;
-@property (assign,nonatomic) id target;
+@property (strong,nonatomic) Account *account;
+@property (unsafe_unretained,nonatomic) id target;
 @property (assign,nonatomic) SEL successSelector;
 @property (assign,nonatomic) SEL failSelector;
 

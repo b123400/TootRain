@@ -14,12 +14,12 @@
 @synthesize accessToken;
 
 +(Account*)userWithDictionary:(NSDictionary *)dict{
-	Account *thisAccount=[[[Account alloc]init] autorelease];
+	Account *thisAccount=[[Account alloc]init];
 	thisAccount=(Account*)[thisAccount insertDataIntoUser:thisAccount WithDictionary:dict];
 	
 	NSString *key=[[dict objectForKey:@"oauthtoken"] objectForKey:@"key"];
 	NSString *secret=[[dict objectForKey:@"oauthtoken"] objectForKey:@"secret"];
-	thisAccount.accessToken=[[[OAToken alloc] initWithKey:key secret:secret] autorelease];
+	thisAccount.accessToken=[[OAToken alloc] initWithKey:key secret:secret];
 	return thisAccount;
 }
 -(NSDictionary*)dictionaryRepresentationWithAuthInformation:(BOOL)withAuth{
@@ -33,18 +33,12 @@
 	[dict setObject:accessTokenDict forKey:@"oauthtoken"];
 	return dict;
 }
--(void)dealloc{
-	if(engine){
-		[engine release];
-	}
-	[super dealloc];
-}
 -(id)engine{
 	if(!engine){
 		switch (type) {
 			case BRUserTypeTwitter:
 			{
-				engine=[[[TwitterConnector sharedConnector] engineForAccount:self]retain];
+				engine=[[TwitterConnector sharedConnector] engineForAccount:self];
 			}
 				break;
 				

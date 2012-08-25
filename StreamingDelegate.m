@@ -20,7 +20,6 @@
 	if(self = [super init]) {
 		if (consumer != nil){
 			streamingConsumer = consumer;
-			[streamingConsumer retain];			
 		}else{
 			//TODO: throw an error here
 			return nil;
@@ -49,10 +48,10 @@
 	
 	[[streamingConsumer operationQue] addOperation:operation];
 
-	[dataString release];	
+	dataString=nil;
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-	NSLog(@"Error: %@",[error description]);
+	[((TwitterEngine*)streamingConsumer.delegate) streamConnectionDidFailed:connection withError:error];
 }
 
 #pragma mark required delegate methods
@@ -76,8 +75,4 @@
 	[((TwitterEngine*)streamingConsumer.delegate) streamConnectionDidFinishLoading:connection];
 }
 		
--(void) dealloc{
-	[streamingConsumer release];
-	[super dealloc];
-}
 @end

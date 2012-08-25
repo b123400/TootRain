@@ -17,7 +17,7 @@ static const char *identifierKey = "identifier";
 -(NSString*)identifier{
 	id identifier=objc_getAssociatedObject(self, &identifierKey);
 	if(!identifier){
-		identifier=[[NSString stringWithNewUUID] retain];
+		identifier=[NSString stringWithNewUUID];
 		objc_setAssociatedObject(self, &identifierKey, identifier, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
 	return identifier;

@@ -84,12 +84,12 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 		// Create a new window to display the preference views.
 		// If the developer attached a window to this controller
 		// in Interface Builder, it gets replaced with this one.
-	NSWindow *window = [[[[[self class] windowClass] alloc] initWithContentRect:NSMakeRect(0,0,1000,1000)
+	NSWindow *window = [[[[self class] windowClass] alloc] initWithContentRect:NSMakeRect(0,0,1000,1000)
                                                                       styleMask:(NSTitledWindowMask |
                                                                                  NSClosableWindowMask)
                                                                         backing:NSBackingStoreBuffered
-                                                                          defer:YES] autorelease];
-	contentSubview = [[[NSView alloc] initWithFrame:[[window contentView] frame]] autorelease];
+                                                                          defer:YES];
+	contentSubview = [[NSView alloc] initWithFrame:[[window contentView] frame]];
 	[contentSubview setAutoresizingMask:(NSViewMinYMargin | NSViewWidthSizable)];
 	[[window contentView] addSubview:contentSubview];
 	[window setShowsToolbarButton:NO];
@@ -110,7 +110,6 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
     [toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
     [toolbar setDelegate:self];
     [window setToolbar:toolbar];
-    [toolbar release];
 
     NSString *identifier = [[NSUserDefaults standardUserDefaults] objectForKey:[toolbar identifier]];
     if (identifier == nil || ![toolbarIdentifiers containsObject:identifier]) {
@@ -125,13 +124,6 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 
 
 
-- (void) dealloc {
-	[toolbarIdentifiers release];
-	[toolbarViews release];
-	[toolbarItems release];
-	[viewAnimation release];
-	[super dealloc];
-}
 
 
 
@@ -164,12 +156,12 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 	NSAssert (view != nil,
 			  @"Attempted to add a nil view when calling -addView:label:image:.");
 
-	NSString *identifier = [[label copy] autorelease];
+	NSString *identifier = [label copy];
 	
 	[toolbarIdentifiers addObject:identifier];
 	[toolbarViews setObject:view forKey:identifier];
 
-	NSToolbarItem *item = [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease];
+	NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
 	[item setLabel:label];
 	[item setImage:image];
 	[item setTarget:self];
@@ -188,7 +180,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 	[toolbarIdentifiers addObject:identifier];
 	[toolbarViews setObject:view forKey:identifier];
 
-	NSToolbarItem *item = [[[NSToolbarItem alloc] initWithItemIdentifier:identifier] autorelease];
+	NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:identifier];
 	[item setLabel:label];
 	[item setImage:image];
 	[item setTarget:self];

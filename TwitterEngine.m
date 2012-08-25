@@ -28,11 +28,6 @@
 	streamConnection=nil;
 	return [super initWithDelegate:delegate];
 }
--(void)dealloc{
-	[friendsID release];
-	[trackTerms release];
-	[super dealloc];
-}
 #pragma mark keyword
 -(void)addKeyworkToTrack:(NSString*)keyword{
 	if(![trackTerms containsObject:keyword]){
@@ -66,12 +61,11 @@
 -(void)startStreamingWithURL:(NSURL*)url andParams:(NSDictionary*)params{
 	if(streamConnection){
 		[streamConnection cancel];
-		[streamConnection release];
 		streamConnection=nil;
 	}
-	OAConsumer* consumer = [[[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]] autorelease];	
+	OAConsumer* consumer = [[OAConsumer alloc] initWithKey:[self consumerKey] secret:[self consumerSecret]];	
 	
-	OAMutableURLRequest* streamingRequest = [[[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:self.accessToken realm:@"http://twitter.com" signatureProvider:nil] autorelease];
+	OAMutableURLRequest* streamingRequest = [[OAMutableURLRequest alloc] initWithURL:url consumer:consumer token:self.accessToken realm:@"http://twitter.com" signatureProvider:nil];
 	[streamingRequest setTimeoutInterval:INT_MAX];
 	[streamingRequest setHTTPMethod:@"POST"];
 	
@@ -88,18 +82,17 @@
 	
 	[streamingRequest prepare];
 	
-	StreamingConsumer *streamConsumer=[[[StreamingConsumer alloc]init] autorelease];
+	StreamingConsumer *streamConsumer=[[StreamingConsumer alloc]init];
 	streamConsumer.delegate=self;
-	StreamingDelegate *streamDelegate=[[[StreamingDelegate alloc]initWithConsumer:streamConsumer] autorelease];
+	StreamingDelegate *streamDelegate=[[StreamingDelegate alloc]initWithConsumer:streamConsumer];
 	
-	NSURLConnection *streamingConnection = [[[NSURLConnection alloc] initWithRequest:streamingRequest delegate:streamDelegate startImmediately:YES] autorelease];
+	NSURLConnection *streamingConnection = [[NSURLConnection alloc] initWithRequest:streamingRequest delegate:streamDelegate startImmediately:YES];
 	[streamingConnection start];
-	streamConnection=[streamingConnection retain];
+	streamConnection=streamingConnection;
 }
 -(void)stopStreaming{
 	if(![self isStreaming])return;
 	[streamConnection cancel];
-	[streamConnection release];
 	streamConnection=nil;
 }
 #pragma mark delegate
@@ -126,20 +119,20 @@
 		}else if([object objectForKey:@"text"]&&[object objectForKey:@"user"]){
 			//this should be a status?
 			BOOL used=NO;
-			if([friendsID containsObject:[[object objectForKey:@"user"] objectForKey:@"id"]]||[[[object objectForKey:@"user"] objectForKey:@"screen_name"] isEqualToString:self.username]){
-				//this is in timeline
-				[[TwitterConnector sharedConnector] didReceivedStreamResult:object forTimelineFromEngine:self];
+			NSArray *searchTermsOfThisTweet=[self searchTermsOfTweet:object];
+			for(NSString *thisSearchTerm in searchTermsOfThisTweet){
 				used=YES;
+				[[TwitterConnector sharedConnector]didReceivedStreamResult:object forSearchTerm:thisSearchTerm fromEngine:self];
 			}
 			if([[[object objectForKey:@"text"]lowercaseString] rangeOfString:[[NSString stringWithFormat:@"@%@",self.username]lowercaseString]].location!=NSNotFound){
 				//this is mention
 				[[TwitterConnector sharedConnector]didReceivedStreamResult:object forMentionFromEngine:self];
 				used=YES;
 			}
-			NSArray *searchTermsOfThisTweet=[self searchTermsOfTweet:object];
-			for(NSString *thisSearchTerm in searchTermsOfThisTweet){
+			if([friendsID containsObject:[[object objectForKey:@"user"] objectForKey:@"id"]]||[[[object objectForKey:@"user"] objectForKey:@"screen_name"] isEqualToString:self.username]){
+				//this is in timeline
+				[[TwitterConnector sharedConnector] didReceivedStreamResult:object forTimelineFromEngine:self];
 				used=YES;
-				[[TwitterConnector sharedConnector]didReceivedStreamResult:object forSearchTerm:thisSearchTerm fromEngine:self];
 			}
 			if(!used){
 				NSLog(@"%@",object);
@@ -152,7 +145,15 @@
 	}
 }
 -(void)streamConnectionDidFinishLoading:(NSURLConnection *)connection{
-	[connection release];
+	if(streamConnection){
+		streamConnection=nil;
+	}
+	[self startStreamingTimeline];
+}
+-(void)streamConnectionDidFailed:(NSURLConnection *)connection withError:(NSError*)error{
+	if(streamConnection){
+		streamConnection=nil;
+	}
 	[self startStreamingTimeline];
 }
 #pragma mark utility
@@ -165,7 +166,7 @@
 			[allConditions addObjectsFromArray:[string componentsSeparatedByString:@","]];
 		}
 		//one of the sub-condition match will do
-		for(NSString *subCondition in allConditions){
+		for(__strong NSString *subCondition in allConditions){
 			subCondition=[subCondition stringByReplacingOccurrencesOfString:@" AND " withString:@" "];
 			//twitter treats AND same as space
 			NSArray *finalConditions=[subCondition componentsSeparatedByString:@" "];

@@ -27,5 +27,6 @@
 -(void)stopStreaming;
 
 -(void)streamConnectionDidFinishLoading:(NSURLConnection *)connection;
+-(void)streamConnectionDidFailed:(NSURLConnection *)connection withError:(NSError*)error;
 
 @end

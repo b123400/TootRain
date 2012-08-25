@@ -14,7 +14,7 @@
 @synthesize consumer,delegate,requestToken,accessToken;
 
 -(id)initWithComsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret{
-	return [self initWithConsumer:[[[OAConsumer alloc]initWithKey:consumerKey secret:consumerSecret]autorelease]];
+	return [self initWithConsumer:[[OAConsumer alloc]initWithKey:consumerKey secret:consumerSecret]];
 }
 -(id)initWithConsumer:(OAConsumer*)_consumer{
 	self.consumer=_consumer;
@@ -23,11 +23,11 @@
 
 -(void)getRequestTokenWithURL:(NSURL*)url{
 	if(!consumer)return;
-	OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+	OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url
 																   consumer:consumer
-																	  token:[[[SSToken alloc] init] autorelease]   // we don't have a Token yet
+																	  token:[[SSToken alloc] init]   // we don't have a Token yet
 																	  realm:nil   // our service provider doesn't specify a realm
-														  signatureProvider:nil] autorelease]; // use the default method, HMAC-SHA1
+														  signatureProvider:nil]; // use the default method, HMAC-SHA1
 	[request setHTTPMethod:@"GET"];
 	
 	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
@@ -36,8 +36,6 @@
 						 delegate:self
 				didFinishSelector:@selector(requestTokenTicket:didFinishWithData:)
 				  didFailSelector:@selector(requestTokenTicket:didFailWithError:)];
-	
-	[fetcher autorelease];
 }
 
 
@@ -51,7 +49,7 @@
 	if (ticket.didSucceed) {
 		NSString *responseBody = [[NSString alloc] initWithData:data
 													   encoding:NSUTF8StringEncoding];
-		self.requestToken=[[[SSToken alloc] initWithHTTPResponseBody:responseBody]autorelease];
+		self.requestToken=[[SSToken alloc] initWithHTTPResponseBody:responseBody];
 		if(self.delegate){
 			if([(NSObject*)self.delegate respondsToSelector:@selector(didReceivedRequestToken:)]){
 				[self.delegate didReceivedRequestToken:requestToken];
@@ -65,11 +63,11 @@
 	if(!consumer||!requestToken)return;
 	[requestToken setPin:pin];
 
-    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+    OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url
                                                                    consumer:consumer
                                                                       token:requestToken   // we don't have a Token yet
                                                                       realm:nil   // our service provider doesn't specify a realm
-                                                          signatureProvider:nil] autorelease]; // use the default method, HMAC-SHA1
+                                                          signatureProvider:nil]; // use the default method, HMAC-SHA1
 	
     [request setHTTPMethod:@"GET"];
 	
@@ -80,8 +78,6 @@
                          delegate:self
                 didFinishSelector:@selector(accessTokenTicket:didFinishWithData:)
                   didFailSelector:@selector(accessTokenTicket:didFailWithError:)];
-	
-	[fetcher autorelease];	
 }
 - (void)accessTokenTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error{
 	if(!ticket.didSucceed){
@@ -94,7 +90,7 @@
 		NSString *responseBody = [[NSString alloc] initWithData:data
 													   encoding:NSUTF8StringEncoding];
 		
-		self.accessToken = [[[SSToken alloc] initWithHTTPResponseBody:responseBody] autorelease];
+		self.accessToken = [[SSToken alloc] initWithHTTPResponseBody:responseBody];
 		if(self.delegate){
 			if([(NSObject*)self.delegate respondsToSelector:@selector(didReceivedAccessToken:)]){
 				[self.delegate didReceivedAccessToken:accessToken];

@@ -10,10 +10,10 @@
 
 
 @interface CustomTitleBar : NSView {
-	IBOutlet id delegate;
+	IBOutlet id __unsafe_unretained delegate;
 }
 
-@property (assign,nonatomic) id delegate;
+@property (unsafe_unretained,nonatomic) id delegate;
 
 
 @end

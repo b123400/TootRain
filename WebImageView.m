@@ -23,12 +23,7 @@
 -(void)dealloc{
 	if(connection){
 		[connection cancel];
-		[connection release];
 	}
-	if(cachedData){
-		[cachedData release];
-	}
-	[super dealloc];
 }
 
 - (void)drawRect:(NSRect)dirtyRect
@@ -42,7 +37,6 @@
 	NSURLRequest *request=[NSURLRequest requestWithURL:url];
 	if(connection){
 		[connection cancel];
-		[connection release];
 	}
 	connection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
 	[connection start];
@@ -55,9 +49,6 @@
 	return cachedResponse;
 }
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
-	if(cachedData){
-		[cachedData release];
-	}
 	cachedData=[[NSMutableData alloc]init];
 }
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
@@ -68,6 +59,7 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
 	NSImage *image=[[NSImage alloc] initWithData:cachedData];
+	[image setSize:self.frame.size];
 	[self setImage:image];
 	[self setNeedsDisplay:YES];
 	didLoadedImage=YES;

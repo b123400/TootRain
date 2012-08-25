@@ -18,12 +18,12 @@
 @end
 
 @interface RainDropView : NSView{
-	id <RainDropViewDelegate> delegate;
+	id <RainDropViewDelegate> __unsafe_unretained delegate;
 	NSColor *backgroundColor;
 	BOOL needsShadow;
 }
-@property (assign) id delegate;
-@property (retain,nonatomic) NSColor *backgroundColor;
+@property (unsafe_unretained) id delegate;
+@property (strong,nonatomic) NSColor *backgroundColor;
 @property (assign,nonatomic) BOOL needsShadow;
 
 @end

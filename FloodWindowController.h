@@ -16,8 +16,12 @@
 	
 	CGPoint lastMousePosition;
 	NSTimer *timer;
+	
+	NSMutableArray *shownStatuses;
 }
 
 -(void)resetFrame;
+
+-(void)setSearchTerm:(NSString*)searchTerm;
 
 @end

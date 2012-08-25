@@ -20,7 +20,6 @@
 
 @implementation SettingManager
 static NSMutableArray *savedAccounts=nil;
-static NSMutableArray *cachedThemes=nil;
 
 +(SettingManager*)sharedManager{
 	static SettingManager *manager=nil;
@@ -61,12 +60,6 @@ static NSMutableArray *cachedThemes=nil;
 -(id)init{
 	unzipProgressIndicator=[[NSMutableDictionary alloc] init];
 	return [super init];
-}
--(void)dealloc{
-	[unzipProgressIndicator release];
-	if(savedAccounts)[savedAccounts release];
-	if(cachedThemes)[cachedThemes release];
-	[super dealloc];
 }
 
 -(void)addAccount:(User*)account{
@@ -147,7 +140,7 @@ static NSMutableArray *cachedThemes=nil;
 }
 -(NSFont*)font{
 	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"font"];
-	if (theData == nil)return [NSFont fontWithName:@"Arial" size:20];
+	if (theData == nil)return [NSFont fontWithName:@"Arial" size:36];
 	return (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
 }
 @end

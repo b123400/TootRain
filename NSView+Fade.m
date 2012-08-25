@@ -28,7 +28,6 @@
 		NSViewAnimation *anim = [[NSViewAnimation alloc] initWithViewAnimations:[NSArray arrayWithObject:animDict]];
 		[anim setDuration:0.2];
 		[anim startAnimation];
-		[anim autorelease];
 #else
 		// We're building for Panther, so just do a normal hide
 		[self setHidden:hidden];

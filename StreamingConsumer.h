@@ -27,7 +27,7 @@
 	id delegate;
 }
 
-@property(nonatomic, retain) NSOperationQueue* operationQue;
+@property(nonatomic, strong) NSOperationQueue* operationQue;
 
 //Takes the data and processes it.
 -(void) process:(NSString*)data;

@@ -18,12 +18,12 @@
 @end
 
 @interface RainDropViewController : NSViewController <RainDropViewDelegate,NSPopoverDelegate> {
-	NSTextField *contentTextField;
+	NSTextField *__weak contentTextField;
 	
 	Status *status;
 	NSDate *animationEnd;
 	
-	id delegate;
+	id __unsafe_unretained delegate;
 	
 	BOOL paused;
 	float margin;
@@ -32,9 +32,9 @@
 	IBOutlet WebImageView *profileImageView;
 }
 
-@property (assign) IBOutlet NSTextField *contentTextField;
-@property (retain,nonatomic) Status *status;
-@property (assign,nonatomic) id delegate;
+@property (weak) IBOutlet NSTextField *contentTextField;
+@property (strong,nonatomic) Status *status;
+@property (unsafe_unretained,nonatomic) id delegate;
 
 - (id)initWithStatus:(Status*)_status;
 

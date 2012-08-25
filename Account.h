@@ -13,7 +13,7 @@
 	OAToken *accessToken;
 	id engine;
 }
-@property (nonatomic,retain) OAToken *accessToken;
+@property (nonatomic,strong) OAToken *accessToken;
 
 -(id)engine;
 

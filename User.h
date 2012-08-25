@@ -31,14 +31,14 @@ typedef enum BRUserType {
 
 @property (nonatomic,assign) BRUserType type;
 
-@property (nonatomic,retain) NSString *username;
-@property (nonatomic,retain) NSString *screenName;
-@property (nonatomic,retain) NSString *userID;
-@property (nonatomic,retain) NSString *description;
+@property (nonatomic,strong) NSString *username;
+@property (nonatomic,strong) NSString *screenName;
+@property (nonatomic,strong) NSString *userID;
+@property (nonatomic,strong) NSString *description;
 
-@property (nonatomic,retain) NSURL *profileImageURL;
+@property (nonatomic,strong) NSURL *profileImageURL;
 
-@property (nonatomic,retain) NSMutableDictionary *otherInfos;
+@property (nonatomic,strong) NSMutableDictionary *otherInfos;
 
 +(NSString*)networkNameOfType:(BRUserType)type;
 +(BRUserType)typeOfNetworkName:(NSString*)networkName;

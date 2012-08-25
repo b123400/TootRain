@@ -52,7 +52,7 @@
 			newAccount.type=BRUserTypeTwitter;
 			newAccount.userID=[NSString stringWithFormat:@"%llu", token.userID];
 			
-			UserRequest *request=[[[UserRequest alloc]init] autorelease];
+			UserRequest *request=[[UserRequest alloc]init];
 			request.target=self;
 			request.account=newAccount;
 			request.user=newAccount;
@@ -61,8 +61,6 @@
 			
 			[[StatusesManager sharedManager] getUserProfile:request];
 			
-			[newAccount release];
-			[oToken release];
 		}
 	}
 }
@@ -95,9 +93,5 @@
 	[mainView setHidden:NO];
 }
 
--(void)dealloc{
-	[twitterTokenGetter release];
-	[super dealloc];
-}
 
 @end

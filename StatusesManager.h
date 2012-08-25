@@ -11,6 +11,7 @@
 #import "UserRequest.h"
 #import "SearchRequest.h"
 #import "StatusesRequest.h"
+#import "ComposeRequest.h"
 #import "Account.h"
 
 @interface StatusesManager : NSObject{
@@ -27,6 +28,10 @@
 
 -(void)getUserProfile:(UserRequest*)request;
 -(void)getUserStatuses:(StatusesRequest*)request;
+
+-(void)sendStatus:(ComposeRequest*)request;
+-(void)retweetStatus:(ComposeRequest*)request;
+-(void)favouriteStatus:(ComposeRequest*)request;
 
 -(void)request:(Request*)request didFinishedWithResult:(id)result;
 -(void)request:(Request*)request didReceivedResult:(id)result;

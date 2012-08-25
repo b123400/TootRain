@@ -36,7 +36,7 @@
 }
 
 +(User*)userWithDictionary:(NSDictionary*)dict{
-	User *thisUser=[[[User alloc] init] autorelease];
+	User *thisUser=[[User alloc] init];
 	thisUser=[thisUser insertDataIntoUser:thisUser WithDictionary:dict];
 	
 	return thisUser;
@@ -78,7 +78,7 @@
 	
 	NSError *error=nil;
 	NSData *jsonData=[[CJSONSerializer serializer] serializeDictionary:dict error:&error];
-	NSString *jsonString=[[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding]autorelease];
+	NSString *jsonString=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
 	
 	return [NSString stringWithFormat:@"User(%@)",jsonString];
 }

@@ -14,8 +14,8 @@
 	Status *beforeStatus;
 	int count;
 }
-@property (nonatomic,retain) Status *sinceStatus;
-@property (nonatomic,retain) Status *beforeStatus;
+@property (nonatomic,strong) Status *sinceStatus;
+@property (nonatomic,strong) Status *beforeStatus;
 @property (nonatomic,assign) int count;
 
 @end

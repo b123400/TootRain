@@ -30,11 +30,6 @@
 	users=[[NSMutableArray alloc]init];
 	return self;
 }
--(void)dealloc{
-	[statuses release];
-	[users release];
-	[super dealloc];
-}
 
 -(id)cachedObjectWhichDuplicate:(id)anotherObject{
 	if([anotherObject isKindOfClass:[Status class]]){
@@ -113,9 +108,33 @@
 	}
 }
 -(void)getUserStatuses:(StatusesRequest*)request{
-	switch (request.type) {
+	switch (request.account.type) {
 		case BRUserTypeTwitter:
 			[[TwitterConnector sharedConnector] getUserStatuses:request];
+			break;
+			
+		default:
+			break;
+	}
+}
+-(void)sendStatus:(ComposeRequest*)request{
+	switch (request.account.type) {
+		case BRUserTypeTwitter:
+			[[TwitterConnector sharedConnector] sendStatus:request];
+			break;
+			
+		default:
+			break;
+	}
+}
+-(void)retweetStatus:(ComposeRequest*)request{
+	if(request.account.type!=BRUserTypeTwitter)return;
+	[[TwitterConnector sharedConnector] retweetStatus:request];
+}
+-(void)favouriteStatus:(ComposeRequest*)request{
+	switch (request.account.type) {
+		case BRUserTypeTwitter:
+			[[TwitterConnector sharedConnector] favouriteStatus:request];
 			break;
 			
 		default:

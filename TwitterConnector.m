@@ -36,12 +36,8 @@
 	requests=[[NSMutableDictionary alloc] init];
 	return [super init];
 }
--(void)dealloc{
-	[requests release];
-	[super dealloc];
-}
 -(TwitterEngine*)engineForAccount:(Account*)account{
-	TwitterEngine *engine=[[[TwitterEngine alloc] initWithDelegate:[TwitterConnector sharedConnector]] autorelease];
+	TwitterEngine *engine=[[TwitterEngine alloc] initWithDelegate:[TwitterConnector sharedConnector]];
 	[engine setAccessToken:account.accessToken];
 	[engine setUsername:account.username];
 	[engine setUsesSecureConnection:NO];
@@ -107,7 +103,6 @@
 	NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
 	unsigned long long sinceID=[[formatter numberFromString:request.sinceStatus.statusID] unsignedLongValue];
 	unsigned long long beforeID=[[formatter numberFromString:request.beforeStatus.statusID] unsignedLongValue];
-	[formatter release];
 	
 	NSString *key;
 	
@@ -115,6 +110,42 @@
 		key=[engine getUserTimelineFor:request.targetUsername sinceID:sinceID withMaximumID:beforeID startingAtPage:-1 count:request.count];
 	}else{
 		key=[engine getUserTimelineFor:request.targetUserID sinceID:sinceID withMaximumID:beforeID startingAtPage:-1 count:request.count];
+	}
+	[requests setObject:request forKey:key];
+}
+-(void)sendStatus:(ComposeRequest*)request;{
+	TwitterEngine *engine=request.account.engine;
+	
+	NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+	NSString *key;
+	if(request.inReplyTo){
+		key=[engine sendUpdate:request.text inReplyTo:[[formatter numberFromString:request.inReplyTo.statusID] unsignedLongValue]];
+	}else{
+		key=[engine sendUpdate:request.text];
+	}
+	[requests setObject:request forKey:key];
+}
+-(void)retweetStatus:(ComposeRequest*)request{
+	TwitterEngine *engine=request.account.engine;
+	
+	NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+	NSString *key;
+	if(request.inReplyTo){
+		key=[engine sendRetweet:[[formatter numberFromString:request.inReplyTo.statusID] unsignedLongValue]];
+	}else{
+		return;
+	}
+	[requests setObject:request forKey:key];
+}
+-(void)favouriteStatus:(ComposeRequest*)request{
+	TwitterEngine *engine=request.account.engine;
+	
+	NSNumberFormatter* formatter = [[NSNumberFormatter alloc] init];
+	NSString *key;
+	if(request.inReplyTo){
+		key=[engine markUpdate:[[formatter numberFromString:request.inReplyTo.statusID] unsignedLongValue] asFavorite:YES];
+	}else{
+		return;
 	}
 	[requests setObject:request forKey:key];
 }
@@ -224,7 +255,7 @@
 
 #pragma mark convertion
 -(User*)userWithDictionary:(NSDictionary*)thisUserDict{
-	User *thisUser=[[[User alloc]init]autorelease];
+	User *thisUser=[[User alloc]init];
 	thisUser.type=BRUserTypeTwitter;
 	thisUser=[self user:thisUser WithDictionary:thisUserDict];
 	User *cachedUser=[[StatusesManager sharedManager] cachedObjectWhichDuplicate:thisUser];
@@ -242,7 +273,7 @@
 	NSArray *keys=[NSArray arrayWithObjects:@"created_at",@"follow_request_sent",@"followers_count",@"following",@"friends_count",@"geo_enabled",@"is_translator",@"lang",@"listed_count",
 				   @"location",@"profile_background_color",@"profile_background_image_url_https",@"profile_link_color",@"profile_sidebar_border_color",@"profile_sidebar_fill_color",
 				   @"profile_text_color",@"profile_use_background_image",@"protected",@"statuses_count",@"url",@"favourites_count",nil];
-	for(NSString *thisKey in keys){
+	for(__strong NSString *thisKey in keys){
 		id object=[thisUserDict objectForKey:thisKey];
 		if(object!=nil&&![object isKindOfClass:[NSNull class]]){
 			if([thisKey isEqualToString:@"profile_background_image_url_https"]){
@@ -258,7 +289,7 @@
 -(Status*)statusWithDictionary:(NSDictionary*)dictionary{
 	static NSDateFormatter *df=nil;
 	
-	Status *thisStatus=[[[Status alloc]init]autorelease];
+	Status *thisStatus=[[Status alloc]init];
 	thisStatus.statusID=[dictionary objectForKey:@"id_str"];
 	
 	Status *cachedStatus=[[StatusesManager sharedManager]cachedObjectWhichDuplicate:thisStatus];
@@ -284,7 +315,7 @@
 		df = [[NSDateFormatter alloc] init];
 		[df setTimeStyle:NSDateFormatterFullStyle];
 		[df setFormatterBehavior:NSDateFormatterBehavior10_4];
-		[df setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
+		[df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
 		[df setDateFormat:@"EEE LLL dd HH:mm:ss Z yyyy"];
 	}
 	NSDate *createdAt=[df dateFromString:[dictionary objectForKey:@"created_at"]];

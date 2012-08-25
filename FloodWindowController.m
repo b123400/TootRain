@@ -11,9 +11,11 @@
 #import "TwitterStreamRequest.h"
 #import "StatusesManager.h"
 #import "RainDropViewController.h"
+#import "StatusesManager.h"
 
 @interface FloodWindowController ()
 
+-(BOOL)shouldShowStatus:(Status*)status;
 -(float)largestPossibleYForStatusViewController:(RainDropViewController*)status;
 
 @end
@@ -27,7 +29,7 @@
 	
 	/*start stream*/
 	for(Account *thisAccount in [[SettingManager sharedManager] accounts]){
-		TwitterStreamRequest *request=[[[TwitterStreamRequest alloc] init]autorelease];
+		TwitterStreamRequest *request=[[TwitterStreamRequest alloc] init];
 		request.target=self;
 		request.timelineSelector=@selector(request:didReceivedTimelineResult:);
 		request.mentionSelector=@selector(request:didReceivedMentionResult:);
@@ -44,8 +46,9 @@
 										 userInfo:nil
 										  repeats:YES];
 	lastMousePosition=CGPointZero;
+	shownStatuses=[[NSMutableArray alloc] init];
 	
-	return [[self initWithWindowNibName:@"FloodWindowController"] retain];
+	return [self initWithWindowNibName:@"FloodWindowController"];
 }
 
 - (void)windowDidLoad
@@ -68,8 +71,30 @@
 	
 	[[self window] setFrame:CGRectMake(0, 0, totalWidth, totalHeight) display:YES];
 }
+-(void)setSearchTerm:(NSString*)searchTerm{
+	for(Request *thisRequest in currentRequests){
+		if([thisRequest isKindOfClass:[SearchRequest class]]){
+			[[StatusesManager sharedManager] cancelRequest:thisRequest];
+		}
+	}
+	if([searchTerm isEqualToString:@""])return;
+	if(![[[SettingManager sharedManager]accounts] count])return;
+	Account *thisAccount=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
+	
+	SearchRequest *request=[[SearchRequest alloc]init];
+	request.target=self;
+	request.successSelector=@selector(request:didReceivedSearchResult:);
+	request.failSelector=@selector(request:didFailedWithError:);
+	request.account=thisAccount;
+	request.searchTerm=searchTerm;
+	[[StatusesManager sharedManager] searchTermUsingStream:request];
+	
+	[currentRequests addObject:request];
+}
 #pragma mark stream delegate
 -(void)request:(TwitterStreamRequest *)request didReceivedTimelineResult:(Status*)status{
+	if(![self shouldShowStatus:status])return;
+	
 	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
 	[thisViewController loadView];
 	CGRect frame=thisViewController.view.frame;
@@ -78,22 +103,58 @@
 	[[[self window] contentView]addSubview: [thisViewController view]];
 	thisViewController.delegate=self;
 	[rainDrops addObject:thisViewController];
-	[thisViewController release];
 }
 -(void)request:(TwitterStreamRequest *)request didReceivedMentionResult:(Status*)status{
+	if(![self shouldShowStatus:status])return;
 	
+	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
+	[thisViewController loadView];
+	CGRect frame=thisViewController.view.frame;
+	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
+	thisViewController.view.frame=frame;
+	[[[self window] contentView]addSubview: [thisViewController view]];
+	thisViewController.delegate=self;
+	[rainDrops addObject:thisViewController];
 }
 
 -(void)request:(TwitterStreamRequest *)request didReceivedDirectMessageResult:(Status*)status{
+	if(![self shouldShowStatus:status])return;
 	
+	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
+	[thisViewController loadView];
+	CGRect frame=thisViewController.view.frame;
+	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
+	thisViewController.view.frame=frame;
+	[[[self window] contentView]addSubview: [thisViewController view]];
+	thisViewController.delegate=self;
+	[rainDrops addObject:thisViewController];
 }
 
 -(void)request:(SearchRequest *)request didReceivedSearchResult:(Status*)status{
+	if(![self shouldShowStatus:status])return;
 	
+	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
+	[thisViewController loadView];
+	CGRect frame=thisViewController.view.frame;
+	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
+	thisViewController.view.frame=frame;
+	[[[self window] contentView]addSubview: [thisViewController view]];
+	thisViewController.delegate=self;
+	[rainDrops addObject:thisViewController];
 }
 
 -(void)request:(TwitterStreamRequest *)request didReceivedEvent:(id)event{
 	
+}
+-(void)request:(Request*)request failedWithError:(NSError*)error{
+	
+}
+-(BOOL)shouldShowStatus:(Status*)status{
+	if([shownStatuses containsObject:status]){
+		return NO;
+	}
+	[shownStatuses addObject:status];
+	return YES;
 }
 #pragma mark position calculation
 -(float)ySuggestionForStatusViewController:(RainDropViewController*)controller atY:(float)thisY{
