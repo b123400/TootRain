@@ -30,6 +30,7 @@
 		CF0EA5B513701FEA001AA404 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA55F13701FEA001AA404 /* NSString+UUID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF0EA5E41370205C001AA404 /* StreamingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA5DF1370205C001AA404 /* StreamingDelegate.m */; settings = {COMPILER_FLAGS = ""; }; };
 		CF0EA5E61370205C001AA404 /* StreamingConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA5E31370205C001AA404 /* StreamingConsumer.m */; settings = {COMPILER_FLAGS = ""; }; };
+		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF16DC3C1535592800F0AB54 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16DC3B1535592800F0AB54 /* UserRequest.m */; };
 		CF1C1C2A1531633E000D1994 /* StatusesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1C1C291531633E000D1994 /* StatusesManager.m */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
@@ -179,6 +180,7 @@
 		CF0EA5DF1370205C001AA404 /* StreamingDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingDelegate.m; sourceTree = "<group>"; };
 		CF0EA5E21370205C001AA404 /* StreamingConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingConsumer.h; sourceTree = "<group>"; };
 		CF0EA5E31370205C001AA404 /* StreamingConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingConsumer.m; sourceTree = "<group>"; };
+		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF16DC3A1535592800F0AB54 /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
 		CF16DC3B1535592800F0AB54 /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		CF1C1C281531633E000D1994 /* StatusesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusesManager.h; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				CF240265136C07980020648C /* image */,
 				8D1107310486CEB800E47090 /* flood-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				CF11767F15E90BD0001138F2 /* Credits.rtf */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 			);
 			name = Resources;
@@ -800,6 +803,7 @@
 				CFFAE5E115E02D3400389518 /* RainDropDetailViewController.xib in Resources */,
 				CF8BBEEE15E3C7E10064D90B /* SearchWindowController.xib in Resources */,
 				CF8BBF4715E3EE6A0064D90B /* ComposeStatusViewController.xib in Resources */,
+				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
