@@ -25,13 +25,13 @@
 	SSToken *requestToken;
 	SSToken *accessToken;
 	
-	id <BROAuthTokenGetterDelegate> __unsafe_unretained delegate;
+	id <BROAuthTokenGetterDelegate> __strong delegate;
 }
 @property (nonatomic,strong) OAConsumer *consumer;
 @property (nonatomic,strong) SSToken *requestToken;
 @property (nonatomic,strong) SSToken *accessToken;
 
-@property (nonatomic,unsafe_unretained) id <BROAuthTokenGetterDelegate> delegate;
+@property (nonatomic,strong) id <BROAuthTokenGetterDelegate> delegate;
 
 -(id)initWithComsumerKey:(NSString*)consumerKey consumerSecret:(NSString*)consumerSecret;
 -(id)initWithConsumer:(OAConsumer*)_consumer;

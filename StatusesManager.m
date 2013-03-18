@@ -154,7 +154,7 @@
 	[request.target performSelector:request.failSelector withObject:request withObject:error];
 }
 -(void)extractObjectsToCacheFromObject:(id)object{
-	if([object isKindOfClass:[NSArray class]]){
+	/*if([object isKindOfClass:[NSArray class]]){
 		for(NSObject *subObject in object){
 			[self extractObjectsToCacheFromObject:subObject];
 		}
@@ -169,7 +169,7 @@
 		}else if([object isKindOfClass:[User class]]){
 			[users addObject:object];
 		}
-	}
+	}*/
 }
 #pragma mark misc
 

@@ -13,6 +13,8 @@
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate,NewTwitterAccountWindowControllerDelegate> {
 	IBOutlet NSView *accountsSettingView;
 	IBOutlet NSTableView *accountsTableView;
+	__weak NSButton *addAccountButton;
+	__weak NSButton *removeAccountButton;
 	
 	IBOutlet NSView *appearanceSettingView;
 	IBOutlet NSButton *overlapsMenuBarCheckBox;
@@ -31,4 +33,6 @@
 -(IBAction)newAccountClicked:(id)sender;
 - (IBAction)deleteAccountClicked:(id)sender;
 
+@property (weak) IBOutlet NSButton *addAccountButton;
+@property (weak) IBOutlet NSButton *removeAccountButton;
 @end

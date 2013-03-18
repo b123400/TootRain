@@ -10,6 +10,8 @@
 #import "SettingManager.h"
 
 @implementation SettingViewController
+@synthesize removeAccountButton;
+@synthesize addAccountButton;
 
 -(void)setupToolbar{
 	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"]];
@@ -35,6 +37,9 @@
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
 	NSFont *theFont=[[SettingManager sharedManager]font];
 	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
+	
+	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
+	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
 }
 #pragma mark tableview datasource+delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
@@ -67,6 +72,8 @@
 	User *selectedAccount=[[[SettingManager sharedManager]accounts] objectAtIndex:selectedIndex];
 	[[SettingManager sharedManager] deleteAccount:selectedAccount];
 	[accountsTableView reloadData];
+	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
+	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
 }
 #pragma mark new twitter account
 -(void)newTwitterAccount{
@@ -89,6 +96,8 @@
 		//this is the first account, probably the only account in flood.
 		[(FloodAppDelegate*)[[NSApplication sharedApplication]delegate] newWindow:self];
 	}
+	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
+	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
 }
 
 #pragma mark Appearance
