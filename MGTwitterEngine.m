@@ -48,7 +48,7 @@
 	#endif
 #endif
 
-#define TWITTER_DOMAIN          @"api.twitter.com/1"
+#define TWITTER_DOMAIN          @"api.twitter.com/1.1"
 
 #if YAJL_AVAILABLE || TOUCHJSON_AVAILABLE
 	#define TWITTER_SEARCH_DOMAIN	@"search.twitter.com"
@@ -1829,15 +1829,17 @@
 	MGTwitterRequestType requestType;
 	if (flag)
 	{
-		path = [NSString stringWithFormat:@"favorites/create/%llu.%@", updateID, API_FORMAT];
+		path = [NSString stringWithFormat:@"favorites/create.%@", API_FORMAT];
 		requestType = MGTwitterFavoritesEnableRequest;
     }
 	else {
-		path = [NSString stringWithFormat:@"favorites/destroy/%llu.%@", updateID, API_FORMAT];
+		path = [NSString stringWithFormat:@"favorites/destroy.%@", API_FORMAT];
 		requestType = MGTwitterFavoritesDisableRequest;
 	}
+    
+    NSString *body = [NSString stringWithFormat:@"id=%llu",updateID];
 	
-    return [self _sendRequestWithMethod:HTTP_POST_METHOD path:path queryParameters:nil body:nil 
+    return [self _sendRequestWithMethod:HTTP_POST_METHOD path:path queryParameters:nil body:body
                             requestType:requestType 
                            responseType:MGTwitterStatus];
 }

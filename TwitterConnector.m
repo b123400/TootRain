@@ -40,7 +40,7 @@
 	TwitterEngine *engine=[[TwitterEngine alloc] initWithDelegate:[TwitterConnector sharedConnector]];
 	[engine setAccessToken:account.accessToken];
 	[engine setUsername:account.username];
-	[engine setUsesSecureConnection:NO];
+	[engine setUsesSecureConnection:YES];
 	[engine setConsumerKey:kTwitterOAuthConsumerKey secret:kTwitterOAuthConsumerSecret];
 	return engine;
 }
