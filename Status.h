@@ -33,6 +33,5 @@
 
 -(NSMutableDictionary*)dictionaryRepresentation;
 -(NSMutableDictionary*)dictionaryRepresentationToPlist:(BOOL)toPlist;
--(NSString*)javascriptRepresentation;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "Status.h"
 #import "CJSONSerializer.h"
-#import "NSString+UUID.h"
 
 @implementation Status
 @synthesize user,statusID,createdAt,text,liked,otherInfos,entities;
@@ -40,27 +39,6 @@
 }
 -(NSMutableDictionary*)dictionaryRepresentation{
 	return [self dictionaryRepresentationToPlist:YES];
-}
--(NSString*)javascriptRepresentation{
-	NSMutableDictionary *selfDict=[self dictionaryRepresentationToPlist:NO];
-	NSMutableDictionary *randomStringDict=[NSMutableDictionary dictionary];
-	NSArray *keys=[selfDict allKeys];
-	for(NSString *key in keys){
-		if([[selfDict objectForKey:key] isKindOfClass:[User class]]){
-			User *thisUser=[selfDict objectForKey:key];
-			NSString *randomString=[NSString stringWithNewUUID];
-			[selfDict setObject:randomString forKey:key];
-			[randomStringDict setObject:thisUser forKey:randomString];
-		}
-	}
-	NSError *error=nil;
-	NSData *jsonData=[[CJSONSerializer serializer] serializeDictionary:selfDict error:&error];
-	NSString *jsonString=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-	
-	for(NSString *key in randomStringDict){
-		jsonString=[jsonString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"\"%@\"",key] withString:[[randomStringDict objectForKey:key] javascriptRepresentation]];
-	}
-	return [NSString stringWithFormat:@"Status(%@)",jsonString];
 }
 
 -(BOOL)isEqual:(id)object{

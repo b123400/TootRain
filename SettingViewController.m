@@ -10,8 +10,6 @@
 #import "SettingManager.h"
 
 @implementation SettingViewController
-@synthesize removeAccountButton;
-@synthesize addAccountButton;
 
 -(void)setupToolbar{
 	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"]];
@@ -37,20 +35,23 @@
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
 	NSFont *theFont=[[SettingManager sharedManager]font];
 	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
-	
-	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
-	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
 }
 #pragma mark tableview datasource+delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
 	if(aTableView==accountsTableView){
-		return [[[SettingManager sharedManager] accounts] count];
+        
+        return [SettingManager sharedManager].accounts.count;
 	}
 	return 0;
 }
+
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
 	if(aTableView==accountsTableView){
-		User *thisAccount=[[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
+        if (![SettingManager sharedManager].accountType.accessGranted) {
+            return 0;
+        }
+        NSArray *accounts = [SettingManager sharedManager].accounts;
+        ACAccount *thisAccount=[accounts objectAtIndex:rowIndex];
 		return thisAccount.username;
 	}
 	return nil;
@@ -62,43 +63,18 @@
 	}
 	return 0;
 }
--(IBAction)newAccountClicked:(id)sender{
-	[self newTwitterAccount];
+
+- (IBAction)authorizeButtonTapped:(id)sender {
+    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            [accountsTableView reloadData];
+        } else {
+            NSAlert *alert = [NSAlert alertWithError:error];
+            [alert runModal];
+        }
+    }];
 }
 
-- (IBAction)deleteAccountClicked:(id)sender {
-	int selectedIndex=[accountsTableView selectedRow];
-	if(selectedIndex<0)return;
-	User *selectedAccount=[[[SettingManager sharedManager]accounts] objectAtIndex:selectedIndex];
-	[[SettingManager sharedManager] deleteAccount:selectedAccount];
-	[accountsTableView reloadData];
-	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
-	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
-}
-#pragma mark new twitter account
--(void)newTwitterAccount{
-	NewTwitterAccountWindowController *twitterWindowController=[[NewTwitterAccountWindowController alloc]init];
-	[twitterWindowController setDelegate:self];
-	[NSApp	beginSheet:[twitterWindowController window] modalForWindow:[super window] modalDelegate:nil didEndSelector:nil contextInfo:nil];
-}
--(void)didCanceledAddingTwitterAccount:(NewTwitterAccountWindowController*)sender{
-	[[sender window] orderOut:self];
-	[NSApp endSheet:[sender window]];
-}
--(void)didAddedTwitterAccount:(User*)account sender:(id)sender{
-	[[sender window] orderOut:self];
-	[NSApp endSheet:[sender window]];
-	
-	[[SettingManager sharedManager] addAccount:account];
-	[accountsTableView reloadData];
-	
-	if([[[SettingManager sharedManager]accounts]count]==1){
-		//this is the first account, probably the only account in flood.
-		[(FloodAppDelegate*)[[NSApplication sharedApplication]delegate] newWindow:self];
-	}
-	[addAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]==0];
-	[removeAccountButton setEnabled:[[[SettingManager sharedManager]accounts]count]!=0];
-}
 
 #pragma mark Appearance
 

@@ -8,13 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
-#import "NewTwitterAccountWindowController.h"
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
-@interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate,NewTwitterAccountWindowControllerDelegate> {
+@interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;
 	IBOutlet NSTableView *accountsTableView;
-	__weak NSButton *addAccountButton;
-	__weak NSButton *removeAccountButton;
 	
 	IBOutlet NSView *appearanceSettingView;
 	IBOutlet NSButton *overlapsMenuBarCheckBox;
@@ -29,10 +28,6 @@
 	IBOutlet NSTextField *fontLabel;
 }
 
--(void)newTwitterAccount;
--(IBAction)newAccountClicked:(id)sender;
-- (IBAction)deleteAccountClicked:(id)sender;
+@property (weak) IBOutlet NSButton *authorizeButton;
 
-@property (weak) IBOutlet NSButton *addAccountButton;
-@property (weak) IBOutlet NSButton *removeAccountButton;
 @end

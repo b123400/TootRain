@@ -6,16 +6,20 @@
 //  Copyright (c) 2012 home. All rights reserved.
 //
 #import "User.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 @interface SettingManager : NSObject{
 	NSMutableDictionary *unzipProgressIndicator;
 }
 
+@property (nonatomic, strong) ACAccountStore *accountStore;
+@property (nonatomic, strong) ACAccountType *accountType;
+
 +(SettingManager*)sharedManager;
 
--(void)addAccount:(User*)account;
--(void)deleteAccount:(User*)account;
--(NSMutableArray*)accounts;
+-(ACAccount*)selectedAccount;
+- (NSArray*)accounts;
 
 -(BOOL)overlapsMenuBar;
 -(BOOL)hideTweetAroundCursor;

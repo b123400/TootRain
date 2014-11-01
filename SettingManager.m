@@ -7,14 +7,9 @@
 //
 
 #import "SettingManager.h"
-#import "Account.h"
 #import "NSFileManager+DirectoryLocations.h"
-#import "NSString+UUID.h"
-#import "NSObject+Identifier.h"
 
 @interface SettingManager ()
-
--(void)saveAccounts;
 
 @end
 
@@ -29,77 +24,34 @@ static NSMutableArray *savedAccounts=nil;
 	return manager;
 }
 
-+(NSString*)tempPath{
-	NSString *applicationSupportPath=[[NSFileManager defaultManager] applicationSupportDirectory];
-	NSString *themeDirectoryPath=[applicationSupportPath stringByAppendingPathComponent:@"temp"];
-	if(![[NSFileManager defaultManager] fileExistsAtPath:themeDirectoryPath]){
-		NSError *error=nil;
-		if(![[NSFileManager defaultManager] createDirectoryAtPath:themeDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error]){
-			//cannnot 
-			NSAlert *alert=[NSAlert alertWithError:error];
-			[alert runModal];
-		}
-    }
-	return themeDirectoryPath;
-}
-
-+(NSString*)themePath{
-	NSString *applicationSupportPath=[[NSFileManager defaultManager] applicationSupportDirectory];
-	NSString *themeDirectoryPath=[applicationSupportPath stringByAppendingPathComponent:@"themes"];
-	if(![[NSFileManager defaultManager] fileExistsAtPath:themeDirectoryPath]){
-		NSError *error=nil;
-		if(![[NSFileManager defaultManager] createDirectoryAtPath:themeDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error]){
-			//cannnot 
-			NSAlert *alert=[NSAlert alertWithError:error];
-			[alert runModal];
-		}
-    }
-	return themeDirectoryPath;
-}
-
 -(id)init{
-	unzipProgressIndicator=[[NSMutableDictionary alloc] init];
-	return [super init];
+    self = [super init];
+    
+    self.accountStore = [[ACAccountStore alloc] init];
+    self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+
+    return self;
 }
 
--(void)addAccount:(User*)account{
-	NSArray *currentAccounts=[self accounts];
-	if([currentAccounts containsObject:account])return;
-	
-	[[self accounts] addObject:account];
-	[self saveAccounts];
-}
--(void)deleteAccount:(User*)account{
-	if(![[self accounts]containsObject:account])return;
-	[[self accounts] removeObject:account];
-	[self saveAccounts];
-}
--(void)saveAccounts{
-	NSMutableArray *accounts=[NSMutableArray arrayWithArray:[self accounts]];
-	for(int i=0;i<[accounts count];i++){
-		NSDictionary *dict=[[accounts objectAtIndex:i]dictionaryRepresentationWithAuthInformation:YES];
-		[accounts replaceObjectAtIndex:i withObject:dict];
-	}
-	[[NSUserDefaults standardUserDefaults] setObject:accounts forKey:@"accounts"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
--(NSMutableArray*)accounts{
-	if(!savedAccounts){
-		savedAccounts=[[NSUserDefaults standardUserDefaults] objectForKey:@"accounts"];
-		if(!savedAccounts){
-			savedAccounts=[[NSMutableArray alloc]init];
-		}else{
-			savedAccounts=[[NSMutableArray alloc] initWithArray:savedAccounts];
-		}
-		for(int i=0;i<[savedAccounts count];i++){
-			NSDictionary *thisAccount=[savedAccounts objectAtIndex:i];
-			[savedAccounts replaceObjectAtIndex:i withObject:[Account userWithDictionary:thisAccount]];
-		}
-	}
-	return savedAccounts;
+
+
+#pragma mark - settings
+
+- (ACAccount *)selectedAccount {
+    NSArray *accounts = self.accounts;
+    if (accounts.count == 0) {
+        return nil;
+    }
+    return [self.accounts objectAtIndex:0];
 }
 
-#pragma mark
+- (NSArray*)accounts {
+    if (!self.accountType.accessGranted) {
+        return 0;
+    }
+    return [self.accountStore accountsWithAccountType:self.accountType];
+}
+
 -(BOOL)overlapsMenuBar{
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"overlapsMenuBar"];
 }
