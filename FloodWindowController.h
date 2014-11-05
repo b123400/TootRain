@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "StreamController.h"
 
-@interface FloodWindowController : NSWindowController{
+@interface FloodWindowController : NSWindowController<StreamControllerDelegate>{
 	NSMutableArray *currentRequests;
 	IBOutlet NSButton *moveButton;
 	
@@ -19,6 +20,8 @@
 	
 	NSMutableArray *shownStatuses;
 }
+
+@property (nonatomic, strong) StreamController *streamController;
 
 -(void)resetFrame;
 

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D9852EDDF1D3C76D1A088BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD68B818772D1FDEAE662C14 /* libPods.a */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
-		CF16DC3C1535592800F0AB54 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF16DC3B1535592800F0AB54 /* UserRequest.m */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
 		CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2F8BDC1390E11500D733CA /* SettingViewController.xib */; };
@@ -21,28 +21,24 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF620A1B1A047554003EB806 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1A1A047554003EB806 /* Social.framework */; };
 		CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1C1A0476DC003EB806 /* Accounts.framework */; };
-		CF6639D71540808B00BF39F0 /* SearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6639D61540808B00BF39F0 /* SearchRequest.m */; };
+		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CF83E90B1542BA94007FEAE9 /* TwitterStreamRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83E90A1542BA94007FEAE9 /* TwitterStreamRequest.m */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBEEE15E3C7E10064D90B /* SearchWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8BBEEC15E3C7E00064D90B /* SearchWindowController.xib */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8BBF4715E3EE6A0064D90B /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8BBF4515E3EE6A0064D90B /* ComposeStatusViewController.xib */; };
-		CF8BBF4A15E3F02B0064D90B /* ComposeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4915E3F02B0064D90B /* ComposeRequest.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
 		CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
 		CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
 		CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */; };
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
-		CF9F9E471534A281000AE741 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E461534A281000AE741 /* Request.m */; };
 		CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
-		CFBEFE19155FCFA700E8A015 /* NSObject+Identifier.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBEFE18155FCFA700E8A015 /* NSObject+Identifier.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFC65A0914D32A32008299B3 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596614D32A32008299B3 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC65A0A14D32A32008299B3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596814D32A32008299B3 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -79,7 +75,6 @@
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
-		CFF5C490156ABED1000B7F0B /* StatusesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF5C48F156ABED0000B7F0B /* StatusesRequest.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
 		CFFAE5E115E02D3400389518 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFAE5DF15E02D3400389518 /* RainDropDetailViewController.xib */; };
 		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
@@ -103,6 +98,7 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		228171F945669C28FD5CE044 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodAppDelegate.h; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* flood_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flood_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,8 +107,6 @@
 		8D1107310486CEB800E47090 /* flood-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "flood-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		CF16DC3A1535592800F0AB54 /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
-		CF16DC3B1535592800F0AB54 /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -126,24 +120,20 @@
 		CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1A1A047554003EB806 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1C1A0476DC003EB806 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
-		CF6639D51540808B00BF39F0 /* SearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRequest.h; sourceTree = "<group>"; };
-		CF6639D61540808B00BF39F0 /* SearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRequest.m; sourceTree = "<group>"; };
+		CF620A1F1A057CBE003EB806 /* StreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamController.h; sourceTree = "<group>"; };
+		CF620A201A057CBE003EB806 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
-		CF83E9091542BA94007FEAE9 /* TwitterStreamRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterStreamRequest.h; sourceTree = "<group>"; };
-		CF83E90A1542BA94007FEAE9 /* TwitterStreamRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterStreamRequest.m; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBEEC15E3C7E00064D90B /* SearchWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchWindowController.xib; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF8BBF4515E3EE6A0064D90B /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
-		CF8BBF4815E3F02B0064D90B /* ComposeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeRequest.h; sourceTree = "<group>"; };
-		CF8BBF4915E3F02B0064D90B /* ComposeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeRequest.m; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -151,8 +141,6 @@
 		CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodAppDelegate.m; sourceTree = "<group>"; };
 		CF9F9E351534567B000AE741 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		CF9F9E361534567B000AE741 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
-		CF9F9E451534A281000AE741 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		CF9F9E461534A281000AE741 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		CFA1BB5614DC514D000566A0 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
 		CFA1BB5714DC514D000566A0 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
 		CFA5111E1369AD11004A81D7 /* CustomTitleBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTitleBar.h; sourceTree = "<group>"; };
@@ -161,8 +149,6 @@
 		CFA5115E1369B18D004A81D7 /* CustomDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDragView.m; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
-		CFBEFE17155FCFA700E8A015 /* NSObject+Identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Identifier.h"; sourceTree = "<group>"; };
-		CFBEFE18155FCFA700E8A015 /* NSObject+Identifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Identifier.m"; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
 		CFC6596514D32A32008299B3 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -234,13 +220,13 @@
 		CFE8F5BF15D7E9F100815830 /* RainDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropView.m; sourceTree = "<group>"; };
 		CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropTextFieldCell.h; sourceTree = "<group>"; };
 		CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropTextFieldCell.m; sourceTree = "<group>"; };
-		CFF5C48E156ABED0000B7F0B /* StatusesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusesRequest.h; sourceTree = "<group>"; };
-		CFF5C48F156ABED0000B7F0B /* StatusesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusesRequest.m; sourceTree = "<group>"; };
 		CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5DF15E02D3400389518 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		CFFAE5F215E0E9DD00389518 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
+		F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FD68B818772D1FDEAE662C14 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +241,7 @@
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
 				CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */,
 				CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */,
+				1D9852EDDF1D3C76D1A088BB /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +274,7 @@
 				CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */,
 				CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */,
 				CF8BBF4515E3EE6A0064D90B /* ComposeStatusViewController.xib */,
+				CF620A1E1A057C9A003EB806 /* StreamController */,
 				CF9F62081563D548004C6514 /* Settings */,
 			);
 			name = Classes;
@@ -331,6 +319,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				693ACD1B1A57B1C2BD35BC8A /* Pods */,
 			);
 			name = Smarkin;
 			sourceTree = "<group>";
@@ -350,8 +339,6 @@
 				CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */,
 				CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */,
 				CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */,
-				CFBEFE17155FCFA700E8A015 /* NSObject+Identifier.h */,
-				CFBEFE18155FCFA700E8A015 /* NSObject+Identifier.m */,
 				CFFAE5F115E0E9DD00389518 /* WebImageView.h */,
 				CFFAE5F215E0E9DD00389518 /* WebImageView.m */,
 				CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */,
@@ -362,7 +349,6 @@
 				CF2A37D413752E6E001CAAAB /* User.m */,
 				CF9F9E351534567B000AE741 /* Status.h */,
 				CF9F9E361534567B000AE741 /* Status.m */,
-				CF6639D31540806600BF39F0 /* Requests */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -389,8 +375,18 @@
 				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				FD68B818772D1FDEAE662C14 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		693ACD1B1A57B1C2BD35BC8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */,
+				228171F945669C28FD5CE044 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		CF240265136C07980020648C /* image */ = {
@@ -400,23 +396,13 @@
 			name = image;
 			sourceTree = "<group>";
 		};
-		CF6639D31540806600BF39F0 /* Requests */ = {
+		CF620A1E1A057C9A003EB806 /* StreamController */ = {
 			isa = PBXGroup;
 			children = (
-				CF9F9E451534A281000AE741 /* Request.h */,
-				CF9F9E461534A281000AE741 /* Request.m */,
-				CF16DC3A1535592800F0AB54 /* UserRequest.h */,
-				CF16DC3B1535592800F0AB54 /* UserRequest.m */,
-				CF6639D51540808B00BF39F0 /* SearchRequest.h */,
-				CF6639D61540808B00BF39F0 /* SearchRequest.m */,
-				CF83E9091542BA94007FEAE9 /* TwitterStreamRequest.h */,
-				CF83E90A1542BA94007FEAE9 /* TwitterStreamRequest.m */,
-				CFF5C48E156ABED0000B7F0B /* StatusesRequest.h */,
-				CFF5C48F156ABED0000B7F0B /* StatusesRequest.m */,
-				CF8BBF4815E3F02B0064D90B /* ComposeRequest.h */,
-				CF8BBF4915E3F02B0064D90B /* ComposeRequest.m */,
+				CF620A1F1A057CBE003EB806 /* StreamController.h */,
+				CF620A201A057CBE003EB806 /* StreamController.m */,
 			);
-			name = Requests;
+			name = StreamController;
 			sourceTree = "<group>";
 		};
 		CF9F62081563D548004C6514 /* Settings */ = {
@@ -563,10 +549,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "flood" */;
 			buildPhases = (
+				1C01704D7FEFF7931CFEEA7B /* Check Pods Manifest.lock */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				CF53F65E139CCE51003AB55B /* Copy Files */,
+				AA39D368169E2B5CF65A928F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -584,7 +572,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flood" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -627,6 +615,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C01704D7FEFF7931CFEEA7B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA39D368169E2B5CF65A928F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -649,6 +670,7 @@
 				CFC65A0D14D32A32008299B3 /* hmac.c in Sources */,
 				CFC65A0E14D32A32008299B3 /* sha1.c in Sources */,
 				CFC65A0F14D32A32008299B3 /* OAAttachment.m in Sources */,
+				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CFC65A1014D32A32008299B3 /* OACall.m in Sources */,
 				CFC65A1114D32A32008299B3 /* OAConsumer.m in Sources */,
 				CFC65A1214D32A32008299B3 /* OADataFetcher.m in Sources */,
@@ -672,12 +694,6 @@
 				CFC65A9B14D32A8F008299B3 /* CJSONSerializer.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
-				CF9F9E471534A281000AE741 /* Request.m in Sources */,
-				CF16DC3C1535592800F0AB54 /* UserRequest.m in Sources */,
-				CF6639D71540808B00BF39F0 /* SearchRequest.m in Sources */,
-				CF83E90B1542BA94007FEAE9 /* TwitterStreamRequest.m in Sources */,
-				CFBEFE19155FCFA700E8A015 /* NSObject+Identifier.m in Sources */,
-				CFF5C490156ABED1000B7F0B /* StatusesRequest.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
@@ -688,7 +704,6 @@
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
-				CF8BBF4A15E3F02B0064D90B /* ComposeRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,10 +731,11 @@
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -741,10 +757,11 @@
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 228171F945669C28FD5CE044 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -765,7 +782,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -775,14 +791,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -791,7 +806,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

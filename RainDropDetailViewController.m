@@ -8,8 +8,6 @@
 
 #import "RainDropDetailViewController.h"
 #import "ComposeStatusViewController.h"
-#import "ComposeRequest.h"
-#import "StatusesManager.h"
 #import "SettingManager.h"
 
 @interface RainDropDetailViewController ()
@@ -125,43 +123,45 @@
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
 - (IBAction)retweetClicked:(id)sender {
-	ComposeRequest *request=[[ComposeRequest alloc]init];
-	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
-	request.target=self;
-	request.successSelector=@selector(request:didFinishedRetweetWithResult:);
-	request.failSelector=@selector(request:didFailedRetweetWithError:);
-	request.inReplyTo=status;
-	[[StatusesManager sharedManager] retweetStatus:request];
+//    ACAccount *account = [[SettingManager sharedManager] selectedAccount];
+    
+//	ComposeRequest *request=[[ComposeRequest alloc]init];
+//	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
+//	request.target=self;
+//	request.successSelector=@selector(request:didFinishedRetweetWithResult:);
+//	request.failSelector=@selector(request:didFailedRetweetWithError:);
+//	request.inReplyTo=status;
+//	[[StatusesManager sharedManager] retweetStatus:request];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"Loading"];
 }
 - (IBAction)favClicked:(id)sender {
-	ComposeRequest *request=[[ComposeRequest alloc]init];
-	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
-	request.target=self;
-	request.successSelector=@selector(request:didFinishedFavWithResult:);
-	request.failSelector=@selector(request:didFailedFavWithError:);
-	request.inReplyTo=status;
-	[[StatusesManager sharedManager] favouriteStatus:request];
-	[(NSButton*)sender setEnabled:NO];
-	[(NSButton*)sender setTitle:@"..."];
+//	ComposeRequest *request=[[ComposeRequest alloc]init];
+//	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
+//	request.target=self;
+//	request.successSelector=@selector(request:didFinishedFavWithResult:);
+//	request.failSelector=@selector(request:didFailedFavWithError:);
+//	request.inReplyTo=status;
+//	[[StatusesManager sharedManager] favouriteStatus:request];
+//	[(NSButton*)sender setEnabled:NO];
+//	[(NSButton*)sender setTitle:@"..."];
 }
 #pragma mark api delegate
--(void)request:(ComposeRequest*)request didFinishedRetweetWithResult:(id)result{
-	[retweetButton setTitle:@"Done"];
-}
--(void)request:(ComposeRequest*)request didFailedRetweetWithError:(NSError*)error{
-	[retweetButton setEnabled:YES];
-	[retweetButton setTitle:@"Failed"];
-	[retweetButton performSelector:@selector(setTitle:) withObject:@"Retweet" afterDelay:0.5];
-}
--(void)request:(ComposeRequest*)request didFinishedFavWithResult:(id)result{
-	[favButton setTitle:@"Done"];
-}
--(void)request:(ComposeRequest*)request didFailedFavWithError:(NSError*)error{
-	[favButton setEnabled:YES];
-	[favButton setTitle:@"Failed"];
-	[favButton performSelector:@selector(setTitle:) withObject:@"Fav" afterDelay:0.5];
-}
+//-(void)request:(ComposeRequest*)request didFinishedRetweetWithResult:(id)result{
+//	[retweetButton setTitle:@"Done"];
+//}
+//-(void)request:(ComposeRequest*)request didFailedRetweetWithError:(NSError*)error{
+//	[retweetButton setEnabled:YES];
+//	[retweetButton setTitle:@"Failed"];
+//	[retweetButton performSelector:@selector(setTitle:) withObject:@"Retweet" afterDelay:0.5];
+//}
+//-(void)request:(ComposeRequest*)request didFinishedFavWithResult:(id)result{
+//	[favButton setTitle:@"Done"];
+//}
+//-(void)request:(ComposeRequest*)request didFailedFavWithError:(NSError*)error{
+//	[favButton setEnabled:YES];
+//	[favButton setTitle:@"Failed"];
+//	[favButton performSelector:@selector(setTitle:) withObject:@"Fav" afterDelay:0.5];
+//}
 
 @end

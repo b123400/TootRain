@@ -31,7 +31,6 @@
 @property (strong,nonatomic) NSMutableDictionary *entities;
 @property (strong,nonatomic) NSMutableDictionary *otherInfos;
 
--(NSMutableDictionary*)dictionaryRepresentation;
--(NSMutableDictionary*)dictionaryRepresentationToPlist:(BOOL)toPlist;
+- (id)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

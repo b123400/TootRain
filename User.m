@@ -12,75 +12,33 @@
 @implementation User
 @synthesize type,username,userID,screenName,otherInfos,profileImageURL,description;
 
-+(NSString*)networkNameOfType:(BRUserType)type{
-	switch (type) {
-		case BRUserTypeTwitter:
-			return @"twitter";
-			break;
-		case BRUserTypeFacebook:
-			return @"facebook";
-			break;
-		default:
-			break;
-	}
-	return nil;
-}
-+(BRUserType)typeOfNetworkName:(NSString*)networkName{
-	networkName=[networkName lowercaseString];
-	if([networkName isEqualToString:@"twitter"]){
-		return BRUserTypeTwitter;
-	}else if([networkName isEqualToString:@"facebook"]){
-		return BRUserTypeFacebook;
-	}
-	return BRUserTypeUnknown;
+- (id)initWithDictionary:(NSDictionary*)thisUserDict{
+    self.userID=[NSString stringWithFormat:@"%@",[thisUserDict objectForKey:@"id_str"]];
+    self.username=[thisUserDict objectForKey:@"screen_name"];
+    self.screenName=[thisUserDict objectForKey:@"name"];
+    self.profileImageURL=[NSURL URLWithString:[thisUserDict objectForKey:@"profile_image_url_https"]];
+    self.description=[thisUserDict objectForKey:@"description"];
+    
+    NSArray *keys=[NSArray arrayWithObjects:@"created_at",@"follow_request_sent",@"followers_count",@"following",@"friends_count",@"geo_enabled",@"is_translator",@"lang",@"listed_count",
+                   @"location",@"profile_background_color",@"profile_background_image_url_https",@"profile_link_color",@"profile_sidebar_border_color",@"profile_sidebar_fill_color",
+                   @"profile_text_color",@"profile_use_background_image",@"protected",@"statuses_count",@"url",@"favourites_count",nil];
+    for(__strong NSString *thisKey in keys){
+        id object=[thisUserDict objectForKey:thisKey];
+        if(object!=nil&&![object isKindOfClass:[NSNull class]]){
+            if([thisKey isEqualToString:@"profile_background_image_url_https"]){
+                thisKey=@"profile_background_image_url";
+            }
+            [self.otherInfos setObject:object forKey:thisKey];
+        }
+    }
+    
+    return self;
 }
 
-+(User*)userWithDictionary:(NSDictionary*)dict{
-	User *thisUser=[[User alloc] init];
-	thisUser=[thisUser insertDataIntoUser:thisUser WithDictionary:dict];
-	
-	return thisUser;
-}
--(User*)insertDataIntoUser:(User*)thisUser WithDictionary:(NSDictionary*)dict{
-	thisUser.type=[[dict objectForKey:@"type"] intValue];
-	thisUser.username=[dict objectForKey:@"username"];
-	thisUser.userID=[dict objectForKey:@"userID"];
-	thisUser.screenName=[dict objectForKey:@"screenName"];
-	thisUser.otherInfos=[dict objectForKey:@"otherInfos"];
-	thisUser.profileImageURL=[NSURL URLWithString:[dict objectForKey:@"profileImageURL"]];
-	thisUser.description=[dict objectForKey:@"description"];
-	return thisUser;
-}
 -(id)init{
 	self= [super init];
 	self.otherInfos=[NSMutableDictionary dictionary];
 	return self;
-}
-
--(NSDictionary*)dictionaryRepresentation{	
-	NSMutableDictionary *resultDict=[NSMutableDictionary dictionary];
-	if(username)[resultDict setObject:username forKey:@"username"];
-	if(userID)[resultDict setObject:userID forKey:@"userID"];
-	[resultDict setObject:[NSNumber numberWithInt:type] forKey:@"type"];
-	if(screenName)[resultDict setObject:screenName forKey:@"screenName"];
-	if(profileImageURL)[resultDict setObject:[profileImageURL absoluteString] forKey:@"profileImageURL"];
-	if(description)[resultDict setObject:description forKey:@"description"];
-	
-	for(NSString *key in otherInfos){
-		[resultDict setObject:[otherInfos objectForKey:key] forKey:key];
-	}
-	return resultDict;
-}
--(NSString*)javascriptRepresentation{
-	NSMutableDictionary *dict=[NSMutableDictionary dictionaryWithDictionary:[self dictionaryRepresentation]];
-	[dict setObject:[User networkNameOfType:self.type] forKey:@"type"];
-	[dict setObject:[NSString stringWithFormat:@"%@@%@",[dict objectForKey:@"userID"],[dict objectForKey:@"type"]] forKey:@"userID"];
-	
-	NSError *error=nil;
-	NSData *jsonData=[[CJSONSerializer serializer] serializeDictionary:dict error:&error];
-	NSString *jsonString=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-	
-	return [NSString stringWithFormat:@"User(%@)",jsonString];
 }
 
 -(BOOL)isEqual:(id)object{

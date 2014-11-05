@@ -40,13 +40,6 @@ typedef enum BRUserType {
 
 @property (nonatomic,strong) NSMutableDictionary *otherInfos;
 
-+(NSString*)networkNameOfType:(BRUserType)type;
-+(BRUserType)typeOfNetworkName:(NSString*)networkName;
-
-+(User*)userWithDictionary:(NSDictionary*)dict;
--(User*)insertDataIntoUser:(User*)thisUser WithDictionary:(NSDictionary*)dict;
-
--(NSDictionary*)dictionaryRepresentation;
--(NSString*)javascriptRepresentation;
+- (instancetype)initWithDictionary:(NSDictionary*)dict;
 
 @end

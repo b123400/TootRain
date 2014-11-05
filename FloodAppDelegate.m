@@ -7,9 +7,6 @@
 //
 
 #import "FloodAppDelegate.h"
-#import "TwitterEngine.h"
-#import "StreamingConsumer.h"
-#import "StreamingDelegate.h"
 #import "SettingManager.h"
 
 @implementation FloodAppDelegate
@@ -24,7 +21,6 @@
 -(IBAction)newWindow:(id)sender{
 	if([[[SettingManager sharedManager] accounts] count]<=0){
 		[[SettingViewController sharedPrefsWindowController] showWindow:self];
-		[(SettingViewController*)[SettingViewController sharedPrefsWindowController] newTwitterAccount];
 		return;
 	}else{
 		if(!windowController){
