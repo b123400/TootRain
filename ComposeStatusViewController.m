@@ -8,8 +8,11 @@
 
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
+#import <STTwitter/STTwitter.h>
 
 @interface ComposeStatusViewController ()
+
+@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -26,33 +29,30 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:[[SettingManager sharedManager]selectedAccount]];
     }
     
     return self;
 }
 
 - (IBAction)sendButtonClicked:(id)sender {
-//	ComposeRequest *request=[[ComposeRequest alloc]init];
-//	request.text=[[contentTextView textStorage]string];
-//	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
-//	request.target=self;
-//	request.successSelector=@selector(request:didFinishedWithResult:);
-//	request.failSelector=@selector(request:didFailedWithError:);
-//	if(inReplyTo){
-//		request.inReplyTo=inReplyTo;
-//	}
-//	[[StatusesManager sharedManager] sendStatus:request];
-//	[sendButton setEnabled:NO];
-//	[sendButton setTitle:@"Loading"];
+    [self.twitter postStatusUpdate:[[contentTextView textStorage] string]
+                 inReplyToStatusID:inReplyTo.statusID
+                          latitude:nil
+                         longitude:nil
+                           placeID:nil
+                displayCoordinates:nil
+                          trimUser:nil
+                      successBlock:^(NSDictionary *status) {
+                          [sendButton setTitle:@"Sent"];
+                          [self.popover performSelector:@selector(close) withObject:nil afterDelay:0.5];
+                      } errorBlock:^(NSError *error) {
+                          [sendButton setEnabled:YES];
+                          [sendButton setTitle:@"Failed"];
+                          [sendButton performSelector:@selector(setTitle:) withObject:@"Send" afterDelay:0.5];
+                      }];
+	[sendButton setEnabled:NO];
+	[sendButton setTitle:@"Loading"];
 }
 
-//-(void)request:(ComposeRequest*)request didFinishedWithResult:(id)result{
-//	[sendButton setTitle:@"Sent"];
-//	[self.popover performSelector:@selector(close) withObject:nil afterDelay:0.5];
-//}
-//-(void)request:(ComposeRequest*)request didFailedWithError:(NSError *)error{
-//	[sendButton setEnabled:YES];
-//	[sendButton setTitle:@"Failed"];
-//	[sendButton performSelector:@selector(setTitle:) withObject:@"Send" afterDelay:0.5];
-//}
 @end

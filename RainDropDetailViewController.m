@@ -9,8 +9,11 @@
 #import "RainDropDetailViewController.h"
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
+#import <STTwitter/STTwitter.h>
 
 @interface RainDropDetailViewController ()
+
+@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -36,6 +39,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount];
     }
     
     return self;
@@ -123,45 +128,26 @@
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
 - (IBAction)retweetClicked:(id)sender {
-//    ACAccount *account = [[SettingManager sharedManager] selectedAccount];
-    
-//	ComposeRequest *request=[[ComposeRequest alloc]init];
-//	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
-//	request.target=self;
-//	request.successSelector=@selector(request:didFinishedRetweetWithResult:);
-//	request.failSelector=@selector(request:didFailedRetweetWithError:);
-//	request.inReplyTo=status;
-//	[[StatusesManager sharedManager] retweetStatus:request];
+    [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
+        [retweetButton setTitle:@"Retweeted"];
+    } errorBlock:^(NSError *error) {
+        [retweetButton setEnabled:YES];
+        [retweetButton setTitle:@"Failed"];
+        [retweetButton performSelector:@selector(setTitle:) withObject:@"Retweet" afterDelay:0.5];
+    }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"Loading"];
 }
 - (IBAction)favClicked:(id)sender {
-//	ComposeRequest *request=[[ComposeRequest alloc]init];
-//	request.account=[[[SettingManager sharedManager]accounts]objectAtIndex:0];
-//	request.target=self;
-//	request.successSelector=@selector(request:didFinishedFavWithResult:);
-//	request.failSelector=@selector(request:didFailedFavWithError:);
-//	request.inReplyTo=status;
-//	[[StatusesManager sharedManager] favouriteStatus:request];
-//	[(NSButton*)sender setEnabled:NO];
-//	[(NSButton*)sender setTitle:@"..."];
+    [self.twitter postFavoriteCreateWithStatusID:status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
+        [favButton setTitle:@"Done"];
+    } errorBlock:^(NSError *error) {
+        [favButton setTitle:@"Failed"];
+        [favButton setEnabled:YES];
+        [favButton performSelector:@selector(setTitle:) withObject:@"Fav" afterDelay:0.5];
+    }];
+	[(NSButton*)sender setEnabled:NO];
+	[(NSButton*)sender setTitle:@"..."];
 }
-#pragma mark api delegate
-//-(void)request:(ComposeRequest*)request didFinishedRetweetWithResult:(id)result{
-//	[retweetButton setTitle:@"Done"];
-//}
-//-(void)request:(ComposeRequest*)request didFailedRetweetWithError:(NSError*)error{
-//	[retweetButton setEnabled:YES];
-//	[retweetButton setTitle:@"Failed"];
-//	[retweetButton performSelector:@selector(setTitle:) withObject:@"Retweet" afterDelay:0.5];
-//}
-//-(void)request:(ComposeRequest*)request didFinishedFavWithResult:(id)result{
-//	[favButton setTitle:@"Done"];
-//}
-//-(void)request:(ComposeRequest*)request didFailedFavWithError:(NSError*)error{
-//	[favButton setEnabled:YES];
-//	[favButton setTitle:@"Failed"];
-//	[favButton performSelector:@selector(setTitle:) withObject:@"Fav" afterDelay:0.5];
-//}
 
 @end

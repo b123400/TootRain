@@ -69,6 +69,7 @@
                              }
                              errorBlock:^(NSError *error) {
                                  NSLog(@"stream controller error: %@", error.description);
+                                 [self reconnect];
                              }];
 }
 
