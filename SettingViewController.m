@@ -9,7 +9,22 @@
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
 
+@interface SettingViewController ()
+
+- (void)updateAccountView;
+- (void)accountStoreDidChanged:(NSNotification*)notification;
+
+@end
+
 @implementation SettingViewController
+
+-(instancetype)initWithWindowNibName:(NSString *)windowNibName {
+    self = [super initWithWindowNibName:windowNibName];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+    
+    return self;
+}
 
 -(void)setupToolbar{
 	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"]];
@@ -19,6 +34,7 @@
 + (NSString *)nibName{
 	return @"SettingViewController";
 }
+
 - (void)windowDidLoad{
 	[super windowDidLoad];
 	[[accountsTableView layer] setCornerRadius:30];
@@ -35,10 +51,29 @@
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
 	NSFont *theFont=[[SettingManager sharedManager]font];
 	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
+    
+    [self updateAccountView];
+    
+    // need to find using identifier becoz system api doesn't compare it well
+    NSUInteger index = NSNotFound;
+    NSArray *accounts = [[SettingManager sharedManager] accounts];
+    ACAccount *selectedAccount = [[SettingManager sharedManager]selectedAccount];
+    for (int i = 0; i<accounts.count; i++) {
+        ACAccount *thisAccount = [accounts objectAtIndex:i];
+        if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
+            index = i;
+            break;
+        }
+    }
+    if (index != NSNotFound) {
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:index];
+        [accountsTableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }
 }
+
 #pragma mark tableview datasource+delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
-	if(aTableView==accountsTableView){
+	if (aTableView==accountsTableView) {
         
         return [SettingManager sharedManager].accounts.count;
 	}
@@ -52,29 +87,73 @@
         }
         NSArray *accounts = [SettingManager sharedManager].accounts;
         ACAccount *thisAccount=[accounts objectAtIndex:rowIndex];
+        if ([thisAccount.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
+            return [NSString stringWithFormat:@"%@ (Streaming)",thisAccount.username];
+        }
 		return thisAccount.username;
 	}
 	return nil;
 }
-#pragma mark Accounts
+
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
-	if(tableView==accountsTableView){
-		return 44;
-	}
-	return 0;
+    if(tableView==accountsTableView){
+        return 44;
+    }
+    return 0;
 }
+
+#pragma mark Accounts
 
 - (IBAction)authorizeButtonTapped:(id)sender {
     [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
         if (granted) {
-            [accountsTableView reloadData];
+            [self updateAccountView];
+            [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
         } else {
             NSAlert *alert = [NSAlert alertWithError:error];
+            [alert setMessageText:[NSString stringWithFormat:@"Why dont you give me permission:(\n %@",[alert messageText]]];
             [alert runModal];
         }
     }];
 }
 
+- (void)updateAccountView {
+    if ([SettingManager sharedManager].accountType.accessGranted) {
+        [self.authorizeView removeFromSuperview];
+        if ([SettingManager sharedManager].accounts.count != 0) {
+            accountsTableView.hidden = NO;
+            [self.emptyAccountView removeFromSuperview];
+        } else {
+            accountsTableView.hidden = YES;
+            [accountsSettingView addSubview:self.emptyAccountView];
+        }
+    } else {
+        [accountsSettingView addSubview:self.authorizeView];
+        [self.emptyAccountView removeFromSuperview];
+        accountsTableView.hidden = YES;
+    }
+    [accountsTableView reloadData];
+}
+
+- (IBAction)addAccountInstruction:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://support.apple.com/kb/PH18993"]];
+}
+
+- (void)accountStoreDidChanged:(NSNotification*)notification {
+    [self updateAccountView];
+}
+
+-(void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSUInteger index = [accountsTableView selectedRow];
+    ACAccount *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    if ([[[SettingManager sharedManager] selectedAccount].identifier isEqualToString:selectedAccount.identifier]) {
+        return;
+    }
+    if (selectedAccount) {
+        [[SettingManager sharedManager] setSelectedAccount:selectedAccount];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
+}
 
 #pragma mark Appearance
 

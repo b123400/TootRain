@@ -18,7 +18,8 @@
 
 +(SettingManager*)sharedManager;
 
--(ACAccount*)selectedAccount;
+- (ACAccount*)selectedAccount;
+- (void)setSelectedAccount:(ACAccount*)account;
 - (NSArray*)accounts;
 
 -(BOOL)overlapsMenuBar;

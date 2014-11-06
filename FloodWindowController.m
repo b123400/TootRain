@@ -32,10 +32,8 @@
 	lastMousePosition=CGPointZero;
 	shownStatuses=[[NSMutableArray alloc] init];
     
-    ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-    self.streamController = [[StreamController alloc] initWithAccount:selectedAccount];
-    self.streamController.delegate = self;
-    [self.streamController startStreaming];
+    [StreamController shared].delegate = self;
+    [[StreamController shared] startStreaming];
 	
 	return [self initWithWindowNibName:@"FloodWindowController"];
 }
@@ -62,10 +60,11 @@
 }
 
 -(void)setSearchTerm:(NSString*)searchTerm{
-    self.streamController.searchTerm = searchTerm;
+    [StreamController shared].searchTerm = searchTerm;
 }
 #pragma mark stream delegate
 -(void)streamController:(id)controller didReceivedTweet:(Status*)tweet {
+    if (![self shouldShowStatus:tweet]) return;
     
     RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:tweet];
     [thisViewController loadView];
@@ -76,63 +75,7 @@
     thisViewController.delegate=self;
     [rainDrops addObject:thisViewController];
 }
-//-(void)request:(TwitterStreamRequest *)request didReceivedTimelineResult:(Status*)status{
-//	if(![self shouldShowStatus:status])return;
-//	
-//	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
-//	[thisViewController loadView];
-//	CGRect frame=thisViewController.view.frame;
-//	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-//	thisViewController.view.frame=frame;
-//	[[[self window] contentView]addSubview: [thisViewController view]];
-//	thisViewController.delegate=self;
-//	[rainDrops addObject:thisViewController];
-//}
-//-(void)request:(TwitterStreamRequest *)request didReceivedMentionResult:(Status*)status{
-//	if(![self shouldShowStatus:status])return;
-//	
-//	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
-//	[thisViewController loadView];
-//	CGRect frame=thisViewController.view.frame;
-//	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-//	thisViewController.view.frame=frame;
-//	[[[self window] contentView]addSubview: [thisViewController view]];
-//	thisViewController.delegate=self;
-//	[rainDrops addObject:thisViewController];
-//}
-//
-//-(void)request:(TwitterStreamRequest *)request didReceivedDirectMessageResult:(Status*)status{
-//	if(![self shouldShowStatus:status])return;
-//	
-//	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
-//	[thisViewController loadView];
-//	CGRect frame=thisViewController.view.frame;
-//	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-//	thisViewController.view.frame=frame;
-//	[[[self window] contentView]addSubview: [thisViewController view]];
-//	thisViewController.delegate=self;
-//	[rainDrops addObject:thisViewController];
-//}
-//
-//-(void)request:(SearchRequest *)request didReceivedSearchResult:(Status*)status{
-//	if(![self shouldShowStatus:status])return;
-//	
-//	RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
-//	[thisViewController loadView];
-//	CGRect frame=thisViewController.view.frame;
-//	frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-//	thisViewController.view.frame=frame;
-//	[[[self window] contentView]addSubview: [thisViewController view]];
-//	thisViewController.delegate=self;
-//	[rainDrops addObject:thisViewController];
-//}
-//
-//-(void)request:(TwitterStreamRequest *)request didReceivedEvent:(id)event{
-//	
-//}
-//-(void)request:(Request*)request failedWithError:(NSError*)error{
-//	
-//}
+
 -(BOOL)shouldShowStatus:(Status*)status{
 	if([shownStatuses containsObject:status]){
 		return NO;
@@ -168,9 +111,10 @@
 	return possibleY;
 }
 #pragma mark animation
--(void)rainDropDidDisappear:(id)rainDrop{
+-(void)rainDropDidDisappear:(RainDropViewController*)rainDrop{
 	[[rainDrop view] removeFromSuperview];
 	[rainDrops removeObject:rainDrop];
+    [shownStatuses removeObject:rainDrop.status];
 }
 
 -(void)updateCursorLocation:(NSEvent*)event{

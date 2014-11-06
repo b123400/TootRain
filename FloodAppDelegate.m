@@ -19,15 +19,13 @@
 	return NO;
 }
 -(IBAction)newWindow:(id)sender{
-	if([[[SettingManager sharedManager] accounts] count]<=0){
+	if(![[SettingManager sharedManager] selectedAccount]){
 		[[SettingViewController sharedPrefsWindowController] showWindow:self];
-		return;
-	}else{
-		if(!windowController){
-			windowController=[[FloodWindowController alloc]init];
-		}
-		[windowController showWindow:self];
 	}
+    if(!windowController){
+        windowController=[[FloodWindowController alloc]init];
+    }
+    [windowController showWindow:self];
 }
 -(IBAction)openSettingWindow:(id)sender{
 	[[SettingViewController sharedPrefsWindowController] showWindow:self];

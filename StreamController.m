@@ -10,6 +10,7 @@
 #import <Social/Social.h>
 #import <STTwitter/STTwitter.h>
 #import "Status.h"
+#import "SettingManager.h"
 
 @interface StreamController()
 
@@ -24,9 +25,23 @@
 
 @implementation StreamController
 
+static StreamController *shared;
+
 + (instancetype)shared {
-    return [[StreamController alloc] init];
+    if (!shared) {
+        shared = [[StreamController alloc] initWithAccount:[[SettingManager sharedManager] selectedAccount]];
+        [[NSNotificationCenter defaultCenter] addObserver:shared selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+    }
+    return shared;
 }
+
+- (void)accountStoreDidChanged:(NSNotification*)notification {
+    self.account = [[SettingManager sharedManager] selectedAccount];
+    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
+    [self reconnect];
+}
+
+# pragma mark - instance methods
 
 - (id)initWithAccount:(ACAccount*)account {
     self = [super init];
@@ -49,6 +64,7 @@
 
 - (void)reconnect {
     [self.streamConnection cancel];
+    if (!self.account) return;
     self.streamConnection = [self.twitter
                              getUserStreamDelimited:nil
                              stallWarnings:nil
@@ -58,7 +74,7 @@
                              locationBoundingBoxes:nil
                              progressBlock:^(id response) {
                                  if (response && [response isKindOfClass:[NSDictionary class]]) {
-                                         Status *status = [[Status alloc] initWithDictionary:response];
+                                     Status *status = [[Status alloc] initWithDictionary:response];
                                       if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
                                          [self.delegate streamController:self didReceivedTweet:status];
                                      }

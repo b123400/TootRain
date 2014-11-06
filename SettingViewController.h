@@ -28,6 +28,8 @@
 	IBOutlet NSTextField *fontLabel;
 }
 
-@property (weak) IBOutlet NSButton *authorizeButton;
+@property (strong) IBOutlet NSButton *authorizeButton;
+@property (strong) IBOutlet NSView *authorizeView;
+@property (strong) IBOutlet NSView *emptyAccountView;
 
 @end

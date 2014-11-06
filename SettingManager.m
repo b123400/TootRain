@@ -11,6 +11,8 @@
 
 @interface SettingManager ()
 
+- (void)accountStoreDidChanged:(NSNotification*)notification;
+
 @end
 
 @implementation SettingManager
@@ -27,30 +29,55 @@ static NSMutableArray *savedAccounts=nil;
 -(id)init{
     self = [super init];
     
-    self.accountStore = [[ACAccountStore alloc] init];
-    self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-
+    if (self) {
+        self.accountStore = [[ACAccountStore alloc] init];
+        self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+    }
     return self;
 }
 
 
 
-#pragma mark - settings
+#pragma mark accounts
 
 - (ACAccount *)selectedAccount {
     NSArray *accounts = self.accounts;
     if (accounts.count == 0) {
         return nil;
     }
+    NSString *selectedAccountID = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountID"];
+    for (ACAccount *thisAccount in accounts) {
+        if ([thisAccount.identifier isEqualToString:selectedAccountID]) {
+            return thisAccount;
+        }
+    }
     return [self.accounts objectAtIndex:0];
+}
+
+- (void)setSelectedAccount:(ACAccount*)account {
+    for (ACAccount *thatAccount in self.accounts) {
+        if ([[account identifier] isEqualToString:[thatAccount identifier]]) {
+            [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountID"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return;
+        }
+    }
 }
 
 - (NSArray*)accounts {
     if (!self.accountType.accessGranted) {
         return 0;
     }
-    return [self.accountStore accountsWithAccountType:self.accountType];
+    NSArray *accounts = [self.accountStore accountsWithAccountType:self.accountType];
+    return accounts;
 }
+
+- (void)accountStoreDidChanged:(NSNotification*)notification {
+    
+}
+
+#pragma mark - settings
 
 -(BOOL)overlapsMenuBar{
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"overlapsMenuBar"];

@@ -21,8 +21,6 @@
 	NSMutableArray *shownStatuses;
 }
 
-@property (nonatomic, strong) StreamController *streamController;
-
 -(void)resetFrame;
 
 -(void)setSearchTerm:(NSString*)searchTerm;
