@@ -26,6 +26,10 @@
     return self;
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)setupToolbar{
 	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"]];
 	[self addView:appearanceSettingView label:@"Appearance" image:[NSImage imageNamed:@"NSColorPanel"]];
@@ -121,16 +125,16 @@
     if ([SettingManager sharedManager].accountType.accessGranted) {
         [self.authorizeView removeFromSuperview];
         if ([SettingManager sharedManager].accounts.count != 0) {
-            accountsTableView.hidden = NO;
+            self.tableViewScrollView.hidden = NO;
             [self.emptyAccountView removeFromSuperview];
         } else {
-            accountsTableView.hidden = YES;
+            self.tableViewScrollView.hidden = YES;
             [accountsSettingView addSubview:self.emptyAccountView];
         }
     } else {
         [accountsSettingView addSubview:self.authorizeView];
         [self.emptyAccountView removeFromSuperview];
-        accountsTableView.hidden = YES;
+        self.tableViewScrollView.hidden = YES;
     }
     [accountsTableView reloadData];
 }
@@ -178,6 +182,7 @@
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
 	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"removeURL"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 - (IBAction)underlineTweetsWithURLCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
@@ -188,18 +193,21 @@
 	NSSlider* slider=sender;
 	[[NSUserDefaults standardUserDefaults] setFloat:slider.floatValue forKey:@"opacity"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 - (IBAction)textColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
 	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
 	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"textColor"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 - (IBAction)shadowColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
 	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
 	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"shadowColor"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 - (IBAction)hoverBackgroundColor:(id)sender {
 	NSColorWell *well=sender;
@@ -221,6 +229,7 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 @end

@@ -40,9 +40,13 @@ static StreamController *shared;
 }
 
 - (void)accountStoreDidChanged:(NSNotification*)notification {
-    self.account = [[SettingManager sharedManager] selectedAccount];
+    ACAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
+    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
+    
+    self.account = changedToAccount;
     self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
     [self reconnect];
+
     [self showNotification];
 }
 
@@ -57,6 +61,10 @@ static StreamController *shared;
     self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
     
     return self;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setSearchTerm:(NSString*)searchTerm {
@@ -93,12 +101,16 @@ static StreamController *shared;
                                  NSLog(@"stall warning %@", message);
                              }
                              errorBlock:^(NSError *error) {
-                                 NSLog(@"stream controller error: %@", error.description);
+                                 NSUserNotification *notification = [[NSUserNotification alloc] init];
+                                 notification.title = @"Stream disconnected";
+                                 notification.informativeText = [NSString stringWithFormat:@"Reconnecting to user: %@",self.account.username];
+                                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
                                  [self reconnect];
                              }];
 }
 
 - (void)showNotification{
+    if (!self.account) return;
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = @"Stream Connecting";
     notification.informativeText = [NSString stringWithFormat:@"User: %@",self.account.username];

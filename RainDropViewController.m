@@ -9,9 +9,11 @@
 #import "RainDropViewController.h"
 #import "RainDropDetailViewController.h"
 #import "SettingManager.h"
-
+#import "SettingViewController.h"
 
 @interface RainDropViewController ()
+
+- (NSAttributedString*)attributedStringForStatus;
 
 @end
 
@@ -31,47 +33,15 @@
 	status=_status;
 	paused=YES;
 	margin=5;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appearanceSettingChanged:) name:kRainDropAppearanceChangedNotification object:nil];
+    
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
 }
 -(void)loadView{
 	[super loadView];
 	[(RainDropView*)self.view setDelegate:self];
 	
-	NSMutableString *contentString=[NSMutableString stringWithString:status.text];
-	[contentString replaceOccurrencesOfString:@"\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-	[contentString replaceOccurrencesOfString:@"\r" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-	
-	BOOL hasURL=NO;
-	if(status.entities){
-		for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
-			NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
-			if(range.location!=NSNotFound){
-				hasURL=YES;
-				NSString *url=[thisURLSet objectForKey:@"url"];
-				if([[SettingManager sharedManager]removeURL]){
-					[contentString replaceOccurrencesOfString:url withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-				}
-			}
-		}
-	}
-	
-	NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
-	NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
-	[attributes setObject:newFont forKey:NSFontAttributeName];
-	
-	NSShadow *kShadow = [[NSShadow alloc] init];
-    [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
-    [kShadow setShadowBlurRadius:5.0f];
-    [kShadow setShadowOffset:NSMakeSize(0, 0)];
-	[attributes setObject:kShadow forKey:NSShadowAttributeName];
-	
-	[attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
-	
-	if(hasURL&&[[SettingManager sharedManager]underlineTweetsWithURL]){
-		[attributes setObject:[NSNumber numberWithInt:NSSingleUnderlineStyle] forKey:NSUnderlineStyleAttributeName];
-	}
-	
-	NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];
+    NSAttributedString *attributedString = [self attributedStringForStatus];
 	
 	[contentTextField setAttributedStringValue:attributedString];
 	[contentTextField sizeToFit];
@@ -134,6 +104,7 @@
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
 	if(flag){
 		[self.delegate rainDropDidDisappear:self];
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
 	}
 }
 -(void)pauseAnimation{
@@ -194,7 +165,7 @@
 	frame.origin.x=(self.view.window.frame.size.width+self.view.frame.size.width)*percentage-self.view.frame.size.width;
 	return frame;
 }
-#pragma mark reaction
+#pragma mark interaction
 -(void)didMouseOver{
 	if([[SettingManager sharedManager] hideTweetAroundCursor]){
 		[self.view setHidden:YES];
@@ -248,6 +219,53 @@
 	if(popover&&[popover isShown])return YES;
 	return NO;
 }
+
+#pragma mark appearance
+
+- (NSAttributedString*)attributedStringForStatus{
+    
+    NSMutableString *contentString=[NSMutableString stringWithString:status.text];
+    [contentString replaceOccurrencesOfString:@"\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+    [contentString replaceOccurrencesOfString:@"\r" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+    
+    BOOL hasURL=NO;
+    if(status.entities){
+        for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
+            NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
+            if(range.location!=NSNotFound){
+                hasURL=YES;
+                NSString *url=[thisURLSet objectForKey:@"url"];
+                if([[SettingManager sharedManager]removeURL]){
+                    [contentString replaceOccurrencesOfString:url withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+                }
+            }
+        }
+    }
+    
+    NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
+    NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
+    [attributes setObject:newFont forKey:NSFontAttributeName];
+    
+    NSShadow *kShadow = [[NSShadow alloc] init];
+    [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
+    [kShadow setShadowBlurRadius:5.0f];
+    [kShadow setShadowOffset:NSMakeSize(0, 0)];
+    [attributes setObject:kShadow forKey:NSShadowAttributeName];
+    
+    [attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
+    
+    if(hasURL&&[[SettingManager sharedManager]underlineTweetsWithURL]){
+        [attributes setObject:[NSNumber numberWithInt:NSSingleUnderlineStyle] forKey:NSUnderlineStyleAttributeName];
+    }
+    
+    NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];
+    return attributedString;
+}
+
+- (void)appearanceSettingChanged:(NSNotification*)notification {
+    [contentTextField setAttributedStringValue:[self attributedStringForStatus]];
+}
+
 #pragma mark misc
 -(BOOL)paused{
 	return paused;

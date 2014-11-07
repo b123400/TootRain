@@ -11,6 +11,8 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 
+#define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
+
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;
 	IBOutlet NSTableView *accountsTableView;
@@ -27,6 +29,8 @@
 	IBOutlet NSColorWell *hoverBackgroundColorWell;
 	IBOutlet NSTextField *fontLabel;
 }
+
+@property (weak) IBOutlet NSScrollView *tableViewScrollView;
 
 @property (strong) IBOutlet NSButton *authorizeButton;
 @property (strong) IBOutlet NSView *authorizeView;
