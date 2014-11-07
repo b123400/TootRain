@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) NSURLConnection *streamConnection;
 
+- (void)showNotification;
+
 @end
 
 @implementation StreamController
@@ -30,6 +32,8 @@ static StreamController *shared;
 + (instancetype)shared {
     if (!shared) {
         shared = [[StreamController alloc] initWithAccount:[[SettingManager sharedManager] selectedAccount]];
+        
+        // shared controller should always follow the selectedAccount
         [[NSNotificationCenter defaultCenter] addObserver:shared selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
     }
     return shared;
@@ -39,6 +43,7 @@ static StreamController *shared;
     self.account = [[SettingManager sharedManager] selectedAccount];
     self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
     [self reconnect];
+    [self showNotification];
 }
 
 # pragma mark - instance methods
@@ -60,6 +65,9 @@ static StreamController *shared;
 }
 
 - (void)startStreaming {
+    if (!self.streamConnection) {
+        [self showNotification];
+    }
     [self reconnect];
 }
 
@@ -88,6 +96,13 @@ static StreamController *shared;
                                  NSLog(@"stream controller error: %@", error.description);
                                  [self reconnect];
                              }];
+}
+
+- (void)showNotification{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"Stream Connecting";
+    notification.informativeText = [NSString stringWithFormat:@"User: %@",self.account.username];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 @end

@@ -26,6 +26,8 @@
         windowController=[[FloodWindowController alloc]init];
     }
     [windowController showWindow:self];
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 -(IBAction)openSettingWindow:(id)sender{
 	[[SettingViewController sharedPrefsWindowController] showWindow:self];
@@ -43,6 +45,10 @@
 }
 -(FloodWindowController*)windowController{
 	return windowController;
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
 }
 
 @end

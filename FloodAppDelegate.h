@@ -12,7 +12,7 @@
 #import "FloodWindowController.h"
 #import "SearchWindowController.h"
 
-@interface FloodAppDelegate : NSObject <NSApplicationDelegate,SearchWindowControllerDelegate> {
+@interface FloodAppDelegate : NSObject <NSApplicationDelegate,SearchWindowControllerDelegate, NSUserNotificationCenterDelegate> {
 	FloodWindowController *windowController;
 	SettingViewController *settingController;
 	SearchWindowController *searchController;
