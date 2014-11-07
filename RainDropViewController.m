@@ -173,9 +173,20 @@
 	}
 	self.view.alphaValue=1;
 	[self pauseAnimation];
-	[(RainDropView*)self.view setBackgroundColor:[[SettingManager sharedManager]hoverBackgroundColor]];
-	[(RainDropView*)self.view setNeedsShadow:YES];
-	[self.view setNeedsDisplay:YES];
+    
+    BOOL changed = NO;
+    NSColor *color = [[SettingManager sharedManager]hoverBackgroundColor];
+    if (![[(RainDropView*)self.view backgroundColor] isEqualTo:color]) {
+        [(RainDropView*)self.view setBackgroundColor:color];
+        changed = YES;
+    }
+    if (![(RainDropView*)self.view needsShadow]) {
+        [(RainDropView*)self.view setNeedsShadow:YES];
+        changed = YES;
+    }
+    if (changed) {
+        [self.view setNeedsDisplay:YES];
+    }
 }
 -(void)didMouseOut{
 	if([[SettingManager sharedManager] hideTweetAroundCursor]){
@@ -187,9 +198,19 @@
 	}
 	self.view.alphaValue=[[SettingManager sharedManager] opacity];
 	[self startAnimation];
-	[(RainDropView*)self.view setBackgroundColor:[NSColor clearColor]];
-	[(RainDropView*)self.view setNeedsShadow:NO];
-	[self.view setNeedsDisplay:YES];
+    
+    BOOL changed = NO;
+    if (![[(RainDropView*)self.view backgroundColor] isEqualTo:[NSColor clearColor]]) {
+        [(RainDropView*)self.view setBackgroundColor:[NSColor clearColor]];
+        changed = YES;
+    }
+    if ([(RainDropView*)self.view needsShadow]) {
+        [(RainDropView*)self.view setNeedsShadow:NO];
+        changed = YES;
+    }
+    if (changed) {
+        [self.view setNeedsDisplay:YES];
+    }
 }
 -(void)viewDidClicked:(id)sender{
 	if(![self paused]){
@@ -264,6 +285,7 @@
 
 - (void)appearanceSettingChanged:(NSNotification*)notification {
     [contentTextField setAttributedStringValue:[self attributedStringForStatus]];
+    [self.view setNeedsDisplay:YES];
 }
 
 #pragma mark misc
