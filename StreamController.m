@@ -56,6 +56,7 @@ static StreamController *shared;
 
 - (void)setSearchTerm:(NSString*)searchTerm {
     _searchTerm = searchTerm;
+    [self reconnect];
 }
 
 - (void)startStreaming {
