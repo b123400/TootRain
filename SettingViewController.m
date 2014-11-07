@@ -43,7 +43,15 @@
 	[super windowDidLoad];
 	[[accountsTableView layer] setCornerRadius:30];
 	
-	overlapsMenuBarCheckBox.state=[[SettingManager sharedManager] overlapsMenuBar]?NSOnState:NSOffState;
+//	overlapsMenuBarCheckBox.state=[[SettingManager sharedManager] overlapsMenuBar]?NSOnState:NSOffState;
+    NSNumber *savedWindowLevel = [[SettingManager sharedManager] windowLevel];
+    if (!savedWindowLevel) {
+        savedWindowLevel = @1;
+    }
+    [[self.windowsLevelPopup selectedItem] setState:0];
+    [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel.integerValue];
+    [[self.windowsLevelPopup itemAtIndex:savedWindowLevel.integerValue] setState:1];
+    
 	hideTweetAroundCursorCheckBox.state=[[SettingManager sharedManager] hideTweetAroundCursor]?NSOnState:NSOffState;
 	showProfileImageCheckBox.state=[[SettingManager sharedManager] showProfileImage]?NSOnState:NSOffState;
 	removeURLCheckBox.state=[[SettingManager sharedManager] removeURL]?NSOnState:NSOffState;
@@ -161,11 +169,11 @@
 
 #pragma mark Appearance
 
-- (IBAction)overlapsMenuCheckBoxChanged:(id)sender {
-	BOOL enabled=[(NSButton*)sender state]==NSOnState;
-	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"overlapsMenuBar"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	[(FloodWindowController*)[(FloodAppDelegate*)[NSApp delegate] windowController] resetFrame];
+- (IBAction)windowsLevelChanged:(id)sender {
+    NSUInteger index = [self.windowsLevelPopup.itemArray indexOfObject:self.windowsLevelPopup.selectedItem];
+    [[NSUserDefaults standardUserDefaults] setObject:@(index) forKey:@"windowLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
 }
 - (IBAction)hideTweetAroundCursorCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;

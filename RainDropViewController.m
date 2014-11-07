@@ -35,6 +35,9 @@
 	margin=5;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appearanceSettingChanged:) name:kRainDropAppearanceChangedNotification object:nil];
     
+    // need to restart animation once window level is changed
+    // because there is a bug in OS X which stops CAAnimation when window level is changed.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowLevelChanged object:nil];
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
 }
 -(void)loadView{
@@ -125,6 +128,13 @@
 		animationEnd=nil;
 	}
 }
+
+- (void)restartAnimation {
+    // we need this, read comment in init.
+    [self pauseAnimation];
+    [self startAnimation];
+}
+
 #pragma mark timing
 -(float)animationDuration{
 	//full duration from one side of the screen to the other side

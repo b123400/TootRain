@@ -32,5 +32,6 @@
 -(NSColor*)shadowColor;
 -(NSColor*)hoverBackgroundColor;
 -(NSFont*)font;
+-(NSNumber*)windowLevel;
 
 @end

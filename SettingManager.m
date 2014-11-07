@@ -79,8 +79,8 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark - settings
 
--(BOOL)overlapsMenuBar{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"overlapsMenuBar"];
+- (NSNumber*)windowLevel {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
 }
 -(BOOL)hideTweetAroundCursor{
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
