@@ -71,6 +71,8 @@
 		CFC65A9A14D32A8F008299B3 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A8E14D32A8F008299B3 /* CJSONScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC65A9B14D32A8F008299B3 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = CFC9AD5915EBD63D00CC52F9 /* icon.iconset */; };
+		CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
+		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
 		CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */; };
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
@@ -100,12 +102,12 @@
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		228171F945669C28FD5CE044 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodAppDelegate.h; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* flood_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flood_Prefix.pch; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetRain_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* flood-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "flood-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* flood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* TweetRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -213,6 +215,9 @@
 		CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		CFC65A9114D32A8F008299B3 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
+		CFCB21EA1A1FA68900202991 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
+		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
 		CFE8F5B615D7CBFA00815830 /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
 		CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
 		CFE8F5BC15D7E88600815830 /* RainDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropViewController.m; sourceTree = "<group>"; };
@@ -235,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */,
+				CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */,
 				CF620A1B1A047554003EB806 /* Social.framework in Frameworks */,
 				CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */,
 				CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */,
@@ -306,7 +312,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* flood.app */,
+				8D1107320486CEB800E47090 /* TweetRain.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 		29B97314FDCFA39411CA2CEA /* Smarkin */ = {
 			isa = PBXGroup;
 			children = (
+				CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -327,7 +334,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				256AC3F00F4B6AF500CF3369 /* flood_Prefix.pch */,
+				256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				CF75438C13686342009E7292 /* TransparentView.h */,
 				CF75438D13686342009E7292 /* TransparentView.m */,
@@ -356,10 +363,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFCB21ED1A1FBA2500202991 /* Images.xcassets */,
 				CFC65A7814D32A74008299B3 /* TouchJSON */,
 				CFC6596314D32A32008299B3 /* oauthconsumer */,
 				CF240265136C07980020648C /* image */,
-				8D1107310486CEB800E47090 /* flood-Info.plist */,
+				8D1107310486CEB800E47090 /* TweetRain-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				CF11767F15E90BD0001138F2 /* Credits.rtf */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -371,6 +379,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFCB21EA1A1FA68900202991 /* Crashlytics.framework */,
 				CF620A1C1A0476DC003EB806 /* Accounts.framework */,
 				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
@@ -545,9 +554,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* flood */ = {
+		8D1107260486CEB800E47090 /* TweetRain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "flood" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TweetRain" */;
 			buildPhases = (
 				1C01704D7FEFF7931CFEEA7B /* Check Pods Manifest.lock */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -555,15 +564,16 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				CF53F65E139CCE51003AB55B /* Copy Files */,
 				AA39D368169E2B5CF65A928F /* Copy Pods Resources */,
+				CFCB21E91A1FA65800202991 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = flood;
+			name = TweetRain;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Smarkin;
-			productReference = 8D1107320486CEB800E47090 /* flood.app */;
+			productReference = 8D1107320486CEB800E47090 /* TweetRain.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -573,8 +583,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = CC63FD9H8S;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flood" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -588,7 +608,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* flood */,
+				8D1107260486CEB800E47090 /* TweetRain */,
 			);
 		};
 /* End PBXProject section */
@@ -601,6 +621,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */,
+				CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */,
 				CFC65A1914D32A32008299B3 /* OATestServer.rb in Resources */,
 				CFC65A1C14D32A32008299B3 /* README in Resources */,
 				CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */,
@@ -645,6 +666,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CFCB21E91A1FA65800202991 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -734,23 +768,26 @@
 			baseConfigurationReference = F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"/**",
-					"\"$(SRCROOT)/Frameworks\"/**",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = flood_Prefix.pch;
-				INFOPLIST_FILE = "flood-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = flood;
+				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain-Info.plist";
+				INSTALL_PATH = /Applications;
+				PRODUCT_NAME = TweetRain;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -760,21 +797,24 @@
 			baseConfigurationReference = 228171F945669C28FD5CE044 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"/**",
-					"\"$(SRCROOT)/Frameworks\"/**",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = flood_Prefix.pch;
-				INFOPLIST_FILE = "flood-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = flood;
+				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain-Info.plist";
+				INSTALL_PATH = /Applications;
+				PRODUCT_NAME = TweetRain;
+				PROVISIONING_PROFILE = "3c997484-73da-4606-a06a-d4098b6d2393";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -783,14 +823,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -799,13 +841,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: KC Chan Co. (CC63FD9H8S)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "3c997484-73da-4606-a06a-d4098b6d2393";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -813,7 +857,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "flood" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TweetRain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -822,7 +866,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flood" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

@@ -68,7 +68,7 @@
 			if(range.location!=NSNotFound){
 				NSURL *url=[NSURL URLWithString:[thisURLSet objectForKey:@"expanded_url"]];
 				[attributedString addAttribute:NSLinkAttributeName value:url range:range];
-				[attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:range];
+				[attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:range];
 				[attributedString addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:range];
 				[attributedString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:range];
 			}

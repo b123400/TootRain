@@ -286,7 +286,7 @@
     [attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
     
     if(hasURL&&[[SettingManager sharedManager]underlineTweetsWithURL]){
-        [attributes setObject:[NSNumber numberWithInt:NSSingleUnderlineStyle] forKey:NSUnderlineStyleAttributeName];
+        [attributes setObject:[NSNumber numberWithInt:NSUnderlineStyleSingle] forKey:NSUnderlineStyleAttributeName];
     }
     
     NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];

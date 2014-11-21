@@ -22,7 +22,6 @@
 - (void)setSelectedAccount:(ACAccount*)account;
 - (NSArray*)accounts;
 
--(BOOL)overlapsMenuBar;
 -(BOOL)hideTweetAroundCursor;
 -(BOOL)showProfileImage;
 -(BOOL)removeURL;

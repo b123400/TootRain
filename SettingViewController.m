@@ -31,8 +31,8 @@
 }
 
 -(void)setupToolbar{
-	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"]];
-	[self addView:appearanceSettingView label:@"Appearance" image:[NSImage imageNamed:@"NSColorPanel"]];
+	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"] identifier:@"accounts"];
+	[self addView:appearanceSettingView label:@"Appearance" image:[NSImage imageNamed:@"NSColorPanel"] identifier:@"appearance"];
 }
 
 + (NSString *)nibName{
@@ -80,6 +80,10 @@
     if (index != NSNotFound) {
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:index];
         [accountsTableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }
+    
+    if (!accounts.count) {
+        [self displayViewForIdentifier:@"accounts" animate:YES];
     }
 }
 
