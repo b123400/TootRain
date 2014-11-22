@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "flood.app"
+               BuildableName = "TweetRain.app"
                BlueprintName = "TweetRain"
                ReferencedContainer = "container:TweetRain.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "flood.app"
+            BuildableName = "TweetRain.app"
             BlueprintName = "TweetRain"
             ReferencedContainer = "container:TweetRain.xcodeproj">
          </BuildableReference>
@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "flood.app"
+            BuildableName = "TweetRain.app"
             BlueprintName = "TweetRain"
             ReferencedContainer = "container:TweetRain.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "flood.app"
+            BuildableName = "TweetRain.app"
             BlueprintName = "TweetRain"
             ReferencedContainer = "container:TweetRain.xcodeproj">
          </BuildableReference>

@@ -187,7 +187,8 @@
 								<object class="NSMenuItem" id="594261667">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">Search...</string>
-									<string key="NSKeyEquiv"/>
+									<string key="NSKeyEquiv">s</string>
+									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
