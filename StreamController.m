@@ -102,8 +102,8 @@ static StreamController *shared;
                              }
                              errorBlock:^(NSError *error) {
                                  NSUserNotification *notification = [[NSUserNotification alloc] init];
-                                 notification.title = @"Stream disconnected";
-                                 notification.informativeText = [NSString stringWithFormat:@"Reconnecting to user: %@",self.account.username];
+                                 notification.title = NSLocalizedString(@"Stream disconnected",nil);
+                                 notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Reconnecting to user: %@",nil),self.account.username];
                                  [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
                                  [self reconnect];
                              }];
@@ -112,8 +112,8 @@ static StreamController *shared;
 - (void)showNotification{
     if (!self.account) return;
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Stream Connecting";
-    notification.informativeText = [NSString stringWithFormat:@"User: %@",self.account.username];
+    notification.title = NSLocalizedString(@"Stream Connecting",nil);
+    notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"User: %@",nil),self.account.username];
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 

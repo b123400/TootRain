@@ -129,22 +129,22 @@
 }
 - (IBAction)retweetClicked:(id)sender {
     [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
-        [retweetButton setTitle:@"Retweeted"];
+        [retweetButton setTitle:NSLocalizedString(@"Retweeted", nil)];
     } errorBlock:^(NSError *error) {
         [retweetButton setEnabled:YES];
-        [retweetButton setTitle:@"Failed"];
-        [retweetButton performSelector:@selector(setTitle:) withObject:@"Retweet" afterDelay:0.5];
+        [retweetButton setTitle:NSLocalizedString(@"Failed",nil)];
+        [retweetButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Retweet",nil) afterDelay:0.5];
     }];
 	[(NSButton*)sender setEnabled:NO];
-	[(NSButton*)sender setTitle:@"Loading"];
+	[(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)favClicked:(id)sender {
     [self.twitter postFavoriteCreateWithStatusID:status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
-        [favButton setTitle:@"Done"];
+        [favButton setTitle:NSLocalizedString(@"Done",nil)];
     } errorBlock:^(NSError *error) {
-        [favButton setTitle:@"Failed"];
+        [favButton setTitle:NSLocalizedString(@"Failed",nil)];
         [favButton setEnabled:YES];
-        [favButton performSelector:@selector(setTitle:) withObject:@"Fav" afterDelay:0.5];
+        [favButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Fav",nil) afterDelay:0.5];
     }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];

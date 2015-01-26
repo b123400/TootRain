@@ -1,0 +1,57 @@
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
+"31.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Show profile image"; ObjectID = "187"; */
+"187.title" = "アイコンを表示";
+
+/* Class = "NSTextFieldCell"; title = "Opacity"; ObjectID = "195"; */
+"195.title" = "透明度";
+
+/* Class = "NSButtonCell"; title = "Choose font"; ObjectID = "201"; */
+"201.title" = "フォントを選択";
+
+/* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
+"203.title" = "フォント：Arial Bold 18";
+
+/* Class = "NSButtonCell"; title = "Hide tweet around cursor"; ObjectID = "207"; */
+"207.title" = "カーソルの周りのツイートを隠す";
+
+/* Class = "NSTextFieldCell"; title = "Text color"; ObjectID = "210"; */
+"210.title" = "文字の色";
+
+/* Class = "NSTextFieldCell"; title = "Shadow color"; ObjectID = "213"; */
+"213.title" = "影の色";
+
+/* Class = "NSTextFieldCell"; title = "Hover background color"; ObjectID = "215"; */
+"215.title" = "マウスオーバー時の背景色";
+
+/* Class = "NSButtonCell"; title = "Remove URL"; ObjectID = "243"; */
+"243.title" = "URLを隠す";
+
+/* Class = "NSButtonCell"; title = "Underline tweets with URL"; ObjectID = "245"; */
+"245.title" = "URLがツイートをアンダーラインする";
+
+/* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
+"274.title" = "認証";
+
+/* Class = "NSTextFieldCell"; title = "Please click the folloing button to let me access your Twitter account."; ObjectID = "280"; */
+"280.title" = "このボタンをクリックしてツイッター垢を認証してくださいよー";
+
+/* Class = "NSTextFieldCell"; title = "No account available.\nPlease add your Twitter Account to Mac"; ObjectID = "284"; */
+"284.title" = "Macにツイッター垢がないけど、\n追加してください。";
+
+/* Class = "NSButtonCell"; title = "Teach me how"; ObjectID = "290"; */
+"290.title" = "やり方を教えて";
+
+/* Class = "NSTextFieldCell"; title = "Window level:"; ObjectID = "301"; */
+"301.title" = "ウインドスタイル";
+
+/* Class = "NSMenuItem"; title = "Above Menu Bar"; ObjectID = "305"; */
+"305.title" = "メニューバーの上";
+
+/* Class = "NSMenuItem"; title = "Above All Windows"; ObjectID = "306"; */
+"306.title" = "すべてのウインドの上";
+
+/* Class = "NSMenuItem"; title = "Above Desktop"; ObjectID = "307"; */
+"307.title" = "デスクトップの上";
+

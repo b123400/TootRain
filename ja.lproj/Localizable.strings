@@ -1,0 +1,51 @@
+/* No comment provided by engineer. */
+"%@ (Streaming)" = "%@ （ストリングなう）";
+
+/* No comment provided by engineer. */
+"Done" = "完了";
+
+/* No comment provided by engineer. */
+"Failed" = "失敗しました";
+
+/* No comment provided by engineer. */
+"Fav" = "ふぁぼ";
+
+/* No comment provided by engineer. */
+"Font: %@ %.0f" = "フォント: %1$@ %2$.0f";
+
+/* No comment provided by engineer. */
+"Loading" = "読み込み中";
+
+/* No comment provided by engineer. */
+"Photo.jpg" = "Photo.jpg";
+
+/* No comment provided by engineer. */
+"Reconnecting to user: %@" = "繋ぎ直しています: %@";
+
+/* No comment provided by engineer. */
+"Retweet" = "リツイート";
+
+/* No comment provided by engineer. */
+"Retweeted" = "リツイートしました";
+
+/* No comment provided by engineer. */
+"Send" = "送信";
+
+/* No comment provided by engineer. */
+"Sent" = "送信した";
+
+/* No comment provided by engineer. */
+"Stream Connecting" = "繋がってます";
+
+/* No comment provided by engineer. */
+"Stream disconnected" = "ストリームが切れました";
+
+/* No comment provided by engineer. */
+"User: %@" = "ユーザー： %@";
+
+/* No comment provided by engineer. */
+"Why dont you give me permission:(\n %@" = "なんで権限をあげないよーーー！:(\n %@";
+
+"Accounts" = "アカウント";
+
+"Appearance" = "外見";

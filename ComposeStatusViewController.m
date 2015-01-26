@@ -44,15 +44,15 @@
                 displayCoordinates:nil
                           trimUser:nil
                       successBlock:^(NSDictionary *status) {
-                          [sendButton setTitle:@"Sent"];
+                          [sendButton setTitle:NSLocalizedString(@"Sent", nil)];
                           [self.popover performSelector:@selector(close) withObject:nil afterDelay:0.5];
                       } errorBlock:^(NSError *error) {
                           [sendButton setEnabled:YES];
-                          [sendButton setTitle:@"Failed"];
-                          [sendButton performSelector:@selector(setTitle:) withObject:@"Send" afterDelay:0.5];
+                          [sendButton setTitle:NSLocalizedString(@"Failed",nil)];
+                          [sendButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Send",nil) afterDelay:0.5];
                       }];
 	[sendButton setEnabled:NO];
-	[sendButton setTitle:@"Loading"];
+	[sendButton setTitle:NSLocalizedString(@"Loading",nil)];
 }
 
 @end

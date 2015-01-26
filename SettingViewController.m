@@ -31,8 +31,8 @@
 }
 
 -(void)setupToolbar{
-	[self addView:accountsSettingView label:@"Accounts" image:[NSImage imageNamed:@"NSUser"] identifier:@"accounts"];
-	[self addView:appearanceSettingView label:@"Appearance" image:[NSImage imageNamed:@"NSColorPanel"] identifier:@"appearance"];
+	[self addView:accountsSettingView label:NSLocalizedString(@"Accounts", nil) image:[NSImage imageNamed:@"NSUser"] identifier:@"accounts"];
+	[self addView:appearanceSettingView label:NSLocalizedString(@"Appearance",nil) image:[NSImage imageNamed:@"NSColorPanel"] identifier:@"appearance"];
 }
 
 + (NSString *)nibName{
@@ -104,7 +104,7 @@
         NSArray *accounts = [SettingManager sharedManager].accounts;
         ACAccount *thisAccount=[accounts objectAtIndex:rowIndex];
         if ([thisAccount.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
-            return [NSString stringWithFormat:@"%@ (Streaming)",thisAccount.username];
+            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil),thisAccount.username];
         }
 		return thisAccount.username;
 	}
@@ -127,7 +127,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
         } else {
             NSAlert *alert = [NSAlert alertWithError:error];
-            [alert setMessageText:[NSString stringWithFormat:@"Why dont you give me permission:(\n %@",[alert messageText]]];
+            [alert setMessageText:[NSString stringWithFormat:NSLocalizedString(@"Why dont you give me permission:(\n %@",nil),[alert messageText]]];
             [alert runModal];
         }
     }];
@@ -240,7 +240,7 @@
 	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"font"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
-	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
+    [fontLabel setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Font: %@ %.0f",nil),[theFont displayName],[theFont pointSize]]];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 

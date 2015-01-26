@@ -14,7 +14,6 @@
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
-		CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2F8BDC1390E11500D733CA /* SettingViewController.xib */; };
 		CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A187615D64F4100D8E07F /* FloodWindowController.m */; };
 		CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3A187715D64F4100D8E07F /* FloodWindowController.xib */; };
 		CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A188015D651A100D8E07F /* FloodWindow.m */; };
@@ -73,6 +72,9 @@
 		CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = CFC9AD5915EBD63D00CC52F9 /* icon.iconset */; };
 		CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
 		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
+		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
+		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
+		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
 		CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */; };
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
@@ -99,7 +101,6 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		228171F945669C28FD5CE044 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodAppDelegate.h; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetRain_Prefix.pch; sourceTree = "<group>"; };
@@ -113,7 +114,6 @@
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		CF2F8BDC1390E11500D733CA /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		CF3A187515D64F4100D8E07F /* FloodWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodWindowController.h; sourceTree = "<group>"; };
 		CF3A187615D64F4100D8E07F /* FloodWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodWindowController.m; sourceTree = "<group>"; };
 		CF3A187715D64F4100D8E07F /* FloodWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloodWindowController.xib; sourceTree = "<group>"; };
@@ -218,6 +218,14 @@
 		CFCB21EA1A1FA68900202991 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
 		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
+		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFE39F801A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		CFE39F811A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFE39F8A1A7649B9004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Errors.strings; sourceTree = "<group>"; };
+		CFE39F8F1A764B8C004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CFE39F911A764B94004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CFE39F931A764F59004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingViewController.xib; sourceTree = "<group>"; };
+		CFE39F961A764F5F004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingViewController.strings; sourceTree = "<group>"; };
 		CFE8F5B615D7CBFA00815830 /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
 		CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
 		CFE8F5BC15D7E88600815830 /* RainDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropViewController.m; sourceTree = "<group>"; };
@@ -363,6 +371,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFE39F8B1A7649B9004644C8 /* Errors.strings */,
+				CFE39F901A764B8C004644C8 /* Localizable.strings */,
 				CFCB21ED1A1FBA2500202991 /* Images.xcassets */,
 				CFC65A7814D32A74008299B3 /* TouchJSON */,
 				CFC6596314D32A32008299B3 /* oauthconsumer */,
@@ -419,7 +429,7 @@
 			children = (
 				CF2F8BD91390E0CB00D733CA /* SettingViewController.h */,
 				CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */,
-				CF2F8BDC1390E11500D733CA /* SettingViewController.xib */,
+				CFE39F941A764F59004644C8 /* SettingViewController.xib */,
 				CFA1BB5614DC514D000566A0 /* SettingManager.h */,
 				CFA1BB5714DC514D000566A0 /* SettingManager.m */,
 			);
@@ -603,6 +613,8 @@
 				Japanese,
 				French,
 				German,
+				Base,
+				ja,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Smarkin */;
 			projectDirPath = "";
@@ -620,7 +632,8 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				CF2F8BDD1390E11500D733CA /* SettingViewController.xib in Resources */,
+				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
+				CFE39F891A7649B9004644C8 /* Errors.strings in Resources */,
 				CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */,
 				CFC65A1914D32A32008299B3 /* OATestServer.rb in Resources */,
 				CFC65A1C14D32A32008299B3 /* README in Resources */,
@@ -629,6 +642,7 @@
 				CFFAE5E115E02D3400389518 /* RainDropDetailViewController.xib in Resources */,
 				CF8BBEEE15E3C7E10064D90B /* SearchWindowController.xib in Resources */,
 				CF8BBF4715E3EE6A0064D90B /* ComposeStatusViewController.xib in Resources */,
+				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
 				CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */,
 			);
@@ -748,6 +762,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
+				CFE39F811A764912004644C8 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -755,9 +770,36 @@
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1DDD58150DA1D0A300B32029 /* English */,
+				CFE39F7D1A7648C1004644C8 /* Base */,
+				CFE39F801A764912004644C8 /* ja */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CFE39F8B1A7649B9004644C8 /* Errors.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39F8A1A7649B9004644C8 /* ja */,
+			);
+			name = Errors.strings;
+			sourceTree = "<group>";
+		};
+		CFE39F901A764B8C004644C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39F8F1A764B8C004644C8 /* Base */,
+				CFE39F911A764B94004644C8 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CFE39F941A764F59004644C8 /* SettingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFE39F931A764F59004644C8 /* Base */,
+				CFE39F961A764F5F004644C8 /* ja */,
+			);
+			name = SettingViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
