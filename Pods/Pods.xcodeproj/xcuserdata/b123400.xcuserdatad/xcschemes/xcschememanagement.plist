@@ -4,12 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-STTwitter.xcscheme</key>
+		<key>Pods-TweetRain-STTwitter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-TweetRain-ios-STTwitter.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TweetRain-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-TweetRain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>960AC6DF5391B4ED2429DB16</key>
+		<key>03EB4A56E027843F507740CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6242F843279CAC6A7CD92E6</key>
+		<key>0FD0E9E9720F299ED309524C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75E90B2E9E86B0DCCFE70F08</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D55D0B40C191AF44353A132F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

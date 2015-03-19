@@ -7,7 +7,6 @@
 //
 
 #import "Status.h"
-#import "CJSONSerializer.h"
 
 @implementation Status
 @synthesize user,statusID,createdAt,text,liked,otherInfos,entities;

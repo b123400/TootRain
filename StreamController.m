@@ -101,20 +101,24 @@ static StreamController *shared;
                                  NSLog(@"stall warning %@", message);
                              }
                              errorBlock:^(NSError *error) {
+#if !TARGET_OS_IPHONE && TARGET_OS_MAC
                                  NSUserNotification *notification = [[NSUserNotification alloc] init];
                                  notification.title = NSLocalizedString(@"Stream disconnected",nil);
                                  notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Reconnecting to user: %@",nil),self.account.username];
                                  [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+#endif
                                  [self reconnect];
                              }];
 }
 
 - (void)showNotification{
     if (!self.account) return;
+#if !TARGET_OS_IPHONE && TARGET_OS_MAC
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = NSLocalizedString(@"Stream Connecting",nil);
     notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"User: %@",nil),self.account.username];
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+#endif
 }
 
 @end

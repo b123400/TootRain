@@ -1,0 +1,57 @@
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
+"31.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Show profile image"; ObjectID = "187"; */
+"187.title" = "Show profile image";
+
+/* Class = "NSTextFieldCell"; title = "Opacity"; ObjectID = "195"; */
+"195.title" = "Opacity";
+
+/* Class = "NSButtonCell"; title = "Choose font"; ObjectID = "201"; */
+"201.title" = "Choose font";
+
+/* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
+"203.title" = "Font: Arial Bold 18";
+
+/* Class = "NSButtonCell"; title = "Hide tweet around cursor"; ObjectID = "207"; */
+"207.title" = "Hide tweet around cursor";
+
+/* Class = "NSTextFieldCell"; title = "Text color"; ObjectID = "210"; */
+"210.title" = "Text color";
+
+/* Class = "NSTextFieldCell"; title = "Shadow color"; ObjectID = "213"; */
+"213.title" = "Shadow color";
+
+/* Class = "NSTextFieldCell"; title = "Hover background color"; ObjectID = "215"; */
+"215.title" = "Hover background color";
+
+/* Class = "NSButtonCell"; title = "Remove URL"; ObjectID = "243"; */
+"243.title" = "Remove URL";
+
+/* Class = "NSButtonCell"; title = "Underline tweets with URL"; ObjectID = "245"; */
+"245.title" = "Underline tweets with URL";
+
+/* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
+"274.title" = "Authorize";
+
+/* Class = "NSTextFieldCell"; title = "Please click the folloing button to let me access your Twitter account."; ObjectID = "280"; */
+"280.title" = "Please click the folloing button to let me access your Twitter account.";
+
+/* Class = "NSTextFieldCell"; title = "No account available.\nPlease add your Twitter Account to Mac"; ObjectID = "284"; */
+"284.title" = "No account available.\nPlease add your Twitter Account to Mac";
+
+/* Class = "NSButtonCell"; title = "Teach me how"; ObjectID = "290"; */
+"290.title" = "Teach me how";
+
+/* Class = "NSTextFieldCell"; title = "Window level:"; ObjectID = "301"; */
+"301.title" = "Window level:";
+
+/* Class = "NSMenuItem"; title = "Above Menu Bar"; ObjectID = "305"; */
+"305.title" = "Above Menu Bar";
+
+/* Class = "NSMenuItem"; title = "Above All Windows"; ObjectID = "306"; */
+"306.title" = "Above All Windows";
+
+/* Class = "NSMenuItem"; title = "Above Desktop"; ObjectID = "307"; */
+"307.title" = "Above Desktop";

@@ -1,0 +1,21 @@
+
+/* Class = "NSTextFieldCell"; title = "Multiline Label lalalalal this is a very long tweet which takes up quite a lot of space and lalala"; ObjectID = "10"; */
+"10.title" = "Multiline Label lalalalal this is a very long tweet which takes up quite a lot of space and lalala";
+
+/* Class = "NSButtonCell"; title = "Fav"; ObjectID = "23"; */
+"23.title" = "Fav";
+
+/* Class = "NSButtonCell"; title = "Retweet"; ObjectID = "27"; */
+"27.title" = "Retweet";
+
+/* Class = "NSButtonCell"; title = "RT"; ObjectID = "35"; */
+"35.title" = "RT";
+
+/* Class = "NSButtonCell"; title = "Reply"; ObjectID = "39"; */
+"39.title" = "Reply";
+
+/* Class = "NSTextFieldCell"; title = "Name here"; ObjectID = "110"; */
+"110.title" = "Name here";
+
+/* Class = "NSTextFieldCell"; title = "@username here"; ObjectID = "112"; */
+"112.title" = "@username here";

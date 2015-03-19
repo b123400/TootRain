@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>TweetRain-ios.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>flood.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>8D1107260486CEB800E47090</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFCA49B91AB8AA6F00E922C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFCA49D11AB8AA6F00E922C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

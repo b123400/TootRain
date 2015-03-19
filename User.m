@@ -7,7 +7,6 @@
 //
 
 #import "User.h"
-#import "CJSONSerializer.h"
 
 @implementation User
 @synthesize type,username,userID,screenName,otherInfos,profileImageURL,description;

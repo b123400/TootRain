@@ -10,9 +10,7 @@
 #import "DBPrefsWindowController.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
-
-#define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
-#define kWindowLevelChanged @"kWindowLevelChanged"
+#import "SettingManager.h"
 
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;

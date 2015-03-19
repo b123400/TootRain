@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D9852EDDF1D3C76D1A088BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD68B818772D1FDEAE662C14 /* libPods.a */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		59EF393E68A59F644F7B8D8E /* libPods-TweetRain-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56031EC27AA8CDA5C274516 /* libPods-TweetRain-ios.a */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
+		CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */; };
+		CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */; };
+		CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */; };
+		CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */; };
+		CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */; };
+		CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE71ABADDE3002EC003 /* ViewController.m */; };
+		CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
+		CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
+		CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
+		CF2AAAF11ABB05DA002EC003 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
+		CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2AAAF31ABB1698002EC003 /* Main.storyboard */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
 		CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A187615D64F4100D8E07F /* FloodWindowController.m */; };
 		CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3A187715D64F4100D8E07F /* FloodWindowController.xib */; };
@@ -68,6 +79,10 @@
 		CFC65A9A14D32A8F008299B3 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A8E14D32A8F008299B3 /* CJSONScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC65A9B14D32A8F008299B3 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = CFC9AD5915EBD63D00CC52F9 /* icon.iconset */; };
+		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
+		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
+		CFCA49CD1AB8AA6F00E922C9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49CB1AB8AA6F00E922C9 /* LaunchScreen.xib */; };
+		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
 		CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
 		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
@@ -82,7 +97,18 @@
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
 		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
+		D86F6918A387B96F20C7C219 /* libPods-TweetRain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67372286C5179C961EA55756 /* libPods-TweetRain.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFCA49D31AB8AA6F00E922C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFCA49B91AB8AA6F00E922C9;
+			remoteInfo = "TweetRain-ios";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CF53F65E139CCE51003AB55B /* Copy Files */ = {
@@ -98,22 +124,47 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03BB799CCD0555F42E9843AF /* Pods-TweetRain-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.release.xcconfig"; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		228171F945669C28FD5CE044 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		20CF875A211F54DDFA4F0767 /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodAppDelegate.h; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetRain_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		67372286C5179C961EA55756 /* libPods-TweetRain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TweetRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3F91AA016EB44E1E0651E38 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B56031EC27AA8CDA5C274516 /* libPods-TweetRain-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C37319BF0F63FE5FBC3EA89B /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
+		CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAccountTableViewController.h; sourceTree = "<group>"; };
+		CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAccountTableViewController.m; sourceTree = "<group>"; };
+		CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		CF2AAAE61ABADDE3002EC003 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CF2AAAE71ABADDE3002EC003 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CF2AAAF41ABB1698002EC003 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		CF34B7501AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/RainDropDetailViewController.strings"; sourceTree = "<group>"; };
+		CF34B7511AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SearchWindowController.strings"; sourceTree = "<group>"; };
+		CF34B7521AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ComposeStatusViewController.strings"; sourceTree = "<group>"; };
+		CF34B7531AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
+		CF34B7541AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		CF34B7551AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Errors.strings"; sourceTree = "<group>"; };
+		CF34B7561AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CF34B7571AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF3A187515D64F4100D8E07F /* FloodWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodWindowController.h; sourceTree = "<group>"; };
 		CF3A187615D64F4100D8E07F /* FloodWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodWindowController.m; sourceTree = "<group>"; };
 		CF3A187715D64F4100D8E07F /* FloodWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloodWindowController.xib; sourceTree = "<group>"; };
@@ -216,6 +267,14 @@
 		CFC65A9014D32A8F008299B3 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		CFC65A9114D32A8F008299B3 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
+		CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TweetRain-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCA49BD1AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFCA49BE1AB8AA6F00E922C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CFCA49CC1AB8AA6F00E922C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TweetRain-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCA49D71AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetRain_iosTests.m; sourceTree = "<group>"; };
 		CFCB21EA1A1FA68900202991 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
 		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
@@ -241,7 +300,6 @@
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		CFFAE5F215E0E9DD00389518 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
-		F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		FD68B818772D1FDEAE662C14 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -258,7 +316,22 @@
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
 				CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */,
 				CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */,
-				1D9852EDDF1D3C76D1A088BB /* libPods.a in Frameworks */,
+				D86F6918A387B96F20C7C219 /* libPods-TweetRain.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCA49B71AB8AA6F00E922C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59EF393E68A59F644F7B8D8E /* libPods-TweetRain-ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCA49CF1AB8AA6F00E922C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +397,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* TweetRain.app */,
+				CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */,
+				CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,6 +410,8 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				CFCA49BB1AB8AA6F00E922C9 /* TweetRain-ios */,
+				CFCA49D51AB8AA6F00E922C9 /* TweetRain-iosTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				693ACD1B1A57B1C2BD35BC8A /* Pods */,
@@ -398,6 +475,8 @@
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				FD68B818772D1FDEAE662C14 /* libPods.a */,
+				67372286C5179C961EA55756 /* libPods-TweetRain.a */,
+				B56031EC27AA8CDA5C274516 /* libPods-TweetRain-ios.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -405,8 +484,10 @@
 		693ACD1B1A57B1C2BD35BC8A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */,
-				228171F945669C28FD5CE044 /* Pods.release.xcconfig */,
+				20CF875A211F54DDFA4F0767 /* Pods-TweetRain.debug.xcconfig */,
+				C37319BF0F63FE5FBC3EA89B /* Pods-TweetRain.release.xcconfig */,
+				A3F91AA016EB44E1E0651E38 /* Pods-TweetRain-ios.debug.xcconfig */,
+				03BB799CCD0555F42E9843AF /* Pods-TweetRain-ios.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -564,6 +645,54 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		CFCA49BB1AB8AA6F00E922C9 /* TweetRain-ios */ = {
+			isa = PBXGroup;
+			children = (
+				CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */,
+				CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */,
+				CF2AAAE61ABADDE3002EC003 /* ViewController.h */,
+				CF2AAAE71ABADDE3002EC003 /* ViewController.m */,
+				CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */,
+				CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */,
+				CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */,
+				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
+				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
+				CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */,
+				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
+				CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */,
+				CF2AAAF31ABB1698002EC003 /* Main.storyboard */,
+				CFCA49CB1AB8AA6F00E922C9 /* LaunchScreen.xib */,
+				CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */,
+			);
+			path = "TweetRain-ios";
+			sourceTree = "<group>";
+		};
+		CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
+				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFCA49D51AB8AA6F00E922C9 /* TweetRain-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */,
+				CFCA49D61AB8AA6F00E922C9 /* Supporting Files */,
+			);
+			path = "TweetRain-iosTests";
+			sourceTree = "<group>";
+		};
+		CFCA49D61AB8AA6F00E922C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFCA49D71AB8AA6F00E922C9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -589,6 +718,43 @@
 			productReference = 8D1107320486CEB800E47090 /* TweetRain.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFCA49DE1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-ios" */;
+			buildPhases = (
+				A129D9FA635E7CCF8CEA420E /* Check Pods Manifest.lock */,
+				CFCA49B61AB8AA6F00E922C9 /* Sources */,
+				CFCA49B71AB8AA6F00E922C9 /* Frameworks */,
+				CFCA49B81AB8AA6F00E922C9 /* Resources */,
+				7D6CB661EAB041D220E635F0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TweetRain-ios";
+			productName = "TweetRain-ios";
+			productReference = CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFCA49D11AB8AA6F00E922C9 /* TweetRain-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFCA49DF1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-iosTests" */;
+			buildPhases = (
+				CFCA49CE1AB8AA6F00E922C9 /* Sources */,
+				CFCA49CF1AB8AA6F00E922C9 /* Frameworks */,
+				CFCA49D01AB8AA6F00E922C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFCA49D41AB8AA6F00E922C9 /* PBXTargetDependency */,
+			);
+			name = "TweetRain-iosTests";
+			productName = "TweetRain-iosTests";
+			productReference = CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -605,6 +771,13 @@
 							};
 						};
 					};
+					CFCA49B91AB8AA6F00E922C9 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					CFCA49D11AB8AA6F00E922C9 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = CFCA49B91AB8AA6F00E922C9;
+					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */;
@@ -618,12 +791,15 @@
 				German,
 				Base,
 				ja,
+				"zh-Hant",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Smarkin */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* TweetRain */,
+				CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */,
+				CFCA49D11AB8AA6F00E922C9 /* TweetRain-iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -651,10 +827,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFCA49B81AB8AA6F00E922C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCA49CD1AB8AA6F00E922C9 /* LaunchScreen.xib in Resources */,
+				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
+				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
+				CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCA49D01AB8AA6F00E922C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1C01704D7FEFF7931CFEEA7B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7D6CB661EAB041D220E635F0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A129D9FA635E7CCF8CEA420E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -681,7 +905,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CFCB21E91A1FA65800202991 /* ShellScript */ = {
@@ -758,7 +982,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CFCA49B61AB8AA6F00E922C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF2AAAF11ABB05DA002EC003 /* User.m in Sources */,
+				CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */,
+				CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */,
+				CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */,
+				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
+				CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */,
+				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
+				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
+				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
+				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCA49CE1AB8AA6F00E922C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFCA49D41AB8AA6F00E922C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */;
+			targetProxy = CFCA49D31AB8AA6F00E922C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -766,6 +1023,7 @@
 			children = (
 				089C165DFE840E0CC02AAC07 /* English */,
 				CFE39F811A764912004644C8 /* ja */,
+				CF34B7571AADA48200C6A58E /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -775,14 +1033,32 @@
 			children = (
 				CFE39F7D1A7648C1004644C8 /* Base */,
 				CFE39F801A764912004644C8 /* ja */,
+				CF34B7541AADA48200C6A58E /* zh-Hant */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CF2AAAF31ABB1698002EC003 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF2AAAF41ABB1698002EC003 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFCA49CB1AB8AA6F00E922C9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFCA49CC1AB8AA6F00E922C9 /* Base */,
+			);
+			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 		CFE39F8B1A7649B9004644C8 /* Errors.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CFE39F8A1A7649B9004644C8 /* ja */,
+				CF34B7551AADA48200C6A58E /* zh-Hant */,
 			);
 			name = Errors.strings;
 			sourceTree = "<group>";
@@ -792,6 +1068,7 @@
 			children = (
 				CFE39F8F1A764B8C004644C8 /* Base */,
 				CFE39F911A764B94004644C8 /* ja */,
+				CF34B7561AADA48200C6A58E /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -801,6 +1078,7 @@
 			children = (
 				CFE39F931A764F59004644C8 /* Base */,
 				CFE39F961A764F5F004644C8 /* ja */,
+				CF34B7531AADA48200C6A58E /* zh-Hant */,
 			);
 			name = SettingViewController.xib;
 			sourceTree = "<group>";
@@ -810,6 +1088,7 @@
 			children = (
 				CFE39FDF1A769623004644C8 /* Base */,
 				CF8D12C71A76989700A14BF7 /* ja */,
+				CF34B7501AADA48200C6A58E /* zh-Hant */,
 			);
 			name = RainDropDetailViewController.xib;
 			sourceTree = "<group>";
@@ -819,6 +1098,7 @@
 			children = (
 				CFE39FE41A76962C004644C8 /* Base */,
 				CF8D12C81A76993C00A14BF7 /* ja */,
+				CF34B7511AADA48200C6A58E /* zh-Hant */,
 			);
 			name = SearchWindowController.xib;
 			sourceTree = "<group>";
@@ -828,6 +1108,7 @@
 			children = (
 				CFE39FE91A769638004644C8 /* Base */,
 				CF8D12C91A76996A00A14BF7 /* ja */,
+				CF34B7521AADA48200C6A58E /* zh-Hant */,
 			);
 			name = ComposeStatusViewController.xib;
 			sourceTree = "<group>";
@@ -837,7 +1118,7 @@
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F604A10DF7B9A2E1A9523E1F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 20CF875A211F54DDFA4F0767 /* Pods-TweetRain.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -867,7 +1148,7 @@
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 228171F945669C28FD5CE044 /* Pods.release.xcconfig */;
+			baseConfigurationReference = C37319BF0F63FE5FBC3EA89B /* Pods-TweetRain.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -904,6 +1185,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
@@ -922,11 +1204,176 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "3c997484-73da-4606-a06a-d4098b6d2393";
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CFCA49DA1AB8AA6F00E922C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3F91AA016EB44E1E0651E38 /* Pods-TweetRain-ios.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "TweetRain-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFCA49DB1AB8AA6F00E922C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03BB799CCD0555F42E9843AF /* Pods-TweetRain-ios.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "TweetRain-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFCA49DC1AB8AA6F00E922C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "TweetRain-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRain-ios.app/TweetRain-ios";
+			};
+			name = Debug;
+		};
+		CFCA49DD1AB8AA6F00E922C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "TweetRain-iosTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRain-ios.app/TweetRain-ios";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -947,6 +1394,24 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFCA49DE1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCA49DA1AB8AA6F00E922C9 /* Debug */,
+				CFCA49DB1AB8AA6F00E922C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFCA49DF1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCA49DC1AB8AA6F00E922C9 /* Debug */,
+				CFCA49DD1AB8AA6F00E922C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -5,9 +5,11 @@
 //  Created by b123400 on 07/05/2011.
 //  Copyright 2011 home. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
+#if !TARGET_OS_IPHONE && TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
-#import "OAToken.h"
+#endif
 
 typedef enum BRUserType {
     BRUserTypeTwitter    = 0,

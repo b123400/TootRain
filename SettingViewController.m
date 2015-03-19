@@ -201,12 +201,14 @@
 	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"underlineTweetsWithURL"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 - (IBAction)opacitySliderChanged:(id)sender {
 	NSSlider* slider=sender;
 	[[NSUserDefaults standardUserDefaults] setFloat:slider.floatValue forKey:@"opacity"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
+
 - (IBAction)textColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
 	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
@@ -214,6 +216,7 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
+
 - (IBAction)shadowColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
 	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
@@ -221,6 +224,7 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
+
 - (IBAction)hoverBackgroundColor:(id)sender {
 	NSColorWell *well=sender;
 	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];

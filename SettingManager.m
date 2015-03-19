@@ -79,47 +79,151 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark - settings
 
+-(BOOL)hideTweetAroundCursor{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
+}
+-(BOOL)showProfileImage{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
+}
+-(BOOL)removeURL{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
+}
+-(BOOL)underlineTweetsWithURL{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
+}
+-(float)opacity{
+    float opacity=[[NSUserDefaults standardUserDefaults]floatForKey:@"opacity"];
+    if(opacity==0){
+        //opacity isn't set
+        opacity=1;
+    }
+    return opacity;
+}
+
+#if TARGET_OS_IPHONE
+
+- (UIColor*)textColor {
+    NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"textColor"];
+    if (theData == nil)return [UIColor whiteColor];
+    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+}
+- (void)setTextColor:(UIColor *)color {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"textColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (UIColor*)shadowColor {
+    NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"shadowColor"];
+    if (theData == nil)return [UIColor blackColor];
+    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+}
+- (void)setShadowColor:(UIColor *)color {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"shadowColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (UIColor*)selectedBackgroundColor {
+    NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"selectedBackgroundColor"];
+    if (theData == nil)return [UIColor whiteColor];
+    return (UIColor *)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+}
+- (void)setSelectedBackgroundColor:(UIColor *)color {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"selectedBackgroundColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (UIFont*)font {
+    return [UIFont fontWithName:self.fontName size:self.fontSize];
+}
+
+- (void)setFont:(UIFont*)font {
+    [self setFontName:font];
+}
+
+- (NSString*)fontName {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"]?: @"Arial";
+}
+
+- (void)setFontName:(NSString *)fontName {
+    [[NSUserDefaults standardUserDefaults] setObject:fontName forKey:@"fontName"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (float)fontSize {
+    NSNumber *size = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontSize"];
+    if (!size) {
+        return 36.0;
+    }
+    return [size floatValue];
+}
+- (void)setFontSize:(float)fontSize {
+    [[NSUserDefaults standardUserDefaults] setFloat:fontSize forKey:@"fontSize"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#elif TARGET_OS_MAC
+
 - (NSNumber*)windowLevel {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
 }
--(BOOL)hideTweetAroundCursor{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
+
+- (void)setWindowLevel:(NSNumber*)windowLevel {
+    [[NSUserDefaults standardUserDefaults] setObject:windowLevel forKey:@"windowLevel"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
 }
--(BOOL)showProfileImage{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
-}
--(BOOL)removeURL{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
-}
--(BOOL)underlineTweetsWithURL{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
-}
--(float)opacity{
-	float opacity=[[NSUserDefaults standardUserDefaults]floatForKey:@"opacity"];
-	if(opacity==0){
-		//opacity isn't set
-		opacity=1;
-	}
-	return opacity;
-}
--(NSColor*)textColor{
+
+- (NSColor*)textColor{
 	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"textColor"];
 	if (theData == nil)return [NSColor whiteColor];
 	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
 }
--(NSColor*)shadowColor{
+
+- (void)setTextColor:(NSColor*)color {
+    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"textColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (NSColor*)shadowColor{
 	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"shadowColor"];
 	if (theData == nil)return [NSColor blackColor];
 	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
 }
--(NSColor*)hoverBackgroundColor{
+
+- (void)setShadowColor:(NSColor*)color {
+    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"shadowColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (NSColor*) hoverBackgroundColor {
 	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"hoverBackgroundColor"];
 	if (theData == nil)return [NSColor whiteColor];
 	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
 }
--(NSFont*)font{
+
+- (void)setHoverBackgroundColor:(NSColor*)color {
+    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"hoverBackgroundColor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSFont*)font{
 	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"font"];
 	if (theData == nil)return [NSFont fontWithName:@"Arial" size:36];
 	return (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
 }
+
+- (void)setFont:(NSFont*)font {
+    NSData *theData=[NSArchiver archivedDataWithRootObject:font];
+    [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"font"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+#endif
+
 @end
