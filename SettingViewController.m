@@ -175,61 +175,44 @@
 
 - (IBAction)windowsLevelChanged:(id)sender {
     NSUInteger index = [self.windowsLevelPopup.itemArray indexOfObject:self.windowsLevelPopup.selectedItem];
-    [[NSUserDefaults standardUserDefaults] setObject:@(index) forKey:@"windowLevel"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
+    [[SettingManager sharedManager] setWindowLevel:@(index)];
 }
 - (IBAction)hideTweetAroundCursorCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
-	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideTweetAroundCursor"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[SettingManager sharedManager] setHideTweetAroundCursor:enabled];
 }
 
 - (IBAction)showProfileImageCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
-	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"showProfileImage"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[SettingManager sharedManager] setShowProfileImage:enabled];
 }
 - (IBAction)removeURLCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
-	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"removeURL"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+    [[SettingManager sharedManager] setRemoveURL:enabled];
 }
 - (IBAction)underlineTweetsWithURLCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSOnState;
-	[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"underlineTweetsWithURL"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[SettingManager sharedManager] setUnderlineTweetsWithURL:enabled];
 }
 
 - (IBAction)opacitySliderChanged:(id)sender {
 	NSSlider* slider=sender;
-	[[NSUserDefaults standardUserDefaults] setFloat:slider.floatValue forKey:@"opacity"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+    [[SettingManager sharedManager] setOpacity:slider.floatValue];
 }
 
 - (IBAction)textColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
-	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"textColor"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+    [[SettingManager sharedManager] setTextColor:well.color];
 }
 
 - (IBAction)shadowColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
-	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"shadowColor"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+    [[SettingManager sharedManager] setShadowColor:well.color];
 }
 
 - (IBAction)hoverBackgroundColor:(id)sender {
 	NSColorWell *well=sender;
-	NSData *theData=[NSArchiver archivedDataWithRootObject:well.color];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"hoverBackgroundColor"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[SettingManager sharedManager] setHoverBackgroundColor:well.color];
 }
 - (IBAction)chooseFontClicked:(id)sender {
 	NSFontManager * fontManager = [NSFontManager sharedFontManager];
@@ -240,12 +223,9 @@
 - (void)changeFont:(id)sender{
 	NSFontManager *manager=sender;
 	NSFont *theFont=manager.selectedFont;
-	NSData *theData=[NSArchiver archivedDataWithRootObject:theFont];
-	[[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"font"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[SettingManager sharedManager] setFont:theFont];
 	
     [fontLabel setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Font: %@ %.0f",nil),[theFont displayName],[theFont pointSize]]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 @end

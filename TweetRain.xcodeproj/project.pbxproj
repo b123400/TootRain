@@ -11,6 +11,9 @@
 		59EF393E68A59F644F7B8D8E /* libPods-TweetRain-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56031EC27AA8CDA5C274516 /* libPods-TweetRain-ios.a */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */; };
+		CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0C61B41ABD849900C170FC /* RainDropViewController.xib */; };
+		CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */; };
@@ -140,6 +143,11 @@
 		A3F91AA016EB44E1E0651E38 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B56031EC27AA8CDA5C274516 /* libPods-TweetRain-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37319BF0F63FE5FBC3EA89B /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
+		CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
+		CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropViewController.m; sourceTree = "<group>"; };
+		CF0C61B41ABD849900C170FC /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
+		CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropContainerView.h; sourceTree = "<group>"; };
+		CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropContainerView.m; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -652,6 +660,11 @@
 				CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */,
 				CF2AAAE61ABADDE3002EC003 /* ViewController.h */,
 				CF2AAAE71ABADDE3002EC003 /* ViewController.m */,
+				CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */,
+				CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */,
+				CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */,
+				CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */,
+				CF0C61B41ABD849900C170FC /* RainDropViewController.xib */,
 				CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */,
 				CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */,
 				CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */,
@@ -832,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCA49CD1AB8AA6F00E922C9 /* LaunchScreen.xib in Resources */,
+				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
 				CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */,
@@ -990,12 +1004,14 @@
 				CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */,
 				CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */,
 				CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */,
+				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,
 				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
 				CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */,
 				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
 				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
 				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
+				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

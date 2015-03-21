@@ -23,6 +23,8 @@
 - (instancetype)init {
     self = [super initWithNibName:@"AuthViewController" bundle:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+    
     return self;
 }
 
@@ -46,6 +48,10 @@
 
 - (IBAction)authorizeButtonPressed:(id)sender {
     SettingManager *manager = [SettingManager sharedManager];
+    if ([manager.accountType accessGranted]) {
+        [self processAccounts];
+        return;
+    }
     [manager.accountStore
      requestAccessToAccountsWithType:manager.accountType
      options:nil
@@ -69,19 +75,35 @@
                   show];
                  return;
              }
-             NSArray *accounts = [manager.accountStore accountsWithAccountType:manager.accountType];
-             if (accounts.count == 0) {
-                 // no account view
-             } else if (accounts.count == 1) {
-                 [[SettingManager sharedManager] setSelectedAccount:accounts[0]];
-                 [self.delegate authViewControllerDidAuthed:self];
-             } else {
-                 SettingAccountTableViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingAccountTableViewController"];
-                 controller.delegate = self;
-                 [self.navigationController pushViewController:controller animated:YES];
-             }
+             [self processAccounts];
          });
      }];
+}
+
+- (void)processAccounts {
+    SettingManager *manager = [SettingManager sharedManager];
+    NSArray *accounts = [manager.accountStore accountsWithAccountType:manager.accountType];
+    if (accounts.count == 0) {
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh on!", @"")
+                                    message:NSLocalizedString(@"You haven't setup any Twitter account. Please set it up in the Setting app", @"")
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles: nil]
+         show];
+    } else if (accounts.count == 1) {
+        [[SettingManager sharedManager] setSelectedAccount:accounts[0]];
+        [self.delegate authViewControllerDidAuthed:self];
+    } else {
+        SettingAccountTableViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingAccountTableViewController"];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
+- (void)accountStoreDidChanged:(NSNotification*)notification {
+    if ([self.navigationController topViewController] == self) {
+        [self processAccounts];
+    }
 }
 
 #pragma mark select account

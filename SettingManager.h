@@ -20,35 +20,33 @@
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) ACAccountType *accountType;
 
+@property (nonatomic) BOOL hideTweetAroundCursor;
+@property (nonatomic) BOOL showProfileImage;
+@property (nonatomic) BOOL removeURL;
+@property (nonatomic) BOOL underlineTweetsWithURL;
+@property (nonatomic) float opacity;
+
+#if TARGET_OS_IPHONE
+
+@property (nonatomic) UIColor *textColor;
+@property (nonatomic) UIColor *shadowColor;
+@property (nonatomic) UIColor *hoverBackgroundColor;
+@property (nonatomic) UIFont *font;
+
+#elif TARGET_OS_MAC
+
+@property (nonatomic) NSColor *textColor;
+@property (nonatomic) NSColor *shadowColor;
+@property (nonatomic) NSColor *hoverBackgroundColor;
+@property (nonatomic) NSFont *font;
+@property (nonatomic) NSNumber *windowLevel;
+
+#endif
+
 +(SettingManager*)sharedManager;
 
 - (ACAccount*)selectedAccount;
 - (void)setSelectedAccount:(ACAccount*)account;
 - (NSArray*)accounts;
-
--(BOOL)hideTweetAroundCursor;
--(BOOL)showProfileImage;
--(BOOL)removeURL;
--(BOOL)underlineTweetsWithURL;
--(float)opacity;
-
-#if TARGET_OS_IPHONE
-
--(UIColor*)textColor;
--(UIColor*)shadowColor;
--(UIColor*)hoverBackgroundColor;
--(UIFont*)font;
-
-#elif TARGET_OS_MAC
-
--(NSColor*)textColor;
-- (void)setTextColor:(NSColor*)color;
-
--(NSColor*)shadowColor;
--(NSColor*)hoverBackgroundColor;
--(NSFont*)font;
--(NSNumber*)windowLevel;
-
-#endif
 
 @end

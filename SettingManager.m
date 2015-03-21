@@ -79,25 +79,56 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark - settings
 
--(BOOL)hideTweetAroundCursor{
+- (BOOL)hideTweetAroundCursor {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
 }
--(BOOL)showProfileImage{
+
+- (void)setHideTweetAroundCursor:(BOOL)hideTweetAroundCursor {
+    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideTweetAroundCursor"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)showProfileImage {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
 }
--(BOOL)removeURL{
+
+- (void)setShowProfileImage:(BOOL)showProfileImage {
+    [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)removeURL {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
 }
--(BOOL)underlineTweetsWithURL{
+
+- (void)setRemoveURL:(BOOL)removeURL {
+    [[NSUserDefaults standardUserDefaults] setBool:removeURL forKey:@"removeURL"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (BOOL)underlineTweetsWithURL {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
 }
--(float)opacity{
-    float opacity=[[NSUserDefaults standardUserDefaults]floatForKey:@"opacity"];
-    if(opacity==0){
+
+- (void)setUnderlineTweetsWithURL:(BOOL)underlineTweetsWithURL {
+    [[NSUserDefaults standardUserDefaults] setBool:underlineTweetsWithURL forKey:@"underlineTweetsWithURL"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (float)opacity {
+    NSNumber *opacity=[[NSUserDefaults standardUserDefaults]objectForKey:@"opacity"];
+    if(!opacity){
         //opacity isn't set
-        opacity=1;
+        return 1;
     }
-    return opacity;
+    return [opacity floatValue];
+}
+
+- (void)setOpacity:(float)opacity {
+    [[NSUserDefaults standardUserDefaults] setFloat:opacity forKey:@"opacity"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 #if TARGET_OS_IPHONE
@@ -105,29 +136,32 @@ static NSMutableArray *savedAccounts=nil;
 - (UIColor*)textColor {
     NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"textColor"];
     if (theData == nil)return [UIColor whiteColor];
-    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData] ?: [UIColor whiteColor];
 }
+
 - (void)setTextColor:(UIColor *)color {
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"textColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (UIColor*)shadowColor {
     NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"shadowColor"];
     if (theData == nil)return [UIColor blackColor];
-    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:theData] ?: [UIColor blackColor];
 }
 - (void)setShadowColor:(UIColor *)color {
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"shadowColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
-- (UIColor*)selectedBackgroundColor {
+- (UIColor*)hoverBackgroundColor {
     NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"selectedBackgroundColor"];
     if (theData == nil)return [UIColor whiteColor];
-    return (UIColor *)[NSKeyedUnarchiver unarchiveObjectWithData:theData];
+    return (UIColor *)[NSKeyedUnarchiver unarchiveObjectWithData:theData] ?: [UIColor whiteColor];
 }
-- (void)setSelectedBackgroundColor:(UIColor *)color {
+- (void)setHoverBackgroundColor:(UIColor *)color {
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:color] forKey:@"selectedBackgroundColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -137,11 +171,13 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 - (void)setFont:(UIFont*)font {
-    [self setFontName:font];
+    [self setFontName:[font fontName]];
+    [self setFontSize:[font pointSize]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (NSString*)fontName {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"]?: @"Arial";
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"] ?: @"Arial";
 }
 
 - (void)setFontName:(NSString *)fontName {

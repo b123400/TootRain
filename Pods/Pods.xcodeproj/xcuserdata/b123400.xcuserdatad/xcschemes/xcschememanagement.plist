@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TweetRain-ios-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TweetRain-ios-STTwitter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03EB4A56E027843F507740CB</key>
+		<key>3C69A49B6767610ED7BE18C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0FD0E9E9720F299ED309524C</key>
+		<key>6F3B0036EC7CBB7F9C1AC822</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75E90B2E9E86B0DCCFE70F08</key>
+		<key>AEDAFE2163B4CF61AFB56E89</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D55D0B40C191AF44353A132F</key>
+		<key>EC79D6A878C557AC86420164</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED64C655A8B2A4865060DDDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

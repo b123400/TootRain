@@ -14,7 +14,7 @@
 typedef enum BRUserType {
     BRUserTypeTwitter    = 0,
     BRUserTypeFacebook   = 1,
-	
+
 	BRUserTypeUnknown   = 99,
 } BRUserType;
 

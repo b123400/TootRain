@@ -1,926 +1,3810 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		001207CC5C44EB12827EBB66 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE286CFC477DBF52B4FF87 /* BAVPlistNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		0274E3127D6C66FE8CC1E7F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B249426C543C1477862EB71B /* Cocoa.framework */; };
-		0B61620A156322145B4F296F /* STTwitterHTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 719C7B66B9D013EEA4A1E856 /* STTwitterHTML.h */; };
-		0DCBF31D474AB22382C557E6 /* STHTTPRequest+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = D171249AED4B1CF4E1B1ACEF /* STHTTPRequest+STTwitter.h */; };
-		13A3B14B228C03FF8FB2D90A /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = E199E9B414D9ABCF2D419D7F /* NSString+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		19F4BF23E81D7C15B743499C /* Pods-TweetRain-ios-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C03E6B556251A75DCCFA233 /* Pods-TweetRain-ios-dummy.m */; };
-		1AB31C2214B0FEF6F13852DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B249426C543C1477862EB71B /* Cocoa.framework */; };
-		2026A4F9AA78B3D27B8DE10C /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 562ED22847C8F4EE857DE0B7 /* STTwitterAPI.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		243E52F87C8CD2A37C87B5BB /* Pods-TweetRain-ios-STTwitter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 008351963C7E6E81790E9C1A /* Pods-TweetRain-ios-STTwitter-dummy.m */; };
-		26C253F4864DD12D0668D1E5 /* BAVPlistNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F1E9CD5489EE4BFC6E3F23C5 /* BAVPlistNode.h */; };
-		274E98A74444950307F3FAF1 /* STTwitterOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B49C98CD336ADD0195363ADC /* STTwitterOAuth.h */; };
-		2CA74D82BFE8225CF0088D83 /* STTwitterOSRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BC906767A9425B6B575C30E /* STTwitterOSRequest.h */; };
-		2CF84FCC32A4E96658375E78 /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A12A27A640A61F6837BD5F /* STTwitterOAuth.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		36313B3ECA1FABECA62455C4 /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E290F3142B30F0ECABDBB8 /* STTwitterOSRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		3CF5CBC8802FA48BA0275F14 /* NSString+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AA3324B8ABFAA021ED73A54 /* NSString+STTwitter.h */; };
-		4945F1892C30C60E84D3770B /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC115E9A590A2394BF009E2 /* STHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		4D4C22290C027245F0C1959D /* STTwitterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DEC1C25B6CC89196F066DF /* STTwitterProtocol.h */; };
-		4EE62DE6B3E6291FE33963FC /* NSString+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AA3324B8ABFAA021ED73A54 /* NSString+STTwitter.h */; };
-		4FBDA72FEA53B70E1AD527F7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CFC9EA8B8E570DCF3764E7 /* Accounts.framework */; };
-		575B2928BD394C0200A9017B /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = AE12E0364668CDCDA9C8E1CE /* STTwitterHTML.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		58FBD3602F96BCC4D42C08AE /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC32F17C89D9183CEC88B47 /* STTwitterOS.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		5E768FE6F4F89209446198B6 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E5748054C615378894A8A2 /* NSDateFormatter+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		6275D9D4E717D9D8500ED85D /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 066429DA2B3E02DE9C98911D /* STTwitterAppOnly.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		67E88102A4C54570C111AFBC /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 562ED22847C8F4EE857DE0B7 /* STTwitterAPI.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		67F93203DD7BA8E88D6AA028 /* STTwitterOAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = B49C98CD336ADD0195363ADC /* STTwitterOAuth.h */; };
-		69277EA95D52FF5744EE1C7F /* STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 29AA76174DDFF8D8082D7DD2 /* STTwitter.h */; };
-		69B35CB1E225E6E29A84B43D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2220C84D5206DCB31EA2DDBA /* QuartzCore.framework */; };
-		70B6C0CDFC76D8E0291F80A2 /* STTwitterOSRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BC906767A9425B6B575C30E /* STTwitterOSRequest.h */; };
-		77D046CDD4FF37822340D80D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F827AA8150876C3D0B562D4 /* CoreGraphics.framework */; };
-		7A1B4B7884B1FF9CCC5A3F7F /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EA56D48217B8C966BA9AF1 /* STHTTPRequest+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		7CAB17396AE8EA943E9D9957 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F36430C6D934A508BA6CEA0A /* UIKit.framework */; };
-		7CDFDA8C43C5BED68E947FAF /* STTwitterAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A76FCF923E23B4C96B06CC74 /* STTwitterAPI.h */; };
-		85A381D22CD5BF58B8EE0975 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = DD024B4ECB305587E491F86C /* JSONSyntaxHighlight.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		873D252F3603E84C8D640544 /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = E199E9B414D9ABCF2D419D7F /* NSString+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		8A5AC90899585F5D0752CA84 /* NSDateFormatter+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E0D6E2EA5947606316585D5 /* NSDateFormatter+STTwitter.h */; };
-		8F3AA523AC1E04AAAAE93AB5 /* STTwitterAppOnly.h in Headers */ = {isa = PBXBuildFile; fileRef = 909A13BA34A8C8E67B8757D6 /* STTwitterAppOnly.h */; };
-		901C5EC5A894CCBB325A8427 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5729F75706AAE0687A3F14CE /* Twitter.framework */; };
-		91120C25EC7D1B0C0D7C071C /* Pods-TweetRain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A57DD48DD8AB5DD26A01950 /* Pods-TweetRain-dummy.m */; };
-		925FD0C5D664C65A7249D64B /* JSONSyntaxHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C5F0D33F242969499BA55F /* JSONSyntaxHighlight.h */; };
-		9757766377CF45A1D59665C3 /* NSError+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB94BE22482D5BC1E726880 /* NSError+STTwitter.h */; };
-		97C0B3896E15509A061E5978 /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A12A27A640A61F6837BD5F /* STTwitterOAuth.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		9B114675C0A8A2670524F9F2 /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 066429DA2B3E02DE9C98911D /* STTwitterAppOnly.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		9C789A5EE16D9917858138CD /* NSDateFormatter+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E0D6E2EA5947606316585D5 /* NSDateFormatter+STTwitter.h */; };
-		A5E3CBF4173116B99A00F02A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA45AC15410B6A92F32B3035 /* Foundation.framework */; };
-		AE158FAD3EF5C2C67B30C049 /* STHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0EDF6052BD4FD0C3D1E0EB /* STHTTPRequest.h */; };
-		AF8450C4BFE47699B91D3319 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC115E9A590A2394BF009E2 /* STHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		AFC18F5F3302C4C7A57335A1 /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E290F3142B30F0ECABDBB8 /* STTwitterOSRequest.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		B25EBEF10E92CE7C4C40C071 /* STTwitterOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 96A21A88EA661D18E12E565E /* STTwitterOS.h */; };
-		B27E556B2C58F2EFCFAB2AB3 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = DD024B4ECB305587E491F86C /* JSONSyntaxHighlight.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		BBA0406D516B86699F2519EF /* STTwitterAppOnly.h in Headers */ = {isa = PBXBuildFile; fileRef = 909A13BA34A8C8E67B8757D6 /* STTwitterAppOnly.h */; };
-		BF912EA33E3C33FB8019797C /* NSError+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB94BE22482D5BC1E726880 /* NSError+STTwitter.h */; };
-		C1F7618AEDDC287A9D527C94 /* STTwitterOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 96A21A88EA661D18E12E565E /* STTwitterOS.h */; };
-		C8A78C32872C79D8B61CF0A5 /* BAVPlistNode.h in Headers */ = {isa = PBXBuildFile; fileRef = F1E9CD5489EE4BFC6E3F23C5 /* BAVPlistNode.h */; };
-		D03BD6A31877EABD60A02E58 /* Pods-TweetRain-STTwitter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 746861ECC4D85F083CAD3CEE /* Pods-TweetRain-STTwitter-dummy.m */; };
-		D4AFD2DC05CEFD5598C17476 /* STTwitterAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A76FCF923E23B4C96B06CC74 /* STTwitterAPI.h */; };
-		D4D29AD814BB1291A80E718A /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC32F17C89D9183CEC88B47 /* STTwitterOS.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		D5019B107BAB3D1C6AE647B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA45AC15410B6A92F32B3035 /* Foundation.framework */; };
-		DCB1C189C83B6B3ABC0065C2 /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = AE12E0364668CDCDA9C8E1CE /* STTwitterHTML.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		E4484747E774143640F84AAE /* STHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C0EDF6052BD4FD0C3D1E0EB /* STHTTPRequest.h */; };
-		E475E5B804B05BF525089D60 /* STTwitterHTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 719C7B66B9D013EEA4A1E856 /* STTwitterHTML.h */; };
-		E5D8CB3FF0E3B67BACB4A3DC /* STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 29AA76174DDFF8D8082D7DD2 /* STTwitter.h */; };
-		E6BED95164C337059BBE37B0 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = DC74C260F05C6B6B6F4E0D50 /* NSError+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		EF81AEE5F46798673D0B9974 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE286CFC477DBF52B4FF87 /* BAVPlistNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		F4E38412F0AADD5FFAF003F0 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = DC74C260F05C6B6B6F4E0D50 /* NSError+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		F60D0CF15C1C89E033296481 /* STHTTPRequest+STTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = D171249AED4B1CF4E1B1ACEF /* STHTTPRequest+STTwitter.h */; };
-		F8A382C824A17CEDA956AF19 /* JSONSyntaxHighlight.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C5F0D33F242969499BA55F /* JSONSyntaxHighlight.h */; };
-		FA9D69B156EFD998293D5F7E /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EA56D48217B8C966BA9AF1 /* STHTTPRequest+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		FD18126991A333EA2FBAC312 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E5748054C615378894A8A2 /* NSDateFormatter+STTwitter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		FFAAF4C6160BEEFB865E9AB7 /* STTwitterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 48DEC1C25B6CC89196F066DF /* STTwitterProtocol.h */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		85EDE1C474ACE339EEAFE853 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 144376F5A656047D90ABEB63 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D55D0B40C191AF44353A132F;
-			remoteInfo = "Pods-TweetRain-STTwitter";
-		};
-		BFE312A3578E7918661A2A83 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 144376F5A656047D90ABEB63 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0FD0E9E9720F299ED309524C;
-			remoteInfo = "Pods-TweetRain-ios-STTwitter";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		008351963C7E6E81790E9C1A /* Pods-TweetRain-ios-STTwitter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-TweetRain-ios-STTwitter-dummy.m"; path = "../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-dummy.m"; sourceTree = "<group>"; };
-		01A12A27A640A61F6837BD5F /* STTwitterOAuth.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterOAuth.m; path = STTwitter/STTwitterOAuth.m; sourceTree = "<group>"; };
-		066429DA2B3E02DE9C98911D /* STTwitterAppOnly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterAppOnly.m; path = STTwitter/STTwitterAppOnly.m; sourceTree = "<group>"; };
-		12212BBFC719F368DD53E7E7 /* Pods-TweetRain-ios-STTwitter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios-STTwitter.xcconfig"; path = "../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter.xcconfig"; sourceTree = "<group>"; };
-		13EE286CFC477DBF52B4FF87 /* BAVPlistNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BAVPlistNode.m; path = STTwitter/Vendor/BAVPlistNode.m; sourceTree = "<group>"; };
-		14E290F3142B30F0ECABDBB8 /* STTwitterOSRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterOSRequest.m; path = STTwitter/STTwitterOSRequest.m; sourceTree = "<group>"; };
-		15719CDE7A19C1DEDC01A07B /* Pods-TweetRain-ios-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TweetRain-ios-environment.h"; sourceTree = "<group>"; };
-		1C0EDF6052BD4FD0C3D1E0EB /* STHTTPRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STHTTPRequest.h; path = STTwitter/Vendor/STHTTPRequest.h; sourceTree = "<group>"; };
-		1E0D6E2EA5947606316585D5 /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+STTwitter.h"; path = "STTwitter/NSDateFormatter+STTwitter.h"; sourceTree = "<group>"; };
-		2220C84D5206DCB31EA2DDBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		29AA76174DDFF8D8082D7DD2 /* STTwitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitter.h; path = STTwitter/STTwitter.h; sourceTree = "<group>"; };
-		2AC32F17C89D9183CEC88B47 /* STTwitterOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterOS.m; path = STTwitter/STTwitterOS.m; sourceTree = "<group>"; };
-		35A74F938B1207B57E1A24C2 /* Pods-TweetRain-ios-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TweetRain-ios-acknowledgements.plist"; sourceTree = "<group>"; };
-		48DEC1C25B6CC89196F066DF /* STTwitterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterProtocol.h; path = STTwitter/STTwitterProtocol.h; sourceTree = "<group>"; };
-		4A57DD48DD8AB5DD26A01950 /* Pods-TweetRain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TweetRain-dummy.m"; sourceTree = "<group>"; };
-		4EB94BE22482D5BC1E726880 /* NSError+STTwitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+STTwitter.h"; path = "STTwitter/NSError+STTwitter.h"; sourceTree = "<group>"; };
-		53EA56D48217B8C966BA9AF1 /* STHTTPRequest+STTwitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "STHTTPRequest+STTwitter.m"; path = "STTwitter/STHTTPRequest+STTwitter.m"; sourceTree = "<group>"; };
-		562ED22847C8F4EE857DE0B7 /* STTwitterAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterAPI.m; path = STTwitter/STTwitterAPI.m; sourceTree = "<group>"; };
-		5729F75706AAE0687A3F14CE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
-		59EA84E98C362A1951BCF0CA /* Pods-TweetRain-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TweetRain-acknowledgements.plist"; sourceTree = "<group>"; };
-		6AA3324B8ABFAA021ED73A54 /* NSString+STTwitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+STTwitter.h"; path = "STTwitter/NSString+STTwitter.h"; sourceTree = "<group>"; };
-		719C7B66B9D013EEA4A1E856 /* STTwitterHTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterHTML.h; path = STTwitter/STTwitterHTML.h; sourceTree = "<group>"; };
-		746861ECC4D85F083CAD3CEE /* Pods-TweetRain-STTwitter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TweetRain-STTwitter-dummy.m"; sourceTree = "<group>"; };
-		7BC906767A9425B6B575C30E /* STTwitterOSRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterOSRequest.h; path = STTwitter/STTwitterOSRequest.h; sourceTree = "<group>"; };
-		7EEF706388AC0256AD140E91 /* Pods-TweetRain-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain-ios.release.xcconfig"; sourceTree = "<group>"; };
-		7F827AA8150876C3D0B562D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		85824EDF027EA3FDFBD78257 /* libPods-TweetRain-ios-STTwitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios-STTwitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		869FCC2E982C9386FE4C720C /* libPods-TweetRain-STTwitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-STTwitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C03E6B556251A75DCCFA233 /* Pods-TweetRain-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TweetRain-ios-dummy.m"; sourceTree = "<group>"; };
-		909A13BA34A8C8E67B8757D6 /* STTwitterAppOnly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterAppOnly.h; path = STTwitter/STTwitterAppOnly.h; sourceTree = "<group>"; };
-		94C5F0D33F242969499BA55F /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JSONSyntaxHighlight.h; path = STTwitter/Vendor/JSONSyntaxHighlight.h; sourceTree = "<group>"; };
-		96A21A88EA661D18E12E565E /* STTwitterOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterOS.h; path = STTwitter/STTwitterOS.h; sourceTree = "<group>"; };
-		9E450EE0BCE4D7F42D60CD4E /* Pods-TweetRain-ios-STTwitter-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios-STTwitter-Private.xcconfig"; path = "../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-Private.xcconfig"; sourceTree = "<group>"; };
-		A5CFC9EA8B8E570DCF3764E7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
-		A616B9D0F09932CFB0C7E41E /* Pods-TweetRain-STTwitter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TweetRain-STTwitter-prefix.pch"; sourceTree = "<group>"; };
-		A76FCF923E23B4C96B06CC74 /* STTwitterAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterAPI.h; path = STTwitter/STTwitterAPI.h; sourceTree = "<group>"; };
-		A7BD882561C5E96CC6D64949 /* libPods-TweetRain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A804CAF5758C2AD70BA0EB47 /* Pods-TweetRain-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TweetRain-acknowledgements.markdown"; sourceTree = "<group>"; };
-		A9E5748054C615378894A8A2 /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+STTwitter.m"; path = "STTwitter/NSDateFormatter+STTwitter.m"; sourceTree = "<group>"; };
-		AE12E0364668CDCDA9C8E1CE /* STTwitterHTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STTwitterHTML.m; path = STTwitter/STTwitterHTML.m; sourceTree = "<group>"; };
-		B249426C543C1477862EB71B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		B49C98CD336ADD0195363ADC /* STTwitterOAuth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STTwitterOAuth.h; path = STTwitter/STTwitterOAuth.h; sourceTree = "<group>"; };
-		C21E2152C2CD8BD4541D0AAC /* Pods-TweetRain-STTwitter-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain-STTwitter-Private.xcconfig"; sourceTree = "<group>"; };
-		C7534672A973B153905E9FB6 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
-		C7B9000E0C100B496B18930E /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
-		CD8DE9F33724612907D3A310 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		CE6F6A95FC5B6438D585A0D3 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D171249AED4B1CF4E1B1ACEF /* STHTTPRequest+STTwitter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STHTTPRequest+STTwitter.h"; path = "STTwitter/STHTTPRequest+STTwitter.h"; sourceTree = "<group>"; };
-		DC74C260F05C6B6B6F4E0D50 /* NSError+STTwitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+STTwitter.m"; path = "STTwitter/NSError+STTwitter.m"; sourceTree = "<group>"; };
-		DD024B4ECB305587E491F86C /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JSONSyntaxHighlight.m; path = STTwitter/Vendor/JSONSyntaxHighlight.m; sourceTree = "<group>"; };
-		E05E37201EABE8C42E270183 /* libPods-TweetRain-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E199E9B414D9ABCF2D419D7F /* NSString+STTwitter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+STTwitter.m"; path = "STTwitter/NSString+STTwitter.m"; sourceTree = "<group>"; };
-		E727FD3BA66928B5943CF4AD /* Pods-TweetRain-ios-STTwitter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-TweetRain-ios-STTwitter-prefix.pch"; path = "../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch"; sourceTree = "<group>"; };
-		E732EDFDD4BBBEC3409B2983 /* Pods-TweetRain-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TweetRain-resources.sh"; sourceTree = "<group>"; };
-		E7B9E7BC6CD842F983CC7BC4 /* Pods-TweetRain-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TweetRain-environment.h"; sourceTree = "<group>"; };
-		E86E46603EC1AD221B9B3E03 /* Pods-TweetRain-STTwitter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TweetRain-STTwitter.xcconfig"; sourceTree = "<group>"; };
-		EA45AC15410B6A92F32B3035 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EAC115E9A590A2394BF009E2 /* STHTTPRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STHTTPRequest.m; path = STTwitter/Vendor/STHTTPRequest.m; sourceTree = "<group>"; };
-		EE6CA5B47C8A1ADE83B5AE1F /* Pods-TweetRain-ios-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TweetRain-ios-resources.sh"; sourceTree = "<group>"; };
-		F1E9CD5489EE4BFC6E3F23C5 /* BAVPlistNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BAVPlistNode.h; path = STTwitter/Vendor/BAVPlistNode.h; sourceTree = "<group>"; };
-		F36430C6D934A508BA6CEA0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		FCAE83761B15F530682150EE /* Pods-TweetRain-ios-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TweetRain-ios-acknowledgements.markdown"; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		2A656282854A0EA252B61E51 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0274E3127D6C66FE8CC1E7F7 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B616D7539CAA42766669A93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4FBDA72FEA53B70E1AD527F7 /* Accounts.framework in Frameworks */,
-				77D046CDD4FF37822340D80D /* CoreGraphics.framework in Frameworks */,
-				A5E3CBF4173116B99A00F02A /* Foundation.framework in Frameworks */,
-				69B35CB1E225E6E29A84B43D /* QuartzCore.framework in Frameworks */,
-				901C5EC5A894CCBB325A8427 /* Twitter.framework in Frameworks */,
-				7CAB17396AE8EA943E9D9957 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5437125D3D9FB3D494DD81B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1AB31C2214B0FEF6F13852DD /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E647072038A52EEC5B8B55B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5019B107BAB3D1C6AE647B9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		37A0E639BAFB4B562CC59E4F /* Pods-TweetRain-ios */ = {
-			isa = PBXGroup;
-			children = (
-				FCAE83761B15F530682150EE /* Pods-TweetRain-ios-acknowledgements.markdown */,
-				35A74F938B1207B57E1A24C2 /* Pods-TweetRain-ios-acknowledgements.plist */,
-				8C03E6B556251A75DCCFA233 /* Pods-TweetRain-ios-dummy.m */,
-				15719CDE7A19C1DEDC01A07B /* Pods-TweetRain-ios-environment.h */,
-				EE6CA5B47C8A1ADE83B5AE1F /* Pods-TweetRain-ios-resources.sh */,
-				CD8DE9F33724612907D3A310 /* Pods-TweetRain-ios.debug.xcconfig */,
-				7EEF706388AC0256AD140E91 /* Pods-TweetRain-ios.release.xcconfig */,
-			);
-			name = "Pods-TweetRain-ios";
-			path = "Target Support Files/Pods-TweetRain-ios";
-			sourceTree = "<group>";
-		};
-		4AC93CF683870CDF678BB4CB /* Pods-TweetRain */ = {
-			isa = PBXGroup;
-			children = (
-				A804CAF5758C2AD70BA0EB47 /* Pods-TweetRain-acknowledgements.markdown */,
-				59EA84E98C362A1951BCF0CA /* Pods-TweetRain-acknowledgements.plist */,
-				4A57DD48DD8AB5DD26A01950 /* Pods-TweetRain-dummy.m */,
-				E7B9E7BC6CD842F983CC7BC4 /* Pods-TweetRain-environment.h */,
-				E732EDFDD4BBBEC3409B2983 /* Pods-TweetRain-resources.sh */,
-				C7B9000E0C100B496B18930E /* Pods-TweetRain.debug.xcconfig */,
-				C7534672A973B153905E9FB6 /* Pods-TweetRain.release.xcconfig */,
-			);
-			name = "Pods-TweetRain";
-			path = "Target Support Files/Pods-TweetRain";
-			sourceTree = "<group>";
-		};
-		73C03AE9783DFC9309CD8902 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D1100800B6390ABEF1E4F3E3 /* STTwitter */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7855C3521E5AD1C551A9E366 = {
-			isa = PBXGroup;
-			children = (
-				CE6F6A95FC5B6438D585A0D3 /* Podfile */,
-				87C92FE69DFBEBB8DA9D51A5 /* Frameworks */,
-				73C03AE9783DFC9309CD8902 /* Pods */,
-				E1F6B3CE5926F14D5D408A0C /* Products */,
-				F97CD59087FA43CD4DFF23F3 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		87C92FE69DFBEBB8DA9D51A5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8A2D59B9873848D694D95997 /* OS X */,
-				8EA71FF0527A20B1952E3474 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8A2D59B9873848D694D95997 /* OS X */ = {
-			isa = PBXGroup;
-			children = (
-				B249426C543C1477862EB71B /* Cocoa.framework */,
-			);
-			name = "OS X";
-			sourceTree = "<group>";
-		};
-		8EA71FF0527A20B1952E3474 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A5CFC9EA8B8E570DCF3764E7 /* Accounts.framework */,
-				7F827AA8150876C3D0B562D4 /* CoreGraphics.framework */,
-				EA45AC15410B6A92F32B3035 /* Foundation.framework */,
-				2220C84D5206DCB31EA2DDBA /* QuartzCore.framework */,
-				5729F75706AAE0687A3F14CE /* Twitter.framework */,
-				F36430C6D934A508BA6CEA0A /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		D0A27B4C1BDF0EADB3C94E65 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E86E46603EC1AD221B9B3E03 /* Pods-TweetRain-STTwitter.xcconfig */,
-				C21E2152C2CD8BD4541D0AAC /* Pods-TweetRain-STTwitter-Private.xcconfig */,
-				746861ECC4D85F083CAD3CEE /* Pods-TweetRain-STTwitter-dummy.m */,
-				A616B9D0F09932CFB0C7E41E /* Pods-TweetRain-STTwitter-prefix.pch */,
-				12212BBFC719F368DD53E7E7 /* Pods-TweetRain-ios-STTwitter.xcconfig */,
-				9E450EE0BCE4D7F42D60CD4E /* Pods-TweetRain-ios-STTwitter-Private.xcconfig */,
-				008351963C7E6E81790E9C1A /* Pods-TweetRain-ios-STTwitter-dummy.m */,
-				E727FD3BA66928B5943CF4AD /* Pods-TweetRain-ios-STTwitter-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-TweetRain-STTwitter";
-			sourceTree = "<group>";
-		};
-		D1100800B6390ABEF1E4F3E3 /* STTwitter */ = {
-			isa = PBXGroup;
-			children = (
-				F1E9CD5489EE4BFC6E3F23C5 /* BAVPlistNode.h */,
-				13EE286CFC477DBF52B4FF87 /* BAVPlistNode.m */,
-				94C5F0D33F242969499BA55F /* JSONSyntaxHighlight.h */,
-				DD024B4ECB305587E491F86C /* JSONSyntaxHighlight.m */,
-				1E0D6E2EA5947606316585D5 /* NSDateFormatter+STTwitter.h */,
-				A9E5748054C615378894A8A2 /* NSDateFormatter+STTwitter.m */,
-				4EB94BE22482D5BC1E726880 /* NSError+STTwitter.h */,
-				DC74C260F05C6B6B6F4E0D50 /* NSError+STTwitter.m */,
-				6AA3324B8ABFAA021ED73A54 /* NSString+STTwitter.h */,
-				E199E9B414D9ABCF2D419D7F /* NSString+STTwitter.m */,
-				1C0EDF6052BD4FD0C3D1E0EB /* STHTTPRequest.h */,
-				EAC115E9A590A2394BF009E2 /* STHTTPRequest.m */,
-				D171249AED4B1CF4E1B1ACEF /* STHTTPRequest+STTwitter.h */,
-				53EA56D48217B8C966BA9AF1 /* STHTTPRequest+STTwitter.m */,
-				29AA76174DDFF8D8082D7DD2 /* STTwitter.h */,
-				A76FCF923E23B4C96B06CC74 /* STTwitterAPI.h */,
-				562ED22847C8F4EE857DE0B7 /* STTwitterAPI.m */,
-				909A13BA34A8C8E67B8757D6 /* STTwitterAppOnly.h */,
-				066429DA2B3E02DE9C98911D /* STTwitterAppOnly.m */,
-				719C7B66B9D013EEA4A1E856 /* STTwitterHTML.h */,
-				AE12E0364668CDCDA9C8E1CE /* STTwitterHTML.m */,
-				B49C98CD336ADD0195363ADC /* STTwitterOAuth.h */,
-				01A12A27A640A61F6837BD5F /* STTwitterOAuth.m */,
-				96A21A88EA661D18E12E565E /* STTwitterOS.h */,
-				2AC32F17C89D9183CEC88B47 /* STTwitterOS.m */,
-				7BC906767A9425B6B575C30E /* STTwitterOSRequest.h */,
-				14E290F3142B30F0ECABDBB8 /* STTwitterOSRequest.m */,
-				48DEC1C25B6CC89196F066DF /* STTwitterProtocol.h */,
-				D0A27B4C1BDF0EADB3C94E65 /* Support Files */,
-			);
-			path = STTwitter;
-			sourceTree = "<group>";
-		};
-		E1F6B3CE5926F14D5D408A0C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A7BD882561C5E96CC6D64949 /* libPods-TweetRain.a */,
-				869FCC2E982C9386FE4C720C /* libPods-TweetRain-STTwitter.a */,
-				E05E37201EABE8C42E270183 /* libPods-TweetRain-ios.a */,
-				85824EDF027EA3FDFBD78257 /* libPods-TweetRain-ios-STTwitter.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F97CD59087FA43CD4DFF23F3 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				4AC93CF683870CDF678BB4CB /* Pods-TweetRain */,
-				37A0E639BAFB4B562CC59E4F /* Pods-TweetRain-ios */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		7E41376EF1C4DDE73DD0BF7C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8A78C32872C79D8B61CF0A5 /* BAVPlistNode.h in Headers */,
-				F8A382C824A17CEDA956AF19 /* JSONSyntaxHighlight.h in Headers */,
-				9C789A5EE16D9917858138CD /* NSDateFormatter+STTwitter.h in Headers */,
-				BF912EA33E3C33FB8019797C /* NSError+STTwitter.h in Headers */,
-				4EE62DE6B3E6291FE33963FC /* NSString+STTwitter.h in Headers */,
-				F60D0CF15C1C89E033296481 /* STHTTPRequest+STTwitter.h in Headers */,
-				AE158FAD3EF5C2C67B30C049 /* STHTTPRequest.h in Headers */,
-				E5D8CB3FF0E3B67BACB4A3DC /* STTwitter.h in Headers */,
-				7CDFDA8C43C5BED68E947FAF /* STTwitterAPI.h in Headers */,
-				8F3AA523AC1E04AAAAE93AB5 /* STTwitterAppOnly.h in Headers */,
-				E475E5B804B05BF525089D60 /* STTwitterHTML.h in Headers */,
-				274E98A74444950307F3FAF1 /* STTwitterOAuth.h in Headers */,
-				B25EBEF10E92CE7C4C40C071 /* STTwitterOS.h in Headers */,
-				70B6C0CDFC76D8E0291F80A2 /* STTwitterOSRequest.h in Headers */,
-				FFAAF4C6160BEEFB865E9AB7 /* STTwitterProtocol.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		958BB73E0778624F5DF5FB48 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26C253F4864DD12D0668D1E5 /* BAVPlistNode.h in Headers */,
-				925FD0C5D664C65A7249D64B /* JSONSyntaxHighlight.h in Headers */,
-				8A5AC90899585F5D0752CA84 /* NSDateFormatter+STTwitter.h in Headers */,
-				9757766377CF45A1D59665C3 /* NSError+STTwitter.h in Headers */,
-				3CF5CBC8802FA48BA0275F14 /* NSString+STTwitter.h in Headers */,
-				0DCBF31D474AB22382C557E6 /* STHTTPRequest+STTwitter.h in Headers */,
-				E4484747E774143640F84AAE /* STHTTPRequest.h in Headers */,
-				69277EA95D52FF5744EE1C7F /* STTwitter.h in Headers */,
-				D4AFD2DC05CEFD5598C17476 /* STTwitterAPI.h in Headers */,
-				BBA0406D516B86699F2519EF /* STTwitterAppOnly.h in Headers */,
-				0B61620A156322145B4F296F /* STTwitterHTML.h in Headers */,
-				67F93203DD7BA8E88D6AA028 /* STTwitterOAuth.h in Headers */,
-				C1F7618AEDDC287A9D527C94 /* STTwitterOS.h in Headers */,
-				2CA74D82BFE8225CF0088D83 /* STTwitterOSRequest.h in Headers */,
-				4D4C22290C027245F0C1959D /* STTwitterProtocol.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		03EB4A56E027843F507740CB /* Pods-TweetRain-ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7695FABFB9CC8F319483FA5D /* Build configuration list for PBXNativeTarget "Pods-TweetRain-ios" */;
-			buildPhases = (
-				647A73A8F64140C563A8E47D /* Sources */,
-				E647072038A52EEC5B8B55B7 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				230F1F11FB9801039B05EBAF /* PBXTargetDependency */,
-			);
-			name = "Pods-TweetRain-ios";
-			productName = "Pods-TweetRain-ios";
-			productReference = E05E37201EABE8C42E270183 /* libPods-TweetRain-ios.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		0FD0E9E9720F299ED309524C /* Pods-TweetRain-ios-STTwitter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B24B6BC360E158FE00B4C7E0 /* Build configuration list for PBXNativeTarget "Pods-TweetRain-ios-STTwitter" */;
-			buildPhases = (
-				47DC6E28A105DD44C623C4EB /* Sources */,
-				5B616D7539CAA42766669A93 /* Frameworks */,
-				7E41376EF1C4DDE73DD0BF7C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-TweetRain-ios-STTwitter";
-			productName = "Pods-TweetRain-ios-STTwitter";
-			productReference = 85824EDF027EA3FDFBD78257 /* libPods-TweetRain-ios-STTwitter.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		75E90B2E9E86B0DCCFE70F08 /* Pods-TweetRain */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 43091BB72EED0440A31FABCB /* Build configuration list for PBXNativeTarget "Pods-TweetRain" */;
-			buildPhases = (
-				2B06CA094C011579B7D0ADA7 /* Sources */,
-				B5437125D3D9FB3D494DD81B /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A84FD9DB7FE911858D4DE0C1 /* PBXTargetDependency */,
-			);
-			name = "Pods-TweetRain";
-			productName = "Pods-TweetRain";
-			productReference = A7BD882561C5E96CC6D64949 /* libPods-TweetRain.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D55D0B40C191AF44353A132F /* Pods-TweetRain-STTwitter */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 70A24D82652019BE6B6700F7 /* Build configuration list for PBXNativeTarget "Pods-TweetRain-STTwitter" */;
-			buildPhases = (
-				20881DC657C3C17ADA3423F5 /* Sources */,
-				2A656282854A0EA252B61E51 /* Frameworks */,
-				958BB73E0778624F5DF5FB48 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-TweetRain-STTwitter";
-			productName = "Pods-TweetRain-STTwitter";
-			productReference = 869FCC2E982C9386FE4C720C /* libPods-TweetRain-STTwitter.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		144376F5A656047D90ABEB63 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0510;
-			};
-			buildConfigurationList = 4F584ED49C50F25E104575A2 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 7855C3521E5AD1C551A9E366;
-			productRefGroup = E1F6B3CE5926F14D5D408A0C /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				75E90B2E9E86B0DCCFE70F08 /* Pods-TweetRain */,
-				D55D0B40C191AF44353A132F /* Pods-TweetRain-STTwitter */,
-				03EB4A56E027843F507740CB /* Pods-TweetRain-ios */,
-				0FD0E9E9720F299ED309524C /* Pods-TweetRain-ios-STTwitter */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		20881DC657C3C17ADA3423F5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF81AEE5F46798673D0B9974 /* BAVPlistNode.m in Sources */,
-				85A381D22CD5BF58B8EE0975 /* JSONSyntaxHighlight.m in Sources */,
-				5E768FE6F4F89209446198B6 /* NSDateFormatter+STTwitter.m in Sources */,
-				F4E38412F0AADD5FFAF003F0 /* NSError+STTwitter.m in Sources */,
-				13A3B14B228C03FF8FB2D90A /* NSString+STTwitter.m in Sources */,
-				D03BD6A31877EABD60A02E58 /* Pods-TweetRain-STTwitter-dummy.m in Sources */,
-				FA9D69B156EFD998293D5F7E /* STHTTPRequest+STTwitter.m in Sources */,
-				AF8450C4BFE47699B91D3319 /* STHTTPRequest.m in Sources */,
-				2026A4F9AA78B3D27B8DE10C /* STTwitterAPI.m in Sources */,
-				6275D9D4E717D9D8500ED85D /* STTwitterAppOnly.m in Sources */,
-				575B2928BD394C0200A9017B /* STTwitterHTML.m in Sources */,
-				97C0B3896E15509A061E5978 /* STTwitterOAuth.m in Sources */,
-				D4D29AD814BB1291A80E718A /* STTwitterOS.m in Sources */,
-				AFC18F5F3302C4C7A57335A1 /* STTwitterOSRequest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2B06CA094C011579B7D0ADA7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				91120C25EC7D1B0C0D7C071C /* Pods-TweetRain-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		47DC6E28A105DD44C623C4EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				001207CC5C44EB12827EBB66 /* BAVPlistNode.m in Sources */,
-				B27E556B2C58F2EFCFAB2AB3 /* JSONSyntaxHighlight.m in Sources */,
-				FD18126991A333EA2FBAC312 /* NSDateFormatter+STTwitter.m in Sources */,
-				E6BED95164C337059BBE37B0 /* NSError+STTwitter.m in Sources */,
-				873D252F3603E84C8D640544 /* NSString+STTwitter.m in Sources */,
-				243E52F87C8CD2A37C87B5BB /* Pods-TweetRain-ios-STTwitter-dummy.m in Sources */,
-				7A1B4B7884B1FF9CCC5A3F7F /* STHTTPRequest+STTwitter.m in Sources */,
-				4945F1892C30C60E84D3770B /* STHTTPRequest.m in Sources */,
-				67E88102A4C54570C111AFBC /* STTwitterAPI.m in Sources */,
-				9B114675C0A8A2670524F9F2 /* STTwitterAppOnly.m in Sources */,
-				DCB1C189C83B6B3ABC0065C2 /* STTwitterHTML.m in Sources */,
-				2CF84FCC32A4E96658375E78 /* STTwitterOAuth.m in Sources */,
-				58FBD3602F96BCC4D42C08AE /* STTwitterOS.m in Sources */,
-				36313B3ECA1FABECA62455C4 /* STTwitterOSRequest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		647A73A8F64140C563A8E47D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				19F4BF23E81D7C15B743499C /* Pods-TweetRain-ios-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		230F1F11FB9801039B05EBAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0FD0E9E9720F299ED309524C /* Pods-TweetRain-ios-STTwitter */;
-			targetProxy = BFE312A3578E7918661A2A83 /* PBXContainerItemProxy */;
-		};
-		A84FD9DB7FE911858D4DE0C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D55D0B40C191AF44353A132F /* Pods-TweetRain-STTwitter */;
-			targetProxy = 85EDE1C474ACE339EEAFE853 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		0C274F4C8053591BA65075A3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD8DE9F33724612907D3A310 /* Pods-TweetRain-ios.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		10554D8ADC2810578D6AC14E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7B9000E0C100B496B18930E /* Pods-TweetRain.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		14D76C40CB59FCA51719E04E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		28871D828C50F9C9808E6394 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C21E2152C2CD8BD4541D0AAC /* Pods-TweetRain-STTwitter-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-TweetRain-STTwitter/Pods-TweetRain-STTwitter-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		4DF7405800EC6A65E018AFB0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E450EE0BCE4D7F42D60CD4E /* Pods-TweetRain-ios-STTwitter-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		4F14A883B33BCCC8679ABD05 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C21E2152C2CD8BD4541D0AAC /* Pods-TweetRain-STTwitter-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-TweetRain-STTwitter/Pods-TweetRain-STTwitter-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		7E875CD2769B27C2F4AD56A1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-			};
-			name = Debug;
-		};
-		B2741EEDFDC984B9AF4EF7F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E450EE0BCE4D7F42D60CD4E /* Pods-TweetRain-ios-STTwitter-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch";
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CD5DE3929603DB74B09759BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EEF706388AC0256AD140E91 /* Pods-TweetRain-ios.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		FA96062C80494D3AC4F25C87 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7534672A973B153905E9FB6 /* Pods-TweetRain.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		43091BB72EED0440A31FABCB /* Build configuration list for PBXNativeTarget "Pods-TweetRain" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				10554D8ADC2810578D6AC14E /* Debug */,
-				FA96062C80494D3AC4F25C87 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F584ED49C50F25E104575A2 /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E875CD2769B27C2F4AD56A1 /* Debug */,
-				14D76C40CB59FCA51719E04E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		70A24D82652019BE6B6700F7 /* Build configuration list for PBXNativeTarget "Pods-TweetRain-STTwitter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28871D828C50F9C9808E6394 /* Debug */,
-				4F14A883B33BCCC8679ABD05 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7695FABFB9CC8F319483FA5D /* Build configuration list for PBXNativeTarget "Pods-TweetRain-ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0C274F4C8053591BA65075A3 /* Debug */,
-				CD5DE3929603DB74B09759BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B24B6BC360E158FE00B4C7E0 /* Build configuration list for PBXNativeTarget "Pods-TweetRain-ios-STTwitter" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4DF7405800EC6A65E018AFB0 /* Debug */,
-				B2741EEDFDC984B9AF4EF7F5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 144376F5A656047D90ABEB63 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0189BD6870FA5B6AE2183723</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterProtocol.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterProtocol.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0328D9F661697BA3D5D34D91</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>A433B3674765075A7FC9B093</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>037E40ACBC5833D8F5C5706F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C6B3673EA4492B2F121C453D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>03A3885F9AEF34AA7A8FD023</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSString+STTwitter.m</string>
+			<key>path</key>
+			<string>STTwitter/NSString+STTwitter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0428BA7163750DFA8BC72D32</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0650A55A28E283B7219B9378</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageDownloader.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDownloader.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>06C26C0EFF4C0988E2E1CB59</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BEFD93D619BB7B9AD1D84296</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>07622EDC49C622D1E4848044</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-environment.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>087B3EC5B2AE3C32494FD382</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C7D4F73368A6C311624ED7B2</string>
+				<string>6B44D54F41E1BEA597FEAF64</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>09547C0124FCA228C472725E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2700C0793FE8F36C7228055A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0B3FD254D84C68E9A4222CCE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>86DDB470F6A780E5ABF3E2F4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0E2A9D2000B72FF19B99ECFB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageDownloaderOperation.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDownloaderOperation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0E2B823CA3B2A8717D84D8A6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterOAuth.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOAuth.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0EFE5720D44F33F09386630C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImageCompat.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageCompat.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0F637BE97A63733BAE7EAB11</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImage+GIF.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIImage+GIF.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1065D382BA2F9C219A88F869</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F8BA31A23EA77428586A5F1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>127FE91F48DDD9144458469E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIView+WebCacheOperation.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIView+WebCacheOperation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>168240124A4A3170213D7A9E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9CD37599A380F31279981F0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>17CD691E7C430568F1BE5336</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>18AB9733F7BCD08601B335A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A28107BB5F0081DEC92473C1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1A923ED01D5B5622711DED71</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JSONSyntaxHighlight.m</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/JSONSyntaxHighlight.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1B7AE337E35FAE39ADC272D8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1D11DCC1A959498503D5AE1D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageManager.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F7B06936C201AE8504D891B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>B76E0EF9D57AC18ECCF250B1</string>
+				<string>E69709A91A0972B4B0E54B98</string>
+				<string>534B23A1CE5C38DE7C8C075A</string>
+				<string>959854C055FD39FA99FA4C16</string>
+				<string>BF7BACE1BE1190FB1954113B</string>
+				<string>89C9BD9C453754D08784A864</string>
+				<string>3E41B333292123306C8CC3BB</string>
+				<string>4137F0F4E1B3380F72686D18</string>
+				<string>6BB5939E8D77BA33775B2343</string>
+				<string>3A19FD603CF495F5E23A440C</string>
+				<string>8B0FFB9B69916FA74A8EF03B</string>
+				<string>342EE6C01D157A5B776094CC</string>
+				<string>C906A240521B92AF33ED4697</string>
+				<string>3D540A7082600B251D8D9227</string>
+				<string>5C91DF66394D35E42257FAD9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9619427C07917941C8844A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImage+MultiFormat.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIImage+MultiFormat.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9857AE09E5A4132DAFB8BE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>82177DEA94A38F6B222834D1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>207FEBD79C7F1DCD0AFC21A5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>86DDB470F6A780E5ABF3E2F4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>218A1DC68F240DD4EDE0EB1B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1B7AE337E35FAE39ADC272D8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>21BAA8280750DFE7207545EB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageDecoder.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDecoder.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>23C3CA3B741DE4B01532A521</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImageView+HighlightedWebCache.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIImageView+HighlightedWebCache.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2700C0793FE8F36C7228055A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterAppOnly.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterAppOnly.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>28B03A304DAA810858EBB663</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterOS.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOS.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>28BAF36AB063A10332115BFD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>28BB5AC694741550A23B9A03</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>AC169127E815FF1E3B162290</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>28D1DFD4A8B65C04CCB6E2B7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-TweetRain-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29C633C8C123874731747EF0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4F07373ECC641FC14526EC4D</string>
+				<string>30FCC0514F33F7DBB67B676F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2A263405C609C3342941E1B6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterOSRequest.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOSRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2A3E2C7D3698F8D456F42FE4</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>EA6B01527F9744F5148C251D</string>
+				<string>CA34BEC13B2CD2562310EBB8</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>2C7CB6C7950AD33985A8271D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>82177DEA94A38F6B222834D1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2D5341149BDE43D6980D0424</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDImageCache.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDImageCache.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2E925C1C22D57A22EA18639F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterOS.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOS.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2F24E2D3FD43CCA6043B9B14</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F44D22C014E9E5D3608FBCDE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2FBC8040B37A7F66A1E06A38</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1A923ED01D5B5622711DED71</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>30D6C34304B265BF0665D2AA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-STTwitter.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30FCC0514F33F7DBB67B676F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>589BCB0B526BBFBD3B570A97</string>
+				<string>46704D0FE41DF7D20AF45DFD</string>
+				<string>1B7AE337E35FAE39ADC272D8</string>
+				<string>07622EDC49C622D1E4848044</string>
+				<string>17CD691E7C430568F1BE5336</string>
+				<string>8789A4D863828D682E67A269</string>
+				<string>0428BA7163750DFA8BC72D32</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-TweetRain-ios</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>342EE6C01D157A5B776094CC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>407DA29512DA0F08DB327106</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>34BF44F1587DE8E9C0C648AD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B131F9E18B20511178843941</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>363560F4FB1DFC421627154D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>86DDB470F6A780E5ABF3E2F4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>36EB4A895E4C26B3A407455C</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>NO</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>RELEASE=1</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>36F23A485F9B8558EDB6067F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>UIKit.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>3955B9DA5DEC883FB085975D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterAppOnly.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterAppOnly.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3A19FD603CF495F5E23A440C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B8CF6FC4AAEB0886685D9E24</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>3C69A49B6767610ED7BE18C0</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>087B3EC5B2AE3C32494FD382</string>
+			<key>buildPhases</key>
+			<array>
+				<string>1F7B06936C201AE8504D891B</string>
+				<string>958DB834A5E7DB98B3B77F36</string>
+				<string>84D6637896F37FA16140B09B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-SDWebImage</string>
+			<key>productName</key>
+			<string>Pods-TweetRain-ios-SDWebImage</string>
+			<key>productReference</key>
+			<string>90EDD9CBC44F96AFE222CC2C</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>3D540A7082600B251D8D9227</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D66E6E46EF423A689CC1A08F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>3D5E14544597439E18837493</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-SDWebImage-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3E2271313C470664B9C47FB3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSData+ImageContentType.m</string>
+			<key>path</key>
+			<string>SDWebImage/NSData+ImageContentType.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3E41B333292123306C8CC3BB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>75AFCC1BFBE9FBD8BD1512BE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>403B6545AD5530F8C2AB4B3C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>36F23A485F9B8558EDB6067F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>407DA29512DA0F08DB327106</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImage+MultiFormat.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIImage+MultiFormat.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>40812674C42B54FB304A95E8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AF89765DF2BC41D0E90F46F8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4137F0F4E1B3380F72686D18</key>
+		<dict>
+			<key>fileRef</key>
+			<string>51934B6326C4576CE750E2A1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>433FDF99E93FFACD195AA2BD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9EF8B6C7952D7A42AEE72719</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>438F6A0A29B0110907258C14</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImageDownloader.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDownloader.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4463752EC1E19D303EA267BD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-SDWebImage-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>45E85BFEC86F8B0F28DFCB8C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSData+ImageContentType.h</string>
+			<key>path</key>
+			<string>SDWebImage/NSData+ImageContentType.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>46704D0FE41DF7D20AF45DFD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>47CB28703EAA25F9AC246CDC</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>28BB5AC694741550A23B9A03</string>
+				<string>0328D9F661697BA3D5D34D91</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>492AE63A6105F4B857DBA1D7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AE308949325B7109C7AB318B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>493C9B9D22ABA1082F8FB57E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F44D22C014E9E5D3608FBCDE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>497074394222CDAFCCBBDACF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>03A3885F9AEF34AA7A8FD023</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>4970F85A65D526CAEEBC2493</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D81B6751B170555EE17DAF77</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-STTwitter/Pods-TweetRain-STTwitter-prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>49B478A252AFC161D1A386C0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>ED869A1EB88504538693266E</string>
+				<string>18AB9733F7BCD08601B335A9</string>
+				<string>0B3FD254D84C68E9A4222CCE</string>
+				<string>9F4CB6B90976F3613C3FEB6E</string>
+				<string>957064EDBC523179D85E4224</string>
+				<string>403B6545AD5530F8C2AB4B3C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>4A06A1B934B57FB93CDD69B0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>363560F4FB1DFC421627154D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>4B8192413C306AAC32BE91BC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>631759A61AF5C03B0CE665EB</string>
+				<string>BF1829FB36028BC4D1693831</string>
+				<string>1F9857AE09E5A4132DAFB8BE</string>
+				<string>8CD1A1B017528E4549793672</string>
+				<string>7042600AA3F08B0C34BC197B</string>
+				<string>06C26C0EFF4C0988E2E1CB59</string>
+				<string>B18EBE4ADE94A44F631BF789</string>
+				<string>FDF8C6BD6DC3F52B8311C995</string>
+				<string>A41D2E9A6008269460860C0E</string>
+				<string>8257787B680F70BD867FF267</string>
+				<string>77CA60B6E6837F344C6A2356</string>
+				<string>F3066521478FF94800061AAE</string>
+				<string>5C89FB36C08ED7025B5A72E9</string>
+				<string>493C9B9D22ABA1082F8FB57E</string>
+				<string>630CDF2085CB7F33C5E47E76</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>4E57DEA3D499AD322954C54A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSDateFormatter+STTwitter.m</string>
+			<key>path</key>
+			<string>STTwitter/NSDateFormatter+STTwitter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4EDAACCEDCB77D838BD3384B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSError+STTwitter.m</string>
+			<key>path</key>
+			<string>STTwitter/NSError+STTwitter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4F07373ECC641FC14526EC4D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>28D1DFD4A8B65C04CCB6E2B7</string>
+				<string>BF5A58A3C8C9DA6AF38FDA83</string>
+				<string>B15D39A5387EA495F84182F5</string>
+				<string>FEDC4D329969BC709BD27F01</string>
+				<string>CD985A67B8920BA81365A3C4</string>
+				<string>AC169127E815FF1E3B162290</string>
+				<string>A433B3674765075A7FC9B093</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-TweetRain</string>
+			<key>path</key>
+			<string>Target Support Files/Pods-TweetRain</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>511D8FE356D9EBA8A1764084</key>
+		<dict>
+			<key>fileRef</key>
+			<string>03A3885F9AEF34AA7A8FD023</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>51934B6326C4576CE750E2A1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImageManager.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>51B54C45CC48B625E05E1C93</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>ImageIO.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/ImageIO.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>521D92BAF6C382769F0EAF57</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>218A1DC68F240DD4EDE0EB1B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>52DF5C6A0939BFF04CD05D9C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CC0784C6162731D9B1BF3861</string>
+				<string>DB5854DC08F72B0BC013FB50</string>
+				<string>5341410F5A6E625C2940229B</string>
+				<string>1A923ED01D5B5622711DED71</string>
+				<string>82177DEA94A38F6B222834D1</string>
+				<string>4E57DEA3D499AD322954C54A</string>
+				<string>A1353AFBCF11DD3F829E133E</string>
+				<string>4EDAACCEDCB77D838BD3384B</string>
+				<string>E25A8309ABC7BAB07FCBB380</string>
+				<string>03A3885F9AEF34AA7A8FD023</string>
+				<string>BD20D5FD985F75B266D01D54</string>
+				<string>B131F9E18B20511178843941</string>
+				<string>BEFD93D619BB7B9AD1D84296</string>
+				<string>6F8BA31A23EA77428586A5F1</string>
+				<string>A5612F3BCFF24C2BB3094830</string>
+				<string>C05FB7A99D124C280FB6C070</string>
+				<string>9EF8B6C7952D7A42AEE72719</string>
+				<string>2700C0793FE8F36C7228055A</string>
+				<string>3955B9DA5DEC883FB085975D</string>
+				<string>74518F650440C7080E077A58</string>
+				<string>AE308949325B7109C7AB318B</string>
+				<string>B0F2C47979A76585031098A9</string>
+				<string>0E2B823CA3B2A8717D84D8A6</string>
+				<string>2E925C1C22D57A22EA18639F</string>
+				<string>28B03A304DAA810858EBB663</string>
+				<string>F44D22C014E9E5D3608FBCDE</string>
+				<string>2A263405C609C3342941E1B6</string>
+				<string>0189BD6870FA5B6AE2183723</string>
+				<string>A7A8A0BC95822E023746F063</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>STTwitter</string>
+			<key>path</key>
+			<string>STTwitter</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5341410F5A6E625C2940229B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JSONSyntaxHighlight.h</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/JSONSyntaxHighlight.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>534B23A1CE5C38DE7C8C075A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2D5341149BDE43D6980D0424</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>547F72879CEE99443809CB83</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CDB19018482BEDABA60B5B54</string>
+				<string>52DF5C6A0939BFF04CD05D9C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>579F4CCE096489EC5DFFAAF6</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>6F3B0036EC7CBB7F9C1AC822</string>
+			<key>targetProxy</key>
+			<string>F7297CDD808CE010C9D1887C</string>
+		</dict>
+		<key>589BCB0B526BBFBD3B570A97</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5900E1D061FBDA8B2D5413B1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImage+GIF.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIImage+GIF.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5A2F09F521554770D8CFEBBE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>45E85BFEC86F8B0F28DFCB8C</string>
+				<string>3E2271313C470664B9C47FB3</string>
+				<string>B45C2ABC0EFB2B409459B731</string>
+				<string>2D5341149BDE43D6980D0424</string>
+				<string>B1A75065FDD03245A496C4C8</string>
+				<string>0EFE5720D44F33F09386630C</string>
+				<string>21BAA8280750DFE7207545EB</string>
+				<string>A9F45EE56EA3B307F530CB90</string>
+				<string>0650A55A28E283B7219B9378</string>
+				<string>438F6A0A29B0110907258C14</string>
+				<string>0E2A9D2000B72FF19B99ECFB</string>
+				<string>75AFCC1BFBE9FBD8BD1512BE</string>
+				<string>1D11DCC1A959498503D5AE1D</string>
+				<string>51934B6326C4576CE750E2A1</string>
+				<string>C6B3673EA4492B2F121C453D</string>
+				<string>B99CB6258ED2F2E5E2E89426</string>
+				<string>BA941D437D170966AD90752C</string>
+				<string>A311482697F1582229A684E6</string>
+				<string>B8CF6FC4AAEB0886685D9E24</string>
+				<string>5900E1D061FBDA8B2D5413B1</string>
+				<string>0F637BE97A63733BAE7EAB11</string>
+				<string>1F9619427C07917941C8844A</string>
+				<string>407DA29512DA0F08DB327106</string>
+				<string>23C3CA3B741DE4B01532A521</string>
+				<string>62E98CA643478F370422F3F8</string>
+				<string>AF89765DF2BC41D0E90F46F8</string>
+				<string>D66E6E46EF423A689CC1A08F</string>
+				<string>127FE91F48DDD9144458469E</string>
+				<string>92806CC3153B8D132E4CF406</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5B8496CB931BB0A2A53C45A1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AE308949325B7109C7AB318B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>5C89FB36C08ED7025B5A72E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2E925C1C22D57A22EA18639F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5C91DF66394D35E42257FAD9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>92806CC3153B8D132E4CF406</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>5CFA5345626BE4DAF26931E0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3955B9DA5DEC883FB085975D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>5DD3A4CD582F7F089119E3D9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-TweetRain.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>5DD598415E5271FEBCC87B9F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4EDAACCEDCB77D838BD3384B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>5F4554B420D79271CC8493AB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CC0784C6162731D9B1BF3861</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>61AC8A99BD5E24EBB71416A8</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-TweetRain-STTwitter.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>629615C82FACC7ECDFCF4B19</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0E2A9D2000B72FF19B99ECFB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62E98CA643478F370422F3F8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImageView+HighlightedWebCache.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIImageView+HighlightedWebCache.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>630CDF2085CB7F33C5E47E76</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0189BD6870FA5B6AE2183723</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>631759A61AF5C03B0CE665EB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CC0784C6162731D9B1BF3861</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>64DDFC614AD38BC762D3DD93</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1A923ED01D5B5622711DED71</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>654FC530B3430C668E00FCD6</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0510</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>D4695053E7A417D8E45295B3</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>855A508C4CB7BF6D390AB585</string>
+			<key>productRefGroup</key>
+			<string>94DB7F8825545CC9E6BF292C</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>ED64C655A8B2A4865060DDDA</string>
+				<string>EC79D6A878C557AC86420164</string>
+				<string>AEDAFE2163B4CF61AFB56E89</string>
+				<string>3C69A49B6767610ED7BE18C0</string>
+				<string>6F3B0036EC7CBB7F9C1AC822</string>
+			</array>
+		</dict>
+		<key>681A8B68A3FFBE9EB7125176</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-STTwitter-dummy.m</string>
+			<key>path</key>
+			<string>../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>68D8CA60D253FD1B7F78732C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>681A8B68A3FFBE9EB7125176</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6B44D54F41E1BEA597FEAF64</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4463752EC1E19D303EA267BD</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-ios-SDWebImage/Pods-TweetRain-ios-SDWebImage-prefix.pch</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6BB5939E8D77BA33775B2343</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BA941D437D170966AD90752C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>6C9A04C56EF4D3F8A570E008</key>
+		<dict>
+			<key>fileRef</key>
+			<string>28B03A304DAA810858EBB663</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>6D814890E31D6A946876AB7D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-STTwitter.xcconfig</string>
+			<key>path</key>
+			<string>../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F3B0036EC7CBB7F9C1AC822</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>2A3E2C7D3698F8D456F42FE4</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8799D301153DB87F258AFE09</string>
+				<string>49B478A252AFC161D1A386C0</string>
+				<string>4B8192413C306AAC32BE91BC</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-STTwitter</string>
+			<key>productName</key>
+			<string>Pods-TweetRain-ios-STTwitter</string>
+			<key>productReference</key>
+			<string>BB0BD377BBEA7788E5BF1E80</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>6F8BA31A23EA77428586A5F1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STHTTPRequest+STTwitter.m</string>
+			<key>path</key>
+			<string>STTwitter/STHTTPRequest+STTwitter.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F97AD74299834C0F991AEF0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4EDAACCEDCB77D838BD3384B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>7034001F2E190B49459C1816</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A311482697F1582229A684E6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7042600AA3F08B0C34BC197B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E25A8309ABC7BAB07FCBB380</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7302CD4421A2350F0F72BD6F</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-TweetRain-ios.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>73E4FCACE563382D14F3CF6E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>127FE91F48DDD9144458469E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>744C294F3D5FE22DC3B48527</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>75BF6358C09216719AD1D9C9</string>
+				<string>B4A43C3AB16FEC7B1B355105</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>74518F650440C7080E077A58</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterHTML.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterHTML.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>75AFCC1BFBE9FBD8BD1512BE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImageDownloaderOperation.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDownloaderOperation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>75BF6358C09216719AD1D9C9</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>8789A4D863828D682E67A269</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>76740790E9E31490CC889227</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>DB4FEDD45F0979AD07E5986E</string>
+				<string>64DDFC614AD38BC762D3DD93</string>
+				<string>DD31B2F3088939D090F2F436</string>
+				<string>6F97AD74299834C0F991AEF0</string>
+				<string>497074394222CDAFCCBBDACF</string>
+				<string>FBE4F83E10E451F3CA8675D8</string>
+				<string>D2756CB6F2393D85AB264B96</string>
+				<string>34BF44F1587DE8E9C0C648AD</string>
+				<string>433FDF99E93FFACD195AA2BD</string>
+				<string>5CFA5345626BE4DAF26931E0</string>
+				<string>492AE63A6105F4B857DBA1D7</string>
+				<string>CCB3677371132D8620308654</string>
+				<string>6C9A04C56EF4D3F8A570E008</string>
+				<string>FAC15DEB5F887B04D088FC9A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>76DFE14A58C610BDEA014AE3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9CD37599A380F31279981F0E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>OS X</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>774B55EAF0EFC7E19599AFE8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3955B9DA5DEC883FB085975D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>77961205C0DC03BE1AFB235E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>168240124A4A3170213D7A9E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>77BDBD8DF196CE54E0BD4721</key>
+		<dict>
+			<key>fileRef</key>
+			<string>45E85BFEC86F8B0F28DFCB8C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>77CA60B6E6837F344C6A2356</key>
+		<dict>
+			<key>fileRef</key>
+			<string>74518F650440C7080E077A58</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7A5FEBF2666E877849095BA9</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>654FC530B3430C668E00FCD6</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>3C69A49B6767610ED7BE18C0</string>
+			<key>remoteInfo</key>
+			<string>Pods-TweetRain-ios-SDWebImage</string>
+		</dict>
+		<key>7C616285AE9A60095F77C1FB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DF0E44AD7FC4098FF293D6F5</string>
+				<string>4463752EC1E19D303EA267BD</string>
+				<string>3D5E14544597439E18837493</string>
+				<string>C0BCFC60AEFB51F5F41DAA6F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/Pods-TweetRain-ios-SDWebImage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7C9DDA0968A09F7543F839FF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5900E1D061FBDA8B2D5413B1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>809A50FB56D5B261F8AB7CE8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1D11DCC1A959498503D5AE1D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>82177DEA94A38F6B222834D1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSDateFormatter+STTwitter.h</string>
+			<key>path</key>
+			<string>STTwitter/NSDateFormatter+STTwitter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8257787B680F70BD867FF267</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2700C0793FE8F36C7228055A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>84D6637896F37FA16140B09B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>77BDBD8DF196CE54E0BD4721</string>
+				<string>9250275B12F1881847E2B1BE</string>
+				<string>E61B4F7D65046228A8BA4D97</string>
+				<string>8CFB6041A1E2E7AD529FB341</string>
+				<string>F82ACA694E00569AC0FD1160</string>
+				<string>629615C82FACC7ECDFCF4B19</string>
+				<string>809A50FB56D5B261F8AB7CE8</string>
+				<string>037E40ACBC5833D8F5C5706F</string>
+				<string>8965F299CA59DC4463E94FCB</string>
+				<string>7034001F2E190B49459C1816</string>
+				<string>7C9DDA0968A09F7543F839FF</string>
+				<string>C92FDCCDEB1C00EB84FCA67F</string>
+				<string>A621875248C315A5DEA65B78</string>
+				<string>40812674C42B54FB304A95E8</string>
+				<string>73E4FCACE563382D14F3CF6E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>855A508C4CB7BF6D390AB585</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>28BAF36AB063A10332115BFD</string>
+				<string>92052DE685815CFAA35D42AD</string>
+				<string>547F72879CEE99443809CB83</string>
+				<string>94DB7F8825545CC9E6BF292C</string>
+				<string>29C633C8C123874731747EF0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85E328A54734EBEEC66CD7CD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DB5854DC08F72B0BC013FB50</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>864D549E3C5D2F7AA51CFEE5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A5612F3BCFF24C2BB3094830</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>86AECC7A3FD5392FFEFB8612</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>QuartzCore.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>86DDB470F6A780E5ABF3E2F4</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>8789A4D863828D682E67A269</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8799D301153DB87F258AFE09</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>85E328A54734EBEEC66CD7CD</string>
+				<string>2FBC8040B37A7F66A1E06A38</string>
+				<string>9153A8B1CAEBD2263EB6EA3F</string>
+				<string>5DD598415E5271FEBCC87B9F</string>
+				<string>511D8FE356D9EBA8A1764084</string>
+				<string>68D8CA60D253FD1B7F78732C</string>
+				<string>1065D382BA2F9C219A88F869</string>
+				<string>95658364C4CADA5D48F566B7</string>
+				<string>B9B5F2AAEE3613E092E8F91A</string>
+				<string>774B55EAF0EFC7E19599AFE8</string>
+				<string>5B8496CB931BB0A2A53C45A1</string>
+				<string>C90E052C97DD63604A516272</string>
+				<string>ECC861EB6A4C896D9C68071D</string>
+				<string>A840DCB4FC70875EA05530CD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8965F299CA59DC4463E94FCB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B99CB6258ED2F2E5E2E89426</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>89C9BD9C453754D08784A864</key>
+		<dict>
+			<key>fileRef</key>
+			<string>438F6A0A29B0110907258C14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>8B0FFB9B69916FA74A8EF03B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0F637BE97A63733BAE7EAB11</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>8C8CE81F7CC23BB15D0D030A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>D81B6751B170555EE17DAF77</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-STTwitter/Pods-TweetRain-STTwitter-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>8CD1A1B017528E4549793672</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1353AFBCF11DD3F829E133E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8CFB6041A1E2E7AD529FB341</key>
+		<dict>
+			<key>fileRef</key>
+			<string>21BAA8280750DFE7207545EB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8D5604AEF24D473058977A9A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-TweetRain-STTwitter-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>90EDD9CBC44F96AFE222CC2C</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-TweetRain-ios-SDWebImage.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9153A8B1CAEBD2263EB6EA3F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4E57DEA3D499AD322954C54A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>92052DE685815CFAA35D42AD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>76DFE14A58C610BDEA014AE3</string>
+				<string>AC0B5309D84595BDF49324BC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9250275B12F1881847E2B1BE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B45C2ABC0EFB2B409459B731</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>92806CC3153B8D132E4CF406</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIView+WebCacheOperation.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIView+WebCacheOperation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>94DB7F8825545CC9E6BF292C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5DD3A4CD582F7F089119E3D9</string>
+				<string>61AC8A99BD5E24EBB71416A8</string>
+				<string>7302CD4421A2350F0F72BD6F</string>
+				<string>90EDD9CBC44F96AFE222CC2C</string>
+				<string>BB0BD377BBEA7788E5BF1E80</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>95658364C4CADA5D48F566B7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B131F9E18B20511178843941</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>957064EDBC523179D85E4224</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A237B3009582FEB4B2E85690</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>958DB834A5E7DB98B3B77F36</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>207FEBD79C7F1DCD0AFC21A5</string>
+				<string>C2E02D8F1610683E130B94D7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>959854C055FD39FA99FA4C16</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0EFE5720D44F33F09386630C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>9A20011E97FFB05D8A456C23</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>EC79D6A878C557AC86420164</string>
+			<key>targetProxy</key>
+			<string>E4782F182C4F6561589158E1</string>
+		</dict>
+		<key>9C99DCA3D90D9C835FC36D77</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-STTwitter-Private.xcconfig</string>
+			<key>path</key>
+			<string>../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9CD37599A380F31279981F0E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Cocoa.framework</string>
+			<key>path</key>
+			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Cocoa.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>9EF8B6C7952D7A42AEE72719</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterAPI.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterAPI.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9F4CB6B90976F3613C3FEB6E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>86AECC7A3FD5392FFEFB8612</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A1353AFBCF11DD3F829E133E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSError+STTwitter.h</string>
+			<key>path</key>
+			<string>STTwitter/NSError+STTwitter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A237B3009582FEB4B2E85690</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Twitter.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>A28107BB5F0081DEC92473C1</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>CoreGraphics.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>A311482697F1582229A684E6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIButton+WebCache.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIButton+WebCache.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A41D2E9A6008269460860C0E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C05FB7A99D124C280FB6C070</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A433B3674765075A7FC9B093</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A5612F3BCFF24C2BB3094830</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitter.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A621875248C315A5DEA65B78</key>
+		<dict>
+			<key>fileRef</key>
+			<string>23C3CA3B741DE4B01532A521</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A7A8A0BC95822E023746F063</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>30D6C34304B265BF0665D2AA</string>
+				<string>D81B6751B170555EE17DAF77</string>
+				<string>8D5604AEF24D473058977A9A</string>
+				<string>E7B73EAED86942D0A1882380</string>
+				<string>6D814890E31D6A946876AB7D</string>
+				<string>9C99DCA3D90D9C835FC36D77</string>
+				<string>681A8B68A3FFBE9EB7125176</string>
+				<string>E305CF9C52A91B0ADC6C1D37</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/Pods-TweetRain-STTwitter</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A7AFEB328508F1B78F24F0A3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F5DE695B779B26E5F15ACA46</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>A840DCB4FC70875EA05530CD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2A263405C609C3342941E1B6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>A9F45EE56EA3B307F530CB90</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImageDecoder.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageDecoder.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AC0B5309D84595BDF49324BC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D0C843EBF99FABCA1CE1ABF5</string>
+				<string>A28107BB5F0081DEC92473C1</string>
+				<string>86DDB470F6A780E5ABF3E2F4</string>
+				<string>51B54C45CC48B625E05E1C93</string>
+				<string>86AECC7A3FD5392FFEFB8612</string>
+				<string>A237B3009582FEB4B2E85690</string>
+				<string>36F23A485F9B8558EDB6067F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AC169127E815FF1E3B162290</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AE308949325B7109C7AB318B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STTwitterHTML.m</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterHTML.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AEDAFE2163B4CF61AFB56E89</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>744C294F3D5FE22DC3B48527</string>
+			<key>buildPhases</key>
+			<array>
+				<string>521D92BAF6C382769F0EAF57</string>
+				<string>4A06A1B934B57FB93CDD69B0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E58835BC24481B3F979E30E4</string>
+				<string>579F4CCE096489EC5DFFAAF6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios</string>
+			<key>productName</key>
+			<string>Pods-TweetRain-ios</string>
+			<key>productReference</key>
+			<string>7302CD4421A2350F0F72BD6F</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>AF89765DF2BC41D0E90F46F8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>UIImageView+WebCache.h</string>
+			<key>path</key>
+			<string>SDWebImage/UIImageView+WebCache.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B0F2C47979A76585031098A9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterOAuth.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOAuth.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B131F9E18B20511178843941</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>STHTTPRequest.m</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/STHTTPRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B15D39A5387EA495F84182F5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-TweetRain-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B18EBE4ADE94A44F631BF789</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD20D5FD985F75B266D01D54</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B1A75065FDD03245A496C4C8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageCompat.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageCompat.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B45C2ABC0EFB2B409459B731</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDImageCache.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDImageCache.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B4A43C3AB16FEC7B1B355105</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>0428BA7163750DFA8BC72D32</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>B76E0EF9D57AC18ECCF250B1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E2271313C470664B9C47FB3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>B8CF6FC4AAEB0886685D9E24</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIButton+WebCache.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIButton+WebCache.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B99CB6258ED2F2E5E2E89426</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImagePrefetcher.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImagePrefetcher.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B9B5F2AAEE3613E092E8F91A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9EF8B6C7952D7A42AEE72719</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>BA941D437D170966AD90752C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>SDWebImagePrefetcher.m</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImagePrefetcher.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB0BD377BBEA7788E5BF1E80</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-TweetRain-ios-STTwitter.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>BD20D5FD985F75B266D01D54</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STHTTPRequest.h</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/STHTTPRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BE50CB694AF2AC1F08CD4922</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B15D39A5387EA495F84182F5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BEFD93D619BB7B9AD1D84296</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STHTTPRequest+STTwitter.h</string>
+			<key>path</key>
+			<string>STTwitter/STHTTPRequest+STTwitter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BF1829FB36028BC4D1693831</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5341410F5A6E625C2940229B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>BF5A58A3C8C9DA6AF38FDA83</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-TweetRain-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BF7BACE1BE1190FB1954113B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A9F45EE56EA3B307F530CB90</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>C05FB7A99D124C280FB6C070</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterAPI.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterAPI.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C0BCFC60AEFB51F5F41DAA6F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-SDWebImage-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C2E02D8F1610683E130B94D7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>51B54C45CC48B625E05E1C93</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C508D09805EDB93E24B204BA</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>NO</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.10</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>C678A725539F47670D5094D4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C05FB7A99D124C280FB6C070</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C6B3673EA4492B2F121C453D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SDWebImageOperation.h</string>
+			<key>path</key>
+			<string>SDWebImage/SDWebImageOperation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C7D4F73368A6C311624ED7B2</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4463752EC1E19D303EA267BD</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-ios-SDWebImage/Pods-TweetRain-ios-SDWebImage-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>C906A240521B92AF33ED4697</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62E98CA643478F370422F3F8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>C90E052C97DD63604A516272</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0E2B823CA3B2A8717D84D8A6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>C92FDCCDEB1C00EB84FCA67F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9619427C07917941C8844A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA34BEC13B2CD2562310EBB8</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>9C99DCA3D90D9C835FC36D77</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CC0784C6162731D9B1BF3861</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BAVPlistNode.h</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/BAVPlistNode.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CCB3677371132D8620308654</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0E2B823CA3B2A8717D84D8A6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>CCD017B8E5B537694E9B50A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BD20D5FD985F75B266D01D54</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CD985A67B8920BA81365A3C4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-TweetRain-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CDB19018482BEDABA60B5B54</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5A2F09F521554770D8CFEBBE</string>
+				<string>7C616285AE9A60095F77C1FB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SDWebImage</string>
+			<key>path</key>
+			<string>SDWebImage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D0C843EBF99FABCA1CE1ABF5</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Accounts.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Accounts.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>D0FAD6903128263885325BE9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2E925C1C22D57A22EA18639F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D2756CB6F2393D85AB264B96</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F8BA31A23EA77428586A5F1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>D4695053E7A417D8E45295B3</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C508D09805EDB93E24B204BA</string>
+				<string>36EB4A895E4C26B3A407455C</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D5710AE82CA96EC290F3FB5C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5341410F5A6E625C2940229B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D66E6E46EF423A689CC1A08F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>UIImageView+WebCache.m</string>
+			<key>path</key>
+			<string>SDWebImage/UIImageView+WebCache.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D6CDD43686EC0DACEAD2B7B8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>74518F650440C7080E077A58</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D81B6751B170555EE17DAF77</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-STTwitter-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DB4FEDD45F0979AD07E5986E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DB5854DC08F72B0BC013FB50</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>DB5854DC08F72B0BC013FB50</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BAVPlistNode.m</string>
+			<key>path</key>
+			<string>STTwitter/Vendor/BAVPlistNode.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DD31B2F3088939D090F2F436</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4E57DEA3D499AD322954C54A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>DF0E44AD7FC4098FF293D6F5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TweetRain-ios-SDWebImage.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E08F7DA6312E40B79F86358D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B0F2C47979A76585031098A9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E25A8309ABC7BAB07FCBB380</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSString+STTwitter.h</string>
+			<key>path</key>
+			<string>STTwitter/NSString+STTwitter.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E305CF9C52A91B0ADC6C1D37</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>Pods-TweetRain-ios-STTwitter-prefix.pch</string>
+			<key>path</key>
+			<string>../Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E4782F182C4F6561589158E1</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>654FC530B3430C668E00FCD6</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>EC79D6A878C557AC86420164</string>
+			<key>remoteInfo</key>
+			<string>Pods-TweetRain-STTwitter</string>
+		</dict>
+		<key>E58835BC24481B3F979E30E4</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>3C69A49B6767610ED7BE18C0</string>
+			<key>targetProxy</key>
+			<string>7A5FEBF2666E877849095BA9</string>
+		</dict>
+		<key>E61B4F7D65046228A8BA4D97</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B1A75065FDD03245A496C4C8</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E69709A91A0972B4B0E54B98</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3D5E14544597439E18837493</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E69B3CFBC435351A4519E655</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>BE50CB694AF2AC1F08CD4922</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E7B04AD4944B091A39A61636</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E25A8309ABC7BAB07FCBB380</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E7B73EAED86942D0A1882380</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-TweetRain-STTwitter-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EA6B01527F9744F5148C251D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>9C99DCA3D90D9C835FC36D77</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/Pods-TweetRain-ios-STTwitter/Pods-TweetRain-ios-STTwitter-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>EC79D6A878C557AC86420164</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>F83C4674E24B1C3C6A38411F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>76740790E9E31490CC889227</string>
+				<string>A7AFEB328508F1B78F24F0A3</string>
+				<string>F166B793FC9717E1C9619C57</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TweetRain-STTwitter</string>
+			<key>productName</key>
+			<string>Pods-TweetRain-STTwitter</string>
+			<key>productReference</key>
+			<string>61AC8A99BD5E24EBB71416A8</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>ECC861EB6A4C896D9C68071D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>28B03A304DAA810858EBB663</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>ED64C655A8B2A4865060DDDA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>47CB28703EAA25F9AC246CDC</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E69B3CFBC435351A4519E655</string>
+				<string>77961205C0DC03BE1AFB235E</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>9A20011E97FFB05D8A456C23</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TweetRain</string>
+			<key>productName</key>
+			<string>Pods-TweetRain</string>
+			<key>productReference</key>
+			<string>5DD3A4CD582F7F089119E3D9</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>ED869A1EB88504538693266E</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D0C843EBF99FABCA1CE1ABF5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F166B793FC9717E1C9619C57</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>5F4554B420D79271CC8493AB</string>
+				<string>D5710AE82CA96EC290F3FB5C</string>
+				<string>2C7CB6C7950AD33985A8271D</string>
+				<string>F203056BACDFFE3D95C744CB</string>
+				<string>E7B04AD4944B091A39A61636</string>
+				<string>F4C24457BE0A9BA38BBD260A</string>
+				<string>CCD017B8E5B537694E9B50A9</string>
+				<string>864D549E3C5D2F7AA51CFEE5</string>
+				<string>C678A725539F47670D5094D4</string>
+				<string>09547C0124FCA228C472725E</string>
+				<string>D6CDD43686EC0DACEAD2B7B8</string>
+				<string>E08F7DA6312E40B79F86358D</string>
+				<string>D0FAD6903128263885325BE9</string>
+				<string>2F24E2D3FD43CCA6043B9B14</string>
+				<string>FB3F1A97FF79F3E49A46B606</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F203056BACDFFE3D95C744CB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A1353AFBCF11DD3F829E133E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F3066521478FF94800061AAE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B0F2C47979A76585031098A9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F44D22C014E9E5D3608FBCDE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>STTwitterOSRequest.h</string>
+			<key>path</key>
+			<string>STTwitter/STTwitterOSRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F4C24457BE0A9BA38BBD260A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BEFD93D619BB7B9AD1D84296</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5DE695B779B26E5F15ACA46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9CD37599A380F31279981F0E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F7297CDD808CE010C9D1887C</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>654FC530B3430C668E00FCD6</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>6F3B0036EC7CBB7F9C1AC822</string>
+			<key>remoteInfo</key>
+			<string>Pods-TweetRain-ios-STTwitter</string>
+		</dict>
+		<key>F82ACA694E00569AC0FD1160</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0650A55A28E283B7219B9378</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F83C4674E24B1C3C6A38411F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>8C8CE81F7CC23BB15D0D030A</string>
+				<string>4970F85A65D526CAEEBC2493</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>FAC15DEB5F887B04D088FC9A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2A263405C609C3342941E1B6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>FB3F1A97FF79F3E49A46B606</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0189BD6870FA5B6AE2183723</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FBE4F83E10E451F3CA8675D8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8D5604AEF24D473058977A9A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FDF8C6BD6DC3F52B8311C995</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A5612F3BCFF24C2BB3094830</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FEDC4D329969BC709BD27F01</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-TweetRain-environment.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>654FC530B3430C668E00FCD6</string>
+</dict>
+</plist>
