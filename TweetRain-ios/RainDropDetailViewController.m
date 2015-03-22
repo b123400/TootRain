@@ -8,6 +8,7 @@
 
 #import "RainDropDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ComposeStatusViewController.h"
 
 @interface RainDropDetailViewController ()
 
@@ -74,7 +75,9 @@
 }
 
 - (IBAction)replyButtonPressed:(id)sender {
-    
+    ComposeStatusViewController *controller = [[ComposeStatusViewController alloc] initWithReplyStatus:self.status type:ComposeStatusTypeReply];
+    controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)retweetButtonPressed:(id)sender {
@@ -82,7 +85,9 @@
 }
 
 - (IBAction)rtButtonPressed:(id)sender {
-    
+    ComposeStatusViewController *controller = [[ComposeStatusViewController alloc] initWithReplyStatus:self.status type:ComposeStatusTypeRetweet];
+    controller.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)favButtonPressed:(id)sender {

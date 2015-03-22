@@ -14,6 +14,7 @@
 @interface ComposeStatusViewController ()
 
 @property (nonatomic, strong) Status *status;
+@property (nonatomic, assign) ComposeStatusType type;
 
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
@@ -25,10 +26,11 @@
 
 @implementation ComposeStatusViewController
 
-- (instancetype) initWithReplyStatus:(Status*)status {
+- (instancetype) initWithReplyStatus:(Status*)status type:(ComposeStatusType)type {
     self = [super init];
     
     self.status = status;
+    self.type = type;
     self.twitter = [STTwitterAPI twitterAPIOSWithAccount:[[SettingManager sharedManager]selectedAccount]];
     
     return self;
@@ -37,6 +39,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    switch (self.type) {
+        case ComposeStatusTypeReply:
+            self.contentTextView.text = [NSString stringWithFormat:@"@%@ ", self.status.user.username];
+            self.contentTextView.selectedRange = NSMakeRange(self.contentTextView.text.length, 0);
+            break;
+            
+        case ComposeStatusTypeRetweet:
+            self.contentTextView.text = [NSString stringWithFormat:@"RT @%@: %@",
+                                         self.status.user.username,
+                                         self.status.text];
+            self.contentTextView.selectedRange = NSMakeRange(0, 0);
+            
+        default:
+            break;
+    }
+    [self.contentTextView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
