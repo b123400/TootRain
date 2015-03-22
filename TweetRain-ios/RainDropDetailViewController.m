@@ -9,10 +9,14 @@
 #import "RainDropDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ComposeStatusViewController.h"
+#import <STTwitter/STTwitter.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "SettingManager.h"
 
 @interface RainDropDetailViewController ()
 
 @property (nonatomic, strong) Status *status;
+@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -32,6 +36,7 @@
     
     self.status = status;
     self.title = NSLocalizedString(@"Status", nil);
+    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:[[SettingManager sharedManager]selectedAccount]];
     
     return self;
 }
@@ -60,7 +65,7 @@
     CGSize newSize = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width,
                                                                    MAXFLOAT)];
     
-    self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, newSize.height+160);
+    self.preferredContentSize = CGSizeMake(self.preferredContentSize.width, newSize.height+168);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +86,18 @@
 }
 
 - (IBAction)retweetButtonPressed:(id)sender {
-
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [self.twitter postStatusRetweetWithID:self.status.statusID successBlock:^(NSDictionary *status) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", @"")];
+        
+    } errorBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
+                                   message:error.localizedDescription
+                                  delegate:nil
+                         cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                          otherButtonTitles: nil] show];
+    }];
 }
 
 - (IBAction)rtButtonPressed:(id)sender {
@@ -91,7 +107,17 @@
 }
 
 - (IBAction)favButtonPressed:(id)sender {
-    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [self.twitter postFavoriteCreateWithStatusID:self.status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Done", @"")];
+    } errorBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
+                                    message:error.localizedDescription
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                          otherButtonTitles: nil] show];
+    }];
 }
 
 /*

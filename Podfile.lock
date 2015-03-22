@@ -3,13 +3,16 @@ PODS:
     - SDWebImage/Core
   - SDWebImage/Core (3.7.2)
   - STTwitter (0.1.5)
+  - SVProgressHUD (1.1.2)
 
 DEPENDENCIES:
   - SDWebImage
   - STTwitter
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   STTwitter: 60f28af91d622b9a3f74f28cd021413277d413bb
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
 
 COCOAPODS: 0.34.4

@@ -539,10 +539,10 @@
 		CF80401C1ABE0D7D00DF3D59 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
-				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
 				CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */,
 				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
+				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
+				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";

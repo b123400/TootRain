@@ -65,6 +65,12 @@
     ACAccount *account = [allAccounts objectAtIndex:indexPath.row];
     cell.textLabel.text = [account username];
     
+    if (account == [[SettingManager sharedManager] selectedAccount]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
