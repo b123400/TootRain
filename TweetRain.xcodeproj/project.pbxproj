@@ -38,6 +38,8 @@
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */; };
+		CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
@@ -45,6 +47,8 @@
 		CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
 		CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */; };
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
+		CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */; };
+		CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
 		CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
@@ -189,6 +193,9 @@
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
+		CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
+		CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
@@ -201,6 +208,9 @@
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodAppDelegate.m; sourceTree = "<group>"; };
+		CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
+		CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
+		CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CF9F9E351534567B000AE741 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		CF9F9E361534567B000AE741 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		CFA1BB5614DC514D000566A0 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
@@ -516,6 +526,59 @@
 			name = StreamController;
 			sourceTree = "<group>";
 		};
+		CF80401B1ABE0D7100DF3D59 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */,
+				CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */,
+				CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		CF80401C1ABE0D7D00DF3D59 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
+				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
+				CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */,
+				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		CF8040221ABE0DAC00DF3D59 /* Rain Drop */ = {
+			isa = PBXGroup;
+			children = (
+				CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */,
+				CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */,
+				CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */,
+				CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */,
+				CF0C61B41ABD849900C170FC /* RainDropViewController.xib */,
+			);
+			name = "Rain Drop";
+			sourceTree = "<group>";
+		};
+		CF8040231ABE0DC100DF3D59 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */,
+				CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */,
+				CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		CF912ACA1ABF07BC00B9426B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */,
+				CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */,
+				CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
 		CF9F62081563D548004C6514 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,18 +723,11 @@
 				CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */,
 				CF2AAAE61ABADDE3002EC003 /* ViewController.h */,
 				CF2AAAE71ABADDE3002EC003 /* ViewController.m */,
-				CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */,
-				CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */,
-				CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */,
-				CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */,
-				CF0C61B41ABD849900C170FC /* RainDropViewController.xib */,
-				CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */,
-				CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */,
-				CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */,
-				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
-				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
-				CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */,
-				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
+				CF8040221ABE0DAC00DF3D59 /* Rain Drop */,
+				CF8040231ABE0DC100DF3D59 /* Detail */,
+				CF912ACA1ABF07BC00B9426B /* Actions */,
+				CF80401B1ABE0D7100DF3D59 /* Auth */,
+				CF80401C1ABE0D7D00DF3D59 /* Setting */,
 				CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */,
 				CF2AAAF31ABB1698002EC003 /* Main.storyboard */,
 				CFCA49CB1AB8AA6F00E922C9 /* LaunchScreen.xib */,
@@ -848,6 +904,8 @@
 				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
+				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
+				CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */,
 				CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1007,9 +1065,11 @@
 				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,
 				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
 				CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */,
+				CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */,
 				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
 				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
+				CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */,
 				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
 				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,
 			);

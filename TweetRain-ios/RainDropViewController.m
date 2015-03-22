@@ -26,6 +26,7 @@
     self = [super initWithNibName:@"RainDropViewController" bundle:nil];
     
     self.status = status;
+    self.paused = YES;
     
     return self;
 }
@@ -46,7 +47,7 @@
     [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
     
     CGRect frame = self.view.frame;
-    frame.size.width = [self.contentTextLabel.attributedText size].width;
+    frame.size.width = [self.contentTextLabel.attributedText size].width + 73 + 8;
     self.view.frame = frame;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -69,16 +70,25 @@
 #pragma mark animation
 
 - (void)startAnimation {
+    if (!self.paused) return;
     self.paused = NO;
     self.animationEnd = [NSDate dateWithTimeIntervalSinceNow:self.animationDuration];
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
     animation.toValue = @(-self.view.frame.size.width);
-    animation.duration = 10;
+    
+    CGRect presentedFrame = self.view.frame;
+    if (self.view.layer.presentationLayer) {
+        presentedFrame = [self.view.layer.presentationLayer frame];
+    }
+    
+    animation.duration = [self animationDuration]*(CGRectGetMaxX(presentedFrame)/(self.view.superview.frame.size.width+self.view.frame.size.width));
+    
     animation.delegate = self;
     [self.view.layer addAnimation:animation forKey:@"position"];
 }
 
 - (void)pauseAnimation {
+    if (self.paused) return;
     self.paused = YES;
     CGPoint point = [self.view.layer.presentationLayer position];
     [self.view.layer removeAnimationForKey:@"position"];

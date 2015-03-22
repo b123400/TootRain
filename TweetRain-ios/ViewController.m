@@ -13,8 +13,9 @@
 #import "StreamController.h"
 #import "Status.h"
 #import "RainDropViewController.h"
+#import "RainDropDetailViewController.h"
 
-@interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate>
+@interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate>
 
 @end
 
@@ -68,8 +69,22 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
+#pragma mark interface
+
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
     return UIModalPresentationOverFullScreen;
+}
+
+
+- (UIViewController *)presentationController:(UIPresentationController *)controller
+  viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
+    UIViewController *dest = [controller presentedViewController];
+    if (![dest isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:dest];
+        controller.navigationBar.translucent = NO;
+        return controller;
+    }
+    return dest;
 }
 
 #pragma mark stream
@@ -78,12 +93,13 @@
     RainDropViewController *rainDropController = [[RainDropViewController alloc] initWithStatus:tweet];
     rainDropController.delegate = self;
     [self.view addSubview:rainDropController.view];
-    [self addChildViewController:rainDropController];
     
     CGRect frame = rainDropController.view.frame;
     frame.origin.x = self.view.frame.size.width;
     frame.origin.y = [self smallestPossibleYForStatusViewController:rainDropController];
     rainDropController.view.frame = frame;
+    
+    [self addChildViewController:rainDropController];
     
     [rainDropController startAnimation];
 }
@@ -93,6 +109,7 @@
     
     for(RainDropViewController *thisController in self.childViewControllers){
         if (![thisController isKindOfClass:[RainDropViewController class]]) continue;
+        if (thisController == controller) continue;
         if ((thisController.view.frame.origin.y<=thisY&&
              thisController.view.frame.origin.y+thisController.view.frame.size.height>=thisY)||
             (thisController.view.frame.origin.y<=thisY+controller.view.frame.size.height&&
@@ -107,7 +124,7 @@
 }
 
 -(float)smallestPossibleYForStatusViewController:(RainDropViewController*)controller{
-    float possibleY = 0;
+    float possibleY = self.topLayoutGuide.length;
     while(possibleY < self.view.frame.size.height){
         float suggestion = [self ySuggestionForStatusViewController:controller atY:possibleY];
         if(suggestion == possibleY){
@@ -118,16 +135,40 @@
     return possibleY;
 }
 
-#pragma mark interaction
-
 - (void)rainDropViewControllerDidDisappeared:(RainDropViewController*)sender {
     [sender.view removeFromSuperview];
     [sender removeFromParentViewController];
     sender.delegate = nil;
 }
 
+#pragma mark interaction
+
 - (void)rainDropViewControllerDidTapped:(RainDropViewController*)sender {
-    NSLog(@"did tapped %@", sender.status.text);
+    RainDropDetailViewController *detailViewController = [[RainDropDetailViewController alloc] initWithStatus:sender.status];
+    detailViewController.delegate = self;
+    detailViewController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popover = detailViewController.popoverPresentationController;
+    popover.sourceRect = [sender.view.layer.presentationLayer frame];
+    popover.sourceView = self.view;
+    popover.delegate = self;
+    [self presentViewController:detailViewController animated:YES completion:nil];
+    [sender pauseAnimation];
+}
+
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    if ([popoverPresentationController.presentedViewController isKindOfClass:[RainDropDetailViewController class]]) {
+        [self rainDropDetailViewControllerDidClosed:(RainDropDetailViewController*)popoverPresentationController.presentedViewController];
+    }
+}
+
+- (void)rainDropDetailViewControllerDidClosed:(RainDropDetailViewController*)sender {
+    Status *status = sender.status;
+    for (RainDropViewController *raindrop in self.childViewControllers) {
+        if (![raindrop isKindOfClass:[RainDropViewController class]]) continue;
+        if ([raindrop status] == status) {
+            [raindrop startAnimation];
+        }
+    }
 }
 
 @end

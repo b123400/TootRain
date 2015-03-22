@@ -98,6 +98,7 @@
 	
 	[profileImageView setImageURL:status.user.profileImageURL];
 }
+
 #pragma mark button actions
 - (IBAction)replyClicked:(id)sender {
 	ComposeStatusViewController *controller=[[ComposeStatusViewController alloc] init];
