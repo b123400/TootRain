@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TweetRain-ios-Color-Picker-for-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TweetRain-ios-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2343C55CB44F3B326D4A2A81</key>
+		<key>1E9709A6F44EEB13FE6B3000</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34BF8761D12A877B95DB11D0</key>
+		<key>63862AE4005D0301C5D2825D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A407DB597D411FAA7611383</key>
+		<key>8E1260450DA886A44C23DBD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE60428E4C908A772567FFC4</key>
+		<key>B06309A3DD48DD016E2D2B8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB02F77D36ECEFCAEF5D511D</key>
+		<key>DF9BF7B6883E512359CB710C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F593B23552D1591672CEB61A</key>
+		<key>E62DE22FDE6DE30F16D8A2BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAFA0A15B24E1A3F82A88151</key>
 		<dict>
 			<key>primary</key>
 			<true/>

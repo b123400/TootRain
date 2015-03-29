@@ -40,6 +40,7 @@
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */; };
 		CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */; };
+		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
@@ -196,6 +197,8 @@
 		CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
 		CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
+		CF82C2C31AC861DE00F0DC05 /* SettingColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
+		CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
 				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
 				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
+				CF82C2C31AC861DE00F0DC05 /* SettingColorViewController.h */,
+				CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1069,6 +1074,7 @@
 				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
 				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
+				CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */,
 				CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */,
 				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
 				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,

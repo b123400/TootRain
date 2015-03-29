@@ -1,4 +1,5 @@
 PODS:
+  - Color-Picker-for-iOS (2.0)
   - SDWebImage (3.7.2):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.2)
@@ -6,11 +7,13 @@ PODS:
   - SVProgressHUD (1.1.2)
 
 DEPENDENCIES:
+  - Color-Picker-for-iOS (~> 2.0)
   - SDWebImage
   - STTwitter
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Color-Picker-for-iOS: 2eec454aa6b24a8b7c2537da0f61c6ead936949e
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   STTwitter: 60f28af91d622b9a3f74f28cd021413277d413bb
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438

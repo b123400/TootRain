@@ -32,6 +32,8 @@
 @property (nonatomic) UIColor *shadowColor;
 @property (nonatomic) UIColor *hoverBackgroundColor;
 @property (nonatomic) UIFont *font;
+@property (nonatomic) float fontSize;
+@property (nonatomic) NSString *fontName;
 
 #elif TARGET_OS_MAC
 

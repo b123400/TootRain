@@ -13,4 +13,5 @@ target "TweetRain-ios" do
   import_pods
   pod "SDWebImage"
   pod "SVProgressHUD"
+  pod "Color-Picker-for-iOS", "~> 2.0"
 end

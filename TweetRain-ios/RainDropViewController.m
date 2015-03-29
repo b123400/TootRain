@@ -28,27 +28,17 @@
     self.status = status;
     self.paused = YES;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applyApperance)
+                                                 name:kRainDropAppearanceChangedNotification
+                                               object:nil];
+    
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIFont *font = [[SettingManager sharedManager] font];
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName : font
-                                 };
-    
-    self.contentTextLabel.font = font;
-    self.contentTextLabel.textColor = [[SettingManager sharedManager] textColor];
-    self.contentTextLabel.attributedText = [[NSAttributedString alloc] initWithString:self.status.text
-                                                                           attributes:attributes];
-
-    [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
-    
-    CGRect frame = self.view.frame;
-    frame.size.width = [self.contentTextLabel.attributedText size].width + 73 + 8;
-    self.view.frame = frame;
+    [self applyApperance];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(viewDidTapped:)];
@@ -65,6 +55,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)applyApperance {
+    self.view.alpha = [[SettingManager sharedManager] opacity];
+    
+    UIFont *font = [[SettingManager sharedManager] font];
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName : font
+                                 };
+    
+    self.contentTextLabel.font = font;
+    self.contentTextLabel.textColor = [[SettingManager sharedManager] textColor];
+    self.contentTextLabel.attributedText = [[NSAttributedString alloc] initWithString:self.status.text
+                                                                           attributes:attributes];
+    
+    [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
+    
+    CGRect frame = self.view.frame;
+    frame.size.width = [self.contentTextLabel.attributedText size].width + 73 + 8;
+    self.view.frame = frame;
 }
 
 #pragma mark animation
