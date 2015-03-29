@@ -14,6 +14,7 @@
 #import "Status.h"
 #import "RainDropViewController.h"
 #import "RainDropDetailViewController.h"
+#import "BRNavigationViewController.h"
 
 @interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate>
 
@@ -80,8 +81,7 @@
   viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
     UIViewController *dest = [controller presentedViewController];
     if (![dest isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:dest];
-        controller.navigationBar.translucent = NO;
+        BRNavigationViewController *controller = [[BRNavigationViewController alloc] initWithRootViewController:dest];
         return controller;
     }
     return dest;

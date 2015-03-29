@@ -148,13 +148,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="textColor" rowHeight="44" id="KMv-CP-bEJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="textColor" rowHeight="44" id="KMv-CP-bEJ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KMv-CP-bEJ" id="5vQ-Jw-W9M">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSi-rq-VHd">
-                                                    <rect key="frame" x="565" y="8" width="27" height="27"/>
+                                                    <rect key="frame" x="532" y="8" width="27" height="27"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="SSi-rq-VHd" secondAttribute="height" multiplier="1:1" id="IfJ-Gp-O3f"/>
@@ -180,13 +180,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shadowColor" rowHeight="44" id="xaW-eV-d3D">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="shadowColor" rowHeight="44" id="xaW-eV-d3D">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xaW-eV-d3D" id="g8O-8B-ojY">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIb-Se-n6L">
-                                                    <rect key="frame" x="565" y="8" width="27" height="27"/>
+                                                    <rect key="frame" x="532" y="8" width="27" height="27"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="qIb-Se-n6L" secondAttribute="height" multiplier="1:1" id="Jth-oF-uiZ"/>
@@ -382,10 +382,10 @@
             </objects>
             <point key="canvasLocation" x="1929" y="1024"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="qac-Em-TIZ">
             <objects>
-                <navigationController storyboardIdentifier="SettingNavigationViewController" id="zet-Hu-UhE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingNavigationViewController" id="zet-Hu-UhE" customClass="BRNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hCi-mP-c7a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

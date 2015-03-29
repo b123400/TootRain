@@ -16,6 +16,14 @@
 
 @implementation SettingAccountTableViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Accounts", nil);

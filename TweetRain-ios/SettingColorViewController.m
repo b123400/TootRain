@@ -30,7 +30,13 @@
     self.view.color = self.color;
     self.view.brightnessSlider.brightnessLowerLimit = @0;
     self.view.colorMapView.saturationUpperLimit = @1.0;
+    self.view.colorMapView.backgroundColor = [UIColor whiteColor];
     [self.view addTarget:self action:@selector(colorChanged:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
 }
 
 - (void)viewDidLoad {
@@ -47,6 +53,24 @@
     if ([self.delegate respondsToSelector:@selector(settingColorViewController:didSelectedColor:)]) {
         [self.delegate settingColorViewController:self didSelectedColor:self.view.color];
     }
+}
+
+// I tried lots of different way to block auto rotate,
+// but nothing works.
+// I tried to return NO, but it is ignored.
+-(BOOL)shouldAutorotate {
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    return UIInterfaceOrientationPortrait;
 }
 
 /*
