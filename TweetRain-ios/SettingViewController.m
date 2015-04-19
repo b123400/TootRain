@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *opacitySlider;
 @property (weak, nonatomic) IBOutlet UIStepper *fontSizeStepper;
 @property (weak, nonatomic) IBOutlet UILabel *fontSizeLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *profileImageSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *removeURLSwitch;
 
 @end
 
@@ -61,7 +63,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    if ([[cell reuseIdentifier] isEqualToString:@"textColor"]) {
+    
+    if ([[cell reuseIdentifier] isEqualToString:@"account"]) {
+        cell.detailTextLabel.text = [[[SettingManager sharedManager] selectedAccount] username];
+        
+    } else if ([[cell reuseIdentifier] isEqualToString:@"textColor"]) {
         self.textColorView.backgroundColor = [SettingManager sharedManager].textColor;
         self.textColorView.layer.borderColor = [UIColor blackColor].CGColor;
         self.textColorView.layer.borderWidth = 1;
@@ -78,7 +84,14 @@
         
     } else if ([[cell reuseIdentifier] isEqualToString:@"opacity"]) {
         self.opacitySlider.value = [SettingManager sharedManager].opacity;
+        
+    } else if ([[cell reuseIdentifier] isEqualToString:@"profileImage"]) {
+        self.profileImageSwitch.on = [SettingManager sharedManager].showProfileImage;
+        
+    } else if ([[cell reuseIdentifier] isEqualToString:@"removeURL"]) {
+        self.removeURLSwitch.on = [SettingManager sharedManager].removeURL;
     }
+    
     return cell;
 }
 
@@ -97,6 +110,14 @@
 
 
 #pragma mark interaction
+
+- (IBAction)profileImageSwitchValueChanged:(id)sender {
+    [SettingManager sharedManager].showProfileImage = self.profileImageSwitch.on;
+}
+
+- (IBAction)removeURLSwitchValueChanged:(id)sender {
+    [SettingManager sharedManager].removeURL = self.removeURLSwitch.on;
+}
 
 - (void)settingColorViewController:(id)sender didSelectedColor:(UIColor *)color {
     NSString *identifier = [[self.tableView cellForRowAtIndexPath:self.tableView.indexPathForSelectedRow] reuseIdentifier] ;
@@ -124,7 +145,7 @@
     [[SettingManager sharedManager] setSelectedAccount:account];
     [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
 
-    [self.navigationController popToViewController:self animated:NO];
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

@@ -36,7 +36,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    [self fixRotation];
 }
 
 - (void)viewDidLoad {
@@ -58,18 +58,24 @@
 // I tried lots of different way to block auto rotate,
 // but nothing works.
 // I tried to return NO, but it is ignored.
--(BOOL)shouldAutorotate {
-    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+- (void)fixRotation {
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    }
+}
+
+- (BOOL)shouldAutorotate {
+    [self fixRotation];
     return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    [self fixRotation];
     return UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+    [self fixRotation];
     return UIInterfaceOrientationPortrait;
 }
 

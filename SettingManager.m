@@ -89,12 +89,17 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 - (BOOL)showProfileImage {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
+    NSNumber *show = [[NSUserDefaults standardUserDefaults] objectForKey:@"showProfileImage"];
+    if (show == nil) {
+        return YES;
+    }
+    return [show boolValue];
 }
 
 - (void)setShowProfileImage:(BOOL)showProfileImage {
-    [[NSUserDefaults standardUserDefaults] boolForKey:@"showProfileImage"];
+    [[NSUserDefaults standardUserDefaults] setBool:showProfileImage forKey:@"showProfileImage"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (BOOL)removeURL {

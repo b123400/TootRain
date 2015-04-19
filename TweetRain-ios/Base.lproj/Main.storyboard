@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -20,7 +20,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFr-vL-SkV">
                                 <rect key="frame" x="540" y="536" width="44" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="AgR-67-cfj"/>
                                     <constraint firstAttribute="height" constant="44" id="RUu-Wn-e7m"/>
@@ -59,7 +59,7 @@
                         <sections>
                             <tableViewSection id="Ety-Yr-QSh">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="nZo-gQ-whU" detailTextLabel="v6q-wf-IvC" style="IBUITableViewCellStyleValue1" id="fhC-OR-ghH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="account" textLabel="nZo-gQ-whU" detailTextLabel="v6q-wf-IvC" style="IBUITableViewCellStyleValue1" id="fhC-OR-ghH">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhC-OR-ghH" id="hH6-aG-IZo">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -105,6 +105,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="vhk-Xe-VVN"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="profileImageSwitchValueChanged:" destination="Tr0-S7-jNX" eventType="valueChanged" id="41T-rT-o9j"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -136,6 +139,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="x4K-Zz-bpa"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="removeURLSwitchValueChanged:" destination="Tr0-S7-jNX" eventType="valueChanged" id="eKK-c8-GIf"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -322,6 +328,8 @@
                         <outlet property="fontSizeLabel" destination="Drm-6L-9kw" id="k1X-tg-nHR"/>
                         <outlet property="fontSizeStepper" destination="u6D-PK-K4b" id="wg8-9R-PXt"/>
                         <outlet property="opacitySlider" destination="zPr-Xv-gTI" id="daP-Os-3Jo"/>
+                        <outlet property="profileImageSwitch" destination="gwF-T4-Ufm" id="v0Y-8R-fuB"/>
+                        <outlet property="removeURLSwitch" destination="kCn-mZ-TxA" id="pKj-RJ-vM7"/>
                         <outlet property="textColorView" destination="SSi-rq-VHd" id="bgf-PJ-AvI"/>
                         <outlet property="textShadowColorView" destination="qIb-Se-n6L" id="pgV-RE-S1Z"/>
                     </connections>

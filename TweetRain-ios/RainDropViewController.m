@@ -67,14 +67,39 @@
     
     self.contentTextLabel.font = font;
     self.contentTextLabel.textColor = [[SettingManager sharedManager] textColor];
-    self.contentTextLabel.attributedText = [[NSAttributedString alloc] initWithString:self.status.text
+    self.contentTextLabel.attributedText = [[NSAttributedString alloc] initWithString:[self textToDisplay]
                                                                            attributes:attributes];
     
-    [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
+    if ([SettingManager sharedManager].showProfileImage) {
+        self.profileImageView.hidden = NO;
+        [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
+    } else {
+        self.profileImageView.hidden = YES;
+    }
     
     CGRect frame = self.view.frame;
-    frame.size.width = [self.contentTextLabel.attributedText size].width + 73 + 8;
+    frame.size.width = [self.contentTextLabel.attributedText size].width + ([SettingManager sharedManager].showProfileImage ? 73 : 0) + 8;
     self.view.frame = frame;
+    [self.view layoutSubviews];
+}
+
+#pragma mark text
+
+- (NSString*)textToDisplay {
+    NSMutableString *contentString=[NSMutableString stringWithString:self.status.text];
+    [contentString replaceOccurrencesOfString:@"\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+    [contentString replaceOccurrencesOfString:@"\r" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+
+    if(self.status.entities && [[SettingManager sharedManager]removeURL]){
+        for(NSDictionary *thisURLSet in [self.status.entities objectForKey:@"urls"]){
+            NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
+            if(range.location!=NSNotFound){
+                NSString *url=[thisURLSet objectForKey:@"url"];
+                [contentString replaceOccurrencesOfString:url withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
+            }
+        }
+    }
+    return contentString;
 }
 
 #pragma mark animation
