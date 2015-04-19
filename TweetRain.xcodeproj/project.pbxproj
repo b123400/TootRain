@@ -104,6 +104,7 @@
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
+		CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
 		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
 		D86F6918A387B96F20C7C219 /* libPods-TweetRain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67372286C5179C961EA55756 /* libPods-TweetRain.a */; };
@@ -320,6 +321,8 @@
 		CFE8F5BF15D7E9F100815830 /* RainDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropView.m; sourceTree = "<group>"; };
 		CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropTextFieldCell.h; sourceTree = "<group>"; };
 		CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropTextFieldCell.m; sourceTree = "<group>"; };
+		CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingFontTableViewController.h; sourceTree = "<group>"; };
+		CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingFontTableViewController.m; sourceTree = "<group>"; };
 		CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
@@ -551,6 +554,8 @@
 				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
 				CF82C2C31AC861DE00F0DC05 /* SettingColorViewController.h */,
 				CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */,
+				CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */,
+				CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1075,6 +1080,7 @@
 				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,
 				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
 				CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */,
+				CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */,
 				CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */,
 				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
 				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,

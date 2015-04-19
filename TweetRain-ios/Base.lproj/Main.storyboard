@@ -238,7 +238,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="R5m-sz-cFe" kind="show" id="udI-4f-Txg"/>
+                                            <segue destination="R5m-sz-cFe" kind="show" identifier="font" id="udI-4f-Txg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="fontSize" rowHeight="44" id="I2L-0L-vGL">
@@ -338,10 +338,10 @@
             </objects>
             <point key="canvasLocation" x="1176" y="1024"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Setting Font Table View Controller-->
         <scene sceneID="uYd-fd-G3H">
             <objects>
-                <tableViewController id="R5m-sz-cFe" sceneMemberID="viewController">
+                <tableViewController id="R5m-sz-cFe" customClass="SettingFontTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RBz-IS-KY0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

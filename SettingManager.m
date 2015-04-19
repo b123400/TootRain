@@ -178,7 +178,6 @@ static NSMutableArray *savedAccounts=nil;
 - (void)setFont:(UIFont*)font {
     [self setFontName:[font fontName]];
     [self setFontSize:[font pointSize]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (NSString*)fontName {
@@ -188,6 +187,7 @@ static NSMutableArray *savedAccounts=nil;
 - (void)setFontName:(NSString *)fontName {
     [[NSUserDefaults standardUserDefaults] setObject:fontName forKey:@"fontName"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (float)fontSize {
@@ -200,6 +200,7 @@ static NSMutableArray *savedAccounts=nil;
 - (void)setFontSize:(float)fontSize {
     [[NSUserDefaults standardUserDefaults] setFloat:fontSize forKey:@"fontSize"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 #elif TARGET_OS_MAC

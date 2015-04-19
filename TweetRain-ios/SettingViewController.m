@@ -10,8 +10,9 @@
 #import "SettingAccountTableViewController.h"
 #import "SettingManager.h"
 #import "SettingColorViewController.h"
+#import "SettingFontTableViewController.h"
 
-@interface SettingViewController () <SettingAccountTableViewControllerDelegate, SettingColorViewControllerDelegate>
+@interface SettingViewController () <SettingAccountTableViewControllerDelegate, SettingColorViewControllerDelegate, SettingFontTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *textColorView;
 @property (weak, nonatomic) IBOutlet UIView *textShadowColorView;
@@ -51,7 +52,8 @@
         SettingAccountTableViewController *controller = [segue destinationViewController];
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"font"]) {
-        
+        SettingFontTableViewController *controller = [segue destinationViewController];
+        controller.delegate = self;
     }
 }
 
@@ -76,6 +78,10 @@
         self.textShadowColorView.backgroundColor = [SettingManager sharedManager].shadowColor;
         self.textShadowColorView.layer.borderColor = [UIColor blackColor].CGColor;
         self.textShadowColorView.layer.borderWidth = 1;
+        
+    } else if ([[cell reuseIdentifier] isEqualToString:@"font"]) {
+        cell.textLabel.text = NSLocalizedString(@"Font: ", @"");
+        cell.detailTextLabel.text = [[SettingManager sharedManager] fontName];
         
     } else if ([[cell reuseIdentifier] isEqualToString:@"fontSize"]) {
         self.fontSizeStepper.value = [SettingManager sharedManager].fontSize;
@@ -108,6 +114,12 @@
     }
 }
 
+#pragma mark font
+
+- (void)settingFontTableViewController:(id)sender didSelectedFontName:(NSString *)fontName {
+    [[SettingManager sharedManager] setFontName:fontName];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark interaction
 
