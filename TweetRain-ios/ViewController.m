@@ -15,6 +15,7 @@
 #import "RainDropViewController.h"
 #import "RainDropDetailViewController.h"
 #import "BRNavigationViewController.h"
+#import <UIImage+ImageEffects.h>
 
 @interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate>
 
@@ -33,15 +34,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     if (![AuthViewController authed] || ![SettingManager sharedManager].selectedAccount) {
         AuthViewController *controller = [[AuthViewController alloc] init];
         controller.delegate = self;
+        
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-        navController.modalInPopover = YES;
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
         navController.navigationBarHidden = YES;
-        [self presentViewController:navController animated:YES completion:nil];
+        navController.view.backgroundColor = [UIColor clearColor];
+        
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, YES, 0);
+        [self.view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:NO];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        // create dark blurred image, requires UIImage+ImageEffects
+        UIImage *blurredImage = [image applyBlurWithRadius:20
+                                                 tintColor:[UIColor colorWithWhite:1 alpha:0.75]
+                                     saturationDeltaFactor:2
+                                                 maskImage:nil];
+        
+        [self presentViewController:navController animated:NO completion:^{
+            CGRect frame = [self.view convertRect:CGRectMake(0,
+                                                             0,
+                                                             self.view.frame.size.width,
+                                                             self.view.frame.size.height)
+                                           toView:navController.view];
+            UIImageView *blurImageView = [[UIImageView alloc] initWithImage:blurredImage];
+            blurImageView.frame = frame;
+            [navController.view addSubview:blurImageView];
+            [navController.view sendSubviewToBack:blurImageView];
+        }];
+        
     } else {
         [self startStreaming];
     }
@@ -68,6 +96,10 @@
     popover.sourceRect = [sender frame];
     popover.sourceView = [sender superview];
     [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
 }
 
 #pragma mark interface
@@ -148,9 +180,14 @@
     detailViewController.delegate = self;
     detailViewController.modalPresentationStyle = UIModalPresentationPopover;
     UIPopoverPresentationController *popover = detailViewController.popoverPresentationController;
-    popover.sourceRect = [sender.view.layer.presentationLayer frame];
+    popover.sourceRect = CGRectMake(
+                                    [sender.view.layer.presentationLayer frame].origin.x,
+                                    sender.view.layer.frame.origin.y,
+                                    sender.view.layer.frame.size.width,
+                                    sender.view.layer.frame.size.height);
     popover.sourceView = self.view;
     popover.delegate = self;
+    popover.backgroundColor = [UIColor clearColor];
     [self presentViewController:detailViewController animated:YES completion:nil];
     [sender pauseAnimation];
 }

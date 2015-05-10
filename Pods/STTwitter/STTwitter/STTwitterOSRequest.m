@@ -53,7 +53,6 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
     self.baseURLString = baseURLString;
     self.httpMethod = httpMethod;
     self.params = params;
-    NSLog(@"%@",self.params.description);
     self.account = account;
     self.completionBlock = completionBlock;
     self.errorBlock = errorBlock;

@@ -53,6 +53,8 @@
     self.contentTextView.text = self.status.text;
     [self.profileImageView sd_setImageWithURL:self.status.user.profileImageURL];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     for (UIButton *button in @[self.rtButton, self.replyButton, self.retweetButton, self.favButton]) {
         button.layer.cornerRadius = button.frame.size.width/2;
         button.layer.masksToBounds = YES;

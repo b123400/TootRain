@@ -11,6 +11,7 @@
 #import "SettingAccountTableViewController.h"
 
 @interface AuthViewController () <SettingAccountTableViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *authorizeButton;
 
 @end
 
@@ -35,6 +36,12 @@
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(closeButtonPressed:)];
+    self.authorizeButton.layer.borderColor = [UIColor colorWithRed:42.0/255.0
+                                                             green:104.0/255.0
+                                                              blue:219/255.0
+                                                             alpha:1].CGColor;
+    self.authorizeButton.layer.borderWidth = 1;
+    self.authorizeButton.layer.cornerRadius = 8;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -21,6 +21,7 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     
     for (UIView *thisView in self.subviews) {
+        if ([thisView isKindOfClass:[UIImageView class]]) continue;
         CALayer *layer = thisView.layer.presentationLayer; // use presentation layer because it is animating
         if ([layer hitTest:point]) {
             return thisView;

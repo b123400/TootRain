@@ -93,7 +93,7 @@
          accountsWithAccountType:[SettingManager sharedManager].accountType].count == 0) {
         return @"No account avaiable, please add one in the Setting.app";
     }
-    return nil;
+    return @"You can add more accounts in the Setting.app";
 }
 
 #pragma mark auth view delegate

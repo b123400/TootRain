@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TweetRain-ios-UIImage+BlurredFrame.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TweetRain-ios.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1E9709A6F44EEB13FE6B3000</key>
+		<key>012471A5C29FFF9C17053B5F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>63862AE4005D0301C5D2825D</key>
+		<key>0D3389688FF761EA0668EA7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E1260450DA886A44C23DBD0</key>
+		<key>1086FF96A20AD53E64C7DAC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B06309A3DD48DD016E2D2B8E</key>
+		<key>484FBD07CA1EE10CB999154E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF9BF7B6883E512359CB710C</key>
+		<key>667DE94D53B5B466B91AD91A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E62DE22FDE6DE30F16D8A2BA</key>
+		<key>966E35A6C5704CBFDDD596A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EAFA0A15B24E1A3F82A88151</key>
+		<key>C1F298D8E11E47317BD55C18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7C1EB3505DACBF655CA26E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

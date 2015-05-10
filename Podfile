@@ -14,4 +14,5 @@ target "TweetRain-ios" do
   pod "SDWebImage"
   pod "SVProgressHUD"
   pod "Color-Picker-for-iOS", "~> 2.0"
+  pod 'UIImage+BlurredFrame'
 end
