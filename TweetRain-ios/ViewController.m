@@ -113,7 +113,11 @@
                                               style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction *action) {
                                                 UITextField *textField = alert.textFields.firstObject;
-                                                [StreamController shared].searchTerm = textField.text;
+                                                if ([textField.text isEqualToString:@""]) {
+                                                    [StreamController shared].searchTerm = nil;
+                                                } else {
+                                                    [StreamController shared].searchTerm = textField.text;
+                                                }
                                             }]];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel Search", @"")
                                               style:UIAlertActionStyleDefault
@@ -154,7 +158,14 @@
     
     CGRect frame = rainDropController.view.frame;
     frame.origin.x = self.view.frame.size.width;
-    frame.origin.y = [self smallestPossibleYForStatusViewController:rainDropController];
+    CGFloat y = [self smallestPossibleYForStatusViewController:rainDropController];
+    if (y == -1) {
+        // outside of view = dont show
+        [rainDropController.view removeFromSuperview];
+        rainDropController.delegate = nil;
+        return;
+    }
+    frame.origin.y = y;
     rainDropController.view.frame = frame;
     
     [self addChildViewController:rainDropController];
@@ -186,11 +197,11 @@
     while(possibleY < self.view.frame.size.height){
         float suggestion = [self ySuggestionForStatusViewController:controller atY:possibleY];
         if(suggestion == possibleY){
-            break;
+            return possibleY;
         }
         possibleY=suggestion;
     }
-    return possibleY;
+    return -1;
 }
 
 - (void)rainDropViewControllerDidDisappeared:(RainDropViewController*)sender {
