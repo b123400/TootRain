@@ -8,7 +8,16 @@
 
 #import "NSError+STTwitter.h"
 
+static NSRegularExpression *xmlErrorRegex = nil;
+
 @implementation NSError (STTwitter)
+
++ (NSRegularExpression *)st_xmlErrorRegex {
+    if(xmlErrorRegex == nil) {
+        xmlErrorRegex = [NSRegularExpression regularExpressionWithPattern:@"<error code=\"(.*)\">(.*)</error>" options:0 error:nil];
+    }
+    return xmlErrorRegex;
+}
 
 + (NSError *)st_twitterErrorFromResponseData:(NSData *)responseData
                              responseHeaders:(NSDictionary *)responseHeaders
@@ -29,18 +38,50 @@
                 message = errorDictionary[@"message"];
                 code = [[errorDictionary valueForKey:@"code"] integerValue];
             }
-        } else if ([json valueForKey:@"error"]) {
+        } else if ([json valueForKey:@"error"] && [json valueForKey:@"error"] != [NSNull null]) {
             /*
              eg. when requesting timeline from a protected account
              {
              error = "Not authorized.";
              request = "/1.1/statuses/user_timeline.json?count=20&screen_name=premfe";
              }
+             also, be robust to null errors such as in:
+             {
+             error = "<null>";
+             state = AwaitingComplete;
+             }
              */
             message = [json valueForKey:@"error"];
         } else if([errors isKindOfClass:[NSString class]]) {
             // assume format {errors = "Screen name can't be blank";}
             message = errors;
+        }
+    }
+    
+    if(json == nil) {
+        // look for XML errors, eg.
+        /*
+         <?xml version="1.0" encoding="UTF-8"?>
+         <errors>
+         <error code="87">Client is not permitted to perform this action</error>
+         </errors>
+         */
+        
+        NSString *s = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSRegularExpression *xmlErrorRegex = [self st_xmlErrorRegex];
+        NSAssert(xmlErrorRegex, @"");
+        
+        NSTextCheckingResult *match = [xmlErrorRegex firstMatchInString:s options:0 range:NSMakeRange(0, [s length])];
+        
+        if(match) {
+            NSRange group1Range = [match rangeAtIndex:1];
+            NSRange group2Range = [match rangeAtIndex:2];
+            
+            NSString *codeString = [s substringWithRange:group1Range];
+            NSString *errorMessaage = [s substringWithRange:group2Range];
+            
+            return [NSError errorWithDomain:kSTTwitterTwitterErrorDomain code:[codeString integerValue] userInfo:@{NSLocalizedDescriptionKey:errorMessaage}];
         }
     }
     

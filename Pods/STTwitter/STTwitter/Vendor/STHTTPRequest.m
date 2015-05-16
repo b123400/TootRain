@@ -20,6 +20,8 @@ NSUInteger const kSTHTTPRequestDefaultTimeout = 30;
 static NSMutableDictionary *localCredentialsStorage = nil;
 static NSMutableArray *localCookiesStorage = nil;
 
+static BOOL globalIgnoreCache = NO;
+
 /**/
 
 @interface STHTTPRequestFileUpload : NSObject
@@ -73,6 +75,10 @@ static NSMutableArray *localCookiesStorage = nil;
     return [self requestWithURL:url];
 }
 
++ (void)setGlobalIgnoreCache:(BOOL)ignoreCache {
+    globalIgnoreCache = ignoreCache;
+}
+
 - (STHTTPRequest *)initWithURL:(NSURL *)theURL {
     
     if (self = [super init]) {
@@ -85,7 +91,7 @@ static NSMutableArray *localCookiesStorage = nil;
         self.timeoutSeconds = kSTHTTPRequestDefaultTimeout;
         self.filesToUpload = [NSMutableArray array];
         self.dataToUpload = [NSMutableArray array];
-        // self.HTTPMethod = @"GET"; // default
+        self.HTTPMethod = @"GET"; // default
     }
     
     return self;
@@ -262,7 +268,7 @@ static NSMutableArray *localCookiesStorage = nil;
     if(_ignoreSharedCookiesStorage) {
         NSArray *filteredCookies = [[[self class] localCookiesStorage] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             NSHTTPCookie *cookie = (NSHTTPCookie *)evaluatedObject;
-            return [[cookie domain] isEqualToString:[_url host]];
+            return [[cookie domain] isEqualToString:[self.url host]];
         }]];
         return filteredCookies;
     } else {
@@ -311,10 +317,15 @@ static NSMutableArray *localCookiesStorage = nil;
 
 // {k2:v2, k1:v1} -> [{k1:v1}, {k2:v2}]
 + (NSArray *)dictionariesSortedByKey:(NSDictionary *)dictionary {
-    NSMutableArray *sortedDictionaries = [NSMutableArray arrayWithCapacity:[dictionary count]];
-    NSArray *sortedKeys = [dictionary keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [obj2 compare:obj1];
+    
+    NSArray *keys = [dictionary allKeys];
+    NSArray *sortedKeys = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSComparisonResult result = [obj1 compare:obj2];
+        return result;
     }];
+    
+    NSMutableArray *sortedDictionaries = [NSMutableArray arrayWithCapacity:[dictionary count]];
+    
     for(NSString *key in sortedKeys) {
         NSDictionary *d = @{ key : dictionary[key] };
         [sortedDictionaries addObject:d];
@@ -341,7 +352,18 @@ static NSMutableArray *localCookiesStorage = nil;
     return data;
 }
 
++ (NSURL *)appendURL:(NSURL *)url withGETParameters:(NSDictionary *)parameters {
+    NSMutableString *urlString = [[NSMutableString alloc] initWithString:[url absoluteString]];
+    
+    NSString *s = [urlString st_stringByAppendingGETParameters:parameters];
+    
+    return [NSURL URLWithString:s];
+}
+
 - (NSMutableURLRequest *)requestByAddingCredentialsToURL:(BOOL)useCredentialsInURL {
+    
+    NSAssert((self.completionBlock || self.completionDataBlock), @"a completion block is mandatory");
+    NSAssert(self.errorBlock, @"the error block is mandatory");
     
     NSURL *theURL = nil;
     
@@ -354,10 +376,30 @@ static NSMutableArray *localCookiesStorage = nil;
         theURL = _url;
     }
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
-    if(_HTTPMethod) [request setHTTPMethod:_HTTPMethod];
+    /**/
     
-    request.timeoutInterval = self.timeoutSeconds;
+    theURL = [[self class] appendURL:theURL withGETParameters:_GETDictionary];
+    
+    /**/
+    
+    if([_HTTPMethod isEqualToString:@"GET"]) {
+        if(_POSTDictionary || _rawPOSTData || [self.filesToUpload count] > 0 || [self.dataToUpload count] > 0) {
+            self.HTTPMethod = @"POST";
+        }
+    }
+    
+    /**/
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
+    [request setHTTPMethod:_HTTPMethod];
+    
+    if(globalIgnoreCache || _ignoreCache) {
+        request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
+    }
+    
+    if(self.timeoutSeconds != 0.0) {
+        request.timeoutInterval = self.timeoutSeconds;
+    }
     
     if(_ignoreSharedCookiesStorage) {
         NSArray *cookies = [self sessionCookies];
@@ -369,8 +411,8 @@ static NSMutableArray *localCookiesStorage = nil;
     if(_encodePOSTDictionary) {
         NSMutableDictionary *escapedPOSTDictionary = _POSTDictionary ? [NSMutableDictionary dictionary] : nil;
         [_POSTDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSString *k = [key st_stringByAddingRFC3986PercentEscapesUsingEncoding:_POSTDataEncoding];
-            NSString *v = [[obj description] st_stringByAddingRFC3986PercentEscapesUsingEncoding:_POSTDataEncoding];
+            NSString *k = [key st_stringByAddingRFC3986PercentEscapesUsingEncoding:self.POSTDataEncoding];
+            NSString *v = [[obj description] st_stringByAddingRFC3986PercentEscapesUsingEncoding:self.POSTDataEncoding];
             [escapedPOSTDictionary setValue:v forKey:k];
         }];
         self.POSTDictionary = escapedPOSTDictionary;
@@ -432,13 +474,10 @@ static NSMutableArray *localCookiesStorage = nil;
         
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
-        if(_HTTPMethod == nil) [request setHTTPMethod:@"POST"];
         [request setValue:[NSString stringWithFormat:@"%u", (unsigned int)[body length]] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:body];
         
     } else if (_rawPOSTData) {
-        
-        if(_HTTPMethod == nil) [request setHTTPMethod:@"POST"];
         
         [request setValue:[NSString stringWithFormat:@"%u", (unsigned int)[_rawPOSTData length]] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:_rawPOSTData];
@@ -471,12 +510,8 @@ static NSMutableArray *localCookiesStorage = nil;
         
         NSData *data = [s dataUsingEncoding:_POSTDataEncoding allowLossyConversion:YES];
         
-        if(_HTTPMethod == nil) [request setHTTPMethod:@"POST"];
-        
         [request setValue:[NSString stringWithFormat:@"%u", (unsigned int)[data length]] forHTTPHeaderField:@"Content-Length"];
         [request setHTTPBody:data];
-    } else {
-        if(_HTTPMethod == nil) [request setHTTPMethod:@"GET"];
     }
     
     [_requestHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -616,7 +651,12 @@ static NSMutableArray *localCookiesStorage = nil;
 - (NSString *)curlDescription {
     
     NSMutableArray *ma = [NSMutableArray array];
-    [ma addObject:@"$ curl -i"];
+    [ma addObject:@"\U0001F300 curl -i"];
+    
+    if([_HTTPMethod isEqualToString:@"GET"] == NO) { // GET is optional in curl
+        NSString *s = [NSString stringWithFormat:@"-X %@", _HTTPMethod];
+        [ma addObject:s];
+    }
     
     // -u usernane:password
     
@@ -643,7 +683,7 @@ static NSMutableArray *localCookiesStorage = nil;
         id jsonObject = [NSJSONSerialization JSONObjectWithData:_rawPOSTData options:NSJSONReadingMutableContainers error:nil];
         if(jsonObject) {
             NSString *jsonString = [[NSString alloc] initWithData:_rawPOSTData encoding:NSUTF8StringEncoding];
-            [ma addObject:@"-X POST"];
+            //            [ma addObject:@"-X POST"];
             [ma addObject:[NSString stringWithFormat:@"-d \'%@\'", jsonString]];
         }
     }
@@ -686,7 +726,7 @@ static NSMutableArray *localCookiesStorage = nil;
     
     // url
     
-    [ma addObject:[NSString stringWithFormat:@"\"%@\"", _url]];
+    [ma addObject:[NSString stringWithFormat:@"\"%@\"", [_request URL]]];
     
     return [ma componentsJoinedByString:@" \\\n"];
 }
@@ -793,9 +833,7 @@ static NSMutableArray *localCookiesStorage = nil;
                                          code:0
                                      userInfo:userInfo];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _errorBlock(_error);
-        });
+        self.errorBlock(self.error);
     }
 }
 
@@ -841,9 +879,15 @@ static NSMutableArray *localCookiesStorage = nil;
                                      code:kSTHTTPRequestCancellationError
                                  userInfo:userInfo];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _errorBlock(_error);
-    });
+    self.errorBlock(self.error);
+}
+
+#pragma mark NSURLConnectionDataDelegate
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+    if(globalIgnoreCache || _ignoreCache) return nil;
+    
+    return cachedResponse;
 }
 
 #pragma mark NSURLConnectionDelegate
@@ -962,6 +1006,40 @@ static NSMutableArray *localCookiesStorage = nil;
                                                                                          kCFStringEncodingUTF8));
     return s;
 }
+@end
+
+/**/
+
+@implementation NSString (STUtilities)
+
+- (NSString *)st_stringByAppendingGETParameters:(NSDictionary *)parameters {
+    
+    NSMutableString *ms = [self mutableCopy];
+    
+    __block BOOL questionMarkFound = NO;
+    
+    NSArray *sortedParameters = [STHTTPRequest dictionariesSortedByKey:parameters];
+    
+    [sortedParameters enumerateObjectsUsingBlock:^(NSDictionary *d, NSUInteger idx, BOOL *stop) {
+        
+        NSString *key = [[d allKeys] lastObject];
+        NSString *value = [[[d allValues] lastObject] description];
+        
+        if(questionMarkFound == NO) {
+            questionMarkFound = [ms rangeOfString:@"?"].location != NSNotFound;
+        }
+        
+        [ms appendString: (questionMarkFound ? @"&" : @"?") ];
+        
+        [ms appendFormat:@"%@=%@",
+         [key st_stringByAddingRFC3986PercentEscapesUsingEncoding:NSUTF8StringEncoding],
+         [value st_stringByAddingRFC3986PercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+    }];
+    
+    return ms;
+}
+
 @end
 
 /**/

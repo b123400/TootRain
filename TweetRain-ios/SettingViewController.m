@@ -48,10 +48,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"account"]) {
-        SettingAccountTableViewController *controller = [segue destinationViewController];
-        controller.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"font"]) {
+    if ([segue.identifier isEqualToString:@"font"]) {
         SettingFontTableViewController *controller = [segue destinationViewController];
         controller.delegate = self;
     }
@@ -103,10 +100,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([[cell reuseIdentifier] isEqualToString:@"textColor"]) {
+    if ([[cell reuseIdentifier] isEqualToString:@"account"]) {
+        SettingAccountTableViewController *controller = [[SettingAccountTableViewController alloc] init];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    } else if ([[cell reuseIdentifier] isEqualToString:@"textColor"]) {
         SettingColorViewController *controller = [[SettingColorViewController alloc] initWithColor:[SettingManager sharedManager].textColor];
         controller.delegate = self;
         [self.navigationController pushViewController:controller animated:YES];
+        
     } else if ([[cell reuseIdentifier] isEqualToString:@"shadowColor"]) {
         SettingColorViewController *controller = [[SettingColorViewController alloc] initWithColor:[SettingManager sharedManager].shadowColor];
         controller.delegate = self;

@@ -42,6 +42,8 @@ extern NSString *kBaseURLStringSiteStream_1_1;
 
 @interface STTwitterAPI : NSObject
 
++ (NSString *)versionString;
+
 + (instancetype)twitterAPIOSWithAccount:(ACAccount *) account;
 + (instancetype)twitterAPIOSWithFirstAccount;
 
@@ -90,7 +92,7 @@ extern NSString *kBaseURLStringSiteStream_1_1;
  authenticateInsteadOfAuthorize == NO  will return an URL to oauth/authorize
  authenticateInsteadOfAuthorize == YES will return an URL to oauth/authenticate
  
- oauth/authorize differs from oauth/authorize in that if the user has already granted the application permission, the redirect will occur without the user having to re-approve the application. To realize this behavior, you must enable the Use Sign in with Twitter setting on your application record.
+ GET oauth/authenticate differs from GET oauth/authorize in that if the user has already granted the application permission, the redirect will occur without the user having to re-approve the application. To realize this behavior, you must enable the Use Sign in with Twitter setting on your application record.
  */
 
 - (void)postTokenRequest:(void(^)(NSURL *url, NSString *oauthToken))successBlock
@@ -129,11 +131,15 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
 
 - (NSString *)prettyDescription;
 
+- (void)setTimeoutInSeconds:(NSTimeInterval)timeoutInSeconds; // optional
+
 @property (nonatomic, retain) NSString *userName; // available for osx, set after successful connection for STTwitterOAuth
 
 @property (nonatomic, readonly) NSString *oauthAccessToken;
 @property (nonatomic, readonly) NSString *oauthAccessTokenSecret;
 @property (nonatomic, readonly) NSString *bearerToken;
+
+- (NSDictionary *)OAuthEchoHeadersToVerifyCredentials;
 
 #pragma mark Generic methods to GET and POST
 
@@ -145,6 +151,16 @@ uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten
 downloadProgressBlock:(void (^)(id request, id response))downloadProgressBlock
        successBlock:(void (^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response))successBlock
          errorBlock:(void (^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock;
+
+- (id)fetchAndFollowCursorsForResource:(NSString *)resource
+                            HTTPMethod:(NSString *)HTTPMethod
+                         baseURLString:(NSString *)baseURLString
+                            parameters:(NSDictionary *)params
+                   uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
+                 downloadProgressBlock:(void(^)(id request, id response))downloadProgressBlock
+                          successBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response, BOOL morePagesToCome, BOOL *stop))successBlock
+                            pauseBlock:(void(^)(NSDate *nextRequestDate))pauseBlock
+                            errorBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock;
 
 - (id)getResource:(NSString *)resource
     baseURLString:(NSString *)baseURLString
@@ -834,6 +850,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 
 - (void)getFollowersListForUserID:(NSString *)userID
                      orScreenName:(NSString *)screenName
+                            count:(NSString *)count
                            cursor:(NSString *)cursor
                        skipStatus:(NSNumber *)skipStatus
               includeUserEntities:(NSNumber *)includeUserEntities
@@ -937,6 +954,8 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
  Sets one or more hex values that control the color scheme of the authenticating user's profile page on twitter.com. Each parameter's value must be a valid hexidecimal value, and may be either three or six characters (ex: #fff or #ffffff).
  */
 
+// https://twittercommunity.com/t/deprecation-of-account-update-profile-colors/28692
+
 - (void)postAccountUpdateProfileColorsWithBackgroundColor:(NSString *)backgroundColor
                                                 linkColor:(NSString *)linkColor
                                        sidebarBorderColor:(NSString *)sidebarBorderColor
@@ -945,7 +964,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
                                           includeEntities:(NSNumber *)includeEntities
                                                skipStatus:(NSNumber *)skipStatus
                                              successBlock:(void(^)(NSDictionary *profile))successBlock
-                                               errorBlock:(void(^)(NSError *error))errorBlock;
+                                               errorBlock:(void(^)(NSError *error))errorBlock __attribute__((deprecated));
 
 /*
  POST	account/update_profile_image
@@ -1235,7 +1254,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
  */
 
 - (void)getFavoritesListWithUserID:(NSString *)userID
-                        screenName:(NSString *)screenName
+                      orScreenName:(NSString *)screenName
                              count:(NSString *)count
                            sinceID:(NSString *)sinceID
                              maxID:(NSString *)maxID
@@ -1486,6 +1505,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 
 - (void)getListsMembersForListID:(NSString *)listID
                           cursor:(NSString *)cursor
+                           count:(NSString *)count
                  includeEntities:(NSNumber *)includeEntities
                       skipStatus:(NSNumber *)skipStatus
                     successBlock:(void(^)(NSArray *users, NSString *previousCursor, NSString *nextCursor))successBlock
@@ -1495,6 +1515,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
                ownerScreenName:(NSString *)screenName
                      orOwnerID:(NSString *)ownerID
                         cursor:(NSString *)cursor
+                         count:(NSString *)count
                includeEntities:(NSNumber *)includeEntities
                     skipStatus:(NSNumber *)skipStatus
                   successBlock:(void(^)(NSArray *users, NSString *previousCursor, NSString *nextCursor))successBlock
@@ -2056,4 +2077,53 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
                            successBlock:(void(^)(id results))successBlock
                              errorBlock:(void(^)(NSError *error))errorBlock;
 
-@end
+#pragma mark UNDOCUMENTED APIS VALID ONLY FOR TWEETDECK
+
+// GET schedule/status/list.json
+- (void)_getScheduleStatusesWithCount:(NSString *)count
+                      includeEntities:(NSNumber *)includeEntities
+                  includeUserEntities:(NSNumber *)includeUserEntities
+                         includeCards:(NSNumber *)includeCards
+                         successBlock:(void(^)(NSArray *scheduledTweets))successBlock
+                           errorBlock:(void(^)(NSError *error))errorBlock;
+
+// POST schedule/status/tweet.json
+- (void)_postScheduleStatus:(NSString *)status
+                  executeAt:(NSString *)executeAtUnixTimestamp
+                   mediaIDs:(NSArray *)mediaIDs
+               successBlock:(void(^)(NSDictionary *scheduledTweet))successBlock
+                 errorBlock:(void(^)(NSError *error))errorBlock;
+
+// DELETE schedule/status/:id.json
+// delete a scheduled tweet
+- (void)_deleteScheduleStatusWithID:(NSString *)statusID
+                       successBlock:(void(^)(NSDictionary *deletedTweet))successBlock
+                         errorBlock:(void(^)(NSError *error))errorBlock;
+
+// PUT schedule/status/:id.json
+// edit a scheduled tweet
+- (void)_putScheduleStatusWithID:(NSString *)statusID
+                          status:(NSString *)status
+                       executeAt:(NSString *)executeAtUnixTimestamp
+                        mediaIDs:(NSArray *)mediaIDs
+                    successBlock:(void(^)(NSDictionary *scheduledTweet))successBlock
+                      errorBlock:(void(^)(NSError *error))errorBlock;
+
+// POST guest/activate.json
+- (void)_postGuestActivateWithSuccessBlock:(void(^)(NSString *guestToken))successBlock
+                                errorBlock:(void(^)(NSError *error))errorBlock;
+
+// POST device/register.json
+- (void)_postDeviceRegisterPhoneNumber:(NSString *)phoneNumber // eg. @"+41764948273"
+                            guestToken:(NSString *)guestToken
+                          successBlock:(void(^)(id response))successBlock
+                            errorBlock:(void(^)(NSError *error))errorBlock;
+
+// POST sdk/account.json
+- (void)_postSDKAccountNumericPIN:(NSString *)numericPIN
+                   forPhoneNumber:(NSString *)phoneNumber
+                       guestToken:(NSString *)guestToken
+                     successBlock:(void(^)(id response, NSString *accessToken, NSString *accessTokenSecret))successBlock
+                       errorBlock:(void(^)(NSError *error))errorBlock;
+ 
+ @end

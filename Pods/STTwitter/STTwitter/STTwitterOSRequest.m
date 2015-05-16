@@ -30,6 +30,7 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
 @property (nonatomic, retain) NSDictionary *params;
 @property (nonatomic, retain) NSString *baseURLString;
 @property (nonatomic, retain) NSString *resource;
+@property (nonatomic) NSTimeInterval timeoutInSeconds;
 @end
 
 
@@ -40,6 +41,7 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
                httpMethod:(NSInteger)httpMethod
                parameters:(NSDictionary *)params
                   account:(ACAccount *)account
+         timeoutInSeconds:(NSTimeInterval)timeoutInSeconds
       uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
           completionBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response))completionBlock
                errorBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock {
@@ -57,12 +59,12 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
     self.completionBlock = completionBlock;
     self.errorBlock = errorBlock;
     self.uploadProgressBlock = uploadProgressBlock;
+    self.timeoutInSeconds = timeoutInSeconds;
     
     return self;
 }
 
-- (NSURLConnection *)startRequest {
-    
+- (NSURLRequest *)preparedURLRequest {
     NSString *postDataKey = [_params valueForKey:kSTPOSTDataKey];
     NSString *postDataFilename = [_params valueForKey:kSTPOSTMediaFileNameKey];
     NSData *mediaData = [_params valueForKey:postDataKey];
@@ -109,9 +111,21 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
 #else
     preparedURLRequest = [request preparedURLRequest];
 #endif
+
+    return preparedURLRequest;
+}
+
+- (NSURLConnection *)startRequest {
     
-    NSURLConnection *connection = [NSURLConnection connectionWithRequest:preparedURLRequest delegate:self];
+    NSURLRequest *preparedURLRequest = [self preparedURLRequest];
+
+    NSMutableURLRequest *mutablePreparedURLRequest = [preparedURLRequest mutableCopy];
+    mutablePreparedURLRequest.timeoutInterval = _timeoutInSeconds;
+    
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:mutablePreparedURLRequest delegate:self];
+    
     [connection start];
+    
     return connection;
 }
 
@@ -234,7 +248,6 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
     } else {
         self.errorBlock(request, [self requestHeadersForRequest:request], [_httpURLResponse allHeaderFields], jsonError);
     }
-    
 }
 
 - (void)connection:(NSURLConnection *)connection
@@ -242,7 +255,12 @@ typedef void (^upload_progress_block_t)(NSInteger bytesWritten, NSInteger totalB
  totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     if(self.uploadProgressBlock == nil) return;
-    self.uploadProgressBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+    
+    // avoid overcommit while posting big images, like 5+ MB
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        self.uploadProgressBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+    });
 }
 
 @end

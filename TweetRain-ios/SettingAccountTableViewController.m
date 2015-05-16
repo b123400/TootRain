@@ -18,9 +18,16 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+    return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    return [super initWithStyle:style];
+}
+
+- (id)init {
+    self = [self initWithStyle:UITableViewStyleGrouped];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     return self;
 }
 

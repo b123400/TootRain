@@ -42,12 +42,33 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ci-Yh-YwU">
+                                <rect key="frame" x="476" y="536" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="0yr-Gt-qJG"/>
+                                    <constraint firstAttribute="height" constant="44" id="H2p-cu-SIz"/>
+                                </constraints>
+                                <state key="normal" image="search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZ1-eZ-eFX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Ci-Yh-YwU" secondAttribute="bottom" constant="20" id="0iM-36-tO1"/>
                             <constraint firstItem="SFr-vL-SkV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5UN-aS-HMy"/>
                             <constraint firstItem="hXG-wJ-Jp8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="6Ra-xi-Plu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SFr-vL-SkV" secondAttribute="bottom" constant="20" id="KBC-6c-WMg"/>
+                            <constraint firstItem="SFr-vL-SkV" firstAttribute="leading" secondItem="3Ci-Yh-YwU" secondAttribute="trailing" constant="20" id="VY9-qI-5tW"/>
                             <constraint firstItem="hXG-wJ-Jp8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fT5-I9-N12"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hXG-wJ-Jp8" secondAttribute="bottom" id="kmX-nL-SyW"/>
                             <constraint firstAttribute="trailing" secondItem="hXG-wJ-Jp8" secondAttribute="trailing" id="u8U-Ed-Aqg"/>
@@ -88,9 +109,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="vUs-DM-58e" kind="show" identifier="account" id="2VA-Gc-1un"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -398,32 +416,6 @@
             </objects>
             <point key="canvasLocation" x="1929" y="1770"/>
         </scene>
-        <!--Setting Account Table View Controller-->
-        <scene sceneID="E31-PY-xXy">
-            <objects>
-                <tableViewController storyboardIdentifier="SettingAccountTableViewController" id="vUs-DM-58e" customClass="SettingAccountTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="4PD-ip-AnL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="28N-NZ-aOW">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="28N-NZ-aOW" id="xnP-VD-DdE">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vUs-DM-58e" id="Z8i-r8-knL"/>
-                            <outlet property="delegate" destination="vUs-DM-58e" id="Q7r-Af-jFV"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EdF-aV-LNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1929" y="1024"/>
-        </scene>
         <!--Setting About Table View Controller-->
         <scene sceneID="AKc-6n-5E5">
             <objects>
@@ -545,6 +537,7 @@
     </scenes>
     <resources>
         <image name="background" width="1169" height="768"/>
+        <image name="search" width="28" height="28"/>
         <image name="setting" width="28" height="28"/>
     </resources>
 </document>

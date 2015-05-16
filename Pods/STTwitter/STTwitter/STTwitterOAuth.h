@@ -27,6 +27,8 @@ NS_ENUM(NSUInteger, STTwitterOAuthErrorCode) {
 
 @interface STTwitterOAuth : NSObject <STTwitterProtocol>
 
+@property (nonatomic) NSTimeInterval timeoutInSeconds;
+
 + (instancetype)twitterOAuthWithConsumerName:(NSString *)consumerName
                                  consumerKey:(NSString *)consumerKey
                               consumerSecret:(NSString *)consumerSecret;
@@ -72,6 +74,10 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize
 - (BOOL)canVerifyCredentials;
 
 - (void)verifyCredentialsWithSuccessBlock:(void(^)(NSString *username))successBlock errorBlock:(void(^)(NSError *error))errorBlock;
+
+// useful for the so-called 'OAuth Echo' https://dev.twitter.com/twitter-kit/ios/oauth-echo
+
+- (NSDictionary *)OAuthEchoHeadersToVerifyCredentials;
 
 @end
 

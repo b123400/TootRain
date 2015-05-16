@@ -8,7 +8,7 @@
 
 #import "AuthViewController.h"
 #import "SettingManager.h"
-#import "SettingAccountTableViewController.h"
+#import "AuthAccountTableViewController.h"
 
 @interface AuthViewController () <SettingAccountTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *authorizeButton;
@@ -71,15 +71,35 @@
                                    cancelButtonTitle:@"OK"
                                    otherButtonTitles: nil]
                   show];
+                 UIAlertController *alertController = [UIAlertController
+                                                       alertControllerWithTitle:NSLocalizedString(@"Error", @"")
+                                                       message:error.localizedDescription
+                                                       preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                     style:UIAlertActionStyleDefault
+                                                                   handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
                  return;
              }
              if (!granted) {
-                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh no!", @"")
-                                             message:NSLocalizedString(@"I need permission to access your Twitter account, otherwise this app is pretty useless. Please go to Setting app --> Privacy and turn on Twitter permission for TWeetRain", @"")
-                                            delegate:nil
-                                   cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                   otherButtonTitles: nil]
-                  show];
+                 UIAlertController *alertController = [UIAlertController
+                                                       alertControllerWithTitle:NSLocalizedString(@"Oh no!", @"")
+                                                       message:NSLocalizedString(@"I need permission to access your Twitter account, otherwise this app is pretty useless. Please go to Setting app --> Privacy and turn on Twitter permission for TweetRain", @"")
+                                                       preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:
+                  [UIAlertAction actionWithTitle:@"OK"
+                                           style:UIAlertActionStyleCancel
+                                         handler:^(UIAlertAction *action) {
+                                             
+                                         }]];
+                 [alertController addAction:
+                  [UIAlertAction actionWithTitle:NSLocalizedString(@"Teach me how", @"")
+                                           style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action) {
+                                             [[UIApplication sharedApplication]
+                                              openURL:[NSURL URLWithString:@"https://support.apple.com/en-us/HT202605"]];
+                                         }]];
+                 [self presentViewController:alertController animated:YES completion:nil];
                  return;
              }
              [self processAccounts];
@@ -93,16 +113,22 @@
     if (accounts.count == 0) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh on!", @"")
                                     message:NSLocalizedString(@"You haven't setup any Twitter account. Please set it up in the Setting app", @"")
-                                   delegate:nil
+                                   delegate:self
                           cancelButtonTitle:@"OK"
-                          otherButtonTitles: nil]
+                          otherButtonTitles:@"Teach me how", nil]
          show];
     } else if (accounts.count == 1) {
         [[SettingManager sharedManager] setSelectedAccount:accounts[0]];
         [self.delegate authViewControllerDidAuthed:self];
     } else {
-        SettingAccountTableViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingAccountTableViewController"];
+        SettingAccountTableViewController *controller = [[AuthAccountTableViewController alloc] init];
         controller.delegate = self;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.view.layer.opacity = 0;
+        } completion:^(BOOL finished) {
+            self.view.layer.opacity = 1;
+        }];
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
@@ -120,6 +146,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
     [self.delegate authViewControllerDidAuthed:self];
 }
+
 
 /*
 #pragma mark - Navigation

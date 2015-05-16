@@ -38,12 +38,18 @@ static NSDateFormatter *dateFormatter = nil;
         
         if(weakSelf == nil) return;
         
-        if([weakSelf.oauth isKindOfClass:[STTwitterOS class]]) {
-            weakSelf.oauth = nil;
+        typeof(self) strongSelf = weakSelf;
+        
+        if([strongSelf.oauth isKindOfClass:[STTwitterOS class]]) {
+            strongSelf.oauth = nil;
         }
     }];
     
     return self;
+}
+
++ (NSString *)versionString {
+    return @"0.2.0";
 }
 
 + (instancetype)twitterAPIOSWithAccount:(ACAccount *)account {
@@ -153,6 +159,10 @@ static NSDateFormatter *dateFormatter = nil;
     return [self twitterAPIAppOnlyWithConsumerName:nil consumerKey:consumerKey consumerSecret:consumerSecret];
 }
 
+- (void)setTimeoutInSeconds:(NSTimeInterval)timeoutInSeconds {
+    _oauth.timeoutInSeconds = timeoutInSeconds;
+}
+
 - (NSString *)prettyDescription {
     NSMutableString *ms = [[_oauth loginTypeDescription] mutableCopy];
     
@@ -209,15 +219,25 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
     
     if([_oauth canVerifyCredentials]) {
         [_oauth verifyCredentialsWithSuccessBlock:^(NSString *username) {
-            [weakSelf setUserName:username];
+            typeof(self) strongSelf = weakSelf;
+            
+            if(strongSelf == nil) return;
+            
+            [strongSelf setUserName:username];
             successBlock(username);
         } errorBlock:^(NSError *error) {
             errorBlock(error);
         }];
     } else {
         [self getAccountVerifyCredentialsWithSuccessBlock:^(NSDictionary *account) {
+            typeof(self) strongSelf = weakSelf;
+            
+            if(strongSelf == nil) return;
+            
             NSString *username = [account valueForKey:@"screen_name"];
-            [weakSelf setUserName:username];
+            if(username == nil) username = [account valueForKey:@"id_str"];
+            
+            [strongSelf setUserName:username];
             successBlock(username);
         } errorBlock:^(NSError *error) {
             errorBlock(error);
@@ -236,16 +256,30 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
 }
 
 - (NSString *)oauthAccessTokenSecret {
-    return [_oauth oauthAccessTokenSecret];
+    if([_oauth respondsToSelector:@selector(oauthAccessTokenSecret)]) {
+        return [_oauth oauthAccessTokenSecret];
+    }
+    return nil;
 }
 
 - (NSString *)oauthAccessToken {
-    return [_oauth oauthAccessToken];
+    if([_oauth respondsToSelector:@selector(oauthAccessToken)]) {
+        return [_oauth oauthAccessToken];
+    }
+    return nil;
 }
 
 - (NSString *)bearerToken {
     if([_oauth respondsToSelector:@selector(bearerToken)]) {
         return [_oauth bearerToken];
+    }
+    
+    return nil;
+}
+
+- (NSDictionary *)OAuthEchoHeadersToVerifyCredentials {
+    if([_oauth respondsToSelector:@selector(OAuthEchoHeadersToVerifyCredentials)]) {
+        return [_oauth OAuthEchoHeadersToVerifyCredentials];
     }
     
     return nil;
@@ -285,6 +319,74 @@ downloadProgressBlock:(void(^)(id request, id response))downloadProgressBlock
            downloadProgressBlock:downloadProgressBlock
                     successBlock:successBlock
                       errorBlock:errorBlock];
+}
+
+- (id)fetchAndFollowCursorsForResource:(NSString *)resource
+                            HTTPMethod:(NSString *)HTTPMethod
+                         baseURLString:(NSString *)baseURLString
+                            parameters:(NSDictionary *)params
+                   uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
+                 downloadProgressBlock:(void(^)(id request, id response))downloadProgressBlock
+                          successBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response, BOOL morePagesToCome, BOOL *stop))successBlock
+                            pauseBlock:(void(^)(NSDate *nextRequestDate))pauseBlock
+                            errorBlock:(void(^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock {
+    
+    __block BOOL shouldStop = NO;
+    
+    return [_oauth fetchResource:resource
+                      HTTPMethod:HTTPMethod
+                   baseURLString:baseURLString
+                      parameters:params
+             uploadProgressBlock:uploadProgressBlock
+           downloadProgressBlock:downloadProgressBlock
+                    successBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response) {
+                        
+                        // https://dev.twitter.com/overview/api/cursoring
+                        
+                        NSString *nextCursor = [response valueForKey:@"next_cursor_str"];
+                        
+                        BOOL morePagesToCome = NO;
+                        
+                        NSMutableDictionary *paramsWithCursor = [params mutableCopy];
+                        if([nextCursor integerValue] > 0) {
+                            paramsWithCursor[@"cursor"] = nextCursor;
+                            morePagesToCome = YES;
+                        }
+                        
+                        successBlock(request, requestHeaders, responseHeaders, response, morePagesToCome, &shouldStop);
+                        
+                        if(shouldStop || morePagesToCome == NO) return;
+                        
+                        // now consider rate limits
+                        
+                        NSString *remainingString = [responseHeaders objectForKey:@"x-rate-limit-remaining"];
+                        NSString *resetString = [responseHeaders objectForKey:@"x-rate-limit-reset"];
+                        
+                        NSInteger remainingInteger = [remainingString integerValue];
+                        NSInteger resetInteger = [resetString integerValue];
+                        NSTimeInterval timeInterval = 0;
+                        
+                        if(remainingInteger == 0) {
+                            NSDate *resetDate = [[NSDate alloc] initWithTimeIntervalSince1970:resetInteger];
+                            timeInterval = [resetDate timeIntervalSinceDate:[NSDate date]] + 5;
+                            pauseBlock([NSDate dateWithTimeIntervalSinceNow:timeInterval]);
+                        }
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            
+                            [self fetchAndFollowCursorsForResource:resource
+                                                        HTTPMethod:HTTPMethod
+                                                     baseURLString:baseURLString
+                                                        parameters:paramsWithCursor
+                                               uploadProgressBlock:uploadProgressBlock
+                                             downloadProgressBlock:downloadProgressBlock
+                                                      successBlock:successBlock
+                                                        pauseBlock:pauseBlock
+                                                        errorBlock:errorBlock];
+                            
+                        });
+                        
+                    } errorBlock:errorBlock];
 }
 
 - (id)getResource:(NSString *)resource
@@ -464,16 +566,27 @@ downloadProgressBlock:nil
 
              errorBlock:(void(^)(NSError *error))errorBlock {
     
+    __weak typeof(self) weakSelf = self;
+    
     [self getUserInformationFor:screenName
                    successBlock:^(NSDictionary *response) {
+                       
+                       typeof(self) strongSelf = weakSelf;
+                       
+                       if(strongSelf == nil) return;
+                       
                        NSString *imageURLString = [response objectForKey:@"profile_image_url"];
                        
-                       __block STHTTPRequest *r = [STHTTPRequest requestWithURLString:imageURLString];
+                       STHTTPRequest *r = [STHTTPRequest requestWithURLString:imageURLString];
                        __weak STHTTPRequest *wr = r;
+                       
+                       r.timeoutSeconds = strongSelf.oauth.timeoutInSeconds;
                        
                        r.completionBlock = ^(NSDictionary *headers, NSString *body) {
                            
-                           NSData *imageData = wr.responseData;
+                           STHTTPRequest *sr = wr; // strong request
+                           
+                           NSData *imageData = sr.responseData;
                            
 #if TARGET_OS_IPHONE
                            Class STImageClass = NSClassFromString(@"UIImage");
@@ -486,7 +599,7 @@ downloadProgressBlock:nil
                        r.errorBlock = ^(NSError *error) {
                            errorBlock(error);
                        };
-
+                       
                        [r startAsynchronous];
                    } errorBlock:^(NSError *error) {
                        errorBlock(error);
@@ -526,7 +639,7 @@ downloadProgressBlock:nil
                         errorBlock:(void(^)(NSError *error))errorBlock {
     
     [self getStatusesMentionTimelineWithCount:[@(count) description]
-                                      sinceID:nil
+                                      sinceID:sinceID
                                         maxID:nil
                                      trimUser:nil
                            contributorDetails:nil
@@ -599,63 +712,6 @@ downloadProgressBlock:nil
         errorBlock(error);
     }];
 }
-
-/*
- - (void)getTimeline:(NSString *)timeline
- withParameters:(NSDictionary *)params
- sinceID:(NSString *)optionalSinceID
- maxID:(NSString *)optionalMaxID
- count:(NSUInteger)optionalCount
- successBlock:(void(^)(NSArray *statuses))successBlock
- errorBlock:(void(^)(NSError *error))errorBlock {
- 
- NSMutableDictionary *mparams = [params mutableCopy];
- if (!mparams)
- mparams = [NSMutableDictionary new];
- 
- if (optionalSinceID) mparams[@"since_id"] = optionalSinceID;
- if (optionalCount != NSNotFound) mparams[@"count"] = [@(optionalCount) stringValue];
- if (optionalMaxID) {
- NSDecimalNumber* maxID = [NSDecimalNumber decimalNumberWithString:optionalMaxID];
- 
- if ( [maxID longLongValue] > 0 ) {
- mparams[@"max_id"] = optionalMaxID;
- }
- }
- 
- __block NSMutableArray *statuses = [NSMutableArray new];
- __block void (^requestHandler)(id response) = nil;
- __block int count = 0;
- requestHandler = [[^(id response) {
- if ([response isKindOfClass:[NSArray class]] && [response count] > 0)
- [statuses addObjectsFromArray:response];
- 
- //Only send another request if we got close to the requested limit, up to a maximum of 4 api calls
- if (count++ == 0 || (count <= 4 && [response count] >= (optionalCount - 5))) {
- //Set the max_id so that we don't get statuses we've already received
- NSString *lastID = [[statuses lastObject] objectForKey:@"id_str"];
- if (lastID) {
- NSDecimalNumber* lastIDNumber = [NSDecimalNumber decimalNumberWithString:lastID];
- 
- if ([lastIDNumber longLongValue] > 0) {
- mparams[@"max_id"] = [@([lastIDNumber longLongValue] - 1) stringValue];
- }
- }
- 
- [self getAPIResource:timeline parameters:mparams
- successBlock:requestHandler
- errorBlock:errorBlock];
- } else {
- successBlock(removeNull(statuses));
- [mparams release];
- [statuses release];
- }
- } copy] autorelease];
- 
- //Send the first request
- requestHandler(nil);
- }
- */
 
 - (void)getUserTimelineWithScreenName:(NSString *)screenName
                               sinceID:(NSString *)sinceID
@@ -1171,6 +1227,7 @@ downloadProgressBlock:nil
     if(includeEntities) md[@"include_entities"] = [includeEntities boolValue] ? @"1" : @"0";
     if(callback) md[@"callback"] = callback;
     
+    // eg. "(from:nst021 OR to:nst021)" -> "%28from%3Anst021%20OR%20to%3Anst021%29"
     md[@"q"] = [q st_stringByAddingRFC3986PercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [self getAPIResource:@"search/tweets.json" parameters:md successBlock:^(NSDictionary *rateLimits, id response) {
@@ -1371,7 +1428,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     NSString *keywords = [keywordsToTrack componentsJoinedByString:@","];
     NSString *locations = [locationBoundingBoxes componentsJoinedByString:@","];
     
-    if([keywords length]) md[@"keywords"] = keywords;
+    if([keywords length]) md[@"track"] = keywords;
     if([locations length]) md[@"locations"] = locations;
     
     return [self getResource:@"user.json"
@@ -1954,6 +2011,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 
 - (void)getFollowersListForUserID:(NSString *)userID
                      orScreenName:(NSString *)screenName
+                            count:(NSString *)count
                            cursor:(NSString *)cursor
                        skipStatus:(NSNumber *)skipStatus
               includeUserEntities:(NSNumber *)includeUserEntities
@@ -1965,6 +2023,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     NSMutableDictionary *md = [NSMutableDictionary dictionary];
     if(userID) md[@"user_id"] = userID;
     if(screenName) md[@"screen_name"] = screenName;
+    if(count) md[@"count"] = count;
     if(cursor) md[@"cursor"] = cursor;
     if(skipStatus) md[@"skip_status"] = [skipStatus boolValue] ? @"1" : @"0";
     if(includeUserEntities) md[@"include_user_entities"] = [includeUserEntities boolValue] ? @"1" : @"0";
@@ -1993,6 +2052,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     
     [self getFollowersListForUserID:nil
                        orScreenName:screenName
+                              count:nil
                              cursor:nil
                          skipStatus:nil
                 includeUserEntities:nil
@@ -2640,7 +2700,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 
 // GET favorites/list
 - (void)getFavoritesListWithUserID:(NSString *)userID
-                        screenName:(NSString *)screenName
+                      orScreenName:(NSString *)screenName
                              count:(NSString *)count
                            sinceID:(NSString *)sinceID
                              maxID:(NSString *)maxID
@@ -2667,7 +2727,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
                               errorBlock:(void(^)(NSError *error))errorBlock {
     
     [self getFavoritesListWithUserID:nil
-                          screenName:nil
+                        orScreenName:nil
                                count:nil
                              sinceID:nil
                                maxID:nil
@@ -3225,6 +3285,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 
 - (void)getListsMembersForListID:(NSString *)listID
                           cursor:(NSString *)cursor
+                           count:(NSString *)count
                  includeEntities:(NSNumber *)includeEntities
                       skipStatus:(NSNumber *)skipStatus
                     successBlock:(void(^)(NSArray *users, NSString *previousCursor, NSString *nextCursor))successBlock
@@ -3235,6 +3296,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     NSMutableDictionary *md = [NSMutableDictionary dictionary];
     md[@"list_id"] = listID;
     if(cursor) md[@"cursor"] = cursor;
+    if(count) md[@"count"] = count;
     if(includeEntities) md[@"include_entities"] = [includeEntities boolValue] ? @"1" : @"0";
     if(skipStatus) md[@"skip_status"] = [skipStatus boolValue] ? @"1" : @"0";
     
@@ -3252,6 +3314,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
                ownerScreenName:(NSString *)ownerScreenName
                      orOwnerID:(NSString *)ownerID
                         cursor:(NSString *)cursor
+                         count:(NSString *)count
                includeEntities:(NSNumber *)includeEntities
                     skipStatus:(NSNumber *)skipStatus
                   successBlock:(void(^)(NSArray *users, NSString *previousCursor, NSString *nextCursor))successBlock
@@ -3266,6 +3329,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     if(ownerScreenName) md[@"owner_screen_name"] = ownerScreenName;
     if(ownerID) md[@"owner_id"] = ownerID;
     if(cursor) md[@"cursor"] = cursor;
+    if(count) md[@"count"] = count;
     if(includeEntities) md[@"include_entities"] = [includeEntities boolValue] ? @"1" : @"0";
     if(skipStatus) md[@"skip_status"] = [skipStatus boolValue] ? @"1" : @"0";
     
@@ -4360,7 +4424,7 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
 // GET conversation/show/:id.json
 - (void)_getConversationShowWithTweetID:(NSString *)tweetID
                            successBlock:(void(^)(id results))successBlock
-                      errorBlock:(void(^)(NSError *error))errorBlock {
+                             errorBlock:(void(^)(NSError *error))errorBlock {
     
     NSParameterAssert(tweetID);
     
@@ -4371,6 +4435,174 @@ includeMessagesFromFollowedAccounts:(NSNumber *)includeMessagesFromFollowedAccou
     } errorBlock:^(NSError *error) {
         errorBlock(error);
     }];
+}
+
+#pragma mark UNDOCUMENTED APIS VALID ONLY FOR TWEETDECK
+
+// GET schedule/status/list.json
+- (void)_getScheduleStatusesWithCount:(NSString *)count
+                      includeEntities:(NSNumber *)includeEntities
+                  includeUserEntities:(NSNumber *)includeUserEntities
+                         includeCards:(NSNumber *)includeCards
+                         successBlock:(void(^)(NSArray *scheduledTweets))successBlock
+                           errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSMutableDictionary *md = [NSMutableDictionary dictionary];
+    if(count) md[@"count"] = count;
+    if(includeEntities) md[@"include_entities"] = @([includeEntities boolValue]);
+    if(includeUserEntities) md[@"include_user_entities"] = @([includeUserEntities boolValue]);
+    if(includeCards) md[@"include_cards"] = @([includeCards boolValue]);
+    
+    [self getAPIResource:@"schedule/status/list.json"
+              parameters:md
+            successBlock:^(NSDictionary *rateLimits, id response) {
+                successBlock(response);
+            } errorBlock:^(NSError *error) {
+                errorBlock(error);
+            }];
+}
+
+// POST schedule/status/tweet.json
+- (void)_postScheduleStatus:(NSString *)status
+                  executeAt:(NSString *)executeAtUnixTimestamp
+                   mediaIDs:(NSArray *)mediaIDs
+               successBlock:(void(^)(NSDictionary *scheduledTweet))successBlock
+                 errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSParameterAssert(status);
+    NSParameterAssert(executeAtUnixTimestamp);
+    
+    NSMutableDictionary *md = [NSMutableDictionary dictionary];
+    md[@"status"] = status;
+    md[@"execute_at"] = executeAtUnixTimestamp;
+    if(mediaIDs) md[@"media_ids"] = [mediaIDs componentsJoinedByString:@","];
+    
+    [self postAPIResource:@"schedule/status/tweet.json"
+               parameters:md
+             successBlock:^(NSDictionary *rateLimits, id response) {
+                 successBlock(response);
+             } errorBlock:^(NSError *error) {
+                 errorBlock(error);
+             }];
+}
+
+// DELETE schedule/status/:id.json
+// delete a scheduled tweet
+- (void)_deleteScheduleStatusWithID:(NSString *)statusID
+                       successBlock:(void(^)(NSDictionary *deletedTweet))successBlock
+                         errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSParameterAssert(statusID);
+    
+    NSString *resource = [NSString stringWithFormat:@"schedule/status/%@.json", statusID];
+    
+    [self fetchResource:resource
+             HTTPMethod:@"DELETE"
+          baseURLString:kBaseURLStringAPI_1_1
+             parameters:nil
+    uploadProgressBlock:nil
+  downloadProgressBlock:nil
+           successBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response) {
+               successBlock(response);
+           } errorBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error) {
+               errorBlock(error);
+           }];
+}
+
+// PUT schedule/status/:id.json
+// edit a scheduled tweet
+- (void)_putScheduleStatusWithID:(NSString *)statusID
+                          status:(NSString *)status
+                       executeAt:(NSString *)executeAtUnixTimestamp
+                        mediaIDs:(NSArray *)mediaIDs
+                    successBlock:(void(^)(NSDictionary *scheduledTweet))successBlock
+                      errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSParameterAssert(statusID);
+    
+    NSString *resource = [NSString stringWithFormat:@"schedule/status/%@.json", statusID];
+    
+    NSMutableDictionary *md = [NSMutableDictionary dictionary];
+    if(status) md[@"status"] = status;
+    if(executeAtUnixTimestamp) md[@"execute_at"] = executeAtUnixTimestamp;
+    if(mediaIDs) md[@"media_ids"] = [mediaIDs componentsJoinedByString:@","];
+    
+    [self fetchResource:resource
+             HTTPMethod:@"PUT"
+          baseURLString:kBaseURLStringAPI_1_1
+             parameters:md
+    uploadProgressBlock:nil
+  downloadProgressBlock:nil
+           successBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response) {
+               successBlock(response);
+           } errorBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error) {
+               errorBlock(error);
+           }];
+}
+
+// POST guest/activate.json
+- (void)_postGuestActivateWithSuccessBlock:(void(^)(NSString *guestToken))successBlock
+                                errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    [self postAPIResource:@"guest/activate.json"
+               parameters:nil
+             successBlock:^(NSDictionary *rateLimits, id response) {
+                 NSString *guestToken = [response valueForKey:@"guest_token"];
+                 successBlock(guestToken);
+             } errorBlock:^(NSError *error) {
+                 errorBlock(error);
+             }];
+}
+
+// POST device/register.json
+- (void)_postDeviceRegisterPhoneNumber:(NSString *)phoneNumber // eg. @"+41764948273"
+                            guestToken:(NSString *)guestToken
+                          successBlock:(void(^)(id response))successBlock
+                            errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSParameterAssert(phoneNumber);
+    
+    NSDictionary *parameters = @{@"raw_phone_number":phoneNumber,
+                                 @"text_key":@"third_party_confirmation_code",
+                                 @"send_numeric_pin":@"true",
+                                 @"[STTWITTER_HEADER_APPONLY_POST]x-guest-token":guestToken};
+    
+    [self postAPIResource:@"device/register.json"
+               parameters:parameters
+             successBlock:^(NSDictionary *rateLimits, id response) {
+                 successBlock(response);
+             } errorBlock:^(NSError *error) {
+                 errorBlock(error);
+             }];
+}
+
+// POST sdk/account.json
+- (void)_postSDKAccountNumericPIN:(NSString *)numericPIN
+                   forPhoneNumber:(NSString *)phoneNumber
+                       guestToken:(NSString *)guestToken
+                     successBlock:(void(^)(id response, NSString *accessToken, NSString *accessTokenSecret))successBlock
+                       errorBlock:(void(^)(NSError *error))errorBlock {
+    
+    NSParameterAssert(numericPIN);
+    NSParameterAssert(phoneNumber);
+    
+    NSDictionary *parameters = @{@"numeric_pin":numericPIN,
+                                 @"phone_number":phoneNumber,
+                                 @"[STTWITTER_HEADER_APPONLY_POST]x-guest-token":guestToken};
+    
+    [self fetchResource:@"sdk/account.json"
+             HTTPMethod:@"POST"
+          baseURLString:kBaseURLStringAPI_1_1
+             parameters:parameters
+    uploadProgressBlock:nil
+  downloadProgressBlock:nil
+           successBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response) {
+               NSString *accessToken = [responseHeaders valueForKey:@"x-twitter-new-account-oauth-access-token"];
+               NSString *accessTokenSecret = [responseHeaders valueForKey:@"x-twitter-new-account-oauth-secret"];
+               successBlock(response, accessToken, accessTokenSecret);
+           } errorBlock:^(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error) {
+               errorBlock(error);
+           }];
 }
 
 @end

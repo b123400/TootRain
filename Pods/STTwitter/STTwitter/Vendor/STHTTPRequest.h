@@ -33,12 +33,13 @@ typedef void (^errorBlock_t)(NSError *error);
 @property (copy) completionDataBlock_t completionDataBlock;
 
 // request
-@property (nonatomic, strong) NSString *HTTPMethod; // default: GET, or POST if POSTDictionary or files to upload
+@property (nonatomic, strong) NSString *HTTPMethod; // default: GET, overridden by POST if POSTDictionary or files to upload
 @property (nonatomic, strong) NSMutableDictionary *requestHeaders;
 @property (nonatomic, strong) NSDictionary *POSTDictionary; // keys and values are NSString instances
+@property (nonatomic, strong) NSDictionary *GETDictionary; // appended to the URL string
 @property (nonatomic, strong) NSData *rawPOSTData; // eg. to post JSON contents
 @property (nonatomic) NSStringEncoding POSTDataEncoding;
-@property (nonatomic, assign) NSUInteger timeoutSeconds;
+@property (nonatomic) NSTimeInterval timeoutSeconds; // ignored if 0
 @property (nonatomic) BOOL addCredentialsToURL; // default NO
 @property (nonatomic) BOOL encodePOSTDictionary; // default YES
 @property (nonatomic, strong, readonly) NSURL *url;
@@ -55,8 +56,13 @@ typedef void (^errorBlock_t)(NSError *error);
 @property (nonatomic, strong, readonly) NSError *error;
 @property (nonatomic) long long responseExpectedContentLength; // set by connection:didReceiveResponse: delegate method; web server must send the Content-Length header for accurate value
 
+// cache
+@property (nonatomic) BOOL ignoreCache; // requests ignore cached responses and responses don't get cached
+
 + (STHTTPRequest *)requestWithURL:(NSURL *)url;
 + (STHTTPRequest *)requestWithURLString:(NSString *)urlString;
+
++ (void)setGlobalIgnoreCache:(BOOL)ignoreCache; // no cache at all when set, overrides the ignoreCache property
 
 - (NSString *)debugDescription; // logged when launched with -STHTTPRequestShowDebugDescription 1
 - (NSString *)curlDescription; // logged when launched with -STHTTPRequestShowCurlDescription 1
@@ -105,4 +111,8 @@ typedef void (^errorBlock_t)(NSError *error);
 
 @interface NSString (RFC3986)
 - (NSString *)st_stringByAddingRFC3986PercentEscapesUsingEncoding:(NSStringEncoding)encoding;
+@end
+
+@interface NSString (STUtilities)
+- (NSString *)st_stringByAppendingGETParameters:(NSDictionary *)parameters;
 @end

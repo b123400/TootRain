@@ -3,7 +3,7 @@ PODS:
   - SDWebImage (3.7.2):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.2)
-  - STTwitter (0.1.5)
+  - STTwitter (0.2.0)
   - SVProgressHUD (1.1.2)
   - UIImage+BlurredFrame (0.0.4)
 
@@ -17,7 +17,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Color-Picker-for-iOS: 4f02cd927f9b1d9292831bcdbd0ab55cd8ace4f6
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  STTwitter: db502ad6dcd49c4a3aca9afa3187b56d76ac4303
+  STTwitter: 4fda61d0a96c707f94df85677b1a4aedbcec6fcd
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
   UIImage+BlurredFrame: ad2f7195c6947ea3117c7d202f75a51958d5061a
 

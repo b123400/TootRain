@@ -16,6 +16,7 @@
 #import "RainDropDetailViewController.h"
 #import "BRNavigationViewController.h"
 #import <UIImage+ImageEffects.h>
+#import "StreamController.h"
 
 @interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate>
 
@@ -97,6 +98,31 @@
     popover.sourceView = [sender superview];
     [self presentViewController:controller animated:YES completion:nil];
 }
+
+#pragma mark search
+
+- (IBAction)searchButtonTapped:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Search", @"")
+                                                                   message:NSLocalizedString(@"Please enter search term", @"")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = NSLocalizedString(@"Search term", nil);
+        textField.text = [StreamController shared].searchTerm;
+    }];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"")
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+                                                UITextField *textField = alert.textFields.firstObject;
+                                                [StreamController shared].searchTerm = textField.text;
+                                            }]];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel Search", @"")
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+                                                [StreamController shared].searchTerm = nil;
+                                            }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

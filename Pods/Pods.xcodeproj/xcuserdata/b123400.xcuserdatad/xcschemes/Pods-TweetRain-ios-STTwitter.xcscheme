@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "966E35A6C5704CBFDDD596A8"
+               BlueprintIdentifier = "1DEA222444F0489A77105488"
                BuildableName = "libPods-TweetRain-ios-STTwitter.a"
                BlueprintName = "Pods-TweetRain-ios-STTwitter"
                ReferencedContainer = "container:Pods.xcodeproj">
