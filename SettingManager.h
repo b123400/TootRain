@@ -13,6 +13,11 @@
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowLevelChanged @"kWindowLevelChanged"
 
+#if TARGET_OS_IPHONE
+#else
+#define AUTO_SELECT_FIRST_ACCOUNT
+#endif
+
 @interface SettingManager : NSObject{
     
 }

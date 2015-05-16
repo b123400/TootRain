@@ -52,7 +52,11 @@ static NSMutableArray *savedAccounts=nil;
             return thisAccount;
         }
     }
+#ifdef AUTO_SELECT_FIRST_ACCOUNT
     return [self.accounts objectAtIndex:0];
+#else
+    return nil;
+#endif
 }
 
 - (void)setSelectedAccount:(ACAccount*)account {

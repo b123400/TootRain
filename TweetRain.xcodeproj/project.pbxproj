@@ -36,6 +36,7 @@
 		CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1C1A0476DC003EB806 /* Accounts.framework */; };
 		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */; };
@@ -192,6 +193,8 @@
 		CF620A201A057CBE003EB806 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
+		CF6FA7441B06599B0088748F /* SettingAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAboutTableViewController.h; sourceTree = "<group>"; };
+		CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAboutTableViewController.m; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
@@ -556,6 +559,8 @@
 				CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */,
 				CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */,
 				CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */,
+				CF6FA7441B06599B0088748F /* SettingAboutTableViewController.h */,
+				CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1075,6 +1080,7 @@
 			files = (
 				CF2AAAF11ABB05DA002EC003 /* User.m in Sources */,
 				CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */,
+				CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */,
 				CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */,
 				CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */,
 				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,

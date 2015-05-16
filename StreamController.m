@@ -12,6 +12,10 @@
 #import "Status.h"
 #import "SettingManager.h"
 
+#if TARGET_OS_IPHONE
+#import <SVProgressHUD/SVProgressHUD.h>
+#endif
+
 @interface StreamController()
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
@@ -101,22 +105,29 @@ static StreamController *shared;
                                  NSLog(@"stall warning %@", message);
                              }
                              errorBlock:^(NSError *error) {
-#if !TARGET_OS_IPHONE && TARGET_OS_MAC
-                                 NSUserNotification *notification = [[NSUserNotification alloc] init];
-                                 notification.title = NSLocalizedString(@"Stream disconnected",nil);
-                                 notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Reconnecting to user: %@",nil),self.account.username];
-                                 [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-#endif
+                                 [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
+                                                            body:[NSString stringWithFormat:
+                                                                  NSLocalizedString(@"Reconnecting to user: %@",nil),
+                                                                  self.account.username]];
                                  [self reconnect];
                              }];
 }
 
-- (void)showNotification{
+- (void)showNotification {
     if (!self.account) return;
-#if !TARGET_OS_IPHONE && TARGET_OS_MAC
+    [self showNotificationWithTitle: NSLocalizedString(@"Stream Connecting",nil)
+                               body: [NSString stringWithFormat:
+                                      NSLocalizedString(@"Connecting to %@",nil),
+                                      self.account.username]];
+}
+
+- (void)showNotificationWithTitle:(NSString*)title body:(NSString*)body {
+#if TARGET_OS_IPHONE
+    [SVProgressHUD showInfoWithStatus:body];
+#elif TARGET_OS_MAC
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = NSLocalizedString(@"Stream Connecting",nil);
-    notification.informativeText = [NSString stringWithFormat:NSLocalizedString(@"User: %@",nil),self.account.username];
+    notification.title = title;
+    notification.informativeText = body;
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 #endif
 }

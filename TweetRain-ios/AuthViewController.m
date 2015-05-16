@@ -117,6 +117,7 @@
 
 - (void)accountTableViewController:(id)sender didSelectedAccount:(ACAccount *)account {
     [[SettingManager sharedManager] setSelectedAccount:account];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
     [self.delegate authViewControllerDidAuthed:self];
 }
 
