@@ -1,5 +1,10 @@
 PODS:
   - Color-Picker-for-iOS (2.0)
+  - Mixpanel (2.8.1):
+    - Mixpanel/Mixpanel
+  - Mixpanel/Mixpanel (2.8.1):
+    - Mixpanel/MPCategoryHelpers
+  - Mixpanel/MPCategoryHelpers (2.8.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.2)
@@ -9,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Color-Picker-for-iOS (~> 2.0)
+  - Mixpanel
   - SDWebImage
   - STTwitter
   - SVProgressHUD
@@ -16,6 +22,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Color-Picker-for-iOS: 4f02cd927f9b1d9292831bcdbd0ab55cd8ace4f6
+  Mixpanel: 93c4825025e6380ced273ed7178496282e385077
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   STTwitter: 4fda61d0a96c707f94df85677b1a4aedbcec6fcd
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2

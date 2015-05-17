@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "47E25AFCCCE2185B5D188632"
+               BlueprintIdentifier = "A40FF76FDA8B7171DAFA990A"
                BuildableName = "libPods-TweetRain-ios-Color-Picker-for-iOS.a"
                BlueprintName = "Pods-TweetRain-ios-Color-Picker-for-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">

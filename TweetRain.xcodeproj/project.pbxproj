@@ -37,6 +37,7 @@
 		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */; };
+		CF6FECE41B08B3F1009191A5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF78F50D1B07C0FA006192DE /* AuthAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */; };
@@ -355,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF6FECE41B08B3F1009191A5 /* Crashlytics.framework in Frameworks */,
 				59EF393E68A59F644F7B8D8E /* libPods-TweetRain-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,6 +820,7 @@
 				CFCA49B71AB8AA6F00E922C9 /* Frameworks */,
 				CFCA49B81AB8AA6F00E922C9 /* Resources */,
 				7D6CB661EAB041D220E635F0 /* Copy Pods Resources */,
+				CF6FECE31B08B39D009191A5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1001,6 +1004,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CF6FECE31B08B39D009191A5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 		CFCB21E91A1FA65800202991 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1330,6 +1346,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1375,6 +1395,10 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

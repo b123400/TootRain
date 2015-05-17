@@ -15,4 +15,5 @@ target "TweetRain-ios" do
   pod "SVProgressHUD"
   pod "Color-Picker-for-iOS", "~> 2.0"
   pod 'UIImage+BlurredFrame'
+  pod 'Mixpanel'
 end

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TweetRain-ios-Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TweetRain-ios-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1DEA222444F0489A77105488</key>
+		<key>2611DA24C2045D3F65C00848</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>47E25AFCCCE2185B5D188632</key>
+		<key>567C5B1AB30FE71AA30B7954</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B88325356D0F69E8C6CD6B17</key>
+		<key>76F230F5835673582BA7D3D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BA67288A16F33FB4A6012284</key>
+		<key>8488694334D8A47BA2FDE40D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD66467041D9E4EBF1BA529F</key>
+		<key>A40FF76FDA8B7171DAFA990A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB6FB6595DE3620C83011A5C</key>
+		<key>B0F19510E19FA314E9BD9415</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF3139F2463F95D635A3BF1E</key>
+		<key>B2699F7242D363F85E2D6614</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EDAF6CE18333DB41489589FD</key>
+		<key>C0C89622C2656191E324D7AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E2B7E16F3596CB76AA1766EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

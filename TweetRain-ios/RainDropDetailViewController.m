@@ -12,6 +12,7 @@
 #import <STTwitter/STTwitter.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "SettingManager.h"
+#import "Mixpanel.h"
 
 @interface RainDropDetailViewController ()
 
@@ -59,6 +60,7 @@
         button.layer.cornerRadius = button.frame.size.width/2;
         button.layer.masksToBounds = YES;
     }
+    [[Mixpanel sharedInstance] track:@"detail opened"];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -89,6 +91,7 @@
     ComposeStatusViewController *controller = [[ComposeStatusViewController alloc] initWithReplyStatus:self.status type:ComposeStatusTypeReply];
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:controller animated:YES completion:nil];
+    [[Mixpanel sharedInstance] track:@"reply"];
 }
 
 - (IBAction)retweetButtonPressed:(id)sender {
@@ -104,12 +107,14 @@
                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
                           otherButtonTitles: nil] show];
     }];
+    [[Mixpanel sharedInstance] track:@"retweet"];
 }
 
 - (IBAction)rtButtonPressed:(id)sender {
     ComposeStatusViewController *controller = [[ComposeStatusViewController alloc] initWithReplyStatus:self.status type:ComposeStatusTypeRetweet];
     controller.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:controller animated:YES completion:nil];
+    [[Mixpanel sharedInstance] track:@"rt"];
 }
 
 - (IBAction)favButtonPressed:(id)sender {
@@ -124,6 +129,7 @@
                           cancelButtonTitle:NSLocalizedString(@"OK", nil)
                           otherButtonTitles: nil] show];
     }];
+    [[Mixpanel sharedInstance] track:@"fav"];
 }
 
 /*
