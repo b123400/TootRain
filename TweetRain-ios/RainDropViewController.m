@@ -69,6 +69,8 @@
     self.contentTextLabel.textColor = [[SettingManager sharedManager] textColor];
     self.contentTextLabel.attributedText = [[NSAttributedString alloc] initWithString:[self textToDisplay]
                                                                            attributes:attributes];
+    self.contentTextLabel.shadowColor = [UIColor blackColor];
+    self.contentTextLabel.shadowOffset = CGSizeMake(0, 1);
     
     if ([SettingManager sharedManager].showProfileImage) {
         self.profileImageView.hidden = NO;

@@ -65,6 +65,16 @@
                                                              self.view.frame.size.width,
                                                              self.view.frame.size.height)
                                            toView:navController.view];
+            if (frame.origin.x == 0 && frame.origin.y == 0) {
+                // On iPhone (fullscreen present), convert rect works differently
+                // it returns a scaled version, so scale it back
+                CGFloat scale = [UIScreen mainScreen].scale;
+                frame.origin.x *= scale;
+                frame.origin.y *= scale;
+                frame.size.width *= scale;
+                frame.size.height *= scale;
+            }
+            
             UIImageView *blurImageView = [[UIImageView alloc] initWithImage:blurredImage];
             blurImageView.frame = frame;
             [navController.view addSubview:blurImageView];
