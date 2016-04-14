@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
+#import <Fabric/Fabric.h>
 #import "Mixpanel.h"
 
 @interface AppDelegate ()
@@ -19,7 +20,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Crashlytics startWithAPIKey:@"be3de76eb1918a93b4d68a8e87b983750d738aed"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+                                                              @"NSApplicationCrashOnExceptions": @YES
+                                                              }];
+    [Fabric with:@[[Crashlytics class]]];
     [Mixpanel sharedInstanceWithToken:@"1657dda3c64f0c05d967cc8423bb2c3d"];
     return YES;
 }

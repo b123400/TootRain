@@ -1,6 +1,0 @@
-#include "Pods-TweetRain-ios-Mixpanel.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Mixpanel" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Color-Picker-for-iOS" "${PODS_ROOT}/Headers/Public/Mixpanel" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/STTwitter" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/UIImage+BlurredFrame"
-LIBRARY_SEARCH_PATHS = ${PODS_TWEETRAIN_IOS_MIXPANEL_LIBRARY_SEARCH_PATHS}
-OTHER_LDFLAGS = ${PODS_TWEETRAIN_IOS_MIXPANEL_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}

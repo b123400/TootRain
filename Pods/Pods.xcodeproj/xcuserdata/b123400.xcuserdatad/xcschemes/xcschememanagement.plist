@@ -4,37 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Color-Picker-for-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TweetRain-STTwitter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-TweetRain-ios-Color-Picker-for-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TweetRain-ios-Mixpanel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TweetRain-ios-SDWebImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-TweetRain-ios-STTwitter.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TweetRain-ios-SVProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-TweetRain-ios-UIImage+BlurredFrame.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -49,50 +34,65 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIImage+BlurredFrame.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2611DA24C2045D3F65C00848</key>
+		<key>005EFB0BB88666D7C5E18A5379C1DBEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>567C5B1AB30FE71AA30B7954</key>
+		<key>395E4F6947AC2BCBC5629CC9EDC71B46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76F230F5835673582BA7D3D7</key>
+		<key>45FE8CD066D2D81E08D7B031A853FB88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8488694334D8A47BA2FDE40D</key>
+		<key>622C122167B4764965E7CDAC8F518938</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A40FF76FDA8B7171DAFA990A</key>
+		<key>680AF691A7A87D266CFE183CC126A211</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0F19510E19FA314E9BD9415</key>
+		<key>9A78C3A05A5998BFD2C6B372328EAE74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2699F7242D363F85E2D6614</key>
+		<key>BF250650E32ED3ACBFEC0422C62F2328</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0C89622C2656191E324D7AD</key>
+		<key>DE77ACFEED9E2CBA445D041BC9EF1888</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E2B7E16F3596CB76AA1766EB</key>
+		<key>FB76F1E8BD2121D636FD80079DEF74FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

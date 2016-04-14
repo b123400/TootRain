@@ -1,6 +1,8 @@
 
 def import_pods
   pod 'STTwitter'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end
 
 target :TweetRain do

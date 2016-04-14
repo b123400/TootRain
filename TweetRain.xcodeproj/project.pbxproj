@@ -37,7 +37,6 @@
 		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */; };
-		CF6FECE41B08B3F1009191A5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF78F50D1B07C0FA006192DE /* AuthAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */; };
@@ -94,7 +93,6 @@
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
 		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
-		CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB21EA1A1FA68900202991 /* Crashlytics.framework */; };
 		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
@@ -305,7 +303,6 @@
 		CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TweetRain-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCA49D71AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetRain_iosTests.m; sourceTree = "<group>"; };
-		CFCB21EA1A1FA68900202991 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
 		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
 		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -341,7 +338,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */,
-				CFCB21EB1A1FA68900202991 /* Crashlytics.framework in Frameworks */,
 				CF620A1B1A047554003EB806 /* Social.framework in Frameworks */,
 				CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */,
 				CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */,
@@ -356,7 +352,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6FECE41B08B3F1009191A5 /* Crashlytics.framework in Frameworks */,
 				59EF393E68A59F644F7B8D8E /* libPods-TweetRain-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,7 +497,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB21EA1A1FA68900202991 /* Crashlytics.framework */,
 				CF620A1C1A0476DC003EB806 /* Accounts.framework */,
 				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
@@ -800,6 +794,7 @@
 				CF53F65E139CCE51003AB55B /* Copy Files */,
 				AA39D368169E2B5CF65A928F /* Copy Pods Resources */,
 				CFCB21E91A1FA65800202991 /* ShellScript */,
+				0DB536EC4C605771EA348BD8 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -821,6 +816,7 @@
 				CFCA49B81AB8AA6F00E922C9 /* Resources */,
 				7D6CB661EAB041D220E635F0 /* Copy Pods Resources */,
 				CF6FECE31B08B39D009191A5 /* ShellScript */,
+				BC0E84456C4F247CB947B4AE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -881,9 +877,6 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
-				Japanese,
-				French,
-				German,
 				Base,
 				ja,
 				"zh-Hant",
@@ -945,6 +938,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0DB536EC4C605771EA348BD8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1C01704D7FEFF7931CFEEA7B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1005,6 +1013,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain/Pods-TweetRain-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BC0E84456C4F247CB947B4AE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CF6FECE31B08B39D009191A5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1016,7 +1039,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 		CFCB21E91A1FA65800202991 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1029,7 +1052,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1251,6 +1274,12 @@
 				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain-Info.plist";
 				INSTALL_PATH = /Applications;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-TweetRain-STTwitter\"",
+					"-lc++",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = TweetRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1279,6 +1308,12 @@
 				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain-Info.plist";
 				INSTALL_PATH = /Applications;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-TweetRain-STTwitter\"",
+					"-lc++",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = TweetRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1349,6 +1384,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/TweetRain-ios",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1398,6 +1434,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/TweetRain-ios",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;

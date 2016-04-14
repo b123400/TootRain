@@ -9,12 +9,16 @@
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
 #import <Crashlytics/Crashlytics.h>
+#import <Fabric/Fabric.h>
 
 @implementation FloodAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[self newWindow:self];
-    [Crashlytics startWithAPIKey:@"be3de76eb1918a93b4d68a8e87b983750d738aed"];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
+                                                              @"NSApplicationCrashOnExceptions": @YES
+                                                              }];
+    [Fabric with:@[[Crashlytics class]]];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	
