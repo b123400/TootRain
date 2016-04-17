@@ -1,0 +1,12 @@
+
+/* Class = "NSWindow"; title = "検索"; ObjectID = "1"; */
+"1.title" = "検索";
+
+/* Class = "NSButtonCell"; title = "GOGOGO!"; ObjectID = "12"; */
+"12.title" = "GOGOGO!";
+
+/* Class = "NSTextFieldCell"; title = "なにを検索しますか？"; ObjectID = "16"; */
+"16.title" = "なにを検索しますか？";
+
+/* Class = "NSTextFieldCell"; title = "空にすれば検索はキャンセルされる"; ObjectID = "29"; */
+"29.title" = "空にすれば検索はキャンセルされる";

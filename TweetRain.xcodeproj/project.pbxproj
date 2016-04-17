@@ -207,12 +207,12 @@
 		CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRNavigationViewController.h; sourceTree = "<group>"; };
 		CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNavigationViewController.m; sourceTree = "<group>"; };
+		CF8534621CC3C4D9004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SearchWindowController.strings; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF8D12C71A76989700A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/RainDropDetailViewController.xib; sourceTree = "<group>"; };
-		CF8D12C81A76993C00A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/SearchWindowController.xib; sourceTree = "<group>"; };
 		CF8D12C91A76996A00A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
@@ -1231,8 +1231,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CFE39FE41A76962C004644C8 /* Base */,
-				CF8D12C81A76993C00A14BF7 /* ja */,
 				CF34B7511AADA48200C6A58E /* zh-Hant */,
+				CF8534621CC3C4D9004D1FFC /* ja */,
 			);
 			name = SearchWindowController.xib;
 			sourceTree = "<group>";

@@ -14,9 +14,9 @@
 
 @end
 
-@interface SearchWindowController : NSWindowController{
+@interface SearchWindowController : NSWindowController <NSTextFieldDelegate> {
 	id <SearchWindowControllerDelegate> __unsafe_unretained delegate;
-	IBOutlet NSTextField *inputTextField;
+	IBOutlet NSSearchField *searchTextField;
 	IBOutlet NSButton *finishButton;
 }
 @property (unsafe_unretained,nonatomic) id delegate;
