@@ -4,6 +4,9 @@ _A stable, mature and comprehensive Objective-C library for Twitter REST API 1.1
 
 _Like a FOSS version of Twitter Fabric TwitterKit, without the UI parts but with much more flexibility_
 
+_Also includes a powerful Twitter dev console for OS X_
+
+**[2015-03-28]** Signed build of OS X demo app: [STTwitterDemoOSX.app.zip](http://www.seriot.ch/temp/STTwitterDemoOSX.app.zip)  
 **[2014-06-18]** [Swifter](https://github.com/mattdonnelly/Swifter), A Twitter framework for iOS & OS X written in Swift, by [@MatthewDonnelly](htps://www.twitter.com/MatthewDonnelly/)  
 **[2014-05-31]** Follow STTwitter on Twitter: [@STTLibrary](https://www.twitter.com/STTLibrary/)  
 **[2014-05-22]** STTwitter was presented at [CocoaHeads Lausanne](https://www.facebook.com/events/732041160150290/) ([slides](http://seriot.ch/resources/abusing_twitter_api/sttwitter_cocoaheads.pdf))  
@@ -37,6 +40,11 @@ _Like a FOSS version of Twitter Fabric TwitterKit, without the UI parts but with
 > "Powered by his own backend wrapper for HTTP calls, STTwitter writes most of the code for you for oAuth based authentication and API resource access like statuses, mentions, users, searches, friends & followers, favorites, lists, places, trends. The documentation is also excellent."
 [STTwitter - Delightful Twitter Library for iOS / buddingdevelopers.com](http://buddingdevelopers.com/sttwitter-delightful-twitter-library-for-ios/)
 
+> Starting using STTwitter on a project. It is absolutely amazing. So easy to use. Thanks @nst021
+[@iOSDevZone](https://twitter.com/iOSDevZone/status/578975327264747520)
+
+> "I'm using this library for a WatchKit app and it works fantastically." [inb4ohnoes](https://github.com/nst/STTwitter/issues/177)
+
 > "I love STTwitter - it made things a breeze when building [@entourageio](http://bit.ly/entourageio)" [@_jeffreyjackson](https://twitter.com/_jeffreyjackson/status/573961997747773441)
 
 ### Installation
@@ -60,7 +68,9 @@ Then, run the following command to install the STTwitter pod:
 
 STTwitter does not depend on AppKit or UIKit and hence can be used in a command-line Twitter client.
 
-STTwitter requires iOS 5+ or OS X 10.7+.
+STTwitter <= 0.2.2 requires iOS 5+ or OS X 10.7+.
+
+STTwitter >= 0.2.3 requires iOS 7+ or OS X 10.9+.
 
 Vea Software has a great live-demo [tutorial](http://www.veasoftware.com/tutorials/2014/6/17/xcode-5-tutorial-ios-7-app-only-authentication-twitter-api-version-11) about creating a simple iOS app using STTwitter's app only mode.
 
@@ -90,7 +100,7 @@ STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@""
 ##### Verify the credentials
 
 ```Objective-C
-[twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
+[twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
     // ...
 } errorBlock:^(NSError *error) {
     // ...
@@ -112,9 +122,9 @@ STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@""
 ##### Streaming API
 
 ```Objective-C
-id request = [twitter getStatusesSampleDelimited:nil
-                                   stallWarnings:nil
-                                   progressBlock:^(id response) {
+NSObject <STTwitterRequestProtocol> *request = [twitter getStatusesSampleDelimited:nil
+                                                                     stallWarnings:nil
+                                                                     progressBlock:^(id response) {
     // ...
 } stallWarningBlock:nil
          errorBlock:^(NSError *error) {
@@ -132,7 +142,7 @@ id request = [twitter getStatusesSampleDelimited:nil
 STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@""
                                                         consumerSecret:@""];
 
-[twitter verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
+[twitter verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
 
     [twitter getUserTimelineWithScreenName:@"barackobama"
                               successBlock:^(NSArray *statuses) {
@@ -238,7 +248,7 @@ STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerName:nil
 
     STTwitterAPI *twitterAPIOS = [STTwitterAPI twitterAPIOSWithFirstAccount];
 
-    [twitterAPIOS verifyCredentialsWithSuccessBlock:^(NSString *username) {
+    [twitterAPIOS verifyCredentialsWithUserSuccessBlock:^(NSString *username, NSString *userID) {
 
         [twitterAPIOS postReverseAuthAccessTokenWithAuthenticationHeader:authenticationHeader
                                                             successBlock:^(NSString *oAuthToken,
@@ -466,9 +476,9 @@ You can create your own convenience methods with fewer parameters. You can also 
         baseURLString:(NSString *)baseURLString
            parameters:(NSDictionary *)params
   uploadProgressBlock:(void(^)(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite))uploadProgressBlock
-downloadProgressBlock:(void (^)(id request, id response))downloadProgressBlock
-         successBlock:(void (^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response))successBlock
-           errorBlock:(void (^)(id request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock;
+downloadProgressBlock:(void(^)(NSObject<STTwitterRequestProtocol> *request, id response))downloadProgressBlock
+         successBlock:(void(^)(NSObject<STTwitterRequestProtocol> *request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, id response))successBlock
+           errorBlock:(void(^)(NSObject<STTwitterRequestProtocol> *request, NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock;
 ```
 
 ##### Layer Model

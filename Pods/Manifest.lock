@@ -11,7 +11,7 @@ PODS:
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
-  - STTwitter (0.2.0)
+  - STTwitter (0.2.3)
   - SVProgressHUD (1.1.2)
   - UIImage+BlurredFrame (0.0.4)
 
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Mixpanel: 93c4825025e6380ced273ed7178496282e385077
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  STTwitter: 4fda61d0a96c707f94df85677b1a4aedbcec6fcd
+  STTwitter: 77386cb6f1807fbfc0e321b9233bdecc9786195d
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
   UIImage+BlurredFrame: ad2f7195c6947ea3117c7d202f75a51958d5061a
 

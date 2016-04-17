@@ -16,7 +16,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #endif
 
-@interface StreamController()
+@interface StreamController() <STTwitterAPIOSProtocol>
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) ACAccountType *accountType;
@@ -48,7 +48,7 @@ static StreamController *shared;
     if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
     
     self.account = changedToAccount;
-    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
+    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
     [self reconnect];
 
     [self showNotification];
@@ -62,9 +62,13 @@ static StreamController *shared;
     self.accountStore = [[ACAccountStore alloc] init];
     self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     self.account = account;
-    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account];
+    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
     
     return self;
+}
+
+- (void)twitterAPI:(STTwitterAPI *)twitterAPI accountWasInvalidated:(ACAccount *)invalidatedAccount {
+    
 }
 
 -(void)dealloc{
@@ -86,31 +90,24 @@ static StreamController *shared;
 - (void)reconnect {
     [self.streamConnection cancel];
     if (!self.account) return;
-    self.streamConnection = [self.twitter
-                             getUserStreamDelimited:nil
-                             stallWarnings:nil
-                             includeMessagesFromFollowedAccounts:nil
-                             includeReplies:nil
-                             keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
-                             locationBoundingBoxes:nil
-                             progressBlock:^(id response) {
-                                 if (response && [response isKindOfClass:[NSDictionary class]]) {
-                                     Status *status = [[Status alloc] initWithDictionary:response];
-                                      if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
-                                         [self.delegate streamController:self didReceivedTweet:status];
-                                     }
-                                 }
-                             }
-                             stallWarningBlock:^(NSString *code, NSString *message, NSUInteger percentFull) {
-                                 NSLog(@"stall warning %@", message);
-                             }
-                             errorBlock:^(NSError *error) {
-                                 [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
-                                                            body:[NSString stringWithFormat:
-                                                                  NSLocalizedString(@"Reconnecting to user: %@",nil),
-                                                                  self.account.username]];
-                                 [self reconnect];
-                             }];
+    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
+                                                    includeReplies:@YES
+                                                   keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
+                                             locationBoundingBoxes:nil
+                                                        tweetBlock:^(NSDictionary *tweet)
+     {
+         Status *status = [[Status alloc] initWithDictionary:tweet];
+         if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
+             [self.delegate streamController:self didReceivedTweet:status];
+         }
+     } errorBlock:^(NSError *error)
+     {
+         [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
+                                    body:[NSString stringWithFormat:
+                                          NSLocalizedString(@"Reconnecting to user: %@",nil),
+                                          self.account.username]];
+         [self reconnect];
+     }];
 }
 
 - (void)showNotification {
