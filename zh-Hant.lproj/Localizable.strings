@@ -1,7 +1,72 @@
-/* 
-  Localizable.strings
-  TweetRain
+/* No comment provided by engineer. */
+"%@ (Streaming)" = "%@ (連接了)";
 
-  Created by b123400 on 26/1/15.
+/* No comment provided by engineer. */
+"Account is invalid?" = "帳號有問題？";
 
-*/
+/* No comment provided by engineer. */
+"Accounts" = "帳號";
+
+/* No comment provided by engineer. */
+"Appearance" = "外觀";
+
+/* No comment provided by engineer. */
+"Clear search history" = "清除檢索履歷";
+
+/* No comment provided by engineer. */
+"Connecting to %@" = "正在連接到 %@";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Failed" = "失敗了";
+
+/* No comment provided by engineer. */
+"Fav" = "打星";
+
+/* No comment provided by engineer. */
+"Font: %@ %.0f" = "字形: %1$@ %2$.0f";
+
+/* No comment provided by engineer. */
+"Loading" = "載入中";
+
+/* No comment provided by engineer. */
+"Photo.jpg" = "";
+
+/* No comment provided by engineer. */
+"Please setup account in system preference" = "請在系統設定裡設定Twitter帳號";
+
+/* No comment provided by engineer. */
+"Recent Search" = "檢索履歷";
+
+/* No comment provided by engineer. */
+"Reconnecting to user: %@" = "重新連接到 %@";
+
+/* No comment provided by engineer. */
+"Retweet" = "轉發";
+
+/* No comment provided by engineer. */
+"Retweeted" = "轉發了";
+
+/* No comment provided by engineer. */
+"Saved Searches" = "儲存了的檢索字眼";
+
+/* No comment provided by engineer. */
+"Send" = "傳送";
+
+/* No comment provided by engineer. */
+"Sent" = "傳送了";
+
+/* No comment provided by engineer. */
+"Stream Connecting" = "正在連接";
+
+/* No comment provided by engineer. */
+"Stream disconnected" = "斷線了";
+
+/* No comment provided by engineer. */
+"Trends" = "熱門字眼";
+
+/* No comment provided by engineer. */
+"Why dont you give me permission:(\n %@" = "爲什麼不給我權限啊啊啊啊啊\n %@";
+

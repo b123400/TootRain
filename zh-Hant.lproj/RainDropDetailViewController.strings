@@ -3,16 +3,16 @@
 "10.title" = "Multiline Label lalalalal this is a very long tweet which takes up quite a lot of space and lalala";
 
 /* Class = "NSButtonCell"; title = "Fav"; ObjectID = "23"; */
-"23.title" = "Fav";
+"23.title" = "打星";
 
 /* Class = "NSButtonCell"; title = "Retweet"; ObjectID = "27"; */
-"27.title" = "Retweet";
+"27.title" = "轉發";
 
 /* Class = "NSButtonCell"; title = "RT"; ObjectID = "35"; */
 "35.title" = "RT";
 
 /* Class = "NSButtonCell"; title = "Reply"; ObjectID = "39"; */
-"39.title" = "Reply";
+"39.title" = "回覆";
 
 /* Class = "NSTextFieldCell"; title = "Name here"; ObjectID = "110"; */
 "110.title" = "Name here";

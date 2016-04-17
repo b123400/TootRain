@@ -44,6 +44,8 @@
 		CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */; };
 		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
 		CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */; };
+		CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346A1CC4133C004D1FFC /* InfoPlist.strings */; };
+		CF85346C1CC4133D004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346B1CC4133D004D1FFC /* InfoPlist.strings */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
@@ -58,6 +60,7 @@
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
+		CFB615671CC413700064B538 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFB615691CC413700064B538 /* InfoPlist.strings */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFC65A0914D32A32008299B3 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596614D32A32008299B3 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC65A0A14D32A32008299B3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596814D32A32008299B3 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -155,6 +158,7 @@
 		CF0C61B41ABD849900C170FC /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
 		CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropContainerView.h; sourceTree = "<group>"; };
 		CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropContainerView.m; sourceTree = "<group>"; };
+		CF1106EB1CC41546006CAE38 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ComposeStatusViewController.strings; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -209,11 +213,12 @@
 		CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNavigationViewController.m; sourceTree = "<group>"; };
 		CF8534621CC3C4D9004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SearchWindowController.strings; sourceTree = "<group>"; };
 		CF8534651CC3E382004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/RainDropDetailViewController.strings; sourceTree = "<group>"; };
+		CF8534691CC4133C004D1FFC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		CF85346B1CC4133D004D1FFC /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
-		CF8D12C91A76996A00A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -232,6 +237,7 @@
 		CFA5115E1369B18D004A81D7 /* CustomDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDragView.m; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
+		CFB615681CC413700064B538 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
 		CFC6596514D32A32008299B3 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -773,6 +779,8 @@
 		CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFB615691CC413700064B538 /* InfoPlist.strings */,
+				CF85346B1CC4133D004D1FFC /* InfoPlist.strings */,
 				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
 				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
 			);
@@ -791,6 +799,7 @@
 		CFCA49D61AB8AA6F00E922C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF85346A1CC4133C004D1FFC /* InfoPlist.strings */,
 				CFCA49D71AB8AA6F00E922C9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -936,6 +945,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
+				CFB615671CC413700064B538 /* InfoPlist.strings in Resources */,
+				CF85346C1CC4133D004D1FFC /* InfoPlist.strings in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
 				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
@@ -948,6 +959,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1216,22 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		CF85346A1CC4133C004D1FFC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF8534691CC4133C004D1FFC /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CFB615691CC413700064B538 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFB615681CC413700064B538 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		CFE39F8B1A7649B9004644C8 /* Errors.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1257,8 +1285,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CFE39FE91A769638004644C8 /* Base */,
-				CF8D12C91A76996A00A14BF7 /* ja */,
 				CF34B7521AADA48200C6A58E /* zh-Hant */,
+				CF1106EB1CC41546006CAE38 /* ja */,
 			);
 			name = ComposeStatusViewController.xib;
 			sourceTree = "<group>";

@@ -3,55 +3,55 @@
 "31.title" = "Text Cell";
 
 /* Class = "NSButtonCell"; title = "Show profile image"; ObjectID = "187"; */
-"187.title" = "Show profile image";
+"187.title" = "顯示頭像";
 
 /* Class = "NSTextFieldCell"; title = "Opacity"; ObjectID = "195"; */
-"195.title" = "Opacity";
+"195.title" = "透明度";
 
 /* Class = "NSButtonCell"; title = "Choose font"; ObjectID = "201"; */
-"201.title" = "Choose font";
+"201.title" = "選擇字形";
 
 /* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
 "203.title" = "Font: Arial Bold 18";
 
 /* Class = "NSButtonCell"; title = "Hide tweet around cursor"; ObjectID = "207"; */
-"207.title" = "Hide tweet around cursor";
+"207.title" = "隱藏鼠標附近的 tweet";
 
 /* Class = "NSTextFieldCell"; title = "Text color"; ObjectID = "210"; */
-"210.title" = "Text color";
+"210.title" = "文字顏色";
 
 /* Class = "NSTextFieldCell"; title = "Shadow color"; ObjectID = "213"; */
-"213.title" = "Shadow color";
+"213.title" = "影子顏色";
 
 /* Class = "NSTextFieldCell"; title = "Hover background color"; ObjectID = "215"; */
-"215.title" = "Hover background color";
+"215.title" = "Hover 時的背景顏色";
 
 /* Class = "NSButtonCell"; title = "Remove URL"; ObjectID = "243"; */
-"243.title" = "Remove URL";
+"243.title" = "隱藏URL";
 
 /* Class = "NSButtonCell"; title = "Underline tweets with URL"; ObjectID = "245"; */
-"245.title" = "Underline tweets with URL";
+"245.title" = "在有網址的 tweet 下畫底線";
 
 /* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
-"274.title" = "Authorize";
+"274.title" = "認證";
 
 /* Class = "NSTextFieldCell"; title = "Please click the folloing button to let me access your Twitter account."; ObjectID = "280"; */
-"280.title" = "Please click the folloing button to let me access your Twitter account.";
+"280.title" = "按這個按鈕來讓我連接你的帳號吧";
 
 /* Class = "NSTextFieldCell"; title = "No account available.\nPlease add your Twitter Account to Mac"; ObjectID = "284"; */
-"284.title" = "No account available.\nPlease add your Twitter Account to Mac";
+"284.title" = "找不到Twitter帳號耶。\n去系統偏好設定加一個吧";
 
 /* Class = "NSButtonCell"; title = "Teach me how"; ObjectID = "290"; */
-"290.title" = "Teach me how";
+"290.title" = "教我怎樣加";
 
 /* Class = "NSTextFieldCell"; title = "Window level:"; ObjectID = "301"; */
-"301.title" = "Window level:";
+"301.title" = "視窗的優先程度";
 
 /* Class = "NSMenuItem"; title = "Above Menu Bar"; ObjectID = "305"; */
-"305.title" = "Above Menu Bar";
+"305.title" = "在Menu Bar之上";
 
 /* Class = "NSMenuItem"; title = "Above All Windows"; ObjectID = "306"; */
-"306.title" = "Above All Windows";
+"306.title" = "在所有視窗之上";
 
 /* Class = "NSMenuItem"; title = "Above Desktop"; ObjectID = "307"; */
-"307.title" = "Above Desktop";
+"307.title" = "在桌面之上";
