@@ -68,7 +68,9 @@ static StreamController *shared;
 }
 
 - (void)twitterAPI:(STTwitterAPI *)twitterAPI accountWasInvalidated:(ACAccount *)invalidatedAccount {
-    
+    // This should not happen because account is handled by OSX?
+    [self showNotificationWithTitle:NSLocalizedString(@"Account is invalid?", @"")
+                               body:NSLocalizedString(@"Please setup account in system preference", @"")];
 }
 
 -(void)dealloc{

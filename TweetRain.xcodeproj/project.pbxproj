@@ -208,11 +208,11 @@
 		CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRNavigationViewController.h; sourceTree = "<group>"; };
 		CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNavigationViewController.m; sourceTree = "<group>"; };
 		CF8534621CC3C4D9004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SearchWindowController.strings; sourceTree = "<group>"; };
+		CF8534651CC3E382004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/RainDropDetailViewController.strings; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
-		CF8D12C71A76989700A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/RainDropDetailViewController.xib; sourceTree = "<group>"; };
 		CF8D12C91A76996A00A14BF7 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
@@ -383,12 +383,8 @@
 				CFE8F5BF15D7E9F100815830 /* RainDropView.m */,
 				CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */,
 				CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */,
-				CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */,
-				CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */,
-				CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */,
-				CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */,
-				CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */,
-				CFE39FE51A76962C004644C8 /* SearchWindowController.xib */,
+				CF8534641CC3E351004D1FFC /* RainDrop Detail */,
+				CF8534631CC3E342004D1FFC /* Search */,
 				CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */,
 				CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */,
 				CFE39FEA1A769638004644C8 /* ComposeStatusViewController.xib */,
@@ -584,6 +580,26 @@
 				CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		CF8534631CC3E342004D1FFC /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */,
+				CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */,
+				CFE39FE51A76962C004644C8 /* SearchWindowController.xib */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		CF8534641CC3E351004D1FFC /* RainDrop Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */,
+				CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */,
+				CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */,
+			);
+			name = "RainDrop Detail";
 			sourceTree = "<group>";
 		};
 		CF912ACA1ABF07BC00B9426B /* Actions */ = {
@@ -1221,8 +1237,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CFE39FDF1A769623004644C8 /* Base */,
-				CF8D12C71A76989700A14BF7 /* ja */,
 				CF34B7501AADA48200C6A58E /* zh-Hant */,
+				CF8534651CC3E382004D1FFC /* ja */,
 			);
 			name = RainDropDetailViewController.xib;
 			sourceTree = "<group>";

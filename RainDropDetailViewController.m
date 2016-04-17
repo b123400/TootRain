@@ -40,7 +40,7 @@
     if (self) {
         // Initialization code here.
         ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount];
+        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
     }
     
     return self;
