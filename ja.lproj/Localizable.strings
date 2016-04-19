@@ -1,13 +1,17 @@
-"Account is invalid?" = "アカウントに問題があるっぽい";
-"Clear search history" = "検索履歴を削除";
-"Please setup account in system preference" = "システム設定でツイッターのアカウントを設定してください";
-"Recent Search" = "検索履歴";
-"Saved Searches" = "保存された検索キーワード";
-"Trends" = "トレンド";
-
-
 /* No comment provided by engineer. */
 "%@ (Streaming)" = "%@ （ストリングなう）";
+
+/* No comment provided by engineer. */
+"Account is invalid?" = "アカウントに問題があるっぽい";
+
+/* No comment provided by engineer. */
+"Accounts" = "アカウント";
+
+/* No comment provided by engineer. */
+"Appearance" = "外見";
+
+/* No comment provided by engineer. */
+"Clear search history" = "検索履歴を削除";
 
 /* No comment provided by engineer. */
 "Done" = "完了";
@@ -28,6 +32,12 @@
 "Photo.jpg" = "Photo.jpg";
 
 /* No comment provided by engineer. */
+"Please setup account in system preference" = "システム設定でツイッターのアカウントを設定してください";
+
+/* No comment provided by engineer. */
+"Recent Search" = "檢索履歷";
+
+/* No comment provided by engineer. */
 "Reconnecting to user: %@" = "繋ぎ直しています: %@";
 
 /* No comment provided by engineer. */
@@ -36,7 +46,8 @@
 /* No comment provided by engineer. */
 "Retweeted" = "リツイートしました";
 
-"Recent Search" = "檢索履歷";
+/* No comment provided by engineer. */
+"Saved Searches" = "保存された検索キーワード";
 
 /* No comment provided by engineer. */
 "Send" = "送信";
@@ -51,11 +62,10 @@
 "Stream disconnected" = "ストリームが切れました";
 
 /* No comment provided by engineer. */
-"User: %@" = "ユーザー： %@";
+"Trends" = "トレンド";
 
 /* No comment provided by engineer. */
-"Why dont you give me permission:(\n %@" = "なんで権限をあげないよーーー！:(\n %@";
+"Why dont you give me permission:(
+ %@" = "なんで権限をあげないよーーー！:(
+ %@";
 
-"Accounts" = "アカウント";
-
-"Appearance" = "外見";
