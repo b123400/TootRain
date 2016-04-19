@@ -45,7 +45,6 @@
 		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
 		CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */; };
 		CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346A1CC4133C004D1FFC /* InfoPlist.strings */; };
-		CF85346C1CC4133D004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346B1CC4133D004D1FFC /* InfoPlist.strings */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
@@ -214,7 +213,6 @@
 		CF8534621CC3C4D9004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SearchWindowController.strings; sourceTree = "<group>"; };
 		CF8534651CC3E382004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/RainDropDetailViewController.strings; sourceTree = "<group>"; };
 		CF8534691CC4133C004D1FFC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		CF85346B1CC4133D004D1FFC /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
@@ -780,7 +778,6 @@
 			isa = PBXGroup;
 			children = (
 				CFB615691CC413700064B538 /* InfoPlist.strings */,
-				CF85346B1CC4133D004D1FFC /* InfoPlist.strings */,
 				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
 				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
 			);
@@ -946,7 +943,6 @@
 			files = (
 				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
 				CFB615671CC413700064B538 /* InfoPlist.strings in Resources */,
-				CF85346C1CC4133D004D1FFC /* InfoPlist.strings in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
 				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
