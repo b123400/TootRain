@@ -59,7 +59,6 @@
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
-		CFB615671CC413700064B538 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFB615691CC413700064B538 /* InfoPlist.strings */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFC65A0914D32A32008299B3 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596614D32A32008299B3 /* NSMutableURLRequest+Parameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CFC65A0A14D32A32008299B3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC6596814D32A32008299B3 /* NSString+URLEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -235,7 +234,6 @@
 		CFA5115E1369B18D004A81D7 /* CustomDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDragView.m; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
-		CFB615681CC413700064B538 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
 		CFC6596514D32A32008299B3 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -777,7 +775,6 @@
 		CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CFB615691CC413700064B538 /* InfoPlist.strings */,
 				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
 				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
 			);
@@ -942,7 +939,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
-				CFB615671CC413700064B538 /* InfoPlist.strings in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
 				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
@@ -1216,14 +1212,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				CF8534691CC4133C004D1FFC /* zh-Hant */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CFB615691CC413700064B538 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFB615681CC413700064B538 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
