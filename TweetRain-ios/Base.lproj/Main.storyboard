@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -59,7 +59,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZ1-eZ-eFX"/>
+                                    <segue destination="bH5-Be-hVe" kind="presentation" identifier="Search" modalPresentationStyle="currentContext" id="JEW-RS-smy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,6 +79,89 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="356" y="197"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d6j-Sm-ecE">
+            <objects>
+                <navigationController id="bH5-Be-hVe" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJn-FK-UJe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ALj-V8-ez9" kind="relationship" relationship="rootViewController" id="Am3-ZU-N8c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x4D-iE-NrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="197"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="X4t-sI-UhA">
+            <objects>
+                <tableViewController id="ALj-V8-ez9" customClass="BRSearchViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tft-2r-YZN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="zPI-XT-i9e" customClass="TextFieldTableViewCell">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zPI-XT-i9e" id="X0i-ch-TlF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter search term" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eRc-9L-JBQ">
+                                            <rect key="frame" x="16" y="13.5" width="576" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldDidChange:" destination="zPI-XT-i9e" eventType="editingChanged" id="MYT-lt-Cg4"/>
+                                                <outlet property="delegate" destination="zPI-XT-i9e" id="DvI-Mp-Jnv"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eRc-9L-JBQ" firstAttribute="trailing" secondItem="X0i-ch-TlF" secondAttribute="trailingMargin" id="Sx5-dn-Vg5"/>
+                                        <constraint firstItem="eRc-9L-JBQ" firstAttribute="centerY" secondItem="X0i-ch-TlF" secondAttribute="centerY" id="mbP-hl-PQZ"/>
+                                        <constraint firstItem="eRc-9L-JBQ" firstAttribute="leading" secondItem="X0i-ch-TlF" secondAttribute="leadingMargin" constant="8" id="xhF-vf-W19"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="eRc-9L-JBQ" id="JeM-YY-NON"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NormalCell" textLabel="TCU-GM-kir" style="IBUITableViewCellStyleDefault" id="uGa-cc-h6I">
+                                <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uGa-cc-h6I" id="2af-2Y-9uG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCU-GM-kir">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ALj-V8-ez9" id="zfA-PT-Ayd"/>
+                            <outlet property="delegate" destination="ALj-V8-ez9" id="bRL-EE-QFc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="AmG-K2-DOE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3a9-Qr-QZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868" y="197"/>
         </scene>
         <!--Setting-->
         <scene sceneID="jZ2-xE-vF9">
@@ -554,7 +637,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSD-Xw-8mO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="346"/>
+            <point key="canvasLocation" x="1929" y="1024"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="qac-Em-TIZ">

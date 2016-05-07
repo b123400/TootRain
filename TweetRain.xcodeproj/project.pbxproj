@@ -47,6 +47,8 @@
 		CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346A1CC4133C004D1FFC /* InfoPlist.strings */; };
 		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
+		CF8DC2241CDE789800128E68 /* BRSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2231CDE789800128E68 /* BRSearchViewController.m */; };
+		CF8DC2271CDE7CB600128E68 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
 		CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
 		CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
@@ -216,6 +218,10 @@
 		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
+		CF8DC2221CDE789800128E68 /* BRSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSearchViewController.h; sourceTree = "<group>"; };
+		CF8DC2231CDE789800128E68 /* BRSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSearchViewController.m; sourceTree = "<group>"; };
+		CF8DC2251CDE7CB600128E68 /* TextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableViewCell.h; sourceTree = "<group>"; };
+		CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableViewCell.m; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -604,6 +610,17 @@
 			name = "RainDrop Detail";
 			sourceTree = "<group>";
 		};
+		CF8DC2281CDE7CBB00128E68 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CF8DC2221CDE789800128E68 /* BRSearchViewController.h */,
+				CF8DC2231CDE789800128E68 /* BRSearchViewController.m */,
+				CF8DC2251CDE7CB600128E68 /* TextFieldTableViewCell.h */,
+				CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		CF912ACA1ABF07BC00B9426B /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +777,7 @@
 				CF2AAAE71ABADDE3002EC003 /* ViewController.m */,
 				CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */,
 				CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */,
+				CF8DC2281CDE7CBB00128E68 /* Search */,
 				CF8040221ABE0DAC00DF3D59 /* Rain Drop */,
 				CF8040231ABE0DC100DF3D59 /* Detail */,
 				CF912ACA1ABF07BC00B9426B /* Actions */,
@@ -1143,6 +1161,7 @@
 				CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */,
 				CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */,
 				CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */,
+				CF8DC2241CDE789800128E68 /* BRSearchViewController.m in Sources */,
 				CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */,
 				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,
 				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
@@ -1152,6 +1171,7 @@
 				CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */,
 				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
 				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
+				CF8DC2271CDE7CB600128E68 /* TextFieldTableViewCell.m in Sources */,
 				CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */,
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
 				CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */,

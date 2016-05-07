@@ -17,8 +17,9 @@
 #import "BRNavigationViewController.h"
 #import <UIImage+ImageEffects.h>
 #import "StreamController.h"
+#import "BRSearchViewController.h"
 
-@interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate>
+@interface ViewController () <AuthViewControllerDelegate, StreamControllerDelegate, RainDropViewControllerDelegate, RainDropDetailViewControllerDelegate, BRSearchViewControllerDelegate>
 
 @end
 
@@ -111,35 +112,28 @@
 
 #pragma mark search
 
-- (IBAction)searchButtonTapped:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Search", @"")
-                                                                   message:NSLocalizedString(@"Please enter search term", @"")
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = NSLocalizedString(@"Search term", nil);
-        textField.text = [StreamController shared].searchTerm;
-    }];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"")
-                                              style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction *action) {
-                                                UITextField *textField = alert.textFields.firstObject;
-                                                if ([textField.text isEqualToString:@""]) {
-                                                    [StreamController shared].searchTerm = nil;
-                                                } else {
-                                                    [StreamController shared].searchTerm = textField.text;
-                                                }
-                                            }]];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel Search", @"")
-                                              style:UIAlertActionStyleDefault
-                                            handler:^(UIAlertAction *action) {
-                                                [StreamController shared].searchTerm = nil;
-                                            }]];
-    [self presentViewController:alert animated:YES completion:nil];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"Search"]) {
+        UINavigationController *navController = [segue destinationViewController];
+        BRSearchViewController *controller = (BRSearchViewController*)[navController topViewController];
+        controller.delegate = self;
+        controller.searchTerm = [StreamController shared].searchTerm;
+    }
 }
 
+#pragma mark - Search
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+- (void)searchViewController:(id)controller didEnteredSearchTerm:(NSString *)searchTerm {
+    if ([searchTerm isEqualToString:@""]) {
+        [StreamController shared].searchTerm = nil;
+    } else {
+        [StreamController shared].searchTerm = searchTerm;
+    }
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)searchViewControllerDidCancelled:(id)controller {
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark interface
