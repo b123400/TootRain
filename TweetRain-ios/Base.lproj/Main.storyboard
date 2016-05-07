@@ -59,7 +59,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="bH5-Be-hVe" kind="presentation" identifier="Search" modalPresentationStyle="currentContext" id="JEW-RS-smy"/>
+                                    <segue destination="bH5-Be-hVe" kind="presentation" identifier="Search" modalPresentationStyle="formSheet" id="JEW-RS-smy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -107,7 +107,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" id="zPI-XT-i9e" customClass="TextFieldTableViewCell">
-                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="93.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zPI-XT-i9e" id="X0i-ch-TlF">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -134,7 +134,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NormalCell" textLabel="TCU-GM-kir" style="IBUITableViewCellStyleDefault" id="uGa-cc-h6I">
-                                <rect key="frame" x="0.0" y="157.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="137.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uGa-cc-h6I" id="2af-2Y-9uG">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
