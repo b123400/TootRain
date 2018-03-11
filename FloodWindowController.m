@@ -117,7 +117,7 @@
 			thisController.view.frame.origin.y>=thisY)){
 			//y position overlap
 			if([thisController willCollideWithRainDrop:controller]){
-				minY=thisController.view.frame.origin.y-controller.view.frame.size.height+1;
+				minY=thisController.view.frame.origin.y-controller.view.frame.size.height-1;
 			}
 		}
 	}

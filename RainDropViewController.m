@@ -96,7 +96,7 @@
 	CGPoint target=CGPointMake(self.view.frame.size.width*-1, self.view.frame.origin.y);
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
     animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
-	animation.duration=[self animationDuration]*((self.view.frame.origin.x+self.view.frame.size.width)/(self.view.superview.frame.size.width+self.view.frame.size.width));
+    animation.duration=[self animationDuration];
 	animation.toValue = [NSValue valueWithPoint:target];
 	animation.delegate=self;
 	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
