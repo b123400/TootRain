@@ -90,6 +90,10 @@
     [thisViewController loadView];
     CGRect frame=thisViewController.view.frame;
     frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
+    if (frame.origin.y < 0) {
+        // out of screen, discard
+        return;
+    }
     thisViewController.view.frame=frame;
     [[[self window] contentView]addSubview: [thisViewController view]];
     thisViewController.delegate=self;
