@@ -8,6 +8,7 @@
 #import "SettingViewController.h"
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
+#import "BRMastodonClient.h"
 
 @interface SettingViewController ()
 
@@ -121,6 +122,11 @@
 #pragma mark Accounts
 
 - (IBAction)authorizeButtonTapped:(id)sender {
+    [[BRMastodonClient shared] registerAppFor:self.instanceHostField.stringValue
+                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+        NSLog(@"App: %@, Error: %@", app, error);
+        NSLog(@"URL: %@", [app authorisationURL]);
+    }];
 //    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
 //        if (granted) {
 //            [self updateAccountView];

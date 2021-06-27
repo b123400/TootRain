@@ -67,6 +67,9 @@
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
 		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
 		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
+		CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */; };
+		CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */; };
+		CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
 		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -220,6 +223,11 @@
 		CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetRain_iosTests.m; sourceTree = "<group>"; };
 		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
 		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
+		CFD13195268874CE00B6EDB3 /* BRMastodonClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonClient.h; sourceTree = "<group>"; };
+		CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonClient.m; sourceTree = "<group>"; };
+		CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonApp.h; sourceTree = "<group>"; };
+		CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonApp.m; sourceTree = "<group>"; };
+		CFD1319B2688939D00B6EDB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFE39F801A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		CFE39F811A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -253,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */,
 				CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */,
 				CF620A1B1A047554003EB806 /* Social.framework in Frameworks */,
 				CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */,
@@ -307,6 +316,7 @@
 				CFE39FEA1A769638004644C8 /* ComposeStatusViewController.xib */,
 				CF620A1E1A057C9A003EB806 /* StreamController */,
 				CF9F62081563D548004C6514 /* Settings */,
+				CFD131942688745A00B6EDB3 /* BRMastodonClient */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -403,6 +413,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFD1319B2688939D00B6EDB3 /* Security.framework */,
 				CF620A1C1A0476DC003EB806 /* Accounts.framework */,
 				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
@@ -595,6 +606,17 @@
 				CFCA49D71AB8AA6F00E922C9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFD131942688745A00B6EDB3 /* BRMastodonClient */ = {
+			isa = PBXGroup;
+			children = (
+				CFD13195268874CE00B6EDB3 /* BRMastodonClient.h */,
+				CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */,
+				CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */,
+				CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */,
+			);
+			path = BRMastodonClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -838,6 +860,7 @@
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
+				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
 				CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */,
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
@@ -846,6 +869,7 @@
 				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
+				CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,

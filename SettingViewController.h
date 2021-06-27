@@ -31,6 +31,7 @@
 
 @property (weak) IBOutlet NSScrollView *tableViewScrollView;
 
+@property (weak) IBOutlet NSTextField *instanceHostField;
 @property (strong) IBOutlet NSButton *authorizeButton;
 @property (strong) IBOutlet NSView *authorizeView;
 @property (strong) IBOutlet NSView *emptyAccountView;
