@@ -1,38 +1,30 @@
 PODS:
   - Color-Picker-for-iOS (2.0)
-  - Crashlytics (3.7.0):
-    - Fabric (~> 1.6.3)
-  - Fabric (1.6.7)
-  - Mixpanel (2.8.1):
-    - Mixpanel/Mixpanel (= 2.8.1)
-  - Mixpanel/Mixpanel (2.8.1):
-    - Mixpanel/MPCategoryHelpers
-  - Mixpanel/MPCategoryHelpers (2.8.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
-  - STTwitter (0.2.3)
   - SVProgressHUD (1.1.2)
-  - UIImage+BlurredFrame (0.0.4)
+  - "UIImage+BlurredFrame (0.0.4)"
 
 DEPENDENCIES:
   - Color-Picker-for-iOS (~> 2.0)
-  - Crashlytics
-  - Fabric
-  - Mixpanel
   - SDWebImage
-  - STTwitter
   - SVProgressHUD
-  - UIImage+BlurredFrame
+  - "UIImage+BlurredFrame"
+
+SPEC REPOS:
+  trunk:
+    - Color-Picker-for-iOS
+    - SDWebImage
+    - SVProgressHUD
+    - "UIImage+BlurredFrame"
 
 SPEC CHECKSUMS:
-  Color-Picker-for-iOS: 4f02cd927f9b1d9292831bcdbd0ab55cd8ace4f6
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
-  Mixpanel: 93c4825025e6380ced273ed7178496282e385077
+  Color-Picker-for-iOS: 2988926c7a3ceb6f472d6c3c225cbc88d4be3635
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  STTwitter: 77386cb6f1807fbfc0e321b9233bdecc9786195d
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
-  UIImage+BlurredFrame: ad2f7195c6947ea3117c7d202f75a51958d5061a
+  "UIImage+BlurredFrame": ad2f7195c6947ea3117c7d202f75a51958d5061a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 30ca0276a7dae371d6521cda292272798773ba7e
+
+COCOAPODS: 1.10.1

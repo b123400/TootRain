@@ -1,1 +1,0 @@
-../../../STTwitter/STTwitter/STTwitterStreamParser.h

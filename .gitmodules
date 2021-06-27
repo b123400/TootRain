@@ -1,9 +1,0 @@
-[submodule "Frameworks/MKAbeFook"]
-	path = Frameworks/MKAbeFook
-	url = git://github.com/mikekinney/MKAbeFook.git
-[submodule "Frameworks/TouchJSON"]
-	path = Frameworks/TouchJSON
-	url = git://github.com/TouchCode/TouchJSON.git
-[submodule "Frameworks/oauthconsumer"]
-	path = Frameworks/oauthconsumer
-	url = git://github.com/jdg/oauthconsumer.git

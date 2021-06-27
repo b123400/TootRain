@@ -121,16 +121,16 @@
 #pragma mark Accounts
 
 - (IBAction)authorizeButtonTapped:(id)sender {
-    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
-        if (granted) {
-            [self updateAccountView];
-            [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
-        } else {
-            NSAlert *alert = [NSAlert alertWithError:error];
-            [alert setMessageText:[NSString stringWithFormat:NSLocalizedString(@"Why dont you give me permission:(\n %@",nil),[alert messageText]]];
-            [alert runModal];
-        }
-    }];
+//    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
+//        if (granted) {
+//            [self updateAccountView];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
+//        } else {
+//            NSAlert *alert = [NSAlert alertWithError:error];
+//            [alert setMessageText:[NSString stringWithFormat:NSLocalizedString(@"Why dont you give me permission:(\n %@",nil),[alert messageText]]];
+//            [alert runModal];
+//        }
+//    }];
 }
 
 - (void)updateAccountView {

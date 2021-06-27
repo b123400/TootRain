@@ -9,11 +9,10 @@
 #import "RainDropDetailViewController.h"
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
-#import <STTwitter/STTwitter.h>
 
 @interface RainDropDetailViewController ()
 
-@property (nonatomic, strong) STTwitterAPI *twitter;
+//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -40,7 +39,7 @@
     if (self) {
         // Initialization code here.
         ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
+//        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
     }
     
     return self;
@@ -129,24 +128,24 @@
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
 - (IBAction)retweetClicked:(id)sender {
-    [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
-        [retweetButton setTitle:NSLocalizedString(@"Retweeted", nil)];
-    } errorBlock:^(NSError *error) {
-        [retweetButton setEnabled:YES];
-        [retweetButton setTitle:NSLocalizedString(@"Failed",nil)];
-        [retweetButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Retweet",nil) afterDelay:0.5];
-    }];
+//    [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
+//        [retweetButton setTitle:NSLocalizedString(@"Retweeted", nil)];
+//    } errorBlock:^(NSError *error) {
+//        [retweetButton setEnabled:YES];
+//        [retweetButton setTitle:NSLocalizedString(@"Failed",nil)];
+//        [retweetButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Retweet",nil) afterDelay:0.5];
+//    }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)favClicked:(id)sender {
-    [self.twitter postFavoriteCreateWithStatusID:status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
-        [favButton setTitle:NSLocalizedString(@"Done",nil)];
-    } errorBlock:^(NSError *error) {
-        [favButton setTitle:NSLocalizedString(@"Failed",nil)];
-        [favButton setEnabled:YES];
-        [favButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Fav",nil) afterDelay:0.5];
-    }];
+//    [self.twitter postFavoriteCreateWithStatusID:status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
+//        [favButton setTitle:NSLocalizedString(@"Done",nil)];
+//    } errorBlock:^(NSError *error) {
+//        [favButton setTitle:NSLocalizedString(@"Failed",nil)];
+//        [favButton setEnabled:YES];
+//        [favButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Fav",nil) afterDelay:0.5];
+//    }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];
 }

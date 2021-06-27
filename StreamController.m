@@ -8,7 +8,7 @@
 
 #import "StreamController.h"
 #import <Social/Social.h>
-#import <STTwitter/STTwitter.h>
+//#import <STTwitter/STTwitter.h>
 #import "Status.h"
 #import "SettingManager.h"
 
@@ -16,12 +16,13 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #endif
 
-@interface StreamController() <STTwitterAPIOSProtocol>
+@interface StreamController()
+//<STTwitterAPIOSProtocol>
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) ACAccountType *accountType;
 @property (nonatomic, strong) ACAccount *account;
-@property (nonatomic, strong) STTwitterAPI *twitter;
+//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @property (nonatomic, strong) NSURLConnection *streamConnection;
 
@@ -48,7 +49,7 @@ static StreamController *shared;
     if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
     
     self.account = changedToAccount;
-    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
+//    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
     [self reconnect];
 
     [self showNotification];
@@ -62,16 +63,16 @@ static StreamController *shared;
     self.accountStore = [[ACAccountStore alloc] init];
     self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     self.account = account;
-    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
+//    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
     
     return self;
 }
 
-- (void)twitterAPI:(STTwitterAPI *)twitterAPI accountWasInvalidated:(ACAccount *)invalidatedAccount {
-    // This should not happen because account is handled by OSX?
-    [self showNotificationWithTitle:NSLocalizedString(@"Account is invalid?", @"")
-                               body:NSLocalizedString(@"Please setup account in system preference", @"")];
-}
+//- (void)twitterAPI:(STTwitterAPI *)twitterAPI accountWasInvalidated:(ACAccount *)invalidatedAccount {
+//    // This should not happen because account is handled by OSX?
+//    [self showNotificationWithTitle:NSLocalizedString(@"Account is invalid?", @"")
+//                               body:NSLocalizedString(@"Please setup account in system preference", @"")];
+//}
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -92,24 +93,24 @@ static StreamController *shared;
 - (void)reconnect {
     [self.streamConnection cancel];
     if (!self.account) return;
-    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
-                                                    includeReplies:@YES
-                                                   keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
-                                             locationBoundingBoxes:nil
-                                                        tweetBlock:^(NSDictionary *tweet)
-     {
-         Status *status = [[Status alloc] initWithDictionary:tweet];
-         if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
-             [self.delegate streamController:self didReceivedTweet:status];
-         }
-     } errorBlock:^(NSError *error)
-     {
-         [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
-                                    body:[NSString stringWithFormat:
-                                          NSLocalizedString(@"Reconnecting to user: %@",nil),
-                                          self.account.username]];
-         [self reconnect];
-     }];
+//    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
+//                                                    includeReplies:@YES
+//                                                   keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
+//                                             locationBoundingBoxes:nil
+//                                                        tweetBlock:^(NSDictionary *tweet)
+//     {
+//         Status *status = [[Status alloc] initWithDictionary:tweet];
+//         if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
+//             [self.delegate streamController:self didReceivedTweet:status];
+//         }
+//     } errorBlock:^(NSError *error)
+//     {
+//         [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
+//                                    body:[NSString stringWithFormat:
+//                                          NSLocalizedString(@"Reconnecting to user: %@",nil),
+//                                          self.account.username]];
+//         [self reconnect];
+//     }];
 }
 
 - (void)showNotification {

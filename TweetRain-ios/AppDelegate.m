@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
 #import <Fabric/Fabric.h>
-#import "Mixpanel.h"
 
 @interface AppDelegate ()
 
@@ -23,8 +22,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
                                                               @"NSApplicationCrashOnExceptions": @YES
                                                               }];
-    [Fabric with:@[[Crashlytics class]]];
-    [Mixpanel sharedInstanceWithToken:@"1657dda3c64f0c05d967cc8423bb2c3d"];
     return YES;
 }
 

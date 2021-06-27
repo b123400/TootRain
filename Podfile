@@ -1,8 +1,5 @@
 
 def import_pods
-  pod 'STTwitter'
-  pod 'Fabric'
-  pod 'Crashlytics'
 end
 
 target :TweetRain do
@@ -17,5 +14,4 @@ target "TweetRain-ios" do
   pod "SVProgressHUD"
   pod "Color-Picker-for-iOS", "~> 2.0"
   pod 'UIImage+BlurredFrame'
-  pod 'Mixpanel'
 end

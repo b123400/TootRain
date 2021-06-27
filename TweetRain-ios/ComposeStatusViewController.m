@@ -8,7 +8,7 @@
 
 #import "ComposeStatusViewController.h"
 #import "Status.h"
-#import <STTwitter/STTwitter.h>
+//#import <STTwitter/STTwitter.h>
 #import "SettingManager.h"
 
 @interface ComposeStatusViewController ()
@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
-@property (nonatomic, strong) STTwitterAPI *twitter;
+//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -31,7 +31,7 @@
     
     self.status = status;
     self.type = type;
-    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:[[SettingManager sharedManager]selectedAccount]];
+//    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:[[SettingManager sharedManager]selectedAccount]];
     
     return self;
 }
@@ -63,25 +63,25 @@
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
-    [self.twitter postStatusUpdate:self.contentTextView.text
-                 inReplyToStatusID:self.status.statusID
-                          latitude:nil
-                         longitude:nil
-                           placeID:nil
-                displayCoordinates:nil
-                          trimUser:nil
-                      successBlock:^(NSDictionary *status) {
-                          [self.sendButton setTitle:NSLocalizedString(@"Sent", nil) forState:UIControlStateNormal];
-                          [self dismissViewControllerAnimated:YES completion:nil];
-                      } errorBlock:^(NSError *error) {
-                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
-                                                                          message:error.localizedDescription
-                                                                         delegate:nil
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles: nil];
-                          [alert show];
-                          [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
-                      }];
+//    [self.twitter postStatusUpdate:self.contentTextView.text
+//                 inReplyToStatusID:self.status.statusID
+//                          latitude:nil
+//                         longitude:nil
+//                           placeID:nil
+//                displayCoordinates:nil
+//                          trimUser:nil
+//                      successBlock:^(NSDictionary *status) {
+//                          [self.sendButton setTitle:NSLocalizedString(@"Sent", nil) forState:UIControlStateNormal];
+//                          [self dismissViewControllerAnimated:YES completion:nil];
+//                      } errorBlock:^(NSError *error) {
+//                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
+//                                                                          message:error.localizedDescription
+//                                                                         delegate:nil
+//                                                                cancelButtonTitle:@"OK"
+//                                                                otherButtonTitles: nil];
+//                          [alert show];
+//                          [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
+//                      }];
     self.sendButton.enabled = NO;
     [self.sendButton setTitle:@"Loading" forState:UIControlStateNormal];
 }
