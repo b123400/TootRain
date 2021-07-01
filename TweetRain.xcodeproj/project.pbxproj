@@ -60,6 +60,8 @@
 		CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
+		CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */; };
+		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = CFC9AD5915EBD63D00CC52F9 /* icon.iconset */; };
@@ -209,6 +211,9 @@
 		CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTitleBar.m; sourceTree = "<group>"; };
 		CFA5115D1369B18D004A81D7 /* CustomDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDragView.h; sourceTree = "<group>"; };
 		CFA5115E1369B18D004A81D7 /* CustomDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDragView.m; sourceTree = "<group>"; };
+		CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingOAuthWindowController.h; sourceTree = "<group>"; };
+		CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingOAuthWindowController.m; sourceTree = "<group>"; };
+		CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOAuthWindowController.xib; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
@@ -542,6 +547,9 @@
 				CF2F8BD91390E0CB00D733CA /* SettingViewController.h */,
 				CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */,
 				CFE39F941A764F59004644C8 /* SettingViewController.xib */,
+				CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */,
+				CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */,
+				CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */,
 				CFA1BB5614DC514D000566A0 /* SettingManager.h */,
 				CFA1BB5714DC514D000566A0 /* SettingManager.m */,
 			);
@@ -735,6 +743,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
 				CFE39F891A7649B9004644C8 /* Errors.strings in Resources */,
 				CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */,
@@ -873,6 +882,7 @@
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
+				CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */,
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
 				CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */,

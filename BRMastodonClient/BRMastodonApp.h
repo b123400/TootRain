@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define MASTODON_REDIRECT_DEST @"urn:ietf:wg:oauth:2.0:oob"
+#define OAUTH_REDIRECT_DEST @"tootrain://oauth"
 
 NS_ASSUME_NONNULL_BEGIN
 

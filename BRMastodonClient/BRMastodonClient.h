@@ -14,7 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)registerAppFor:(NSString*)hostname completionHandler:(void (^)(BRMastodonApp *app, NSError *error))callback;
+- (void)registerAppFor:(NSString*)hostname completionHandler:(void (^)(BRMastodonApp * _Nullable app, NSError * _Nullable error))callback;
+
+- (void)getAccessTokenWithApp:(BRMastodonApp *)app
+                         code:(NSString *)code
+            completionHandler:(void (^)(NSString * _Nullable accessToken, NSError * _Nullable error))callback;
 
 @end
 
