@@ -9,8 +9,11 @@
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
 #import "BRMastodonClient.h"
+#import "SettingOAuthWindowController.h"
 
 @interface SettingViewController ()
+
+@property (strong, nonatomic) SettingOAuthWindowController *oauthController;
 
 - (void)updateAccountView;
 - (void)accountStoreDidChanged:(NSNotification*)notification;
@@ -126,6 +129,11 @@
                             completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
         NSLog(@"App: %@, Error: %@", app, error);
         NSLog(@"URL: %@", [app authorisationURL]);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+            [oauthController showWindow:self];
+            self.oauthController = oauthController;
+        });
     }];
 //    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
 //        if (granted) {
