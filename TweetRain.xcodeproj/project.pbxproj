@@ -72,6 +72,7 @@
 		CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */; };
 		CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */; };
 		CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
+		CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
 		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -233,6 +234,8 @@
 		CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonApp.h; sourceTree = "<group>"; };
 		CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonApp.m; sourceTree = "<group>"; };
 		CFD1319B2688939D00B6EDB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonOAuthResult.h; sourceTree = "<group>"; };
+		CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonOAuthResult.m; sourceTree = "<group>"; };
 		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFE39F801A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		CFE39F811A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -621,6 +624,8 @@
 			children = (
 				CFD13195268874CE00B6EDB3 /* BRMastodonClient.h */,
 				CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */,
+				CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */,
+				CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */,
 				CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */,
 				CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */,
 			);
@@ -890,6 +895,7 @@
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
+				CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 
 #import "SettingOAuthWindowController.h"
 #import "BRMastodonClient.h"
+#import "BRMastodonOAuthResult.h"
 
 @interface SettingOAuthWindowController ()
 @property (strong, nonatomic) BRMastodonApp *app;
@@ -48,12 +49,17 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
                               value];
             [[BRMastodonClient shared] getAccessTokenWithApp:self.app
                                                         code:code
-                                           completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
-                if (accessToken) {
-                    [self.delegate settingOAuthWindowController:self receivedAccessToken:accessToken];
-                } else {
-                    [self.delegate settingOAuthWindowController:self receivedError:error];
+                                           completionHandler:^(BRMastodonOAuthResult * _Nullable oauthResult, NSError * _Nullable error) {
+                if (error) {
+                    [self.delegate settingOAuthWindowController:self
+                                                  receivedError:error];
+                    return;
                 }
+                [[BRMastodonClient shared] verifyAccountWithApp:self.app
+                                                    oauthResult:oauthResult
+                                              completionHandler:^(BRMastodonAccount * _Nullable account, NSError * _Nullable error) {
+                    [self.delegate settingOAuthWindowController:self didLoggedInAccount:account];
+                }];
             }];
         }
         return;

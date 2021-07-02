@@ -8,12 +8,13 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "BRMastodonApp.h"
+#import "BRMastodonAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol SettingOAuthWindowControllerDelegate
 
-- (void)settingOAuthWindowController:(id)sender receivedAccessToken:(NSString *)accessToken;
+- (void)settingOAuthWindowController:(id)sender didLoggedInAccount:(BRMastodonAccount *)account;
 - (void)settingOAuthWindowController:(id)sender receivedError:(NSError *)error;
 
 @end

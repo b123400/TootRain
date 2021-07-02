@@ -6,6 +6,7 @@
 //
 
 #import "BRMastodonClient.h"
+#import "BRMastodonAccount.h"
 
 @implementation BRMastodonClient
 
@@ -67,7 +68,7 @@
 
 - (void)getAccessTokenWithApp:(BRMastodonApp *)app
                          code:(NSString *)code
-            completionHandler:(void (^)(NSString *accessToken, NSError *error))callback {
+            completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:@"/oauth/token"
                             relativeToURL:[NSURL URLWithString:app.hostName]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -96,14 +97,17 @@
             return;
         }
         if (result[@"error"]) {
-            callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
-                                              code:0
-                                          userInfo:@{
-                                              @"response": result,
-                            }]);
+            callback(nil,
+                     [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:0
+                                     userInfo:@{@"response": result}]);
             return;
         }
-        callback(result[@"access_token"], error);
+        BRMastodonOAuthResult *oauthResult = [[BRMastodonOAuthResult alloc] init];
+        oauthResult.accessToken = result[@"access_token"];
+        oauthResult.refreshToken = result[@"refresh_token"];
+        oauthResult.expiresIn = result[@"expires_in"];
+        callback(oauthResult, error);
     }];
     [task resume];
 }
@@ -114,6 +118,52 @@
         [parts addObject:[NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]];
     }];
     return [parts componentsJoinedByString:@"&"];
+}
+
+- (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
+                     refreshToken:(NSString *)refreshToken
+                completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback {
+    NSURL *url = [NSURL URLWithString:@"/oauth/token"
+                            relativeToURL:[NSURL URLWithString:app.hostName]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[ [self httpBodyWithParams:@{
+            @"client_id": app.clientId,
+            @"client_secret": app.clientSecret,
+            @"redirect_uri": OAUTH_REDIRECT_DEST,
+            @"grant_type": @"refresh_token",
+            @"refresh_token": refreshToken,
+            @"scope": @"read write"
+    }] dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSError *decodeError = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        if (result[@"error"]) {
+            callback(nil,
+                     [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:0
+                                     userInfo:@{@"response": result}]);
+            return;
+        }
+        BRMastodonOAuthResult *oauthResult = [[BRMastodonOAuthResult alloc] init];
+        oauthResult.accessToken = result[@"access_token"];
+        oauthResult.refreshToken = result[@"refresh_token"];
+        oauthResult.expiresIn = result[@"expires_in"];
+        callback(oauthResult, error);
+    }];
+    [task resume];
 }
 
 @end

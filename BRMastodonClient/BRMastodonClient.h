@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMastodonApp.h"
+#import "BRMastodonAccount.h"
+#import "BRMastodonOAuthResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getAccessTokenWithApp:(BRMastodonApp *)app
                          code:(NSString *)code
-            completionHandler:(void (^)(NSString * _Nullable accessToken, NSError * _Nullable error))callback;
+            completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback;
+
+- (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
+                     refreshToken:(NSString *)refreshToken
+                completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback;
 
 @end
 
