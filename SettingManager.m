@@ -11,7 +11,7 @@
 
 @interface SettingManager ()
 
-- (void)accountStoreDidChanged:(NSNotification*)notification;
+@property (nonatomic, strong) NSArray<BRMastodonAccount*> *accounts;
 
 @end
 
@@ -30,55 +30,40 @@ static NSMutableArray *savedAccounts=nil;
     self = [super init];
     
     if (self) {
-        self.accountStore = [[ACAccountStore alloc] init];
-        self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+        // TODO: reload accounts
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+        self.accounts = [BRMastodonAccount allAccounts];
     }
     return self;
 }
 
-
-
 #pragma mark accounts
 
-- (ACAccount *)selectedAccount {
+- (BRMastodonAccount *)selectedAccount {
     NSArray *accounts = self.accounts;
     if (accounts.count == 0) {
         return nil;
     }
-    NSString *selectedAccountID = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountID"];
-    for (ACAccount *thisAccount in accounts) {
-        if ([thisAccount.identifier isEqualToString:selectedAccountID]) {
+    NSString *selectedAccountId = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountId"];
+    for (BRMastodonAccount *thisAccount in accounts) {
+        if ([thisAccount.identifier isEqualToString:selectedAccountId]) {
             return thisAccount;
         }
     }
 #ifdef AUTO_SELECT_FIRST_ACCOUNT
-    return [self.accounts objectAtIndex:0];
+    return [self.accounts firstObject];
 #else
     return nil;
 #endif
 }
 
-- (void)setSelectedAccount:(ACAccount*)account {
-    for (ACAccount *thatAccount in self.accounts) {
-        if ([[account identifier] isEqualToString:[thatAccount identifier]]) {
-            [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountID"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            return;
-        }
-    }
+- (void)setSelectedAccount:(BRMastodonAccount*)account {
+    [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (NSArray*)accounts {
-    if (!self.accountType.accessGranted) {
-        return 0;
-    }
-    NSArray *accounts = [self.accountStore accountsWithAccountType:self.accountType];
-    return accounts;
-}
-
-- (void)accountStoreDidChanged:(NSNotification*)notification {
-    
+- (void)reloadAccounts {
+    self.accounts = [BRMastodonAccount allAccounts];
 }
 
 #pragma mark - settings

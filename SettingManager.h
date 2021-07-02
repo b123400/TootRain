@@ -7,8 +7,7 @@
 //
 
 #import "User.h"
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
+#import "BRMastodonAccount.h"
 
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowLevelChanged @"kWindowLevelChanged"
@@ -21,9 +20,6 @@
 @interface SettingManager : NSObject{
     
 }
-
-@property (nonatomic, strong) ACAccountStore *accountStore;
-@property (nonatomic, strong) ACAccountType *accountType;
 
 @property (nonatomic) BOOL hideTweetAroundCursor;
 @property (nonatomic) BOOL showProfileImage;
@@ -52,8 +48,9 @@
 
 +(SettingManager*)sharedManager;
 
-- (ACAccount*)selectedAccount;
-- (void)setSelectedAccount:(ACAccount*)account;
-- (NSArray*)accounts;
+- (BRMastodonAccount*)selectedAccount;
+- (void)setSelectedAccount:(BRMastodonAccount*)account;
+- (NSArray<BRMastodonAccount*> *)accounts;
+- (void)reloadAccounts;
 
 @end

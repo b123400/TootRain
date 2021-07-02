@@ -37,8 +37,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
-        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+//        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
 //        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
     }
     

@@ -10,8 +10,9 @@
 #import "SettingManager.h"
 #import "BRMastodonClient.h"
 #import "SettingOAuthWindowController.h"
+#import "InstanceInputWindowController.h"
 
-@interface SettingViewController ()
+@interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
 
@@ -73,7 +74,7 @@
     // need to find using identifier becoz system api doesn't compare it well
     NSUInteger index = NSNotFound;
     NSArray *accounts = [[SettingManager sharedManager] accounts];
-    ACAccount *selectedAccount = [[SettingManager sharedManager]selectedAccount];
+    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager]selectedAccount];
     for (int i = 0; i<accounts.count; i++) {
         ACAccount *thisAccount = [accounts objectAtIndex:i];
         if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
@@ -94,7 +95,6 @@
 #pragma mark tableview datasource+delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
 	if (aTableView==accountsTableView) {
-        
         return [SettingManager sharedManager].accounts.count;
 	}
 	return 0;
@@ -102,15 +102,11 @@
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
 	if(aTableView==accountsTableView){
-        if (![SettingManager sharedManager].accountType.accessGranted) {
-            return 0;
+        BRMastodonAccount *account = [SettingManager sharedManager].accounts[rowIndex];
+        if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
+            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.url];
         }
-        NSArray *accounts = [SettingManager sharedManager].accounts;
-        ACAccount *thisAccount=[accounts objectAtIndex:rowIndex];
-        if ([thisAccount.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
-            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil),thisAccount.username];
-        }
-		return thisAccount.username;
+		return account.url;
 	}
 	return nil;
 }
@@ -124,6 +120,35 @@
 
 #pragma mark Accounts
 
+- (IBAction)addAccountButtonTapped:(id)sender {
+    InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
+    [self.window beginSheet:controller.window
+          completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            [[BRMastodonClient shared] registerAppFor:[controller hostName]
+                                    completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+                NSLog(@"App: %@, Error: %@", app, error);
+                NSLog(@"URL: %@", [app authorisationURL]);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                    oauthController.delegate = self;
+                    [oauthController showWindow:self];
+                    self.oauthController = oauthController;
+                });
+            }];
+        }
+    }];
+}
+
+- (IBAction)deleteAccountTapped:(id)sender {
+    NSInteger row = [accountsTableView selectedRow];
+    if (row == -1) return;
+    BRMastodonAccount *account = [SettingManager sharedManager].accounts[row];
+    [account deleteAccount];
+    [[SettingManager sharedManager] reloadAccounts];
+    [self updateAccountView];
+}
+
 - (IBAction)authorizeButtonTapped:(id)sender {
     [[BRMastodonClient shared] registerAppFor:self.instanceHostField.stringValue
                             completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
@@ -131,36 +156,37 @@
         NSLog(@"URL: %@", [app authorisationURL]);
         dispatch_async(dispatch_get_main_queue(), ^{
             SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+            oauthController.delegate = self;
             [oauthController showWindow:self];
             self.oauthController = oauthController;
         });
     }];
-//    [[SettingManager sharedManager].accountStore requestAccessToAccountsWithType:[SettingManager sharedManager].accountType options:nil completion:^(BOOL granted, NSError *error) {
-//        if (granted) {
-//            [self updateAccountView];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
-//        } else {
-//            NSAlert *alert = [NSAlert alertWithError:error];
-//            [alert setMessageText:[NSString stringWithFormat:NSLocalizedString(@"Why dont you give me permission:(\n %@",nil),[alert messageText]]];
-//            [alert runModal];
-//        }
-//    }];
+}
+
+- (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[SettingManager sharedManager] reloadAccounts];
+        [accountsTableView reloadData];
+        [self.oauthController.window close];
+        self.oauthController = nil;
+    });
+}
+
+- (void)settingOAuthWindowController:(nonnull id)sender receivedError:(nonnull NSError *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    });
 }
 
 - (void)updateAccountView {
-    if ([SettingManager sharedManager].accountType.accessGranted) {
+    NSArray<BRMastodonAccount*> *allAccounts = [BRMastodonAccount allAccounts];
+    if (allAccounts.count != 0) {
+        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
         [self.authorizeView removeFromSuperview];
-        if ([SettingManager sharedManager].accounts.count != 0) {
-            self.tableViewScrollView.hidden = NO;
-            [self.emptyAccountView removeFromSuperview];
-        } else {
-            self.tableViewScrollView.hidden = YES;
-            [accountsSettingView addSubview:self.emptyAccountView];
-        }
     } else {
+        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = YES;
         [accountsSettingView addSubview:self.authorizeView];
-        [self.emptyAccountView removeFromSuperview];
-        self.tableViewScrollView.hidden = YES;
     }
     [accountsTableView reloadData];
 }
@@ -175,14 +201,15 @@
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
-    ACAccount *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    if (index == -1) return;
+    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
     if ([[[SettingManager sharedManager] selectedAccount].identifier isEqualToString:selectedAccount.identifier]) {
         return;
     }
     if (selectedAccount) {
         [[SettingManager sharedManager] setSelectedAccount:selectedAccount];
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:ACAccountStoreDidChangeNotification object:nil];
+    [self updateAccountView];
 }
 
 #pragma mark Appearance
