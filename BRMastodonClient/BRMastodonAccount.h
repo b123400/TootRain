@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSString *refreshToken;
 @property (nonatomic, strong, nullable) NSDate *expires;
 
-+ (NSDictionary<NSString *, NSArray<BRMastodonAccount*>*> *)allAccounts;
++ (NSArray<BRMastodonAccount*> *)allAccounts;
 
 + (instancetype)accountWithApp:(BRMastodonApp *)app accountId:(NSString *)accountId;
 
@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)renew:(BRMastodonOAuthResult *)oauthResult;
 - (void)deleteAccount;
+
+- (NSString *)identifier;
 
 @end
 

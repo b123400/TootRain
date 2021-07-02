@@ -37,7 +37,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[[self httpBodyWithParams: @{
         @"client_name": @"Tootrain",
-        @"redirect_uri": OAUTH_REDIRECT_DEST,
+        @"redirect_uris": OAUTH_REDIRECT_DEST,
         @"scopes": @"read write",
         @"website": @"https://b123400.net",
     }] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -54,6 +54,12 @@
         if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
             NSLog(@"Decode error: %@", decodeError);
             callback(nil, decodeError);
+            return;
+        }
+        if (result[@"error"]) {
+            NSError *responseError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"response": result}];
+            NSLog(@"responseError: %@", responseError);
+            callback(nil, responseError);
             return;
         }
         BRMastodonApp *app  = [[BRMastodonApp alloc] initWithHostName:hostname

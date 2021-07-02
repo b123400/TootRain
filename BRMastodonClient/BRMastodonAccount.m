@@ -18,26 +18,24 @@
 
 @implementation BRMastodonAccount
 
-+ (NSDictionary<NSString *, NSArray<BRMastodonAccount*>*> *)allAccounts {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
++ (NSArray<BRMastodonAccount*> *)allAccounts {
+    NSMutableArray *result = [NSMutableArray array];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *servers = (NSDictionary*)[defaults objectForKey:@"BRMastodonAccount"];
     if (!servers) {
-        return dict;
+        return result;
     }
     for (NSString *host in servers) {
         NSDictionary *server = servers[host];
-        NSMutableArray<BRMastodonAccount*> *accountsInServer = [NSMutableArray array];
         for (NSString *accountId in server) {
             NSDictionary *accountDict = server[accountId];
             BRMastodonApp *app = [BRMastodonApp appWithHostname:accountDict[@"host"]];
             BRMastodonAccount *account = [BRMastodonAccount accountWithApp:app accountId:accountId];
             if (!account) continue;
-            [accountsInServer addObject:account];
+            [result addObject:account];
         }
-        dict[host] = accountsInServer;
     }
-    return dict;
+    return result;
 }
 
 + (instancetype)accountWithApp:(BRMastodonApp *)app
@@ -259,6 +257,10 @@
     // Remove any old values from the keychain
     err = SecItemDelete((__bridge CFDictionaryRef) dict);
     NSLog(@"Refresh token delete: %d", err);
+}
+
+- (NSString *)identifier {
+    return [NSString stringWithFormat:@"%@:%@", self.app.hostName, self.accountId];
 }
 
 @end
