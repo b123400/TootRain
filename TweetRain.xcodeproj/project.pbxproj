@@ -15,6 +15,8 @@
 		CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0C61B41ABD849900C170FC /* RainDropViewController.xib */; };
 		CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
+		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
+		CF1B79C3268EEE6100FCCB58 /* InstanceInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B79C1268EEE6100FCCB58 /* InstanceInputWindowController.xib */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */; };
 		CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */; };
@@ -135,6 +137,9 @@
 		CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropContainerView.m; sourceTree = "<group>"; };
 		CF1106EB1CC41546006CAE38 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ComposeStatusViewController.strings; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceInputWindowController.h; sourceTree = "<group>"; };
+		CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstanceInputWindowController.m; sourceTree = "<group>"; };
+		CF1B79C1268EEE6100FCCB58 /* InstanceInputWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstanceInputWindowController.xib; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -553,6 +558,9 @@
 				CF2F8BD91390E0CB00D733CA /* SettingViewController.h */,
 				CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */,
 				CFE39F941A764F59004644C8 /* SettingViewController.xib */,
+				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
+				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
+				CF1B79C1268EEE6100FCCB58 /* InstanceInputWindowController.xib */,
 				CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */,
 				CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */,
 				CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */,
@@ -762,6 +770,7 @@
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
 				CFE39FE31A76962C004644C8 /* SearchWindowController.xib in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
+				CF1B79C3268EEE6100FCCB58 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
 				CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */,
@@ -888,6 +897,7 @@
 				CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */,
 				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
+				CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
