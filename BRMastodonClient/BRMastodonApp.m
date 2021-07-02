@@ -67,7 +67,7 @@
         (id)kSecClass: (id)kSecClassInternetPassword,
         (id)kSecAttrType: [NSNumber numberWithUnsignedInt:'oapp'],
         (id)kSecAttrServer: self.hostName,
-        (id)kSecValueData: self.clientSecret,
+        (id)kSecValueData: [self.clientSecret dataUsingEncoding:NSUTF8StringEncoding],
         (id)kSecAttrAccount: self.clientId,
     };
 

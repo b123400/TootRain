@@ -120,6 +120,56 @@
     return [parts componentsJoinedByString:@"&"];
 }
 
+- (void) verifyAccountWithApp:(BRMastodonApp *)app
+                  oauthResult:(BRMastodonOAuthResult *)oauthResult
+            completionHandler:(void (^)(BRMastodonAccount *account, NSError *error))callback {
+    NSURL *url = [NSURL URLWithString:@"/api/v1/accounts/verify_credentials"
+                            relativeToURL:[NSURL URLWithString:app.hostName]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", oauthResult.accessToken] forHTTPHeaderField:@"Authorization"];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSError *decodeError = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        if (result[@"error"]) {
+            callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
+                                              code:0
+                                          userInfo:@{
+                                              @"response": result,
+                            }]);
+            return;
+        }
+        NSString *accountId = result[@"id"];
+        BRMastodonAccount *existingAccount = [BRMastodonAccount accountWithApp:app accountId:accountId];
+        if (existingAccount) {
+            // Update existing account's cred
+            [existingAccount renew:oauthResult];
+            callback(existingAccount, nil);
+            return;
+        }
+        BRMastodonAccount *account = [[BRMastodonAccount alloc] initWithApp:app
+                                                                  accountId:accountId
+                                                                        url:result[@"url"]
+                                                                oauthResult:oauthResult];
+        [account save];
+        callback(account, nil);
+        
+    }];
+    [task resume];
+}
+
 - (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
                      refreshToken:(NSString *)refreshToken
                 completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback {

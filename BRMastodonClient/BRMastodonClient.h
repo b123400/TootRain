@@ -22,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
                          code:(NSString *)code
             completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback;
 
+- (void)verifyAccountWithApp:(BRMastodonApp *)app
+                 oauthResult:(BRMastodonOAuthResult *)oauthResult
+           completionHandler:(void (^)(BRMastodonAccount * _Nullable account, NSError * _Nullable error))callback;
+
 - (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
                      refreshToken:(NSString *)refreshToken
                 completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback;
