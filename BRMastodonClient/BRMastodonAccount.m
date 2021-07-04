@@ -102,7 +102,7 @@
                                               url:url
                                       accessToken:accessToken
                                      refreshToken:refreshTokenFound ? refreshToken : nil
-                                          expires:[expires isKindOfClass:[NSNull class]] ? nil : expires];
+                                          expires:expires];
 }
 
 - (instancetype)initWithApp:(BRMastodonApp *)app
@@ -132,7 +132,9 @@
         self.url = url;
         self.accessToken = oauthResult.accessToken;
         self.refreshToken = oauthResult.refreshToken;
-        self.expires = [[NSDate date] dateByAddingTimeInterval:[oauthResult.expiresIn doubleValue]];
+        self.expires = oauthResult.expiresIn == nil
+            ? [NSDate dateWithTimeIntervalSince1970:4765132800] // 2099: ~ never expire
+            : [[NSDate date] dateByAddingTimeInterval:[oauthResult.expiresIn doubleValue]];
     }
     return self;
 }
@@ -220,7 +222,7 @@
         @"accountId": self.accountId,
         @"url": self.url,
         @"host": self.app.hostName,
-        @"expires": self.expires ?: [NSNull null],
+        @"expires": self.expires,
     };
 }
 
