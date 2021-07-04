@@ -39,6 +39,7 @@
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSURL *url = navigationAction.request.URL;
+    typeof(self) __weak _self = self;
     if ([url.scheme isEqualToString:@"tootrain"]) {
         decisionHandler(WKNavigationActionPolicyCancel);
         if ([url.host isEqualToString:@"oauth"]) {
@@ -47,18 +48,18 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
                                 filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == 'code'"]]
                                firstObject]
                               value];
-            [[BRMastodonClient shared] getAccessTokenWithApp:self.app
+            [[BRMastodonClient shared] getAccessTokenWithApp:_self.app
                                                         code:code
                                            completionHandler:^(BRMastodonOAuthResult * _Nullable oauthResult, NSError * _Nullable error) {
                 if (error) {
-                    [self.delegate settingOAuthWindowController:self
+                    [_self.delegate settingOAuthWindowController:_self
                                                   receivedError:error];
                     return;
                 }
-                [[BRMastodonClient shared] verifyAccountWithApp:self.app
+                [[BRMastodonClient shared] verifyAccountWithApp:_self.app
                                                     oauthResult:oauthResult
                                               completionHandler:^(BRMastodonAccount * _Nullable account, NSError * _Nullable error) {
-                    [self.delegate settingOAuthWindowController:self didLoggedInAccount:account];
+                    [_self.delegate settingOAuthWindowController:_self didLoggedInAccount:account];
                 }];
             }];
         }

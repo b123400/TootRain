@@ -222,4 +222,73 @@
     [task resume];
 }
 
+- (void)accessTokenWithAccount:(BRMastodonAccount *)account
+             completionHandler:(void (^)(NSString * _Nullable accessToken, NSError * _Nullable error))callback {
+    if ([[account expires] timeIntervalSinceDate:[NSDate date]] > 0) {
+        callback(account.accessToken, nil);
+        return;
+    }
+    [self refreshAccessTokenWithApp:[account app]
+                       refreshToken:[account refreshToken]
+                  completionHandler:^(BRMastodonOAuthResult * _Nonnull result, NSError * _Nonnull error) {
+        if (error) {
+            callback(nil, error);
+            return;
+        }
+        [account renew:result];
+        callback(result.accessToken, nil);
+    }];
+}
+
+- (void)baseRequestWithURL:(NSURL *)url
+                   account:(BRMastodonAccount *)account
+         completionHandler:(void (^)(NSMutableURLRequest * _Nullable request, NSError * _Nullable error))callback {
+    typeof(self) __weak _self = self;
+    [self accessTokenWithAccount:account
+               completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
+        if (error) {
+            callback(nil, error);
+            return;
+        }
+        callback([_self requestWithURL:url accessToken:accessToken], nil);
+    }];
+}
+
+- (NSMutableURLRequest *)requestWithURL:(NSURL*)url accessToken:(NSString *)accessToken {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", accessToken] forHTTPHeaderField:@"Authorization"];
+    return request;
+}
+
+- (void)streamingStatusesWithAccount:(BRMastodonAccount *)account onStatusHandler:(void (^)(NSString *temp))onStatus {
+    [self accessTokenWithAccount:account
+               completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
+        NSURLComponents *components = [NSURLComponents componentsWithString:account.app.hostName];
+        if ([components.scheme isEqual:@"http"]){
+            components.scheme = @"ws";
+        } else if ([components.scheme isEqual:@"https"]) {
+            components.scheme = @"wss";
+        }
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/streaming?access_token=%@&stream=user", [accessToken stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]
+                            relativeToURL:components.URL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSURLSessionWebSocketTask *task = [[NSURLSession sharedSession] webSocketTaskWithRequest:request];
+        [self receiveMessageFromWebsocketTask:task
+                                    onMessage:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
+            NSLog(@"ws str: %@, error: %@", [message string], error);
+        }];
+        [task resume];
+    }];
+}
+
+- (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
+onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error))onMessage {
+    typeof(self) __weak _self = self;
+    [task receiveMessageWithCompletionHandler:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
+        onMessage(message, error);
+//        [_self receiveMessageFromWebsocketTask:task
+//                                     onMessage:onMessage];
+    }];
+}
+
 @end

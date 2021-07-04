@@ -11,6 +11,7 @@
 //#import <STTwitter/STTwitter.h>
 #import "Status.h"
 #import "SettingManager.h"
+#import "BRMastodonClient.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -85,12 +86,16 @@ static StreamController *shared;
 
 - (void)startStreaming {
     if (!self.streamConnection) {
-        [self showNotification];
+//        [self showNotification];
     }
     [self reconnect];
 }
 
 - (void)reconnect {
+    [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]
+                                            onStatusHandler:^(NSString * _Nonnull temp) {
+        NSLog(@"wow: %@", temp);
+    }];
     [self.streamConnection cancel];
     if (!self.account) return;
 //    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
@@ -125,10 +130,14 @@ static StreamController *shared;
 #if TARGET_OS_IPHONE
     [SVProgressHUD showInfoWithStatus:body];
 #elif TARGET_OS_MAC
-    NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = title;
-    notification.informativeText = body;
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    @try {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = title;
+        notification.informativeText = body;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    } @catch (NSException *exception) {
+        NSLog(@"exception: %@", exception);
+    }
 #endif
 }
 

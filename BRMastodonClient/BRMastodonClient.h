@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
                      refreshToken:(NSString *)refreshToken
                 completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback;
 
+- (void)streamingStatusesWithAccount:(BRMastodonAccount *)account onStatusHandler:(void (^)(NSString *temp))onStatus;
+
 @end
 
 NS_ASSUME_NONNULL_END
