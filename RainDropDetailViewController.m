@@ -22,7 +22,7 @@
 @synthesize profileImageView;
 @synthesize nameField;
 @synthesize usernameField;
-@synthesize retweetButton;
+@synthesize repostButton;
 @synthesize favButton;
 
 -(id)initWithStatus:(Status*)_status{
@@ -57,8 +57,9 @@
                                                                                           options:options
                                                                                documentAttributes:nil];
 	[attributedString addAttribute:NSFontAttributeName value:contentTextField.font range:NSMakeRange(0, attributedString.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[NSColor labelColor] range:NSMakeRange(0, attributedString.length)];
 	[contentTextField setAttributedStringValue:attributedString];
-	
+
     NSRange r = NSMakeRange(NSNotFound, NSNotFound);
     NSInteger index = 0;
     while (index < attributedString.length) {
@@ -104,21 +105,21 @@
 	
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
-- (IBAction)RTClicked:(id)sender {
-	ComposeStatusViewController *controller=[[ComposeStatusViewController alloc] init];
-	[controller loadView];
-	
-	NSPopover *popover=[[NSPopover alloc] init];
-	popover.contentViewController=controller;
-	popover.behavior=NSPopoverBehaviorTransient;
-	
-	controller.contentTextView.string=[NSString stringWithFormat:@"RT @%@: %@", status.user.username,status.text];
-	[controller.contentTextView setSelectedRange:NSMakeRange(0, 0)];
-	controller.popover=popover;
-	
-	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
+- (IBAction)bookmarkClicked:(id)sender {
+//	ComposeStatusViewController *controller=[[ComposeStatusViewController alloc] init];
+//	[controller loadView];
+//
+//	NSPopover *popover=[[NSPopover alloc] init];
+//	popover.contentViewController=controller;
+//	popover.behavior=NSPopoverBehaviorTransient;
+//
+//	controller.contentTextView.string=[NSString stringWithFormat:@"RT @%@: %@", status.user.username,status.text];
+//	[controller.contentTextView setSelectedRange:NSMakeRange(0, 0)];
+//	controller.popover=popover;
+//
+//	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
-- (IBAction)retweetClicked:(id)sender {
+- (IBAction)repostClicked:(id)sender {
 //    [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
 //        [retweetButton setTitle:NSLocalizedString(@"Retweeted", nil)];
 //    } errorBlock:^(NSError *error) {
