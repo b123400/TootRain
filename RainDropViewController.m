@@ -11,7 +11,7 @@
 #import "SettingManager.h"
 #import "SettingViewController.h"
 
-@interface RainDropViewController ()
+@interface RainDropViewController () <CAAnimationDelegate>
 
 - (NSAttributedString*)attributedStringForStatus;
 

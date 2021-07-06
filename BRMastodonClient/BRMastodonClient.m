@@ -178,7 +178,7 @@
 
 - (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
                      refreshToken:(NSString *)refreshToken
-                completionHandler:(void (^)(BRMastodonOAuthResult *result, NSError *error))callback {
+                completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:@"/oauth/token"
                             relativeToURL:[NSURL URLWithString:app.hostName]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -260,7 +260,8 @@
     return request;
 }
 
-- (void)streamingStatusesWithAccount:(BRMastodonAccount *)account onStatusHandler:(void (^)(NSString *temp))onStatus {
+- (BRStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
+    __block BRStreamHandler *handler = [[BRStreamHandler alloc] init];
     [self accessTokenWithAccount:account
                completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
         NSURLComponents *components = [NSURLComponents componentsWithString:account.app.hostName];
@@ -276,9 +277,46 @@
         [self receiveMessageFromWebsocketTask:task
                                     onMessage:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
             NSLog(@"ws str: %@, error: %@", [message string], error);
+            if (error) {
+                if (handler.onError != nil) {
+                    handler.onError(error);
+                }
+                return;
+            }
+            NSError *jsonError = nil;
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[message.string dataUsingEncoding:NSUTF8StringEncoding]
+                                                                     options:0
+                                                                       error:&jsonError];
+            if (jsonError) {
+                if (handler.onError != nil) {
+                    handler.onError(jsonError);
+                }
+                return;
+            }
+            if (![jsonDict isKindOfClass:[NSDictionary class]]) {
+                if (handler.onError != nil) {
+                    handler.onError([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{
+                        @"message": @"Not a dict",
+                        @"value": jsonDict,
+                    }]);
+                }
+                return;
+            }
+            if (![jsonDict[@"event"] isEqualToString:@"update"] || !jsonDict[@"payload"]) {
+                return;
+            }
+            NSDictionary *statusDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)jsonDict[@"payload"] dataUsingEncoding:NSUTF8StringEncoding]
+                                                                       options:0
+                                                                         error:&jsonError];
+            BRMastodonStatus *status = [[BRMastodonStatus alloc] initWithJSONDict:statusDict];
+            if (handler.onStatus) {
+                handler.onStatus(status);
+            }
+            
         }];
         [task resume];
     }];
+    return handler;
 }
 
 - (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
@@ -286,8 +324,10 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
     typeof(self) __weak _self = self;
     [task receiveMessageWithCompletionHandler:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
         onMessage(message, error);
-//        [_self receiveMessageFromWebsocketTask:task
-//                                     onMessage:onMessage];
+        if (!error) {
+            [_self receiveMessageFromWebsocketTask:task
+                                         onMessage:onMessage];
+        }
     }];
 }
 

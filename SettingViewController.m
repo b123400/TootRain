@@ -57,10 +57,10 @@
     [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel.integerValue];
     [[self.windowsLevelPopup itemAtIndex:savedWindowLevel.integerValue] setState:1];
     
-	hideTweetAroundCursorCheckBox.state=[[SettingManager sharedManager] hideTweetAroundCursor]?NSOnState:NSOffState;
-	showProfileImageCheckBox.state=[[SettingManager sharedManager] showProfileImage]?NSOnState:NSOffState;
-	removeURLCheckBox.state=[[SettingManager sharedManager] removeURL]?NSOnState:NSOffState;
-	underlineTweetsWithURLCheckBox.state=[[SettingManager sharedManager] underlineTweetsWithURL]?NSOnState:NSOffState;
+    hideTweetAroundCursorCheckBox.state=[[SettingManager sharedManager] hideTweetAroundCursor]?NSControlStateValueOn:NSControlStateValueOff;
+	showProfileImageCheckBox.state=[[SettingManager sharedManager] showProfileImage]?NSControlStateValueOn:NSControlStateValueOff;
+	removeURLCheckBox.state=[[SettingManager sharedManager] removeURL]?NSControlStateValueOn:NSControlStateValueOff;
+	underlineTweetsWithURLCheckBox.state=[[SettingManager sharedManager] underlineTweetsWithURL]?NSControlStateValueOn:NSControlStateValueOff;
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
 	[textColorWell setColor:[[SettingManager sharedManager] textColor]];
@@ -219,20 +219,20 @@
     [[SettingManager sharedManager] setWindowLevel:@(index)];
 }
 - (IBAction)hideTweetAroundCursorCheckBoxChanged:(id)sender {
-	BOOL enabled=[(NSButton*)sender state]==NSOnState;
+    BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
     [[SettingManager sharedManager] setHideTweetAroundCursor:enabled];
 }
 
 - (IBAction)showProfileImageCheckBoxChanged:(id)sender {
-	BOOL enabled=[(NSButton*)sender state]==NSOnState;
+	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
     [[SettingManager sharedManager] setShowProfileImage:enabled];
 }
 - (IBAction)removeURLCheckBoxChanged:(id)sender {
-	BOOL enabled=[(NSButton*)sender state]==NSOnState;
+	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
     [[SettingManager sharedManager] setRemoveURL:enabled];
 }
 - (IBAction)underlineTweetsWithURLCheckBoxChanged:(id)sender {
-	BOOL enabled=[(NSButton*)sender state]==NSOnState;
+	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
     [[SettingManager sharedManager] setUnderlineTweetsWithURL:enabled];
 }
 

@@ -73,31 +73,44 @@
         }
     }
     [self.window setLevel:windowLevel];
-	float totalWidth=[[NSScreen mainScreen] frame].size.width;
-	float totalHeight=[[NSScreen mainScreen] frame].size.height-menuBarHeight;
+	float totalWidth=[self.window.screen frame].size.width;
+	float totalHeight=[self.window.screen frame].size.height-menuBarHeight;
 	
 	[[self window] setFrame:CGRectMake(0, 0, totalWidth, totalHeight) display:YES];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        Status *s = [[Status alloc] init];
+//        s.text = @"hello";
+//        [self streamController:nil didReceivedStatus:s];
+//    });
+}
+
+- (void)showWindow:(id)sender {
+    [super showWindow:sender];
+    [self resetFrame];
 }
 
 -(void)setSearchTerm:(NSString*)searchTerm{
     [StreamController shared].searchTerm = searchTerm;
 }
 #pragma mark stream delegate
--(void)streamController:(id)controller didReceivedTweet:(Status*)tweet {
-    if (![self shouldShowStatus:tweet]) return;
-    
-    RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:tweet];
-    [thisViewController loadView];
-    CGRect frame=thisViewController.view.frame;
-    frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-    if (frame.origin.y < 0) {
-        // out of screen, discard
-        return;
-    }
-    thisViewController.view.frame=frame;
-    [[[self window] contentView]addSubview: [thisViewController view]];
-    thisViewController.delegate=self;
-    [rainDrops addObject:thisViewController];
+-(void)streamController:(id)controller didReceivedStatus:(Status*)tweet {
+    typeof(self) __weak _self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![_self shouldShowStatus:tweet]) return;
+        
+        RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:tweet];
+        [thisViewController loadView];
+        CGRect frame=thisViewController.view.frame;
+        frame.origin.y=[_self largestPossibleYForStatusViewController:thisViewController];
+        if (frame.origin.y < 0) {
+            // out of screen, discard
+            return;
+        }
+        thisViewController.view.frame=frame;
+        [[[_self window] contentView]addSubview: [thisViewController view]];
+        thisViewController.delegate=self;
+        [rainDrops addObject:thisViewController];
+    });
 }
 
 -(BOOL)shouldShowStatus:(Status*)status{

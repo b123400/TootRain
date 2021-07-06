@@ -12,20 +12,17 @@
 #import "Status.h"
 #import "SettingManager.h"
 #import "BRMastodonClient.h"
+#import "BRMastodonStatus.h"
+#import "BRStreamHandler.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
 #endif
 
 @interface StreamController()
-//<STTwitterAPIOSProtocol>
 
-@property (nonatomic, strong) ACAccountStore *accountStore;
-@property (nonatomic, strong) ACAccountType *accountType;
-@property (nonatomic, strong) ACAccount *account;
-//@property (nonatomic, strong) STTwitterAPI *twitter;
-
-@property (nonatomic, strong) NSURLConnection *streamConnection;
+@property (nonatomic, strong) BRMastodonAccount *account;
+@property (nonatomic, strong) BRStreamHandler *streamHandler;
 
 - (void)showNotification;
 
@@ -40,29 +37,26 @@ static StreamController *shared;
         shared = [[StreamController alloc] initWithAccount:[[SettingManager sharedManager] selectedAccount]];
         
         // shared controller should always follow the selectedAccount
-        [[NSNotificationCenter defaultCenter] addObserver:shared selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:shared selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
     }
     return shared;
 }
 
-- (void)accountStoreDidChanged:(NSNotification*)notification {
-    ACAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
-    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
-    
-    self.account = changedToAccount;
-//    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
-    [self reconnect];
-
-    [self showNotification];
-}
+//- (void)accountStoreDidChanged:(NSNotification*)notification {
+//    BRMastodonAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
+//    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
+//
+//    self.account = changedToAccount;
+//    [self reconnect];
+//
+//    [self showNotification];
+//}
 
 # pragma mark - instance methods
 
-- (id)initWithAccount:(ACAccount*)account {
+- (id)initWithAccount:(BRMastodonAccount*)account {
     self = [super init];
-    
-    self.accountStore = [[ACAccountStore alloc] init];
-    self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+
     self.account = account;
 //    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
     
@@ -85,18 +79,21 @@ static StreamController *shared;
 }
 
 - (void)startStreaming {
-    if (!self.streamConnection) {
+//    if (!self.streamConnection) {
 //        [self showNotification];
-    }
+//    }
     [self reconnect];
 }
 
 - (void)reconnect {
-    [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]
-                                            onStatusHandler:^(NSString * _Nonnull temp) {
-        NSLog(@"wow: %@", temp);
-    }];
-    [self.streamConnection cancel];
+    typeof(self) __weak _self = self;
+    BRStreamHandler *handler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
+    handler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
+        NSLog(@"wow: %@", status);
+        [self.delegate streamController:_self didReceivedStatus:[[Status alloc] initWithMastodonStatus:status]];
+    };
+    self.streamHandler = handler;
+//    [self.streamConnection cancel];
     if (!self.account) return;
 //    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
 //                                                    includeReplies:@YES
@@ -123,7 +120,7 @@ static StreamController *shared;
     [self showNotificationWithTitle: NSLocalizedString(@"Stream Connecting",nil)
                                body: [NSString stringWithFormat:
                                       NSLocalizedString(@"Connecting to %@",nil),
-                                      self.account.username]];
+                                      self.account.url]];
 }
 
 - (void)showNotificationWithTitle:(NSString*)title body:(NSString*)body {
