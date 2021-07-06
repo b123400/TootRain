@@ -70,9 +70,7 @@
     }
     
 	CGRect frame=contentTextField.frame;
-	frame.size.height=MAXFLOAT;
-	
-	NSSize minSize=[[contentTextField cell] cellSizeForBounds:NSRectFromCGRect(frame)];
+    NSSize minSize = [attributedString sizeForWidth:frame.size.width height:MAXFLOAT];
 	
 	float viewWidth=minSize.width+contentTextField.frame.origin.x+12;
 	if(viewWidth<300){
