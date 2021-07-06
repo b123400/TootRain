@@ -331,4 +331,50 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
     }];
 }
 
+- (void)postStatusWithAccount:(BRMastodonAccount *)account
+                         text:(NSString *)text
+                    inReplyTo:(NSString *)statusId
+            completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:@"/api/v1/statuses"
+                            relativeToURL:[NSURL URLWithString:account.app.hostName]];
+    typeof(self) __weak _self = self;
+    [self baseRequestWithURL:url
+                     account:account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"POST"];
+        NSMutableDictionary *params = @{
+            @"status": text,
+        }.mutableCopy;
+        if (statusId) {
+            params[@"in_reply_to_id"] = statusId;
+        }
+        [request setHTTPBody:[[_self httpBodyWithParams: params] dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(nil, error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(nil, decodeError);
+                return;
+            }
+            if (result[@"error"]) {
+                callback(nil,
+                         [NSError errorWithDomain:NSCocoaErrorDomain
+                                             code:0
+                                         userInfo:@{@"response": result}]);
+                return;
+            }
+            callback([[BRMastodonStatus alloc] initWithJSONDict:result account:account], nil);
+        }];
+        [task resume];
+    }];
+}
+
 @end
