@@ -10,6 +10,7 @@
 #import "RainDropDetailViewController.h"
 #import "SettingManager.h"
 #import "SettingViewController.h"
+#import "NSMutableAttributedString+Stripe.h"
 
 @interface RainDropViewController () <CAAnimationDelegate>
 
@@ -255,29 +256,28 @@
 #pragma mark appearance
 
 - (NSAttributedString*)attributedStringForStatus{
+    NSDictionary *options = @{
+        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
+    };
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithHTML:[status.text dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                    options:options
+                                                                         documentAttributes:nil];
     
-    NSMutableString *contentString=[NSMutableString stringWithString:status.text];
-    [contentString replaceOccurrencesOfString:@"\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-    [contentString replaceOccurrencesOfString:@"\r" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-    
-    BOOL hasURL=NO;
-    if(status.entities){
-        for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
-            NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
-            if(range.location!=NSNotFound){
-                hasURL=YES;
-                NSString *url=[thisURLSet objectForKey:@"url"];
-                if([[SettingManager sharedManager]removeURL]){
-                    [contentString replaceOccurrencesOfString:url withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-                }
-            }
-        }
+    [attrString removeNewLines];
+    [attrString removeColors];
+    [attrString removeImages];
+    if ([[SettingManager sharedManager] removeURL]) {
+        [attrString removeLinks];
+    } else {
+        [attrString removeLinkAttributes];
     }
-    
+
     NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
     NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
     [attributes setObject:newFont forKey:NSFontAttributeName];
     
+    // TODO: setting
     NSShadow *kShadow = [[NSShadow alloc] init];
     [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
     [kShadow setShadowBlurRadius:5.0f];
@@ -285,13 +285,10 @@
     [attributes setObject:kShadow forKey:NSShadowAttributeName];
     
     [attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
-    
-    if(hasURL&&[[SettingManager sharedManager]underlineTweetsWithURL]){
-        [attributes setObject:[NSNumber numberWithInt:NSUnderlineStyleSingle] forKey:NSUnderlineStyleAttributeName];
-    }
-    
-    NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];
-    return attributedString;
+
+    [attrString addAttributes:attributes range:NSMakeRange(0, attrString.length)];
+
+    return attrString;
 }
 
 - (void)appearanceSettingChanged:(NSNotification*)notification {

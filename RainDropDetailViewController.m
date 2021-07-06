@@ -9,6 +9,7 @@
 #import "RainDropDetailViewController.h"
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
+#import "NS(Attributed)String+Geometrics.h"
 
 @interface RainDropDetailViewController ()
 
@@ -45,36 +46,29 @@
 }
 -(void)loadView{
 	[super loadView];
-	
-	nameField.stringValue=status.user.screenName;
+    nameField.stringValue=status.user.screenName ?: @"";
 	usernameField.stringValue=[NSString stringWithFormat:@"@%@", status.user.username];
-	
-	NSMutableString *contentString=[NSMutableString stringWithString:status.text];
-	if(status.entities){
-		for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
-			NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
-			if(range.location!=NSNotFound){
-				[contentString replaceCharactersInRange:range withString:[thisURLSet objectForKey:@"display_url"]];
-			}
-		}
-	}
-	
-	NSMutableAttributedString *attributedString=[[NSMutableAttributedString alloc] initWithString:contentString];
-	if(status.entities){
-		for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
-			NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"display_url"]];
-			if(range.location!=NSNotFound){
-				NSURL *url=[NSURL URLWithString:[thisURLSet objectForKey:@"expanded_url"]];
-				[attributedString addAttribute:NSLinkAttributeName value:url range:range];
-				[attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSUnderlineStyleSingle] range:range];
-				[attributedString addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:range];
-				[attributedString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:range];
-			}
-		}
-	}
+
+    NSDictionary *options = @{
+        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
+    };
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithHTML:[status.text dataUsingEncoding:NSUTF8StringEncoding]
+                                                                                          options:options
+                                                                               documentAttributes:nil];
 	[attributedString addAttribute:NSFontAttributeName value:contentTextField.font range:NSMakeRange(0, attributedString.length)];
 	[contentTextField setAttributedStringValue:attributedString];
 	
+    NSRange r = NSMakeRange(NSNotFound, NSNotFound);
+    NSInteger index = 0;
+    while (index < attributedString.length) {
+        NSDictionary<NSAttributedStringKey, id> *attributes = [attributedString attributesAtIndex:index effectiveRange:&r];
+        index = r.length + r.location;
+        if (attributes[NSLinkAttributeName]) {
+            [attributedString addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:r];
+        }
+    }
+    
 	CGRect frame=contentTextField.frame;
 	frame.size.height=MAXFLOAT;
 	

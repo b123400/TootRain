@@ -61,6 +61,7 @@
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
 		CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */; };
 		CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */; };
+		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
 		CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
@@ -219,6 +220,8 @@
 		CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
+		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
+		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9F9E351534567B000AE741 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
 		CF9F9E361534567B000AE741 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		CFA1BB5614DC514D000566A0 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 				CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */,
 				CFC3791C139A7FB10072F001 /* CenteredTextCell.h */,
 				CFC3791D139A7FB10072F001 /* CenteredTextCell.m */,
+				CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */,
+				CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -926,6 +931,7 @@
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
 				CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */,
 				CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */,
+				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
