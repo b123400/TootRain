@@ -13,7 +13,7 @@
     if (self = [super init]) {
         self.username = dictionary[@"username"];
         self.accountName = dictionary[@"acct"];
-        self.displayName = dictionary[@"displayName"];
+        self.displayName = dictionary[@"display_name"];
         self.userID = dictionary[@"id"];
         self.note = dictionary[@"note"];
         self.profileImageURL = [NSURL URLWithString:dictionary[@"avatar"]];
