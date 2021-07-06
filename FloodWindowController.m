@@ -93,12 +93,12 @@
     [StreamController shared].searchTerm = searchTerm;
 }
 #pragma mark stream delegate
--(void)streamController:(id)controller didReceivedStatus:(Status*)tweet {
+-(void)streamController:(id)controller didReceivedStatus:(MastodonStatus *)status {
     typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (![_self shouldShowStatus:tweet]) return;
+        if (![_self shouldShowStatus:status]) return;
         
-        RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:tweet];
+        RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
         [thisViewController loadView];
         CGRect frame=thisViewController.view.frame;
         frame.origin.y=[_self largestPossibleYForStatusViewController:thisViewController];

@@ -32,6 +32,4 @@
 
 @property (nonatomic,strong) NSMutableDictionary *otherInfos;
 
-- (instancetype)initWithMastodonUser:(BRMastodonUser *)user;
-
 @end

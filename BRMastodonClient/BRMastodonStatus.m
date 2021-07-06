@@ -9,8 +9,9 @@
 
 @implementation BRMastodonStatus
 
-- (instancetype)initWithJSONDict:(NSDictionary *)dict {
+- (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account {
     if (self = [super init]) {
+        self.account = account;
         self.user = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
         self.statusID = dict[@"id"];
         self.createdAt = [[[NSISO8601DateFormatter alloc] init] dateFromString:dict[@"created_at"]];

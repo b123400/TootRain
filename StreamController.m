@@ -14,6 +14,7 @@
 #import "BRMastodonClient.h"
 #import "BRMastodonStatus.h"
 #import "BRStreamHandler.h"
+#import "MastodonStatus.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -90,7 +91,7 @@ static StreamController *shared;
     BRStreamHandler *handler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
     handler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
         NSLog(@"wow: %@", status);
-        [self.delegate streamController:_self didReceivedStatus:[[Status alloc] initWithMastodonStatus:status]];
+        [self.delegate streamController:_self didReceivedStatus:[[MastodonStatus alloc] initWithMastodonStatus:status]];
     };
     self.streamHandler = handler;
 //    [self.streamConnection cancel];

@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMastodonAccount.h"
-#import "Status.h"
+#import "MastodonStatus.h"
 
 @protocol StreamControllerDelegate <NSObject>
 
 @optional
-- (void)streamController:(id)controller didReceivedStatus:(Status *)status;
+- (void)streamController:(id)controller didReceivedStatus:(MastodonStatus *)status;
 
 @end
 

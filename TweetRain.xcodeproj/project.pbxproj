@@ -61,6 +61,8 @@
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
 		CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */; };
 		CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */; };
+		CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B022694BC6800DFE9BD /* MastodonStatus.m */; };
+		CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B052694BD0100DFE9BD /* MastodonUser.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
@@ -221,6 +223,10 @@
 		CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
+		CF927B012694BC6800DFE9BD /* MastodonStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonStatus.h; sourceTree = "<group>"; };
+		CF927B022694BC6800DFE9BD /* MastodonStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastodonStatus.m; sourceTree = "<group>"; };
+		CF927B042694BD0100DFE9BD /* MastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonUser.h; sourceTree = "<group>"; };
+		CF927B052694BD0100DFE9BD /* MastodonUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastodonUser.m; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -596,6 +602,10 @@
 				CF2A37D413752E6E001CAAAB /* User.m */,
 				CF9F9E351534567B000AE741 /* Status.h */,
 				CF9F9E361534567B000AE741 /* Status.m */,
+				CF927B012694BC6800DFE9BD /* MastodonStatus.h */,
+				CF927B022694BC6800DFE9BD /* MastodonStatus.m */,
+				CF927B042694BD0100DFE9BD /* MastodonUser.h */,
+				CF927B052694BD0100DFE9BD /* MastodonUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -918,6 +928,7 @@
 				CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */,
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
+				CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRStreamHandler.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
@@ -928,6 +939,7 @@
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */,
 				CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */,
+				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,

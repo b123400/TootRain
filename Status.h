@@ -34,6 +34,4 @@
 @property (strong,nonatomic) NSMutableDictionary *entities;
 @property (strong,nonatomic) NSMutableDictionary *otherInfos;
 
-- (id)initWithMastodonStatus:(BRMastodonStatus *)status;
-
 @end

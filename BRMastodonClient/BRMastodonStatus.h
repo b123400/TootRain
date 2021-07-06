@@ -7,10 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMastodonUser.h"
+#import "BRMastodonAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRMastodonStatus : NSObject
+
+@property (nonatomic, strong) BRMastodonAccount *account;
 
 @property (nonatomic, strong) BRMastodonUser *user;
 
@@ -22,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL bookmarked;
 @property (nonatomic, assign) BOOL reblogged;
 
-- (instancetype)initWithJSONDict:(NSDictionary *)dict;
+- (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account;
 
 @end
 

@@ -308,7 +308,7 @@
             NSDictionary *statusDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)jsonDict[@"payload"] dataUsingEncoding:NSUTF8StringEncoding]
                                                                        options:0
                                                                          error:&jsonError];
-            BRMastodonStatus *status = [[BRMastodonStatus alloc] initWithJSONDict:statusDict];
+            BRMastodonStatus *status = [[BRMastodonStatus alloc] initWithJSONDict:statusDict account:account];
             if (handler.onStatus) {
                 handler.onStatus(status);
             }
