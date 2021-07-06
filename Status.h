@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "BRMastodonStatus.h"
 
 @interface Status : NSObject{
 	User *user;
@@ -26,11 +27,13 @@
 @property (strong,nonatomic) NSDate *createdAt;
 @property (strong,nonatomic) NSString *text;
 
-@property (assign,nonatomic) BOOL liked;
+@property (assign,nonatomic) BOOL favourited;
+@property (assign,nonatomic) BOOL bookmarked;
+@property (assign,nonatomic) BOOL reblogged;
 
 @property (strong,nonatomic) NSMutableDictionary *entities;
 @property (strong,nonatomic) NSMutableDictionary *otherInfos;
 
-- (id)initWithDictionary:(NSDictionary*)dictionary;
+- (id)initWithMastodonStatus:(BRMastodonStatus *)status;
 
 @end
