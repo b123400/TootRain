@@ -331,22 +331,21 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
     }];
 }
 
-- (void)postStatusWithAccount:(BRMastodonAccount *)account
-                         text:(NSString *)text
-                    inReplyTo:(NSString *)statusId
-            completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback {
+- (void)replyToStatus:(BRMastodonStatus *)status
+             withText:(NSString *)text
+    completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:@"/api/v1/statuses"
-                            relativeToURL:[NSURL URLWithString:account.app.hostName]];
+                        relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
     typeof(self) __weak _self = self;
     [self baseRequestWithURL:url
-                     account:account
+                     account:status.account
            completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
         [request setHTTPMethod:@"POST"];
         NSMutableDictionary *params = @{
             @"status": text,
         }.mutableCopy;
-        if (statusId) {
-            params[@"in_reply_to_id"] = statusId;
+        if (status.statusID) {
+            params[@"in_reply_to_id"] = status.statusID;
         }
         [request setHTTPBody:[[_self httpBodyWithParams: params] dataUsingEncoding:NSUTF8StringEncoding]];
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
@@ -371,7 +370,115 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
                                          userInfo:@{@"response": result}]);
                 return;
             }
-            callback([[BRMastodonStatus alloc] initWithJSONDict:result account:account], nil);
+            callback([[BRMastodonStatus alloc] initWithJSONDict:result account:status.account], nil);
+        }];
+        [task resume];
+    }];
+}
+
+- (void)bookmarkStatus:(BRMastodonStatus *)status
+     completionHandler:(void (^)(NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/bookmark", status.statusID]
+                        relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    [self baseRequestWithURL:url
+                     account:status.account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"POST"];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(decodeError);
+                return;
+            }
+            if (result[@"error"]) {
+                callback([NSError errorWithDomain:NSCocoaErrorDomain
+                                             code:0
+                                         userInfo:@{@"response": result}]);
+                return;
+            }
+            status.bookmarked = YES;
+            callback(nil);
+        }];
+        [task resume];
+    }];
+}
+
+- (void)favouriteStatus:(BRMastodonStatus *)status
+      completionHandler:(void (^)(NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/favourite", status.statusID]
+                        relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    [self baseRequestWithURL:url
+                     account:status.account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"POST"];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(decodeError);
+                return;
+            }
+            if (result[@"error"]) {
+                callback([NSError errorWithDomain:NSCocoaErrorDomain
+                                             code:0
+                                         userInfo:@{@"response": result}]);
+                return;
+            }
+            status.favourited = YES;
+            callback(nil);
+        }];
+        [task resume];
+    }];
+}
+
+- (void)reblogStatus:(BRMastodonStatus *)status
+   completionHandler:(void (^)(NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/reblog", status.statusID]
+                        relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    [self baseRequestWithURL:url
+                     account:status.account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"POST"];
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(decodeError);
+                return;
+            }
+            if (result[@"error"]) {
+                callback([NSError errorWithDomain:NSCocoaErrorDomain
+                                             code:0
+                                         userInfo:@{@"response": result}]);
+                return;
+            }
+            status.favourited = YES;
+            callback(nil);
         }];
         [task resume];
     }];

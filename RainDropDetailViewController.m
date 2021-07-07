@@ -10,10 +10,10 @@
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
 #import "NS(Attributed)String+Geometrics.h"
+#import "BRMastodonClient.h"
+#import "MastodonStatus.h"
 
 @interface RainDropDetailViewController ()
-
-//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -68,8 +68,8 @@
     NSSize minSize = [attributedString sizeForWidth:frame.size.width height:MAXFLOAT];
 	
 	float viewWidth=minSize.width+contentTextField.frame.origin.x+12;
-	if(viewWidth<300){
-		viewWidth=300;
+	if(viewWidth<345){
+		viewWidth=345;
 	}
 	float viewHeight=minSize.height+(32+12+48+12*2);
 	if(viewHeight<100){
@@ -80,6 +80,19 @@
 	frame.size=minSize;
 	frame.origin.y=viewHeight-(12*2+48)-minSize.height;
 	contentTextField.frame=frame;
+    
+    if (status.bookmarked) {
+        [self.bookmarkButton setEnabled:NO];
+        [self.bookmarkButton setTitle:NSLocalizedString(@"Bookmarked", nil)];
+    }
+    if (status.favourited) {
+        [self.favButton setEnabled:NO];
+        [self.favButton setTitle:NSLocalizedString(@"Done", nil)];
+    }
+    if (status.reblogged) {
+        [self.repostButton setEnabled:NO];
+        [self.repostButton setTitle:NSLocalizedString(@"Reposted", nil)];
+    }
 	
 	[profileImageView setImageURL:status.user.profileImageURL];
 }
@@ -100,38 +113,59 @@
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
 - (IBAction)bookmarkClicked:(id)sender {
-//	ComposeStatusViewController *controller=[[ComposeStatusViewController alloc] init];
-//	[controller loadView];
-//
-//	NSPopover *popover=[[NSPopover alloc] init];
-//	popover.contentViewController=controller;
-//	popover.behavior=NSPopoverBehaviorTransient;
-//
-//	controller.contentTextView.string=[NSString stringWithFormat:@"RT @%@: %@", status.user.username,status.text];
-//	[controller.contentTextView setSelectedRange:NSMakeRange(0, 0)];
-//	controller.popover=popover;
-//
-//	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
+    if ([status isKindOfClass:[MastodonStatus class]]) {
+        MastodonStatus *ms = (MastodonStatus*)status;
+        [[BRMastodonClient shared] bookmarkStatus:ms.mastodonStatus
+                                completionHandler:^(NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    [sender setEnabled:YES];
+                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Bookmark",nil) afterDelay:0.5];
+                } else {
+                    [sender setTitle:NSLocalizedString(@"Bookmarked", nil)];
+                }
+            });
+        }];
+    }
+    [(NSButton*)sender setEnabled:NO];
+    [(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)repostClicked:(id)sender {
-//    [self.twitter postStatusRetweetWithID:status.statusID successBlock:^(NSDictionary *status) {
-//        [retweetButton setTitle:NSLocalizedString(@"Retweeted", nil)];
-//    } errorBlock:^(NSError *error) {
-//        [retweetButton setEnabled:YES];
-//        [retweetButton setTitle:NSLocalizedString(@"Failed",nil)];
-//        [retweetButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Retweet",nil) afterDelay:0.5];
-//    }];
+    if ([status isKindOfClass:[MastodonStatus class]]) {
+        MastodonStatus *ms = (MastodonStatus*)status;
+        [[BRMastodonClient shared] reblogStatus:ms.mastodonStatus
+                              completionHandler:^(NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    [sender setEnabled:YES];
+                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Repost",nil) afterDelay:0.5];
+                } else {
+                    [sender setTitle:NSLocalizedString(@"Reposted", nil)];
+                }
+            });
+        }];
+    }
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)favClicked:(id)sender {
-//    [self.twitter postFavoriteCreateWithStatusID:status.statusID includeEntities:nil successBlock:^(NSDictionary *status) {
-//        [favButton setTitle:NSLocalizedString(@"Done",nil)];
-//    } errorBlock:^(NSError *error) {
-//        [favButton setTitle:NSLocalizedString(@"Failed",nil)];
-//        [favButton setEnabled:YES];
-//        [favButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Fav",nil) afterDelay:0.5];
-//    }];
+    if ([status isKindOfClass:[MastodonStatus class]]) {
+        MastodonStatus *ms = (MastodonStatus*)status;
+        [[BRMastodonClient shared] favouriteStatus:ms.mastodonStatus
+                                 completionHandler:^(NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    [sender setEnabled:YES];
+                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Done",nil) afterDelay:0.5];
+                } else {
+                    [sender setTitle:NSLocalizedString(@"Done", nil)];
+                }
+            });
+        }];
+    }
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];
 }

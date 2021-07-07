@@ -34,10 +34,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BRStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account;
 
-- (void)postStatusWithAccount:(BRMastodonAccount *)account
-                         text:(NSString *)text
-                    inReplyTo:(NSString *)statusId
-            completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback;
+- (void)replyToStatus:(BRMastodonStatus *)status
+           withText:(NSString *)text
+  completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback;
+
+- (void)bookmarkStatus:(BRMastodonStatus *)status
+     completionHandler:(void (^)(NSError * _Nullable error))callback;
+
+- (void)favouriteStatus:(BRMastodonStatus *)status
+      completionHandler:(void (^)(NSError * _Nullable error))callback;
+
+- (void)reblogStatus:(BRMastodonStatus *)status
+   completionHandler:(void (^)(NSError * _Nullable error))callback;
 
 @end
 

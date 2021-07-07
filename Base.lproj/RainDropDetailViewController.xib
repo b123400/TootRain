@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="RainDropDetailViewController">
             <connections>
+                <outlet property="bookmarkButton" destination="34" id="zeZ-OE-LB4"/>
                 <outlet property="contentTextField" destination="9" id="65"/>
                 <outlet property="favButton" destination="22" id="uUD-zb-WdL"/>
                 <outlet property="nameField" destination="109" id="113"/>
@@ -18,7 +19,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
             <rect key="frame" x="0.0" y="0.0" width="480" height="211"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -38,55 +39,55 @@
                     </textFieldCell>
                 </textField>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="108">
-                    <rect key="frame" x="281" y="10" width="189" height="36"/>
+                    <rect key="frame" x="146" y="6" width="324" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
-                            <rect key="frame" x="152" y="0.0" width="38" height="36.5"/>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
+                            <rect key="frame" x="264" y="1" width="65" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="star" catalog="system" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="23">
+                            <buttonCell key="cell" type="push" title="Fav" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="23">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="16"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <accessibility description="Favourite"/>
                             <connections>
                                 <action selector="favClicked:" target="-2" id="7xK-8K-qpk"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26">
-                            <rect key="frame" x="64" y="0.5" width="36.5" height="35.5"/>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
+                            <rect key="frame" x="164" y="1" width="104" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="arrow.2.squarepath" catalog="system" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="27">
+                            <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="35">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="16"/>
-                            </buttonCell>
-                            <accessibility description="Repost"/>
-                            <connections>
-                                <action selector="repostClicked:" target="-2" id="yHC-0G-dH9"/>
-                            </connections>
-                        </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
-                            <rect key="frame" x="108" y="-1" width="36" height="36.5"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="bookmark" catalog="system" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="35">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="16"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <accessibility description="Bookmark"/>
                             <connections>
                                 <action selector="bookmarkClicked:" target="-2" id="eSy-6S-q33"/>
                             </connections>
                         </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
-                            <rect key="frame" x="20" y="0.5" width="38" height="35.5"/>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                            <rect key="frame" x="-3" y="1" width="88" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="arrowshape.turn.up.left" catalog="system" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="39">
+                            <buttonCell key="cell" type="push" title="Reply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="39">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="16"/>
+                                <font key="font" metaFont="system"/>
                             </buttonCell>
                             <accessibility description="Reply"/>
                             <connections>
                                 <action selector="replyClicked:" target="-2" id="IDa-3O-WT6"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26">
+                            <rect key="frame" x="82" y="1" width="84" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="push" title="Repost" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="27">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <accessibility description="Repost"/>
+                            <connections>
+                                <action selector="repostClicked:" target="-2" id="yHC-0G-dH9"/>
                             </connections>
                         </button>
                     </subviews>
@@ -113,10 +114,4 @@
             <point key="canvasLocation" x="140" y="153.5"/>
         </customView>
     </objects>
-    <resources>
-        <image name="arrow.2.squarepath" catalog="system" width="19" height="14"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="17" height="14"/>
-        <image name="bookmark" catalog="system" width="14" height="16"/>
-        <image name="star" catalog="system" width="17" height="16"/>
-    </resources>
 </document>

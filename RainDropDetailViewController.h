@@ -23,6 +23,7 @@
 @property (weak) IBOutlet NSTextField *usernameField;
 @property (weak) IBOutlet NSButton *repostButton;
 @property (weak) IBOutlet NSButton *favButton;
+@property (weak) IBOutlet NSButton *bookmarkButton;
 
 -(id)initWithStatus:(Status*)status;
 

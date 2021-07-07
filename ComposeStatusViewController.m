@@ -40,10 +40,9 @@
 - (IBAction)sendButtonClicked:(id)sender {
     if ([self.inReplyTo isKindOfClass:[MastodonStatus class]]) {
         MastodonStatus *inReplyTo = (MastodonStatus*)self.inReplyTo;
-        [[BRMastodonClient shared] postStatusWithAccount:inReplyTo.mastodonStatus.account
-                                                    text:[[contentTextView textStorage] string]
-                                               inReplyTo:inReplyTo.statusID
-                                       completionHandler:^(BRMastodonStatus * _Nullable status, NSError * _Nullable error) {
+        [[BRMastodonClient shared] replyToStatus:inReplyTo.mastodonStatus
+                                        withText:[[contentTextView textStorage] string]
+                               completionHandler:^(BRMastodonStatus * _Nullable status, NSError * _Nullable error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (!error) {
                     [sendButton setTitle:NSLocalizedString(@"Sent", nil)];
