@@ -49,13 +49,7 @@
     nameField.stringValue=status.user.screenName ?: @"";
 	usernameField.stringValue=[NSString stringWithFormat:@"@%@", status.user.username];
 
-    NSDictionary *options = @{
-        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
-    };
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithHTML:[status.text dataUsingEncoding:NSUTF8StringEncoding]
-                                                                                          options:options
-                                                                               documentAttributes:nil];
+    NSMutableAttributedString *attributedString = [status.attributedText mutableCopy];
 	[attributedString addAttribute:NSFontAttributeName value:contentTextField.font range:NSMakeRange(0, attributedString.length)];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[NSColor labelColor] range:NSMakeRange(0, attributedString.length)];
 	[contentTextField setAttributedStringValue:attributedString];

@@ -31,7 +31,6 @@
 @property (assign,nonatomic) BOOL bookmarked;
 @property (assign,nonatomic) BOOL reblogged;
 
-@property (strong,nonatomic) NSMutableDictionary *entities;
-@property (strong,nonatomic) NSMutableDictionary *otherInfos;
+@property (strong,nonatomic) NSAttributedString *attributedText;
 
 @end

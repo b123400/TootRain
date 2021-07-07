@@ -14,6 +14,8 @@
 		CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */; };
 		CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0C61B41ABD849900C170FC /* RainDropViewController.xib */; };
 		CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */; };
+		CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */; };
+		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
 		CF1B79C3268EEE6100FCCB58 /* InstanceInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1B79C1268EEE6100FCCB58 /* InstanceInputWindowController.xib */; };
@@ -142,6 +144,10 @@
 		CF0C61B41ABD849900C170FC /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
 		CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropContainerView.h; sourceTree = "<group>"; };
 		CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropContainerView.m; sourceTree = "<group>"; };
+		CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonEmoji.h; sourceTree = "<group>"; };
+		CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonEmoji.m; sourceTree = "<group>"; };
+		CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
+		CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		CF1106EB1CC41546006CAE38 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ComposeStatusViewController.strings; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceInputWindowController.h; sourceTree = "<group>"; };
@@ -432,6 +438,8 @@
 				CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */,
 				CF9BFCDC26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.h */,
 				CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */,
+				CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */,
+				CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -676,6 +684,8 @@
 				CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */,
 				CF5E5EC72692A8AA00E904D0 /* BRMastodonUser.h */,
 				CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */,
+				CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */,
+				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
 			);
 			path = BRMastodonClient;
 			sourceTree = "<group>";
@@ -932,6 +942,7 @@
 				CF5E5ECC2692CE2C00E904D0 /* BRStreamHandler.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
+				CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */,
 				CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */,
 				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
@@ -939,6 +950,7 @@
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */,
 				CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */,
+				CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,

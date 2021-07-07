@@ -21,6 +21,10 @@
         self.bookmarked = status.bookmarked;
         
         self.mastodonStatus = status;
+
+        // Make attributed string in init, so the images are loaded when status is init-ed
+        // such that we can load the image in background
+        self.attributedText = [status attributedStringWithEmojisReplaced];
     }
     return self;
 }

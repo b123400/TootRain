@@ -256,17 +256,11 @@
 #pragma mark appearance
 
 - (NSAttributedString*)attributedStringForStatus{
-    NSDictionary *options = @{
-        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
-    };
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithHTML:[status.text dataUsingEncoding:NSUTF8StringEncoding]
-                                                                                    options:options
-                                                                         documentAttributes:nil];
+    NSMutableAttributedString *attrString = [status.attributedText mutableCopy];
     
     [attrString removeNewLines];
     [attrString removeColors];
-    [attrString removeImages];
+    [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
     if ([[SettingManager sharedManager] removeURL]) {
         [attrString removeLinks];
     } else {

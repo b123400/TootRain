@@ -6,6 +6,7 @@
 //
 
 #import "NSMutableAttributedString+Stripe.h"
+#import "NSImage+Resize.h"
 
 @implementation NSMutableAttributedString (Stripe)
 
@@ -69,6 +70,27 @@
     }
     while ((r = [[self mutableString] rangeOfString:@"\uFFFC"]).location != NSNotFound) {
         [self replaceCharactersInRange:r withString:@" "];
+    }
+}
+
+- (void)resizeImagesWithHeight:(CGFloat)height {
+    NSRange r = NSMakeRange(NSNotFound, NSNotFound);
+    NSInteger index = 0;
+    while (index < self.length) {
+        NSDictionary<NSAttributedStringKey, id> *attributes = [self attributesAtIndex:index effectiveRange:&r];
+        index = r.length + r.location;
+        if (attributes[NSAttachmentAttributeName]) {
+            NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
+            NSImage *image = [attachment imageForBounds:attachment.bounds
+                                          textContainer:nil
+                                         characterIndex:r.location];
+            if (image && (image.size.height > height)) {
+                int newWidth = height / image.size.height * image.size.width;
+                NSImage *newImage = [image resized:NSMakeSize(newWidth, height)];
+                [attachment setImage:newImage];
+                attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+            }
+        }
     }
 }
 

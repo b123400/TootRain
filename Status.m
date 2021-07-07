@@ -9,6 +9,6 @@
 #import "Status.h"
 
 @implementation Status
-@synthesize user,statusID,createdAt,text,favourited,reblogged,bookmarked,otherInfos,entities;
+@synthesize user,statusID,createdAt,text,favourited,reblogged,bookmarked,attributedText;
 
 @end

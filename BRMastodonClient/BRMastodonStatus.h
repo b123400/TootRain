@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "BRMastodonUser.h"
 #import "BRMastodonAccount.h"
+#import "BRMastodonEmoji.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,7 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL bookmarked;
 @property (nonatomic, assign) BOOL reblogged;
 
+@property (nonatomic, strong) NSArray<BRMastodonEmoji*> *emojis;
+
 - (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account;
+- (NSAttributedString *)attributedString;
+- (NSAttributedString *)attributedStringWithEmojisReplaced;
 
 @end
 

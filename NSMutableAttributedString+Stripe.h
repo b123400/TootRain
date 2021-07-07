@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeLinks;
 - (void)removeLinkAttributes;
 - (void)removeImages;
+- (void)resizeImagesWithHeight:(CGFloat)height;
 
 @end
 
