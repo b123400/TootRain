@@ -46,8 +46,28 @@
 - (void)windowDidLoad{
 	[super windowDidLoad];
 	[[accountsTableView layer] setCornerRadius:30];
-	
-//	overlapsMenuBarCheckBox.state=[[SettingManager sharedManager] overlapsMenuBar]?NSOnState:NSOffState;
+    
+    [self.screenPopup removeAllItems];
+    NSMutableArray *screenNames = [NSMutableArray array];
+    NSInteger i = 0;
+    NSInteger selectedIndex = -1;
+    FloodAppDelegate *appDelegate = (FloodAppDelegate *)[[NSApplication sharedApplication] delegate];
+    NSScreen *currentScreen = [[[appDelegate windowController] window] screen];
+    for (NSScreen *screen in [NSScreen screens]) {
+        NSString *screenName = [NSString stringWithFormat:@"Screen %ld (%.0fx%.0f)", i + 1, screen.frame.size.width, screen.frame.size.height];
+        [screenNames addObject:screenName];
+        if (screen == currentScreen) {
+            selectedIndex = i;
+        }
+        i++;
+    }
+    [self.screenPopup addItemsWithTitles:screenNames];
+    [[self.screenPopup selectedItem] setState:NSControlStateValueOff];
+    if (selectedIndex >= 0) {
+        [[self.screenPopup itemAtIndex:selectedIndex] setState:NSControlStateValueOn];
+        [self.screenPopup selectItemAtIndex:selectedIndex];
+    }
+
     NSNumber *savedWindowLevel = [[SettingManager sharedManager] windowLevel];
     if (!savedWindowLevel) {
         savedWindowLevel = @1;
@@ -209,6 +229,15 @@
 }
 
 #pragma mark Appearance
+
+- (IBAction)screenChanged:(id)sender {
+    NSInteger index = [self.screenPopup indexOfSelectedItem];
+    FloodAppDelegate *appDelegate = (FloodAppDelegate *)[[NSApplication sharedApplication] delegate];
+    NSScreen *targetScreen = [[NSScreen screens] objectAtIndex:index];
+    NSWindow *window = [[appDelegate windowController] window];
+    [window setFrame:targetScreen.frame display:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kWindowScreenChanged object:nil];
+}
 
 - (IBAction)windowsLevelChanged:(id)sender {
     NSUInteger index = [self.windowsLevelPopup.itemArray indexOfObject:self.windowsLevelPopup.selectedItem];

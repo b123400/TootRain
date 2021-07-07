@@ -10,6 +10,8 @@
 #import "SettingManager.h"
 #import "RainDropViewController.h"
 #import "SettingViewController.h"
+#import "MastodonStatus.h"
+#import "BRMastodonStatus.h"
 
 @interface FloodWindowController ()
 
@@ -49,6 +51,7 @@
 	[self setShouldCascadeWindows:NO];
 	
     [self resetFrame];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowScreenChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowLevelChanged object:nil];
 }
 
@@ -73,10 +76,11 @@
         }
     }
     [self.window setLevel:windowLevel];
-	float totalWidth=[self.window.screen frame].size.width;
-	float totalHeight=[self.window.screen frame].size.height-menuBarHeight;
+    CGRect screenFrame = self.window.screen.frame;
+	float totalWidth = screenFrame.size.width;
+	float totalHeight = screenFrame.size.height - menuBarHeight;
 	
-	[[self window] setFrame:CGRectMake(0, 0, totalWidth, totalHeight) display:YES];
+	[[self window] setFrame:CGRectMake(screenFrame.origin.x, screenFrame.origin.y, totalWidth, totalHeight) display:YES];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        Status *s = [[Status alloc] init];
 //        s.text = @"hello";

@@ -10,6 +10,7 @@
 #import "BRMastodonAccount.h"
 
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
+#define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
 
 #if TARGET_OS_IPHONE
