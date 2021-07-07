@@ -13,7 +13,7 @@
 @protocol StreamControllerDelegate <NSObject>
 
 @optional
-- (void)streamController:(id)controller didReceivedStatus:(MastodonStatus *)status;
+- (void)streamController:(id)controller didReceivedStatus:(Status *)status;
 
 @end
 

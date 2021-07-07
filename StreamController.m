@@ -15,6 +15,7 @@
 #import "BRMastodonStatus.h"
 #import "BRStreamHandler.h"
 #import "MastodonStatus.h"
+#import "DummyStatus.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -80,14 +81,16 @@ static StreamController *shared;
 }
 
 - (void)startStreaming {
-//    if (!self.streamConnection) {
-//        [self showNotification];
-//    }
+    if (!self.streamHandler) {
+        [self showNotification];
+    }
     [self reconnect];
 }
 
 - (void)reconnect {
     typeof(self) __weak _self = self;
+    if (!self.account) return;
+
     BRStreamHandler *handler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
     handler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
         NSLog(@"wow: %@", status);
@@ -95,7 +98,7 @@ static StreamController *shared;
     };
     self.streamHandler = handler;
 //    [self.streamConnection cancel];
-    if (!self.account) return;
+    
 //    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
 //                                                    includeReplies:@YES
 //                                                   keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
@@ -128,14 +131,17 @@ static StreamController *shared;
 #if TARGET_OS_IPHONE
     [SVProgressHUD showInfoWithStatus:body];
 #elif TARGET_OS_MAC
-    @try {
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = title;
-        notification.informativeText = body;
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-    } @catch (NSException *exception) {
-        NSLog(@"exception: %@", exception);
-    }
+//    @try {
+//        NSUserNotification *notification = [[NSUserNotification alloc] init];
+//        notification.title = title;
+//        notification.informativeText = body;
+//        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+//    } @catch (NSException *exception) {
+//        NSLog(@"exception: %@", exception);
+//    }
+    DummyStatus *status = [[DummyStatus alloc] init];
+    status.text = body;
+    [self.delegate streamController:self didReceivedStatus:status];
 #endif
 }
 

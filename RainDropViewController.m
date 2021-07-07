@@ -53,7 +53,7 @@
 	float viewWidth=contentTextField.frame.size.width+margin*2;
 	float viewHeight=contentTextField.frame.size.height+margin*2;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if ([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]) {
 		viewWidth+=profileImageView.frame.size.width+margin;
 		if(viewHeight<profileImageView.frame.size.height+margin*2){
 			viewHeight=profileImageView.frame.size.height+margin*2;
@@ -72,7 +72,7 @@
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]){
 		CGRect frame=contentTextField.frame;
 		frame.origin.x+=profileImageView.frame.size.width+margin;
 		contentTextField.frame=frame;
