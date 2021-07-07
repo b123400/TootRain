@@ -21,10 +21,10 @@
     
 }
 
-@property (nonatomic) BOOL hideTweetAroundCursor;
+@property (nonatomic) BOOL hideStatusAroundCursor;
 @property (nonatomic) BOOL showProfileImage;
-@property (nonatomic) BOOL removeURL;
-@property (nonatomic) BOOL underlineTweetsWithURL;
+@property (nonatomic) BOOL removeLinks;
+@property (nonatomic) BOOL truncateStatus;
 @property (nonatomic) float opacity;
 
 #if TARGET_OS_IPHONE

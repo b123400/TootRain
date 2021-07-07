@@ -11,6 +11,7 @@
 #import "SettingManager.h"
 #import "SettingViewController.h"
 #import "NSMutableAttributedString+Stripe.h"
+#import "DummyStatus.h"
 
 @interface RainDropViewController () <CAAnimationDelegate>
 
@@ -39,6 +40,7 @@
     // need to restart animation once window level is changed
     // because there is a bug in OS X which stops CAAnimation when window level is changed.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowLevelChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowScreenChanged object:nil];
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
 }
 -(void)loadView{
@@ -179,7 +181,7 @@
 }
 #pragma mark interaction
 -(void)didMouseOver{
-	if([[SettingManager sharedManager] hideTweetAroundCursor]){
+	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:YES];
 		return;
 	}
@@ -201,7 +203,7 @@
     }
 }
 -(void)didMouseOut{
-	if([[SettingManager sharedManager] hideTweetAroundCursor]){
+	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:NO];
 		return;
 	}
@@ -228,6 +230,7 @@
 	if(![self paused]){
 		[self pauseAnimation];
 	}
+    if ([status isKindOfClass:[DummyStatus class]]) return;
 	if(!popover){
 		popover=[[NSPopover alloc] init];
 		NSViewController *newController=[[RainDropDetailViewController alloc]initWithStatus:status];
@@ -256,12 +259,12 @@
 #pragma mark appearance
 
 - (NSAttributedString*)attributedStringForStatus{
-    NSMutableAttributedString *attrString = [status.attributedText mutableCopy];
+    NSMutableAttributedString *attrString = [(status.attributedText ?: [[NSAttributedString alloc] initWithString:status.text]) mutableCopy];
     
     [attrString removeNewLines];
     [attrString removeColors];
     [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
-    if ([[SettingManager sharedManager] removeURL]) {
+    if ([[SettingManager sharedManager] removeLinks]) {
         [attrString removeLinks];
     } else {
         [attrString removeLinkAttributes];

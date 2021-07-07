@@ -17,7 +17,6 @@
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
 
 - (void)updateAccountView;
-- (void)accountStoreDidChanged:(NSNotification*)notification;
 
 @end
 
@@ -53,14 +52,19 @@
     if (!savedWindowLevel) {
         savedWindowLevel = @1;
     }
-    [[self.windowsLevelPopup selectedItem] setState:0];
+    [[self.windowsLevelPopup selectedItem] setState:NSControlStateValueOff];
     [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel.integerValue];
     [[self.windowsLevelPopup itemAtIndex:savedWindowLevel.integerValue] setState:1];
     
-    hideTweetAroundCursorCheckBox.state=[[SettingManager sharedManager] hideTweetAroundCursor]?NSControlStateValueOn:NSControlStateValueOff;
-	showProfileImageCheckBox.state=[[SettingManager sharedManager] showProfileImage]?NSControlStateValueOn:NSControlStateValueOff;
-	removeURLCheckBox.state=[[SettingManager sharedManager] removeURL]?NSControlStateValueOn:NSControlStateValueOff;
-	underlineTweetsWithURLCheckBox.state=[[SettingManager sharedManager] underlineTweetsWithURL]?NSControlStateValueOn:NSControlStateValueOff;
+    hideStatusAroundCursorCheckBox.state = [[SettingManager sharedManager] hideStatusAroundCursor] ? NSControlStateValueOn : NSControlStateValueOff;
+	showProfileImageCheckBox.state = [[SettingManager sharedManager] showProfileImage] ? NSControlStateValueOn : NSControlStateValueOff;
+	self.removeLinksCheckBox.state = [[SettingManager sharedManager] removeLinks] ? NSControlStateValueOn : NSControlStateValueOff;
+    self.truncateStatusCheckBox.state = [[SettingManager sharedManager] truncateStatus] ? NSControlStateValueOn : NSControlStateValueOff;
+    if (self.truncateStatusCheckBox.state == NSControlStateValueOn) {
+        self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = YES;
+    } else {
+        self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = NO;
+    }
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
 	[textColorWell setColor:[[SettingManager sharedManager] textColor]];
@@ -191,14 +195,6 @@
     [accountsTableView reloadData];
 }
 
-- (IBAction)addAccountInstruction:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://support.apple.com/kb/PH18993"]];
-}
-
-- (void)accountStoreDidChanged:(NSNotification*)notification {
-    [self updateAccountView];
-}
-
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
     if (index == -1) return;
@@ -218,22 +214,31 @@
     NSUInteger index = [self.windowsLevelPopup.itemArray indexOfObject:self.windowsLevelPopup.selectedItem];
     [[SettingManager sharedManager] setWindowLevel:@(index)];
 }
-- (IBAction)hideTweetAroundCursorCheckBoxChanged:(id)sender {
+- (IBAction)hideStatusAroundCursorCheckBoxChanged:(id)sender {
     BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
-    [[SettingManager sharedManager] setHideTweetAroundCursor:enabled];
+    [[SettingManager sharedManager] setHideStatusAroundCursor:enabled];
 }
 
 - (IBAction)showProfileImageCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
     [[SettingManager sharedManager] setShowProfileImage:enabled];
 }
-- (IBAction)removeURLCheckBoxChanged:(id)sender {
+- (IBAction)removeLinksCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
-    [[SettingManager sharedManager] setRemoveURL:enabled];
+    [[SettingManager sharedManager] setRemoveLinks:enabled];
 }
-- (IBAction)underlineTweetsWithURLCheckBoxChanged:(id)sender {
+- (IBAction)truncateStatusCheckBoxChanged:(id)sender {
 	BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
-    [[SettingManager sharedManager] setUnderlineTweetsWithURL:enabled];
+    [[SettingManager sharedManager] setTruncateStatus:enabled];
+    if (enabled) {
+        self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = YES;
+    } else {
+        self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = NO;
+    }
+}
+- (IBAction)truncateStatusFieldChanged:(id)sender {
+}
+- (IBAction)truncateStatusSteppedChanged:(id)sender {
 }
 
 - (IBAction)opacitySliderChanged:(id)sender {
@@ -249,6 +254,8 @@
 - (IBAction)shadowColorWellChanged:(id)sender {
 	NSColorWell *well=sender;
     [[SettingManager sharedManager] setShadowColor:well.color];
+}
+- (IBAction)shadowCheckboxChanged:(id)sender {
 }
 
 - (IBAction)hoverBackgroundColor:(id)sender {

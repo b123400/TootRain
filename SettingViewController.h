@@ -17,14 +17,11 @@
 	IBOutlet NSTableView *accountsTableView;
 	
 	IBOutlet NSView *appearanceSettingView;
-	IBOutlet NSButton *overlapsMenuBarCheckBox;
-	IBOutlet NSButtonCell *hideTweetAroundCursorCheckBox;
+	IBOutlet NSButtonCell *hideStatusAroundCursorCheckBox;
 	IBOutlet NSButton *showProfileImageCheckBox;
-	IBOutlet NSButton *removeURLCheckBox;
-	IBOutlet NSButton *underlineTweetsWithURLCheckBox;
 	IBOutlet NSSlider *opacitySlider;
 	IBOutlet NSColorWell *textColorWell;
-	IBOutlet NSColorWell *shadowColorWell;
+    IBOutlet NSColorWell *shadowColorWell;
 	IBOutlet NSColorWell *hoverBackgroundColorWell;
 	IBOutlet NSTextField *fontLabel;
 }
@@ -37,6 +34,12 @@
 @property (weak) IBOutlet NSButton *addAccountButton;
 @property (weak) IBOutlet NSButton *deleteAccountButton;
 
+@property (weak) IBOutlet NSPopUpButton *screenPopup;
 @property (weak) IBOutlet NSPopUpButton *windowsLevelPopup;
+@property (weak) IBOutlet NSButton *shadowCheckbox;
+@property (weak) IBOutlet NSButton *truncateStatusCheckBox;
+@property (weak) IBOutlet NSTextField *truncateStatusField;
+@property (weak) IBOutlet NSStepper *truncateStatusStepper;
+@property (weak) IBOutlet NSButton *removeLinksCheckBox;
 
 @end

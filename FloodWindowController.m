@@ -93,7 +93,7 @@
     [StreamController shared].searchTerm = searchTerm;
 }
 #pragma mark stream delegate
--(void)streamController:(id)controller didReceivedStatus:(MastodonStatus *)status {
+-(void)streamController:(id)controller didReceivedStatus:(Status *)status {
     typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (![_self shouldShowStatus:status]) return;

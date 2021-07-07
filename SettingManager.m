@@ -68,12 +68,12 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark - settings
 
-- (BOOL)hideTweetAroundCursor {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
+- (BOOL)hideStatusAroundCursor {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideStatusAroundCursor"];
 }
 
-- (void)setHideTweetAroundCursor:(BOOL)hideTweetAroundCursor {
-    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideTweetAroundCursor"];
+- (void)setHideStatusAroundCursor:(BOOL)hideTweetAroundCursor {
+    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideStatusAroundCursor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -91,22 +91,22 @@ static NSMutableArray *savedAccounts=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
-- (BOOL)removeURL {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
+- (BOOL)removeLinks {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeLinks"];
 }
 
-- (void)setRemoveURL:(BOOL)removeURL {
-    [[NSUserDefaults standardUserDefaults] setBool:removeURL forKey:@"removeURL"];
+- (void)setRemoveLinks:(BOOL)removeURL {
+    [[NSUserDefaults standardUserDefaults] setBool:removeURL forKey:@"removeLinks"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
-- (BOOL)underlineTweetsWithURL {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
+- (BOOL)truncateStatus {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"truncateStatus"];
 }
 
-- (void)setUnderlineTweetsWithURL:(BOOL)underlineTweetsWithURL {
-    [[NSUserDefaults standardUserDefaults] setBool:underlineTweetsWithURL forKey:@"underlineTweetsWithURL"];
+- (void)setTruncateStatus:(BOOL)underlineTweetsWithURL {
+    [[NSUserDefaults standardUserDefaults] setBool:underlineTweetsWithURL forKey:@"truncateStatus"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
