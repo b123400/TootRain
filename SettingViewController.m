@@ -88,6 +88,9 @@
     self.truncateStatusField.integerValue = self.truncateStatusStepper.integerValue = [[SettingManager sharedManager] truncateStatusLength];
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
+    self.shadowCheckbox.state = [[SettingManager sharedManager] showShadow] ? NSControlStateValueOn : NSControlStateValueOff;
+    shadowColorWell.enabled = [[SettingManager sharedManager] showShadow];
+    
 	[textColorWell setColor:[[SettingManager sharedManager] textColor]];
 	[shadowColorWell setColor:[[SettingManager sharedManager]shadowColor]];
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
@@ -292,6 +295,9 @@
     [[SettingManager sharedManager] setShadowColor:well.color];
 }
 - (IBAction)shadowCheckboxChanged:(id)sender {
+    BOOL enabled = self.shadowCheckbox.state == NSControlStateValueOn;
+    [[SettingManager sharedManager] setShowShadow:enabled];
+    shadowColorWell.enabled = enabled;
 }
 
 - (IBAction)hoverBackgroundColor:(id)sender {

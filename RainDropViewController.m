@@ -277,14 +277,7 @@
     NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
     NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
     [attributes setObject:newFont forKey:NSFontAttributeName];
-    
-    // TODO: setting
-    NSShadow *kShadow = [[NSShadow alloc] init];
-    [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
-    [kShadow setShadowBlurRadius:5.0f];
-    [kShadow setShadowOffset:NSMakeSize(0, 0)];
-    [attributes setObject:kShadow forKey:NSShadowAttributeName];
-    
+
     [attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
 
     [attrString addAttributes:attributes range:NSMakeRange(0, attrString.length)];

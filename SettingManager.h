@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL truncateStatus;
 @property (nonatomic) NSInteger truncateStatusLength;
 @property (nonatomic) float opacity;
+@property (nonatomic) BOOL showShadow;
 
 #if TARGET_OS_IPHONE
 

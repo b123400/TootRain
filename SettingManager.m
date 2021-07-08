@@ -138,6 +138,20 @@ static NSMutableArray *savedAccounts=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
+- (BOOL)showShadow {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"showShadow"];
+    if (!num) {
+        return YES;
+    }
+    return [num boolValue];
+}
+
+- (void)setShowShadow:(BOOL)showShadow {
+    [[NSUserDefaults standardUserDefaults] setBool:showShadow forKey:@"showShadow"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
 #if TARGET_OS_IPHONE
 
 - (UIColor*)textColor {
