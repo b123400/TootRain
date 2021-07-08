@@ -81,11 +81,6 @@
 	float totalHeight = screenFrame.size.height - menuBarHeight;
 	
 	[[self window] setFrame:CGRectMake(screenFrame.origin.x, screenFrame.origin.y, totalWidth, totalHeight) display:YES];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        Status *s = [[Status alloc] init];
-//        s.text = @"hello";
-//        [self streamController:nil didReceivedStatus:s];
-//    });
 }
 
 - (void)showWindow:(id)sender {

@@ -8,13 +8,8 @@
 
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
-#import "BRMastodonClient.h"
-#import "MastodonStatus.h"
-//#import <STTwitter/STTwitter.h>
 
 @interface ComposeStatusViewController ()
-
-//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @end
 
@@ -38,23 +33,20 @@
 }
 
 - (IBAction)sendButtonClicked:(id)sender {
-    if ([self.inReplyTo isKindOfClass:[MastodonStatus class]]) {
-        MastodonStatus *inReplyTo = (MastodonStatus*)self.inReplyTo;
-        [[BRMastodonClient shared] replyToStatus:inReplyTo.mastodonStatus
-                                        withText:[[contentTextView textStorage] string]
-                               completionHandler:^(BRMastodonStatus * _Nullable status, NSError * _Nullable error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (!error) {
-                    [sendButton setTitle:NSLocalizedString(@"Sent", nil)];
-                    [self.popover performSelector:@selector(close) withObject:nil afterDelay:0.5];
-                } else {
-                    [sendButton setEnabled:YES];
-                    [sendButton setTitle:NSLocalizedString(@"Failed",nil)];
-                    [sendButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Send",nil) afterDelay:0.5];
-                }
-            });
-        }];
-    }
+    if (![self.inReplyTo canReply]) return;
+    [self.inReplyTo replyToStatusWithText:[[contentTextView textStorage] string]
+                        completionHandler:^(NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!error) {
+                [sendButton setTitle:NSLocalizedString(@"Sent", nil)];
+                [self.popover performSelector:@selector(close) withObject:nil afterDelay:0.5];
+            } else {
+                [sendButton setEnabled:YES];
+                [sendButton setTitle:NSLocalizedString(@"Failed",nil)];
+                [sendButton performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Send",nil) afterDelay:0.5];
+            }
+        });
+    }];
 	[sendButton setEnabled:NO];
 	[sendButton setTitle:NSLocalizedString(@"Loading",nil)];
 }

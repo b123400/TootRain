@@ -33,4 +33,17 @@
 
 @property (strong,nonatomic) NSAttributedString *attributedText;
 
+- (BOOL)canReply;
+- (void)replyToStatusWithText:(NSString *)text
+            completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canBookmark;
+- (void)bookmarkStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canFavourite;
+- (void)favouriteStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canReblog;
+- (void)reblogStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
 @end

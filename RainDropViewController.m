@@ -269,6 +269,10 @@
     } else {
         [attrString removeLinkAttributes];
     }
+    
+    if ([[SettingManager sharedManager] truncateStatus] && ![status isKindOfClass:[DummyStatus class]]) {
+        attrString = [[attrString attributedSubstringFromRange:NSMakeRange(0, [[SettingManager sharedManager] truncateStatusLength])] mutableCopy];
+    }
 
     NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
     NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];

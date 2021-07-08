@@ -7,6 +7,7 @@
 
 #import "MastodonStatus.h"
 #import "MastodonUser.h"
+#import "BRMastodonClient.h"
 
 @implementation MastodonStatus
 
@@ -27,6 +28,40 @@
         self.attributedText = [status attributedStringWithEmojisReplaced];
     }
     return self;
+}
+
+- (BOOL)canReply {
+    return YES;
+}
+- (void)replyToStatusWithText:(NSString *)text
+            completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback {
+    [[BRMastodonClient shared] replyToStatus:self.mastodonStatus
+                                    withText:text
+                           completionHandler:^(BRMastodonStatus * _Nullable status, NSError * _Nullable error) {
+        callback(error);
+    }];
+}
+
+- (BOOL)canBookmark {
+    return YES;
+}
+- (void)bookmarkStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback {
+    [[BRMastodonClient shared] bookmarkStatus:self.mastodonStatus
+                            completionHandler:callback];
+}
+
+- (BOOL)canFavourite {
+    return YES;
+}
+- (void)favouriteStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback {
+    [[BRMastodonClient shared] favouriteStatus:self.mastodonStatus completionHandler:callback];
+}
+
+- (BOOL)canReblog {
+    return YES;
+}
+- (void)reblogStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback {
+    [[BRMastodonClient shared] reblogStatus:self.mastodonStatus completionHandler:callback];
 }
 
 @end

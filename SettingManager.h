@@ -26,6 +26,7 @@
 @property (nonatomic) BOOL showProfileImage;
 @property (nonatomic) BOOL removeLinks;
 @property (nonatomic) BOOL truncateStatus;
+@property (nonatomic) NSInteger truncateStatusLength;
 @property (nonatomic) float opacity;
 
 #if TARGET_OS_IPHONE

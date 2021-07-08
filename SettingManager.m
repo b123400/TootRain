@@ -110,6 +110,19 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (NSInteger)truncateStatusLength {
+    NSNumber *obj = [[NSUserDefaults standardUserDefaults] objectForKey:@"truncateStatusLength"];
+    if (!obj) {
+        return 50;
+    }
+    return [obj integerValue];
+}
+
+- (void)setTruncateStatusLength:(NSInteger)truncateStatusLength {
+    [[NSUserDefaults standardUserDefaults] setInteger:truncateStatusLength forKey:@"truncateStatusLength"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (float)opacity {
     NSNumber *opacity=[[NSUserDefaults standardUserDefaults]objectForKey:@"opacity"];
     if(!opacity){

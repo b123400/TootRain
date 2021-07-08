@@ -36,16 +36,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)replyToStatus:(BRMastodonStatus *)status
            withText:(NSString *)text
-  completionHandler:(void (^)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback;
+  completionHandler:(void (^_Nonnull)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback;
 
 - (void)bookmarkStatus:(BRMastodonStatus *)status
-     completionHandler:(void (^)(NSError * _Nullable error))callback;
+     completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
 
 - (void)favouriteStatus:(BRMastodonStatus *)status
-      completionHandler:(void (^)(NSError * _Nullable error))callback;
+      completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
 
 - (void)reblogStatus:(BRMastodonStatus *)status
-   completionHandler:(void (^)(NSError * _Nullable error))callback;
+   completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
 
 @end
 

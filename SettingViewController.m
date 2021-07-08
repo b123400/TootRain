@@ -85,6 +85,7 @@
     } else {
         self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = NO;
     }
+    self.truncateStatusField.integerValue = self.truncateStatusStepper.integerValue = [[SettingManager sharedManager] truncateStatusLength];
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
 	[textColorWell setColor:[[SettingManager sharedManager] textColor]];
@@ -266,8 +267,14 @@
     }
 }
 - (IBAction)truncateStatusFieldChanged:(id)sender {
+    NSInteger num = [self.truncateStatusField integerValue];
+    self.truncateStatusField.integerValue = self.truncateStatusStepper.integerValue = MIN(500, MAX(10, num));
+    [[SettingManager sharedManager] setTruncateStatusLength:num];
 }
 - (IBAction)truncateStatusSteppedChanged:(id)sender {
+    NSInteger num = [sender integerValue];
+    [[SettingManager sharedManager] setTruncateStatusLength:num];
+    self.truncateStatusField.integerValue = num;
 }
 
 - (IBAction)opacitySliderChanged:(id)sender {

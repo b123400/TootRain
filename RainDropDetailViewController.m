@@ -10,8 +10,6 @@
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
 #import "NS(Attributed)String+Geometrics.h"
-#import "BRMastodonClient.h"
-#import "MastodonStatus.h"
 
 @interface RainDropDetailViewController ()
 
@@ -99,6 +97,7 @@
 
 #pragma mark button actions
 - (IBAction)replyClicked:(id)sender {
+    if (![status canReply]) return;
 	ComposeStatusViewController *controller=[[ComposeStatusViewController alloc] init];
 	[controller loadView];
 	
@@ -113,59 +112,50 @@
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
 }
 - (IBAction)bookmarkClicked:(id)sender {
-    if ([status isKindOfClass:[MastodonStatus class]]) {
-        MastodonStatus *ms = (MastodonStatus*)status;
-        [[BRMastodonClient shared] bookmarkStatus:ms.mastodonStatus
-                                completionHandler:^(NSError * _Nullable error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error) {
-                    [sender setEnabled:YES];
-                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
-                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Bookmark",nil) afterDelay:0.5];
-                } else {
-                    [sender setTitle:NSLocalizedString(@"Bookmarked", nil)];
-                }
-            });
-        }];
-    }
+    if (![status canBookmark]) return;
+    [status bookmarkStatusWithCompletionHandler:^(NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [sender setEnabled:YES];
+                [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Bookmark",nil) afterDelay:0.5];
+            } else {
+                [sender setTitle:NSLocalizedString(@"Bookmarked", nil)];
+            }
+        });
+    }];
     [(NSButton*)sender setEnabled:NO];
     [(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)repostClicked:(id)sender {
-    if ([status isKindOfClass:[MastodonStatus class]]) {
-        MastodonStatus *ms = (MastodonStatus*)status;
-        [[BRMastodonClient shared] reblogStatus:ms.mastodonStatus
-                              completionHandler:^(NSError * _Nullable error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error) {
-                    [sender setEnabled:YES];
-                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
-                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Repost",nil) afterDelay:0.5];
-                } else {
-                    [sender setTitle:NSLocalizedString(@"Reposted", nil)];
-                }
-            });
-        }];
-    }
+    if (![status canReblog]) return;
+    [status reblogStatusWithCompletionHandler:^(NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [sender setEnabled:YES];
+                [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Repost",nil) afterDelay:0.5];
+            } else {
+                [sender setTitle:NSLocalizedString(@"Reposted", nil)];
+            }
+        });
+    }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
 }
 - (IBAction)favClicked:(id)sender {
-    if ([status isKindOfClass:[MastodonStatus class]]) {
-        MastodonStatus *ms = (MastodonStatus*)status;
-        [[BRMastodonClient shared] favouriteStatus:ms.mastodonStatus
-                                 completionHandler:^(NSError * _Nullable error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (error) {
-                    [sender setEnabled:YES];
-                    [sender setTitle:NSLocalizedString(@"Failed",nil)];
-                    [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Done",nil) afterDelay:0.5];
-                } else {
-                    [sender setTitle:NSLocalizedString(@"Done", nil)];
-                }
-            });
-        }];
-    }
+    if (![status canFavourite]) return;
+    [status favouriteStatusWithCompletionHandler:^(NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                [sender setEnabled:YES];
+                [sender setTitle:NSLocalizedString(@"Failed",nil)];
+                [sender performSelector:@selector(setTitle:) withObject:NSLocalizedString(@"Done",nil) afterDelay:0.5];
+            } else {
+                [sender setTitle:NSLocalizedString(@"Done", nil)];
+            }
+        });
+    }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];
 }

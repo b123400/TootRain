@@ -221,7 +221,7 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="302">
                     <rect key="frame" x="183" y="287" width="198" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Above Menu Bar" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="307" id="303">
+                    <popUpButtonCell key="cell" type="push" title="Above Desktop" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="307" id="303">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="304">
@@ -248,12 +248,12 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hA4-r8-joS">
                     <rect key="frame" x="183" y="318" width="198" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Screen 1 (1440x900)" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="waU-Ph-Fmu" id="xGe-FM-7DV">
+                    <popUpButtonCell key="cell" type="push" title="Screen 1 (1440x900)" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="waU-Ph-Fmu" id="xGe-FM-7DV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="iIz-nx-Hej">
                             <items>
-                                <menuItem title="Screen 1 (1440x900)" id="waU-Ph-Fmu"/>
+                                <menuItem title="Screen 1 (1440x900)" state="on" id="waU-Ph-Fmu"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -262,11 +262,11 @@
                     </connections>
                 </popUpButton>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTp-ws-7CY">
-                    <rect key="frame" x="359" y="184" width="19" height="28"/>
+                    <rect key="frame" x="361" y="181" width="19" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="500" doubleValue="50" id="RIh-vy-pMn"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" minValue="10" maxValue="500" doubleValue="50" id="RIh-vy-pMn"/>
                     <connections>
-                        <action selector="truncateStatusSteppedChanged:" target="-2" id="P9C-1H-jIp"/>
+                        <action selector="truncateStatusSteppedChanged:" target="-2" id="dVi-so-pWI"/>
                     </connections>
                 </stepper>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="phw-jJ-rIj">
