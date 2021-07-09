@@ -192,11 +192,17 @@
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
+    typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SettingManager sharedManager] reloadAccounts];
-        [accountsTableView reloadData];
+        [_self updateAccountView];
         [self.oauthController.window close];
         self.oauthController = nil;
+        
+        NSArray<BRMastodonAccount *> *accounts = [[SettingManager sharedManager] accounts];
+        if ([accounts count] == 1) {
+            [[SettingManager sharedManager] setSelectedAccount:[accounts firstObject]];
+        }
     });
 }
 
