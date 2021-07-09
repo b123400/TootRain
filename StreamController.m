@@ -86,10 +86,10 @@ static StreamController *shared;
         }
     };
     self.streamHandler.onConnected = ^{
-        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), _self.account.url]];
+        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), _self.account.displayName]];
     };
     self.streamHandler.onDisconnected = ^{
-        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), _self.account.url]];
+        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), _self.account.displayName]];
     };
 }
 

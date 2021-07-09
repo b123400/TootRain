@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) BRMastodonApp *app;
 @property (nonatomic, strong) NSString *accountId;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong, nullable) NSString *accessToken;
 @property (nonatomic, strong, nullable) NSString *refreshToken;
 @property (nonatomic, strong, nullable) NSDate *expires;
@@ -27,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
                         url:(NSString *)url
+                displayName:(NSString *)displayName
                 oauthResult:(BRMastodonOAuthResult *)oauthResult;
 
 - (void)save;

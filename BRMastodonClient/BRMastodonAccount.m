@@ -11,6 +11,7 @@
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
                         url:(NSString *)url
+                displayName:(NSString *)displayName
                 accessToken:(NSString *)accessToken
                refreshToken:(NSString *)refreshToken
                     expires:(NSDate *)expires;
@@ -92,6 +93,7 @@
     NSDictionary *servers = (NSDictionary*)[defaults objectForKey:@"BRMastodonAccount"];
     NSDictionary *accounts = (NSDictionary*)servers[app.hostName];
     NSString *url = accounts[accountId][@"url"];
+    NSString *displayName = accounts[accountId][@"displayName"];
     NSString *host = accounts[accountId][@"host"];
     NSDate *expires = accounts[accountId][@"expires"];
     if (!url || !host) {
@@ -100,6 +102,7 @@
     return [[BRMastodonAccount alloc] initWithApp:app
                                         accountId:accountId
                                               url:url
+                                      displayName:displayName
                                       accessToken:accessToken
                                      refreshToken:refreshTokenFound ? refreshToken : nil
                                           expires:expires];
@@ -108,6 +111,7 @@
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
                         url:(NSString *)url
+                displayName:(NSString *)displayName
                 accessToken:(NSString *)accessToken
                refreshToken:(NSString *)refreshToken
                     expires:(NSDate *)expires {
@@ -115,6 +119,7 @@
         self.app = app;
         self.accountId = accountId;
         self.url = url;
+        self.displayName = displayName;
         self.accessToken = accessToken;
         self.refreshToken = refreshToken;
         self.expires = expires;
@@ -125,11 +130,13 @@
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
                         url:(NSString *)url
+                displayName:(NSString *)displayName
                 oauthResult:(BRMastodonOAuthResult *)oauthResult {
     if (self = [super init]) {
         self.app = app;
         self.accountId = accountId;
         self.url = url;
+        self.displayName = displayName;
         self.accessToken = oauthResult.accessToken;
         self.refreshToken = oauthResult.refreshToken;
         self.expires = oauthResult.expiresIn == nil
@@ -221,6 +228,7 @@
     return @{
         @"accountId": self.accountId,
         @"url": self.url,
+        @"displayName": self.displayName,
         @"host": self.app.hostName,
         @"expires": self.expires,
     };

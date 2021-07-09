@@ -182,9 +182,12 @@
             callback(existingAccount, nil);
             return;
         }
+        NSURLComponents *components = [NSURLComponents componentsWithString:result[@"url"]];
+        NSString *accountDisplayName = [NSString stringWithFormat:@"@%@@%@", result[@"acct"], components.host];
         BRMastodonAccount *account = [[BRMastodonAccount alloc] initWithApp:app
                                                                   accountId:accountId
                                                                         url:result[@"url"]
+                                                                displayName:accountDisplayName
                                                                 oauthResult:oauthResult];
         [account save];
         callback(account, nil);

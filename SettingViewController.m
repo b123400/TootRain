@@ -132,9 +132,9 @@
 	if(aTableView==accountsTableView){
         BRMastodonAccount *account = [SettingManager sharedManager].accounts[rowIndex];
         if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
-            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.url];
+            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
         }
-		return account.url;
+		return account.displayName;
 	}
 	return nil;
 }
