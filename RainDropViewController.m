@@ -170,7 +170,7 @@
 	return YES;
 }
 #pragma mark geometry
--(CGRect)visibleFrame{
+- (CGRect)visibleFrame {
 	if(paused){
 		return self.view.frame;
 	}
@@ -180,7 +180,7 @@
 	return frame;
 }
 #pragma mark interaction
--(void)didMouseOver{
+- (void)didMouseOver {
 	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:YES];
 		return;
@@ -202,7 +202,7 @@
         [self.view setNeedsDisplay:YES];
     }
 }
--(void)didMouseOut{
+- (void)didMouseOut {
 	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:NO];
 		return;
@@ -226,7 +226,7 @@
         [self.view setNeedsDisplay:YES];
     }
 }
--(void)viewDidClicked:(id)sender{
+- (void)viewDidClicked:(id)sender {
 	if(![self paused]){
 		[self pauseAnimation];
 	}

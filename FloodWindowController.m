@@ -153,9 +153,9 @@
     [shownStatuses removeObject:rainDrop.status];
 }
 
--(void)updateCursorLocation:(NSEvent*)event{
-	NSPoint mouseLoc = [NSEvent mouseLocation];
-	CGPoint point=NSPointToCGPoint(mouseLoc);
+- (void)updateCursorLocation:(NSEvent*)event {
+	NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+	CGPoint point = NSPointToCGPoint(mouseLoc);
 	if(!CGPointEqualToPoint(lastMousePosition,point)){
 		lastMousePosition=point;
 		//moved
@@ -168,7 +168,7 @@
 			}
 		}
 		for(RainDropViewController *thisController in rainDrops){
-			CGRect rect=[thisController visibleFrame];
+			CGRect rect = [thisController visibleFrame];
 			if(CGRectContainsPoint(rect, point)){
 				if(![thisController paused]&&!popoverShown){
 					[thisController didMouseOver];
