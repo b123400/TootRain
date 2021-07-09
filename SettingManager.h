@@ -12,6 +12,7 @@
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
+#define kSelectedAccountChanged @"kSelectedAccountChanged"
 
 #if TARGET_OS_IPHONE
 #else

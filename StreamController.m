@@ -8,7 +8,6 @@
 
 #import "StreamController.h"
 #import <Social/Social.h>
-//#import <STTwitter/STTwitter.h>
 #import "Status.h"
 #import "SettingManager.h"
 #import "BRMastodonClient.h"
@@ -26,8 +25,6 @@
 @property (nonatomic, strong) BRMastodonAccount *account;
 @property (nonatomic, strong) BRStreamHandler *streamHandler;
 
-- (void)showNotification;
-
 @end
 
 @implementation StreamController
@@ -37,22 +34,9 @@ static StreamController *shared;
 + (instancetype)shared {
     if (!shared) {
         shared = [[StreamController alloc] initWithAccount:[[SettingManager sharedManager] selectedAccount]];
-        
-        // shared controller should always follow the selectedAccount
-//        [[NSNotificationCenter defaultCenter] addObserver:shared selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
     }
     return shared;
 }
-
-//- (void)accountStoreDidChanged:(NSNotification*)notification {
-//    BRMastodonAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
-//    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
-//
-//    self.account = changedToAccount;
-//    [self reconnect];
-//
-//    [self showNotification];
-//}
 
 # pragma mark - instance methods
 
@@ -60,16 +44,21 @@ static StreamController *shared;
     self = [super init];
 
     self.account = account;
-//    self.twitter = [STTwitterAPI twitterAPIOSWithAccount:self.account delegate:self];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectedAccountChanged:)
+                                                 name:kSelectedAccountChanged
+                                               object:nil];
+
     return self;
 }
 
-//- (void)twitterAPI:(STTwitterAPI *)twitterAPI accountWasInvalidated:(ACAccount *)invalidatedAccount {
-//    // This should not happen because account is handled by OSX?
-//    [self showNotificationWithTitle:NSLocalizedString(@"Account is invalid?", @"")
-//                               body:NSLocalizedString(@"Please setup account in system preference", @"")];
-//}
+- (void)selectedAccountChanged:(NSNotification *)notification {
+    BRMastodonAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
+    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
+
+    self.account = changedToAccount;
+    [self reconnect];
+}
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -81,66 +70,35 @@ static StreamController *shared;
 }
 
 - (void)startStreaming {
-    if (!self.streamHandler) {
-        [self showNotification];
-    }
     [self reconnect];
 }
 
 - (void)reconnect {
     typeof(self) __weak _self = self;
     if (!self.account) return;
-
-    BRStreamHandler *handler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
-    handler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
-        NSLog(@"wow: %@", status);
-        [self.delegate streamController:_self didReceivedStatus:[[MastodonStatus alloc] initWithMastodonStatus:status]];
-    };
-    self.streamHandler = handler;
-//    [self.streamConnection cancel];
     
-//    [self.twitter getUserStreamIncludeMessagesFromFollowedAccounts:@YES
-//                                                    includeReplies:@YES
-//                                                   keywordsToTrack:self.searchTerm?@[self.searchTerm]:nil
-//                                             locationBoundingBoxes:nil
-//                                                        tweetBlock:^(NSDictionary *tweet)
-//     {
-//         Status *status = [[Status alloc] initWithDictionary:tweet];
-//         if (status && [self.delegate respondsToSelector:@selector(streamController:didReceivedTweet:)]) {
-//             [self.delegate streamController:self didReceivedTweet:status];
-//         }
-//     } errorBlock:^(NSError *error)
-//     {
-//         [self showNotificationWithTitle:NSLocalizedString(@"Stream disconnected",nil)
-//                                    body:[NSString stringWithFormat:
-//                                          NSLocalizedString(@"Reconnecting to user: %@",nil),
-//                                          self.account.username]];
-//         [self reconnect];
-//     }];
+    [self.streamHandler.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];
+
+    self.streamHandler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
+    self.streamHandler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
+        if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
+            [_self.delegate streamController:_self didReceivedStatus:[[MastodonStatus alloc] initWithMastodonStatus:status]];
+        }
+    };
+    self.streamHandler.onConnected = ^{
+        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), _self.account.url]];
+    };
+    self.streamHandler.onDisconnected = ^{
+        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), _self.account.url]];
+    };
 }
 
-- (void)showNotification {
-    if (!self.account) return;
-    [self showNotificationWithTitle: NSLocalizedString(@"Stream Connecting",nil)
-                               body: [NSString stringWithFormat:
-                                      NSLocalizedString(@"Connecting to %@",nil),
-                                      self.account.url]];
-}
-
-- (void)showNotificationWithTitle:(NSString*)title body:(NSString*)body {
+- (void)showNotificationWithText:(NSString *)text {
 #if TARGET_OS_IPHONE
-    [SVProgressHUD showInfoWithStatus:body];
+    [SVProgressHUD showInfoWithStatus:text];
 #elif TARGET_OS_MAC
-//    @try {
-//        NSUserNotification *notification = [[NSUserNotification alloc] init];
-//        notification.title = title;
-//        notification.informativeText = body;
-//        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-//    } @catch (NSException *exception) {
-//        NSLog(@"exception: %@", exception);
-//    }
     DummyStatus *status = [[DummyStatus alloc] init];
-    status.text = body;
+    status.text = text;
     [self.delegate streamController:self didReceivedStatus:status];
 #endif
 }

@@ -30,8 +30,6 @@ static NSMutableArray *savedAccounts=nil;
     self = [super init];
     
     if (self) {
-        // TODO: reload accounts
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
         self.accounts = [BRMastodonAccount allAccounts];
     }
     return self;
@@ -60,6 +58,7 @@ static NSMutableArray *savedAccounts=nil;
 - (void)setSelectedAccount:(BRMastodonAccount*)account {
     [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
 }
 
 - (void)reloadAccounts {

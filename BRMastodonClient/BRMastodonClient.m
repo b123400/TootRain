@@ -8,6 +8,13 @@
 #import "BRMastodonClient.h"
 #import "BRMastodonAccount.h"
 
+@interface BRMastodonClient () <NSURLSessionDelegate>
+
+@property (nonatomic, strong) NSURLSession *urlSession;
+@property (nonatomic, strong) NSMapTable *taskToHandleMapping;
+
+@end
+
 @implementation BRMastodonClient
 
 + (instancetype)shared {
@@ -17,6 +24,16 @@
         instance = [[BRMastodonClient alloc] init];
     });
     return instance;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.taskToHandleMapping = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+        self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                        delegate:self
+                                                   delegateQueue:nil];
+    }
+    return self;
 }
 
 - (void)registerAppFor:(NSString*)hostname completionHandler:(void (^)(BRMastodonApp *app, NSError *error))callback {
@@ -41,8 +58,8 @@
         @"scopes": @"read write",
         @"website": @"https://b123400.net",
     }] dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error: %@", error);
             callback(nil, error);
@@ -87,8 +104,8 @@
             @"code": code,
             @"scope": @"read write"
     }] dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error: %@", error);
             callback(nil, error);
@@ -134,8 +151,8 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"GET"];
     [request setValue:[NSString stringWithFormat:@"Bearer %@", oauthResult.accessToken] forHTTPHeaderField:@"Authorization"];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error: %@", error);
             callback(nil, error);
@@ -191,8 +208,8 @@
             @"refresh_token": refreshToken,
             @"scope": @"read write"
     }] dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
             NSLog(@"Error: %@", error);
             callback(nil, error);
@@ -262,6 +279,7 @@
 
 - (BRStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
     __block BRStreamHandler *handler = [[BRStreamHandler alloc] init];
+    typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
                completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
         NSURLComponents *components = [NSURLComponents componentsWithString:account.app.hostName];
@@ -273,8 +291,8 @@
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/streaming?access_token=%@&stream=user", [accessToken stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]
                             relativeToURL:components.URL];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSURLSessionWebSocketTask *task = [[NSURLSession sharedSession] webSocketTaskWithRequest:request];
-        [self receiveMessageFromWebsocketTask:task
+        NSURLSessionWebSocketTask *task = [_self.urlSession webSocketTaskWithRequest:request];
+        [_self receiveMessageFromWebsocketTask:task
                                     onMessage:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
             NSLog(@"ws str: %@, error: %@", [message string], error);
             if (error) {
@@ -314,6 +332,7 @@
             }
             
         }];
+        [_self.taskToHandleMapping setObject:handler forKey:task];
         [task resume];
     }];
     return handler;
@@ -348,8 +367,8 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
             params[@"in_reply_to_id"] = status.statusID;
         }
         [request setHTTPBody:[[_self httpBodyWithParams: params] dataUsingEncoding:NSUTF8StringEncoding]];
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error);
                 callback(nil, error);
@@ -380,12 +399,13 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
      completionHandler:(void (^)(NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/bookmark", status.statusID]
                         relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    typeof(self) __weak _self = self;
     [self baseRequestWithURL:url
                      account:status.account
            completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
         [request setHTTPMethod:@"POST"];
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error);
                 callback(error);
@@ -416,12 +436,13 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
       completionHandler:(void (^)(NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/favourite", status.statusID]
                         relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    typeof(self) __weak _self = self;
     [self baseRequestWithURL:url
                      account:status.account
            completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
         [request setHTTPMethod:@"POST"];
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error);
                 callback(error);
@@ -452,12 +473,13 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
    completionHandler:(void (^)(NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/statuses/%@/reblog", status.statusID]
                         relativeToURL:[NSURL URLWithString:status.account.app.hostName]];
+    typeof(self) __weak _self = self;
     [self baseRequestWithURL:url
                      account:status.account
            completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
         [request setHTTPMethod:@"POST"];
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
-                                        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error);
                 callback(error);
@@ -482,6 +504,30 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
         }];
         [task resume];
     }];
+}
+
+#pragma mark - Delegate
+
+- (void)URLSession:(NSURLSession *)session
+     webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
+didOpenWithProtocol:(NSString *)protocol {
+    BRStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onConnected) {
+        handler.onConnected();
+    }
+}
+
+- (void)URLSession:(NSURLSession *)session
+     webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
+  didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
+            reason:(NSData *)reason {
+    BRStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onDisconnected) {
+        handler.onDisconnected();
+    }
+    [self.taskToHandleMapping removeObjectForKey:webSocketTask];
 }
 
 @end
