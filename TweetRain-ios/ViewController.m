@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AuthViewController.h"
-#import <STTwitter/STTwitter.h>
+//#import <STTwitter/STTwitter.h>
 #import "SettingManager.h"
 #import "StreamController.h"
 #import "Status.h"

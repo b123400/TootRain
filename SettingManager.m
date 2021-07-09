@@ -11,7 +11,7 @@
 
 @interface SettingManager ()
 
-- (void)accountStoreDidChanged:(NSNotification*)notification;
+@property (nonatomic, strong) NSArray<BRMastodonAccount*> *accounts;
 
 @end
 
@@ -30,65 +30,49 @@ static NSMutableArray *savedAccounts=nil;
     self = [super init];
     
     if (self) {
-        self.accountStore = [[ACAccountStore alloc] init];
-        self.accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
+        self.accounts = [BRMastodonAccount allAccounts];
     }
     return self;
 }
 
-
-
 #pragma mark accounts
 
-- (ACAccount *)selectedAccount {
+- (BRMastodonAccount *)selectedAccount {
     NSArray *accounts = self.accounts;
     if (accounts.count == 0) {
         return nil;
     }
-    NSString *selectedAccountID = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountID"];
-    for (ACAccount *thisAccount in accounts) {
-        if ([thisAccount.identifier isEqualToString:selectedAccountID]) {
+    NSString *selectedAccountId = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountId"];
+    for (BRMastodonAccount *thisAccount in accounts) {
+        if ([thisAccount.identifier isEqualToString:selectedAccountId]) {
             return thisAccount;
         }
     }
 #ifdef AUTO_SELECT_FIRST_ACCOUNT
-    return [self.accounts objectAtIndex:0];
+    return [self.accounts firstObject];
 #else
     return nil;
 #endif
 }
 
-- (void)setSelectedAccount:(ACAccount*)account {
-    for (ACAccount *thatAccount in self.accounts) {
-        if ([[account identifier] isEqualToString:[thatAccount identifier]]) {
-            [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountID"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            return;
-        }
-    }
+- (void)setSelectedAccount:(BRMastodonAccount*)account {
+    [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
 }
 
-- (NSArray*)accounts {
-    if (!self.accountType.accessGranted) {
-        return 0;
-    }
-    NSArray *accounts = [self.accountStore accountsWithAccountType:self.accountType];
-    return accounts;
-}
-
-- (void)accountStoreDidChanged:(NSNotification*)notification {
-    
+- (void)reloadAccounts {
+    self.accounts = [BRMastodonAccount allAccounts];
 }
 
 #pragma mark - settings
 
-- (BOOL)hideTweetAroundCursor {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideTweetAroundCursor"];
+- (BOOL)hideStatusAroundCursor {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideStatusAroundCursor"];
 }
 
-- (void)setHideTweetAroundCursor:(BOOL)hideTweetAroundCursor {
-    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideTweetAroundCursor"];
+- (void)setHideStatusAroundCursor:(BOOL)hideTweetAroundCursor {
+    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideStatusAroundCursor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -106,22 +90,35 @@ static NSMutableArray *savedAccounts=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
-- (BOOL)removeURL {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeURL"];
+- (BOOL)removeLinks {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"removeLinks"];
 }
 
-- (void)setRemoveURL:(BOOL)removeURL {
-    [[NSUserDefaults standardUserDefaults] setBool:removeURL forKey:@"removeURL"];
+- (void)setRemoveLinks:(BOOL)removeURL {
+    [[NSUserDefaults standardUserDefaults] setBool:removeURL forKey:@"removeLinks"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
-- (BOOL)underlineTweetsWithURL {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"underlineTweetsWithURL"];
+- (BOOL)truncateStatus {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"truncateStatus"];
 }
 
-- (void)setUnderlineTweetsWithURL:(BOOL)underlineTweetsWithURL {
-    [[NSUserDefaults standardUserDefaults] setBool:underlineTweetsWithURL forKey:@"underlineTweetsWithURL"];
+- (void)setTruncateStatus:(BOOL)underlineTweetsWithURL {
+    [[NSUserDefaults standardUserDefaults] setBool:underlineTweetsWithURL forKey:@"truncateStatus"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSInteger)truncateStatusLength {
+    NSNumber *obj = [[NSUserDefaults standardUserDefaults] objectForKey:@"truncateStatusLength"];
+    if (!obj) {
+        return 50;
+    }
+    return [obj integerValue];
+}
+
+- (void)setTruncateStatusLength:(NSInteger)truncateStatusLength {
+    [[NSUserDefaults standardUserDefaults] setInteger:truncateStatusLength forKey:@"truncateStatusLength"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -136,6 +133,20 @@ static NSMutableArray *savedAccounts=nil;
 
 - (void)setOpacity:(float)opacity {
     [[NSUserDefaults standardUserDefaults] setFloat:opacity forKey:@"opacity"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (BOOL)showShadow {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"showShadow"];
+    if (!num) {
+        return YES;
+    }
+    return [num boolValue];
+}
+
+- (void)setShowShadow:(BOOL)showShadow {
+    [[NSUserDefaults standardUserDefaults] setBool:showShadow forKey:@"showShadow"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }

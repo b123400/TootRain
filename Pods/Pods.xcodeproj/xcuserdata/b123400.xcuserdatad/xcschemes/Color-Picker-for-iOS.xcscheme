@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '79A0DED21A1A71C55A16F17C'
-               BlueprintName = 'Color-Picker-for-iOS'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libColor-Picker-for-iOS.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44CA85B9068A41C746742D5576314D0A"
+               BuildableName = "libColor-Picker-for-iOS.a"
+               BlueprintName = "Color-Picker-for-iOS"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

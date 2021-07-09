@@ -6,21 +6,13 @@
 //  Copyright 2011 home. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import "BRMastodonUser.h"
 
 #if !TARGET_OS_IPHONE && TARGET_OS_MAC
 #import <Cocoa/Cocoa.h>
 #endif
 
-typedef enum BRUserType {
-    BRUserTypeTwitter    = 0,
-    BRUserTypeFacebook   = 1,
-
-	BRUserTypeUnknown   = 99,
-} BRUserType;
-
 @interface User : NSObject {
-	BRUserType type;
-	
 	NSString *username;
 	NSString *screenName;
 	NSString *userID;
@@ -31,8 +23,6 @@ typedef enum BRUserType {
 	NSMutableDictionary *otherInfos;
 }
 
-@property (nonatomic,assign) BRUserType type;
-
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *screenName;
 @property (nonatomic,strong) NSString *userID;
@@ -41,7 +31,5 @@ typedef enum BRUserType {
 @property (nonatomic,strong) NSURL *profileImageURL;
 
 @property (nonatomic,strong) NSMutableDictionary *otherInfos;
-
-- (instancetype)initWithDictionary:(NSDictionary*)dict;
 
 @end

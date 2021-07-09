@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "BRMastodonStatus.h"
 
 @interface Status : NSObject{
 	User *user;
@@ -26,11 +27,23 @@
 @property (strong,nonatomic) NSDate *createdAt;
 @property (strong,nonatomic) NSString *text;
 
-@property (assign,nonatomic) BOOL liked;
+@property (assign,nonatomic) BOOL favourited;
+@property (assign,nonatomic) BOOL bookmarked;
+@property (assign,nonatomic) BOOL reblogged;
 
-@property (strong,nonatomic) NSMutableDictionary *entities;
-@property (strong,nonatomic) NSMutableDictionary *otherInfos;
+@property (strong,nonatomic) NSAttributedString *attributedText;
 
-- (id)initWithDictionary:(NSDictionary*)dictionary;
+- (BOOL)canReply;
+- (void)replyToStatusWithText:(NSString *)text
+            completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canBookmark;
+- (void)bookmarkStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canFavourite;
+- (void)favouriteStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (BOOL)canReblog;
+- (void)reblogStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
 
 @end

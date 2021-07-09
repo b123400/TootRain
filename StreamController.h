@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Accounts/Accounts.h>
+#import "BRMastodonAccount.h"
+#import "MastodonStatus.h"
 
 @protocol StreamControllerDelegate <NSObject>
 
 @optional
-- (void)streamController:(id)controller didReceivedTweet:(id)tweet;
+- (void)streamController:(id)controller didReceivedStatus:(Status *)status;
 
 @end
 
@@ -23,7 +24,7 @@
 
 + (instancetype)shared;
 
-- (id)initWithAccount:(ACAccount*)account;
+- (id)initWithAccount:(BRMastodonAccount*)account;
 - (void)startStreaming;
 
 @end

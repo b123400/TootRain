@@ -21,8 +21,9 @@
 @property (weak) IBOutlet NSImageView *profileImageView;
 @property (weak) IBOutlet NSTextField *nameField;
 @property (weak) IBOutlet NSTextField *usernameField;
-@property (weak) IBOutlet NSButton *retweetButton;
+@property (weak) IBOutlet NSButton *repostButton;
 @property (weak) IBOutlet NSButton *favButton;
+@property (weak) IBOutlet NSButton *bookmarkButton;
 
 -(id)initWithStatus:(Status*)status;
 

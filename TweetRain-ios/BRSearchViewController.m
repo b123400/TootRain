@@ -6,13 +6,13 @@
 //
 //
 
-#import <STTwitter/STTwitter.h>
+//#import <STTwitter/STTwitter.h>
 #import "SettingManager.h"
 #import "BRSearchViewController.h"
 #import "TextFieldTableViewCell.h"
 
 @interface BRSearchViewController () <TextFieldTableViewCellDelegate>
-@property (nonatomic, strong) STTwitterAPI *twitter;
+//@property (nonatomic, strong) STTwitterAPI *twitter;
 @property (nonatomic, strong) NSArray <NSString*> *trends;
 @property (nonatomic, strong) NSArray <NSString*> *savedSearches;
 @end
@@ -141,58 +141,58 @@
     [self donePressed];
 }
 
-#pragma mark - Twitter
-
-- (STTwitterAPI *)twitter {
-    if (!_twitter) {
-        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-        _twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
-    }
-    return _twitter;
-}
+//#pragma mark - Twitter
+//
+//- (STTwitterAPI *)twitter {
+//    if (!_twitter) {
+//        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+//        _twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
+//    }
+//    return _twitter;
+//}
 
 #pragma mark - Fetching
 
 - (void)loadSavedSearches {
-    [self.twitter getSavedSearchesListWithSuccessBlock:^(NSArray *savedSearches) {
-        NSMutableArray *savedSearchesString = [NSMutableArray arrayWithCapacity:savedSearches.count];
-        for (NSDictionary *savedSearch in savedSearches) {
-            NSString *name = savedSearch[@"name"];
-            if (name) {
-                [savedSearchesString addObject:name];
-            }
-        }
-        self.savedSearches = savedSearchesString;
-        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:self.savedSearches.count];
-        for (NSInteger i = 0; i < self.savedSearches.count; i++) {
-            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:1]];
-        }
-        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    } errorBlock:^(NSError *error) {
-        
-    }];
+//    [self.twitter getSavedSearchesListWithSuccessBlock:^(NSArray *savedSearches) {
+//        NSMutableArray *savedSearchesString = [NSMutableArray arrayWithCapacity:savedSearches.count];
+//        for (NSDictionary *savedSearch in savedSearches) {
+//            NSString *name = savedSearch[@"name"];
+//            if (name) {
+//                [savedSearchesString addObject:name];
+//            }
+//        }
+//        self.savedSearches = savedSearchesString;
+//        NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:self.savedSearches.count];
+//        for (NSInteger i = 0; i < self.savedSearches.count; i++) {
+//            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:1]];
+//        }
+//        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//    } errorBlock:^(NSError *error) {
+//
+//    }];
 }
 
 - (void)loadTrends {
-    [self.twitter getTrendsForWOEID:@"1"
-                    excludeHashtags:@NO
-                       successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trends) {
-                           NSMutableArray *trendStrings = [NSMutableArray arrayWithCapacity:trends.count];
-                           for (NSDictionary *trend in trends) {
-                               NSString *name = trend[@"name"];
-                               if (name) {
-                                   [trendStrings addObject:name];
-                               }
-                           }
-                           self.trends = trendStrings;
-                           NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:self.trends.count];
-                           for (NSInteger i = 0; i < self.trends.count; i++) {
-                               [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:2]];
-                           }
-                           [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-                       } errorBlock:^(NSError *error) {
-                           
-                       }];
+//    [self.twitter getTrendsForWOEID:@"1"
+//                    excludeHashtags:@NO
+//                       successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trends) {
+//                           NSMutableArray *trendStrings = [NSMutableArray arrayWithCapacity:trends.count];
+//                           for (NSDictionary *trend in trends) {
+//                               NSString *name = trend[@"name"];
+//                               if (name) {
+//                                   [trendStrings addObject:name];
+//                               }
+//                           }
+//                           self.trends = trendStrings;
+//                           NSMutableArray *indexPaths = [NSMutableArray arrayWithCapacity:self.trends.count];
+//                           for (NSInteger i = 0; i < self.trends.count; i++) {
+//                               [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:2]];
+//                           }
+//                           [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//                       } errorBlock:^(NSError *error) {
+//                           
+//                       }];
 }
 
 @end

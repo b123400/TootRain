@@ -8,8 +8,6 @@
 
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
-#import <Crashlytics/Crashlytics.h>
-#import <Fabric/Fabric.h>
 
 @implementation FloodAppDelegate
 
@@ -18,7 +16,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
                                                               @"NSApplicationCrashOnExceptions": @YES
                                                               }];
-    [Fabric with:@[[Crashlytics class]]];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	

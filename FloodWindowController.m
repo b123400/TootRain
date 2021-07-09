@@ -10,6 +10,8 @@
 #import "SettingManager.h"
 #import "RainDropViewController.h"
 #import "SettingViewController.h"
+#import "MastodonStatus.h"
+#import "BRMastodonStatus.h"
 
 @interface FloodWindowController ()
 
@@ -49,6 +51,7 @@
 	[self setShouldCascadeWindows:NO];
 	
     [self resetFrame];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowScreenChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowLevelChanged object:nil];
 }
 
@@ -73,31 +76,40 @@
         }
     }
     [self.window setLevel:windowLevel];
-	float totalWidth=[[NSScreen mainScreen] frame].size.width;
-	float totalHeight=[[NSScreen mainScreen] frame].size.height-menuBarHeight;
+    CGRect screenFrame = self.window.screen.frame;
+	float totalWidth = screenFrame.size.width;
+	float totalHeight = screenFrame.size.height - menuBarHeight;
 	
-	[[self window] setFrame:CGRectMake(0, 0, totalWidth, totalHeight) display:YES];
+	[[self window] setFrame:CGRectMake(screenFrame.origin.x, screenFrame.origin.y, totalWidth, totalHeight) display:YES];
+}
+
+- (void)showWindow:(id)sender {
+    [super showWindow:sender];
+    [self resetFrame];
 }
 
 -(void)setSearchTerm:(NSString*)searchTerm{
     [StreamController shared].searchTerm = searchTerm;
 }
 #pragma mark stream delegate
--(void)streamController:(id)controller didReceivedTweet:(Status*)tweet {
-    if (![self shouldShowStatus:tweet]) return;
-    
-    RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:tweet];
-    [thisViewController loadView];
-    CGRect frame=thisViewController.view.frame;
-    frame.origin.y=[self largestPossibleYForStatusViewController:thisViewController];
-    if (frame.origin.y < 0) {
-        // out of screen, discard
-        return;
-    }
-    thisViewController.view.frame=frame;
-    [[[self window] contentView]addSubview: [thisViewController view]];
-    thisViewController.delegate=self;
-    [rainDrops addObject:thisViewController];
+-(void)streamController:(id)controller didReceivedStatus:(Status *)status {
+    typeof(self) __weak _self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![_self shouldShowStatus:status]) return;
+        
+        RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
+        [thisViewController loadView];
+        CGRect frame=thisViewController.view.frame;
+        frame.origin.y=[_self largestPossibleYForStatusViewController:thisViewController];
+        if (frame.origin.y < 0) {
+            // out of screen, discard
+            return;
+        }
+        thisViewController.view.frame=frame;
+        [[[_self window] contentView]addSubview: [thisViewController view]];
+        thisViewController.delegate=self;
+        [rainDrops addObject:thisViewController];
+    });
 }
 
 -(BOOL)shouldShowStatus:(Status*)status{
@@ -141,9 +153,9 @@
     [shownStatuses removeObject:rainDrop.status];
 }
 
--(void)updateCursorLocation:(NSEvent*)event{
-	NSPoint mouseLoc = [NSEvent mouseLocation];
-	CGPoint point=NSPointToCGPoint(mouseLoc);
+- (void)updateCursorLocation:(NSEvent*)event {
+	NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+	CGPoint point = NSPointToCGPoint(mouseLoc);
 	if(!CGPointEqualToPoint(lastMousePosition,point)){
 		lastMousePosition=point;
 		//moved
@@ -156,7 +168,7 @@
 			}
 		}
 		for(RainDropViewController *thisController in rainDrops){
-			CGRect rect=[thisController visibleFrame];
+			CGRect rect = [thisController visibleFrame];
 			if(CGRectContainsPoint(rect, point)){
 				if(![thisController paused]&&!popoverShown){
 					[thisController didMouseOver];

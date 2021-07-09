@@ -9,7 +9,6 @@
 #import "AuthViewController.h"
 #import "SettingManager.h"
 #import "AuthAccountTableViewController.h"
-#import "Mixpanel.h"
 
 @interface AuthViewController () <SettingAccountTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *authorizeButton;
@@ -43,7 +42,6 @@
                                                              alpha:1].CGColor;
     self.authorizeButton.layer.borderWidth = 1;
     self.authorizeButton.layer.cornerRadius = 8;
-    [[Mixpanel sharedInstance] track:@"Auth shown"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,11 +64,6 @@
      options:nil
      completion:^(BOOL granted, NSError *error) {
          dispatch_async(dispatch_get_main_queue(), ^{
-             [[Mixpanel sharedInstance] track:@"authed"
-                                   properties:@{
-                                                @"error": error? @"true" : @"false",
-                                                @"granted": @(granted)
-                                                }];
              if (error) {
                  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
                                              message:error.localizedDescription
@@ -103,7 +96,6 @@
                   [UIAlertAction actionWithTitle:NSLocalizedString(@"Teach me how", @"")
                                            style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction *action) {
-                                             [[Mixpanel sharedInstance] track:@"teach me how"];
                                              [[UIApplication sharedApplication]
                                               openURL:[NSURL URLWithString:@"https://support.apple.com/en-us/HT202605"]];
                                          }]];
@@ -119,7 +111,6 @@
     SettingManager *manager = [SettingManager sharedManager];
     NSArray *accounts = [manager.accountStore accountsWithAccountType:manager.accountType];
     if (accounts.count == 0) {
-        [[Mixpanel sharedInstance] track:@"No account"];
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh on!", @"")
                                     message:NSLocalizedString(@"You haven't setup any Twitter account. Please set it up in the Setting app", @"")
                                    delegate:self
@@ -130,9 +121,6 @@
         [[SettingManager sharedManager] setSelectedAccount:accounts[0]];
         [self.delegate authViewControllerDidAuthed:self];
     } else {
-        [[Mixpanel sharedInstance] track:@"multiple accounts" properties:@{
-                                                                           @"count" : @(accounts.count)
-                                                                           }];
         SettingAccountTableViewController *controller = [[AuthAccountTableViewController alloc] init];
         controller.delegate = self;
         
@@ -146,7 +134,6 @@
 }
 
 - (void)accountStoreDidChanged:(NSNotification*)notification {
-    [[Mixpanel sharedInstance] track:@"auth account store changed"];
     if ([self.navigationController topViewController] == self) {
         [self processAccounts];
     }

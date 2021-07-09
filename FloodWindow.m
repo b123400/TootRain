@@ -12,7 +12,7 @@
 @implementation FloodWindow
 
 - (id)initWithContentRect:(NSRect)contentRect
-				styleMask:(NSUInteger)windowStyle
+				styleMask:(NSWindowStyleMask)windowStyle
 				  backing:(NSBackingStoreType)bufferingType
 					defer:(BOOL)deferCreation
 {

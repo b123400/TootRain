@@ -10,8 +10,10 @@
 #import "RainDropDetailViewController.h"
 #import "SettingManager.h"
 #import "SettingViewController.h"
+#import "NSMutableAttributedString+Stripe.h"
+#import "DummyStatus.h"
 
-@interface RainDropViewController ()
+@interface RainDropViewController () <CAAnimationDelegate>
 
 - (NSAttributedString*)attributedStringForStatus;
 
@@ -38,6 +40,7 @@
     // need to restart animation once window level is changed
     // because there is a bug in OS X which stops CAAnimation when window level is changed.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowLevelChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowScreenChanged object:nil];
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
 }
 -(void)loadView{
@@ -52,7 +55,7 @@
 	float viewWidth=contentTextField.frame.size.width+margin*2;
 	float viewHeight=contentTextField.frame.size.height+margin*2;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if ([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]) {
 		viewWidth+=profileImageView.frame.size.width+margin;
 		if(viewHeight<profileImageView.frame.size.height+margin*2){
 			viewHeight=profileImageView.frame.size.height+margin*2;
@@ -71,7 +74,7 @@
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]){
 		CGRect frame=contentTextField.frame;
 		frame.origin.x+=profileImageView.frame.size.width+margin;
 		contentTextField.frame=frame;
@@ -96,7 +99,7 @@
 	CGPoint target=CGPointMake(self.view.frame.size.width*-1, self.view.frame.origin.y);
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
     animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
-    animation.duration=[self animationDuration];
+    animation.duration=[self animationDuration] * ((self.view.frame.origin.x + self.view.frame.size.width) / (self.view.superview.frame.size.width + self.view.frame.size.width));
 	animation.toValue = [NSValue valueWithPoint:target];
 	animation.delegate=self;
 	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
@@ -115,6 +118,7 @@
 		return;
 	}
 	paused=YES;
+    // The view flickers if we don't use animation to stop
 	CGRect target=[self visibleFrame];
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
     //animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
@@ -166,7 +170,7 @@
 	return YES;
 }
 #pragma mark geometry
--(CGRect)visibleFrame{
+- (CGRect)visibleFrame {
 	if(paused){
 		return self.view.frame;
 	}
@@ -176,8 +180,8 @@
 	return frame;
 }
 #pragma mark interaction
--(void)didMouseOver{
-	if([[SettingManager sharedManager] hideTweetAroundCursor]){
+- (void)didMouseOver {
+	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:YES];
 		return;
 	}
@@ -198,8 +202,8 @@
         [self.view setNeedsDisplay:YES];
     }
 }
--(void)didMouseOut{
-	if([[SettingManager sharedManager] hideTweetAroundCursor]){
+- (void)didMouseOut {
+	if([[SettingManager sharedManager] hideStatusAroundCursor]){
 		[self.view setHidden:NO];
 		return;
 	}
@@ -222,10 +226,11 @@
         [self.view setNeedsDisplay:YES];
     }
 }
--(void)viewDidClicked:(id)sender{
+- (void)viewDidClicked:(id)sender {
 	if(![self paused]){
 		[self pauseAnimation];
 	}
+    if ([status isKindOfClass:[DummyStatus class]]) return;
 	if(!popover){
 		popover=[[NSPopover alloc] init];
 		NSViewController *newController=[[RainDropDetailViewController alloc]initWithStatus:status];
@@ -254,43 +259,30 @@
 #pragma mark appearance
 
 - (NSAttributedString*)attributedStringForStatus{
+    NSMutableAttributedString *attrString = [(status.attributedText ?: [[NSAttributedString alloc] initWithString:status.text]) mutableCopy];
     
-    NSMutableString *contentString=[NSMutableString stringWithString:status.text];
-    [contentString replaceOccurrencesOfString:@"\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-    [contentString replaceOccurrencesOfString:@"\r" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-    
-    BOOL hasURL=NO;
-    if(status.entities){
-        for(NSDictionary *thisURLSet in [status.entities objectForKey:@"urls"]){
-            NSRange range=[contentString rangeOfString:[thisURLSet objectForKey:@"url"]];
-            if(range.location!=NSNotFound){
-                hasURL=YES;
-                NSString *url=[thisURLSet objectForKey:@"url"];
-                if([[SettingManager sharedManager]removeURL]){
-                    [contentString replaceOccurrencesOfString:url withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, contentString.length)];
-                }
-            }
-        }
+    [attrString removeNewLines];
+    [attrString removeColors];
+    [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
+    if ([[SettingManager sharedManager] removeLinks]) {
+        [attrString removeLinks];
+    } else {
+        [attrString removeLinkAttributes];
     }
     
+    if ([[SettingManager sharedManager] truncateStatus] && ![status isKindOfClass:[DummyStatus class]]) {
+        attrString = [[attrString attributedSubstringFromRange:NSMakeRange(0, [[SettingManager sharedManager] truncateStatusLength])] mutableCopy];
+    }
+
     NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
     NSFont *newFont=[[NSFontManager sharedFontManager] convertFont:[[SettingManager sharedManager]font] toHaveTrait:NSBoldFontMask];
     [attributes setObject:newFont forKey:NSFontAttributeName];
-    
-    NSShadow *kShadow = [[NSShadow alloc] init];
-    [kShadow setShadowColor:[[SettingManager sharedManager]shadowColor]];
-    [kShadow setShadowBlurRadius:5.0f];
-    [kShadow setShadowOffset:NSMakeSize(0, 0)];
-    [attributes setObject:kShadow forKey:NSShadowAttributeName];
-    
+
     [attributes setObject:[[SettingManager sharedManager]textColor] forKey:NSForegroundColorAttributeName];
-    
-    if(hasURL&&[[SettingManager sharedManager]underlineTweetsWithURL]){
-        [attributes setObject:[NSNumber numberWithInt:NSUnderlineStyleSingle] forKey:NSUnderlineStyleAttributeName];
-    }
-    
-    NSAttributedString *attributedString=[[NSAttributedString alloc]initWithString:contentString attributes:attributes];
-    return attributedString;
+
+    [attrString addAttributes:attributes range:NSMakeRange(0, attrString.length)];
+
+    return attrString;
 }
 
 - (void)appearanceSettingChanged:(NSNotification*)notification {

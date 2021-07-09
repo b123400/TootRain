@@ -8,11 +8,11 @@
 
 #import "SearchWindowController.h"
 #import "SettingManager.h"
-#import <STTwitter/STTwitter.h>
+//#import <STTwitter/STTwitter.h>
 
 @interface SearchWindowController ()
 
-@property (nonatomic, strong) STTwitterAPI *twitter;
+//@property (nonatomic, strong) STTwitterAPI *twitter;
 
 @property (nonatomic, strong) NSArray <NSString*> *savedSearches;
 @property (nonatomic, strong) NSArray <NSString*> *trends;
@@ -117,50 +117,50 @@
 
 #pragma mark - Twitter
 
-- (STTwitterAPI *)twitter {
-    if (!_twitter) {
-        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-        _twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
-    }
-    return _twitter;
-}
+//- (STTwitterAPI *)twitter {
+//    if (!_twitter) {
+//        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+//        _twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
+//    }
+//    return _twitter;
+//}
 
 #pragma mark - Save searches
 
 - (void)loadSavedSearches {
-    [self.twitter getSavedSearchesListWithSuccessBlock:^(NSArray *savedSearches) {
-        NSMutableArray *savedSearchesString = [NSMutableArray arrayWithCapacity:savedSearches.count];
-        for (NSDictionary *savedSearch in savedSearches) {
-            NSString *name = savedSearch[@"name"];
-            if (name) {
-                [savedSearchesString addObject:name];
-            }
-        }
-        self.savedSearches = savedSearchesString;
-        [self setupSearchMenu];
-    } errorBlock:^(NSError *error) {
-        
-    }];
+//    [self.twitter getSavedSearchesListWithSuccessBlock:^(NSArray *savedSearches) {
+//        NSMutableArray *savedSearchesString = [NSMutableArray arrayWithCapacity:savedSearches.count];
+//        for (NSDictionary *savedSearch in savedSearches) {
+//            NSString *name = savedSearch[@"name"];
+//            if (name) {
+//                [savedSearchesString addObject:name];
+//            }
+//        }
+//        self.savedSearches = savedSearchesString;
+//        [self setupSearchMenu];
+//    } errorBlock:^(NSError *error) {
+//
+//    }];
 }
 
 #pragma mark - Trend
 
 - (void)loadTrends {
-    [self.twitter getTrendsForWOEID:@"1"
-                    excludeHashtags:@NO
-                       successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trends) {
-                           NSMutableArray *trendStrings = [NSMutableArray arrayWithCapacity:trends.count];
-                           for (NSDictionary *trend in trends) {
-                               NSString *name = trend[@"name"];
-                               if (name) {
-                                   [trendStrings addObject:name];
-                               }
-                           }
-                           self.trends = trendStrings;
-                           [self setupSearchMenu];
-                       } errorBlock:^(NSError *error) {
-                           
-                       }];
+//    [self.twitter getTrendsForWOEID:@"1"
+//                    excludeHashtags:@NO
+//                       successBlock:^(NSDate *asOf, NSDate *createdAt, NSArray *locations, NSArray *trends) {
+//                           NSMutableArray *trendStrings = [NSMutableArray arrayWithCapacity:trends.count];
+//                           for (NSDictionary *trend in trends) {
+//                               NSString *name = trend[@"name"];
+//                               if (name) {
+//                                   [trendStrings addObject:name];
+//                               }
+//                           }
+//                           self.trends = trendStrings;
+//                           [self setupSearchMenu];
+//                       } errorBlock:^(NSError *error) {
+//
+//                       }];
 }
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "User.h"
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
+#import "BRMastodonAccount.h"
 
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
+#define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
+#define kSelectedAccountChanged @"kSelectedAccountChanged"
 
 #if TARGET_OS_IPHONE
 #else
@@ -22,14 +23,13 @@
     
 }
 
-@property (nonatomic, strong) ACAccountStore *accountStore;
-@property (nonatomic, strong) ACAccountType *accountType;
-
-@property (nonatomic) BOOL hideTweetAroundCursor;
+@property (nonatomic) BOOL hideStatusAroundCursor;
 @property (nonatomic) BOOL showProfileImage;
-@property (nonatomic) BOOL removeURL;
-@property (nonatomic) BOOL underlineTweetsWithURL;
+@property (nonatomic) BOOL removeLinks;
+@property (nonatomic) BOOL truncateStatus;
+@property (nonatomic) NSInteger truncateStatusLength;
 @property (nonatomic) float opacity;
+@property (nonatomic) BOOL showShadow;
 
 #if TARGET_OS_IPHONE
 
@@ -52,8 +52,9 @@
 
 +(SettingManager*)sharedManager;
 
-- (ACAccount*)selectedAccount;
-- (void)setSelectedAccount:(ACAccount*)account;
-- (NSArray*)accounts;
+- (BRMastodonAccount*)selectedAccount;
+- (void)setSelectedAccount:(BRMastodonAccount*)account;
+- (NSArray<BRMastodonAccount*> *)accounts;
+- (void)reloadAccounts;
 
 @end
