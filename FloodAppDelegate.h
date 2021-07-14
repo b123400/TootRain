@@ -18,7 +18,7 @@
 	SearchWindowController *searchController;
 }
 
--(FloodWindowController*)windowController;
+- (FloodWindowController*)windowController;
 
 -(IBAction)newWindow:(id)sender;
 -(IBAction)openSettingWindow:(id)sender;

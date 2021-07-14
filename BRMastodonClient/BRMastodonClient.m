@@ -280,8 +280,8 @@
     return request;
 }
 
-- (BRStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
-    __block BRStreamHandler *handler = [[BRStreamHandler alloc] init];
+- (BRMastodonStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
+    __block BRMastodonStreamHandler *handler = [[BRMastodonStreamHandler alloc] init];
     typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
                completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
@@ -514,7 +514,7 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
 didOpenWithProtocol:(NSString *)protocol {
-    BRStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    BRMastodonStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
     if (!handler) return;
     if (handler.onConnected) {
         handler.onConnected();
@@ -525,7 +525,7 @@ didOpenWithProtocol:(NSString *)protocol {
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
   didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
             reason:(NSData *)reason {
-    BRStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    BRMastodonStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
     if (!handler) return;
     if (handler.onDisconnected) {
         handler.onDisconnected();

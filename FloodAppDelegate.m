@@ -8,6 +8,7 @@
 
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
+#import "BRSlackClient.h"
 
 @implementation FloodAppDelegate
 

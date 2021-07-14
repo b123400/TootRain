@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRStreamHandler : NSObject
+@interface BRMastodonStreamHandler : NSObject
 
 @property (nonatomic, copy, nullable) void (^onStatus)(BRMastodonStatus *status);
 @property (nonatomic, copy, nullable) void (^onError)(NSError *error);

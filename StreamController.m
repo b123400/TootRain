@@ -12,7 +12,7 @@
 #import "SettingManager.h"
 #import "BRMastodonClient.h"
 #import "BRMastodonStatus.h"
-#import "BRStreamHandler.h"
+#import "BRMastodonStreamHandler.h"
 #import "MastodonStatus.h"
 #import "DummyStatus.h"
 
@@ -23,7 +23,7 @@
 @interface StreamController()
 
 @property (nonatomic, strong) BRMastodonAccount *account;
-@property (nonatomic, strong) BRStreamHandler *streamHandler;
+@property (nonatomic, strong) BRMastodonStreamHandler *streamHandler;
 
 @end
 

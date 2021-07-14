@@ -38,7 +38,7 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */; };
 		CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */; };
-		CF5E5ECC2692CE2C00E904D0 /* BRStreamHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5ECB2692CE2C00E904D0 /* BRStreamHandler.m */; };
+		CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandler.m */; };
 		CF620A1B1A047554003EB806 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1A1A047554003EB806 /* Social.framework */; };
 		CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1C1A0476DC003EB806 /* Accounts.framework */; };
 		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
@@ -188,8 +188,8 @@
 		CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonStatus.m; sourceTree = "<group>"; };
 		CF5E5EC72692A8AA00E904D0 /* BRMastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonUser.h; sourceTree = "<group>"; };
 		CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonUser.m; sourceTree = "<group>"; };
-		CF5E5ECA2692CE2C00E904D0 /* BRStreamHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStreamHandler.h; sourceTree = "<group>"; };
-		CF5E5ECB2692CE2C00E904D0 /* BRStreamHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStreamHandler.m; sourceTree = "<group>"; };
+		CF5E5ECA2692CE2C00E904D0 /* BRMastodonStreamHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonStreamHandler.h; sourceTree = "<group>"; };
+		CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonStreamHandler.m; sourceTree = "<group>"; };
 		CF620A1A1A047554003EB806 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1C1A0476DC003EB806 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1F1A057CBE003EB806 /* StreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamController.h; sourceTree = "<group>"; };
@@ -679,8 +679,8 @@
 				CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */,
 				CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */,
 				CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */,
-				CF5E5ECA2692CE2C00E904D0 /* BRStreamHandler.h */,
-				CF5E5ECB2692CE2C00E904D0 /* BRStreamHandler.m */,
+				CF5E5ECA2692CE2C00E904D0 /* BRMastodonStreamHandler.h */,
+				CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandler.m */,
 				CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */,
 				CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */,
 				CFD824D1268E19B900BEB0AC /* BRMastodonAccount.h */,
@@ -944,7 +944,7 @@
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
 				CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */,
-				CF5E5ECC2692CE2C00E904D0 /* BRStreamHandler.m in Sources */,
+				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandler.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
 				CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */,
