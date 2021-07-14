@@ -36,6 +36,8 @@
 		CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3A187715D64F4100D8E07F /* FloodWindowController.xib */; };
 		CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A188015D651A100D8E07F /* FloodWindow.m */; };
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
+		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
+		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
 		CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */; };
 		CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */; };
 		CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandler.m */; };
@@ -47,6 +49,10 @@
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF78F50D1B07C0FA006192DE /* AuthAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */; };
+		CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */; };
+		CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */; };
+		CF7A0F80269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7A0F7E269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib */; };
+		CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandler.m */; };
 		CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */; };
 		CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */; };
 		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
@@ -184,6 +190,10 @@
 		CF3A187F15D651A100D8E07F /* FloodWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodWindow.h; sourceTree = "<group>"; };
 		CF3A188015D651A100D8E07F /* FloodWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodWindow.m; sourceTree = "<group>"; };
 		CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		CF3D6175269B1C1C00786DD9 /* BRSlackClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackClient.h; sourceTree = "<group>"; };
+		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
+		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
+		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
 		CF5E5EC42692A6A500E904D0 /* BRMastodonStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonStatus.h; sourceTree = "<group>"; };
 		CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonStatus.m; sourceTree = "<group>"; };
 		CF5E5EC72692A8AA00E904D0 /* BRMastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonUser.h; sourceTree = "<group>"; };
@@ -204,6 +214,13 @@
 		CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		CF78F50B1B07C0FA006192DE /* AuthAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAccountTableViewController.h; sourceTree = "<group>"; };
 		CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthAccountTableViewController.m; sourceTree = "<group>"; };
+		CF7A0F79269F0E08009B0CE8 /* BRSlackChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackChannel.h; sourceTree = "<group>"; };
+		CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannel.m; sourceTree = "<group>"; };
+		CF7A0F7C269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackChannelSelectionWindowController.h; sourceTree = "<group>"; };
+		CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannelSelectionWindowController.m; sourceTree = "<group>"; };
+		CF7A0F7E269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRSlackChannelSelectionWindowController.xib; sourceTree = "<group>"; };
+		CF7A0F81269F18EA009B0CE8 /* BRSlackStreamHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackStreamHandler.h; sourceTree = "<group>"; };
+		CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackStreamHandler.m; sourceTree = "<group>"; };
 		CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
 		CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
@@ -363,6 +380,7 @@
 				CF620A1E1A057C9A003EB806 /* StreamController */,
 				CF9F62081563D548004C6514 /* Settings */,
 				CFD131942688745A00B6EDB3 /* BRMastodonClient */,
+				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -485,6 +503,24 @@
 				D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF3D6174269B1BED00786DD9 /* BRSlackClient */ = {
+			isa = PBXGroup;
+			children = (
+				CF3D6175269B1C1C00786DD9 /* BRSlackClient.h */,
+				CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */,
+				CF3D617A269B21B400786DD9 /* BRSlackAccount.h */,
+				CF3D617B269B21B400786DD9 /* BRSlackAccount.m */,
+				CF7A0F79269F0E08009B0CE8 /* BRSlackChannel.h */,
+				CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */,
+				CF7A0F7C269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.h */,
+				CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */,
+				CF7A0F7E269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib */,
+				CF7A0F81269F18EA009B0CE8 /* BRSlackStreamHandler.h */,
+				CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandler.m */,
+			);
+			path = BRSlackClient;
 			sourceTree = "<group>";
 		};
 		CF620A1E1A057C9A003EB806 /* StreamController */ = {
@@ -818,6 +854,7 @@
 				CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */,
 				CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */,
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
+				CF7A0F80269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CFE39FE31A76962C004644C8 /* SearchWindowController.xib in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
 				CF1B79C3268EEE6100FCCB58 /* InstanceInputWindowController.xib in Resources */,
@@ -937,6 +974,7 @@
 				CF75438E13686342009E7292 /* TransparentView.m in Sources */,
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */,
+				CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
@@ -944,6 +982,7 @@
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
 				CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */,
+				CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandler.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
@@ -958,8 +997,10 @@
 				CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
+				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
+				CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandler.m in Sources */,
 				CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */,
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
@@ -967,6 +1008,7 @@
 				CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */,
 				CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */,
 				CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */,
+				CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */,
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */,
