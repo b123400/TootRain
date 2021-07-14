@@ -271,7 +271,7 @@
     }
     
     if ([[SettingManager sharedManager] truncateStatus] && ![status isKindOfClass:[DummyStatus class]]) {
-        attrString = [[attrString attributedSubstringFromRange:NSMakeRange(0, [[SettingManager sharedManager] truncateStatusLength])] mutableCopy];
+        attrString = [[attrString attributedSubstringFromRange:NSMakeRange(0, MIN(attrString.length, [[SettingManager sharedManager] truncateStatusLength]))] mutableCopy];
     }
 
     NSMutableDictionary *attributes=[NSMutableDictionary dictionary];
