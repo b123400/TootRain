@@ -157,12 +157,19 @@
                                     completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
                 NSLog(@"App: %@, Error: %@", app, error);
                 NSLog(@"URL: %@", [app authorisationURL]);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-                    oauthController.delegate = self;
-                    [oauthController showWindow:self];
-                    self.oauthController = oauthController;
-                });
+                if (!error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                        oauthController.delegate = self;
+                        [oauthController showWindow:self];
+                        self.oauthController = oauthController;
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSAlert *alert = [NSAlert alertWithError:error];
+                        [alert runModal];
+                    });
+                }
             }];
         }
     }];
