@@ -69,4 +69,22 @@
     return [NSHTTPCookie requestHeaderFieldsWithCookies:[NSHTTPCookie cookiesWithResponseHeaderFields:self.responseHeaderWithCookies forURL:[NSURL URLWithString:@"https://app.slack.com/api/auth.loginMagicBulk"]]];
 }
 
++ (NSMutableDictionary *)accountIdToEmojiDicts {
+    static NSMutableDictionary *dict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dict = [NSMutableDictionary dictionary];
+    });
+    return dict;
+}
+
+- (void)setEmojiDict:(NSDictionary<NSString *, NSString *> *)dict {
+    [[BRSlackAccount accountIdToEmojiDicts] setObject:dict forKey:self.uuid];
+}
+
+- (NSString *)urlForEmoji:(NSString *)emoji {
+    NSDictionary *emojiDict = [[BRSlackAccount accountIdToEmojiDicts] objectForKey:self.uuid];
+    return emojiDict[emoji];
+}
+
 @end

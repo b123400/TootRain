@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BRSlackMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSlackStreamHandle : NSObject
 
-@property (nonatomic, copy, nullable) void (^onMessage)(NSString *message);
+@property (nonatomic, copy, nullable) void (^onMessage)(BRSlackMessage *message);
 @property (nonatomic, copy, nullable) void (^onError)(NSError *error);
 @property (nonatomic, copy, nullable) void (^onConnected)();
 @property (nonatomic, copy, nullable) void (^onDisconnected)();

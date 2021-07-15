@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)save;
 - (void)deleteAccount;
 
+- (void)setEmojiDict:(NSDictionary<NSString *, NSString *> *)dict;
+- (NSString *)urlForEmoji:(NSString *)emoji;
+
 - (NSDictionary *)headersForRequest;
 
 @end

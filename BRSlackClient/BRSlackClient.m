@@ -8,14 +8,15 @@
 #import "BRSlackClient.h"
 #import "BRSlackChannel.h"
 #import "BRSlackChannelSelectionWindowController.h"
+#import "BRSlackUser.h"
+#import "BRSlackMessage.h"
 #import "SettingViewController.h"
 
 @interface BRSlackClient ()  <NSURLSessionDelegate>
 
-@property (nonatomic, strong) NSString *clientId;
-@property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSURLSession *urlSession;
 @property (nonatomic, strong) NSMapTable *taskToHandleMapping;
+@property (nonatomic, strong) NSMutableDictionary<NSString*, BRSlackUser*> *cachedUsers;
 
 @end
 
@@ -36,6 +37,7 @@
         self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                         delegate:self
                                                    delegateQueue:nil];
+        self.cachedUsers = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -143,15 +145,24 @@
     [task resume];
 }
 
+# pragma mark - Streaming
+
 - (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account {
-    BRSlackStreamHandle *handler = [[BRSlackStreamHandle alloc] init];
+    typeof(self) __weak _self = self;
+    BRSlackStreamHandle *handle = [[BRSlackStreamHandle alloc] init];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"wss://wss-primary.slack.com/?token=%@&gateway_server=%@", account.token, account.teamId]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setAllHTTPHeaderFields:[account headersForRequest]];
     NSURLSessionWebSocketTask *task = [self.urlSession webSocketTaskWithRequest:request];
-    handler.task = task;
+    handle.task = task;
     [self receiveMessageFromWebsocketTask:task
                                 onMessage:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
+        if (error) {
+            if (handle.onError) {
+                handle.onError(error);
+            }
+            return;
+        }
         NSData *data = [message data];
         if (!data) {
             data = [[message string] dataUsingEncoding:NSUTF8StringEncoding];
@@ -161,14 +172,32 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 //        {"type":"message","user":"U027Q199PD1","client_msg_id":"018FD003-A387-4AE1-B4EC-93B3C234F465","suppress_notification":false,"text":"Rrrr","team":"T027W17JUFN","blocks":[{"type":"rich_text","block_id":"19NKV","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Rrrr"}]}]}],"source_team":"T027W17JUFN","user_team":"T027W17JUFN","channel":"C02793DR8HM","event_ts":"1626268256.000200","ts":"1626268256.000200"}
         if ([dict[@"type"] isEqualToString:@"message"] && [dict[@"channel"] isEqualToString:account.channelId]) {
-            if (handler.onMessage) {
-                handler.onMessage(dict[@"text"]);
-            }
+            [_self messageWithJSONDictionary:dict
+                                     account:account
+                           completionHandler:^(BRSlackMessage * _Nullable message, NSError * _Nullable error) {
+                if (error) {
+                    if (handle.onError) {
+                        handle.onError(error);
+                        
+                    }
+                    return;
+                }
+                if (handle.onMessage) {
+                    handle.onMessage(message);
+                }
+            }];
+
         }
     }];
     [task resume];
-    [self.taskToHandleMapping setObject:handler forKey:task];
-    return handler;
+    [self.taskToHandleMapping setObject:handle forKey:task];
+    
+    [self listEmojiWithAccount:account completionHandler:^(NSDictionary<NSString *,NSString *> * _Nullable emojis, NSError * _Nullable error) {
+        if (emojis) {
+            [account setEmojiDict:emojis];
+        }
+    }];
+    return handle;
 }
 
 - (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
@@ -182,6 +211,8 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
         }
     }];
 }
+
+
 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
@@ -205,18 +236,100 @@ didOpenWithProtocol:(NSString *)protocol {
     [self.taskToHandleMapping removeObjectForKey:webSocketTask];
 }
 
-- (instancetype)setupWithClientId:(NSString *)clientId clientSecret:(NSString *)clientSecret {
-    self.clientId = clientId;
-    self.clientSecret = clientSecret;
-    return self;
+# pragma mark - Normal API
+
+- (void)listEmojiWithAccount:(BRSlackAccount *)account
+           completionHandler:(void (^)(NSDictionary<NSString *, NSString *> * _Nullable emojis, NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/emoji.list?token=%@", account.token]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setAllHTTPHeaderFields:[account responseHeaderWithCookies]];
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![resultJSON isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"wrong emoji type %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
+                                              code:0
+                                          userInfo:@{
+                                              @"response": resultJSON,
+                                          }]);
+            return;
+        }
+        callback(resultJSON[@"emoji"], nil);
+    }];
+    [task resume];
 }
 
-- (NSString *)httpBodyWithParams:(NSDictionary<NSString*, NSString*>*) dict {
-    NSMutableArray<NSString*> *parts = [NSMutableArray array];
-    [dict enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
-        [parts addObject:[NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]];
+- (void)userWithuserId:(NSString *)userId
+               account:(BRSlackAccount *)account
+     completionHandler:(void (^)(BRSlackUser * _Nullable user, NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/users.info?token=%@&user=%@", account.token, userId]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setAllHTTPHeaderFields:[account responseHeaderWithCookies]];
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSDictionary *resultJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![resultJSON isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"wrong emoji type %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
+                                              code:0
+                                          userInfo:@{
+                                              @"response": resultJSON,
+                                          }]);
+            return;
+        }
+        callback([[BRSlackUser alloc] initWithJSONDictionary:resultJSON[@"user"]], nil);
     }];
-    return [parts componentsJoinedByString:@"&"];
+    [task resume];
 }
+
+- (void)cachedUserWithuserId:(NSString *)userId
+                     account:(BRSlackAccount *)account
+           completionHandler:(void (^)(BRSlackUser * _Nullable user, NSError * _Nullable error))callback {
+    if (self.cachedUsers[userId]) {
+        callback(self.cachedUsers[userId], nil);
+        return;
+    }
+    typeof(self) __weak _self = self;
+    [self userWithuserId:userId
+                 account:account
+       completionHandler:^(BRSlackUser * _Nullable user, NSError * _Nullable error) {
+        [_self.cachedUsers setObject:user forKey:userId];
+        callback(user, nil);
+    }];
+}
+
+- (void)messageWithJSONDictionary:(NSDictionary *)dict
+                          account:(BRSlackAccount *)account
+                completionHandler:(void (^)(BRSlackMessage * _Nullable message, NSError * _Nullable error))callback {
+    NSString *userId = dict[@"user"];
+    [self cachedUserWithuserId:userId
+                       account:account
+             completionHandler:^(BRSlackUser * _Nullable user, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            // Allow nullable user
+        }
+        callback([[BRSlackMessage alloc] initWithJSONDict:dict user:user account:account], nil);
+    }];
+}
+
+//- (NSString *)httpBodyWithParams:(NSDictionary<NSString*, NSString*>*) dict {
+//    NSMutableArray<NSString*> *parts = [NSMutableArray array];
+//    [dict enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+//        [parts addObject:[NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]];
+//    }];
+//    return [parts componentsJoinedByString:@"&"];
+//}
 
 @end

@@ -119,11 +119,9 @@ static StreamController *shared;
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@ #%@",nil), slackAccount.teamName, slackAccount.channelName]];
         };
-        newHandle.onMessage = ^(NSString * _Nonnull message) {
+        newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
-                DummyStatus *s = [[DummyStatus alloc] init];
-                s.text = message;
-                [_self.delegate streamController:_self didReceivedStatus:s];
+                [_self.delegate streamController:_self didReceivedStatus:message];
             }
         };
         self.streamHandle = newHandle;

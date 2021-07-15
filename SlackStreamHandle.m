@@ -6,6 +6,7 @@
 //
 
 #import "SlackStreamHandle.h"
+#import "BRSlackMessage.h"
 
 @implementation SlackStreamHandle
 
@@ -28,9 +29,9 @@
                 _self.onError(error);
             }
         };
-        handle.onMessage = ^(NSString * _Nonnull message) {
+        handle.onMessage = ^(BRSlackMessage * _Nonnull message) {
             if (_self.onMessage) {
-                _self.onMessage(message);
+                _self.onMessage([[SlackStatus alloc] initWithSlackStatus:message]);
             }
         };
     }

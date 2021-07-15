@@ -13,6 +13,10 @@
     return @"[Account]";
 }
 
+- (NSString *)identifier {
+    return @"";
+}
+
 - (void)deleteAccount {
     
 }
