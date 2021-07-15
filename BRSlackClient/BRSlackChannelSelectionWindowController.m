@@ -29,9 +29,9 @@
 }
 
 - (void)setChannels:(NSArray *)channels {
-    _channels = channels;
+    _channels = [channels sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     [self.dropdown removeAllItems];
-    [self.dropdown addItemsWithTitles:[channels valueForKey:@"name"]];
+    [self.dropdown addItemsWithTitles:[self.channels valueForKey:@"name"]];
 }
 
 - (BRSlackChannel *)selectedChannel {
