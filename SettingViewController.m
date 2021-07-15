@@ -11,6 +11,9 @@
 #import "BRMastodonClient.h"
 #import "SettingOAuthWindowController.h"
 #import "InstanceInputWindowController.h"
+#import "Account.h"
+#import "MastodonAccount.h"
+#import "SlackAccount.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -102,7 +105,7 @@
     // need to find using identifier becoz system api doesn't compare it well
     NSUInteger index = NSNotFound;
     NSArray *accounts = [[SettingManager sharedManager] accounts];
-    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager]selectedAccount];
+    Account *selectedAccount = [[SettingManager sharedManager]selectedAccount];
     for (int i = 0; i<accounts.count; i++) {
         ACAccount *thisAccount = [accounts objectAtIndex:i];
         if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
@@ -130,7 +133,7 @@
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
 	if(aTableView==accountsTableView){
-        BRMastodonAccount *account = [SettingManager sharedManager].accounts[rowIndex];
+        Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
         if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
             return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
         }
@@ -153,7 +156,21 @@
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            [[BRMastodonClient shared] registerAppFor:[controller hostName]
+            NSString *hostName = [controller hostName];
+            if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
+                hostName = [NSString stringWithFormat:@"https://%@", hostName];
+            }
+            if ([hostName hasSuffix:@"/"]) {
+                hostName = [hostName substringToIndex:hostName.length - 1];
+            }
+            if ([hostName hasSuffix:@"slack.com"]) {
+                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
+                oauthController.delegate = self;
+                [oauthController showWindow:self];
+                self.oauthController = oauthController;
+                return;
+            }
+            [[BRMastodonClient shared] registerAppFor:hostName
                                     completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
                 NSLog(@"App: %@, Error: %@", app, error);
                 NSLog(@"URL: %@", [app authorisationURL]);
@@ -178,7 +195,7 @@
 - (IBAction)deleteAccountTapped:(id)sender {
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
-    BRMastodonAccount *account = [SettingManager sharedManager].accounts[row];
+    Account *account = [SettingManager sharedManager].accounts[row];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
     [self updateAccountView];
@@ -199,6 +216,14 @@
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
+    [self handleDidLoginAccount];
+}
+
+- (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
+    [self handleDidLoginAccount];
+}
+
+- (void)handleDidLoginAccount {
     typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SettingManager sharedManager] reloadAccounts];
@@ -206,7 +231,7 @@
         [self.oauthController.window close];
         self.oauthController = nil;
         
-        NSArray<BRMastodonAccount *> *accounts = [[SettingManager sharedManager] accounts];
+        NSArray<Account *> *accounts = [[SettingManager sharedManager] accounts];
         if ([accounts count] == 1) {
             [[SettingManager sharedManager] setSelectedAccount:[accounts firstObject]];
         }
@@ -221,8 +246,8 @@
 }
 
 - (void)updateAccountView {
-    NSArray<BRMastodonAccount*> *allAccounts = [BRMastodonAccount allAccounts];
-    if (allAccounts.count != 0) {
+    [[SettingManager sharedManager] reloadAccounts];
+    if ([SettingManager sharedManager].accounts.count != 0) {
         self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
         [self.authorizeView removeFromSuperview];
     } else {
@@ -235,7 +260,7 @@
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
     if (index == -1) return;
-    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    Account *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
     if ([[[SettingManager sharedManager] selectedAccount].identifier isEqualToString:selectedAccount.identifier]) {
         return;
     }

@@ -13,8 +13,12 @@
 #import "BRMastodonClient.h"
 #import "BRMastodonStatus.h"
 #import "BRMastodonStreamHandler.h"
+#import "BRSlackStreamHandler.h"
 #import "MastodonStatus.h"
 #import "DummyStatus.h"
+#import "BRSlackClient.h"
+#import "MastodonAccount.h"
+#import "SlackAccount.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -22,8 +26,8 @@
 
 @interface StreamController()
 
-@property (nonatomic, strong) BRMastodonAccount *account;
-@property (nonatomic, strong) BRMastodonStreamHandler *streamHandler;
+@property (nonatomic, strong) Account *account;
+@property (nonatomic, strong) id streamHandler;
 
 @end
 
@@ -40,7 +44,7 @@ static StreamController *shared;
 
 # pragma mark - instance methods
 
-- (id)initWithAccount:(BRMastodonAccount*)account {
+- (id)initWithAccount:(Account*)account {
     self = [super init];
 
     self.account = account;
@@ -53,7 +57,7 @@ static StreamController *shared;
 }
 
 - (void)selectedAccountChanged:(NSNotification *)notification {
-    BRMastodonAccount *changedToAccount = [[SettingManager sharedManager] selectedAccount];
+    Account *changedToAccount = [[SettingManager sharedManager] selectedAccount];
     if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
 
     self.account = changedToAccount;
@@ -76,21 +80,48 @@ static StreamController *shared;
 - (void)reconnect {
     typeof(self) __weak _self = self;
     if (!self.account) return;
-    
-    [self.streamHandler.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];
 
-    self.streamHandler = [[BRMastodonClient shared] streamingStatusesWithAccount:[[SettingManager sharedManager] selectedAccount]];
-    self.streamHandler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
-        if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
-            [_self.delegate streamController:_self didReceivedStatus:[[MastodonStatus alloc] initWithMastodonStatus:status]];
-        }
-    };
-    self.streamHandler.onConnected = ^{
-        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), _self.account.displayName]];
-    };
-    self.streamHandler.onDisconnected = ^{
-        [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), _self.account.displayName]];
-    };
+    if ([self.streamHandler isKindOfClass:[BRMastodonStreamHandler class]]) {
+        BRMastodonStreamHandler *handler = (BRMastodonStreamHandler *)self.streamHandler;
+        [handler.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];
+    } else if ([self.streamHandler isKindOfClass:[BRSlackStreamHandler class]]) {
+        BRSlackStreamHandler *handler = (BRSlackStreamHandler *)self.streamHandler;
+        [handler.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];
+    }
+    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    if ([selectedAccount isKindOfClass:[MastodonAccount class]]) {
+        BRMastodonAccount *mastondonAccount = [(MastodonAccount *)selectedAccount mastodonAccount];
+        BRMastodonStreamHandler *newHandler = [[BRMastodonClient shared] streamingStatusesWithAccount:mastondonAccount];
+        newHandler.onStatus = ^(BRMastodonStatus * _Nonnull status) {
+            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
+                [_self.delegate streamController:_self didReceivedStatus:[[MastodonStatus alloc] initWithMastodonStatus:status]];
+            }
+        };
+        newHandler.onConnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), mastondonAccount.displayName]];
+        };
+        newHandler.onDisconnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), mastondonAccount.displayName]];
+        };
+        self.streamHandler = newHandler;
+    } else if ([selectedAccount isKindOfClass:[SlackAccount class]]) {
+        BRSlackAccount *slackAccount = [(SlackAccount *)selectedAccount slackAccount];
+        BRSlackStreamHandler *handler = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
+        handler.onConnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@ #%@",nil), slackAccount.teamName, slackAccount.channelName]];
+        };
+        handler.onDisconnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@ #%@",nil), slackAccount.teamName, slackAccount.channelName]];
+        };
+        handler.onMessage = ^(NSString * _Nonnull message) {
+            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
+                DummyStatus *s = [[DummyStatus alloc] init];
+                s.text = message;
+                [_self.delegate streamController:_self didReceivedStatus:s];
+            }
+        };
+        self.streamHandler = handler;
+    }
 }
 
 - (void)showNotificationWithText:(NSString *)text {

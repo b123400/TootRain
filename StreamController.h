@@ -24,7 +24,6 @@
 
 + (instancetype)shared;
 
-- (id)initWithAccount:(BRMastodonAccount*)account;
 - (void)startStreaming;
 
 @end

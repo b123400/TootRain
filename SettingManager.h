@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "BRMastodonAccount.h"
+#import "Account.h"
 
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowScreenChanged @"kWindowScreenChanged"
@@ -52,9 +52,9 @@
 
 +(SettingManager*)sharedManager;
 
-- (BRMastodonAccount*)selectedAccount;
-- (void)setSelectedAccount:(BRMastodonAccount*)account;
-- (NSArray<BRMastodonAccount*> *)accounts;
+- (Account*)selectedAccount;
+- (void)setSelectedAccount:(Account*)account;
+- (NSArray<Account*> *)accounts;
 - (void)reloadAccounts;
 
 @end
