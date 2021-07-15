@@ -239,7 +239,7 @@
 		popover.delegate=self;
 	}
 	if(![popover isShown]){
-		NSPoint mouseLoc=[NSEvent mouseLocation];
+		NSPoint mouseLoc=[self.view.window mouseLocationOutsideOfEventStream];
 		NSPoint localLoc=[self.view convertPoint:mouseLoc fromView:nil];
 		CGRect frame=CGRectMake(localLoc.x, 0, 1, self.view.frame.size.height);
 		[popover showRelativeToRect:frame ofView:self.view preferredEdge:NSMaxYEdge];
