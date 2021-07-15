@@ -287,6 +287,7 @@
 
 - (void)appearanceSettingChanged:(NSNotification*)notification {
     [contentTextField setAttributedStringValue:[self attributedStringForStatus]];
+    self.view.alphaValue = [[SettingManager sharedManager] opacity];
     [self.view setNeedsDisplay:YES];
 }
 
