@@ -35,11 +35,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-//        ACAccount *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-//        self.twitter = [STTwitterAPI twitterAPIOSWithAccount:selectedAccount delegate:nil];
-    }
-    
     return self;
 }
 -(void)loadView{
@@ -82,14 +77,24 @@
     if (status.bookmarked) {
         [self.bookmarkButton setEnabled:NO];
         [self.bookmarkButton setTitle:NSLocalizedString(@"Bookmarked", nil)];
+    } else if (!status.canBookmark) {
+        self.bookmarkButton.hidden = YES;
     }
     if (status.favourited) {
         [self.favButton setEnabled:NO];
         [self.favButton setTitle:NSLocalizedString(@"Done", nil)];
+    } else if (!status.canFavourite) {
+        self.favButton.hidden = YES;
     }
     if (status.reblogged) {
         [self.repostButton setEnabled:NO];
         [self.repostButton setTitle:NSLocalizedString(@"Reposted", nil)];
+    } else if (!status.canReblog) {
+        self.repostButton.hidden = YES;
+    }
+    
+    if (!status.canReply) {
+        self.replyButton.hidden = YES;
     }
 	
 	[profileImageView setImageURL:status.user.profileImageURL];

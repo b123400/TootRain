@@ -13,6 +13,7 @@
                 <outlet property="favButton" destination="22" id="uUD-zb-WdL"/>
                 <outlet property="nameField" destination="109" id="113"/>
                 <outlet property="profileImageView" destination="3" id="66"/>
+                <outlet property="replyButton" destination="38" id="rlx-Wo-ecB"/>
                 <outlet property="repostButton" destination="26" id="Pou-Xf-ScB"/>
                 <outlet property="usernameField" destination="111" id="114"/>
                 <outlet property="view" destination="1" id="2"/>
