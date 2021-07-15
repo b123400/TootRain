@@ -84,13 +84,15 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         if (!self.isHandlingSlack) {
             self.isHandlingSlack = YES;
             [[BRSlackClient shared] receivedMagicLoginURL:url withWindow:self.window completionHandler:^(BRSlackAccount * _Nonnull account, NSError * _Nonnull error) {
-                if (error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[NSAlert alertWithError:error] runModal];
-                    });
-                }
                 if (account) {
                     [_self.delegate settingOAuthWindowController:_self didLoggedInSlackAccount:account];
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (error) {
+                            [[NSAlert alertWithError:error] runModal];
+                        }
+                        [_self.window close];
+                    });
                 }
             }];
         }
