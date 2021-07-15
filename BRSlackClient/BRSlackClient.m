@@ -82,7 +82,10 @@
             NSString *token = [resBody substringWithRange:[[results firstObject] rangeAtIndex:1]];
             NSLog(@"Token: %@", token);
             
-            [_self getChannelListWithToken:token cookies:cookies completionHandler:^(NSArray<BRSlackChannel *> *channels, NSError *error) {
+            [_self getChannelListWithToken:token
+                                    cursor:nil
+                                   cookies:cookies
+                         completionHandler:^(NSArray<BRSlackChannel *> *channels, NSError *error) {
                 if (error) {
                     callback(nil, error);
                     return;
@@ -115,8 +118,18 @@
     [task resume];
 }
 
-- (void)getChannelListWithToken:(NSString *)token cookies:(NSArray<NSHTTPCookie*> *)cookies completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/conversations.list?token=%@", token]];
+- (void)getChannelListWithToken:(NSString *)token
+                         cursor:(NSString *)cursor
+                        cookies:(NSArray<NSHTTPCookie*> *)cookies completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback {
+    NSMutableDictionary *params = @{
+        @"token": token,
+        @"limit": @"100",
+    }.mutableCopy;
+    [params setObject:token forKey:@"token"];
+    if (cursor) {
+        [params setObject:cursor forKey:@"cursor"];
+    }
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/users.conversations?%@", [self queryWithParams:params]]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setAllHTTPHeaderFields:[NSHTTPCookie requestHeaderFieldsWithCookies:cookies]];
     NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -140,7 +153,20 @@
         for (NSDictionary *dict in resultJSON[@"channels"]) {
             [channels addObject:[[BRSlackChannel alloc] initWithAPIJSON:dict]];
         }
-        callback(channels, nil);
+        if ([resultJSON[@"response_metadata"][@"next_cursor"] isKindOfClass:[NSString class]] && [(NSString *)resultJSON[@"response_metadata"][@"next_cursor"] length]) {
+            [self getChannelListWithToken:token
+                                   cursor:resultJSON[@"response_metadata"][@"next_cursor"]
+                                  cookies:cookies
+                        completionHandler:^(NSArray<BRSlackChannel *> *thisChannels, NSError *error) {
+                if (error) {
+                    callback(nil, error);
+                    return;
+                }
+                callback([channels arrayByAddingObjectsFromArray:thisChannels], nil);
+            }];
+        } else {
+            callback(channels, nil);
+        }
     }];
     [task resume];
 }
@@ -324,12 +350,12 @@ didOpenWithProtocol:(NSString *)protocol {
     }];
 }
 
-//- (NSString *)httpBodyWithParams:(NSDictionary<NSString*, NSString*>*) dict {
-//    NSMutableArray<NSString*> *parts = [NSMutableArray array];
-//    [dict enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
-//        [parts addObject:[NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]];
-//    }];
-//    return [parts componentsJoinedByString:@"&"];
-//}
+- (NSString *)queryWithParams:(NSDictionary<NSString*, NSString*>*) dict {
+    NSMutableArray<NSString*> *parts = [NSMutableArray array];
+    [dict enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+        [parts addObject:[NSString stringWithFormat:@"%@=%@", key, [obj stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]];
+    }];
+    return [parts componentsJoinedByString:@"&"];
+}
 
 @end
