@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) NSString *clientSecret;
 @property (nonatomic, strong) NSURLSession *urlSession;
+@property (nonatomic, strong) NSMapTable *taskToHandleMapping;
 
 @end
 
@@ -29,17 +30,19 @@
     return instance;
 }
 
-- (NSURLSession *)urlSession {
-    if (_urlSession) {
-        return _urlSession;
+- (instancetype)init {
+    if (self = [super init]) {
+        self.taskToHandleMapping = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+        self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                        delegate:self
+                                                   delegateQueue:nil];
     }
-    _urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                                delegate:self
-                                           delegateQueue:nil];
-    return _urlSession;
+    return self;
 }
 
-- (void)receivedMagicLoginURL:(NSURL *)magicUrl completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback {
+- (void)receivedMagicLoginURL:(NSURL *)magicUrl
+                   withWindow:(NSWindow *)window
+            completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback {
     typeof(self) __weak _self = self;
     NSString *teamId = magicUrl.host;
     NSString *loginToken = [[magicUrl.path pathComponents] lastObject];
@@ -67,6 +70,10 @@
         NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
         [req setAllHTTPHeaderFields:[NSHTTPCookie requestHeaderFieldsWithCookies:cookies]];
         NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                callback(nil, error);
+                return;
+            }
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"token\":\"([^\"]+)" options:0 error:nil];
             NSString *resBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSArray<NSTextCheckingResult*> *results = [regex matchesInString:resBody options:0 range:NSMakeRange(0, resBody.length)];
@@ -81,9 +88,10 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
                     controller.channels = channels;
-                    [[SettingViewController sharedPrefsWindowController].window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+                    [window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
                         if (returnCode == NSModalResponseOK) {
                             BRSlackAccount *account = [[BRSlackAccount alloc] init];
+                            account.uuid = [[NSUUID UUID] UUIDString];
                             account.accountId = userId;
                             account.teamId = teamId;
                             account.teamName = teamName;
@@ -135,8 +143,8 @@
     [task resume];
 }
 
-- (BRSlackStreamHandler *)streamMessageWithAccount:(BRSlackAccount *)account {
-    BRSlackStreamHandler *handler = [[BRSlackStreamHandler alloc] init];
+- (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account {
+    BRSlackStreamHandle *handler = [[BRSlackStreamHandle alloc] init];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"wss://wss-primary.slack.com/?token=%@&gateway_server=%@", account.token, account.teamId]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setAllHTTPHeaderFields:[account headersForRequest]];
@@ -159,6 +167,7 @@
         }
     }];
     [task resume];
+    [self.taskToHandleMapping setObject:handler forKey:task];
     return handler;
 }
 
@@ -177,14 +186,23 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
 didOpenWithProtocol:(NSString *)protocol {
-    NSLog(@"open");
+    BRSlackStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onConnected) {
+        handler.onConnected();
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
   didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
             reason:(NSData *)reason {
-    NSLog(@"close %ld, %@", closeCode, [[NSString alloc] initWithData:reason encoding:NSUTF8StringEncoding]);
+    BRSlackStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onDisconnected) {
+        handler.onDisconnected();
+    }
+    [self.taskToHandleMapping removeObjectForKey:webSocketTask];
 }
 
 - (instancetype)setupWithClientId:(NSString *)clientId clientSecret:(NSString *)clientSecret {

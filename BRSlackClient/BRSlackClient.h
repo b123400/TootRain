@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BRSlackAccount.h"
-#import "BRSlackStreamHandler.h"
+#import "BRSlackStreamHandle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)receivedMagicLoginURL:(NSURL *)magicUrl completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback;
-- (BRSlackStreamHandler *)streamMessageWithAccount:(BRSlackAccount *)account;
+- (void)receivedMagicLoginURL:(NSURL *)magicUrl withWindow:(NSWindow *)window completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback;
+- (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account;
 
 @end
 

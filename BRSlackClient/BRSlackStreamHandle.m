@@ -5,9 +5,9 @@
 //  Created by b123400 on 2021/07/14.
 //
 
-#import "BRSlackStreamHandler.h"
+#import "BRSlackStreamHandle.h"
 
-@implementation BRSlackStreamHandler
+@implementation BRSlackStreamHandle
 
 - (void)disconnect {
     [self.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];

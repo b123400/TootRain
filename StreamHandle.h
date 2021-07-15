@@ -1,21 +1,19 @@
 //
-//  BRSlackStreamHandler.h
+//  StreamHandle.h
 //  TweetRain
 //
-//  Created by b123400 on 2021/07/14.
+//  Created by b123400 on 2021/07/15.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRSlackStreamHandler : NSObject
+@interface StreamHandle : NSObject
 
-@property (nonatomic, copy, nullable) void (^onMessage)(NSString *message);
 @property (nonatomic, copy, nullable) void (^onError)(NSError *error);
 @property (nonatomic, copy, nullable) void (^onConnected)();
 @property (nonatomic, copy, nullable) void (^onDisconnected)();
-@property (nonatomic, strong) NSURLSessionWebSocketTask *task;
 
 - (void)disconnect;
 

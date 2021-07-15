@@ -16,14 +16,15 @@
     if (!accounts) {
         return result;
     }
-    for (NSString *accountId in accounts) {
-        [result addObject:[[BRSlackAccount alloc] initWithDictionary:accounts[accountId]]];
+    for (NSString *uuid in accounts) {
+        [result addObject:[[BRSlackAccount alloc] initWithDictionary:accounts[uuid]]];
     }
     return result;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     if (self = [super init]) {
+        self.uuid = dict[@"uuid"] ?: dict[@"accountId"]; //TODO
         self.accountId = dict[@"accountId"];
         self.teamId = dict[@"teamId"];
         self.teamName = dict[@"teamName"];
@@ -38,7 +39,7 @@
 - (void)save {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *accounts = [(NSDictionary*)[defaults objectForKey:@"BRSlackAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];
-    accounts[self.accountId] = [self dictionaryRepresentation];
+    accounts[self.uuid] = [self dictionaryRepresentation];
     [defaults setObject:accounts forKey:@"BRSlackAccount"];
     [defaults synchronize];
 }
@@ -46,13 +47,14 @@
 - (void)deleteAccount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *accounts = [(NSDictionary*)[defaults objectForKey:@"BRSlackAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];
-    [accounts removeObjectForKey:self.accountId];
-    [defaults setObject:accounts forKey:@"BRMastodonAccount"];
+    [accounts removeObjectForKey:self.uuid];
+    [defaults setObject:accounts forKey:@"BRSlackAccount"];
     [defaults synchronize];
 }
 
 - (NSDictionary *)dictionaryRepresentation {
     return @{
+        @"uuid": self.uuid,
         @"accountId": self.accountId,
         @"teamId": self.teamId,
         @"teamName": self.teamName,

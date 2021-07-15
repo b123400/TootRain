@@ -8,16 +8,26 @@
 #import "SettingOAuthWindowController.h"
 #import "BRMastodonClient.h"
 #import "BRMastodonOAuthResult.h"
+#import "BRSlackClient.h"
 
 @interface SettingOAuthWindowController ()
 @property (strong, nonatomic) BRMastodonApp *app;
+@property (strong, nonatomic) NSURL *slackURL;
+@property (assign, nonatomic) BOOL isHandlingSlack;
 @end
 
 @implementation SettingOAuthWindowController
 
-- (instancetype) initWithApp:(BRMastodonApp *)app {
-    if (self = [self initWithWindowNibName:@"SettingOAuthWindowController"]) {
+- (instancetype)initWithApp:(BRMastodonApp *)app {
+    if (self = [super initWithWindowNibName:@"SettingOAuthWindowController"]) {
         self.app = app;
+    }
+    return self;
+}
+
+- (instancetype)initWithSlackURL:(NSURL *)url {
+    if (self = [super initWithWindowNibName:@"SettingOAuthWindowController"]) {
+        self.slackURL = url;
     }
     return self;
 }
@@ -30,8 +40,13 @@
     self.webView.navigationDelegate = self;
     [self.window.contentView addSubview:self.webView];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self.app authorisationURL]];
-    [self.webView loadRequest:request];
+    if (self.app) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[self.app authorisationURL]];
+        [self.webView loadRequest:request];
+    } else if (self.slackURL) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:self.slackURL]];
+    }
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
@@ -63,6 +78,23 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
                 }];
             }];
         }
+        return;
+    }
+    if ([url.scheme isEqualToString:@"slack"]) {
+        if (!self.isHandlingSlack) {
+            self.isHandlingSlack = YES;
+            [[BRSlackClient shared] receivedMagicLoginURL:url withWindow:self.window completionHandler:^(BRSlackAccount * _Nonnull account, NSError * _Nonnull error) {
+                if (error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSAlert alertWithError:error] runModal];
+                    });
+                }
+                if (account) {
+                    [_self.delegate settingOAuthWindowController:_self didLoggedInSlackAccount:account];
+                }
+            }];
+        }
+        decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
     decisionHandler(WKNavigationActionPolicyAllow);

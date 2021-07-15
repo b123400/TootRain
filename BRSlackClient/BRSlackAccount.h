@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSlackAccount : NSObject
 
+@property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *accountId;
 @property (nonatomic, strong) NSString *teamId;
 @property (nonatomic, strong) NSString *teamName;

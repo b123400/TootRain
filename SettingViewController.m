@@ -151,43 +151,46 @@
 
 #pragma mark Accounts
 
+- (void)addAccountWithHostName:(NSString *)hostName {
+    if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
+        hostName = [NSString stringWithFormat:@"https://%@", hostName];
+    }
+    if ([hostName hasSuffix:@"/"]) {
+        hostName = [hostName substringToIndex:hostName.length - 1];
+    }
+    if ([hostName hasSuffix:@".slack.com"]) {
+        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
+        oauthController.delegate = self;
+        [oauthController showWindow:self];
+        self.oauthController = oauthController;
+        return;
+    }
+    [[BRMastodonClient shared] registerAppFor:hostName
+                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+        NSLog(@"App: %@, Error: %@", app, error);
+        NSLog(@"URL: %@", [app authorisationURL]);
+        if (!error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                oauthController.delegate = self;
+                [oauthController showWindow:self];
+                self.oauthController = oauthController;
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [NSAlert alertWithError:error];
+                [alert runModal];
+            });
+        }
+    }];
+}
+
 - (IBAction)addAccountButtonTapped:(id)sender {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            NSString *hostName = [controller hostName];
-            if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
-                hostName = [NSString stringWithFormat:@"https://%@", hostName];
-            }
-            if ([hostName hasSuffix:@"/"]) {
-                hostName = [hostName substringToIndex:hostName.length - 1];
-            }
-            if ([hostName hasSuffix:@"slack.com"]) {
-                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
-                oauthController.delegate = self;
-                [oauthController showWindow:self];
-                self.oauthController = oauthController;
-                return;
-            }
-            [[BRMastodonClient shared] registerAppFor:hostName
-                                    completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-                NSLog(@"App: %@, Error: %@", app, error);
-                NSLog(@"URL: %@", [app authorisationURL]);
-                if (!error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-                        oauthController.delegate = self;
-                        [oauthController showWindow:self];
-                        self.oauthController = oauthController;
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSAlert *alert = [NSAlert alertWithError:error];
-                        [alert runModal];
-                    });
-                }
-            }];
+            [self addAccountWithHostName:[controller hostName]];
         }
     }];
 }
@@ -198,21 +201,12 @@
     Account *account = [SettingManager sharedManager].accounts[row];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
     [self updateAccountView];
 }
 
 - (IBAction)authorizeButtonTapped:(id)sender {
-    [[BRMastodonClient shared] registerAppFor:self.instanceHostField.stringValue
-                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-        NSLog(@"App: %@, Error: %@", app, error);
-        NSLog(@"URL: %@", [app authorisationURL]);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-            oauthController.delegate = self;
-            [oauthController showWindow:self];
-            self.oauthController = oauthController;
-        });
-    }];
+    [self addAccountWithHostName:self.instanceHostField.stringValue];
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
