@@ -1,22 +1,19 @@
 //
-//  BRStreamHandler.h
+//  StreamHandle.h
 //  TweetRain
 //
-//  Created by b123400 on 2021/07/05.
+//  Created by b123400 on 2021/07/15.
 //
 
 #import <Foundation/Foundation.h>
-#import "BRMastodonStatus.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRMastodonStreamHandler : NSObject
+@interface StreamHandle : NSObject
 
-@property (nonatomic, copy, nullable) void (^onStatus)(BRMastodonStatus *status);
 @property (nonatomic, copy, nullable) void (^onError)(NSError *error);
 @property (nonatomic, copy, nullable) void (^onConnected)();
 @property (nonatomic, copy, nullable) void (^onDisconnected)();
-@property (nonatomic, strong) NSURLSessionWebSocketTask *task;
 
 - (void)disconnect;
 

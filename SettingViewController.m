@@ -11,6 +11,9 @@
 #import "BRMastodonClient.h"
 #import "SettingOAuthWindowController.h"
 #import "InstanceInputWindowController.h"
+#import "Account.h"
+#import "MastodonAccount.h"
+#import "SlackAccount.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -68,15 +71,16 @@
         [self.screenPopup selectItemAtIndex:selectedIndex];
     }
 
-    NSNumber *savedWindowLevel = [[SettingManager sharedManager] windowLevel];
-    if (!savedWindowLevel) {
-        savedWindowLevel = @1;
-    }
+    WindowLevel savedWindowLevel = [[SettingManager sharedManager] windowLevel];
     [[self.windowsLevelPopup selectedItem] setState:NSControlStateValueOff];
-    [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel.integerValue];
-    [[self.windowsLevelPopup itemAtIndex:savedWindowLevel.integerValue] setState:1];
+    [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel];
+    [[self.windowsLevelPopup itemAtIndex:savedWindowLevel] setState:1];
     
-    hideStatusAroundCursorCheckBox.state = [[SettingManager sharedManager] hideStatusAroundCursor] ? NSControlStateValueOn : NSControlStateValueOff;
+    CursorBehaviour savedCursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    [[self.cursorBehaviourPopup selectedItem] setState:NSControlStateValueOff];
+    [self.cursorBehaviourPopup selectItemAtIndex:savedCursorBehaviour];
+    [[self.cursorBehaviourPopup itemAtIndex:savedCursorBehaviour] setState:1];
+
 	showProfileImageCheckBox.state = [[SettingManager sharedManager] showProfileImage] ? NSControlStateValueOn : NSControlStateValueOff;
 	self.removeLinksCheckBox.state = [[SettingManager sharedManager] removeLinks] ? NSControlStateValueOn : NSControlStateValueOff;
     self.truncateStatusCheckBox.state = [[SettingManager sharedManager] truncateStatus] ? NSControlStateValueOn : NSControlStateValueOff;
@@ -102,7 +106,7 @@
     // need to find using identifier becoz system api doesn't compare it well
     NSUInteger index = NSNotFound;
     NSArray *accounts = [[SettingManager sharedManager] accounts];
-    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager]selectedAccount];
+    Account *selectedAccount = [[SettingManager sharedManager]selectedAccount];
     for (int i = 0; i<accounts.count; i++) {
         ACAccount *thisAccount = [accounts objectAtIndex:i];
         if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
@@ -130,7 +134,7 @@
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
 	if(aTableView==accountsTableView){
-        BRMastodonAccount *account = [SettingManager sharedManager].accounts[rowIndex];
+        Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
         if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
             return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
         }
@@ -148,29 +152,46 @@
 
 #pragma mark Accounts
 
+- (void)addAccountWithHostName:(NSString *)hostName {
+    if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
+        hostName = [NSString stringWithFormat:@"https://%@", hostName];
+    }
+    if ([hostName hasSuffix:@"/"]) {
+        hostName = [hostName substringToIndex:hostName.length - 1];
+    }
+    if ([hostName hasSuffix:@".slack.com"]) {
+        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
+        oauthController.delegate = self;
+        [oauthController showWindow:self];
+        self.oauthController = oauthController;
+        return;
+    }
+    [[BRMastodonClient shared] registerAppFor:hostName
+                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+        NSLog(@"App: %@, Error: %@", app, error);
+        NSLog(@"URL: %@", [app authorisationURL]);
+        if (!error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                oauthController.delegate = self;
+                [oauthController showWindow:self];
+                self.oauthController = oauthController;
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [NSAlert alertWithError:error];
+                [alert runModal];
+            });
+        }
+    }];
+}
+
 - (IBAction)addAccountButtonTapped:(id)sender {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            [[BRMastodonClient shared] registerAppFor:[controller hostName]
-                                    completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-                NSLog(@"App: %@, Error: %@", app, error);
-                NSLog(@"URL: %@", [app authorisationURL]);
-                if (!error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-                        oauthController.delegate = self;
-                        [oauthController showWindow:self];
-                        self.oauthController = oauthController;
-                    });
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSAlert *alert = [NSAlert alertWithError:error];
-                        [alert runModal];
-                    });
-                }
-            }];
+            [self addAccountWithHostName:[controller hostName]];
         }
     }];
 }
@@ -178,27 +199,26 @@
 - (IBAction)deleteAccountTapped:(id)sender {
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
-    BRMastodonAccount *account = [SettingManager sharedManager].accounts[row];
+    Account *account = [SettingManager sharedManager].accounts[row];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
     [self updateAccountView];
 }
 
 - (IBAction)authorizeButtonTapped:(id)sender {
-    [[BRMastodonClient shared] registerAppFor:self.instanceHostField.stringValue
-                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-        NSLog(@"App: %@, Error: %@", app, error);
-        NSLog(@"URL: %@", [app authorisationURL]);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-            oauthController.delegate = self;
-            [oauthController showWindow:self];
-            self.oauthController = oauthController;
-        });
-    }];
+    [self addAccountWithHostName:self.instanceHostField.stringValue];
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
+    [self handleDidLoginAccount];
+}
+
+- (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
+    [self handleDidLoginAccount];
+}
+
+- (void)handleDidLoginAccount {
     typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SettingManager sharedManager] reloadAccounts];
@@ -206,7 +226,7 @@
         [self.oauthController.window close];
         self.oauthController = nil;
         
-        NSArray<BRMastodonAccount *> *accounts = [[SettingManager sharedManager] accounts];
+        NSArray<Account *> *accounts = [[SettingManager sharedManager] accounts];
         if ([accounts count] == 1) {
             [[SettingManager sharedManager] setSelectedAccount:[accounts firstObject]];
         }
@@ -221,8 +241,8 @@
 }
 
 - (void)updateAccountView {
-    NSArray<BRMastodonAccount*> *allAccounts = [BRMastodonAccount allAccounts];
-    if (allAccounts.count != 0) {
+    [[SettingManager sharedManager] reloadAccounts];
+    if ([SettingManager sharedManager].accounts.count != 0) {
         self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
         [self.authorizeView removeFromSuperview];
     } else {
@@ -235,7 +255,7 @@
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
     if (index == -1) return;
-    BRMastodonAccount *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    Account *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
     if ([[[SettingManager sharedManager] selectedAccount].identifier isEqualToString:selectedAccount.identifier]) {
         return;
     }
@@ -257,12 +277,13 @@
 }
 
 - (IBAction)windowsLevelChanged:(id)sender {
-    NSUInteger index = [self.windowsLevelPopup.itemArray indexOfObject:self.windowsLevelPopup.selectedItem];
-    [[SettingManager sharedManager] setWindowLevel:@(index)];
+    NSUInteger tag = [self.windowsLevelPopup selectedTag];
+    [[SettingManager sharedManager] setWindowLevel:tag];
 }
-- (IBAction)hideStatusAroundCursorCheckBoxChanged:(id)sender {
-    BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
-    [[SettingManager sharedManager] setHideStatusAroundCursor:enabled];
+
+- (IBAction)cursorBehaviourChanged:(id)sender {
+    NSUInteger tag = [self.cursorBehaviourPopup selectedTag];
+    [[SettingManager sharedManager] setCursorBehaviour:tag];
 }
 
 - (IBAction)showProfileImageCheckBoxChanged:(id)sender {

@@ -37,12 +37,6 @@
 }
 
 - (void)registerAppFor:(NSString*)hostname completionHandler:(void (^)(BRMastodonApp *app, NSError *error))callback {
-    if (![hostname hasPrefix:@"http://"] && ![hostname hasPrefix:@"https://"]) {
-        hostname = [NSString stringWithFormat:@"https://%@", hostname];
-    }
-    if ([hostname hasSuffix:@"/"]) {
-        hostname = [hostname substringToIndex:hostname.length - 1];
-    }
     BRMastodonApp *existingApp = [BRMastodonApp appWithHostname:hostname];
     if (existingApp != nil) {
         callback(existingApp, nil);
@@ -280,8 +274,8 @@
     return request;
 }
 
-- (BRMastodonStreamHandler *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
-    __block BRMastodonStreamHandler *handler = [[BRMastodonStreamHandler alloc] init];
+- (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
+    __block BRMastodonStreamHandle *handler = [[BRMastodonStreamHandle alloc] init];
     typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
                completionHandler:^(NSString * _Nullable accessToken, NSError * _Nullable error) {
@@ -514,7 +508,7 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
 didOpenWithProtocol:(NSString *)protocol {
-    BRMastodonStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    BRMastodonStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
     if (!handler) return;
     if (handler.onConnected) {
         handler.onConnected();
@@ -525,7 +519,7 @@ didOpenWithProtocol:(NSString *)protocol {
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
   didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
             reason:(NSData *)reason {
-    BRMastodonStreamHandler *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    BRMastodonStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
     if (!handler) return;
     if (handler.onDisconnected) {
         handler.onDisconnected();

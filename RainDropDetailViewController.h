@@ -24,6 +24,7 @@
 @property (weak) IBOutlet NSButton *repostButton;
 @property (weak) IBOutlet NSButton *favButton;
 @property (weak) IBOutlet NSButton *bookmarkButton;
+@property (weak) IBOutlet NSButton *replyButton;
 
 -(id)initWithStatus:(Status*)status;
 

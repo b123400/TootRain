@@ -63,7 +63,8 @@
 	}
 	
 	[[self view] setFrame:CGRectMake(0,0,viewWidth, viewHeight)];
-	self.view.alphaValue=[[SettingManager sharedManager] opacity];
+    self.view.wantsLayer = YES;
+	self.view.alphaValue = [[SettingManager sharedManager] opacity];
 }
 
 -(void)viewDidMovedToSuperview:(id)sender{
@@ -117,16 +118,16 @@
 	if(paused){
 		return;
 	}
-	paused=YES;
     // The view flickers if we don't use animation to stop
 	CGRect target=[self visibleFrame];
+    paused = YES;
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
     //animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
 	animation.duration=0.01;
 	animation.toValue = [NSValue valueWithPoint:target.origin];
 	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
 	[[self.view animator] setFrameOrigin:target.origin];
-	self.view.frame=target;
+	self.view.frame = target;
 	
 	if(animationEnd){
 		animationEnd=nil;
@@ -171,20 +172,24 @@
 }
 #pragma mark geometry
 - (CGRect)visibleFrame {
+    CGRect frame = self.view.frame;
 	if(paused){
-		return self.view.frame;
+		return frame;
 	}
 	float percentage=[self durationUntilDisappear]/[self animationDuration];
-	CGRect frame=self.view.frame;
-	frame.origin.x=(self.view.window.frame.size.width+self.view.frame.size.width)*percentage-self.view.frame.size.width;
+	frame.origin.x=(self.view.window.frame.size.width + frame.size.width)*percentage - frame.size.width;
 	return frame;
 }
 #pragma mark interaction
 - (void)didMouseOver {
-	if([[SettingManager sharedManager] hideStatusAroundCursor]){
-		[self.view setHidden:YES];
-		return;
-	}
+    CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    if (cursorBehaviour == CursorBehaviourClickThrough) {
+        return;
+    } else if (cursorBehaviour == CursorBehaviourHide) {
+        [self.view setHidden:YES];
+        return;
+    }
+
 	self.view.alphaValue=1;
 	[self pauseAnimation];
     
@@ -203,7 +208,8 @@
     }
 }
 - (void)didMouseOut {
-	if([[SettingManager sharedManager] hideStatusAroundCursor]){
+    CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    if (cursorBehaviour == CursorBehaviourHide) {
 		[self.view setHidden:NO];
 		return;
 	}
@@ -239,7 +245,7 @@
 		popover.delegate=self;
 	}
 	if(![popover isShown]){
-		NSPoint mouseLoc=[NSEvent mouseLocation];
+		NSPoint mouseLoc=[self.view.window mouseLocationOutsideOfEventStream];
 		NSPoint localLoc=[self.view convertPoint:mouseLoc fromView:nil];
 		CGRect frame=CGRectMake(localLoc.x, 0, 1, self.view.frame.size.height);
 		[popover showRelativeToRect:frame ofView:self.view preferredEdge:NSMaxYEdge];
@@ -287,6 +293,7 @@
 
 - (void)appearanceSettingChanged:(NSNotification*)notification {
     [contentTextField setAttributedStringValue:[self attributedStringForStatus]];
+    self.view.alphaValue = [[SettingManager sharedManager] opacity];
     [self.view setNeedsDisplay:YES];
 }
 

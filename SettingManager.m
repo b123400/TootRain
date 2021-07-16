@@ -8,10 +8,14 @@
 
 #import "SettingManager.h"
 #import "NSFileManager+DirectoryLocations.h"
+#import "MastodonAccount.h"
+#import "SlackAccount.h"
+#import "BRMastodonAccount.h"
+#import "BRSlackAccount.h"
 
 @interface SettingManager ()
 
-@property (nonatomic, strong) NSArray<BRMastodonAccount*> *accounts;
+@property (nonatomic, strong) NSArray<Account*> *accounts;
 
 @end
 
@@ -27,23 +31,21 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 -(id)init{
-    self = [super init];
-    
-    if (self) {
-        self.accounts = [BRMastodonAccount allAccounts];
+    if (self = [super init]) {
+        [self reloadAccounts];
     }
     return self;
 }
 
 #pragma mark accounts
 
-- (BRMastodonAccount *)selectedAccount {
+- (Account *)selectedAccount {
     NSArray *accounts = self.accounts;
     if (accounts.count == 0) {
         return nil;
     }
     NSString *selectedAccountId = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountId"];
-    for (BRMastodonAccount *thisAccount in accounts) {
+    for (Account *thisAccount in accounts) {
         if ([thisAccount.identifier isEqualToString:selectedAccountId]) {
             return thisAccount;
         }
@@ -55,26 +57,25 @@ static NSMutableArray *savedAccounts=nil;
 #endif
 }
 
-- (void)setSelectedAccount:(BRMastodonAccount*)account {
+- (void)setSelectedAccount:(Account*)account {
     [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
 }
 
 - (void)reloadAccounts {
-    self.accounts = [BRMastodonAccount allAccounts];
+    NSMutableArray *accounts = [NSMutableArray array];
+    for (BRMastodonAccount *acc in [BRMastodonAccount allAccounts]) {
+        [accounts addObject:[[MastodonAccount alloc] initWithMastodonAccount:acc]];
+    }
+    for (BRSlackAccount *acc in [BRSlackAccount allAccounts]) {
+        [accounts addObject:[[SlackAccount alloc] initWithSlackAccount:acc]];
+    }
+    self.accounts = accounts;
 }
 
 #pragma mark - settings
 
-- (BOOL)hideStatusAroundCursor {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideStatusAroundCursor"];
-}
-
-- (void)setHideStatusAroundCursor:(BOOL)hideTweetAroundCursor {
-    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideStatusAroundCursor"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (BOOL)showProfileImage {
     NSNumber *show = [[NSUserDefaults standardUserDefaults] objectForKey:@"showProfileImage"];
@@ -220,14 +221,28 @@ static NSMutableArray *savedAccounts=nil;
 
 #elif TARGET_OS_MAC
 
-- (NSNumber*)windowLevel {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
+- (WindowLevel)windowLevel {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
+    if (!num) {
+        return WindowLevelAboveAllWindows;
+    }
+    return [num unsignedIntegerValue];
 }
 
-- (void)setWindowLevel:(NSNumber*)windowLevel {
-    [[NSUserDefaults standardUserDefaults] setObject:windowLevel forKey:@"windowLevel"];
+- (void)setWindowLevel:(WindowLevel)windowLevel {
+    [[NSUserDefaults standardUserDefaults] setObject:@(windowLevel) forKey:@"windowLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
+}
+
+- (CursorBehaviour)cursorBehaviour {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"cursorBehaviour"] unsignedIntegerValue];
+}
+
+- (void)setCursorBehaviour:(CursorBehaviour)cursorBehaviour {
+    [[NSUserDefaults standardUserDefaults] setObject:@(cursorBehaviour) forKey:@"cursorBehaviour"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCursorBehaviourChanged object:nil];
 }
 
 - (NSColor*)textColor{

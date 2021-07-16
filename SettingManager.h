@@ -7,11 +7,12 @@
 //
 
 #import "User.h"
-#import "BRMastodonAccount.h"
+#import "Account.h"
 
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
+#define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kSelectedAccountChanged @"kSelectedAccountChanged"
 
 #if TARGET_OS_IPHONE
@@ -19,11 +20,22 @@
 #define AUTO_SELECT_FIRST_ACCOUNT
 #endif
 
+typedef enum : NSUInteger {
+    CursorBehaviourPause = 0,
+    CursorBehaviourHide = 1,
+    CursorBehaviourClickThrough = 2,
+} CursorBehaviour;
+
+typedef enum : NSUInteger {
+    WindowLevelAboveMenuBar = 0,
+    WindowLevelAboveAllWindows = 1,
+    WindowLevelAboveDesktop = 2,
+} WindowLevel;
+
 @interface SettingManager : NSObject{
     
 }
 
-@property (nonatomic) BOOL hideStatusAroundCursor;
 @property (nonatomic) BOOL showProfileImage;
 @property (nonatomic) BOOL removeLinks;
 @property (nonatomic) BOOL truncateStatus;
@@ -46,15 +58,16 @@
 @property (nonatomic) NSColor *shadowColor;
 @property (nonatomic) NSColor *hoverBackgroundColor;
 @property (nonatomic) NSFont *font;
-@property (nonatomic) NSNumber *windowLevel;
+@property (nonatomic) CursorBehaviour cursorBehaviour;
+@property (nonatomic) WindowLevel windowLevel;
 
 #endif
 
 +(SettingManager*)sharedManager;
 
-- (BRMastodonAccount*)selectedAccount;
-- (void)setSelectedAccount:(BRMastodonAccount*)account;
-- (NSArray<BRMastodonAccount*> *)accounts;
+- (Account*)selectedAccount;
+- (void)setSelectedAccount:(Account*)account;
+- (NSArray<Account*> *)accounts;
 - (void)reloadAccounts;
 
 @end

@@ -5,9 +5,9 @@
 //  Created by b123400 on 2021/07/05.
 //
 
-#import "BRMastodonStreamHandler.h"
+#import "BRMastodonStreamHandle.h"
 
-@implementation BRMastodonStreamHandler
+@implementation BRMastodonStreamHandle
 
 - (void)disconnect {
     [self.task cancelWithCloseCode:NSURLSessionWebSocketCloseCodeNormalClosure reason:nil];
