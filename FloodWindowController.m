@@ -154,27 +154,33 @@
 - (void)updateCursorLocation:(NSEvent*)event {
 	NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
 	CGPoint point = NSPointToCGPoint(mouseLoc);
-	if(!CGPointEqualToPoint(lastMousePosition,point)){
-		lastMousePosition=point;
+    CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    BOOL windowShouldIgnoreMouse = YES;
+	if (!CGPointEqualToPoint(lastMousePosition,point)) {
+		lastMousePosition = point;
 		//moved
-		BOOL popoverShown=false;
-		for(RainDropViewController *thisController in rainDrops){
-			if([thisController isPopoverShown]){
+		for (RainDropViewController *thisController in rainDrops) {
+			if ([thisController isPopoverShown]) {
 				//a raindrop is already paused
-				popoverShown=true;
+                windowShouldIgnoreMouse = NO;
+                [self.window setIgnoresMouseEvents:NO];
 				return;
 			}
 		}
-		for(RainDropViewController *thisController in rainDrops){
+		for (RainDropViewController *thisController in rainDrops) {
 			CGRect rect = [thisController visibleFrame];
-			if(CGRectContainsPoint(rect, point)){
-				if(![thisController paused]&&!popoverShown){
+			if (CGRectContainsPoint(rect, point)) {
+                if (cursorBehaviour == CursorBehaviourPause) {
+                    windowShouldIgnoreMouse = NO;
+                }
+				if (![thisController paused]) {
 					[thisController didMouseOver];
 				}
-			}else{
+			} else {
 				[thisController didMouseOut];
 			}
 		}
+        [self.window setIgnoresMouseEvents:windowShouldIgnoreMouse];
 	}
 }
 @end

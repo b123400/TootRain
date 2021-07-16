@@ -76,14 +76,6 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark - settings
 
-- (BOOL)hideStatusAroundCursor {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideStatusAroundCursor"];
-}
-
-- (void)setHideStatusAroundCursor:(BOOL)hideTweetAroundCursor {
-    [[NSUserDefaults standardUserDefaults] setBool:hideTweetAroundCursor forKey:@"hideStatusAroundCursor"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (BOOL)showProfileImage {
     NSNumber *show = [[NSUserDefaults standardUserDefaults] objectForKey:@"showProfileImage"];
@@ -241,6 +233,16 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] setObject:@(windowLevel) forKey:@"windowLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
+}
+
+- (CursorBehaviour)cursorBehaviour {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"cursorBehaviour"] unsignedIntegerValue];
+}
+
+- (void)setCursorBehaviour:(CursorBehaviour)cursorBehaviour {
+    [[NSUserDefaults standardUserDefaults] setObject:@(cursorBehaviour) forKey:@"cursorBehaviour"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCursorBehaviourChanged object:nil];
 }
 
 - (NSColor*)textColor{

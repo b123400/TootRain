@@ -14,6 +14,7 @@
                 <outlet property="appearanceSettingView" destination="142" id="217"/>
                 <outlet property="authorizeButton" destination="273" id="276"/>
                 <outlet property="authorizeView" destination="278" id="281"/>
+                <outlet property="cursorBehaviourPopup" destination="cIa-fJ-O5a" id="QYz-Nq-xBt"/>
                 <outlet property="deleteAccountButton" destination="rAs-hj-cxA" id="CJC-ho-Nm8"/>
                 <outlet property="fontLabel" destination="202" id="241"/>
                 <outlet property="hoverBackgroundColorWell" destination="216" id="234"/>
@@ -120,17 +121,6 @@
                     </buttonCell>
                     <connections>
                         <action selector="showProfileImageCheckBoxChanged:" target="-2" id="222"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="206">
-                    <rect key="frame" x="20" y="263" width="342" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Hide status around cursor" bezelStyle="regularSquare" imagePosition="left" inset="2" id="207">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="hideStatusAroundCursorCheckBoxChanged:" target="-2" id="ruA-us-vvI"/>
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="242">
@@ -317,6 +307,39 @@
                         <action selector="shadowCheckboxChanged:" target="-2" id="QfT-bQ-fxQ"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdX-6X-9GD">
+                    <rect key="frame" x="18" y="264" width="126" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cursor" id="00o-4n-sxD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIa-fJ-O5a">
+                    <rect key="frame" x="182" y="258" width="198" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Click through" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="AMX-Sr-Nw2" id="jov-wc-JrH">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="fsM-gK-1Uo">
+                            <items>
+                                <menuItem title="Hover → Pause" id="xbN-iI-YZQ">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Hover → Hide" tag="1" id="lmq-cX-QGB">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Click through" state="on" tag="2" id="AMX-Sr-Nw2">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="cursorBehaviourChanged:" target="-2" id="ZHj-jY-A8w"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="100" y="-232"/>
         </customView>

@@ -76,7 +76,11 @@
     [self.windowsLevelPopup selectItemAtIndex:savedWindowLevel];
     [[self.windowsLevelPopup itemAtIndex:savedWindowLevel] setState:1];
     
-    hideStatusAroundCursorCheckBox.state = [[SettingManager sharedManager] hideStatusAroundCursor] ? NSControlStateValueOn : NSControlStateValueOff;
+    CursorBehaviour savedCursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    [[self.cursorBehaviourPopup selectedItem] setState:NSControlStateValueOff];
+    [self.cursorBehaviourPopup selectItemAtIndex:savedCursorBehaviour];
+    [[self.cursorBehaviourPopup itemAtIndex:savedCursorBehaviour] setState:1];
+
 	showProfileImageCheckBox.state = [[SettingManager sharedManager] showProfileImage] ? NSControlStateValueOn : NSControlStateValueOff;
 	self.removeLinksCheckBox.state = [[SettingManager sharedManager] removeLinks] ? NSControlStateValueOn : NSControlStateValueOff;
     self.truncateStatusCheckBox.state = [[SettingManager sharedManager] truncateStatus] ? NSControlStateValueOn : NSControlStateValueOff;
@@ -276,9 +280,10 @@
     NSUInteger tag = [self.windowsLevelPopup selectedTag];
     [[SettingManager sharedManager] setWindowLevel:tag];
 }
-- (IBAction)hideStatusAroundCursorCheckBoxChanged:(id)sender {
-    BOOL enabled=[(NSButton*)sender state]==NSControlStateValueOn;
-    [[SettingManager sharedManager] setHideStatusAroundCursor:enabled];
+
+- (IBAction)cursorBehaviourChanged:(id)sender {
+    NSUInteger tag = [self.cursorBehaviourPopup selectedTag];
+    [[SettingManager sharedManager] setCursorBehaviour:tag];
 }
 
 - (IBAction)showProfileImageCheckBoxChanged:(id)sender {

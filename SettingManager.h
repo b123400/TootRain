@@ -12,12 +12,19 @@
 #define kRainDropAppearanceChangedNotification @"kRainDropAppearanceChangedNotification"
 #define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
+#define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kSelectedAccountChanged @"kSelectedAccountChanged"
 
 #if TARGET_OS_IPHONE
 #else
 #define AUTO_SELECT_FIRST_ACCOUNT
 #endif
+
+typedef enum : NSUInteger {
+    CursorBehaviourPause = 0,
+    CursorBehaviourHide = 1,
+    CursorBehaviourClickThrough = 2,
+} CursorBehaviour;
 
 typedef enum : NSUInteger {
     WindowLevelAboveMenuBar = 0,
@@ -29,7 +36,6 @@ typedef enum : NSUInteger {
     
 }
 
-@property (nonatomic) BOOL hideStatusAroundCursor;
 @property (nonatomic) BOOL showProfileImage;
 @property (nonatomic) BOOL removeLinks;
 @property (nonatomic) BOOL truncateStatus;
@@ -52,6 +58,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSColor *shadowColor;
 @property (nonatomic) NSColor *hoverBackgroundColor;
 @property (nonatomic) NSFont *font;
+@property (nonatomic) CursorBehaviour cursorBehaviour;
 @property (nonatomic) WindowLevel windowLevel;
 
 #endif

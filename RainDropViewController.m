@@ -182,10 +182,14 @@
 }
 #pragma mark interaction
 - (void)didMouseOver {
-	if([[SettingManager sharedManager] hideStatusAroundCursor]){
-		[self.view setHidden:YES];
-		return;
-	}
+    CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    if (cursorBehaviour == CursorBehaviourClickThrough) {
+        return;
+    } else if (cursorBehaviour == CursorBehaviourHide) {
+        [self.view setHidden:YES];
+        return;
+    }
+
 	self.view.alphaValue=1;
 	[self pauseAnimation];
     
@@ -204,7 +208,8 @@
     }
 }
 - (void)didMouseOut {
-	if([[SettingManager sharedManager] hideStatusAroundCursor]){
+    CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
+    if (cursorBehaviour == CursorBehaviourHide) {
 		[self.view setHidden:NO];
 		return;
 	}

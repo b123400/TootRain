@@ -17,7 +17,6 @@
 	IBOutlet NSTableView *accountsTableView;
 	
 	IBOutlet NSView *appearanceSettingView;
-	IBOutlet NSButtonCell *hideStatusAroundCursorCheckBox;
 	IBOutlet NSButton *showProfileImageCheckBox;
 	IBOutlet NSSlider *opacitySlider;
 	IBOutlet NSColorWell *textColorWell;
@@ -36,6 +35,7 @@
 
 @property (weak) IBOutlet NSPopUpButton *screenPopup;
 @property (weak) IBOutlet NSPopUpButton *windowsLevelPopup;
+@property (weak) IBOutlet NSPopUpButton *cursorBehaviourPopup;
 @property (weak) IBOutlet NSButton *shadowCheckbox;
 @property (weak) IBOutlet NSButton *truncateStatusCheckBox;
 @property (weak) IBOutlet NSTextField *truncateStatusField;
