@@ -17,7 +17,7 @@
 					defer:(BOOL)deferCreation
 {
 	// Using NSBorderlessWindowMask results in a window without a title bar.
-    self = [super initWithContentRect:contentRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+    self = [super initWithContentRect:contentRect styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:NO];
     if (self != nil) {
         [self setOpaque:NO];
 		[self setBackgroundColor:[NSColor clearColor]];

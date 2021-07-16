@@ -229,12 +229,16 @@ static NSMutableArray *savedAccounts=nil;
 
 #elif TARGET_OS_MAC
 
-- (NSNumber*)windowLevel {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
+- (WindowLevel)windowLevel {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"windowLevel"];
+    if (!num) {
+        return WindowLevelAboveAllWindows;
+    }
+    return [num unsignedIntegerValue];
 }
 
-- (void)setWindowLevel:(NSNumber*)windowLevel {
-    [[NSUserDefaults standardUserDefaults] setObject:windowLevel forKey:@"windowLevel"];
+- (void)setWindowLevel:(WindowLevel)windowLevel {
+    [[NSUserDefaults standardUserDefaults] setObject:@(windowLevel) forKey:@"windowLevel"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kWindowLevelChanged object:nil];
 }

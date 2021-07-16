@@ -19,6 +19,12 @@
 #define AUTO_SELECT_FIRST_ACCOUNT
 #endif
 
+typedef enum : NSUInteger {
+    WindowLevelAboveMenuBar = 0,
+    WindowLevelAboveAllWindows = 1,
+    WindowLevelAboveDesktop = 2,
+} WindowLevel;
+
 @interface SettingManager : NSObject{
     
 }
@@ -46,7 +52,7 @@
 @property (nonatomic) NSColor *shadowColor;
 @property (nonatomic) NSColor *hoverBackgroundColor;
 @property (nonatomic) NSFont *font;
-@property (nonatomic) NSNumber *windowLevel;
+@property (nonatomic) WindowLevel windowLevel;
 
 #endif
 

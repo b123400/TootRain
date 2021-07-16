@@ -56,24 +56,22 @@
 }
 
 -(void)resetFrame{
-    NSNumber *savedWindowLevel = [[SettingManager sharedManager] windowLevel];
+    WindowLevel savedWindowLevel = [[SettingManager sharedManager] windowLevel];
     NSUInteger windowLevel = NSFloatingWindowLevel;
     float menuBarHeight=[[[NSApplication sharedApplication] mainMenu] menuBarHeight];
-    if (savedWindowLevel != nil) {
-        switch (savedWindowLevel.intValue) {
-            case 0:
-                windowLevel = CGShieldingWindowLevel();
-                menuBarHeight = 0;
-                break;
-            case 1:
-                windowLevel = NSFloatingWindowLevel;
-                break;
-            case 2:
-                windowLevel = kCGDesktopIconWindowLevel+1;
-                break;
-            default:
-                break;
-        }
+    switch (savedWindowLevel) {
+        case WindowLevelAboveMenuBar:
+            windowLevel = CGShieldingWindowLevel();
+            menuBarHeight = 0;
+            break;
+        case WindowLevelAboveAllWindows:
+            windowLevel = NSFloatingWindowLevel;
+            break;
+        case WindowLevelAboveDesktop:
+            windowLevel = kCGDesktopIconWindowLevel+1;
+            break;
+        default:
+            break;
     }
     [self.window setLevel:windowLevel];
     CGRect screenFrame = self.window.screen.frame;
