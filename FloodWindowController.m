@@ -53,7 +53,6 @@
     [self resetFrame];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowScreenChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowLevelChanged object:nil];
-    self.window.contentView.wantsLayer = YES;
 }
 
 -(void)resetFrame{
