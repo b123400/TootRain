@@ -1,4 +1,3 @@
-
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
 "19.title" = "Window";
 
@@ -21,7 +20,7 @@
 "83.title" = "( ; l l )";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
-"129.title" = "Preferences…";
+"129.title" = "設定…";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
 "130.title" = "Services";
@@ -29,11 +28,11 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "Services";
 
-/* Class = "NSMenuItem"; title = "Hide flood"; ObjectID = "134"; */
-"134.title" = "Hide flood";
+/* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
+"134.title" = "隱藏TweetRain";
 
-/* Class = "NSMenuItem"; title = "Quit flood"; ObjectID = "136"; */
-"136.title" = "Quit flood";
+/* Class = "NSMenuItem"; title = "Quit TweetRain"; ObjectID = "136"; */
+"136.title" = "關閉TweetRain";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Hide Others";
@@ -42,37 +41,37 @@
 "150.title" = "Show All";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
-"197.title" = "Copy";
+"197.title" = "複製";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "Select All";
+"198.title" = "選擇全部";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
-"199.title" = "Cut";
+"199.title" = "剪切";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
-"202.title" = "Delete";
+"202.title" = "刪除";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "Paste";
+"203.title" = "貼上";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
-"205.title" = "Edit";
+"205.title" = "編輯";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "Undo";
+"207.title" = "還原";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
-"215.title" = "Redo";
+"215.title" = "重作";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; */
-"217.title" = "Edit";
+"217.title" = "編輯";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
-"295.title" = "View";
+"295.title" = "檢視";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "Format";
+"375.title" = "格式";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
 "485.title" = "Paste and Match Style";
@@ -82,3 +81,4 @@
 
 /* Class = "NSMenuItem"; title = "Search..."; ObjectID = "552"; */
 "552.title" = "Search...";
+

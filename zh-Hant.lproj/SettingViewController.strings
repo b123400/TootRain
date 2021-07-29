@@ -1,6 +1,14 @@
+/* Class = "NSTextFieldCell"; title = "Cursor"; ObjectID = "00o-4n-sxD"; */
+"00o-4n-sxD.title" = "鼠標";
+
+/* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
+"5VI-7m-dre.title" = "螢幕";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
 "31.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Shadow colour"; ObjectID = "88C-nu-o4l"; */
+"88C-nu-o4l.title" = "影子顏色";
 
 /* Class = "NSButtonCell"; title = "Show profile image"; ObjectID = "187"; */
 "187.title" = "顯示頭像";
@@ -14,37 +22,25 @@
 /* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
 "203.title" = "Font: Arial Bold 18";
 
-/* Class = "NSButtonCell"; title = "Hide tweet around cursor"; ObjectID = "207"; */
-"207.title" = "隱藏鼠標附近的 tweet";
-
-/* Class = "NSTextFieldCell"; title = "Text color"; ObjectID = "210"; */
+/* Class = "NSTextFieldCell"; title = "Text colour"; ObjectID = "210"; */
 "210.title" = "文字顏色";
 
-/* Class = "NSTextFieldCell"; title = "Shadow color"; ObjectID = "213"; */
-"213.title" = "影子顏色";
-
-/* Class = "NSTextFieldCell"; title = "Hover background color"; ObjectID = "215"; */
+/* Class = "NSTextFieldCell"; title = "Hover background colour"; ObjectID = "215"; */
 "215.title" = "Hover 時的背景顏色";
 
-/* Class = "NSButtonCell"; title = "Remove URL"; ObjectID = "243"; */
+/* Class = "NSButtonCell"; title = "Remove Links"; ObjectID = "243"; */
 "243.title" = "隱藏URL";
 
-/* Class = "NSButtonCell"; title = "Underline tweets with URL"; ObjectID = "245"; */
-"245.title" = "在有網址的 tweet 下畫底線";
+/* Class = "NSButtonCell"; title = "Truncate status"; ObjectID = "245"; */
+"245.title" = "限制長度";
 
 /* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
 "274.title" = "認證";
 
-/* Class = "NSTextFieldCell"; title = "Please click the folloing button to let me access your Twitter account."; ObjectID = "280"; */
-"280.title" = "按這個按鈕來讓我連接你的帳號吧";
+/* Class = "NSTextFieldCell"; title = "Please enter your Mastodon / Pleroma instance host name."; ObjectID = "280"; */
+"280.title" = "請輸入你的Mastodon / Pleroma host name";
 
-/* Class = "NSTextFieldCell"; title = "No account available.\nPlease add your Twitter Account to Mac"; ObjectID = "284"; */
-"284.title" = "找不到Twitter帳號耶。\n去系統偏好設定加一個吧";
-
-/* Class = "NSButtonCell"; title = "Teach me how"; ObjectID = "290"; */
-"290.title" = "教我怎樣加";
-
-/* Class = "NSTextFieldCell"; title = "Window level:"; ObjectID = "301"; */
+/* Class = "NSTextFieldCell"; title = "Window level"; ObjectID = "301"; */
 "301.title" = "視窗的優先程度";
 
 /* Class = "NSMenuItem"; title = "Above Menu Bar"; ObjectID = "305"; */
@@ -55,3 +51,13 @@
 
 /* Class = "NSMenuItem"; title = "Above Desktop"; ObjectID = "307"; */
 "307.title" = "在桌面之上";
+
+/* Class = "NSMenuItem"; title = "Click through"; ObjectID = "AMX-Sr-Nw2"; */
+"AMX-Sr-Nw2.title" = "穿過";
+
+/* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
+"lmq-cX-QGB.title" = "Hover → 隱藏";
+
+/* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
+"xbN-iI-YZQ.title" = "Hover → 暫停";
+

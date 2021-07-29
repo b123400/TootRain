@@ -2,16 +2,31 @@
 "%@ (Streaming)" = "%@ （接続済み）";
 
 /* No comment provided by engineer. */
-"Account is invalid?" = "アカウントに問題があるっぽい";
-
-/* No comment provided by engineer. */
 "Accounts" = "アカウント";
 
 /* No comment provided by engineer. */
 "Appearance" = "外見";
 
 /* No comment provided by engineer. */
+"Bookmark" = "ブックマーク";
+
+/* No comment provided by engineer. */
+"Bookmarked" = "ブックマした";
+
+/* No comment provided by engineer. */
 "Clear search history" = "検索履歴を削除";
+
+/* No comment provided by engineer. */
+"Connecting to %@" = "%@ に接続中";
+
+/* No comment provided by engineer. */
+"Connecting to %@ #%@" = "%1$@ #%2$@ に接続中";
+
+/* No comment provided by engineer. */
+"Disconnected from %@" = "%@ との接続が切れた";
+
+/* No comment provided by engineer. */
+"Disconnected from %@ #%@" = "%1$@ #%2$@ との接続が切れた";
 
 /* No comment provided by engineer. */
 "Done" = "完了";
@@ -20,31 +35,22 @@
 "Failed" = "失敗しました";
 
 /* No comment provided by engineer. */
-"Fav" = "ふぁぼ";
-
-/* No comment provided by engineer. */
 "Font: %@ %.0f" = "フォント: %1$@ %2$.0f";
 
 /* No comment provided by engineer. */
 "Loading" = "読み込み中";
 
 /* No comment provided by engineer. */
-"Photo.jpg" = "Photo.jpg";
-
-/* No comment provided by engineer. */
-"Please setup account in system preference" = "システム設定でツイッターのアカウントを設定してください";
+"Need to re-login %@" = "%@ に再ログインしてください";
 
 /* No comment provided by engineer. */
 "Recent Search" = "檢索履歷";
 
 /* No comment provided by engineer. */
-"Reconnecting to user: %@" = "繋ぎ直しています: %@";
+"Repost" = "ブースト";
 
 /* No comment provided by engineer. */
-"Retweet" = "リツイート";
-
-/* No comment provided by engineer. */
-"Retweeted" = "リツイートしました";
+"Reposted" = "ブーストした";
 
 /* No comment provided by engineer. */
 "Saved Searches" = "保存された検索キーワード";
@@ -56,16 +62,5 @@
 "Sent" = "送信した";
 
 /* No comment provided by engineer. */
-"Stream Connecting" = "繋がってます";
-
-/* No comment provided by engineer. */
-"Stream disconnected" = "ストリームが切れました";
-
-/* No comment provided by engineer. */
 "Trends" = "トレンド";
-
-/* No comment provided by engineer. */
-"Why dont you give me permission:(
- %@" = "なんで権限をあげないよーーー！:(
- %@";
 

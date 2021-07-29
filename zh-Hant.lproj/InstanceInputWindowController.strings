@@ -1,0 +1,15 @@
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "6xE-Ge-8he"; */
+"6xE-Ge-8he.title" = "取消";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Window";
+
+/* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "Fsa-mg-N0s"; */
+"Fsa-mg-N0s.title" = "認證";
+
+/* Class = "NSTextFieldCell"; title = "Please enter your Mastodon / Pleroma instance host name."; ObjectID = "r2f-fk-aD8"; */
+"r2f-fk-aD8.title" = "請輸入你的Mastodon / Pleroma host name";
+
+/* Class = "NSTextFieldCell"; placeholderString = "https://"; ObjectID = "vGr-dh-Yfo"; */
+"vGr-dh-Yfo.placeholderString" = "https://";
+

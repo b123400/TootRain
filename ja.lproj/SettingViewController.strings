@@ -1,5 +1,14 @@
+/* Class = "NSTextFieldCell"; title = "Cursor"; ObjectID = "00o-4n-sxD"; */
+"00o-4n-sxD.title" = "カーソル";
+
+/* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
+"5VI-7m-dre.title" = "スクリーン";
+
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
 "31.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Shadow colour"; ObjectID = "88C-nu-o4l"; */
+"88C-nu-o4l.title" = "影の色";
 
 /* Class = "NSButtonCell"; title = "Show profile image"; ObjectID = "187"; */
 "187.title" = "アイコンを表示";
@@ -13,37 +22,25 @@
 /* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
 "203.title" = "フォント：Arial Bold 18";
 
-/* Class = "NSButtonCell"; title = "Hide tweet around cursor"; ObjectID = "207"; */
-"207.title" = "カーソルの周りのツイートを隠す";
-
-/* Class = "NSTextFieldCell"; title = "Text color"; ObjectID = "210"; */
+/* Class = "NSTextFieldCell"; title = "Text colour"; ObjectID = "210"; */
 "210.title" = "文字の色";
 
-/* Class = "NSTextFieldCell"; title = "Shadow color"; ObjectID = "213"; */
-"213.title" = "影の色";
-
-/* Class = "NSTextFieldCell"; title = "Hover background color"; ObjectID = "215"; */
+/* Class = "NSTextFieldCell"; title = "Hover background colour"; ObjectID = "215"; */
 "215.title" = "マウスオーバー時の背景色";
 
-/* Class = "NSButtonCell"; title = "Remove URL"; ObjectID = "243"; */
-"243.title" = "URLを隠す";
+/* Class = "NSButtonCell"; title = "Remove Links"; ObjectID = "243"; */
+"243.title" = "リンクを隠す";
 
-/* Class = "NSButtonCell"; title = "Underline tweets with URL"; ObjectID = "245"; */
-"245.title" = "URLがツイートをアンダーラインする";
+/* Class = "NSButtonCell"; title = "Truncate status"; ObjectID = "245"; */
+"245.title" = "長さ制限";
 
 /* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
 "274.title" = "認証";
 
-/* Class = "NSTextFieldCell"; title = "Please click the folloing button to let me access your Twitter account."; ObjectID = "280"; */
-"280.title" = "このボタンをクリックしてツイッター垢を認証してくださいよー";
+/* Class = "NSTextFieldCell"; title = "Please enter your Mastodon / Pleroma instance host name."; ObjectID = "280"; */
+"280.title" = "Mastodon / Pleroma の host nameを入れてください";
 
-/* Class = "NSTextFieldCell"; title = "No account available.\nPlease add your Twitter Account to Mac"; ObjectID = "284"; */
-"284.title" = "Macにツイッター垢がないけど、\n追加してください。";
-
-/* Class = "NSButtonCell"; title = "Teach me how"; ObjectID = "290"; */
-"290.title" = "やり方を教えて";
-
-/* Class = "NSTextFieldCell"; title = "Window level:"; ObjectID = "301"; */
+/* Class = "NSTextFieldCell"; title = "Window level"; ObjectID = "301"; */
 "301.title" = "ウインドスタイル";
 
 /* Class = "NSMenuItem"; title = "Above Menu Bar"; ObjectID = "305"; */
@@ -54,4 +51,13 @@
 
 /* Class = "NSMenuItem"; title = "Above Desktop"; ObjectID = "307"; */
 "307.title" = "デスクトップの上";
+
+/* Class = "NSMenuItem"; title = "Click through"; ObjectID = "AMX-Sr-Nw2"; */
+"AMX-Sr-Nw2.title" = "スルー";
+
+/* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
+"lmq-cX-QGB.title" = "Hover → 隠す";
+
+/* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
+"xbN-iI-YZQ.title" = "Hover → 一時停止";
 

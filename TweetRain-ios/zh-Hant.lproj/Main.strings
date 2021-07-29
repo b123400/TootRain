@@ -1,0 +1,21 @@
+/* Class = "UILabel"; text = "Remove links"; ObjectID = "3gu-Ez-nrJ"; */
+"3gu-Ez-nrJ.text" = "隱藏網址";
+
+/* Class = "UILabel"; text = "Font"; ObjectID = "05r-of-hwT"; */
+"05r-of-hwT.text" = "字型";
+
+/* Class = "UILabel"; text = "Arial"; ObjectID = "BL6-YQ-q9x"; */
+"BL6-YQ-q9x.text" = "";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "CLU-5G-ZEg"; */
+"CLU-5G-ZEg.text" = "版本";
+
+/* Class = "UILabel"; text = "Text Color"; ObjectID = "Cur-CP-VSt"; */
+"Cur-CP-VSt.text" = "文字顏色";
+
+/* Class = "UINavigationItem"; title = "Setting"; ObjectID = "JYa-Hk-F1d"; */
+"JYa-Hk-F1d.title" = "設定";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "Pmm-EV-zIc"; */
+"Pmm-EV-zIc.text" = "關於";
+

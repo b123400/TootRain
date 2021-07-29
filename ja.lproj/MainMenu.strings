@@ -28,10 +28,10 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "サービス";
 
-/* Class = "NSMenuItem"; title = "Hide flood"; ObjectID = "134"; */
+/* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
 "134.title" = "TweetRainを隠す";
 
-/* Class = "NSMenuItem"; title = "Quit flood"; ObjectID = "136"; */
+/* Class = "NSMenuItem"; title = "Quit TweetRain"; ObjectID = "136"; */
 "136.title" = "TweetRainを終了";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */

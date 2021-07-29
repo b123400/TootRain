@@ -1,15 +1,26 @@
-
 /* Class = "NSTextFieldCell"; title = "Multiline Label lalalalal this is a very long tweet which takes up quite a lot of space and lalala"; ObjectID = "10"; */
 "10.title" = "Multiline Label lalalalal this is a very long tweet which takes up quite a lot of space and lalala";
+
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Favourite"; ObjectID = "22"; */
+"22.ibExternalAccessibilityDescription" = "打星";
 
 /* Class = "NSButtonCell"; title = "Fav"; ObjectID = "23"; */
 "23.title" = "打星";
 
-/* Class = "NSButtonCell"; title = "Retweet"; ObjectID = "27"; */
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Repost"; ObjectID = "26"; */
+"26.ibExternalAccessibilityDescription" = "轉發";
+
+/* Class = "NSButtonCell"; title = "Repost"; ObjectID = "27"; */
 "27.title" = "轉發";
 
-/* Class = "NSButtonCell"; title = "RT"; ObjectID = "35"; */
-"35.title" = "RT";
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Bookmark"; ObjectID = "34"; */
+"34.ibExternalAccessibilityDescription" = "書籤";
+
+/* Class = "NSButtonCell"; title = "Bookmark"; ObjectID = "35"; */
+"35.title" = "書籤";
+
+/* Class = "NSButton"; ibExternalAccessibilityDescription = "Reply"; ObjectID = "38"; */
+"38.ibExternalAccessibilityDescription" = "回覆";
 
 /* Class = "NSButtonCell"; title = "Reply"; ObjectID = "39"; */
 "39.title" = "回覆";
@@ -19,3 +30,4 @@
 
 /* Class = "NSTextFieldCell"; title = "@username here"; ObjectID = "112"; */
 "112.title" = "@username here";
+

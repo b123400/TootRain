@@ -1,0 +1,21 @@
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Choose a channel"; ObjectID = "MWl-Uq-Btn"; */
+"MWl-Uq-Btn.title" = "揀Channel";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "Unu-xG-gQ7"; */
+"Unu-xG-gQ7.title" = "OK";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "XgG-v3-v6S"; */
+"XgG-v3-v6S.title" = "Item 2";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "cQ3-0h-PqZ"; */
+"cQ3-0h-PqZ.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "e5Y-tX-cuH"; */
+"e5Y-tX-cuH.title" = "Item 3";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "h2n-Fb-FxT"; */
+"h2n-Fb-FxT.title" = "Item 1";
