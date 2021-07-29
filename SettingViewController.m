@@ -27,9 +27,6 @@
 
 -(instancetype)initWithWindowNibName:(NSString *)windowNibName {
     self = [super initWithWindowNibName:windowNibName];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(accountStoreDidChanged:) name:ACAccountStoreDidChangeNotification object:nil];
-    
     return self;
 }
 
@@ -105,10 +102,10 @@
     
     // need to find using identifier becoz system api doesn't compare it well
     NSUInteger index = NSNotFound;
-    NSArray *accounts = [[SettingManager sharedManager] accounts];
+    NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
     Account *selectedAccount = [[SettingManager sharedManager]selectedAccount];
     for (int i = 0; i<accounts.count; i++) {
-        ACAccount *thisAccount = [accounts objectAtIndex:i];
+        Account *thisAccount = [accounts objectAtIndex:i];
         if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
             index = i;
             break;
@@ -153,6 +150,10 @@
 #pragma mark Accounts
 
 - (void)addAccountWithHostName:(NSString *)hostName {
+    [self addAccountWithHostName:hostName updatingSlackAccount:nil];
+}
+
+- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
     if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
         hostName = [NSString stringWithFormat:@"https://%@", hostName];
     }
@@ -162,6 +163,7 @@
     if ([hostName hasSuffix:@".slack.com"]) {
         SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
         oauthController.delegate = self;
+        oauthController.updatingSlackAccount = slackAccount;
         [oauthController showWindow:self];
         self.oauthController = oauthController;
         return;
@@ -211,14 +213,14 @@
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
-    [self handleDidLoginAccount];
+    [self handleDidLoginAccount:account];
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
-    [self handleDidLoginAccount];
+    [self handleDidLoginAccount:account];
 }
 
-- (void)handleDidLoginAccount {
+- (void)handleDidLoginAccount:(id)newAccount {
     typeof(self) __weak _self = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SettingManager sharedManager] reloadAccounts];
@@ -226,9 +228,11 @@
         [self.oauthController.window close];
         self.oauthController = nil;
         
-        NSArray<Account *> *accounts = [[SettingManager sharedManager] accounts];
-        if ([accounts count] == 1) {
-            [[SettingManager sharedManager] setSelectedAccount:[accounts firstObject]];
+        [[SettingManager sharedManager] setSelectedAccount: nil];
+        if ([newAccount isKindOfClass:[BRMastodonAccount class]]) {
+            [[SettingManager sharedManager] setSelectedAccount:[[MastodonAccount alloc] initWithMastodonAccount:(BRMastodonAccount*)newAccount]];
+        } else if ([newAccount isKindOfClass:[BRSlackAccount class]]) {
+            [[SettingManager sharedManager] setSelectedAccount:[[SlackAccount alloc] initWithSlackAccount:(BRSlackAccount*)newAccount]];
         }
     });
 }

@@ -44,6 +44,7 @@
 
 - (void)receivedMagicLoginURL:(NSURL *)magicUrl
                    withWindow:(NSWindow *)window
+              updatingAccount:(BRSlackAccount * _Nullable)updatingAccount
             completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback {
     typeof(self) __weak _self = self;
     NSString *teamId = magicUrl.host;
@@ -67,6 +68,7 @@
         NSString *teamName = tokenResult[@"team"][@"name"];
         NSString *teamId = tokenResult[@"team"][@"id"];
         NSString *userId = tokenResult[@"user"];
+        NSString *teamURL = [NSString stringWithFormat:@"https://%@.slack.com", tokenResult[@"team"][@"domain"]];
         
         NSURL *url = [NSURL URLWithString:@"https://app.slack.com/auth?app=client&return_to=%2Fclient&teams=&iframe=1"];
         NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
@@ -90,6 +92,18 @@
                     callback(nil, error);
                     return;
                 }
+                if (updatingAccount) {
+                    updatingAccount.accountId = userId;
+                    updatingAccount.teamId = teamId;
+                    updatingAccount.teamName = teamName;
+                    updatingAccount.channelId = updatingAccount.channelId;
+                    updatingAccount.channelName = updatingAccount.channelName;
+                    updatingAccount.responseHeaderWithCookies = headersWithCookies;
+                    updatingAccount.token = token;
+                    [updatingAccount save];
+                    callback(updatingAccount, nil);
+                    return;
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
                     controller.channels = channels;
@@ -97,6 +111,7 @@
                         if (returnCode == NSModalResponseOK) {
                             BRSlackAccount *account = [[BRSlackAccount alloc] init];
                             account.uuid = [[NSUUID UUID] UUIDString];
+                            account.url = [NSURL URLWithString:teamURL];
                             account.accountId = userId;
                             account.teamId = teamId;
                             account.teamName = teamName;
@@ -204,7 +219,6 @@
                 if (error) {
                     if (handle.onError) {
                         handle.onError(error);
-                        
                     }
                     return;
                 }
@@ -213,6 +227,13 @@
                 }
             }];
 
+        } else if ([dict[@"type"] isEqualToString:@"error"] && [dict[@"error"][@"code"] isEqualToNumber:@401]) {
+            if (handle.onError) {
+                NSError *unauthorized = [NSError errorWithDomain:@"BRSlackClient" code:401 userInfo:@{
+                    @"account": account,
+                }];
+                handle.onError(unauthorized);
+            }
         }
     }];
     [task resume];

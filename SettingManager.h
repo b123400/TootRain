@@ -15,11 +15,6 @@
 #define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kSelectedAccountChanged @"kSelectedAccountChanged"
 
-#if TARGET_OS_IPHONE
-#else
-#define AUTO_SELECT_FIRST_ACCOUNT
-#endif
-
 typedef enum : NSUInteger {
     CursorBehaviourPause = 0,
     CursorBehaviourHide = 1,

@@ -83,7 +83,10 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if ([url.scheme isEqualToString:@"slack"]) {
         if (!self.isHandlingSlack) {
             self.isHandlingSlack = YES;
-            [[BRSlackClient shared] receivedMagicLoginURL:url withWindow:self.window completionHandler:^(BRSlackAccount * _Nonnull account, NSError * _Nonnull error) {
+            [[BRSlackClient shared] receivedMagicLoginURL:url
+                                               withWindow:self.window
+                                          updatingAccount:self.updatingSlackAccount
+                                        completionHandler:^(BRSlackAccount * _Nonnull account, NSError * _Nonnull error) {
                 if (account) {
                     [_self.delegate settingOAuthWindowController:_self didLoggedInSlackAccount:account];
                 } else {

@@ -50,15 +50,15 @@ static NSMutableArray *savedAccounts=nil;
             return thisAccount;
         }
     }
-#ifdef AUTO_SELECT_FIRST_ACCOUNT
-    return [self.accounts firstObject];
-#else
     return nil;
-#endif
 }
 
 - (void)setSelectedAccount:(Account*)account {
-    [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
+    if (account) {
+        [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedAccountId"];
+    }
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
 }

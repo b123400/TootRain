@@ -24,7 +24,8 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.uuid = dict[@"uuid"] ?: dict[@"accountId"]; //TODO
+        self.uuid = dict[@"uuid"];
+        self.url = [NSURL URLWithString:dict[@"url"]];
         self.accountId = dict[@"accountId"];
         self.teamId = dict[@"teamId"];
         self.teamName = dict[@"teamName"];
@@ -55,6 +56,7 @@
 - (NSDictionary *)dictionaryRepresentation {
     return @{
         @"uuid": self.uuid,
+        @"url": self.url.absoluteString,
         @"accountId": self.accountId,
         @"teamId": self.teamId,
         @"teamName": self.teamName,

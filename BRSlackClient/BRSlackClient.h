@@ -15,7 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)receivedMagicLoginURL:(NSURL *)magicUrl withWindow:(NSWindow *)window completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback;
+- (void)receivedMagicLoginURL:(NSURL *)magicUrl
+                   withWindow:(NSWindow *)window
+              updatingAccount:(BRSlackAccount * _Nullable)updatingAccount
+            completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback;
 - (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account;
 
 @end

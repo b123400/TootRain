@@ -22,6 +22,7 @@
 #import "StreamHandle.h"
 #import "MastodonStreamHandle.h"
 #import "SlackStreamHandle.h"
+#import "SettingViewController.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -65,6 +66,7 @@ static StreamController *shared;
         // Nothing is selected, but we are connected to sth, need to disconnect
         [self.streamHandle disconnect];
         self.streamHandle = nil;
+        self.account = nil;
     }
     if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
 
@@ -122,6 +124,17 @@ static StreamController *shared;
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
                 [_self.delegate streamController:_self didReceivedStatus:message];
+            }
+        };
+        newHandle.onError = ^(NSError * _Nonnull error) {
+            if ([error.domain isEqualTo:@"BRSlackClient"] && error.code == 401) {
+                [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Need to re-login %@",nil), slackAccount.teamName]];
+                BRSlackAccount *account = error.userInfo[@"account"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[SettingViewController sharedPrefsWindowController] showWindow:_self];
+                    [(SettingViewController*)[SettingViewController sharedPrefsWindowController] addAccountWithHostName: [account.url absoluteString]
+                                                                                                   updatingSlackAccount:slackAccount];
+                });
             }
         };
         self.streamHandle = newHandle;

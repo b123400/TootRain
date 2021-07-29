@@ -8,9 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
-#import <Social/Social.h>
-#import <Accounts/Accounts.h>
 #import "SettingManager.h"
+#import "BRSlackAccount.h"
 
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;
@@ -41,5 +40,8 @@
 @property (weak) IBOutlet NSTextField *truncateStatusField;
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
+
+- (void)addAccountWithHostName:(NSString *)hostName;
+- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
 
 @end

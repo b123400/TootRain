@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) id<SettingOAuthWindowControllerDelegate> delegate;
 @property (strong) WKWebView *webView;
+@property (strong, nonatomic, nullable) BRSlackAccount *updatingSlackAccount;
 
 @end
 
