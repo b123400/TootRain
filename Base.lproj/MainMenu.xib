@@ -14,10 +14,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
-                <menuItem title="TweetRain" id="56">
-                    <menu key="submenu" title="TweetRain" systemMenu="apple" id="57">
+                <menuItem title="TootRain" id="56">
+                    <menu key="submenu" title="TootRain" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="About TweetRain" id="58">
+                            <menuItem title="About TootRain" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>

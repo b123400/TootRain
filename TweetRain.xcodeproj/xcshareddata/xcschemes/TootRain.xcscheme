@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "TweetRain.app"
-               BlueprintName = "TweetRain"
+               BuildableName = "TootRain.app"
+               BlueprintName = "TootRain"
                ReferencedContainer = "container:TweetRain.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,6 +34,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = "ja"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "TweetRain.app"
-            BlueprintName = "TweetRain"
+            BuildableName = "TootRain.app"
+            BlueprintName = "TootRain"
             ReferencedContainer = "container:TweetRain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "TweetRain.app"
-            BlueprintName = "TweetRain"
+            BuildableName = "TootRain.app"
+            BlueprintName = "TootRain"
             ReferencedContainer = "container:TweetRain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

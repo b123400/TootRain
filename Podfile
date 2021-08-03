@@ -2,7 +2,7 @@
 def import_pods
 end
 
-target :TweetRain do
+target :TootRain do
   platform :osx, "10.10"
   import_pods
 end

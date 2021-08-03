@@ -152,7 +152,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* TweetRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDEEF16467E87922CAADE43 /* libPods-TweetRain-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
 		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* TweetRain.app */,
+				8D1107320486CEB800E47090 /* TootRain.app */,
 				CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */,
 				CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */,
 			);
@@ -792,9 +792,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* TweetRain */ = {
+		8D1107260486CEB800E47090 /* TootRain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TweetRain" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TootRain" */;
 			buildPhases = (
 				09CD8E96F1680B0677E8D335 /* [CP] Check Pods Manifest.lock */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -806,10 +806,10 @@
 			);
 			dependencies = (
 			);
-			name = TweetRain;
+			name = TootRain;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Smarkin;
-			productReference = 8D1107320486CEB800E47090 /* TweetRain.app */;
+			productReference = 8D1107320486CEB800E47090 /* TootRain.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */ = {
@@ -891,7 +891,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* TweetRain */,
+				8D1107260486CEB800E47090 /* TootRain */,
 				CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */,
 				CFCA49D11AB8AA6F00E922C9 /* TweetRain-iosTests */,
 			);
@@ -912,7 +912,7 @@
 				CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */,
 				CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */,
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
-				CF7A0F80269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.xib in Resources */,
+				CFA161F426B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CFE39FE31A76962C004644C8 /* SearchWindowController.xib in Resources */,
 				CF5DE47F26A06AAA0040BD63 /* emoji.json in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
@@ -1283,7 +1283,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = TweetRain;
+				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -1319,7 +1319,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = TweetRain;
+				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -1545,7 +1545,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TweetRain" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TootRain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
