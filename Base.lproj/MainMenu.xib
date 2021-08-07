@@ -59,7 +59,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit TweetRain" keyEquivalent="q" id="136">
+                            <menuItem title="Quit TootRain" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-3" id="449"/>
                                 </connections>
@@ -70,11 +70,7 @@
                 <menuItem title="( ; l l )" id="83">
                     <menu key="submenu" title="( ; l l )" id="81">
                         <items>
-                            <menuItem title="Search..." enabled="NO" keyEquivalent="f" id="552">
-                                <connections>
-                                    <action selector="openSearchWindow:" target="494" id="555"/>
-                                </connections>
-                            </menuItem>
+                            <menuItem title="Search..." enabled="NO" keyEquivalent="f" id="552"/>
                         </items>
                     </menu>
                 </menuItem>

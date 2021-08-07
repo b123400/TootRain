@@ -92,7 +92,6 @@
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
-		CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */ = {isa = PBXBuildFile; fileRef = CFC9AD5915EBD63D00CC52F9 /* icon.iconset */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
 		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
@@ -919,7 +918,6 @@
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
-				CFC9AD5A15EBD63D00CC52F9 /* icon.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
