@@ -102,7 +102,11 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 - (BOOL)truncateStatus {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"truncateStatus"];
+    NSNumber *obj = [[NSUserDefaults standardUserDefaults] objectForKey:@"truncateStatus"];
+    if (!obj) {
+        return YES;
+    }
+    return [obj boolValue];
 }
 
 - (void)setTruncateStatus:(BOOL)underlineTweetsWithURL {

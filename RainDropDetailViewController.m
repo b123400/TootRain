@@ -61,8 +61,8 @@
     NSSize minSize = [attributedString sizeForWidth:frame.size.width height:MAXFLOAT];
 	
 	float viewWidth=minSize.width+contentTextField.frame.origin.x+12;
-	if(viewWidth<345){
-		viewWidth=345;
+	if(viewWidth<355){
+		viewWidth=355;
 	}
 	float viewHeight=minSize.height+(32+12+48+12*2);
 	if(viewHeight<100){
