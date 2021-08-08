@@ -1,6 +1,6 @@
-flood.app
+TootRain.app
 =========
 
-Display tweets on timeline in niconico style
+Display Toots on timeline in niconico style. For Mastodon and Pleroma.
 
-![ScreenShot](http://b123400.net/flood/screenshot3.png)
+![ScreenShot](https://b123400.net/tootrain/screenshot.png)
