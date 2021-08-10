@@ -50,7 +50,9 @@
 
 - (NSAttributedString *)attributedStringWithEmojisReplaced {
     NSMutableString *text = [self.text mutableCopy];
-    for (NSString *emoji in self.emojis) {
+    NSMutableArray *allEmojis = [self.emojis mutableCopy];
+    [allEmojis addObjectsFromArray:@[@"skin-tone-2", @"skin-tone-3", @"skin-tone-4", @"skin-tone-5", @"skin-tone-6"]];
+    for (NSString *emoji in allEmojis) {
         NSString *emojiURL = [self.account urlForEmoji:emoji];
         if (emojiURL) {
             [text replaceOccurrencesOfString:[NSString stringWithFormat:@":%@:", emoji]
