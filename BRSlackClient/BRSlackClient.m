@@ -289,7 +289,8 @@ didOpenWithProtocol:(NSString *)protocol {
            completionHandler:(void (^)(NSDictionary<NSString *, NSString *> * _Nullable emojis, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/emoji.list?token=%@", account.token]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setAllHTTPHeaderFields:[account responseHeaderWithCookies]];
+    [request setAllHTTPHeaderFields:[account headersForRequest]];
+    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15" forHTTPHeaderField:@"User-Agent"];
     NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error: %@", error);
@@ -317,7 +318,8 @@ didOpenWithProtocol:(NSString *)protocol {
      completionHandler:(void (^)(BRSlackUser * _Nullable user, NSError * _Nullable error))callback {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://slack.com/api/users.info?token=%@&user=%@", account.token, userId]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setAllHTTPHeaderFields:[account responseHeaderWithCookies]];
+    [request setAllHTTPHeaderFields:[account headersForRequest]];
+    [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15" forHTTPHeaderField:@"User-Agent"];
     NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error: %@", error);
