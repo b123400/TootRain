@@ -39,7 +39,7 @@
 	[self addView:accountsSettingView label:NSLocalizedString(@"Accounts", nil) image:[NSImage imageNamed:@"NSUser"] identifier:@"accounts"];
 	[self addView:appearanceSettingView label:NSLocalizedString(@"Appearance",nil) image:[NSImage imageNamed:@"NSColorPanel"] identifier:@"appearance"];
     {
-        NSImage *image;
+        NSImage *image = nil;
         if (@available(macOS 11.0, *)) {
             image = [NSImage imageWithSystemSymbolName:@"icloud.and.arrow.up"
                               accessibilityDescription:@"Telemetry"];
