@@ -111,7 +111,7 @@
     SettingManager *manager = [SettingManager sharedManager];
     NSArray *accounts = [manager.accountStore accountsWithAccountType:manager.accountType];
     if (accounts.count == 0) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh on!", @"")
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Oh no!", @"")
                                     message:NSLocalizedString(@"You haven't setup any Twitter account. Please set it up in the Setting app", @"")
                                    delegate:self
                           cancelButtonTitle:@"OK"
