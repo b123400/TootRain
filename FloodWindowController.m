@@ -53,13 +53,13 @@
     [self resetFrame];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowScreenChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowLevelChanged object:nil];
-    [self.window setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
+    [self.window setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenAuxiliary];
 }
 
--(void)resetFrame{
+-(void)resetFrame {
     WindowLevel savedWindowLevel = [[SettingManager sharedManager] windowLevel];
     NSUInteger windowLevel = NSFloatingWindowLevel;
-    float menuBarHeight=[[[NSApplication sharedApplication] mainMenu] menuBarHeight];
+    float menuBarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
     switch (savedWindowLevel) {
         case WindowLevelAboveMenuBar:
             windowLevel = CGShieldingWindowLevel();

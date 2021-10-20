@@ -20,7 +20,8 @@
     self = [super initWithContentRect:contentRect styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:NO];
     if (self != nil) {
         [self setOpaque:NO];
-		[self setBackgroundColor:[NSColor clearColor]];
+        [self setBackgroundColor:[NSColor clearColor]];
+        [self setStyleMask:NSWindowStyleMaskBorderless | NSWindowStyleMaskNonactivatingPanel];
     }
     return self;
 }
