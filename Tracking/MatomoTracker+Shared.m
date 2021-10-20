@@ -14,7 +14,7 @@
     static MatomoTracker* sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[MatomoTracker alloc] initWithSiteId:@"1"
+        sharedInstance = [[MatomoTracker alloc] initWithSiteId:@"2"
                                                        baseURL:[NSURL URLWithString:@"https://matomo.b123400.net/matomo.php"]
                                                      userAgent:nil];
     });

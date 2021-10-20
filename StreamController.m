@@ -23,6 +23,7 @@
 #import "MastodonStreamHandle.h"
 #import "SlackStreamHandle.h"
 #import "SettingViewController.h"
+#import "MatomoTracker+Shared.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -111,6 +112,11 @@ static StreamController *shared;
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), mastondonAccount.displayName]];
         };
         self.streamHandle = newHandle;
+        
+        [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"StreamController"
+                                                            action:@"reconnect"
+                                                              name:@"Mastodon"
+                                                               url:nil];
     } else if ([selectedAccount isKindOfClass:[SlackAccount class]]) {
         BRSlackAccount *slackAccount = [(SlackAccount *)selectedAccount slackAccount];
         BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
@@ -138,6 +144,10 @@ static StreamController *shared;
             }
         };
         self.streamHandle = newHandle;
+        [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"StreamController"
+                                                            action:@"reconnect"
+                                                              name:@"Slack"
+                                                               url:nil];
     }
 }
 

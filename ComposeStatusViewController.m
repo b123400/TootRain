@@ -8,6 +8,7 @@
 
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
+#import "MatomoTracker+Shared.h"
 
 @interface ComposeStatusViewController ()
 
@@ -49,6 +50,10 @@
     }];
 	[sendButton setEnabled:NO];
 	[sendButton setTitle:NSLocalizedString(@"Loading",nil)];
+    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"ComposeStatusViewController"
+                                                        action:@"sendButtonClicked"
+                                                          name:nil
+                                                           url:nil];
 }
 
 @end
