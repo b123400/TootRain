@@ -14,7 +14,8 @@
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;
 	IBOutlet NSTableView *accountsTableView;
-	
+    IBOutlet NSView *telemetryView;
+    
 	IBOutlet NSView *appearanceSettingView;
 	IBOutlet NSButton *showProfileImageCheckBox;
 	IBOutlet NSSlider *opacitySlider;
@@ -40,6 +41,7 @@
 @property (weak) IBOutlet NSTextField *truncateStatusField;
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
+@property (weak) IBOutlet NSButton *telemetryCheckbox;
 
 - (void)addAccountWithHostName:(NSString *)hostName;
 - (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
