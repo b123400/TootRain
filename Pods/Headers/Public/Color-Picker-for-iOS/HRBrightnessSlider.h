@@ -1,1 +1,0 @@
-../../../Color-Picker-for-iOS/ColorPicker/HRBrightnessSlider.h
