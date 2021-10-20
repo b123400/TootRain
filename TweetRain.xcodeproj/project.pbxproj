@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		6DDD83ED9E69441C59DC91E2 /* libPods-TweetRain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2961C9312ABE0CC4448FAD1 /* libPods-TweetRain.a */; };
+		2C6D69970FB1CF9EFF5A164E /* libPods-TootRain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9018B8E0B356945FD72A17 /* libPods-TootRain.a */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */; };
@@ -91,6 +91,8 @@
 		CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */; };
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
+		CFB4CC9727201A6D00474CD2 /* MatomoTracker+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB4CC9427201A6C00474CD2 /* MatomoTracker+Shared.m */; };
+		CFB4CC9827201A6D00474CD2 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4CC9527201A6C00474CD2 /* Empty.swift */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
@@ -150,8 +152,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.debug.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.debug.xcconfig"; sourceTree = "<group>"; };
+		871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.release.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.release.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E9018B8E0B356945FD72A17 /* libPods-TootRain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TootRain.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDEEF16467E87922CAADE43 /* libPods-TweetRain-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
 		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +309,10 @@
 		CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOAuthWindowController.xib; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
+		CFB4CC9327201A6C00474CD2 /* TootRain-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TootRain-Bridging-Header.h"; sourceTree = "<group>"; };
+		CFB4CC9427201A6C00474CD2 /* MatomoTracker+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MatomoTracker+Shared.m"; sourceTree = "<group>"; };
+		CFB4CC9527201A6C00474CD2 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		CFB4CC9627201A6D00474CD2 /* MatomoTracker+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MatomoTracker+Shared.h"; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
@@ -351,7 +360,6 @@
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		CFFAE5F215E0E9DD00389518 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
-		D2961C9312ABE0CC4448FAD1 /* libPods-TweetRain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TweetRain.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.release.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,7 +376,7 @@
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
 				CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */,
 				CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */,
-				6DDD83ED9E69441C59DC91E2 /* libPods-TweetRain.a in Frameworks */,
+				2C6D69970FB1CF9EFF5A164E /* libPods-TootRain.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +425,7 @@
 				CF9F62081563D548004C6514 /* Settings */,
 				CFD131942688745A00B6EDB3 /* BRMastodonClient */,
 				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
+				CFB4CC9227201A4200474CD2 /* Tracking */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -525,8 +534,8 @@
 				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				D2961C9312ABE0CC4448FAD1 /* libPods-TweetRain.a */,
 				BCDEEF16467E87922CAADE43 /* libPods-TweetRain-ios.a */,
+				9E9018B8E0B356945FD72A17 /* libPods-TootRain.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -538,6 +547,8 @@
 				BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */,
 				C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */,
 				D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */,
+				3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */,
+				871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -687,6 +698,17 @@
 				CFA1BB5714DC514D000566A0 /* SettingManager.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		CFB4CC9227201A4200474CD2 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				CFB4CC9527201A6C00474CD2 /* Empty.swift */,
+				CFB4CC9627201A6D00474CD2 /* MatomoTracker+Shared.h */,
+				CFB4CC9427201A6C00474CD2 /* MatomoTracker+Shared.m */,
+				CFB4CC9327201A6C00474CD2 /* TootRain-Bridging-Header.h */,
+			);
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		CFC396F526886FF800DED41A /* Model */ = {
@@ -859,6 +881,7 @@
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
 						DevelopmentTeam = CC63FD9H8S;
+						LastSwiftMigration = 1300;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -960,7 +983,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TweetRain-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TootRain-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1032,6 +1055,7 @@
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */,
 				CF5DE46826A02B640040BD63 /* SlackAccount.m in Sources */,
+				CFB4CC9827201A6D00474CD2 /* Empty.swift in Sources */,
 				CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
@@ -1080,6 +1104,7 @@
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
 				CF5DE46E26A03A610040BD63 /* MastodonStreamHandle.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
+				CFB4CC9727201A6D00474CD2 /* MatomoTracker+Shared.m in Sources */,
 				CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1252,10 +1277,11 @@
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */;
+			baseConfigurationReference = 3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1275,6 +1301,7 @@
 				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain-Info.plist";
 				INSTALL_PATH = /Applications;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
@@ -1285,15 +1312,19 @@
 				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tracking/TootRain-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */;
+			baseConfigurationReference = 871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -1311,6 +1342,7 @@
 				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain-Info.plist";
 				INSTALL_PATH = /Applications;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1322,6 +1354,8 @@
 				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tracking/TootRain-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

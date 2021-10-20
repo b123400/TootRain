@@ -1,5 +1,8 @@
 PODS:
   - Color-Picker-for-iOS (2.0)
+  - MatomoTracker (7.5):
+    - MatomoTracker/Core (= 7.5)
+  - MatomoTracker/Core (7.5)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -8,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - Color-Picker-for-iOS (~> 2.0)
+  - MatomoTracker (from `https://github.com/b123400/matomo-sdk-ios.git`, branch `new-session-objc`)
   - SDWebImage
   - SVProgressHUD
   - "UIImage+BlurredFrame"
@@ -19,12 +23,23 @@ SPEC REPOS:
     - SVProgressHUD
     - "UIImage+BlurredFrame"
 
+EXTERNAL SOURCES:
+  MatomoTracker:
+    :branch: new-session-objc
+    :git: https://github.com/b123400/matomo-sdk-ios.git
+
+CHECKOUT OPTIONS:
+  MatomoTracker:
+    :commit: ee7a3f4432e073ec8abe6d48943a4f64c5934de2
+    :git: https://github.com/b123400/matomo-sdk-ios.git
+
 SPEC CHECKSUMS:
   Color-Picker-for-iOS: 2988926c7a3ceb6f472d6c3c225cbc88d4be3635
+  MatomoTracker: f6a967ef5f0477ce9dfdc9414cdf9cd557bd678c
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
   "UIImage+BlurredFrame": ad2f7195c6947ea3117c7d202f75a51958d5061a
 
-PODFILE CHECKSUM: 30ca0276a7dae371d6521cda292272798773ba7e
+PODFILE CHECKSUM: e6d8ae21c7e66e5ff6e0f0699ee8af7ccb857fc7
 
 COCOAPODS: 1.10.1
