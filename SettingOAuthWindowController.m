@@ -44,10 +44,9 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[self.app authorisationURL]];
         [self.webView loadRequest:request];
     } else if (self.slackURL) {
+        self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36";
         [self.webView loadRequest:[NSURLRequest requestWithURL:self.slackURL]];
     }
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (void)webView:(WKWebView *)webView
