@@ -100,6 +100,14 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         }
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
+    } else if ([url.scheme isEqualTo:@"https"] && [url.path hasPrefix:@"/client/"]) {
+        // it's already logged in, force it to open-in-app
+        decisionHandler(WKNavigationActionPolicyCancel);
+        NSURL *openInAppURL = [[NSURL URLWithString:@"/ssb/redirect" relativeToURL:url] absoluteURL];
+        [webView loadRequest:[NSURLRequest requestWithURL:openInAppURL]];
+        return;
+    } else {
+        NSLog(@"URL: %@", url);
     }
     decisionHandler(WKNavigationActionPolicyAllow);
 }
