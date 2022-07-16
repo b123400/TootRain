@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "BRSlackAccount.h"
 #import "BRSlackStreamHandle.h"
+#import "BRSlackChannel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
                    withWindow:(NSWindow *)window
               updatingAccount:(BRSlackAccount * _Nullable)updatingAccount
             completionHandler:(void (^)(BRSlackAccount* account, NSError *error))callback;
+
+- (void)getChannelListWithAccount:(BRSlackAccount *)account
+                completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback;
+
 - (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account;
 
 @end

@@ -6,7 +6,6 @@
 //
 
 #import "BRSlackClient.h"
-#import "BRSlackChannel.h"
 #import "BRSlackChannelSelectionWindowController.h"
 #import "BRSlackUser.h"
 #import "BRSlackMessage.h"
@@ -135,9 +134,10 @@
     [task resume];
 }
 
-- (void)getChannelListWithToken:(NSString *)token
-                         cursor:(NSString *)cursor
-                        cookies:(NSArray<NSHTTPCookie*> *)cookies completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback {
+- (void)getChannelListWithToken:(NSString  * _Nonnull)token
+                         cursor:(NSString  * _Nullable)cursor
+                        cookies:(NSArray<NSHTTPCookie*> *)cookies
+              completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback {
     NSMutableDictionary *params = @{
         @"token": token,
         @"limit": @"100",
@@ -188,6 +188,16 @@
     [task resume];
 }
 
+- (void)getChannelListWithAccount:(BRSlackAccount *)account
+                completionHandler:(void (^)(NSArray<BRSlackChannel *>* channels, NSError *error))callback {
+    NSArray<NSHTTPCookie *> *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:account.responseHeaderWithCookies
+                                                         forURL:[NSURL URLWithString:@"https://app.slack.com/api/auth.loginMagicBulk"]];
+    [self getChannelListWithToken:account.token
+                           cursor:nil
+                          cookies:cookies
+                completionHandler:callback];
+}
+
 # pragma mark - Streaming
 
 - (BRSlackStreamHandle *)streamMessageWithAccount:(BRSlackAccount *)account {
@@ -214,7 +224,17 @@
         NSLog(@"fuck error %@", error);
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 //        {"type":"message","user":"U027Q199PD1","client_msg_id":"018FD003-A387-4AE1-B4EC-93B3C234F465","suppress_notification":false,"text":"Rrrr","team":"T027W17JUFN","blocks":[{"type":"rich_text","block_id":"19NKV","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Rrrr"}]}]}],"source_team":"T027W17JUFN","user_team":"T027W17JUFN","channel":"C02793DR8HM","event_ts":"1626268256.000200","ts":"1626268256.000200"}
-        if ([dict[@"type"] isEqualToString:@"message"] && [dict[@"channel"] isEqualToString:account.channelId] && dict[@"subtype"] == nil) {
+        
+        
+//        {"type":"message","user":"U8196FY1W","channel":"CDZTR540M","text":"test","blocks":[{"type":"rich_text","block_id":"b6GCV","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"test"}]}]}],"client_msg_id":"42f86d6b-97cc-405b-9507-323fa1da2c34","team":"T3R0Y4T24","source_team":"T3R0Y4T24","user_team":"T3R0Y4T24","thread_ts":"1657867942.501739","suppress_notification":false,"event_ts":"1657868823.936069","ts":"1657868823.936069"}
+        
+        if ([dict[@"type"] isEqualToString:@"message"] &&
+            dict[@"subtype"] == nil &&
+            (
+             [account.channelIds containsObject:dict[@"channel"]] ||
+             [[dict[@"thread_ts"] stringByReplacingOccurrencesOfString:@"." withString:@""] isEqual:account.threadId]
+            )
+        ) {
             [_self messageWithJSONDictionary:dict
                                      account:account
                            completionHandler:^(BRSlackMessage * _Nullable message, NSError * _Nullable error) {
