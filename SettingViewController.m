@@ -15,6 +15,8 @@
 #import "MastodonAccount.h"
 #import "SlackAccount.h"
 #import "MatomoTracker+Shared.h"
+#import "BRSlackClient.h"
+#import "BRSlackChannelSelectionWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -144,14 +146,55 @@
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex{
-	if(aTableView==accountsTableView){
-        Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
-        if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
-            return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
+	if (aTableView == accountsTableView) {
+        if ([aTableColumn.identifier isEqualTo:@"name"]) {
+            Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
+            if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
+                return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
+            }
+            return account.displayName;
         }
-		return account.displayName;
+        return nil;
 	}
 	return nil;
+}
+
+- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    if (tableView == accountsTableView) {
+        Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:row];
+        if ([tableColumn.identifier isEqual:@"options"]) {
+            if (![account isKindOfClass:[SlackAccount class]]) {
+                // Hide options button for non-Slack accounts
+                return [[NSCell alloc] init];
+            }
+        }
+    }
+    return [tableColumn dataCellForRow:row];
+}
+
+- (IBAction)accountOptionsClicked:(id)sender {
+    NSInteger index = [(NSTableView*)sender clickedRow];
+    Account *a = [[[SettingManager sharedManager] accounts] objectAtIndex:index];
+    if (![a isKindOfClass:[SlackAccount class]]) return;
+    SlackAccount *account = (SlackAccount *)a;
+    [[BRSlackClient shared] getChannelListWithAccount:account.slackAccount
+                                    completionHandler:^(NSArray<BRSlackChannel *> * _Nonnull channels, NSError * _Nonnull error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
+            controller.channels = channels;
+            controller.selectedChannelIds = account.slackAccount.channelIds;
+            controller.selectedThreadId = account.slackAccount.threadId;
+            [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+                if (returnCode == NSModalResponseOK) {
+                    account.slackAccount.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
+                    account.slackAccount.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
+                    account.slackAccount.threadId = controller.selectedThreadId;
+                    [account.slackAccount save];
+                    [accountsTableView reloadData];
+                }
+            }];
+        });
+    }];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{

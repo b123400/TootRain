@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,14 +48,14 @@
                         <rect key="frame" x="1" y="1" width="451" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" id="27">
-                                <rect key="frame" x="0.0" y="0.0" width="451" height="233"/>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" id="27">
+                                <rect key="frame" x="0.0" y="0.0" width="454" height="233"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="314" minWidth="40" maxWidth="1000" id="30">
+                                    <tableColumn identifier="name" width="349" minWidth="40" maxWidth="1000" id="30">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,6 +67,20 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
+                                    <tableColumn identifier="options" width="90" minWidth="10" maxWidth="3.4028234663852886e+38" id="DcP-36-f9b">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="push" title="Options..." bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="DG1-0y-OMV">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <connections>
+                                                <action selector="accountOptionsClicked:" target="-2" id="rQF-fK-ykb"/>
+                                            </connections>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
                                 </tableColumns>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="50"/>
@@ -76,8 +90,8 @@
                         </subviews>
                         <nil key="backgroundColor"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="26">
-                        <rect key="frame" x="1" y="239" width="337" height="16"/>
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="26">
+                        <rect key="frame" x="1" y="218" width="451" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="25">
@@ -346,11 +360,11 @@
             <point key="canvasLocation" x="134.5" y="-232"/>
         </customView>
         <customView identifier="hostNameEnterView" id="278">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="269"/>
+            <rect key="frame" x="0.0" y="0.0" width="469" height="269"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="279">
-                    <rect key="frame" x="70" y="182" width="260" height="55"/>
+                    <rect key="frame" x="70" y="182" width="329" height="55"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Please enter your Mastodon / Pleroma instance host name." id="280">
                         <font key="font" metaFont="system"/>
@@ -359,7 +373,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjb-8B-DVp">
-                    <rect key="frame" x="47" y="153" width="305" height="21"/>
+                    <rect key="frame" x="47" y="153" width="374" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="eSe-64-AVo">
                         <font key="font" metaFont="system"/>
@@ -368,7 +382,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="273">
-                    <rect key="frame" x="109" y="66" width="183" height="32"/>
+                    <rect key="frame" x="144" y="66" width="183" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="274">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -392,7 +406,7 @@ DQ
                     <rect key="frame" x="18" y="44" width="444" height="224"/>
                     <textFieldCell key="cell" selectable="YES" id="8CA-i6-MFv">
                         <font key="font" metaFont="smallSystem"/>
-                        <mutableString key="title">Hi, this is Brian, the sole developer of this app.
+                        <string key="title">Hi, this is Brian, the sole developer of this app.
 I dislike advertisers stalking as much as you do.
 Since the very beginning, TootRain has had no tracking code at all.
 However that means I had absolutely no idea about the app's usage, not even how many people are using the app. Without any insight on the usage, it's very hard to guess how should I spend my time to improve the app.
@@ -402,7 +416,7 @@ I've decided to add a tiny amount of tracking to the app, while respecting your 
 - The analytics data is sent to my own server directly, encrypted, nobody else can see it
 - The data is only used for the developement of Xliffie.
 
-Of course, it is your choice to decide whether or not to be tracked, so here's a checkbox:</mutableString>
+Of course, it is your choice to decide whether or not to be tracked, so here's a checkbox:</string>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -439,7 +453,7 @@ Of course, it is your choice to decide whether or not to be tracked, so here's a
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSRemoveTemplate" width="14" height="4"/>
+        <image name="NSAddTemplate" width="15" height="13"/>
+        <image name="NSRemoveTemplate" width="15" height="4"/>
     </resources>
 </document>
