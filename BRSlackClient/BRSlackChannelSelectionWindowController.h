@@ -12,10 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSlackChannelSelectionWindowController : NSWindowController
 
-@property (weak) IBOutlet NSPopUpButton *dropdown;
+@property (weak) IBOutlet NSTableView *channelsTableView;
+@property (weak) IBOutlet NSTextField *threadURLField;
 @property (weak) IBOutlet NSButton *okButton;
-@property (nonatomic, strong) NSArray *channels;
-@property (nonatomic, readonly, nullable) BRSlackChannel *selectedChannel;
+
+@property (nonatomic, strong) NSArray<BRSlackChannel*> *channels;
+@property (nonatomic, readonly) NSArray<BRSlackChannel*> *selectedChannels;
+- (void)setSelectedChannelIds:(NSArray<NSString *> *)channelIds;
+@property (nonatomic, nullable) NSString* selectedThreadId;
 
 @end
 
