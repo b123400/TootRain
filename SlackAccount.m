@@ -21,7 +21,7 @@
 }
 
 - (NSString *)displayName {
-    return [NSString stringWithFormat:@"(Slack) %@ #%@", self.slackAccount.teamName, self.slackAccount.channelName];
+    return self.slackAccount.displayName;
 }
 
 - (void)deleteAccount {

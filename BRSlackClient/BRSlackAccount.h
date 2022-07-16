@@ -16,8 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *accountId;
 @property (nonatomic, strong) NSString *teamId;
 @property (nonatomic, strong) NSString *teamName;
-@property (nonatomic, strong) NSString *channelId;
-@property (nonatomic, strong) NSString *channelName;
+@property (nonatomic, strong) NSArray<NSString*> *channelIds;
+@property (nonatomic, strong) NSArray<NSString*> *channelNames;
+@property (nonatomic, strong) NSString *threadId;
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, strong) NSDictionary *responseHeaderWithCookies;
 
@@ -30,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)urlForEmoji:(NSString *)emoji;
 
 - (NSDictionary *)headersForRequest;
+- (NSString *)displayName;
 
 @end
 

@@ -122,10 +122,10 @@ static StreamController *shared;
         BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
         SlackStreamHandle *newHandle = [[SlackStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onConnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@ #%@",nil), slackAccount.teamName, slackAccount.channelName]];
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), slackAccount.displayName]];
         };
         newHandle.onDisconnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@ #%@",nil), slackAccount.teamName, slackAccount.channelName]];
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), slackAccount.teamName]];
         };
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {

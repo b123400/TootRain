@@ -29,12 +29,35 @@
         self.accountId = dict[@"accountId"];
         self.teamId = dict[@"teamId"];
         self.teamName = dict[@"teamName"];
-        self.channelId = dict[@"channelId"];
-        self.channelName = dict[@"chanelName"];
+        if (dict[@"channelIds"]) {
+            self.channelIds = dict[@"channelIds"];
+        } else if (dict[@"channelId"]) {
+            self.channelIds = @[dict[@"channelId"]];
+        }
+        if (dict[@"chanelNames"]) {
+            self.channelNames = dict[@"chanelNames"];
+        } else if (dict[@"chanelName"]) {
+            self.channelNames = @[dict[@"chanelName"]];
+        }
+        self.threadId = dict[@"threadId"];
         self.token = dict[@"token"];
         self.responseHeaderWithCookies = dict[@"headers"];
     }
     return self;
+}
+
+- (NSString *)displayName {
+    NSString *channelName = [self.channelNames componentsJoinedByString:@", "];
+    if (channelName.length > 30) {
+        channelName = [NSString stringWithFormat:@"#%@...", [channelName substringToIndex:29]];
+    } else if (self.channelNames.count) {
+        channelName = [NSString stringWithFormat:@"#%@", channelName];
+    }
+    NSString *threadString = self.threadId.length > 0 ? @"Thread" : @"";
+    return [NSString stringWithFormat:@"(Slack) %@ %@ %@",
+            self.teamName,
+            channelName,
+            threadString];
 }
 
 - (void)save {
@@ -60,8 +83,9 @@
         @"accountId": self.accountId,
         @"teamId": self.teamId,
         @"teamName": self.teamName,
-        @"channelId": self.channelId,
-        @"chanelName": self.channelName,
+        @"channelIds": self.channelIds,
+        @"chanelNames": self.channelNames,
+        @"threadId": self.threadId ?: @"",
         @"token": self.token,
         @"headers": self.responseHeaderWithCookies,
     };

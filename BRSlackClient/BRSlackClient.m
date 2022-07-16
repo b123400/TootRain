@@ -96,8 +96,9 @@
                     updatingAccount.accountId = userId;
                     updatingAccount.teamId = teamId;
                     updatingAccount.teamName = teamName;
-                    updatingAccount.channelId = updatingAccount.channelId;
-                    updatingAccount.channelName = updatingAccount.channelName;
+                    updatingAccount.channelIds = updatingAccount.channelIds;
+                    updatingAccount.channelNames = updatingAccount.channelNames;
+                    updatingAccount.threadId = updatingAccount.threadId;
                     updatingAccount.responseHeaderWithCookies = headersWithCookies;
                     updatingAccount.token = token;
                     [updatingAccount save];
@@ -115,8 +116,9 @@
                             account.accountId = userId;
                             account.teamId = teamId;
                             account.teamName = teamName;
-                            account.channelId = controller.selectedChannel.channelId;
-                            account.channelName = controller.selectedChannel.name;
+                            account.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
+                            account.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
+                            account.threadId = controller.selectedThreadId;
                             account.responseHeaderWithCookies = headersWithCookies;
                             account.token = token;
                             [account save];
