@@ -20,13 +20,7 @@
 "Connecting to %@" = "正在連接到 %@";
 
 /* No comment provided by engineer. */
-"Connecting to %@ #%@" = "正在接駁到 %1$@ #%2$@";
-
-/* No comment provided by engineer. */
 "Disconnected from %@" = "連接解除 %@";
-
-/* No comment provided by engineer. */
-"Disconnected from %@ #%@" = "連接解除 %1$@ #%2$@";
 
 /* No comment provided by engineer. */
 "Done" = "完成";

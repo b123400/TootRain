@@ -20,13 +20,7 @@
 "Connecting to %@" = "%@ に接続中";
 
 /* No comment provided by engineer. */
-"Connecting to %@ #%@" = "%1$@ #%2$@ に接続中";
-
-/* No comment provided by engineer. */
 "Disconnected from %@" = "%@ との接続が切れた";
-
-/* No comment provided by engineer. */
-"Disconnected from %@ #%@" = "%1$@ #%2$@ との接続が切れた";
 
 /* No comment provided by engineer. */
 "Done" = "完了";

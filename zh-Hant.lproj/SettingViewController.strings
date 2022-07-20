@@ -55,6 +55,9 @@
 /* Class = "NSMenuItem"; title = "Click through"; ObjectID = "AMX-Sr-Nw2"; */
 "AMX-Sr-Nw2.title" = "穿過";
 
+/* Class = "NSButtonCell"; title = "Options..."; ObjectID = "DG1-0y-OMV"; */
+"DG1-0y-OMV.title" = "選項...";
+
 /* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
 "lmq-cX-QGB.title" = "Hover → 隱藏";
 

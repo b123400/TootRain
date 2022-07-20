@@ -4,13 +4,13 @@
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
-/* Class = "NSMenuItem"; title = "TweetRain"; ObjectID = "56"; */
+/* Class = "NSMenuItem"; title = "TootRain"; ObjectID = "56"; */
 "56.title" = "TootRain";
 
-/* Class = "NSMenu"; title = "TweetRain"; ObjectID = "57"; */
+/* Class = "NSMenu"; title = "TootRain"; ObjectID = "57"; */
 "57.title" = "TootRain";
 
-/* Class = "NSMenuItem"; title = "About TweetRain"; ObjectID = "58"; */
+/* Class = "NSMenuItem"; title = "About TootRain"; ObjectID = "58"; */
 "58.title" = "About TootRain";
 
 /* Class = "NSMenu"; title = "( ; l l )"; ObjectID = "81"; */
@@ -31,7 +31,7 @@
 /* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
 "134.title" = "隱藏TootRain";
 
-/* Class = "NSMenuItem"; title = "Quit TweetRain"; ObjectID = "136"; */
+/* Class = "NSMenuItem"; title = "Quit TootRain"; ObjectID = "136"; */
 "136.title" = "關閉TootRain";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */

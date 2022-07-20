@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DxK-LQ-IRR">
-                        <rect key="frame" x="18" y="399" width="185" height="16"/>
+                        <rect key="frame" x="18" y="399" width="224" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Choose one or more channels" id="MWl-Uq-Btn">
                             <font key="font" metaFont="system"/>
@@ -49,7 +49,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWX-g4-DSZ">
-                        <rect key="frame" x="208" y="13" width="76" height="32"/>
+                        <rect key="frame" x="183" y="13" width="101" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cQ3-0h-PqZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -96,7 +96,7 @@ Gw
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dlU-Mk-qE3">
-                            <rect key="frame" x="1" y="348" width="328" height="16"/>
+                            <rect key="frame" x="1" y="261" width="328" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MSh-nG-f94">
@@ -105,7 +105,7 @@ Gw
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-fz-iSa">
-                        <rect key="frame" x="320" y="397" width="30" height="19"/>
+                        <rect key="frame" x="306" y="396" width="44" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="All" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fcs-7S-d3N">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -115,19 +115,8 @@ Gw
                             <action selector="allPressed:" target="-2" id="QWl-eM-49U"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-yp-wN3">
-                        <rect key="frame" x="275" y="397" width="44" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="None" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dvQ-D3-K7f">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="nonePressed:" target="-2" id="uwK-ad-kss"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmr-af-jVT">
-                        <rect key="frame" x="20" y="89" width="141" height="16"/>
+                        <rect key="frame" x="20" y="89" width="332" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Or enter a thread URL:" id="PNn-8B-CFL">
                             <font key="font" metaFont="system"/>
@@ -147,6 +136,17 @@ Gw
                             <outlet property="delegate" destination="-2" id="nOU-GI-p2z"/>
                         </connections>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJt-yp-wN3">
+                        <rect key="frame" x="254" y="396" width="44" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="None" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dvQ-D3-K7f">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="nonePressed:" target="-2" id="uwK-ad-kss"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
