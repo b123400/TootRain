@@ -15,7 +15,7 @@
         self.user = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
         self.statusID = dict[@"id"];
         self.createdAt = [[[NSISO8601DateFormatter alloc] init] dateFromString:dict[@"created_at"]];
-        self.text = dict[@"content"];
+        self.text = [[self class] extractContentFromStatusDict:dict];
         self.favourited = [dict[@"favourited"] boolValue];
         self.bookmarked = [dict[@"bookmarked"] boolValue];
         self.reblogged = [dict[@"reblogged"] boolValue];
@@ -59,6 +59,19 @@
     return [[NSAttributedString alloc] initWithHTML:[text dataUsingEncoding:NSUTF8StringEncoding]
                                             options:options
                                  documentAttributes:nil];
+}
+
++ (NSString *)extractContentFromStatusDict:(NSDictionary *)dict {
+    if ([dict[@"content"] isKindOfClass:[NSString class]]) {
+        NSString *content = dict[@"content"];
+        if (content.length > 0) {
+            return content;
+        }
+    }
+    if ([dict[@"reblog"] isKindOfClass:[NSDictionary class]]) {
+        return [self extractContentFromStatusDict:dict[@"reblog"]];
+    }
+    return nil;
 }
 
 @end
