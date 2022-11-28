@@ -23,6 +23,12 @@
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Check for Updates…" id="TRN-i4-5na">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="zvv-1O-xN1" id="6Yg-mV-gjx"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
@@ -138,5 +144,6 @@
         </menu>
         <customObject id="494" customClass="FloodAppDelegate"/>
         <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="zvv-1O-xN1" customClass="SPUStandardUpdaterController"/>
     </objects>
 </document>
