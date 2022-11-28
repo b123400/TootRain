@@ -11,11 +11,18 @@
 
 - (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account {
     if (self = [super init]) {
+        NSDictionary *reblogDict = dict[@"reblog"];
+        if ([dict[@"reblog"] isKindOfClass:[NSDictionary class]]) {
+            self = [self initWithJSONDict:dict[@"reblog"] account:account];
+            self.rebloggedByUser = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
+            return self;
+        }
+        
         self.account = account;
         self.user = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
         self.statusID = dict[@"id"];
         self.createdAt = [[[NSISO8601DateFormatter alloc] init] dateFromString:dict[@"created_at"]];
-        self.text = [[self class] extractContentFromStatusDict:dict];
+        self.text = dict[@"content"];
         self.favourited = [dict[@"favourited"] boolValue];
         self.bookmarked = [dict[@"bookmarked"] boolValue];
         self.reblogged = [dict[@"reblogged"] boolValue];
@@ -59,19 +66,6 @@
     return [[NSAttributedString alloc] initWithHTML:[text dataUsingEncoding:NSUTF8StringEncoding]
                                             options:options
                                  documentAttributes:nil];
-}
-
-+ (NSString *)extractContentFromStatusDict:(NSDictionary *)dict {
-    if ([dict[@"content"] isKindOfClass:[NSString class]]) {
-        NSString *content = dict[@"content"];
-        if (content.length > 0) {
-            return content;
-        }
-    }
-    if ([dict[@"reblog"] isKindOfClass:[NSDictionary class]]) {
-        return [self extractContentFromStatusDict:dict[@"reblog"]];
-    }
-    return nil;
 }
 
 @end

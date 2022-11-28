@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) BRMastodonAccount *account;
 
 @property (nonatomic, strong) BRMastodonUser *user;
+@property (nonatomic, strong) BRMastodonUser *rebloggedByUser;
 
 @property (nonatomic, strong) NSString *statusID;
 @property (nonatomic, strong) NSDate *createdAt;
