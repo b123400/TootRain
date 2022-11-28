@@ -10,7 +10,6 @@
 #import "ComposeStatusViewController.h"
 #import "SettingManager.h"
 #import "NS(Attributed)String+Geometrics.h"
-#import "MatomoTracker+Shared.h"
 
 @interface RainDropDetailViewController ()
 
@@ -116,10 +115,6 @@
 	controller.inReplyTo=status;
 	
 	[popover showRelativeToRect:[(NSButton*)sender frame] ofView:[(NSButton*)sender superview] preferredEdge:NSMaxYEdge];
-    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"RainDropDetailViewController"
-                                                        action:@"replyClicked"
-                                                          name:nil
-                                                           url:nil];
 }
 - (IBAction)bookmarkClicked:(id)sender {
     if (![status canBookmark]) return;
@@ -136,10 +131,6 @@
     }];
     [(NSButton*)sender setEnabled:NO];
     [(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
-    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"RainDropDetailViewController"
-                                                        action:@"bookmarkClicked"
-                                                          name:nil
-                                                           url:nil];
 }
 - (IBAction)repostClicked:(id)sender {
     if (![status canReblog]) return;
@@ -156,10 +147,6 @@
     }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:NSLocalizedString(@"Loading",nil)];
-    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"RainDropDetailViewController"
-                                                        action:@"repostClicked"
-                                                          name:nil
-                                                           url:nil];
 }
 - (IBAction)favClicked:(id)sender {
     if (![status canFavourite]) return;
@@ -176,10 +163,6 @@
     }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];
-    [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"RainDropDetailViewController"
-                                                        action:@"favClicked"
-                                                          name:nil
-                                                           url:nil];
 }
 
 @end

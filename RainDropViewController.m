@@ -12,7 +12,6 @@
 #import "SettingViewController.h"
 #import "NSMutableAttributedString+Stripe.h"
 #import "DummyStatus.h"
-#import "MatomoTracker+Shared.h"
 
 @interface RainDropViewController () <CAAnimationDelegate>
 
@@ -250,11 +249,6 @@
 		NSPoint localLoc=[self.view convertPoint:mouseLoc fromView:nil];
 		CGRect frame=CGRectMake(localLoc.x, 0, 1, self.view.frame.size.height);
 		[popover showRelativeToRect:frame ofView:self.view preferredEdge:NSMaxYEdge];
-        
-        [[MatomoTracker shared] trackWithIsolatedEventWithCategory:@"RainDropViewController"
-                                                            action:@"openDetail"
-                                                              name:nil
-                                                               url:nil];
 	}else{
 		[popover close];
 	}

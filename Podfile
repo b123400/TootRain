@@ -1,11 +1,6 @@
 
-def import_pods
-  pod 'MatomoTracker', :git => 'https://github.com/b123400/matomo-sdk-ios.git', :branch => 'new-session-objc'
-end
-
 target :TootRain do
   platform :osx, "10.15"
-  import_pods
 end
 
 target "TweetRain-ios" do

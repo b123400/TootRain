@@ -9,7 +9,6 @@
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
 #import "BRSlackClient.h"
-#import "MatomoTracker+Shared.h"
 
 @implementation FloodAppDelegate
 
@@ -18,8 +17,6 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
                                                               @"NSApplicationCrashOnExceptions": @YES
                                                               }];
-    NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    [[MatomoTracker shared] setDimension:versionString forIndex:1];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	

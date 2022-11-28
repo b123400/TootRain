@@ -14,7 +14,6 @@
 #import "Account.h"
 #import "MastodonAccount.h"
 #import "SlackAccount.h"
-#import "MatomoTracker+Shared.h"
 #import "BRSlackClient.h"
 #import "BRSlackChannelSelectionWindowController.h"
 
@@ -40,17 +39,6 @@
 -(void)setupToolbar{
 	[self addView:accountsSettingView label:NSLocalizedString(@"Accounts", nil) image:[NSImage imageNamed:@"NSUser"] identifier:@"accounts"];
 	[self addView:appearanceSettingView label:NSLocalizedString(@"Appearance",nil) image:[NSImage imageNamed:@"NSColorPanel"] identifier:@"appearance"];
-    {
-        NSImage *image = nil;
-        if (@available(macOS 11.0, *)) {
-            image = [NSImage imageWithSystemSymbolName:@"icloud.and.arrow.up"
-                              accessibilityDescription:@"Telemetry"];
-        }
-        [self addView:telemetryView
-                label:NSLocalizedString(@"Telemetry", @"")
-                image:image
-           identifier:@"telemetry"];
-    }
 }
 
 + (NSString *)nibName{
@@ -133,8 +121,6 @@
     if (!accounts.count) {
         [self displayViewForIdentifier:@"accounts" animate:YES];
     }
-    
-    [self.telemetryCheckbox setState:[MatomoTracker shared].isOptedOut ? NSControlStateValueOff : NSControlStateValueOn ];
 }
 
 #pragma mark tableview datasource+delegate
@@ -411,10 +397,6 @@
     [[SettingManager sharedManager] setFont:theFont];
 	
     [fontLabel setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Font: %@ %.0f",nil),[theFont displayName],[theFont pointSize]]];
-}
-
-- (IBAction)telemetryChanged:(id)sender {
-    [MatomoTracker shared].isOptedOut = self.telemetryCheckbox.state == NSControlStateValueOff;
 }
 
 @end

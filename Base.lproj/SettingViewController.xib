@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,8 +26,6 @@
                 <outlet property="shadowColorWell" destination="211" id="233"/>
                 <outlet property="showProfileImageCheckBox" destination="186" id="226"/>
                 <outlet property="tableViewScrollView" destination="24" id="297"/>
-                <outlet property="telemetryCheckbox" destination="YkG-Jq-yLx" id="o2x-NR-Qdi"/>
-                <outlet property="telemetryView" destination="iGD-Om-EMY" id="sQR-ei-MTT"/>
                 <outlet property="textColorWell" destination="208" id="239"/>
                 <outlet property="truncateStatusCheckBox" destination="244" id="Lrz-Uy-KX3"/>
                 <outlet property="truncateStatusField" destination="phw-jJ-rIj" id="kxM-kl-80U"/>
@@ -49,13 +47,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" id="27">
-                                <rect key="frame" x="0.0" y="0.0" width="454" height="233"/>
+                                <rect key="frame" x="0.0" y="0.0" width="451" height="233"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" width="349" minWidth="40" maxWidth="1000" id="30">
+                                    <tableColumn identifier="name" width="320" minWidth="40" maxWidth="1000" id="30">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,7 +88,7 @@
                         </subviews>
                         <nil key="backgroundColor"/>
                     </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="26">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="26">
                         <rect key="frame" x="1" y="218" width="451" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -397,59 +395,6 @@ DQ
                 </button>
             </subviews>
             <point key="canvasLocation" x="680" y="155"/>
-        </customView>
-        <customView id="iGD-Om-EMY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="312"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="17O-a1-Aqr">
-                    <rect key="frame" x="18" y="44" width="444" height="224"/>
-                    <textFieldCell key="cell" selectable="YES" id="8CA-i6-MFv">
-                        <font key="font" metaFont="smallSystem"/>
-                        <string key="title">Hi, this is Brian, the sole developer of this app.
-I dislike advertisers stalking as much as you do.
-Since the very beginning, TootRain has had no tracking code at all.
-However that means I had absolutely no idea about the app's usage, not even how many people are using the app. Without any insight on the usage, it's very hard to guess how should I spend my time to improve the app.
-I've decided to add a tiny amount of tracking to the app, while respecting your privacy. You can also inspect the actual code on Github.
-
-- Your data is not identifiable, I don't know who you are
-- The analytics data is sent to my own server directly, encrypted, nobody else can see it
-- The data is only used for the developement of Xliffie.
-
-Of course, it is your choice to decide whether or not to be tracked, so here's a checkbox:</string>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rou-r1-8Kz">
-                    <rect key="frame" x="18" y="276" width="69" height="16"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="Telemetry" id="hPT-xW-XyP">
-                        <font key="font" textStyle="headline" name=".SFNS-Bold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YkG-Jq-yLx">
-                    <rect key="frame" x="18" y="19" width="131" height="18"/>
-                    <buttonCell key="cell" type="check" title="Enable Telemetry" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4F4-16-cYZ">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="telemetryChanged:" target="-2" id="vOJ-v2-qob"/>
-                    </connections>
-                </button>
-            </subviews>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="YkG-Jq-yLx" secondAttribute="bottom" constant="20" symbolic="YES" id="51R-lv-cka"/>
-                <constraint firstItem="Rou-r1-8Kz" firstAttribute="leading" secondItem="iGD-Om-EMY" secondAttribute="leading" constant="20" symbolic="YES" id="8n4-Ks-nxg"/>
-                <constraint firstAttribute="trailing" secondItem="17O-a1-Aqr" secondAttribute="trailing" constant="20" symbolic="YES" id="9XQ-RP-BZv"/>
-                <constraint firstItem="17O-a1-Aqr" firstAttribute="top" secondItem="Rou-r1-8Kz" secondAttribute="bottom" constant="8" symbolic="YES" id="SBo-LD-coV"/>
-                <constraint firstItem="YkG-Jq-yLx" firstAttribute="top" secondItem="17O-a1-Aqr" secondAttribute="bottom" constant="8" symbolic="YES" id="o3M-5A-Ue5"/>
-                <constraint firstItem="Rou-r1-8Kz" firstAttribute="top" secondItem="iGD-Om-EMY" secondAttribute="top" constant="20" symbolic="YES" id="rfi-1l-A8z"/>
-                <constraint firstItem="17O-a1-Aqr" firstAttribute="leading" secondItem="iGD-Om-EMY" secondAttribute="leading" constant="20" symbolic="YES" id="xjr-E7-WZz"/>
-            </constraints>
-            <point key="canvasLocation" x="720" y="-255"/>
         </customView>
     </objects>
     <resources>
