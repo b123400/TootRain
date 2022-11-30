@@ -170,6 +170,10 @@
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */; };
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
+		CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
+		CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
+		CFB3197F2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */; };
+		CFB319802935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
 		CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
 		CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
@@ -410,6 +414,9 @@
 		CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingOAuthWindowController.h; sourceTree = "<group>"; };
 		CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingOAuthWindowController.m; sourceTree = "<group>"; };
 		CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOAuthWindowController.xib; sourceTree = "<group>"; };
+		CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonSourceSelectionWindowController.h; sourceTree = "<group>"; };
+		CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonSourceSelectionWindowController.m; sourceTree = "<group>"; };
+		CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRMastodonSourceSelectionWindowController.xib; sourceTree = "<group>"; };
 		CFB319812935E69400BD2C18 /* SettingAccountCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellView.h; sourceTree = "<group>"; };
 		CFB319822935E69400BD2C18 /* SettingAccountCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountCellView.m; sourceTree = "<group>"; };
 		CFB319852935EE3600BD2C18 /* SettingAccountCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellObject.h; sourceTree = "<group>"; };
@@ -931,6 +938,9 @@
 				CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */,
 				CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */,
 				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
+				CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */,
+				CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */,
+				CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */,
 			);
 			path = BRMastodonClient;
 			sourceTree = "<group>";
@@ -1076,6 +1086,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				CFB3197F2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
@@ -1099,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */,
+				CFB319802935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
@@ -1302,6 +1314,7 @@
 				CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */,
 				CF5DE46526A02ACF0040BD63 /* MastodonAccount.m in Sources */,
 				CF5DE47126A03A8E0040BD63 /* SlackStreamHandle.m in Sources */,
+				CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
 				CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
@@ -1367,6 +1380,7 @@
 				CF5D2D5029350BC400745D63 /* BRMastodonEmoji.m in Sources */,
 				CF5D2D5129350BC400745D63 /* MastodonAccount.m in Sources */,
 				CF5D2D5229350BC400745D63 /* SlackStreamHandle.m in Sources */,
+				CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF5D2D5329350BC400745D63 /* MastodonUser.m in Sources */,
 				CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,

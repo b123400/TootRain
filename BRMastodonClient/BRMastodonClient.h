@@ -14,6 +14,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    BRMastodonStreamSourcePublic,
+    BRMastodonStreamSourcePublicLocal,
+    BRMastodonStreamSourcePublicRemote,
+    BRMastodonStreamSourceHashtag,
+    BRMastodonStreamSourceHashtagLocal,
+    BRMastodonStreamSourceUser,
+    BRMastodonStreamSourceUserNotification,
+    BRMastodonStreamSourceList,
+    BRMastodonStreamSourceDirect,
+} BRMastodonStreamSource;
+
 @interface BRMastodonClient : NSObject
 
 + (instancetype)shared;
@@ -33,6 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
                 completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback;
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account;
+
+- (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account
+                                               andSource:(BRMastodonStreamSource)source;
+
+- (void)setStreamSourceHashtag:(NSString *)hashtag;
+- (void)setStreamSourceList:(NSString *)list;
 
 - (void)replyToStatus:(BRMastodonStatus *)status
            withText:(NSString *)text

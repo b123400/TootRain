@@ -19,6 +19,7 @@
 #import "SettingAccountCellObject.h"
 #import "SettingAccountDetailMastodonView.h"
 #import "SettingAccountDetailSlackView.h"
+#import "BRMastodonSourceSelectionWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -310,6 +311,10 @@
 
 - (IBAction)mastodonOptionClicked:(id)sender {
     if (![self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) return;
+    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] init];
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        NSLog(@"%@", controller);
+    }];
 }
 
 - (IBAction)slackOptionClicked:(id)sender {

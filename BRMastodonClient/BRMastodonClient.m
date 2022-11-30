@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSURLSession *urlSession;
 @property (nonatomic, strong) NSMapTable *taskToHandleMapping;
+@property (nonatomic, strong) NSString *streamSourceHashtag;
+@property (nonatomic, strong) NSString *streamSourceList;
 
 @end
 
@@ -275,6 +277,11 @@
 }
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
+    return [self streamingStatusesWithAccount:account andSource:BRMastodonStreamSourceUser];
+}
+
+- (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account
+                                               andSource:(BRMastodonStreamSource)source {
     __block BRMastodonStreamHandle *handler = [[BRMastodonStreamHandle alloc] init];
     typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
@@ -285,8 +292,19 @@
         } else if ([components.scheme isEqual:@"https"]) {
             components.scheme = @"wss";
         }
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/streaming?access_token=%@&stream=user", [accessToken stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]
-                            relativeToURL:components.URL];
+        NSMutableArray<NSURLQueryItem*> *queryItems = [NSMutableArray array];
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"access_token" value:accessToken]];
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"stream" value:[self queryParameterForStreamSource:source]]];
+        
+        if (source == BRMastodonStreamSourceHashtag && self.streamSourceHashtag.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"tag" value:self.streamSourceHashtag]];
+        } else if (source == BRMastodonStreamSourceList && self.streamSourceList.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"list" value:self.streamSourceList]];
+        }
+        [components setQueryItems:queryItems];
+        [components setPath:@"/api/v1/streaming"];
+        
+        NSURL *url = components.URL;
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionWebSocketTask *task = [_self.urlSession webSocketTaskWithRequest:request];
         [_self receiveMessageFromWebsocketTask:task
@@ -525,6 +543,32 @@ didOpenWithProtocol:(NSString *)protocol {
         handler.onDisconnected();
     }
     [self.taskToHandleMapping removeObjectForKey:webSocketTask];
+}
+
+- (NSString *)queryParameterForStreamSource:(BRMastodonStreamSource)source {
+    switch (source) {
+        case BRMastodonStreamSourceUser:
+            return @"user";
+        case BRMastodonStreamSourceUserNotification:
+            return @"user:notification";
+        case BRMastodonStreamSourceList:
+            return @"list";
+        case BRMastodonStreamSourceDirect:
+            return @"direct";
+        case BRMastodonStreamSourceHashtag:
+            return @"hashtag";
+        case BRMastodonStreamSourceHashtagLocal:
+            return @"hashtag:local";
+        case BRMastodonStreamSourcePublic:
+            return @"public";
+        case BRMastodonStreamSourcePublicLocal:
+            return @"public:local";
+        case BRMastodonStreamSourcePublicRemote:
+            return @"public:remote";
+        default:
+            break;
+    }
+    return nil;
 }
 
 @end
