@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)identifier;
 - (NSString *)displayName;
+- (NSString *)shortDisplayName;
 - (void)deleteAccount;
 
 @end

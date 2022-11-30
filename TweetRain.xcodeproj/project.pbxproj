@@ -170,6 +170,10 @@
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */; };
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
+		CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
+		CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
+		CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
+		CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
@@ -181,6 +185,12 @@
 		CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
 		CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */; };
 		CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
+		CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
+		CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
+		CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
 		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -400,6 +410,10 @@
 		CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingOAuthWindowController.h; sourceTree = "<group>"; };
 		CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingOAuthWindowController.m; sourceTree = "<group>"; };
 		CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOAuthWindowController.xib; sourceTree = "<group>"; };
+		CFB319812935E69400BD2C18 /* SettingAccountCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellView.h; sourceTree = "<group>"; };
+		CFB319822935E69400BD2C18 /* SettingAccountCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountCellView.m; sourceTree = "<group>"; };
+		CFB319852935EE3600BD2C18 /* SettingAccountCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellObject.h; sourceTree = "<group>"; };
+		CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountCellObject.m; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
@@ -423,6 +437,10 @@
 		CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonAccount.m; sourceTree = "<group>"; };
 		CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonOAuthResult.h; sourceTree = "<group>"; };
 		CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonOAuthResult.m; sourceTree = "<group>"; };
+		CFDDE44A293754C200E64EF5 /* SettingAccountDetailSlackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailSlackView.h; sourceTree = "<group>"; };
+		CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailSlackView.m; sourceTree = "<group>"; };
+		CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailMastodonView.h; sourceTree = "<group>"; };
+		CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailMastodonView.m; sourceTree = "<group>"; };
 		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFE39F801A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		CFE39F811A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -798,6 +816,14 @@
 				CF2F8BD91390E0CB00D733CA /* SettingViewController.h */,
 				CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */,
 				CFE39F941A764F59004644C8 /* SettingViewController.xib */,
+				CFB319812935E69400BD2C18 /* SettingAccountCellView.h */,
+				CFB319822935E69400BD2C18 /* SettingAccountCellView.m */,
+				CFB319852935EE3600BD2C18 /* SettingAccountCellObject.h */,
+				CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */,
+				CFDDE44A293754C200E64EF5 /* SettingAccountDetailSlackView.h */,
+				CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */,
+				CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */,
+				CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */,
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
@@ -1244,6 +1270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF75438E13686342009E7292 /* TransparentView.m in Sources */,
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */,
@@ -1275,6 +1303,7 @@
 				CF5DE46526A02ACF0040BD63 /* MastodonAccount.m in Sources */,
 				CF5DE47126A03A8E0040BD63 /* SlackStreamHandle.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
+				CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
@@ -1282,6 +1311,7 @@
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
 				CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */,
+				CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
 				CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */,
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
@@ -1305,6 +1335,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5D2D3429350BC400745D63 /* main.m in Sources */,
+				CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF5D2D3529350BC400745D63 /* TransparentView.m in Sources */,
 				CF5D2D3629350BC400745D63 /* CustomTitleBar.m in Sources */,
 				CF5D2D3729350BC400745D63 /* BRMastodonUser.m in Sources */,
@@ -1336,6 +1368,7 @@
 				CF5D2D5129350BC400745D63 /* MastodonAccount.m in Sources */,
 				CF5D2D5229350BC400745D63 /* SlackStreamHandle.m in Sources */,
 				CF5D2D5329350BC400745D63 /* MastodonUser.m in Sources */,
+				CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
@@ -1343,6 +1376,7 @@
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
 				CF5D2D5A29350BC400745D63 /* BRSlackStreamHandle.m in Sources */,
+				CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
 				CF5D2D5B29350BC400745D63 /* SettingOAuthWindowController.m in Sources */,
 				CF5D2D5C29350BC400745D63 /* RainDropViewController.m in Sources */,
 				CF5D2D5D29350BC400745D63 /* RainDropView.m in Sources */,
@@ -1384,6 +1418,8 @@
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
 				CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */,
 				CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */,
+				CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
+				CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
 				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,
 			);

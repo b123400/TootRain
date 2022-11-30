@@ -13,6 +13,10 @@
     return @"[Account]";
 }
 
+- (NSString *)shortDisplayName {
+    return self.displayName;
+}
+
 - (NSString *)identifier {
     return @"";
 }

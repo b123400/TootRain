@@ -273,4 +273,8 @@
     return [NSString stringWithFormat:@"%@:%@", self.app.hostName, self.accountId];
 }
 
+- (NSString *)shortDisplayName {
+    return self.displayName;
+}
+
 @end

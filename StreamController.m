@@ -68,7 +68,6 @@ static StreamController *shared;
         self.streamHandle = nil;
         self.account = nil;
     }
-    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
 
     self.account = changedToAccount;
     [self reconnect];

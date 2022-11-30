@@ -220,8 +220,6 @@
         if (!data) {
             data = [[message string] dataUsingEncoding:NSUTF8StringEncoding];
         }
-        NSLog(@"fuck %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        NSLog(@"fuck error %@", error);
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 //        {"type":"message","user":"U027Q199PD1","client_msg_id":"018FD003-A387-4AE1-B4EC-93B3C234F465","suppress_notification":false,"text":"Rrrr","team":"T027W17JUFN","blocks":[{"type":"rich_text","block_id":"19NKV","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Rrrr"}]}]}],"source_team":"T027W17JUFN","user_team":"T027W17JUFN","channel":"C02793DR8HM","event_ts":"1626268256.000200","ts":"1626268256.000200"}
         

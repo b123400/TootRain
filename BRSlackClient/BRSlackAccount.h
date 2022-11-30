@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDictionary *)headersForRequest;
 - (NSString *)displayName;
+- (NSString *)shortDisplayName;
 
 @end
 
