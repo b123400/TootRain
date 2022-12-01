@@ -348,7 +348,7 @@
         case BRMastodonStreamSourceHashtag:
             return [NSString stringWithFormat:NSLocalizedString(@"Hashtag: %@", @"source name"), self.sourceHashtag];
         case BRMastodonStreamSourceHashtagLocal:
-            return @"Hashtag Local";
+            return [NSString stringWithFormat:NSLocalizedString(@"Hashtag Local: %@", @"source name"), self.sourceHashtag];
         case BRMastodonStreamSourcePublic:
             return @"Public";
         case BRMastodonStreamSourcePublicLocal:
