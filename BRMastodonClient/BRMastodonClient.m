@@ -12,8 +12,6 @@
 
 @property (nonatomic, strong) NSURLSession *urlSession;
 @property (nonatomic, strong) NSMapTable *taskToHandleMapping;
-@property (nonatomic, strong) NSString *streamSourceHashtag;
-@property (nonatomic, strong) NSString *streamSourceList;
 
 @end
 
@@ -292,10 +290,10 @@
         [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"access_token" value:accessToken]];
         [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"stream" value:[self queryParameterForStreamSource:source]]];
         
-        if (source == BRMastodonStreamSourceHashtag && self.streamSourceHashtag.length) {
-            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"tag" value:self.streamSourceHashtag]];
-        } else if (source == BRMastodonStreamSourceList && self.streamSourceList.length) {
-            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"list" value:self.streamSourceList]];
+        if ((source == BRMastodonStreamSourceHashtag || source == BRMastodonStreamSourceHashtagLocal) && account.sourceHashtag.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"tag" value:account.sourceHashtag]];
+        } else if (source == BRMastodonStreamSourceList && account.sourceListId.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"list" value:account.sourceListId]];
         }
         [components setQueryItems:queryItems];
         [components setPath:@"/api/v1/streaming"];

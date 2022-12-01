@@ -68,6 +68,11 @@
             [self reloadButtons];
         });
     }];
+    if (self.selectedSource == BRMastodonStreamSourceHashtagLocal) {
+        self.hashtagLocalTextField.stringValue = self.account.sourceHashtag ?: @"";
+    } else {
+        self.hashtagTextField.stringValue = self.account.sourceHashtag ?: @"";
+    }
 }
 
 - (IBAction)radioButtonSelected:(id)sender {
