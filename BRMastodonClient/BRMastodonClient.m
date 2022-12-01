@@ -329,12 +329,8 @@
                 }
                 return;
             }
-            if (![jsonDict[@"event"] isEqualToString:@"update"] || !jsonDict[@"payload"]) {
-                return;
-            }
-            NSDictionary *statusDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)jsonDict[@"payload"] dataUsingEncoding:NSUTF8StringEncoding]
-                                                                       options:0
-                                                                         error:&jsonError];
+            NSDictionary *statusDict = [self findStatusDictionaryFromStreamEvent: jsonDict];
+            if (!statusDict) return;
             BRMastodonStatus *status = [[BRMastodonStatus alloc] initWithJSONDict:statusDict account:account];
             if (handler.onStatus) {
                 handler.onStatus(status);
@@ -345,6 +341,28 @@
         [task resume];
     }];
     return handler;
+}
+
+- (NSDictionary *)findStatusDictionaryFromStreamEvent:(NSDictionary*)jsonDict {
+    NSString *eventStr = jsonDict[@"event"];
+    NSString *payloadStr = jsonDict[@"payload"];
+    if (!eventStr || !payloadStr) return nil;
+    NSDictionary *payloadDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)payloadStr dataUsingEncoding:NSUTF8StringEncoding]
+                                                                options:0
+                                                                  error:nil];
+    if (!payloadDict) return nil;
+    if ([eventStr isEqualToString:@"update"]) {
+        return payloadDict;
+    }
+    if ([eventStr isEqualTo:@"notification"]) {
+        if ([payloadDict[@"type"] isEqualTo:@"status"] || [payloadDict[@"type"] isEqualTo:@"mention"]) {
+            return payloadDict[@"status"];
+        }
+    }
+    if ([eventStr isEqualTo:@"conversation"]) {
+        return payloadDict[@"last_status"];
+    }
+    return nil;
 }
 
 - (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
