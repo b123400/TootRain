@@ -233,7 +233,7 @@
         @"source": [[self class] stringRepresentationForStreamSource:self.source],
         @"hashtag": self.sourceHashtag ?: @"",
         @"listId": self.sourceListId ?: @"",
-        @"listName": self.sourceListId ?: @"",
+        @"listName": self.sourceListName ?: @"",
     };
 }
 
