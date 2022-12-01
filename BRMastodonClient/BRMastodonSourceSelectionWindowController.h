@@ -6,10 +6,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "BRMastodonAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRMastodonSourceSelectionWindowController : NSWindowController
+
+- (instancetype)initWithAccount:(BRMastodonAccount *)account;
+
+- (BRMastodonStreamSource)selectedSource;
+- (NSString *)hashtag;
+- (NSString *)listId;
+- (NSString *)listName;
 
 @end
 

@@ -111,16 +111,10 @@
     [self updateAccountView];
     
     // need to find using identifier becoz system api doesn't compare it well
-    NSUInteger index = NSNotFound;
     NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
-    Account *selectedAccount = [[SettingManager sharedManager]selectedAccount];
-    for (int i = 0; i<accounts.count; i++) {
-        Account *thisAccount = [accounts objectAtIndex:i];
-        if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
-            index = i;
-            break;
-        }
-    }
+    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    NSUInteger index = [self indexOfAccountByIdentifier:selectedAccount];
+
     if (index != NSNotFound) {
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:index];
         [accountsTableView selectRowIndexes:indexSet byExtendingSelection:NO];
@@ -129,6 +123,19 @@
     if (!accounts.count) {
         [self displayViewForIdentifier:@"accounts" animate:YES];
     }
+}
+
+- (NSUInteger)indexOfAccountByIdentifier:(Account *)a {
+    NSUInteger index = NSNotFound;
+    NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
+    for (int i = 0; i<accounts.count; i++) {
+        Account *thisAccount = [accounts objectAtIndex:i];
+        if ([thisAccount.identifier isEqualToString:a.identifier]) {
+            index = i;
+            break;
+        }
+    }
+    return index;
 }
 
 #pragma mark tableview datasource+delegate
@@ -267,6 +274,7 @@
 }
 
 - (void)updateAccountView {
+    Account *lastDetailSelectedAccount = self.detailSelectedAccount;
     [[SettingManager sharedManager] reloadAccounts];
     if ([SettingManager sharedManager].accounts.count != 0) {
         self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
@@ -275,18 +283,9 @@
         self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = YES;
         [accountsSettingView addSubview:self.authorizeView];
     }
-    NSString *detailSelectedAccountId = self.detailSelectedAccount.identifier;
     [accountsTableView reloadData];
-    
-    NSUInteger index = NSNotFound;
-    NSArray <Account *> *accounts = [SettingManager sharedManager].accounts;
-    for (int i = 0; i<accounts.count; i++) {
-        Account *thisAccount = [accounts objectAtIndex:i];
-        if ([thisAccount.identifier isEqualToString:detailSelectedAccountId]) {
-            index = i;
-            break;
-        }
-    }
+
+    NSUInteger index = [self indexOfAccountByIdentifier:lastDetailSelectedAccount];
     if (index != NSNotFound) {
         [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
                        byExtendingSelection:NO];
@@ -311,9 +310,24 @@
 
 - (IBAction)mastodonOptionClicked:(id)sender {
     if (![self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) return;
-    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] init];
+    MastodonAccount *a = (MastodonAccount*)self.detailSelectedAccount;
+    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] initWithAccount:a.mastodonAccount];
     [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
         NSLog(@"%@", controller);
+        a.mastodonAccount.source = controller.selectedSource;
+        a.mastodonAccount.sourceHashtag = controller.hashtag;
+        a.mastodonAccount.sourceListId = controller.listId;
+        a.mastodonAccount.sourceListName = controller.listName;
+        [a.mastodonAccount save];
+        
+        BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
+        NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
+
+        [self updateAccountView];
+        
+        if (needReconnect) {
+            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:currentAccountIdentifier]];
+        }
     }];
 }
 
@@ -333,7 +347,7 @@
                     account.slackAccount.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
                     account.slackAccount.threadId = controller.selectedThreadId;
                     [account.slackAccount save];
-                    [self  updateAccountView];
+                    [self updateAccountView];
                 }
             }];
         });

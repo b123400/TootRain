@@ -10,11 +10,9 @@
 @interface BRMastodonAccount ()
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
-                        url:(NSString *)url
-                displayName:(NSString *)displayName
                 accessToken:(NSString *)accessToken
                refreshToken:(NSString *)refreshToken
-                    expires:(NSDate *)expires;
+                 dictionary:(NSDictionary *)dict;
 @end
 
 @implementation BRMastodonAccount
@@ -93,36 +91,35 @@
     NSDictionary *servers = (NSDictionary*)[defaults objectForKey:@"BRMastodonAccount"];
     NSDictionary *accounts = (NSDictionary*)servers[app.hostName];
     NSString *url = accounts[accountId][@"url"];
-    NSString *displayName = accounts[accountId][@"displayName"];
     NSString *host = accounts[accountId][@"host"];
-    NSDate *expires = accounts[accountId][@"expires"];
     if (!url || !host) {
         return nil;
     }
     return [[BRMastodonAccount alloc] initWithApp:app
                                         accountId:accountId
-                                              url:url
-                                      displayName:displayName
                                       accessToken:accessToken
                                      refreshToken:refreshTokenFound ? refreshToken : nil
-                                          expires:expires];
+                                       dictionary:accounts[accountId]
+    ];
 }
 
 - (instancetype)initWithApp:(BRMastodonApp *)app
                   accountId:(NSString *)accountId
-                        url:(NSString *)url
-                displayName:(NSString *)displayName
-                accessToken:(NSString *)accessToken
+                accessToken:accessToken
                refreshToken:(NSString *)refreshToken
-                    expires:(NSDate *)expires {
+                 dictionary:(NSDictionary *)dict {
     if (self = [super init]) {
         self.app = app;
         self.accountId = accountId;
-        self.url = url;
-        self.displayName = displayName;
         self.accessToken = accessToken;
         self.refreshToken = refreshToken;
-        self.expires = expires;
+        self.url = dict[@"url"];
+        self.displayName = dict[@"displayName"];
+        self.expires = dict[@"expires"];
+        self.source = [BRMastodonAccount sourceWithStringRepresentation:dict[@"source"]];
+        self.sourceHashtag = dict[@"hashtag"] ?: @"";
+        self.sourceListId = dict[@"listId"] ?: @"";
+        self.sourceListName = dict[@"listName"] ?: @"";
     }
     return self;
 }
@@ -142,6 +139,8 @@
         self.expires = oauthResult.expiresIn == nil
             ? [NSDate dateWithTimeIntervalSince1970:4765132800] // 2099: ~ never expire
             : [[NSDate date] dateByAddingTimeInterval:[oauthResult.expiresIn doubleValue]];
+        self.source = BRMastodonStreamSourceUser;
+        self.sourceHashtag = @"";
     }
     return self;
 }
@@ -231,6 +230,10 @@
         @"displayName": self.displayName,
         @"host": self.app.hostName,
         @"expires": self.expires,
+        @"source": [[self class] stringRepresentationForStreamSource:self.source],
+        @"hashtag": self.sourceHashtag ?: @"",
+        @"listId": self.sourceListId ?: @"",
+        @"listName": self.sourceListId ?: @"",
     };
 }
 
@@ -275,6 +278,85 @@
 
 - (NSString *)shortDisplayName {
     return self.displayName;
+}
+
++ (NSString *)stringRepresentationForStreamSource:(BRMastodonStreamSource)source {
+    switch (source) {
+        case BRMastodonStreamSourceUser:
+            return @"user";
+        case BRMastodonStreamSourceUserNotification:
+            return @"user:notification";
+        case BRMastodonStreamSourceList:
+            return @"list";
+        case BRMastodonStreamSourceDirect:
+            return @"direct";
+        case BRMastodonStreamSourceHashtag:
+            return @"hashtag";
+        case BRMastodonStreamSourceHashtagLocal:
+            return @"hashtag:local";
+        case BRMastodonStreamSourcePublic:
+            return @"public";
+        case BRMastodonStreamSourcePublicLocal:
+            return @"public:local";
+        case BRMastodonStreamSourcePublicRemote:
+            return @"public:remote";
+    }
+    return nil;
+}
+
++ (BRMastodonStreamSource)sourceWithStringRepresentation:(NSString *)string {
+    if ([string isEqualTo:@"user"]) {
+        return BRMastodonStreamSourceUser;
+    }
+    if ([string isEqualTo:@"user:notification"]) {
+        return BRMastodonStreamSourceUserNotification;
+    }
+    if ([string isEqualTo:@"list"]) {
+        return BRMastodonStreamSourceList;
+    }
+    if ([string isEqualTo:@"direct"]) {
+        return BRMastodonStreamSourceDirect;
+    }
+    if ([string isEqualTo:@"hashtag"]) {
+        return BRMastodonStreamSourceHashtag;
+    }
+    if ([string isEqualTo:@"hashtag:local"]) {
+        return BRMastodonStreamSourceHashtagLocal;
+    }
+    if ([string isEqualTo:@"public"]) {
+        return BRMastodonStreamSourcePublic;
+    }
+    if ([string isEqualTo:@"public:local"]) {
+        return BRMastodonStreamSourcePublicLocal;
+    }
+    if ([string isEqualTo:@"public:remote"]) {
+        return BRMastodonStreamSourcePublicRemote;
+    }
+    return BRMastodonStreamSourceUser;
+}
+
+- (NSString *)displayNameForStreamSource {
+    switch (self.source) {
+        case BRMastodonStreamSourceUser:
+            return @"User";
+        case BRMastodonStreamSourceUserNotification:
+            return @"User Notification";
+        case BRMastodonStreamSourceList:
+            return [NSString stringWithFormat:NSLocalizedString(@"List: %@", @"source name"), self.sourceListName];
+        case BRMastodonStreamSourceDirect:
+            return @"Direct";
+        case BRMastodonStreamSourceHashtag:
+            return [NSString stringWithFormat:NSLocalizedString(@"Hashtag: %@", @"source name"), self.sourceHashtag];
+        case BRMastodonStreamSourceHashtagLocal:
+            return @"Hashtag Local";
+        case BRMastodonStreamSourcePublic:
+            return @"Public";
+        case BRMastodonStreamSourcePublicLocal:
+            return @"Public Local";
+        case BRMastodonStreamSourcePublicRemote:
+            return @"Public Remote";
+    }
+    return nil;
 }
 
 @end

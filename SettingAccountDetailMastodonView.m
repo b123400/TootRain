@@ -24,7 +24,7 @@
     self.accountIdTextField.stringValue = a.accountId;
     self.urlTextField.stringValue = a.url;
     self.displayNameTextField.stringValue = a.displayName;
-    self.sourceTextField.stringValue = @""; // TODO
+    self.sourceTextField.stringValue = [a displayNameForStreamSource];
 }
 
 @end

@@ -10,10 +10,12 @@
             <connections>
                 <outlet property="directRadioButton" destination="a3o-Br-hUk" id="XJK-oc-1by"/>
                 <outlet property="hashtagLocalRadioButton" destination="UoM-9w-kXe" id="HAa-ZQ-9Za"/>
+                <outlet property="hashtagLocalTextField" destination="gFu-WA-sde" id="AnI-9l-C9I"/>
                 <outlet property="hashtagRadioButton" destination="RIL-aa-Ite" id="r1u-1A-dxy"/>
                 <outlet property="hashtagTextField" destination="O08-EN-bcC" id="tNE-lg-SJJ"/>
                 <outlet property="listDropdownButton" destination="bv1-wc-6Fy" id="7xA-qS-Qzd"/>
                 <outlet property="listLocalRadioButton" destination="x4f-tI-Gtu" id="m4q-YD-b0A"/>
+                <outlet property="okButton" destination="VV6-83-tfi" id="n5b-yb-gbQ"/>
                 <outlet property="publicLocalRadioButton" destination="LTM-oU-qoL" id="c3G-06-F65"/>
                 <outlet property="publicRadioButton" destination="ngt-9V-ieO" id="Wfm-Iq-gPW"/>
                 <outlet property="publicRemoteRadioButton" destination="gSJ-Ve-Mum" id="P30-KT-MQq"/>
@@ -86,7 +88,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-9w-kXe">
-                        <rect key="frame" x="18" y="253" width="443" height="18"/>
+                        <rect key="frame" x="18" y="253" width="113" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="2qH-ib-l4s"/>
                         </constraints>
@@ -208,7 +210,7 @@ DQ
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EBf-VI-Aux">
                         <rect key="frame" x="39" y="186" width="424" height="14"/>
-                        <textFieldCell key="cell" title="Events related to the current user, such as home feed updates and notifications." id="0IJ-9k-iu8">
+                        <textFieldCell key="cell" title="Updates to a specific list." id="0IJ-9k-iu8">
                             <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -216,7 +218,7 @@ DQ
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1We-Qc-VTC">
                         <rect key="frame" x="39" y="140" width="424" height="14"/>
-                        <textFieldCell key="cell" title="Notifications for the current user." id="esH-6X-rdg">
+                        <textFieldCell key="cell" title="Events related to the current user, such as home feed updates and notifications." id="esH-6X-rdg">
                             <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -224,7 +226,7 @@ DQ
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m3V-4m-3rn">
                         <rect key="frame" x="39" y="94" width="424" height="14"/>
-                        <textFieldCell key="cell" title="Updates to a specific list." id="X5p-jl-EdS">
+                        <textFieldCell key="cell" title="Notifications for the current user." id="X5p-jl-EdS">
                             <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -265,6 +267,9 @@ DQ
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="D4I-Zr-dPZ"/>
+                        </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDr-jW-Tym">
                         <rect key="frame" x="282" y="13" width="94" height="32"/>
@@ -282,9 +287,24 @@ Gw
                             <action selector="cancelButtonClicked:" target="-2" id="R0b-eh-aUR"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gFu-WA-sde">
+                        <rect key="frame" x="261" y="252" width="200" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="OCO-bF-Jb5"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Tms-EF-vk7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="fo9-mZ-jlE"/>
+                        </connections>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="XUV-St-oQW" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ag-We-dlc"/>
+                    <constraint firstItem="gFu-WA-sde" firstAttribute="centerY" secondItem="UoM-9w-kXe" secondAttribute="centerY" id="0Ui-kB-GSl"/>
                     <constraint firstAttribute="trailing" secondItem="Ji1-ni-dNv" secondAttribute="trailing" constant="20" symbolic="YES" id="3Wa-J0-piF"/>
                     <constraint firstItem="MEW-k8-Gyc" firstAttribute="top" secondItem="UoM-9w-kXe" secondAttribute="bottom" constant="8" symbolic="YES" id="3hZ-2h-hsA"/>
                     <constraint firstAttribute="trailing" secondItem="b1n-VQ-AoE" secondAttribute="trailing" constant="20" symbolic="YES" id="4jV-qA-md7"/>
@@ -300,6 +320,7 @@ Gw
                     <constraint firstAttribute="trailing" secondItem="VV6-83-tfi" secondAttribute="trailing" constant="20" symbolic="YES" id="Kic-fR-tuP"/>
                     <constraint firstAttribute="trailing" secondItem="MEW-k8-Gyc" secondAttribute="trailing" constant="20" symbolic="YES" id="KjA-re-4Sr"/>
                     <constraint firstItem="1We-Qc-VTC" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="LZ4-5d-MDz"/>
+                    <constraint firstItem="gFu-WA-sde" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UoM-9w-kXe" secondAttribute="trailing" constant="8" symbolic="YES" id="Lg2-qt-vE6"/>
                     <constraint firstItem="RIL-aa-Ite" firstAttribute="top" secondItem="XUV-St-oQW" secondAttribute="bottom" constant="8" symbolic="YES" id="MRR-4b-bWU"/>
                     <constraint firstItem="Ji1-ni-dNv" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="My3-aa-Kf8"/>
                     <constraint firstItem="b1n-VQ-AoE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="41" id="N2E-mf-Fwv"/>
@@ -319,6 +340,7 @@ Gw
                     <constraint firstItem="UoM-9w-kXe" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="a0W-zb-giu"/>
                     <constraint firstItem="b1n-VQ-AoE" firstAttribute="top" secondItem="ngt-9V-ieO" secondAttribute="bottom" constant="8" symbolic="YES" id="a9f-AJ-CX1"/>
                     <constraint firstAttribute="trailing" secondItem="bv1-wc-6Fy" secondAttribute="trailing" constant="20" symbolic="YES" id="aRN-dj-qut"/>
+                    <constraint firstAttribute="trailing" secondItem="gFu-WA-sde" secondAttribute="trailing" constant="20" symbolic="YES" id="afb-6s-msJ"/>
                     <constraint firstAttribute="bottom" secondItem="VV6-83-tfi" secondAttribute="bottom" constant="20" symbolic="YES" id="bgK-1a-XQd"/>
                     <constraint firstItem="gSJ-Ve-Mum" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="d4l-N0-nRM"/>
                     <constraint firstAttribute="trailing" secondItem="Sxw-i4-YnL" secondAttribute="trailing" constant="20" symbolic="YES" id="dIL-g1-dln"/>
@@ -327,7 +349,6 @@ Gw
                     <constraint firstItem="O08-EN-bcC" firstAttribute="centerY" secondItem="RIL-aa-Ite" secondAttribute="centerY" id="ekX-NJ-Xln"/>
                     <constraint firstAttribute="trailing" secondItem="m3V-4m-3rn" secondAttribute="trailing" constant="20" symbolic="YES" id="gNo-xS-2AF"/>
                     <constraint firstItem="EBf-VI-Aux" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="gRF-cW-FjM"/>
-                    <constraint firstAttribute="trailing" secondItem="UoM-9w-kXe" secondAttribute="trailing" constant="20" symbolic="YES" id="gv6-xt-y31"/>
                     <constraint firstItem="1ky-Xs-18h" firstAttribute="top" secondItem="RIL-aa-Ite" secondAttribute="bottom" constant="8" symbolic="YES" id="gz1-Se-XPR"/>
                     <constraint firstItem="nDr-jW-Tym" firstAttribute="top" secondItem="Ji1-ni-dNv" secondAttribute="bottom" constant="8" symbolic="YES" id="hrj-M9-wVc"/>
                     <constraint firstAttribute="trailing" secondItem="ngt-9V-ieO" secondAttribute="trailing" constant="20" symbolic="YES" id="i4L-BP-ydK"/>

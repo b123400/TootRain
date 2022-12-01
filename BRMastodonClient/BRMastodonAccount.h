@@ -11,6 +11,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    BRMastodonStreamSourcePublic,
+    BRMastodonStreamSourcePublicLocal,
+    BRMastodonStreamSourcePublicRemote,
+    BRMastodonStreamSourceHashtag,
+    BRMastodonStreamSourceHashtagLocal,
+    BRMastodonStreamSourceUser,
+    BRMastodonStreamSourceUserNotification,
+    BRMastodonStreamSourceList,
+    BRMastodonStreamSourceDirect,
+} BRMastodonStreamSource;
+
 @interface BRMastodonAccount : NSObject
 
 @property (nonatomic, strong) BRMastodonApp *app;
@@ -20,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSString *accessToken;
 @property (nonatomic, strong, nullable) NSString *refreshToken;
 @property (nonatomic, strong, nullable) NSDate *expires;
+@property (nonatomic, assign) BRMastodonStreamSource source;
+@property (nonatomic, strong) NSString *sourceHashtag;
+@property (nonatomic, strong) NSString *sourceListId;
+@property (nonatomic, strong) NSString *sourceListName;
 
 + (NSArray<BRMastodonAccount*> *)allAccounts;
 
@@ -38,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)identifier;
 - (NSString *)shortDisplayName;
+- (NSString *)displayNameForStreamSource;
 
 @end
 

@@ -277,11 +277,7 @@
 }
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
-    return [self streamingStatusesWithAccount:account andSource:BRMastodonStreamSourceUser];
-}
-
-- (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account
-                                               andSource:(BRMastodonStreamSource)source {
+    BRMastodonStreamSource source = account.source;
     __block BRMastodonStreamHandle *handler = [[BRMastodonStreamHandle alloc] init];
     typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
