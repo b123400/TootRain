@@ -126,16 +126,10 @@
 }
 
 - (NSUInteger)indexOfAccountByIdentifier:(Account *)a {
-    NSUInteger index = NSNotFound;
     NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
-    for (int i = 0; i<accounts.count; i++) {
-        Account *thisAccount = [accounts objectAtIndex:i];
-        if ([thisAccount.identifier isEqualToString:a.identifier]) {
-            index = i;
-            break;
-        }
-    }
-    return index;
+    return [accounts indexOfObjectPassingTest:^BOOL(Account * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.identifier isEqualToString:a.identifier];
+    }];
 }
 
 #pragma mark tableview datasource+delegate
@@ -313,7 +307,7 @@
     MastodonAccount *a = (MastodonAccount*)self.detailSelectedAccount;
     BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] initWithAccount:a.mastodonAccount];
     [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-        NSLog(@"%@", controller);
+        if (returnCode != NSModalResponseOK) return;
         a.mastodonAccount.source = controller.selectedSource;
         a.mastodonAccount.sourceHashtag = controller.hashtag;
         a.mastodonAccount.sourceListId = controller.listId;

@@ -11,6 +11,7 @@
 #import "BRMastodonOAuthResult.h"
 #import "BRMastodonStatus.h"
 #import "BRMastodonStreamHandle.h"
+#import "BRMastodonList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -49,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reblogStatus:(BRMastodonStatus *)status
    completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (void)getListsWithAccount:(BRMastodonAccount *)account
+          completionHandler:(void (^)(NSArray<BRMastodonList*> * _Nullable lists, NSError * _Nullable error))callback;
 
 @end
 

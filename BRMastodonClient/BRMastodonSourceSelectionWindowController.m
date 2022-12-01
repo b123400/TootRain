@@ -29,6 +29,7 @@
 @property (weak) IBOutlet NSButton *okButton;
 
 @property (assign, nonatomic) BRMastodonStreamSource selectedSource;
+@property (strong, nonatomic) NSArray<BRMastodonList *> *lists;
 
 @end
 
@@ -49,6 +50,24 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self reloadUI];
+    
+    [[BRMastodonClient shared] getListsWithAccount:self.account
+                                 completionHandler:^(NSArray<BRMastodonList *> * _Nullable lists, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.lists = lists;
+            [self.listDropdownButton removeAllItems];
+            if (lists.count == 0) return;
+            [self.listDropdownButton addItemsWithTitles:[lists valueForKeyPath:@"title"]];
+            NSUInteger index = [lists indexOfObjectPassingTest:^BOOL(BRMastodonList * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [[obj listId] isEqualTo:self.account.sourceListId];
+            }];
+            if (index == NSNotFound) {
+                index = 0;
+            }
+            [self.listDropdownButton selectItemAtIndex:index];
+            [self reloadButtons];
+        });
+    }];
 }
 
 - (IBAction)radioButtonSelected:(id)sender {
@@ -107,7 +126,7 @@
 - (void)reloadButtons {
     if ((self.selectedSource == BRMastodonStreamSourceHashtag && self.hashtagTextField.stringValue.length == 0) ||
         (self.selectedSource == BRMastodonStreamSourceHashtagLocal && self.hashtagLocalTextField.stringValue.length == 0) ||
-        (self.selectedSource == BRMastodonStreamSourceList)) {
+        (self.selectedSource == BRMastodonStreamSourceList && ([self.listDropdownButton indexOfSelectedItem] == -1 || self.lists == nil))) {
         [self.okButton setEnabled:NO];
         return;
     }
@@ -137,10 +156,14 @@
 }
 
 - (NSString *)listId {
-    return nil;
+    NSInteger index = [self.listDropdownButton indexOfSelectedItem];
+    if (index < 0 && index > self.lists.count) return nil;
+    return self.lists[index].listId;
 }
 - (NSString *)listName {
-    return nil;
+    NSInteger index = [self.listDropdownButton indexOfSelectedItem];
+    if (index < 0 && index > self.lists.count) return nil;
+    return self.lists[index].title;
 }
 
 @end

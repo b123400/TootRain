@@ -517,6 +517,47 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
     }];
 }
 
+- (void)getListsWithAccount:(BRMastodonAccount *)account
+          completionHandler:(void (^)(NSArray<BRMastodonList *> * _Nullable lists, NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:@"/api/v1/lists"
+                        relativeToURL:[NSURL URLWithString:account.app.hostName]];
+    typeof(self) __weak _self = self;
+    [self baseRequestWithURL:url
+                     account:account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"GET"];
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(nil, error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if ([result isKindOfClass:[NSDictionary class]] && ((NSDictionary*)result)[@"error"]) {
+                callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
+                                                  code:0
+                                              userInfo:@{@"response": result}]);
+                return;
+            }
+            if (![result isKindOfClass:[NSArray class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(nil, decodeError);
+                return;
+            }
+
+            NSMutableArray *lists = [NSMutableArray arrayWithCapacity:result.count];
+            for (NSDictionary *dict in result) {
+                [lists addObject:[[BRMastodonList alloc] initWithJSONDictionary:dict]];
+            }
+            callback(lists, nil);
+        }];
+        [task resume];
+    }];
+}
+
 #pragma mark - Delegate
 
 - (void)URLSession:(NSURLSession *)session

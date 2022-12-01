@@ -245,14 +245,14 @@ DQ
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="hxW-Bh-Bx4"/>
                         </constraints>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="pOa-a5-gqV" id="dOr-l2-u88">
+                        <popUpButtonCell key="cell" type="push" title="Loading..." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="tUO-Mk-tar" id="dOr-l2-u88">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="zBv-vJ-GIf">
                                 <items>
-                                    <menuItem title="Item 1" state="on" id="pOa-a5-gqV"/>
-                                    <menuItem title="Item 2" id="SYl-ub-wKn"/>
-                                    <menuItem title="Item 3" id="7pR-9C-FAP"/>
+                                    <menuItem title="Loading..." enabled="NO" id="tUO-Mk-tar">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>

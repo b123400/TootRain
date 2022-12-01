@@ -39,6 +39,8 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
+		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
+		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -309,6 +311,8 @@
 		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
 		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
 		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
+		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
+		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
 		CF5D2D7929350BC400745D63 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
 		CF5D2D7C29350DA900745D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-standalone.xib"; sourceTree = "<group>"; };
@@ -936,6 +940,8 @@
 				CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */,
 				CF5E5EC72692A8AA00E904D0 /* BRMastodonUser.h */,
 				CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */,
+				CF52029E2938F02600B9B749 /* BRMastodonList.h */,
+				CF52029F2938F02600B9B749 /* BRMastodonList.m */,
 				CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */,
 				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
 				CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */,
@@ -1321,6 +1327,7 @@
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
+				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
 				CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */,
@@ -1387,6 +1394,7 @@
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
+				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
 				CF5D2D5A29350BC400745D63 /* BRSlackStreamHandle.m in Sources */,
