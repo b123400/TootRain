@@ -1,7 +1,4 @@
 /* No comment provided by engineer. */
-"%@ (Streaming)" = "%@ (連接了)";
-
-/* No comment provided by engineer. */
 "Accounts" = "帳號";
 
 /* No comment provided by engineer. */
@@ -13,11 +10,20 @@
 /* No comment provided by engineer. */
 "Bookmarked" = "加書籤了";
 
-/* No comment provided by engineer. */
-"Clear search history" = "清除檢索履歷";
+/* setting account reconnect button */
+"Connect" = "連接";
+
+/* Account table cell */
+"Connected" = "已連接";
 
 /* No comment provided by engineer. */
 "Connecting to %@" = "正在連接到 %@";
+
+/* source name */
+"Direct" = "私信";
+
+/* Account table cell */
+"Disconnected" = "解除連接";
 
 /* No comment provided by engineer. */
 "Disconnected from %@" = "連接解除 %@";
@@ -31,14 +37,32 @@
 /* No comment provided by engineer. */
 "Font: %@ %.0f" = "字形: %1$@ %2$.0f";
 
+/* source name */
+"Hashtag Local: %@" = "本地Hashtag: %@";
+
+/* source name */
+"Hashtag: %@" = "Hashtag: %@";
+
+/* source name */
+"List: %@" = "列表: %@";
+
 /* No comment provided by engineer. */
 "Loading" = "載入中";
 
 /* No comment provided by engineer. */
 "Need to re-login %@" = "需要重新登入 %@";
 
-/* No comment provided by engineer. */
-"Recent Search" = "檢索履歷";
+/* source name */
+"Public" = "公開";
+
+/* source name */
+"Public Local" = "本地公開";
+
+/* source name */
+"Public Remote" = "聯邦公開";
+
+/* setting account reconnect button */
+"Reconnect" = "重新連接";
 
 /* No comment provided by engineer. */
 "Repost" = "轉發";
@@ -47,14 +71,14 @@
 "Reposted" = "轉發了";
 
 /* No comment provided by engineer. */
-"Saved Searches" = "儲存了的檢索字眼";
-
-/* No comment provided by engineer. */
 "Send" = "傳送";
 
 /* No comment provided by engineer. */
 "Sent" = "傳送了";
 
-/* No comment provided by engineer. */
-"Trends" = "熱門字眼";
+/* source name */
+"User" = "用戶";
+
+/* source name */
+"User Notification" = "用戶通知";
 

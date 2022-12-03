@@ -11,13 +11,7 @@
 "57.title" = "TootRain";
 
 /* Class = "NSMenuItem"; title = "About TootRain"; ObjectID = "58"; */
-"58.title" = "About TootRain";
-
-/* Class = "NSMenu"; title = "( ; l l )"; ObjectID = "81"; */
-"81.title" = "( ; l l )";
-
-/* Class = "NSMenuItem"; title = "( ; l l )"; ObjectID = "83"; */
-"83.title" = "( ; l l )";
+"58.title" = "關於 TootRain";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
 "129.title" = "設定…";
@@ -35,10 +29,10 @@
 "136.title" = "關閉TootRain";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "Hide Others";
+"145.title" = "隱藏其他";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "Show All";
+"150.title" = "顯示全部";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
 "197.title" = "複製";
@@ -74,11 +68,11 @@
 "375.title" = "格式";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
-"485.title" = "Paste and Match Style";
+"485.title" = "貼上並配合樣式";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
 "490.title" = "Help";
 
-/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "552"; */
-"552.title" = "Search...";
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
+"TRN-i4-5na.title" = "檢查更新項目...";
 

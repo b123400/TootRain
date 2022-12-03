@@ -338,23 +338,23 @@
 - (NSString *)displayNameForStreamSource {
     switch (self.source) {
         case BRMastodonStreamSourceUser:
-            return @"User";
+            return NSLocalizedString(@"User", @"source name");
         case BRMastodonStreamSourceUserNotification:
-            return @"User Notification";
+            return NSLocalizedString(@"User Notification", @"source name");
         case BRMastodonStreamSourceList:
             return [NSString stringWithFormat:NSLocalizedString(@"List: %@", @"source name"), self.sourceListName];
         case BRMastodonStreamSourceDirect:
-            return @"Direct";
+            return NSLocalizedString(@"Direct", @"source name");
         case BRMastodonStreamSourceHashtag:
             return [NSString stringWithFormat:NSLocalizedString(@"Hashtag: %@", @"source name"), self.sourceHashtag];
         case BRMastodonStreamSourceHashtagLocal:
             return [NSString stringWithFormat:NSLocalizedString(@"Hashtag Local: %@", @"source name"), self.sourceHashtag];
         case BRMastodonStreamSourcePublic:
-            return @"Public";
+            return NSLocalizedString(@"Public", @"source name");
         case BRMastodonStreamSourcePublicLocal:
-            return @"Public Local";
+            return NSLocalizedString(@"Public Local", @"source name");
         case BRMastodonStreamSourcePublicRemote:
-            return @"Public Remote";
+            return NSLocalizedString(@"Public Remote", @"source name");
     }
     return nil;
 }

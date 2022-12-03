@@ -171,8 +171,6 @@
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
 		CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
-		CFB3197F2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */; };
-		CFB319802935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
 		CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
 		CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
@@ -203,6 +201,8 @@
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
+		CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
+		CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEC43F92695DC5200E66DD0 /* DummyStatus.m */; };
 		CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
@@ -460,6 +460,9 @@
 		CFE8F5BF15D7E9F100815830 /* RainDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropView.m; sourceTree = "<group>"; };
 		CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropTextFieldCell.h; sourceTree = "<group>"; };
 		CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropTextFieldCell.m; sourceTree = "<group>"; };
+		CFEBAC1D293B214300447421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BRMastodonSourceSelectionWindowController.xib; sourceTree = "<group>"; };
+		CFEBAC20293B214800447421 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/BRMastodonSourceSelectionWindowController.strings; sourceTree = "<group>"; };
+		CFEBAC22293B214900447421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BRMastodonSourceSelectionWindowController.strings"; sourceTree = "<group>"; };
 		CFEC43F82695DC5200E66DD0 /* DummyStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyStatus.h; sourceTree = "<group>"; };
 		CFEC43F92695DC5200E66DD0 /* DummyStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyStatus.m; sourceTree = "<group>"; };
 		CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingFontTableViewController.h; sourceTree = "<group>"; };
@@ -925,7 +928,7 @@
 				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
 				CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */,
 				CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */,
-				CFB3197C2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib */,
+				CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */,
 			);
 			path = BRMastodonClient;
 			sourceTree = "<group>";
@@ -1071,7 +1074,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				CFB3197F2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
@@ -1094,7 +1097,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */,
-				CFB319802935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
@@ -1555,6 +1558,16 @@
 				CF1106EB1CC41546006CAE38 /* ja */,
 			);
 			name = ComposeStatusViewController.xib;
+			sourceTree = "<group>";
+		};
+		CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFEBAC1D293B214300447421 /* Base */,
+				CFEBAC20293B214800447421 /* ja */,
+				CFEBAC22293B214900447421 /* zh-Hant */,
+			);
+			name = BRMastodonSourceSelectionWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

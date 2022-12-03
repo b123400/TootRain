@@ -13,12 +13,6 @@
 /* Class = "NSMenuItem"; title = "About TootRain"; ObjectID = "58"; */
 "58.title" = "TootRainについて";
 
-/* Class = "NSMenu"; title = "( ; l l )"; ObjectID = "81"; */
-"81.title" = "( ; l l )";
-
-/* Class = "NSMenuItem"; title = "( ; l l )"; ObjectID = "83"; */
-"83.title" = "( ; l l )";
-
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
 "129.title" = "設定...";
 
@@ -79,6 +73,6 @@
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
 "490.title" = "助けて";
 
-/* Class = "NSMenuItem"; title = "Search..."; ObjectID = "552"; */
-"552.title" = "検索...";
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
+"TRN-i4-5na.title" = "アップデートを確認...";
 

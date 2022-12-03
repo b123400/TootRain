@@ -1,0 +1,66 @@
+/* Class = "NSTextFieldCell"; title = "Updates to a specific list."; ObjectID = "0IJ-9k-iu8"; */
+"0IJ-9k-iu8.title" = "指定的列表的投稿";
+
+/* Class = "NSButtonCell"; title = "Direct"; ObjectID = "1Ef-1o-oRO"; */
+"1Ef-1o-oRO.title" = "私信";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "3dV-9H-dLc"; */
+"3dV-9H-dLc.title" = "OK";
+
+/* Class = "NSButtonCell"; title = "Hashtag"; ObjectID = "4H0-by-PED"; */
+"4H0-by-PED.title" = "Hashtag";
+
+/* Class = "NSTextFieldCell"; title = "All public posts using a certain hashtag, originating from this server."; ObjectID = "5Jb-sI-eAo"; */
+"5Jb-sI-eAo.title" = "自己站點的指定的Hashtag的投稿";
+
+/* Class = "NSTextFieldCell"; title = "All public posts known to the server. Analogous to the federated timeline."; ObjectID = "9ov-tR-j0e"; */
+"9ov-tR-j0e.title" = "所有投稿，包括其他已知的聯邦站點";
+
+/* Class = "NSTextFieldCell"; title = "Updates to direct conversations."; ObjectID = "328-PA-tSH"; */
+"328-PA-tSH.title" = "所有私信的投稿";
+
+/* Class = "NSButtonCell"; title = "Public"; ObjectID = "984-8x-qgh"; */
+"984-8x-qgh.title" = "公開";
+
+/* Class = "NSTextFieldCell"; title = "All public posts using a certain hashtag."; ObjectID = "CBQ-aD-gk1"; */
+"CBQ-aD-gk1.title" = "所有公開的指定的Hashtag的投稿";
+
+/* Class = "NSTextFieldCell"; title = "All public posts originating from other servers."; ObjectID = "Co5-pv-LaS"; */
+"Co5-pv-LaS.title" = "所有來自其他站點的投稿";
+
+/* Class = "NSTextFieldCell"; title = "All public posts originating from this server"; ObjectID = "Do8-Uv-j4r"; */
+"Do8-Uv-j4r.title" = "所有來自自己站點的投稿";
+
+/* Class = "NSButtonCell"; title = "User"; ObjectID = "Dyp-qR-5GJ"; */
+"Dyp-qR-5GJ.title" = "用戶";
+
+/* Class = "NSButtonCell"; title = "User Notification"; ObjectID = "eLr-fj-8Zj"; */
+"eLr-fj-8Zj.title" = "用戶通知";
+
+/* Class = "NSTextFieldCell"; title = "Events related to the current user, such as home feed updates and notifications."; ObjectID = "esH-6X-rdg"; */
+"esH-6X-rdg.title" = "所有關於當前用戶的更新，包括timeline投稿和通知。";
+
+/* Class = "NSWindow"; title = "Options..."; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "選項...";
+
+/* Class = "NSButtonCell"; title = "List"; ObjectID = "Ox3-ox-FDL"; */
+"Ox3-ox-FDL.title" = "列表";
+
+/* Class = "NSButtonCell"; title = "Public Remote"; ObjectID = "rEa-Dt-nvc"; */
+"rEa-Dt-nvc.title" = "聯邦公開";
+
+/* Class = "NSButtonCell"; title = "Public Local"; ObjectID = "sST-jA-SJW"; */
+"sST-jA-SJW.title" = "本地公開";
+
+/* Class = "NSMenuItem"; title = "Loading..."; ObjectID = "tUO-Mk-tar"; */
+"tUO-Mk-tar.title" = "載入中...";
+
+/* Class = "NSButtonCell"; title = "Hashtag Local"; ObjectID = "U60-5Q-hjs"; */
+"U60-5Q-hjs.title" = "本地Hashtag";
+
+/* Class = "NSTextFieldCell"; title = "Notifications for the current user."; ObjectID = "X5p-jl-EdS"; */
+"X5p-jl-EdS.title" = "當前用戶的所有通知";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "xKL-sA-oN4"; */
+"xKL-sA-oN4.title" = "取消";
+

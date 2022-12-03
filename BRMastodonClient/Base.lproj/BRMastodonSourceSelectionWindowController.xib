@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BRMastodonSourceSelectionWindowController">
+            <connections>
+                <outlet property="directRadioButton" destination="a3o-Br-hUk" id="XJK-oc-1by"/>
+                <outlet property="hashtagLocalRadioButton" destination="UoM-9w-kXe" id="HAa-ZQ-9Za"/>
+                <outlet property="hashtagLocalTextField" destination="gFu-WA-sde" id="AnI-9l-C9I"/>
+                <outlet property="hashtagRadioButton" destination="RIL-aa-Ite" id="r1u-1A-dxy"/>
+                <outlet property="hashtagTextField" destination="O08-EN-bcC" id="tNE-lg-SJJ"/>
+                <outlet property="listDropdownButton" destination="bv1-wc-6Fy" id="7xA-qS-Qzd"/>
+                <outlet property="listLocalRadioButton" destination="x4f-tI-Gtu" id="m4q-YD-b0A"/>
+                <outlet property="okButton" destination="VV6-83-tfi" id="n5b-yb-gbQ"/>
+                <outlet property="publicLocalRadioButton" destination="LTM-oU-qoL" id="c3G-06-F65"/>
+                <outlet property="publicRadioButton" destination="ngt-9V-ieO" id="Wfm-Iq-gPW"/>
+                <outlet property="publicRemoteRadioButton" destination="gSJ-Ve-Mum" id="P30-KT-MQq"/>
+                <outlet property="userNotificationRadioButton" destination="wJi-Of-zzG" id="1Ud-c3-c4M"/>
+                <outlet property="userRadioButton" destination="Sxw-i4-YnL" id="I3U-Yz-Cmf"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Options..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="481" height="517"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="481" height="474"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ngt-9V-ieO">
+                        <rect key="frame" x="18" y="437" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="ZEE-2i-lRi"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Public" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="984-8x-qgh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="EiH-Fl-FNX"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LTM-oU-qoL">
+                        <rect key="frame" x="18" y="391" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="jda-xC-kzc"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Public Local" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="sST-jA-SJW">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="bXI-ev-3Qt"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gSJ-Ve-Mum">
+                        <rect key="frame" x="18" y="345" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Ofu-OS-Xa1"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Public Remote" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rEa-Dt-nvc">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="0DI-Hw-4qE"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RIL-aa-Ite">
+                        <rect key="frame" x="18" y="299" width="77" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="izW-08-sHx"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Hashtag" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="4H0-by-PED">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="7qn-VQ-YAg"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UoM-9w-kXe">
+                        <rect key="frame" x="18" y="253" width="113" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="2qH-ib-l4s"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Hashtag Local" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="U60-5Q-hjs">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="EWz-q6-GGb"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sxw-i4-YnL">
+                        <rect key="frame" x="18" y="161" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="sqV-Wf-40K"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="User" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dyp-qR-5GJ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="YVV-DM-Bg5"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wJi-Of-zzG">
+                        <rect key="frame" x="18" y="115" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="9Ea-IT-bYu"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="User Notification" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="eLr-fj-8Zj">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="6Zg-sx-P9C"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x4f-tI-Gtu">
+                        <rect key="frame" x="18" y="207" width="48" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="zGA-ZK-Wvh"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="List" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Ox3-ox-FDL">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="i89-ag-6mZ"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a3o-Br-hUk">
+                        <rect key="frame" x="18" y="69" width="443" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Jdc-FG-y1N"/>
+                        </constraints>
+                        <buttonCell key="cell" type="radio" title="Direct" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1Ef-1o-oRO">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonSelected:" target="-2" id="8y2-kU-0Ae"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VV6-83-tfi">
+                        <rect key="frame" x="374" y="13" width="94" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="gJJ-nz-Ah8"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3dV-9H-dLc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="okButtonClicked:" target="-2" id="tdd-eB-bPL"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-VQ-AoE">
+                        <rect key="frame" x="39" y="416" width="424" height="14"/>
+                        <textFieldCell key="cell" title="All public posts known to the server. Analogous to the federated timeline." id="9ov-tR-j0e">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7S3-LX-C5s">
+                        <rect key="frame" x="39" y="370" width="424" height="14"/>
+                        <textFieldCell key="cell" title="All public posts originating from this server" id="Do8-Uv-j4r">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XUV-St-oQW">
+                        <rect key="frame" x="39" y="324" width="424" height="14"/>
+                        <textFieldCell key="cell" title="All public posts originating from other servers." id="Co5-pv-LaS">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1ky-Xs-18h">
+                        <rect key="frame" x="39" y="278" width="424" height="14"/>
+                        <textFieldCell key="cell" title="All public posts using a certain hashtag." id="CBQ-aD-gk1">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MEW-k8-Gyc">
+                        <rect key="frame" x="39" y="232" width="424" height="14"/>
+                        <textFieldCell key="cell" title="All public posts using a certain hashtag, originating from this server." id="5Jb-sI-eAo">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EBf-VI-Aux">
+                        <rect key="frame" x="39" y="186" width="424" height="14"/>
+                        <textFieldCell key="cell" title="Updates to a specific list." id="0IJ-9k-iu8">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1We-Qc-VTC">
+                        <rect key="frame" x="39" y="140" width="424" height="14"/>
+                        <textFieldCell key="cell" title="Events related to the current user, such as home feed updates and notifications." id="esH-6X-rdg">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m3V-4m-3rn">
+                        <rect key="frame" x="39" y="94" width="424" height="14"/>
+                        <textFieldCell key="cell" title="Notifications for the current user." id="X5p-jl-EdS">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ji1-ni-dNv">
+                        <rect key="frame" x="39" y="48" width="424" height="14"/>
+                        <textFieldCell key="cell" title="Updates to direct conversations." id="328-PA-tSH">
+                            <font key="font" textStyle="subheadline" name=".SFNS-Regular"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bv1-wc-6Fy">
+                        <rect key="frame" x="258" y="202" width="207" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="hxW-Bh-Bx4"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="push" title="Loading..." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="tUO-Mk-tar" id="dOr-l2-u88">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="zBv-vJ-GIf">
+                                <items>
+                                    <menuItem title="Loading..." state="on" enabled="NO" id="tUO-Mk-tar">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O08-EN-bcC">
+                        <rect key="frame" x="261" y="298" width="200" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="mws-qJ-72K"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="ndQ-0a-Iw2">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="D4I-Zr-dPZ"/>
+                        </connections>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDr-jW-Tym">
+                        <rect key="frame" x="282" y="13" width="94" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="YsS-DF-lYz"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xKL-sA-oN4">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelButtonClicked:" target="-2" id="R0b-eh-aUR"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gFu-WA-sde">
+                        <rect key="frame" x="261" y="252" width="200" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="OCO-bF-Jb5"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Tms-EF-vk7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="fo9-mZ-jlE"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="XUV-St-oQW" secondAttribute="trailing" constant="20" symbolic="YES" id="0Ag-We-dlc"/>
+                    <constraint firstItem="gFu-WA-sde" firstAttribute="centerY" secondItem="UoM-9w-kXe" secondAttribute="centerY" id="0Ui-kB-GSl"/>
+                    <constraint firstAttribute="trailing" secondItem="Ji1-ni-dNv" secondAttribute="trailing" constant="20" symbolic="YES" id="3Wa-J0-piF"/>
+                    <constraint firstItem="MEW-k8-Gyc" firstAttribute="top" secondItem="UoM-9w-kXe" secondAttribute="bottom" constant="8" symbolic="YES" id="3hZ-2h-hsA"/>
+                    <constraint firstAttribute="trailing" secondItem="b1n-VQ-AoE" secondAttribute="trailing" constant="20" symbolic="YES" id="4jV-qA-md7"/>
+                    <constraint firstItem="ngt-9V-ieO" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="4lx-6g-yYP"/>
+                    <constraint firstItem="bv1-wc-6Fy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x4f-tI-Gtu" secondAttribute="trailing" constant="8" symbolic="YES" id="52m-XZ-kQo"/>
+                    <constraint firstItem="LTM-oU-qoL" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="5rn-fL-I4v"/>
+                    <constraint firstAttribute="trailing" secondItem="1We-Qc-VTC" secondAttribute="trailing" constant="20" symbolic="YES" id="5ss-oV-b9Y"/>
+                    <constraint firstItem="wJi-Of-zzG" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="6uQ-cN-7gb"/>
+                    <constraint firstItem="ngt-9V-ieO" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="BrL-M5-PQY"/>
+                    <constraint firstAttribute="trailing" secondItem="EBf-VI-Aux" secondAttribute="trailing" constant="20" symbolic="YES" id="CTf-LV-NDy"/>
+                    <constraint firstItem="Ji1-ni-dNv" firstAttribute="top" secondItem="a3o-Br-hUk" secondAttribute="bottom" constant="8" symbolic="YES" id="IPR-wB-KXN"/>
+                    <constraint firstAttribute="trailing" secondItem="1ky-Xs-18h" secondAttribute="trailing" constant="20" symbolic="YES" id="Imf-0I-Gd2"/>
+                    <constraint firstAttribute="trailing" secondItem="VV6-83-tfi" secondAttribute="trailing" constant="20" symbolic="YES" id="Kic-fR-tuP"/>
+                    <constraint firstAttribute="trailing" secondItem="MEW-k8-Gyc" secondAttribute="trailing" constant="20" symbolic="YES" id="KjA-re-4Sr"/>
+                    <constraint firstItem="1We-Qc-VTC" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="LZ4-5d-MDz"/>
+                    <constraint firstItem="gFu-WA-sde" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UoM-9w-kXe" secondAttribute="trailing" constant="8" symbolic="YES" id="Lg2-qt-vE6"/>
+                    <constraint firstItem="RIL-aa-Ite" firstAttribute="top" secondItem="XUV-St-oQW" secondAttribute="bottom" constant="8" symbolic="YES" id="MRR-4b-bWU"/>
+                    <constraint firstItem="Ji1-ni-dNv" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="My3-aa-Kf8"/>
+                    <constraint firstItem="b1n-VQ-AoE" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="41" id="N2E-mf-Fwv"/>
+                    <constraint firstItem="VV6-83-tfi" firstAttribute="leading" secondItem="nDr-jW-Tym" secondAttribute="trailing" constant="12" symbolic="YES" id="Ocn-x2-Qfh"/>
+                    <constraint firstItem="1ky-Xs-18h" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="P61-96-bjI"/>
+                    <constraint firstItem="1We-Qc-VTC" firstAttribute="top" secondItem="Sxw-i4-YnL" secondAttribute="bottom" constant="8" symbolic="YES" id="RL7-TU-ZuE"/>
+                    <constraint firstItem="a3o-Br-hUk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="RS7-gq-Plw"/>
+                    <constraint firstAttribute="trailing" secondItem="wJi-Of-zzG" secondAttribute="trailing" constant="20" symbolic="YES" id="RjJ-rY-sCs"/>
+                    <constraint firstAttribute="bottom" secondItem="nDr-jW-Tym" secondAttribute="bottom" constant="20" symbolic="YES" id="S0g-yE-vub"/>
+                    <constraint firstItem="EBf-VI-Aux" firstAttribute="top" secondItem="x4f-tI-Gtu" secondAttribute="bottom" constant="8" symbolic="YES" id="SQq-Ba-Wzx"/>
+                    <constraint firstItem="O08-EN-bcC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RIL-aa-Ite" secondAttribute="trailing" constant="8" symbolic="YES" id="SdO-cQ-qT3"/>
+                    <constraint firstAttribute="trailing" secondItem="a3o-Br-hUk" secondAttribute="trailing" constant="20" symbolic="YES" id="Sdr-ta-ajr"/>
+                    <constraint firstAttribute="trailing" secondItem="7S3-LX-C5s" secondAttribute="trailing" constant="20" symbolic="YES" id="VWU-Qj-YGK"/>
+                    <constraint firstItem="Sxw-i4-YnL" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="Wvg-Ee-Vbg"/>
+                    <constraint firstAttribute="trailing" secondItem="gSJ-Ve-Mum" secondAttribute="trailing" constant="20" symbolic="YES" id="XKj-xk-D1M"/>
+                    <constraint firstItem="UoM-9w-kXe" firstAttribute="top" secondItem="1ky-Xs-18h" secondAttribute="bottom" constant="8" symbolic="YES" id="Z7X-s7-dFK"/>
+                    <constraint firstItem="UoM-9w-kXe" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="a0W-zb-giu"/>
+                    <constraint firstItem="b1n-VQ-AoE" firstAttribute="top" secondItem="ngt-9V-ieO" secondAttribute="bottom" constant="8" symbolic="YES" id="a9f-AJ-CX1"/>
+                    <constraint firstAttribute="trailing" secondItem="bv1-wc-6Fy" secondAttribute="trailing" constant="20" symbolic="YES" id="aRN-dj-qut"/>
+                    <constraint firstAttribute="trailing" secondItem="gFu-WA-sde" secondAttribute="trailing" constant="20" symbolic="YES" id="afb-6s-msJ"/>
+                    <constraint firstAttribute="bottom" secondItem="VV6-83-tfi" secondAttribute="bottom" constant="20" symbolic="YES" id="bgK-1a-XQd"/>
+                    <constraint firstItem="gSJ-Ve-Mum" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="d4l-N0-nRM"/>
+                    <constraint firstAttribute="trailing" secondItem="Sxw-i4-YnL" secondAttribute="trailing" constant="20" symbolic="YES" id="dIL-g1-dln"/>
+                    <constraint firstAttribute="trailing" secondItem="O08-EN-bcC" secondAttribute="trailing" constant="20" symbolic="YES" id="eVm-KE-NU8"/>
+                    <constraint firstItem="wJi-Of-zzG" firstAttribute="top" secondItem="1We-Qc-VTC" secondAttribute="bottom" constant="8" symbolic="YES" id="egV-fB-erL"/>
+                    <constraint firstItem="O08-EN-bcC" firstAttribute="centerY" secondItem="RIL-aa-Ite" secondAttribute="centerY" id="ekX-NJ-Xln"/>
+                    <constraint firstAttribute="trailing" secondItem="m3V-4m-3rn" secondAttribute="trailing" constant="20" symbolic="YES" id="gNo-xS-2AF"/>
+                    <constraint firstItem="EBf-VI-Aux" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="gRF-cW-FjM"/>
+                    <constraint firstItem="1ky-Xs-18h" firstAttribute="top" secondItem="RIL-aa-Ite" secondAttribute="bottom" constant="8" symbolic="YES" id="gz1-Se-XPR"/>
+                    <constraint firstItem="nDr-jW-Tym" firstAttribute="top" secondItem="Ji1-ni-dNv" secondAttribute="bottom" constant="8" symbolic="YES" id="hrj-M9-wVc"/>
+                    <constraint firstAttribute="trailing" secondItem="ngt-9V-ieO" secondAttribute="trailing" constant="20" symbolic="YES" id="i4L-BP-ydK"/>
+                    <constraint firstItem="gSJ-Ve-Mum" firstAttribute="top" secondItem="7S3-LX-C5s" secondAttribute="bottom" constant="8" symbolic="YES" id="jKH-7f-if8"/>
+                    <constraint firstItem="m3V-4m-3rn" firstAttribute="top" secondItem="wJi-Of-zzG" secondAttribute="bottom" constant="8" symbolic="YES" id="kyW-DX-eH9"/>
+                    <constraint firstItem="XUV-St-oQW" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="nxT-BZ-Snr"/>
+                    <constraint firstItem="Sxw-i4-YnL" firstAttribute="top" secondItem="EBf-VI-Aux" secondAttribute="bottom" constant="8" symbolic="YES" id="rSW-Ez-DWs"/>
+                    <constraint firstItem="MEW-k8-Gyc" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="sRe-zx-ier"/>
+                    <constraint firstItem="m3V-4m-3rn" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="siB-9Q-IfO"/>
+                    <constraint firstItem="LTM-oU-qoL" firstAttribute="top" secondItem="b1n-VQ-AoE" secondAttribute="bottom" constant="8" symbolic="YES" id="szn-iV-Fgl"/>
+                    <constraint firstItem="7S3-LX-C5s" firstAttribute="leading" secondItem="b1n-VQ-AoE" secondAttribute="leading" id="tWp-bf-Q7f"/>
+                    <constraint firstAttribute="trailing" secondItem="LTM-oU-qoL" secondAttribute="trailing" constant="20" symbolic="YES" id="u4f-5p-ogS"/>
+                    <constraint firstItem="x4f-tI-Gtu" firstAttribute="top" secondItem="MEW-k8-Gyc" secondAttribute="bottom" constant="8" symbolic="YES" id="uH9-l4-h5H"/>
+                    <constraint firstItem="a3o-Br-hUk" firstAttribute="top" secondItem="m3V-4m-3rn" secondAttribute="bottom" constant="8" symbolic="YES" id="vtX-Fo-Yng"/>
+                    <constraint firstItem="7S3-LX-C5s" firstAttribute="top" secondItem="LTM-oU-qoL" secondAttribute="bottom" constant="8" symbolic="YES" id="vti-Re-TOg"/>
+                    <constraint firstItem="x4f-tI-Gtu" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="wmE-Oj-dNZ"/>
+                    <constraint firstItem="bv1-wc-6Fy" firstAttribute="centerY" secondItem="x4f-tI-Gtu" secondAttribute="centerY" id="xP8-I8-fF0"/>
+                    <constraint firstItem="XUV-St-oQW" firstAttribute="top" secondItem="gSJ-Ve-Mum" secondAttribute="bottom" constant="8" symbolic="YES" id="xWu-gh-Mmb"/>
+                    <constraint firstItem="RIL-aa-Ite" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="zO0-Vq-mfz"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="118.5" y="249.5"/>
+        </window>
+    </objects>
+</document>
