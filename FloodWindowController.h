@@ -23,6 +23,4 @@
 
 -(void)resetFrame;
 
--(void)setSearchTerm:(NSString*)searchTerm;
-
 @end

@@ -77,11 +77,6 @@ static StreamController *shared;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)setSearchTerm:(NSString*)searchTerm {
-    _searchTerm = searchTerm;
-    [self reconnect];
-}
-
 - (void)startStreaming {
     [self reconnect];
 }

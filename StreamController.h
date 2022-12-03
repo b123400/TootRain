@@ -20,7 +20,6 @@
 @interface StreamController : NSObject
 
 @property (nonatomic, weak) id<StreamControllerDelegate> delegate;
-@property (nonatomic, strong) NSString *searchTerm;
 
 + (instancetype)shared;
 

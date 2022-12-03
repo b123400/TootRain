@@ -35,16 +35,6 @@
 	[[SettingViewController sharedPrefsWindowController] showWindow:self];
 }
 
-- (IBAction)openSearchWindow:(id)sender {
-	if(!searchController){
-		searchController=[[SearchWindowController alloc]init];
-		searchController.delegate=self;
-	}
-	[searchController showWindow:self];
-}
--(void)searchTermChangedTo:(NSString *)searchTerm{
-	[windowController setSearchTerm:searchTerm];
-}
 -(FloodWindowController*)windowController{
 	return windowController;
 }

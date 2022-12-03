@@ -67,13 +67,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="( ; l l )" id="83">
-                    <menu key="submenu" title="( ; l l )" id="81">
-                        <items>
-                            <menuItem title="Search..." enabled="NO" keyEquivalent="f" id="552"/>
-                        </items>
-                    </menu>
-                </menuItem>
                 <menuItem title="Edit" id="217">
                     <menu key="submenu" title="Edit" id="205">
                         <items>
