@@ -10,18 +10,15 @@
 #import <WebKit/WebKit.h>
 #import "SettingViewController.h"
 #import "FloodWindowController.h"
-#import "SearchWindowController.h"
 
-@interface FloodAppDelegate : NSObject <NSApplicationDelegate,SearchWindowControllerDelegate> {
+@interface FloodAppDelegate : NSObject <NSApplicationDelegate> {
 	FloodWindowController *windowController;
 	SettingViewController *settingController;
-	SearchWindowController *searchController;
 }
 
 - (FloodWindowController*)windowController;
 
 -(IBAction)newWindow:(id)sender;
 -(IBAction)openSettingWindow:(id)sender;
-- (IBAction)openSearchWindow:(id)sender;
 
 @end

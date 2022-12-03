@@ -24,6 +24,10 @@
     return self.slackAccount.displayName;
 }
 
+- (NSString *)shortDisplayName {
+    return self.slackAccount.shortDisplayName;
+}
+
 - (void)deleteAccount {
     [self.slackAccount deleteAccount];
 }

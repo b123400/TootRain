@@ -16,10 +16,19 @@
 #import "SlackAccount.h"
 #import "BRSlackClient.h"
 #import "BRSlackChannelSelectionWindowController.h"
+#import "SettingAccountCellObject.h"
+#import "SettingAccountDetailMastodonView.h"
+#import "SettingAccountDetailSlackView.h"
+#import "BRMastodonSourceSelectionWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
+@property (weak) IBOutlet NSBox *accountDetailBox;
+@property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
+@property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
+@property (weak) IBOutlet NSButton *reconnectButton;
+@property Account *detailSelectedAccount;
 
 - (void)updateAccountView;
 
@@ -47,7 +56,6 @@
 
 - (void)windowDidLoad{
 	[super windowDidLoad];
-	[[accountsTableView layer] setCornerRadius:30];
     
     [self.screenPopup removeAllItems];
     NSMutableArray *screenNames = [NSMutableArray array];
@@ -103,16 +111,10 @@
     [self updateAccountView];
     
     // need to find using identifier becoz system api doesn't compare it well
-    NSUInteger index = NSNotFound;
     NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
-    Account *selectedAccount = [[SettingManager sharedManager]selectedAccount];
-    for (int i = 0; i<accounts.count; i++) {
-        Account *thisAccount = [accounts objectAtIndex:i];
-        if ([thisAccount.identifier isEqualToString:selectedAccount.identifier]) {
-            index = i;
-            break;
-        }
-    }
+    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    NSUInteger index = [self indexOfAccountByIdentifier:selectedAccount];
+
     if (index != NSNotFound) {
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:index];
         [accountsTableView selectRowIndexes:indexSet byExtendingSelection:NO];
@@ -121,6 +123,13 @@
     if (!accounts.count) {
         [self displayViewForIdentifier:@"accounts" animate:YES];
     }
+}
+
+- (NSUInteger)indexOfAccountByIdentifier:(Account *)a {
+    NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
+    return [accounts indexOfObjectPassingTest:^BOOL(Account * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.identifier isEqualToString:a.identifier];
+    }];
 }
 
 #pragma mark tableview datasource+delegate
@@ -135,52 +144,23 @@
 	if (aTableView == accountsTableView) {
         if ([aTableColumn.identifier isEqualTo:@"name"]) {
             Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
-            if ([account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier]) {
-                return [NSString stringWithFormat:NSLocalizedString(@"%@ (Streaming)",nil), account.displayName];
-            }
-            return account.displayName;
+            SettingAccountCellObject *obj = [[SettingAccountCellObject alloc] init];
+            obj.accountName = account.shortDisplayName;
+            obj.isConnected = [account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier];
+            obj.accountType =
+                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountCellAccountTypeSlack
+                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountCellAccountTypeMastodon
+                : SettingAccountCellAccountTypeMastodon;
+            return obj;
         }
         return nil;
 	}
 	return nil;
 }
 
-- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    if (tableView == accountsTableView) {
-        Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:row];
-        if ([tableColumn.identifier isEqual:@"options"]) {
-            if (![account isKindOfClass:[SlackAccount class]]) {
-                // Hide options button for non-Slack accounts
-                return [[NSCell alloc] init];
-            }
-        }
-    }
-    return [tableColumn dataCellForRow:row];
-}
-
-- (IBAction)accountOptionsClicked:(id)sender {
-    NSInteger index = [(NSTableView*)sender clickedRow];
-    Account *a = [[[SettingManager sharedManager] accounts] objectAtIndex:index];
-    if (![a isKindOfClass:[SlackAccount class]]) return;
-    SlackAccount *account = (SlackAccount *)a;
-    [[BRSlackClient shared] getChannelListWithAccount:account.slackAccount
-                                    completionHandler:^(NSArray<BRSlackChannel *> * _Nonnull channels, NSError * _Nonnull error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
-            controller.channels = channels;
-            controller.selectedChannelIds = account.slackAccount.channelIds;
-            controller.selectedThreadId = account.slackAccount.threadId;
-            [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-                if (returnCode == NSModalResponseOK) {
-                    account.slackAccount.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
-                    account.slackAccount.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
-                    account.slackAccount.threadId = controller.selectedThreadId;
-                    [account.slackAccount save];
-                    [accountsTableView reloadData];
-                }
-            }];
-        });
-    }];
+- (IBAction)reconnectClicked:(id)sender {
+    [[SettingManager sharedManager] setSelectedAccount:self.detailSelectedAccount];
+    [self updateAccountView];
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
@@ -288,6 +268,7 @@
 }
 
 - (void)updateAccountView {
+    Account *lastDetailSelectedAccount = self.detailSelectedAccount;
     [[SettingManager sharedManager] reloadAccounts];
     if ([SettingManager sharedManager].accounts.count != 0) {
         self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
@@ -297,19 +278,82 @@
         [accountsSettingView addSubview:self.authorizeView];
     }
     [accountsTableView reloadData];
+
+    NSUInteger index = [self indexOfAccountByIdentifier:lastDetailSelectedAccount];
+    if (index != NSNotFound) {
+        [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
+                       byExtendingSelection:NO];
+    }
+}
+
+- (void)updateAccountDetailView {
+    if ([self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) {
+        self.accountDetailBox.contentView = self.mastodonDetailView;
+        [self.mastodonDetailView setAccount:(MastodonAccount *)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) {
+        self.accountDetailBox.contentView = self.slackDetailView;
+        [self.slackDetailView setAccount:(SlackAccount *)self.detailSelectedAccount];
+    }
+    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
+        self.reconnectButton.title = NSLocalizedString(@"Reconnect", @"setting account reconnect button");
+    } else {
+        self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account reconnect button");
+    }
+}
+
+- (IBAction)mastodonOptionClicked:(id)sender {
+    if (![self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) return;
+    MastodonAccount *a = (MastodonAccount*)self.detailSelectedAccount;
+    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] initWithAccount:a.mastodonAccount];
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSModalResponseOK) return;
+        a.mastodonAccount.source = controller.selectedSource;
+        a.mastodonAccount.sourceHashtag = controller.hashtag;
+        a.mastodonAccount.sourceListId = controller.listId;
+        a.mastodonAccount.sourceListName = controller.listName;
+        [a.mastodonAccount save];
+        
+        BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
+        NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
+
+        [self updateAccountView];
+        
+        if (needReconnect) {
+            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:currentAccountIdentifier]];
+        }
+    }];
+}
+
+- (IBAction)slackOptionClicked:(id)sender {
+    if (![self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) return;
+    SlackAccount *account = (SlackAccount *)self.detailSelectedAccount;
+    [[BRSlackClient shared] getChannelListWithAccount:account.slackAccount
+                                    completionHandler:^(NSArray<BRSlackChannel *> * _Nonnull channels, NSError * _Nonnull error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
+            controller.channels = channels;
+            controller.selectedChannelIds = account.slackAccount.channelIds;
+            controller.selectedThreadId = account.slackAccount.threadId;
+            [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+                if (returnCode == NSModalResponseOK) {
+                    account.slackAccount.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
+                    account.slackAccount.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
+                    account.slackAccount.threadId = controller.selectedThreadId;
+                    [account.slackAccount save];
+                    [self updateAccountView];
+                }
+            }];
+        });
+    }];
 }
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
     if (index == -1) return;
-    Account *selectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
-    if ([[[SettingManager sharedManager] selectedAccount].identifier isEqualToString:selectedAccount.identifier]) {
-        return;
-    }
-    if (selectedAccount) {
-        [[SettingManager sharedManager] setSelectedAccount:selectedAccount];
-    }
-    [self updateAccountView];
+    Account *detailSelectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    self.detailSelectedAccount = detailSelectedAccount;
+    [self updateAccountDetailView];
 }
 
 #pragma mark Appearance

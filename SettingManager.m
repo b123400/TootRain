@@ -74,6 +74,17 @@ static NSMutableArray *savedAccounts=nil;
     self.accounts = accounts;
 }
 
+- (Account *)accountWithIdentifier:(NSString *)identifier {
+    for (int i = 0; i < self.accounts.count; i++) {
+        Account *thisAccount = [self.accounts objectAtIndex:i];
+        if ([thisAccount.identifier isEqualToString:identifier]) {
+            return thisAccount;
+        }
+    }
+    return nil;
+}
+
+
 #pragma mark - settings
 
 

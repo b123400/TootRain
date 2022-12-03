@@ -63,6 +63,7 @@ typedef enum : NSUInteger {
 - (Account*)selectedAccount;
 - (void)setSelectedAccount:(Account*)account;
 - (NSArray<Account*> *)accounts;
+- (Account *)accountWithIdentifier:(NSString *)identifier;
 - (void)reloadAccounts;
 
 @end

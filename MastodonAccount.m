@@ -24,6 +24,10 @@
     return [self.mastodonAccount displayName];
 }
 
+- (NSString *)shortDisplayName {
+    return self.mastodonAccount.shortDisplayName;
+}
+
 - (void)deleteAccount {
     [self.mastodonAccount deleteAccount];
 }

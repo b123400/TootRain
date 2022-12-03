@@ -87,9 +87,6 @@
     [self resetFrame];
 }
 
--(void)setSearchTerm:(NSString*)searchTerm{
-    [StreamController shared].searchTerm = searchTerm;
-}
 #pragma mark stream delegate
 -(void)streamController:(id)controller didReceivedStatus:(Status *)status {
     typeof(self) __weak _self = self;

@@ -4,6 +4,9 @@
 /* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
 "5VI-7m-dre.title" = "螢幕";
 
+/* Class = "NSTableColumn"; headerCell.title = "Accounts"; ObjectID = "30"; */
+"30.headerCell.title" = "帳號";
+
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
 "31.title" = "Text Cell";
 
@@ -55,12 +58,57 @@
 /* Class = "NSMenuItem"; title = "Click through"; ObjectID = "AMX-Sr-Nw2"; */
 "AMX-Sr-Nw2.title" = "穿過";
 
-/* Class = "NSButtonCell"; title = "Options..."; ObjectID = "DG1-0y-OMV"; */
-"DG1-0y-OMV.title" = "選項...";
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "bQS-Cr-sFD"; */
+"bQS-Cr-sFD.title" = "帳號ID:";
+
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "C3w-4e-ugb"; */
+"C3w-4e-ugb.title" = "帳號ID:";
+
+/* Class = "NSTextFieldCell"; title = "Display Name:"; ObjectID = "cgn-Ke-zF5"; */
+"cgn-Ke-zF5.title" = "名字:";
+
+/* Class = "NSTextFieldCell"; title = "User timeline and notification"; ObjectID = "dNi-U1-ep6"; */
+"dNi-U1-ep6.title" = "用戶Timeline與通知";
+
+/* Class = "NSButtonCell"; title = "Reconnect"; ObjectID = "dr8-Yd-xvd"; */
+"dr8-Yd-xvd.title" = "重新連接";
+
+/* Class = "NSTextFieldCell"; title = "hello"; ObjectID = "eGz-zk-VS4"; */
+"eGz-zk-VS4.title" = "";
+
+/* Class = "NSTextFieldCell"; placeholderString = "https://"; ObjectID = "eSe-64-AVo"; */
+"eSe-64-AVo.placeholderString" = "";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "f1B-JK-9g0"; */
+"f1B-JK-9g0.title" = "服務:";
+
+/* Class = "NSTextFieldCell"; title = "Channels:"; ObjectID = "Ju7-ZP-pVG"; */
+"Ju7-ZP-pVG.title" = "頻道";
 
 /* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
 "lmq-cX-QGB.title" = "Hover → 隱藏";
 
+/* Class = "NSTextFieldCell"; title = "Source:"; ObjectID = "mpM-DR-vTU"; */
+"mpM-DR-vTU.title" = "來源:";
+
+/* Class = "NSTextFieldCell"; title = "Connected"; ObjectID = "Nf7-Pe-Ijj"; */
+"Nf7-Pe-Ijj.title" = "已連接";
+
+/* Class = "NSTextFieldCell"; title = "Team ID:"; ObjectID = "qUD-ZY-g8W"; */
+"qUD-ZY-g8W.title" = "";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qvJ-rF-35W"; */
+"qvJ-rF-35W.title" = "服務:";
+
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "u8X-fX-YPs"; */
+"u8X-fX-YPs.title" = "選項";
+
+/* Class = "NSTextFieldCell"; title = "Team Name:"; ObjectID = "VBL-L2-CZ7"; */
+"VBL-L2-CZ7.title" = "Team名：";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 暫停";
+
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "ZJa-GJ-bc5"; */
+"ZJa-GJ-bc5.title" = "選項";
 

@@ -39,6 +39,8 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
+		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
+		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -48,7 +50,6 @@
 		CF5D2D2A29350BC400745D63 /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */; };
 		CF5D2D2B29350BC400745D63 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */; };
 		CF5D2D2C29350BC400745D63 /* BRSlackChannelSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA161F626B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib */; };
-		CF5D2D2D29350BC400745D63 /* SearchWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FE51A76962C004644C8 /* SearchWindowController.xib */; };
 		CF5D2D2E29350BC400745D63 /* emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = CF5DE47E26A06AAA0040BD63 /* emoji.json */; };
 		CF5D2D2F29350BC400745D63 /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FEA1A769638004644C8 /* ComposeStatusViewController.xib */; };
 		CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */; };
@@ -103,7 +104,6 @@
 		CF5D2D6229350BC400745D63 /* BRSlackChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */; };
 		CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
-		CF5D2D6529350BC400745D63 /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5DE47926A054D20040BD63 /* SlackUser.m */; };
 		CF5D2D6729350BC400745D63 /* MastodonStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5DE46D26A03A610040BD63 /* MastodonStreamHandle.m */; };
 		CF5D2D6829350BC400745D63 /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
@@ -147,7 +147,6 @@
 		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
 		CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */; };
 		CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346A1CC4133C004D1FFC /* InfoPlist.strings */; };
-		CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8DC2241CDE789800128E68 /* BRSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2231CDE789800128E68 /* BRSearchViewController.m */; };
 		CF8DC2271CDE7CB600128E68 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */; };
@@ -170,6 +169,12 @@
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
 		CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */; };
 		CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
+		CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
+		CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */; };
+		CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
+		CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319822935E69400BD2C18 /* SettingAccountCellView.m */; };
+		CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
+		CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
@@ -181,16 +186,23 @@
 		CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
 		CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */; };
 		CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
+		CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
+		CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
+		CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
+		CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
 		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
 		CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */; };
-		CFE39FE31A76962C004644C8 /* SearchWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FE51A76962C004644C8 /* SearchWindowController.xib */; };
 		CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39FEA1A769638004644C8 /* ComposeStatusViewController.xib */; };
 		CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */; };
 		CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BC15D7E88600815830 /* RainDropViewController.m */; };
 		CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5BF15D7E9F100815830 /* RainDropView.m */; };
 		CFE8F5C315D7FC4900815830 /* RainDropTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */; };
+		CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
+		CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEC43F92695DC5200E66DD0 /* DummyStatus.m */; };
 		CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
@@ -278,7 +290,6 @@
 		CF2AAAF41ABB1698002EC003 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		CF34B7511AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SearchWindowController.strings"; sourceTree = "<group>"; };
 		CF34B7521AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ComposeStatusViewController.strings"; sourceTree = "<group>"; };
 		CF34B7531AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
 		CF34B7541AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -295,6 +306,8 @@
 		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
 		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
 		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
+		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
+		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
 		CF5D2D7929350BC400745D63 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
 		CF5D2D7C29350DA900745D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-standalone.xib"; sourceTree = "<group>"; };
@@ -354,10 +367,7 @@
 		CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
 		CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRNavigationViewController.h; sourceTree = "<group>"; };
 		CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNavigationViewController.m; sourceTree = "<group>"; };
-		CF8534621CC3C4D9004D1FFC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SearchWindowController.strings; sourceTree = "<group>"; };
 		CF8534691CC4133C004D1FFC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
-		CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF8DC2221CDE789800128E68 /* BRSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSearchViewController.h; sourceTree = "<group>"; };
@@ -400,6 +410,12 @@
 		CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingOAuthWindowController.h; sourceTree = "<group>"; };
 		CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingOAuthWindowController.m; sourceTree = "<group>"; };
 		CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingOAuthWindowController.xib; sourceTree = "<group>"; };
+		CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonSourceSelectionWindowController.h; sourceTree = "<group>"; };
+		CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonSourceSelectionWindowController.m; sourceTree = "<group>"; };
+		CFB319812935E69400BD2C18 /* SettingAccountCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellView.h; sourceTree = "<group>"; };
+		CFB319822935E69400BD2C18 /* SettingAccountCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountCellView.m; sourceTree = "<group>"; };
+		CFB319852935EE3600BD2C18 /* SettingAccountCellObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountCellObject.h; sourceTree = "<group>"; };
+		CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountCellObject.m; sourceTree = "<group>"; };
 		CFB3613813996A3D0005F33D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
@@ -423,6 +439,10 @@
 		CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonAccount.m; sourceTree = "<group>"; };
 		CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonOAuthResult.h; sourceTree = "<group>"; };
 		CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonOAuthResult.m; sourceTree = "<group>"; };
+		CFDDE44A293754C200E64EF5 /* SettingAccountDetailSlackView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailSlackView.h; sourceTree = "<group>"; };
+		CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailSlackView.m; sourceTree = "<group>"; };
+		CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailMastodonView.h; sourceTree = "<group>"; };
+		CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailMastodonView.m; sourceTree = "<group>"; };
 		CFE39F7D1A7648C1004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFE39F801A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		CFE39F811A764912004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -432,7 +452,6 @@
 		CFE39F931A764F59004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingViewController.xib; sourceTree = "<group>"; };
 		CFE39F961A764F5F004644C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/SettingViewController.strings; sourceTree = "<group>"; };
 		CFE39FDF1A769623004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RainDropDetailViewController.xib; sourceTree = "<group>"; };
-		CFE39FE41A76962C004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchWindowController.xib; sourceTree = "<group>"; };
 		CFE39FE91A769638004644C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CFE8F5B615D7CBFA00815830 /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
 		CFE8F5B815D7CBFA00815830 /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
@@ -441,6 +460,9 @@
 		CFE8F5BF15D7E9F100815830 /* RainDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropView.m; sourceTree = "<group>"; };
 		CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropTextFieldCell.h; sourceTree = "<group>"; };
 		CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropTextFieldCell.m; sourceTree = "<group>"; };
+		CFEBAC1D293B214300447421 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BRMastodonSourceSelectionWindowController.xib; sourceTree = "<group>"; };
+		CFEBAC20293B214800447421 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/BRMastodonSourceSelectionWindowController.strings; sourceTree = "<group>"; };
+		CFEBAC22293B214900447421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BRMastodonSourceSelectionWindowController.strings"; sourceTree = "<group>"; };
 		CFEC43F82695DC5200E66DD0 /* DummyStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyStatus.h; sourceTree = "<group>"; };
 		CFEC43F92695DC5200E66DD0 /* DummyStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyStatus.m; sourceTree = "<group>"; };
 		CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingFontTableViewController.h; sourceTree = "<group>"; };
@@ -522,7 +544,6 @@
 				CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */,
 				CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */,
 				CF8534641CC3E351004D1FFC /* RainDrop Detail */,
-				CF8534631CC3E342004D1FFC /* Search */,
 				CFC396F526886FF800DED41A /* Model */,
 				CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */,
 				CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */,
@@ -751,16 +772,6 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
-		CF8534631CC3E342004D1FFC /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				CF8BBEEA15E3C7E00064D90B /* SearchWindowController.h */,
-				CF8BBEEB15E3C7E00064D90B /* SearchWindowController.m */,
-				CFE39FE51A76962C004644C8 /* SearchWindowController.xib */,
-			);
-			name = Search;
-			sourceTree = "<group>";
-		};
 		CF8534641CC3E351004D1FFC /* RainDrop Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +809,14 @@
 				CF2F8BD91390E0CB00D733CA /* SettingViewController.h */,
 				CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */,
 				CFE39F941A764F59004644C8 /* SettingViewController.xib */,
+				CFB319812935E69400BD2C18 /* SettingAccountCellView.h */,
+				CFB319822935E69400BD2C18 /* SettingAccountCellView.m */,
+				CFB319852935EE3600BD2C18 /* SettingAccountCellObject.h */,
+				CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */,
+				CFDDE44A293754C200E64EF5 /* SettingAccountDetailSlackView.h */,
+				CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */,
+				CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */,
+				CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */,
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
@@ -903,8 +922,13 @@
 				CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */,
 				CF5E5EC72692A8AA00E904D0 /* BRMastodonUser.h */,
 				CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */,
+				CF52029E2938F02600B9B749 /* BRMastodonList.h */,
+				CF52029F2938F02600B9B749 /* BRMastodonList.m */,
 				CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */,
 				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
+				CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */,
+				CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */,
+				CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */,
 			);
 			path = BRMastodonClient;
 			sourceTree = "<group>";
@@ -1050,6 +1074,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
@@ -1059,7 +1084,6 @@
 				CFE8F5BA15D7CBFA00815830 /* RainDropViewController.xib in Resources */,
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
 				CFA161F426B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib in Resources */,
-				CFE39FE31A76962C004644C8 /* SearchWindowController.xib in Resources */,
 				CF5DE47F26A06AAA0040BD63 /* emoji.json in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
@@ -1073,6 +1097,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */,
+				CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
@@ -1081,7 +1106,6 @@
 				CF5D2D2A29350BC400745D63 /* RainDropViewController.xib in Resources */,
 				CF5D2D2B29350BC400745D63 /* RainDropDetailViewController.xib in Resources */,
 				CF5D2D2C29350BC400745D63 /* BRSlackChannelSelectionWindowController.xib in Resources */,
-				CF5D2D2D29350BC400745D63 /* SearchWindowController.xib in Resources */,
 				CF5D2D2E29350BC400745D63 /* emoji.json in Resources */,
 				CF5D2D2F29350BC400745D63 /* ComposeStatusViewController.xib in Resources */,
 				CF5D2D7D29350DA900745D63 /* MainMenu-standalone.xib in Resources */,
@@ -1244,6 +1268,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF75438E13686342009E7292 /* TransparentView.m in Sources */,
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */,
@@ -1274,14 +1300,18 @@
 				CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */,
 				CF5DE46526A02ACF0040BD63 /* MastodonAccount.m in Sources */,
 				CF5DE47126A03A8E0040BD63 /* SlackStreamHandle.m in Sources */,
+				CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
+				CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
+				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
 				CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */,
+				CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
 				CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */,
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
@@ -1292,7 +1322,6 @@
 				CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */,
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
-				CF8BBEED15E3C7E10064D90B /* SearchWindowController.m in Sources */,
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
 				CF5DE46E26A03A610040BD63 /* MastodonStreamHandle.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
@@ -1305,6 +1334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5D2D3429350BC400745D63 /* main.m in Sources */,
+				CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF5D2D3529350BC400745D63 /* TransparentView.m in Sources */,
 				CF5D2D3629350BC400745D63 /* CustomTitleBar.m in Sources */,
 				CF5D2D3729350BC400745D63 /* BRMastodonUser.m in Sources */,
@@ -1335,14 +1366,18 @@
 				CF5D2D5029350BC400745D63 /* BRMastodonEmoji.m in Sources */,
 				CF5D2D5129350BC400745D63 /* MastodonAccount.m in Sources */,
 				CF5D2D5229350BC400745D63 /* SlackStreamHandle.m in Sources */,
+				CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF5D2D5329350BC400745D63 /* MastodonUser.m in Sources */,
+				CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
+				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
 				CF5D2D5A29350BC400745D63 /* BRSlackStreamHandle.m in Sources */,
+				CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
 				CF5D2D5B29350BC400745D63 /* SettingOAuthWindowController.m in Sources */,
 				CF5D2D5C29350BC400745D63 /* RainDropViewController.m in Sources */,
 				CF5D2D5D29350BC400745D63 /* RainDropView.m in Sources */,
@@ -1353,7 +1388,6 @@
 				CF5D2D6229350BC400745D63 /* BRSlackChannel.m in Sources */,
 				CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */,
-				CF5D2D6529350BC400745D63 /* SearchWindowController.m in Sources */,
 				CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */,
 				CF5D2D6729350BC400745D63 /* MastodonStreamHandle.m in Sources */,
 				CF5D2D6829350BC400745D63 /* ComposeStatusViewController.m in Sources */,
@@ -1384,6 +1418,8 @@
 				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
 				CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */,
 				CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */,
+				CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
+				CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
 				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
 				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,
 			);
@@ -1514,16 +1550,6 @@
 			name = RainDropDetailViewController.xib;
 			sourceTree = "<group>";
 		};
-		CFE39FE51A76962C004644C8 /* SearchWindowController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFE39FE41A76962C004644C8 /* Base */,
-				CF34B7511AADA48200C6A58E /* zh-Hant */,
-				CF8534621CC3C4D9004D1FFC /* ja */,
-			);
-			name = SearchWindowController.xib;
-			sourceTree = "<group>";
-		};
 		CFE39FEA1A769638004644C8 /* ComposeStatusViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1532,6 +1558,16 @@
 				CF1106EB1CC41546006CAE38 /* ja */,
 			);
 			name = ComposeStatusViewController.xib;
+			sourceTree = "<group>";
+		};
+		CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFEBAC1D293B214300447421 /* Base */,
+				CFEBAC20293B214800447421 /* ja */,
+				CFEBAC22293B214900447421 /* zh-Hant */,
+			);
+			name = BRMastodonSourceSelectionWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

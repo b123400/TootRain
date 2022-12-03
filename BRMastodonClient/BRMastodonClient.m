@@ -275,6 +275,7 @@
 }
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
+    BRMastodonStreamSource source = account.source;
     __block BRMastodonStreamHandle *handler = [[BRMastodonStreamHandle alloc] init];
     typeof(self) __weak _self = self;
     [self accessTokenWithAccount:account
@@ -285,8 +286,19 @@
         } else if ([components.scheme isEqual:@"https"]) {
             components.scheme = @"wss";
         }
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"/api/v1/streaming?access_token=%@&stream=user", [accessToken stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]]
-                            relativeToURL:components.URL];
+        NSMutableArray<NSURLQueryItem*> *queryItems = [NSMutableArray array];
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"access_token" value:accessToken]];
+        [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"stream" value:[self queryParameterForStreamSource:source]]];
+        
+        if ((source == BRMastodonStreamSourceHashtag || source == BRMastodonStreamSourceHashtagLocal) && account.sourceHashtag.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"tag" value:account.sourceHashtag]];
+        } else if (source == BRMastodonStreamSourceList && account.sourceListId.length) {
+            [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"list" value:account.sourceListId]];
+        }
+        [components setQueryItems:queryItems];
+        [components setPath:@"/api/v1/streaming"];
+        
+        NSURL *url = components.URL;
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         NSURLSessionWebSocketTask *task = [_self.urlSession webSocketTaskWithRequest:request];
         [_self receiveMessageFromWebsocketTask:task
@@ -317,12 +329,8 @@
                 }
                 return;
             }
-            if (![jsonDict[@"event"] isEqualToString:@"update"] || !jsonDict[@"payload"]) {
-                return;
-            }
-            NSDictionary *statusDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)jsonDict[@"payload"] dataUsingEncoding:NSUTF8StringEncoding]
-                                                                       options:0
-                                                                         error:&jsonError];
+            NSDictionary *statusDict = [self findStatusDictionaryFromStreamEvent: jsonDict];
+            if (!statusDict) return;
             BRMastodonStatus *status = [[BRMastodonStatus alloc] initWithJSONDict:statusDict account:account];
             if (handler.onStatus) {
                 handler.onStatus(status);
@@ -333,6 +341,28 @@
         [task resume];
     }];
     return handler;
+}
+
+- (NSDictionary *)findStatusDictionaryFromStreamEvent:(NSDictionary*)jsonDict {
+    NSString *eventStr = jsonDict[@"event"];
+    NSString *payloadStr = jsonDict[@"payload"];
+    if (!eventStr || !payloadStr) return nil;
+    NSDictionary *payloadDict = [NSJSONSerialization JSONObjectWithData:[(NSString *)payloadStr dataUsingEncoding:NSUTF8StringEncoding]
+                                                                options:0
+                                                                  error:nil];
+    if (!payloadDict) return nil;
+    if ([eventStr isEqualToString:@"update"]) {
+        return payloadDict;
+    }
+    if ([eventStr isEqualTo:@"notification"]) {
+        if ([payloadDict[@"type"] isEqualTo:@"status"] || [payloadDict[@"type"] isEqualTo:@"mention"]) {
+            return payloadDict[@"status"];
+        }
+    }
+    if ([eventStr isEqualTo:@"conversation"]) {
+        return payloadDict[@"last_status"];
+    }
+    return nil;
 }
 
 - (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
@@ -503,6 +533,47 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
     }];
 }
 
+- (void)getListsWithAccount:(BRMastodonAccount *)account
+          completionHandler:(void (^)(NSArray<BRMastodonList *> * _Nullable lists, NSError * _Nullable error))callback {
+    NSURL *url = [NSURL URLWithString:@"/api/v1/lists"
+                        relativeToURL:[NSURL URLWithString:account.app.hostName]];
+    typeof(self) __weak _self = self;
+    [self baseRequestWithURL:url
+                     account:account
+           completionHandler:^(NSMutableURLRequest * _Nullable request, NSError * _Nullable error) {
+        [request setHTTPMethod:@"GET"];
+        NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                         completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error);
+                callback(nil, error);
+                return;
+            }
+            NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError *decodeError = nil;
+            NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+            if ([result isKindOfClass:[NSDictionary class]] && ((NSDictionary*)result)[@"error"]) {
+                callback(nil, [NSError errorWithDomain:NSCocoaErrorDomain
+                                                  code:0
+                                              userInfo:@{@"response": result}]);
+                return;
+            }
+            if (![result isKindOfClass:[NSArray class]] || decodeError != nil) {
+                NSLog(@"Decode error: %@", decodeError);
+                callback(nil, decodeError);
+                return;
+            }
+
+            NSMutableArray *lists = [NSMutableArray arrayWithCapacity:result.count];
+            for (NSDictionary *dict in result) {
+                [lists addObject:[[BRMastodonList alloc] initWithJSONDictionary:dict]];
+            }
+            callback(lists, nil);
+        }];
+        [task resume];
+    }];
+}
+
 #pragma mark - Delegate
 
 - (void)URLSession:(NSURLSession *)session
@@ -525,6 +596,32 @@ didOpenWithProtocol:(NSString *)protocol {
         handler.onDisconnected();
     }
     [self.taskToHandleMapping removeObjectForKey:webSocketTask];
+}
+
+- (NSString *)queryParameterForStreamSource:(BRMastodonStreamSource)source {
+    switch (source) {
+        case BRMastodonStreamSourceUser:
+            return @"user";
+        case BRMastodonStreamSourceUserNotification:
+            return @"user:notification";
+        case BRMastodonStreamSourceList:
+            return @"list";
+        case BRMastodonStreamSourceDirect:
+            return @"direct";
+        case BRMastodonStreamSourceHashtag:
+            return @"hashtag";
+        case BRMastodonStreamSourceHashtagLocal:
+            return @"hashtag:local";
+        case BRMastodonStreamSourcePublic:
+            return @"public";
+        case BRMastodonStreamSourcePublicLocal:
+            return @"public:local";
+        case BRMastodonStreamSourcePublicRemote:
+            return @"public:remote";
+        default:
+            break;
+    }
+    return nil;
 }
 
 @end

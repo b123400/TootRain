@@ -60,6 +60,10 @@
             threadString];
 }
 
+- (NSString *)shortDisplayName {
+    return self.teamName;
+}
+
 - (void)save {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *accounts = [(NSDictionary*)[defaults objectForKey:@"BRSlackAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];

@@ -4,6 +4,9 @@
 /* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
 "5VI-7m-dre.title" = "スクリーン";
 
+/* Class = "NSTableColumn"; headerCell.title = "Accounts"; ObjectID = "30"; */
+"30.headerCell.title" = "アカウント";
+
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "31"; */
 "31.title" = "Text Cell";
 
@@ -55,12 +58,51 @@
 /* Class = "NSMenuItem"; title = "Click through"; ObjectID = "AMX-Sr-Nw2"; */
 "AMX-Sr-Nw2.title" = "スルー";
 
-/* Class = "NSButtonCell"; title = "Options..."; ObjectID = "DG1-0y-OMV"; */
-"DG1-0y-OMV.title" = "設定...";
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "bQS-Cr-sFD"; */
+"bQS-Cr-sFD.title" = "アカウントID:";
+
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "C3w-4e-ugb"; */
+"C3w-4e-ugb.title" = "アカウントID:";
+
+/* Class = "NSTextFieldCell"; title = "Display Name:"; ObjectID = "cgn-Ke-zF5"; */
+"cgn-Ke-zF5.title" = "名前:";
+
+/* Class = "NSTextFieldCell"; title = "User timeline and notification"; ObjectID = "dNi-U1-ep6"; */
+"dNi-U1-ep6.title" = "ユーザータイムラインと通知";
+
+/* Class = "NSButtonCell"; title = "Reconnect"; ObjectID = "dr8-Yd-xvd"; */
+"dr8-Yd-xvd.title" = "再接続";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "f1B-JK-9g0"; */
+"f1B-JK-9g0.title" = "サービス:";
+
+/* Class = "NSTextFieldCell"; title = "Channels:"; ObjectID = "Ju7-ZP-pVG"; */
+"Ju7-ZP-pVG.title" = "チャンネル:";
 
 /* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
 "lmq-cX-QGB.title" = "Hover → 隠す";
 
+/* Class = "NSTextFieldCell"; title = "Source:"; ObjectID = "mpM-DR-vTU"; */
+"mpM-DR-vTU.title" = "ソース:";
+
+/* Class = "NSTextFieldCell"; title = "Connected"; ObjectID = "Nf7-Pe-Ijj"; */
+"Nf7-Pe-Ijj.title" = "接続済み";
+
+/* Class = "NSTextFieldCell"; title = "Team ID:"; ObjectID = "qUD-ZY-g8W"; */
+"qUD-ZY-g8W.title" = "チームID:";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qvJ-rF-35W"; */
+"qvJ-rF-35W.title" = "サービス:";
+
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "u8X-fX-YPs"; */
+"u8X-fX-YPs.title" = "オプション";
+
+/* Class = "NSTextFieldCell"; title = "Team Name:"; ObjectID = "VBL-L2-CZ7"; */
+"VBL-L2-CZ7.title" = "チーム名:";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 一時停止";
+
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "ZJa-GJ-bc5"; */
+"ZJa-GJ-bc5.title" = "オプション";
 

@@ -68,7 +68,6 @@ static StreamController *shared;
         self.streamHandle = nil;
         self.account = nil;
     }
-    if ([changedToAccount.identifier isEqualToString:self.account.identifier]) return;
 
     self.account = changedToAccount;
     [self reconnect];
@@ -76,11 +75,6 @@ static StreamController *shared;
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)setSearchTerm:(NSString*)searchTerm {
-    _searchTerm = searchTerm;
-    [self reconnect];
 }
 
 - (void)startStreaming {

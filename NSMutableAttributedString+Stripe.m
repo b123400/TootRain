@@ -81,6 +81,7 @@
         index = r.length + r.location;
         if (attributes[NSAttachmentAttributeName]) {
             NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
+            if (attachment.bounds.size.width == 0 || attachment.bounds.size.height == 0) continue;
             NSImage *image = [attachment imageForBounds:attachment.bounds
                                           textContainer:nil
                                          characterIndex:r.location];
