@@ -8,7 +8,7 @@
 "dvQ-D3-K7f.title" = "無";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
-"F0z-JX-Cv5.title" = "Window";
+"F0z-JX-Cv5.title" = "視窗";
 
 /* Class = "NSButtonCell"; title = "All"; ObjectID = "Fcs-7S-d3N"; */
 "Fcs-7S-d3N.title" = "全部";
@@ -20,5 +20,5 @@
 "PNn-8B-CFL.title" = "或者輸入一個Thread URL";
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "Unu-xG-gQ7"; */
-"Unu-xG-gQ7.title" = "OK";
+"Unu-xG-gQ7.title" = "好";
 

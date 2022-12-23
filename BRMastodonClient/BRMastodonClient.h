@@ -35,9 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account;
 
-- (void)setStreamSourceHashtag:(NSString *)hashtag;
-- (void)setStreamSourceList:(NSString *)list;
-
 - (void)replyToStatus:(BRMastodonStatus *)status
            withText:(NSString *)text
   completionHandler:(void (^_Nonnull)(BRMastodonStatus * _Nullable status, NSError * _Nullable error))callback;

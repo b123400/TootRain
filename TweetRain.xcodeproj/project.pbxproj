@@ -41,6 +41,7 @@
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
 		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
+		CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */; };
 		CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -308,6 +309,9 @@
 		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
 		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
 		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
+		CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CF5AB3BC293DCD8900C8AC7B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		CF5AB3BD293DCD8900C8AC7B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF5D2D7929350BC400745D63 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
 		CF5D2D7C29350DA900745D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-standalone.xib"; sourceTree = "<group>"; };
@@ -882,6 +886,7 @@
 			isa = PBXGroup;
 			children = (
 				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
+				CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */,
 				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1122,6 +1127,7 @@
 				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
 				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
 				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
+				CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */,
 				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
 				CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */,
 				CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */,
@@ -1469,8 +1475,18 @@
 			children = (
 				CF2AAAF41ABB1698002EC003 /* Base */,
 				CFA312A526B27D58008F4BA0 /* zh-Hant */,
+				CF5AB3BC293DCD8900C8AC7B /* ja */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */,
+				CF5AB3BD293DCD8900C8AC7B /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		CF5D2D7B29350DA900745D63 /* MainMenu-standalone.xib */ = {

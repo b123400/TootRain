@@ -20,7 +20,7 @@
 "195.title" = "透明度";
 
 /* Class = "NSButtonCell"; title = "Choose font"; ObjectID = "201"; */
-"201.title" = "選擇字形";
+"201.title" = "選擇字體";
 
 /* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
 "203.title" = "Font: Arial Bold 18";

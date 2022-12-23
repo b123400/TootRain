@@ -1,5 +1,5 @@
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "ウインド";
+"19.title" = "ウインドウ";
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
@@ -14,7 +14,7 @@
 "58.title" = "TootRainについて";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
-"129.title" = "設定...";
+"129.title" = "環境設定…";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
 "130.title" = "サービス";
@@ -29,16 +29,16 @@
 "136.title" = "TootRainを終了";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "他のアプリを隠す";
+"145.title" = "ほかを非表示";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "全てを表示する";
+"150.title" = "すべて表示";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
 "197.title" = "コピー";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "全てを選択する";
+"198.title" = "すべてを選択";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
 "199.title" = "カット";
@@ -47,13 +47,13 @@
 "202.title" = "削除";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "貼り付け";
+"203.title" = "ペースト";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
 "205.title" = "編集";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "取り消し";
+"207.title" = "取り消す";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
 "215.title" = "やり直す";
@@ -62,16 +62,16 @@
 "217.title" = "編集";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
-"295.title" = "ビュー";
+"295.title" = "表示";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
 "375.title" = "フォーマット";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
-"485.title" = "スタイルなしで貼り付く";
+"485.title" = "ペーストしてスタイルを合わせる";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "助けて";
+"490.title" = "ヘルプ";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
 "TRN-i4-5na.title" = "アップデートを確認...";
