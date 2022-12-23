@@ -6,17 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SettingManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum : NSUInteger {
-    SettingAccountCellAccountTypeMastodon,
-    SettingAccountCellAccountTypeSlack,
-} SettingAccountCellAccountType;
-
 @interface SettingAccountCellObject : NSObject
 
-@property (assign, nonatomic) SettingAccountCellAccountType accountType;
+@property (assign, nonatomic) SettingAccountType accountType;
 @property (strong, nonatomic) NSString *accountName;
 @property (assign) BOOL isConnected;
 

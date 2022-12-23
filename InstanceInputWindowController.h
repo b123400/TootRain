@@ -6,12 +6,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SettingManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface InstanceInputWindowController : NSWindowController
 
 @property (weak) IBOutlet NSTextField *hostNameTextField;
+@property (nonatomic, assign) SettingAccountType accountType;
 
 - (NSString*)hostName;
 

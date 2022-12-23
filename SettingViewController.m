@@ -148,9 +148,9 @@
             obj.accountName = account.shortDisplayName;
             obj.isConnected = [account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier];
             obj.accountType =
-                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountCellAccountTypeSlack
-                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountCellAccountTypeMastodon
-                : SettingAccountCellAccountTypeMastodon;
+                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountTypeSlack
+                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountTypeMastodon
+                : SettingAccountTypeMastodon;
             return obj;
         }
         return nil;
@@ -211,8 +211,22 @@
     }];
 }
 
-- (IBAction)addAccountButtonTapped:(id)sender {
+- (IBAction)addAccountButtonClicked:(NSButton *)sender {
+    NSPoint point = NSMakePoint(sender.frame.origin.x, sender.frame.origin.y);
+    [sender.menu popUpMenuPositioningItem:nil atLocation:point inView:sender.superview];
+}
+
+- (IBAction)addMastodonAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeMastodon];
+}
+- (IBAction)addMisskeyAccountClicked:(id)sender {
+}
+- (IBAction)addSlackAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeSlack];
+}
+- (void)showInstanceInputWindowWithAccountType:(SettingAccountType)accountType {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
+    controller.accountType = accountType;
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
@@ -221,7 +235,7 @@
     }];
 }
 
-- (IBAction)deleteAccountTapped:(id)sender {
+- (IBAction)deleteAccountClicked:(id)sender {
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
     Account *account = [SettingManager sharedManager].accounts[row];

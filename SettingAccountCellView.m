@@ -28,10 +28,10 @@
         return;
     }
     switch (objectValue.accountType) {
-        case SettingAccountCellAccountTypeMastodon:
+        case SettingAccountTypeMastodon:
             [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
             break;
-        case SettingAccountCellAccountTypeSlack:
+        case SettingAccountTypeSlack:
             [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
             break;
     }

@@ -146,7 +146,8 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addAccountButtonTapped:" target="-2" id="gDA-sW-xd5"/>
+                        <action selector="addAccountButtonClicked:" target="-2" id="w3Y-aP-z8D"/>
+                        <outlet property="menu" destination="abI-7t-kq6" id="9BQ-RE-bkD"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-M3-akf">
@@ -167,7 +168,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="deleteAccountTapped:" target="-2" id="E4R-CL-3Df"/>
+                        <action selector="deleteAccountClicked:" target="-2" id="nTe-kA-VzC"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-VZ-77N">
@@ -772,6 +773,29 @@ DQ
             </connections>
             <point key="canvasLocation" x="195" y="830"/>
         </customView>
+        <menu id="abI-7t-kq6">
+            <items>
+                <menuItem title="Mastodon / Pleroma" id="ALi-2p-We1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addMastodonAccountClicked:" target="-2" id="lHz-2t-Ysv"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Misskey" id="vT3-jM-6sE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addMisskeyAccountClicked:" target="-2" id="c1S-7c-dyq"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Slack" id="DEG-ph-RVs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addSlackAccountClicked:" target="-2" id="PUB-Jz-zTJ"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-312" y="338"/>
+        </menu>
     </objects>
     <resources>
         <image name="Mastodon" width="30" height="32"/>
