@@ -48,7 +48,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[[self httpBodyWithParams: @{
         @"client_name": @"Tootrain",
-        @"redirect_uris": OAUTH_REDIRECT_DEST,
+        @"redirect_uris": MASTODON_OAUTH_REDIRECT_DEST,
         @"scopes": @"read write",
         @"website": @"https://b123400.net",
     }] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -93,7 +93,7 @@
     [request setHTTPBody:[ [self httpBodyWithParams:@{
             @"client_id": app.clientId,
             @"client_secret": app.clientSecret,
-            @"redirect_uri": OAUTH_REDIRECT_DEST,
+            @"redirect_uri": MASTODON_OAUTH_REDIRECT_DEST,
             @"grant_type": @"authorization_code",
             @"code": code,
             @"scope": @"read write"
@@ -200,9 +200,9 @@
     [request setHTTPBody:[ [self httpBodyWithParams:@{
             @"client_id": app.clientId,
             @"client_secret": app.clientSecret,
-            @"redirect_uri": OAUTH_REDIRECT_DEST,
+            @"redirect_uri": MASTODON_OAUTH_REDIRECT_DEST,
             @"grant_type": @"refresh_token",
-            @"refresh_token": refreshToken,
+            @"refresh_token": refreshToken ?: @"",
             @"scope": @"read write"
     }] dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request

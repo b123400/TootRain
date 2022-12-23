@@ -57,6 +57,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if ([url.scheme isEqualToString:@"tootrain"]) {
         decisionHandler(WKNavigationActionPolicyCancel);
         if ([url.host isEqualToString:@"oauth"]) {
+            // Mastodon
             NSString *code = [[[[[NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO]
                                  queryItems]
                                 filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name == 'code'"]]
