@@ -20,6 +20,8 @@
 #import "SettingAccountDetailMastodonView.h"
 #import "SettingAccountDetailSlackView.h"
 #import "BRMastodonSourceSelectionWindowController.h"
+#import "BRMisskeyClient.h"
+#import "MisskeyAccount.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -172,18 +174,20 @@
 
 #pragma mark Accounts
 
-- (void)addAccountWithHostName:(NSString *)hostName {
-    [self addAccountWithHostName:hostName updatingSlackAccount:nil];
+- (void)addAccountWithHostName:(NSString *)hostName accountType:(SettingAccountType)accountType {
+    [self addAccountWithHostName:hostName accountType:accountType updatingSlackAccount:nil];
 }
 
-- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType
+          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
     if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
         hostName = [NSString stringWithFormat:@"https://%@", hostName];
     }
     if ([hostName hasSuffix:@"/"]) {
         hostName = [hostName substringToIndex:hostName.length - 1];
     }
-    if ([hostName hasSuffix:@".slack.com"]) {
+    if (accountType == SettingAccountTypeSlack || [hostName hasSuffix:@".slack.com"]) {
         SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
         oauthController.delegate = self;
         oauthController.updatingSlackAccount = slackAccount;
@@ -191,24 +195,33 @@
         self.oauthController = oauthController;
         return;
     }
-    [[BRMastodonClient shared] registerAppFor:hostName
-                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-        NSLog(@"App: %@, Error: %@", app, error);
-        NSLog(@"URL: %@", [app authorisationURL]);
-        if (!error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-                oauthController.delegate = self;
-                [oauthController showWindow:self];
-                self.oauthController = oauthController;
-            });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSAlert *alert = [NSAlert alertWithError:error];
-                [alert runModal];
-            });
-        }
-    }];
+    if (accountType == SettingAccountTypeMastodon) {
+        [[BRMastodonClient shared] registerAppFor:hostName
+                                completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+            NSLog(@"App: %@, Error: %@", app, error);
+            NSLog(@"URL: %@", [app authorisationURL]);
+            if (!error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                    oauthController.delegate = self;
+                    [oauthController showWindow:self];
+                    self.oauthController = oauthController;
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSAlert *alert = [NSAlert alertWithError:error];
+                    [alert runModal];
+                });
+            }
+        }];
+        return;
+    }
+    if (accountType == SettingAccountTypeMisskey) {
+        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithMisskeyHostName:[NSURL URLWithString:hostName]];
+        oauthController.delegate = self;
+        [oauthController showWindow:self];
+        self.oauthController = oauthController;
+    }
 }
 
 - (IBAction)addAccountButtonClicked:(NSButton *)sender {
@@ -220,17 +233,19 @@
     [self showInstanceInputWindowWithAccountType: SettingAccountTypeMastodon];
 }
 - (IBAction)addMisskeyAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeMisskey];
 }
 - (IBAction)addSlackAccountClicked:(id)sender {
     [self showInstanceInputWindowWithAccountType: SettingAccountTypeSlack];
 }
+
 - (void)showInstanceInputWindowWithAccountType:(SettingAccountType)accountType {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
     controller.accountType = accountType;
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            [self addAccountWithHostName:[controller hostName]];
+            [self addAccountWithHostName:[controller hostName] accountType:controller.accountType];
         }
     }];
 }
@@ -246,7 +261,8 @@
 }
 
 - (IBAction)authorizeButtonTapped:(id)sender {
-    [self addAccountWithHostName:self.instanceHostField.stringValue];
+    // TODO: choose service
+    [self addAccountWithHostName:self.instanceHostField.stringValue accountType:SettingAccountTypeMastodon];
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
@@ -254,6 +270,10 @@
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
+    [self handleDidLoginAccount:account];
+}
+
+- (void)settingOAuthWindowController:(id)sender didLoggedInMisskeyAccount:(nonnull BRMisskeyAccount *)account {
     [self handleDidLoginAccount:account];
 }
 
@@ -270,6 +290,8 @@
             [[SettingManager sharedManager] setSelectedAccount:[[MastodonAccount alloc] initWithMastodonAccount:(BRMastodonAccount*)newAccount]];
         } else if ([newAccount isKindOfClass:[BRSlackAccount class]]) {
             [[SettingManager sharedManager] setSelectedAccount:[[SlackAccount alloc] initWithSlackAccount:(BRSlackAccount*)newAccount]];
+        } else if ([newAccount isKindOfClass:[BRMisskeyAccount class]]) {
+            [[SettingManager sharedManager] setSelectedAccount:[[MisskeyAccount alloc] initWithMisskeyAccount:(BRMisskeyAccount*)newAccount]];
         }
     });
 }

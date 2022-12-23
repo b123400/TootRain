@@ -34,9 +34,15 @@
     switch (self.accountType) {
         case SettingAccountTypeMastodon:
             self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Mastodon / Pleroma instance host name.", @"");
+            self.descriptionTextField.placeholderString = @"https://";
             break;
         case SettingAccountTypeSlack:
             self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Slack workspace URL.", @"");
+            self.descriptionTextField.placeholderString = @"https://xxxxxxx.slack.com";
+            break;
+        case SettingAccountTypeMisskey:
+            self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Misskey instance host name.", @"");
+            self.descriptionTextField.placeholderString = @"https://";
             break;
     }
 }

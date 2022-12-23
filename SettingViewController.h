@@ -41,7 +41,11 @@
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
 
-- (void)addAccountWithHostName:(NSString *)hostName;
-- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType;
+
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType
+          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
 
 @end

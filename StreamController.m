@@ -127,6 +127,7 @@ static StreamController *shared;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[SettingViewController sharedPrefsWindowController] showWindow:_self];
                     [(SettingViewController*)[SettingViewController sharedPrefsWindowController] addAccountWithHostName: [account.url absoluteString]
+                                                                                                            accountType:SettingAccountTypeSlack
                                                                                                    updatingSlackAccount:slackAccount];
                 });
             }
