@@ -12,7 +12,7 @@
 - (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         self.username = dictionary[@"username"];
-        self.displayName = [dictionary[@"name"] isKindOfClass:[NSString class]] ? dictionary[@"name"] : @"";
+        self.displayName = [dictionary[@"name"] isKindOfClass:[NSString class]] ? dictionary[@"name"] : self.username;
         self.userID = dictionary[@"id"];
         self.profileImageURL = [NSURL URLWithString:dictionary[@"avatarUrl"]];
     }
