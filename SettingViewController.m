@@ -152,6 +152,7 @@
             obj.accountType =
                   [account isKindOfClass:[SlackAccount class]] ? SettingAccountTypeSlack
                 : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountTypeMastodon
+                : [account isKindOfClass:[MisskeyAccount class]] ? SettingAccountTypeMisskey
                 : SettingAccountTypeMastodon;
             return obj;
         }

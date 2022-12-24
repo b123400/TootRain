@@ -34,6 +34,9 @@
         case SettingAccountTypeSlack:
             [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
             break;
+        case SettingAccountTypeMisskey:
+            [self.imageView setImage:[NSImage imageNamed:@"Misskey"]];
+            break;
     }
     self.textField.stringValue = objectValue.accountName;
     if (objectValue.isConnected) {
@@ -43,8 +46,6 @@
         [self.connectStatusImageView setImage:[NSImage imageNamed:@"NSStatusNone"]];
         [self.connectStatusTextField setStringValue:NSLocalizedString(@"Disconnected", @"Account table cell")];
     }
-    
-    
 }
 
 - (IBAction)serviceImageView:(NSImageView *)sender {
