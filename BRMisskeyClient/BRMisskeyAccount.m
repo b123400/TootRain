@@ -99,27 +99,6 @@
     return self;
 }
 
-//- (instancetype)initWithApp:(BRMastodonApp *)app
-//                  accountId:(NSString *)accountId
-//                        url:(NSString *)url
-//                displayName:(NSString *)displayName
-//                oauthResult:(BRMastodonOAuthResult *)oauthResult {
-//    if (self = [super init]) {
-//        self.app = app;
-//        self.accountId = accountId;
-//        self.url = url;
-//        self.displayName = displayName;
-//        self.accessToken = oauthResult.accessToken;
-//        self.refreshToken = oauthResult.refreshToken;
-//        self.expires = oauthResult.expiresIn == nil
-//            ? [NSDate dateWithTimeIntervalSince1970:4765132800] // 2099: ~ never expire
-//            : [[NSDate date] dateByAddingTimeInterval:[oauthResult.expiresIn doubleValue]];
-//        self.source = BRMastodonStreamSourceUser;
-//        self.sourceHashtag = @"";
-//    }
-//    return self;
-//}
-
 - (void)save {
     // Access token
     NSDictionary *dict = @{

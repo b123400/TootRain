@@ -11,7 +11,7 @@
 @interface BRMisskeyClient ()<NSURLSessionDelegate>
 
 @property (nonatomic, strong) NSURLSession *urlSession;
-@property (nonatomic, strong) NSURLSessionWebSocketTask *task;
+@property (nonatomic, strong) NSMapTable *taskToHandleMapping;
 
 @end
 
@@ -28,6 +28,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.taskToHandleMapping = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
         self.urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                         delegate:self
                                                    delegateQueue:nil];
@@ -88,7 +89,62 @@
     [task resume];
 }
 
-- (void)startStream {
+- (BRMisskeyStreamHandle *)streamStatusWithAccount:(BRMisskeyAccount *)account {
+    NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
+    [components setPath:@"/streaming"];
+    if ([components.scheme isEqual:@"http"]){
+        components.scheme = @"ws";
+    } else if ([components.scheme isEqual:@"https"]) {
+        components.scheme = @"wss";
+    }
+    NSMutableArray<NSURLQueryItem*> *queryItems = [NSMutableArray array];
+    [queryItems addObject:[[NSURLQueryItem alloc] initWithName:@"i" value:account.accessToken]];
+    [components setQueryItems:queryItems];
+    
+    BRMisskeyStreamHandle *handler = [[BRMisskeyStreamHandle alloc] init];
+    NSURLRequest *request = [NSURLRequest requestWithURL:components.URL];
+    NSURLSessionWebSocketTask *task = [self.urlSession webSocketTaskWithRequest:request];
+    handler.task = task;
+    [self receiveMessageFromWebsocketTask:task
+                                onMessage:^(NSURLSessionWebSocketMessage * _Nullable message, NSError * _Nullable error) {
+        NSLog(@"ws str: %@, error: %@", [message string], error);
+        if (error) {
+            if (handler.onError != nil) {
+                handler.onError(error);
+            }
+            return;
+        }
+        NSError *jsonError = nil;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[message.string dataUsingEncoding:NSUTF8StringEncoding]
+                                                                 options:0
+                                                                   error:&jsonError];
+        if (jsonError) {
+            if (handler.onError != nil) {
+                handler.onError(jsonError);
+            }
+            return;
+        }
+        if (![jsonDict isKindOfClass:[NSDictionary class]]) {
+            if (handler.onError != nil) {
+                handler.onError([NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{
+                    @"message": @"Not a dict",
+                    @"value": jsonDict,
+                }]);
+            }
+            return;
+        }
+        if ([jsonDict[@"type"] isEqualTo:@"channel"] && [jsonDict[@"body"] isKindOfClass:[NSDictionary class]] && handler.onStatus) {
+            NSDictionary *eventDict = jsonDict[@"body"];
+            NSString *eventType = eventDict[@"type"];
+            if ([eventType isEqualTo:@"note"] || [eventType isEqualTo:@"reply"] || [eventType isEqualTo:@"mention"]) {
+                BRMisskeyStatus *status = [[BRMisskeyStatus alloc] initWithJSONDictionary:eventDict[@"body"]];
+                handler.onStatus(status);
+            }
+        }
+    }];
+    [self.taskToHandleMapping setObject:handler forKey:task];
+    [task resume];
+    return handler;
 }
 
 - (void)receiveMessageFromWebsocketTask:(NSURLSessionWebSocketTask *)task
@@ -110,24 +166,21 @@ didOpenWithProtocol:(NSString *)protocol {
     NSDictionary *connectMessage = @{
         @"type": @"connect",
         @"body": @{
-            @"channel": @"homeTimeline",
+            @"channel": @"localTimeline",
             @"id": @"foobar"
         }
     };
-//        {"type": "connect","body": {"channel": "globalTimeline", "id": "foobar"}}
-    
     NSData *d = [NSJSONSerialization dataWithJSONObject:connectMessage options:0 error:nil];
-    NSURLSessionWebSocketMessage *message = [[NSURLSessionWebSocketMessage alloc] initWithData:d];
     NSString *encoded = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
     NSURLSessionWebSocketMessage *strmsg = [[NSURLSessionWebSocketMessage alloc] initWithString:encoded];
     [webSocketTask sendMessage:strmsg completionHandler:^(NSError * _Nullable error) {
         NSLog(@"sent message %@", error);
     }];
-//    BRMastodonStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
-//    if (!handler) return;
-//    if (handler.onConnected) {
-//        handler.onConnected();
-//    }
+    BRMisskeyStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onConnected) {
+        handler.onConnected();
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session
@@ -135,12 +188,12 @@ didOpenWithProtocol:(NSString *)protocol {
   didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
             reason:(NSData *)reason {
     NSLog(@"did close");
-//    BRMastodonStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
-//    if (!handler) return;
-//    if (handler.onDisconnected) {
-//        handler.onDisconnected();
-//    }
-//    [self.taskToHandleMapping removeObjectForKey:webSocketTask];
+    BRMisskeyStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    if (!handler) return;
+    if (handler.onDisconnected) {
+        handler.onDisconnected();
+    }
+    [self.taskToHandleMapping removeObjectForKey:webSocketTask];
 }
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {

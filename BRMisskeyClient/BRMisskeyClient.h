@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMisskeyAccount.h"
+#import "BRMisskeyStreamHandle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
                  sessionId:(NSString *)sessionId
          completionHandler:(void (^_Nonnull)(BRMisskeyAccount * _Nullable account, NSError * _Nullable error))callback;
 
-- (void)startStream;
+- (BRMisskeyStreamHandle *)streamStatusWithAccount:(BRMisskeyAccount *)account;
 
 @end
 
