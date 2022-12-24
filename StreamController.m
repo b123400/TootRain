@@ -23,6 +23,9 @@
 #import "MastodonStreamHandle.h"
 #import "SlackStreamHandle.h"
 #import "SettingViewController.h"
+#import "MisskeyAccount.h"
+#import "BRMisskeyClient.h"
+#import "MisskeyStreamHandle.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -131,6 +134,22 @@ static StreamController *shared;
                                                                                                    updatingSlackAccount:slackAccount];
                 });
             }
+        };
+        self.streamHandle = newHandle;
+    } else if ([selectedAccount isKindOfClass:[MisskeyAccount class]]) {
+        BRMisskeyAccount *misskeyAccount = [(MisskeyAccount *)selectedAccount misskeyAccount];
+        BRMisskeyStreamHandle *brHandle = [[BRMisskeyClient shared] streamStatusWithAccount:misskeyAccount];
+        MisskeyStreamHandle *newHandle = [[MisskeyStreamHandle alloc] initWithHandle:brHandle];
+        newHandle.onStatus = ^(MisskeyStatus * _Nonnull status) {
+            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
+                [_self.delegate streamController:_self didReceivedStatus:status];
+            }
+        };
+        newHandle.onConnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), misskeyAccount.displayName]];
+        };
+        newHandle.onDisconnected = ^{
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), misskeyAccount.displayName]];
         };
         self.streamHandle = newHandle;
     }
