@@ -13,14 +13,12 @@
                 <outlet property="accountsTableView" destination="27" id="49"/>
                 <outlet property="addAccountButton" destination="fiF-hU-guj" id="rcI-tK-B8D"/>
                 <outlet property="appearanceSettingView" destination="142" id="217"/>
-                <outlet property="authorizeButton" destination="273" id="276"/>
-                <outlet property="authorizeView" destination="278" id="281"/>
                 <outlet property="cursorBehaviourPopup" destination="cIa-fJ-O5a" id="QYz-Nq-xBt"/>
                 <outlet property="deleteAccountButton" destination="rAs-hj-cxA" id="CJC-ho-Nm8"/>
                 <outlet property="fontLabel" destination="202" id="241"/>
                 <outlet property="hoverBackgroundColorWell" destination="216" id="234"/>
-                <outlet property="instanceHostField" destination="Mjb-8B-DVp" id="CpO-RU-MeD"/>
                 <outlet property="mastodonDetailView" destination="bxq-bw-Mu3" id="u7h-a4-jpX"/>
+                <outlet property="noAccountDetailView" destination="Co5-yX-bZX" id="u6l-P7-cgh"/>
                 <outlet property="opacitySlider" destination="196" id="230"/>
                 <outlet property="reconnectButton" destination="WEP-VZ-77N" id="I0f-Wu-DNn"/>
                 <outlet property="removeLinksCheckBox" destination="242" id="4Fo-Ue-VUc"/>
@@ -450,45 +448,6 @@
             </subviews>
             <point key="canvasLocation" x="134.5" y="-232"/>
         </customView>
-        <customView identifier="hostNameEnterView" id="278">
-            <rect key="frame" x="0.0" y="0.0" width="469" height="269"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="279">
-                    <rect key="frame" x="70" y="182" width="329" height="55"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Please enter your Mastodon / Pleroma instance host name." id="280">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjb-8B-DVp">
-                    <rect key="frame" x="47" y="153" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="eSe-64-AVo">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="273">
-                    <rect key="frame" x="144" y="66" width="183" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="274">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                    </buttonCell>
-                    <connections>
-                        <action selector="authorizeButtonTapped:" target="-2" id="277"/>
-                    </connections>
-                </button>
-            </subviews>
-            <point key="canvasLocation" x="680" y="155"/>
-        </customView>
         <customView id="bxq-bw-Mu3" customClass="SettingAccountDetailMastodonView">
             <rect key="frame" x="0.0" y="0.0" width="349" height="253"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -787,7 +746,7 @@ DQ
                         <action selector="addMisskeyAccountClicked:" target="-2" id="c1S-7c-dyq"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Slack" id="DEG-ph-RVs">
+                <menuItem title="Slack" hidden="YES" id="DEG-ph-RVs">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="addSlackAccountClicked:" target="-2" id="PUB-Jz-zTJ"/>
@@ -796,6 +755,39 @@ DQ
             </items>
             <point key="canvasLocation" x="-312" y="338"/>
         </menu>
+        <customView id="Co5-yX-bZX">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="258"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uf3-fn-ZbV">
+                    <rect key="frame" x="151" y="105" width="92" height="32"/>
+                    <buttonCell key="cell" type="push" title="Authorise" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nRu-Np-tlI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addAccountButtonClicked:" target="-2" id="dTG-so-iZ0"/>
+                        <outlet property="menu" destination="abI-7t-kq6" id="6Y2-7Y-20p"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="naL-ST-1g8">
+                    <rect key="frame" x="18" y="172" width="357" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Please add an account first." id="N3w-nW-cig">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="uf3-fn-ZbV" firstAttribute="top" secondItem="naL-ST-1g8" secondAttribute="bottom" constant="40" id="6WZ-6Y-s6z"/>
+                <constraint firstAttribute="trailing" secondItem="naL-ST-1g8" secondAttribute="trailing" constant="20" symbolic="YES" id="DRE-XZ-xXT"/>
+                <constraint firstItem="naL-ST-1g8" firstAttribute="leading" secondItem="Co5-yX-bZX" secondAttribute="leading" constant="20" symbolic="YES" id="ZJW-If-k1U"/>
+                <constraint firstItem="uf3-fn-ZbV" firstAttribute="centerX" secondItem="Co5-yX-bZX" secondAttribute="centerX" id="aDS-5m-kNx"/>
+                <constraint firstItem="naL-ST-1g8" firstAttribute="top" secondItem="Co5-yX-bZX" secondAttribute="top" constant="70" id="jqT-ky-ehK"/>
+            </constraints>
+            <point key="canvasLocation" x="636" y="171"/>
+        </customView>
     </objects>
     <resources>
         <image name="Mastodon" width="30" height="32"/>

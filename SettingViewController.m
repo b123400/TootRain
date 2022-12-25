@@ -27,6 +27,7 @@
 
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
 @property (weak) IBOutlet NSBox *accountDetailBox;
+@property (weak) IBOutlet NSView *noAccountDetailView;
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
@@ -261,11 +262,6 @@
     [self updateAccountView];
 }
 
-- (IBAction)authorizeButtonTapped:(id)sender {
-    // TODO: choose service
-    [self addAccountWithHostName:self.instanceHostField.stringValue accountType:SettingAccountTypeMastodon];
-}
-
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
     [self handleDidLoginAccount:account];
 }
@@ -307,23 +303,24 @@
 - (void)updateAccountView {
     Account *lastDetailSelectedAccount = self.detailSelectedAccount;
     [[SettingManager sharedManager] reloadAccounts];
-    if ([SettingManager sharedManager].accounts.count != 0) {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
-        [self.authorizeView removeFromSuperview];
-    } else {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = YES;
-        [accountsSettingView addSubview:self.authorizeView];
-    }
     [accountsTableView reloadData];
 
     NSUInteger index = [self indexOfAccountByIdentifier:lastDetailSelectedAccount];
     if (index != NSNotFound) {
         [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
                        byExtendingSelection:NO];
+    } else {
+        [self updateAccountDetailView];
     }
 }
 
 - (void)updateAccountDetailView {
+    if ([[[SettingManager sharedManager] accounts] count] == 0) {
+        self.accountDetailBox.contentView = self.noAccountDetailView;
+        self.reconnectButton.enabled = NO;
+        return;
+    }
+    self.reconnectButton.enabled = YES;
     if ([self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
         [self.mastodonDetailView setAccount:(MastodonAccount *)self.detailSelectedAccount];
