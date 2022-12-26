@@ -12,19 +12,19 @@
 
 - (id)initWithMisskeyStatus:(BRMisskeyStatus *)status {
     if (self = [super init]) {
-        self.user = [[MisskeyUser alloc] initWithMisskeyUser:status.user];
-        self.statusID = status.statusID;
-//        self.createdAt = status.createdAt;
-        self.text = status.text;
-//        self.favourited = status.favourited;
-//        self.reblogged = status.reblogged;
-//        self.bookmarked = status.bookmarked;
-        
-        self.misskeyStatus = status;
-
-        // Make attributed string in init, so the images are loaded when status is init-ed
-        // such that we can load the image in background
-        self.attributedText = [status attributedStringWithEmojisReplaced];
+        BOOL useRenote = status.text.length == 0 && status.renote;
+        if (useRenote) {
+            self = [self initWithMisskeyStatus:status.renote];
+        } else {
+            self.user = [[MisskeyUser alloc] initWithMisskeyUser:status.user];
+            self.statusID = status.statusID;
+            self.text = status.text;
+            self.misskeyStatus = status;
+            
+            // Make attributed string in init, so the images are loaded when status is init-ed
+            // such that we can load the image in background
+            self.attributedText = [status attributedStringWithEmojisReplaced];
+        }
     }
     return self;
 }
