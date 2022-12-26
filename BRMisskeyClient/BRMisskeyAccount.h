@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMisskeyUser.h"
+#import "BRMisskeyStreamSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *accountId;
 @property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong, nullable) NSString *accessToken;
+@property (nonatomic, strong) NSArray <BRMisskeyStreamSource *> *streamSources;
 
 + (NSArray<BRMisskeyAccount*> *)allAccounts;
 
@@ -27,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)shortDisplayName;
 - (NSString *)identifier;
+- (NSString *)displayNameForStreamSource;
 - (void)deleteAccount;
 
 @end

@@ -22,6 +22,8 @@
 #import "BRMastodonSourceSelectionWindowController.h"
 #import "BRMisskeyClient.h"
 #import "MisskeyAccount.h"
+#import "SettingAccountDetailMisskeyView.h"
+#import "BRMisskeyStreamSourceSelectionWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -30,6 +32,7 @@
 @property (weak) IBOutlet NSView *noAccountDetailView;
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
+@property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
 @property Account *detailSelectedAccount;
 
@@ -327,6 +330,9 @@
     } else if ([self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) {
         self.accountDetailBox.contentView = self.slackDetailView;
         [self.slackDetailView setAccount:(SlackAccount *)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[MisskeyAccount class]]) {
+        self.accountDetailBox.contentView = self.misskeyDetailView;
+        [self.misskeyDetailView setAccount:(MisskeyAccount*)self.detailSelectedAccount];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
     if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
@@ -379,6 +385,21 @@
                 }
             }];
         });
+    }];
+}
+
+- (IBAction)misskeyOptionClicked:(id)sender {
+    BRMisskeyStreamSourceSelectionWindowController *controller = [[BRMisskeyStreamSourceSelectionWindowController alloc] init];
+    // TODO: add more sources like antenna and userList
+    controller.sources = [BRMisskeyStreamSource defaultSources];
+    MisskeyAccount *account = (MisskeyAccount *)self.detailSelectedAccount;
+    controller.selectedSources = account.misskeyAccount.streamSources;
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            account.misskeyAccount.streamSources = controller.selectedSources;
+            [account.misskeyAccount save];
+            [self updateAccountView];
+        }
     }];
 }
 

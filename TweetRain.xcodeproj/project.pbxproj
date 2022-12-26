@@ -59,6 +59,14 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
+		CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */; };
+		CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */; };
+		CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */; };
+		CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */; };
+		CF402907295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */; };
+		CF402908295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */; };
+		CF402909295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */; };
+		CF40290A295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */; };
 		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */; };
@@ -347,6 +355,13 @@
 		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
 		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
 		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
+		CF4028FC295958310066FB84 /* SettingAccountDetailMisskeyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailMisskeyView.h; sourceTree = "<group>"; };
+		CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailMisskeyView.m; sourceTree = "<group>"; };
+		CF40290029595BD40066FB84 /* BRMisskeyStreamSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStreamSource.h; sourceTree = "<group>"; };
+		CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStreamSource.m; sourceTree = "<group>"; };
+		CF402904295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStreamSourceSelectionWindowController.h; sourceTree = "<group>"; };
+		CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStreamSourceSelectionWindowController.m; sourceTree = "<group>"; };
+		CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRMisskeyStreamSourceSelectionWindowController.xib; sourceTree = "<group>"; };
 		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
 		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
 		CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -744,6 +759,11 @@
 				CF1FE3BF2957013700CABB47 /* BRMisskeyEmoji.m */,
 				CF1FE3C22957301E00CABB47 /* BRMisskeyStreamHandle.h */,
 				CF1FE3C32957301E00CABB47 /* BRMisskeyStreamHandle.m */,
+				CF40290029595BD40066FB84 /* BRMisskeyStreamSource.h */,
+				CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */,
+				CF402904295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.h */,
+				CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */,
+				CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */,
 			);
 			path = BRMisskeyClient;
 			sourceTree = "<group>";
@@ -883,6 +903,8 @@
 				CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */,
 				CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */,
 				CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */,
+				CF4028FC295958310066FB84 /* SettingAccountDetailMisskeyView.h */,
+				CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */,
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
@@ -1158,6 +1180,7 @@
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
 				CFA161F426B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CF5DE47F26A06AAA0040BD63 /* emoji.json in Resources */,
+				CF402909295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
@@ -1181,6 +1204,7 @@
 				CF5D2D2C29350BC400745D63 /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CF5D2D2E29350BC400745D63 /* emoji.json in Resources */,
 				CF5D2D2F29350BC400745D63 /* ComposeStatusViewController.xib in Resources */,
+				CF40290A295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */,
 				CF5D2D7D29350DA900745D63 /* MainMenu-standalone.xib in Resources */,
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
@@ -1371,6 +1395,7 @@
 				CF5DE47726A048470040BD63 /* BRSlackMessage.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
+				CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
 				CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */,
@@ -1383,6 +1408,7 @@
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
 				CF1FE3B029559F7700CABB47 /* BRMisskeyAccount.m in Sources */,
 				CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
+				CF402907295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BC2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
@@ -1405,6 +1431,7 @@
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CF1FE3B8295606B400CABB47 /* MisskeyAccount.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
+				CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
 				CF5DE46E26A03A610040BD63 /* MastodonStreamHandle.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
@@ -1447,6 +1474,7 @@
 				CF5D2D4A29350BC400745D63 /* BRSlackMessage.m in Sources */,
 				CF5D2D4B29350BC400745D63 /* SettingManager.m in Sources */,
 				CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
+				CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
 				CF5D2D4C29350BC400745D63 /* InstanceInputWindowController.m in Sources */,
 				CF5D2D4D29350BC400745D63 /* Status.m in Sources */,
 				CF5D2D4E29350BC400745D63 /* BRMastodonStatus.m in Sources */,
@@ -1459,6 +1487,7 @@
 				CF5D2D5329350BC400745D63 /* MastodonUser.m in Sources */,
 				CF1FE3B129559F7700CABB47 /* BRMisskeyAccount.m in Sources */,
 				CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
+				CF402908295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */,
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BD2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
@@ -1481,6 +1510,7 @@
 				CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */,
 				CF1FE3B9295606B400CABB47 /* MisskeyAccount.m in Sources */,
 				CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */,
+				CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */,
 				CF5D2D6729350BC400745D63 /* MastodonStreamHandle.m in Sources */,
 				CF5D2D6829350BC400745D63 /* ComposeStatusViewController.m in Sources */,

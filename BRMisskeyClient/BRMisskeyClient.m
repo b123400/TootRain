@@ -89,6 +89,8 @@
     [task resume];
 }
 
+# pragma mark: - Stream
+
 - (BRMisskeyStreamHandle *)streamStatusWithAccount:(BRMisskeyAccount *)account {
     NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
     [components setPath:@"/streaming"];

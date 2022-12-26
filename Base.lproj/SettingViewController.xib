@@ -18,6 +18,7 @@
                 <outlet property="fontLabel" destination="202" id="241"/>
                 <outlet property="hoverBackgroundColorWell" destination="216" id="234"/>
                 <outlet property="mastodonDetailView" destination="bxq-bw-Mu3" id="u7h-a4-jpX"/>
+                <outlet property="misskeyDetailView" destination="pgS-YJ-cPw" id="EGO-Q4-rN5"/>
                 <outlet property="noAccountDetailView" destination="Co5-yX-bZX" id="u6l-P7-cgh"/>
                 <outlet property="opacitySlider" destination="196" id="230"/>
                 <outlet property="reconnectButton" destination="WEP-VZ-77N" id="I0f-Wu-DNn"/>
@@ -787,6 +788,122 @@
                 <constraint firstItem="naL-ST-1g8" firstAttribute="top" secondItem="Co5-yX-bZX" secondAttribute="top" constant="70" id="jqT-ky-ehK"/>
             </constraints>
             <point key="canvasLocation" x="636" y="171"/>
+        </customView>
+        <customView id="pgS-YJ-cPw" customClass="SettingAccountDetailMisskeyView">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HaN-F8-JyH">
+                    <rect key="frame" x="18" y="217" width="84" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="yKv-qA-574"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Service:" id="qn5-hR-fxc">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-KI-XRN">
+                    <rect key="frame" x="106" y="217" width="225" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Misskey" id="H4Q-LW-D00">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-aD-ywF">
+                    <rect key="frame" x="18" y="193" width="84" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Account ID:" id="zor-g6-bel">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNo-RC-rB2">
+                    <rect key="frame" x="106" y="193" width="225" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="123" id="o0n-19-1Z6">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJW-Dr-Ndj">
+                    <rect key="frame" x="18" y="169" width="84" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Name:" id="iWh-jO-lyt">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-4j-L66">
+                    <rect key="frame" x="106" y="169" width="225" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="@b123400@misskey.io" id="e7W-Ir-wtF">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gZA-uw-uZ6">
+                    <rect key="frame" x="18" y="145" width="84" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Streams:" id="yEh-2q-E3b">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wFY-oJ-2gk">
+                    <rect key="frame" x="106" y="113" width="225" height="48"/>
+                    <textFieldCell key="cell" title="Global Timeline, Global Timeline, Global Timeline, Global Timeline, Global Timeline" id="hL6-yB-3Vt">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VoP-jt-Yrp">
+                    <rect key="frame" x="101" y="78" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vD8-Jh-0SX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="misskeyOptionClicked:" target="-2" id="pJJ-h9-eZS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wFY-oJ-2gk" secondAttribute="trailing" constant="20" symbolic="YES" id="1tr-V1-4Cl"/>
+                <constraint firstItem="SNo-RC-rB2" firstAttribute="leading" secondItem="QFf-aD-ywF" secondAttribute="trailing" constant="8" symbolic="YES" id="3qF-MS-ERF"/>
+                <constraint firstItem="JJW-Dr-Ndj" firstAttribute="trailing" secondItem="QFf-aD-ywF" secondAttribute="trailing" id="5Fl-dW-sW8"/>
+                <constraint firstItem="JJW-Dr-Ndj" firstAttribute="leading" secondItem="QFf-aD-ywF" secondAttribute="leading" id="7hK-s4-BzP"/>
+                <constraint firstItem="gZA-uw-uZ6" firstAttribute="leading" secondItem="JJW-Dr-Ndj" secondAttribute="leading" id="Aph-nm-Wyl"/>
+                <constraint firstItem="HaN-F8-JyH" firstAttribute="top" secondItem="pgS-YJ-cPw" secondAttribute="top" constant="20" symbolic="YES" id="AyB-RC-BFU"/>
+                <constraint firstItem="VoP-jt-Yrp" firstAttribute="top" secondItem="wFY-oJ-2gk" secondAttribute="bottom" constant="8" symbolic="YES" id="Dmr-Na-pIb"/>
+                <constraint firstItem="bTX-KI-XRN" firstAttribute="leading" secondItem="HaN-F8-JyH" secondAttribute="trailing" constant="8" symbolic="YES" id="DuM-y6-6Z3"/>
+                <constraint firstAttribute="trailing" secondItem="SNo-RC-rB2" secondAttribute="trailing" constant="20" symbolic="YES" id="Gnd-8u-yzf"/>
+                <constraint firstItem="VoP-jt-Yrp" firstAttribute="leading" secondItem="wFY-oJ-2gk" secondAttribute="leading" id="JoL-Y2-1Ay"/>
+                <constraint firstItem="QFf-aD-ywF" firstAttribute="leading" secondItem="HaN-F8-JyH" secondAttribute="leading" id="MF4-WQ-O3d"/>
+                <constraint firstItem="JJW-Dr-Ndj" firstAttribute="top" secondItem="QFf-aD-ywF" secondAttribute="bottom" constant="8" symbolic="YES" id="VgF-mj-JhI"/>
+                <constraint firstItem="wFY-oJ-2gk" firstAttribute="top" secondItem="2Ub-4j-L66" secondAttribute="bottom" constant="8" symbolic="YES" id="Vxl-p0-SCB"/>
+                <constraint firstItem="gZA-uw-uZ6" firstAttribute="trailing" secondItem="JJW-Dr-Ndj" secondAttribute="trailing" id="YEu-qU-uvB"/>
+                <constraint firstItem="2Ub-4j-L66" firstAttribute="top" secondItem="SNo-RC-rB2" secondAttribute="bottom" constant="8" symbolic="YES" id="b3p-w9-9UO"/>
+                <constraint firstItem="wFY-oJ-2gk" firstAttribute="leading" secondItem="gZA-uw-uZ6" secondAttribute="trailing" constant="8" symbolic="YES" id="cdh-Ez-FwN"/>
+                <constraint firstAttribute="trailing" secondItem="bTX-KI-XRN" secondAttribute="trailing" constant="20" symbolic="YES" id="ctn-hW-vbu"/>
+                <constraint firstItem="bTX-KI-XRN" firstAttribute="top" secondItem="HaN-F8-JyH" secondAttribute="top" id="dWh-yq-uSD"/>
+                <constraint firstAttribute="trailing" secondItem="2Ub-4j-L66" secondAttribute="trailing" constant="20" symbolic="YES" id="dva-WA-LBO"/>
+                <constraint firstItem="QFf-aD-ywF" firstAttribute="top" secondItem="HaN-F8-JyH" secondAttribute="bottom" constant="8" symbolic="YES" id="gCX-Rp-Du1"/>
+                <constraint firstItem="QFf-aD-ywF" firstAttribute="trailing" secondItem="HaN-F8-JyH" secondAttribute="trailing" id="lWf-Wg-e8z"/>
+                <constraint firstItem="HaN-F8-JyH" firstAttribute="leading" secondItem="pgS-YJ-cPw" secondAttribute="leading" constant="20" symbolic="YES" id="oOz-Gt-0WH"/>
+                <constraint firstItem="SNo-RC-rB2" firstAttribute="top" secondItem="bTX-KI-XRN" secondAttribute="bottom" constant="8" symbolic="YES" id="sfd-BR-ZHz"/>
+                <constraint firstItem="gZA-uw-uZ6" firstAttribute="top" secondItem="JJW-Dr-Ndj" secondAttribute="bottom" constant="8" symbolic="YES" id="wF2-rk-8jN"/>
+                <constraint firstItem="2Ub-4j-L66" firstAttribute="leading" secondItem="JJW-Dr-Ndj" secondAttribute="trailing" constant="8" symbolic="YES" id="z0o-cb-SbD"/>
+            </constraints>
+            <connections>
+                <outlet property="accountIdTextField" destination="SNo-RC-rB2" id="nMa-Qj-z3M"/>
+                <outlet property="displayNameTextField" destination="2Ub-4j-L66" id="73P-tm-Mrd"/>
+                <outlet property="streamsTextField" destination="wFY-oJ-2gk" id="qFO-82-3lW"/>
+            </connections>
+            <point key="canvasLocation" x="195" y="1154"/>
         </customView>
     </objects>
     <resources>

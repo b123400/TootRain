@@ -76,13 +76,17 @@
         self.hostName = hostName;
         self.accountId = accountId;
         self.accessToken = accessToken;
-//        self.url = dict[@"url"];
         self.displayName = dict[@"displayName"];
-//        self.expires = dict[@"expires"];
-//        self.source = [BRMastodonAccount sourceWithStringRepresentation:dict[@"source"]];
-//        self.sourceHashtag = dict[@"hashtag"] ?: @"";
-//        self.sourceListId = dict[@"listId"] ?: @"";
-//        self.sourceListName = dict[@"listName"] ?: @"";
+        
+        if ([dict[@"streamSources"] isKindOfClass:[NSArray class]]) {
+            NSMutableArray *a = [NSMutableArray array];
+            for (NSDictionary *sourceDict in dict[@"streamSources"]) {
+                [a addObject:[[BRMisskeyStreamSource alloc] initWithDictionary:sourceDict]];
+            }
+            self.streamSources = a;
+        } else {
+            self.streamSources = @[];
+        }
     }
     return self;
 }
@@ -94,7 +98,10 @@
         self.hostName = hostName;
         self.accessToken = accessToken;
         self.accountId = user.userID;
-        self.displayName = user.displayName;
+        self.displayName = [NSString stringWithFormat:@"@%@@%@", user.username, [[NSURL URLWithString:hostName] host]];
+        BRMisskeyStreamSource *s = [[BRMisskeyStreamSource alloc] init];
+        s.type = BRMisskeyStreamSourceTypeHome;
+        self.streamSources = @[s];
     }
     return self;
 }
@@ -148,11 +155,7 @@
         @"accountId": self.accountId,
         @"displayName": self.displayName,
         @"host": self.hostName,
-//        @"expires": self.expires,
-//        @"source": [[self class] stringRepresentationForStreamSource:self.source],
-//        @"hashtag": self.sourceHashtag ?: @"",
-//        @"listId": self.sourceListId ?: @"",
-//        @"listName": self.sourceListName ?: @"",
+        @"streamSources": [self.streamSources valueForKeyPath:@"dictionaryRepresentation"],
     };
 }
 
@@ -186,83 +189,8 @@
     return self.displayName;
 }
 
-//+ (NSString *)stringRepresentationForStreamSource:(BRMastodonStreamSource)source {
-//    switch (source) {
-//        case BRMastodonStreamSourceUser:
-//            return @"user";
-//        case BRMastodonStreamSourceUserNotification:
-//            return @"user:notification";
-//        case BRMastodonStreamSourceList:
-//            return @"list";
-//        case BRMastodonStreamSourceDirect:
-//            return @"direct";
-//        case BRMastodonStreamSourceHashtag:
-//            return @"hashtag";
-//        case BRMastodonStreamSourceHashtagLocal:
-//            return @"hashtag:local";
-//        case BRMastodonStreamSourcePublic:
-//            return @"public";
-//        case BRMastodonStreamSourcePublicLocal:
-//            return @"public:local";
-//        case BRMastodonStreamSourcePublicRemote:
-//            return @"public:remote";
-//    }
-//    return nil;
-//}
-
-//+ (BRMastodonStreamSource)sourceWithStringRepresentation:(NSString *)string {
-//    if ([string isEqualTo:@"user"]) {
-//        return BRMastodonStreamSourceUser;
-//    }
-//    if ([string isEqualTo:@"user:notification"]) {
-//        return BRMastodonStreamSourceUserNotification;
-//    }
-//    if ([string isEqualTo:@"list"]) {
-//        return BRMastodonStreamSourceList;
-//    }
-//    if ([string isEqualTo:@"direct"]) {
-//        return BRMastodonStreamSourceDirect;
-//    }
-//    if ([string isEqualTo:@"hashtag"]) {
-//        return BRMastodonStreamSourceHashtag;
-//    }
-//    if ([string isEqualTo:@"hashtag:local"]) {
-//        return BRMastodonStreamSourceHashtagLocal;
-//    }
-//    if ([string isEqualTo:@"public"]) {
-//        return BRMastodonStreamSourcePublic;
-//    }
-//    if ([string isEqualTo:@"public:local"]) {
-//        return BRMastodonStreamSourcePublicLocal;
-//    }
-//    if ([string isEqualTo:@"public:remote"]) {
-//        return BRMastodonStreamSourcePublicRemote;
-//    }
-//    return BRMastodonStreamSourceUser;
-//}
-
-//- (NSString *)displayNameForStreamSource {
-//    switch (self.source) {
-//        case BRMastodonStreamSourceUser:
-//            return NSLocalizedString(@"User", @"source name");
-//        case BRMastodonStreamSourceUserNotification:
-//            return NSLocalizedString(@"User Notification", @"source name");
-//        case BRMastodonStreamSourceList:
-//            return [NSString stringWithFormat:NSLocalizedString(@"List: %@", @"source name"), self.sourceListName];
-//        case BRMastodonStreamSourceDirect:
-//            return NSLocalizedString(@"Direct", @"source name");
-//        case BRMastodonStreamSourceHashtag:
-//            return [NSString stringWithFormat:NSLocalizedString(@"Hashtag: %@", @"source name"), self.sourceHashtag];
-//        case BRMastodonStreamSourceHashtagLocal:
-//            return [NSString stringWithFormat:NSLocalizedString(@"Hashtag Local: %@", @"source name"), self.sourceHashtag];
-//        case BRMastodonStreamSourcePublic:
-//            return NSLocalizedString(@"Public", @"source name");
-//        case BRMastodonStreamSourcePublicLocal:
-//            return NSLocalizedString(@"Public Local", @"source name");
-//        case BRMastodonStreamSourcePublicRemote:
-//            return NSLocalizedString(@"Public Remote", @"source name");
-//    }
-//    return nil;
-//}
+- (NSString *)displayNameForStreamSource {
+    return [[self.streamSources valueForKeyPath:@"displayName"] componentsJoinedByString:@", "];
+}
 
 @end
