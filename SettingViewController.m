@@ -270,23 +270,24 @@
 - (void)updateAccountView {
     Account *lastDetailSelectedAccount = self.detailSelectedAccount;
     [[SettingManager sharedManager] reloadAccounts];
-    if ([SettingManager sharedManager].accounts.count != 0) {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
-        [self.authorizeView removeFromSuperview];
-    } else {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = YES;
-        [accountsSettingView addSubview:self.authorizeView];
-    }
     [accountsTableView reloadData];
 
     NSUInteger index = [self indexOfAccountByIdentifier:lastDetailSelectedAccount];
     if (index != NSNotFound) {
         [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
                        byExtendingSelection:NO];
+    } else {
+        [self updateAccountDetailView];
     }
 }
 
 - (void)updateAccountDetailView {
+    if ([SettingManager sharedManager].accounts.count == 0) {
+        self.accountDetailBox.contentView = self.authorizeView;
+        self.reconnectButton.enabled = NO;
+        return;
+    }
+    self.reconnectButton.enabled = YES;
     if ([self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
         [self.mastodonDetailView setAccount:(MastodonAccount *)self.detailSelectedAccount];

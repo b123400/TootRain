@@ -450,30 +450,27 @@
             <point key="canvasLocation" x="134.5" y="-232"/>
         </customView>
         <customView identifier="hostNameEnterView" id="278">
-            <rect key="frame" x="0.0" y="0.0" width="469" height="269"/>
+            <rect key="frame" x="0.0" y="0.0" width="349" height="253"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="279">
-                    <rect key="frame" x="70" y="182" width="329" height="55"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="279">
+                    <rect key="frame" x="18" y="181" width="313" height="32"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Please enter your Mastodon / Pleroma instance host name." id="280">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjb-8B-DVp">
-                    <rect key="frame" x="47" y="153" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Mjb-8B-DVp">
+                    <rect key="frame" x="20" y="120" width="309" height="21"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="eSe-64-AVo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="273">
-                    <rect key="frame" x="144" y="66" width="183" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="273">
+                    <rect key="frame" x="129" y="53" width="92" height="32"/>
                     <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="274">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -486,6 +483,16 @@ DQ
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="273" firstAttribute="centerX" secondItem="278" secondAttribute="centerX" id="02H-rq-SfA"/>
+                <constraint firstItem="273" firstAttribute="top" secondItem="Mjb-8B-DVp" secondAttribute="bottom" constant="40" id="AnH-Mb-v7S"/>
+                <constraint firstItem="279" firstAttribute="top" secondItem="278" secondAttribute="top" constant="40" id="MTt-7k-lPA"/>
+                <constraint firstAttribute="trailing" secondItem="Mjb-8B-DVp" secondAttribute="trailing" constant="20" symbolic="YES" id="Nvy-ke-ZBU"/>
+                <constraint firstItem="Mjb-8B-DVp" firstAttribute="leading" secondItem="278" secondAttribute="leading" constant="20" symbolic="YES" id="iC0-gM-2Zt"/>
+                <constraint firstItem="Mjb-8B-DVp" firstAttribute="top" secondItem="279" secondAttribute="bottom" constant="40" id="lxv-if-xeH"/>
+                <constraint firstAttribute="trailing" secondItem="279" secondAttribute="trailing" constant="20" symbolic="YES" id="o0P-dZ-Wmd"/>
+                <constraint firstItem="279" firstAttribute="leading" secondItem="278" secondAttribute="leading" constant="20" symbolic="YES" id="wTA-OY-VUc"/>
+            </constraints>
             <point key="canvasLocation" x="680" y="155"/>
         </customView>
         <customView id="bxq-bw-Mu3" customClass="SettingAccountDetailMastodonView">
