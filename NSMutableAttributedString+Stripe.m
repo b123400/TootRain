@@ -81,10 +81,14 @@
         index = r.length + r.location;
         if (attributes[NSAttachmentAttributeName]) {
             NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
-            if (attachment.bounds.size.width == 0 || attachment.bounds.size.height == 0) continue;
-            NSImage *image = [attachment imageForBounds:attachment.bounds
-                                          textContainer:nil
-                                         characterIndex:r.location];
+            NSImage *image = nil;
+            @try {
+                image = [attachment imageForBounds:attachment.bounds
+                                              textContainer:nil
+                                             characterIndex:r.location];
+            } @catch (NSException *exception) {
+                // ignore
+            }
             if (image && (image.size.height > height)) {
                 int newWidth = height / image.size.height * image.size.width;
                 NSImage *newImage = [image resized:NSMakeSize(newWidth, height)];
