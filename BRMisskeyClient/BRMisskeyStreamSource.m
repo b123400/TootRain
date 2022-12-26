@@ -94,6 +94,25 @@
     }
 }
 
+- (NSString *)channelForAPI {
+    switch (self.type) {
+        case BRMisskeyStreamSourceTypeGlobal:
+            return @"globalTimeline";
+        case BRMisskeyStreamSourceTypeLocal:
+            return @"localTimeline";
+        case BRMisskeyStreamSourceTypeHome:
+            return @"homeTimeline";
+        case BRMisskeyStreamSourceTypeHybrid:
+            return @"hybridTimeline";
+        case BRMisskeyStreamSourceTypeMain:
+            return @"main";
+        case BRMisskeyStreamSourceTypeAntenna:
+            return @"antenna";
+        case BRMisskeyStreamSourceTypeUserList:
+            return @"userList";
+    }
+}
+
 - (BOOL)isEqual:(id)object {
     if ([object isKindOfClass:[BRMisskeyStreamSource class]]) {
         BRMisskeyStreamSource *o = (BRMisskeyStreamSource*)object;

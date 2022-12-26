@@ -399,6 +399,9 @@
             account.misskeyAccount.streamSources = controller.selectedSources;
             [account.misskeyAccount save];
             [self updateAccountView];
+            
+            // Reconnect
+            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:account.identifier]];
         }
     }];
 }

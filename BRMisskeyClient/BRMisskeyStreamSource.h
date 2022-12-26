@@ -33,6 +33,7 @@ typedef enum : NSUInteger {
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
 - (NSString *)displayName;
+- (NSString *)channelForAPI;
 
 @end
 

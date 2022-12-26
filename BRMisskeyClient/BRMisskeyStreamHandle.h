@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BRMisskeyStatus.h"
+#import "BRMisskeyAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) void (^onConnected)();
 @property (nonatomic, copy, nullable) void (^onDisconnected)();
 @property (nonatomic, strong) NSURLSessionWebSocketTask *task;
+@property (nonatomic, strong) BRMisskeyAccount *account;
 
 - (void)disconnect;
 

@@ -104,6 +104,7 @@
     [components setQueryItems:queryItems];
     
     BRMisskeyStreamHandle *handler = [[BRMisskeyStreamHandle alloc] init];
+    handler.account = account;
     NSURLRequest *request = [NSURLRequest requestWithURL:components.URL];
     NSURLSessionWebSocketTask *task = [self.urlSession webSocketTaskWithRequest:request];
     handler.task = task;
@@ -164,22 +165,24 @@ onMessage:(void (^)(NSURLSessionWebSocketMessage * _Nullable message, NSError * 
 - (void)URLSession:(NSURLSession *)session
      webSocketTask:(NSURLSessionWebSocketTask *)webSocketTask
 didOpenWithProtocol:(NSString *)protocol {
-    NSLog(@"did open");
-    NSDictionary *connectMessage = @{
-        @"type": @"connect",
-        @"body": @{
-            @"channel": @"localTimeline",
-            @"id": @"foobar"
-        }
-    };
-    NSData *d = [NSJSONSerialization dataWithJSONObject:connectMessage options:0 error:nil];
-    NSString *encoded = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
-    NSURLSessionWebSocketMessage *strmsg = [[NSURLSessionWebSocketMessage alloc] initWithString:encoded];
-    [webSocketTask sendMessage:strmsg completionHandler:^(NSError * _Nullable error) {
-        NSLog(@"sent message %@", error);
-    }];
     BRMisskeyStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
     if (!handler) return;
+    
+    for (BRMisskeyStreamSource *source in handler.account.streamSources) {
+        NSDictionary *connectMessage = @{
+            @"type": @"connect",
+            @"body": @{
+                @"channel": source.channelForAPI,
+                @"id": [[NSUUID UUID] UUIDString],
+            }
+        };
+        NSData *d = [NSJSONSerialization dataWithJSONObject:connectMessage options:0 error:nil];
+        NSString *encoded = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
+        NSURLSessionWebSocketMessage *strmsg = [[NSURLSessionWebSocketMessage alloc] initWithString:encoded];
+        [webSocketTask sendMessage:strmsg completionHandler:^(NSError * _Nullable error) {
+            NSLog(@"sent message %@", error);
+        }];
+    }
     if (handler.onConnected) {
         handler.onConnected();
     }
