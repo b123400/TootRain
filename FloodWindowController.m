@@ -32,8 +32,8 @@
 										 selector:@selector(updateCursorLocation:)
 										 userInfo:nil
 										  repeats:YES];
-	lastMousePosition=CGPointZero;
-	shownStatuses=[[NSMutableArray alloc] init];
+	lastMousePosition = CGPointZero;
+    shownStatusIds = [[NSMutableSet alloc] init];
     
     [StreamController shared].delegate = self;
     [[StreamController shared] startStreaming];
@@ -109,10 +109,13 @@
 }
 
 -(BOOL)shouldShowStatus:(Status*)status{
-	if([shownStatuses containsObject:status]){
+	if([shownStatusIds containsObject:status.statusID]){
 		return NO;
 	}
-	[shownStatuses addObject:status];
+    if (status.statusID != nil) {
+        // nil used for special raindrops like notification
+        [shownStatusIds addObject:status.statusID];
+    }
 	return YES;
 }
 #pragma mark position calculation
@@ -146,7 +149,9 @@
 -(void)rainDropDidDisappear:(RainDropViewController*)rainDrop{
 	[[rainDrop view] removeFromSuperview];
 	[rainDrops removeObject:rainDrop];
-    [shownStatuses removeObject:rainDrop.status];
+    if (rainDrop.status.statusID != nil) {
+        [shownStatusIds removeObject:rainDrop.status.statusID];
+    }
 }
 
 - (void)updateCursorLocation:(NSEvent*)event {

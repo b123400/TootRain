@@ -18,7 +18,7 @@
 	CGPoint lastMousePosition;
 	NSTimer *timer;
 	
-	NSMutableArray *shownStatuses;
+	NSMutableSet<NSString*> *shownStatusIds;
 }
 
 -(void)resetFrame;
