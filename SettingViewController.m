@@ -121,7 +121,7 @@
     }
     
     if (!accounts.count) {
-        [self displayViewForIdentifier:@"accounts" animate:YES];
+        [self displayViewForIdentifier:@"accounts" animate:NO];
     }
 }
 
