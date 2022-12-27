@@ -6,14 +6,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "BRMisskeyAccount.h"
 #import "BRMisskeyStreamSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRMisskeyStreamSourceSelectionWindowController : NSWindowController
 
-@property (nonatomic, strong) NSArray<BRMisskeyStreamSource*> * sources;
-@property (nonatomic, strong) NSArray<BRMisskeyStreamSource*> * selectedSources;
+@property (nonatomic, strong) BRMisskeyAccount *account;
+
+- (NSArray<BRMisskeyStreamSource*> *)selectedSources;
 
 @end
 

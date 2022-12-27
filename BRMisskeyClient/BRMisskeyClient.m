@@ -44,7 +44,7 @@
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"name" value:@"TootRain"]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"icon" value:@"https://b123400.net/tootrain/mac.png"]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"callback" value:MISSKEY_OAUTH_REDIRECT_DEST]];
-    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"permission" value:@"write:notes,write:favorites,write:reactions"]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"permission" value:@"write:notes,write:favorites,write:reactions,read:account"]];
     [components setQueryItems:queryItems];
     return [components URL];
 }
@@ -203,6 +203,80 @@ didOpenWithProtocol:(NSString *)protocol {
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
     NSLog(@"didBecomeInvalidWithError");
+}
+
+#pragma mark: - API
+
+- (void)getAntennaSourcesWithAccount:(BRMisskeyAccount *)account
+                   completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback {
+    NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
+    [components setPath:@"/api/antennas/list"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
+    [request setHTTPMethod:@"POST"];
+    NSDictionary *body = @{@"limit": @999, @"i": account.accessToken};
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
+    typeof(self) __weak _self = self;
+    NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSArray class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        NSMutableArray *sources = [NSMutableArray array];
+        for (NSDictionary *dict in result) {
+            BRMisskeyStreamSource *source = [[BRMisskeyStreamSource alloc] init];
+            source.type = BRMisskeyStreamSourceTypeAntenna;
+            source.antennaId = dict[@"id"];
+            source.antennaName = dict[@"name"];
+            [sources addObject:source];
+        }
+        callback(sources, nil);
+    }];
+    [task resume];
+}
+
+- (void)getUserListSourcesWithAccount:(BRMisskeyAccount *)account
+                    completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback {
+    NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
+    [components setPath:@"/api/users/lists/list"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
+    [request setHTTPMethod:@"POST"];
+    NSDictionary *body = @{@"limit": @999, @"i": account.accessToken};
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
+    typeof(self) __weak _self = self;
+    NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSArray class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        NSMutableArray *sources = [NSMutableArray array];
+        for (NSDictionary *dict in result) {
+            BRMisskeyStreamSource *source = [[BRMisskeyStreamSource alloc] init];
+            source.type = BRMisskeyStreamSourceTypeUserList;
+            source.userListId = dict[@"id"];
+            source.userListName = dict[@"name"];
+            [sources addObject:source];
+        }
+        callback(sources, nil);
+    }];
+    [task resume];
 }
 
 @end

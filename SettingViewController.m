@@ -391,9 +391,8 @@
 - (IBAction)misskeyOptionClicked:(id)sender {
     BRMisskeyStreamSourceSelectionWindowController *controller = [[BRMisskeyStreamSourceSelectionWindowController alloc] init];
     // TODO: add more sources like antenna and userList
-    controller.sources = [BRMisskeyStreamSource defaultSources];
     MisskeyAccount *account = (MisskeyAccount *)self.detailSelectedAccount;
-    controller.selectedSources = account.misskeyAccount.streamSources;
+    controller.account = account.misskeyAccount;
     [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             account.misskeyAccount.streamSources = controller.selectedSources;

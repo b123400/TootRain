@@ -121,6 +121,10 @@
     return NO;
 }
 
+- (NSUInteger)hash {
+    return self.type ^ [self.antennaId hash] ^ [self.userListId hash];
+}
+
 + (NSArray<BRMisskeyStreamSource*> *)defaultSources {
     return @[
         [[BRMisskeyStreamSource alloc] initWithType:BRMisskeyStreamSourceTypeHome],

@@ -25,6 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BRMisskeyStreamHandle *)streamStatusWithAccount:(BRMisskeyAccount *)account;
 
+- (void)getAntennaSourcesWithAccount:(BRMisskeyAccount *)account
+                   completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback;
+
+- (void)getUserListSourcesWithAccount:(BRMisskeyAccount *)account
+                    completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback;
+
 @end
 
 NS_ASSUME_NONNULL_END
