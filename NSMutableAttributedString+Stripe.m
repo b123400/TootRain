@@ -74,18 +74,27 @@
 }
 
 - (void)resizeImagesWithHeight:(CGFloat)height {
-    NSRange r = NSMakeRange(NSNotFound, NSNotFound);
+    NSRange r = NSMakeRange(NSNotFound, 0);
     NSInteger index = 0;
     while (index < self.length) {
         NSDictionary<NSAttributedStringKey, id> *attributes = [self attributesAtIndex:index effectiveRange:&r];
+        if (r.location == NSNotFound) break;
         index = r.length + r.location;
         if (attributes[NSAttachmentAttributeName]) {
             NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
             NSImage *image = nil;
             @try {
-                image = [attachment imageForBounds:attachment.bounds
-                                              textContainer:nil
-                                             characterIndex:r.location];
+                image = [[NSImage alloc] initWithData:[[attachment fileWrapper] regularFileContents]];
+                if (!image) {
+                    image = [attachment image];
+                }
+                if (!image) {
+                    // This call sometimes get EXC_BAD_ACCESS, we try the above ways first:
+                    // -[NSImage retain]: message sent to deallocated instance
+                    image = [attachment imageForBounds:attachment.bounds
+                                         textContainer:nil
+                                        characterIndex:r.location];
+                }
             } @catch (NSException *exception) {
                 // ignore
             }
