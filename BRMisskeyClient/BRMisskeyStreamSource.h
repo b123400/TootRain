@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     BRMisskeyStreamSourceTypeMain,
     BRMisskeyStreamSourceTypeAntenna,
     BRMisskeyStreamSourceTypeUserList,
+    BRMisskeyStreamSourceTypeChannel,
 } BRMisskeyStreamSourceType;
 
 @interface BRMisskeyStreamSource : NSObject
@@ -27,6 +28,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *antennaName;
 @property (nonatomic, strong) NSString *userListId;
 @property (nonatomic, strong) NSString *userListName;
+@property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *channelName;
 
 + (NSArray<BRMisskeyStreamSource*> *)defaultSources;
 

@@ -44,7 +44,7 @@
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"name" value:@"TootRain"]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"icon" value:@"https://b123400.net/tootrain/mac.png"]];
     [queryItems addObject:[NSURLQueryItem queryItemWithName:@"callback" value:MISSKEY_OAUTH_REDIRECT_DEST]];
-    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"permission" value:@"write:notes,write:favorites,write:reactions,read:account"]];
+    [queryItems addObject:[NSURLQueryItem queryItemWithName:@"permission" value:@"write:notes,write:favorites,write:reactions,read:account,read:channels"]];
     [components setQueryItems:queryItems];
     return [components URL];
 }
@@ -177,6 +177,7 @@ didOpenWithProtocol:(NSString *)protocol {
                 @"params":
                     source.type == BRMisskeyStreamSourceTypeUserList ? @{@"listId": source.userListId ?: @""} :
                     source.type == BRMisskeyStreamSourceTypeAntenna ? @{ @"antennaId": source.antennaId ?: @"" } :
+                    source.type == BRMisskeyStreamSourceTypeChannel ? @{ @"channelId": source.channelId ?: @"" } :
                     @{},
             }
         };
@@ -276,6 +277,42 @@ didOpenWithProtocol:(NSString *)protocol {
             source.type = BRMisskeyStreamSourceTypeUserList;
             source.userListId = dict[@"id"];
             source.userListName = dict[@"name"];
+            [sources addObject:source];
+        }
+        callback(sources, nil);
+    }];
+    [task resume];
+}
+
+- (void)getChannelSourcesWithAccount:(BRMisskeyAccount *)account
+                   completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback {
+    NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
+    [components setPath:@"/api/channels/followed"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
+    [request setHTTPMethod:@"POST"];
+    NSDictionary *body = @{@"limit": @100, @"i": account.accessToken};
+    [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
+    typeof(self) __weak _self = self;
+    NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSArray *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSArray class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        NSMutableArray *sources = [NSMutableArray array];
+        for (NSDictionary *dict in result) {
+            BRMisskeyStreamSource *source = [[BRMisskeyStreamSource alloc] init];
+            source.type = BRMisskeyStreamSourceTypeChannel;
+            source.channelId = dict[@"id"];
+            source.channelName = dict[@"name"];
             [sources addObject:source];
         }
         callback(sources, nil);

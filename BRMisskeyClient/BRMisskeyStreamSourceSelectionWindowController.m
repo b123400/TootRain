@@ -32,16 +32,23 @@
     if (!self.account) return;
     typeof(self) __weak _self = self;
     [[BRMisskeyClient shared] getAntennaSourcesWithAccount:self.account
-                                         completionHandler:^(NSArray<BRMisskeyStreamSource *> * _Nullable antennaSources, NSError * _Nullable error) {
+                                         completionHandler:^(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_self.sources addObjectsFromArray:antennaSources];
+            [_self.sources addObjectsFromArray:sources];
             [_self.tableView reloadData];
         });
     }];
     [[BRMisskeyClient shared] getUserListSourcesWithAccount:self.account
-                                          completionHandler:^(NSArray<BRMisskeyStreamSource *> * _Nullable antennaSources, NSError * _Nullable error) {
+                                          completionHandler:^(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [_self.sources addObjectsFromArray:antennaSources];
+            [_self.sources addObjectsFromArray:sources];
+            [_self.tableView reloadData];
+        });
+    }];
+    [[BRMisskeyClient shared] getChannelSourcesWithAccount:self.account
+                                         completionHandler:^(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_self.sources addObjectsFromArray:sources];
             [_self.tableView reloadData];
         });
     }];

@@ -37,6 +37,10 @@
             self.type = BRMisskeyStreamSourceTypeUserList;
             self.userListId = dict[@"userListId"];
             self.userListName = dict[@"userListName"];
+        } else if ([typeString isEqual:@"channel"]) {
+            self.type = BRMisskeyStreamSourceTypeChannel;
+            self.channelId = dict[@"channelId"];
+            self.channelName = dict[@"channelName"];
         }
     }
     return self;
@@ -70,6 +74,10 @@
             dict[@"userListId"] = self.userListId;
             dict[@"userListName"] = self.userListName;
             break;
+        case BRMisskeyStreamSourceTypeChannel:
+            dict[@"type"] = @"channel";
+            dict[@"channelId"] = self.channelId;
+            dict[@"channelName"] = self.channelName;
     }
     return dict;
 }
@@ -90,7 +98,8 @@
             return [NSString stringWithFormat:NSLocalizedString(@"Antenna - %@", @"Misskey source type"), self.antennaName];
         case BRMisskeyStreamSourceTypeUserList:
             return [NSString stringWithFormat:NSLocalizedString(@"List - %@", @"Misskey source type"), self.userListName];
-            break;
+        case BRMisskeyStreamSourceTypeChannel:
+            return [NSString stringWithFormat:NSLocalizedString(@"Channel - %@", @"Misskey source type"), self.channelName];
     }
 }
 
@@ -110,6 +119,8 @@
             return @"antenna";
         case BRMisskeyStreamSourceTypeUserList:
             return @"userList";
+        case BRMisskeyStreamSourceTypeChannel:
+            return @"channel";
     }
 }
 
@@ -122,7 +133,7 @@
 }
 
 - (NSUInteger)hash {
-    return self.type ^ [self.antennaId hash] ^ [self.userListId hash];
+    return self.type ^ [self.antennaId hash] ^ [self.userListId hash] ^ [self.channelId hash];
 }
 
 + (NSArray<BRMisskeyStreamSource*> *)defaultSources {
