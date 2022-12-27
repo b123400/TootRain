@@ -174,6 +174,10 @@ didOpenWithProtocol:(NSString *)protocol {
             @"body": @{
                 @"channel": source.channelForAPI,
                 @"id": [[NSUUID UUID] UUIDString],
+                @"params":
+                    source.type == BRMisskeyStreamSourceTypeUserList ? @{@"listId": source.userListId ?: @""} :
+                    source.type == BRMisskeyStreamSourceTypeAntenna ? @{ @"antennaId": source.antennaId ?: @"" } :
+                    @{},
             }
         };
         NSData *d = [NSJSONSerialization dataWithJSONObject:connectMessage options:0 error:nil];
