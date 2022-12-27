@@ -350,6 +350,7 @@
 		CF620A201A057CBE003EB806 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
+		CF673971295A883B005B274C /* TweetRain-standalone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TweetRain-standalone.entitlements"; sourceTree = "<group>"; };
 		CF6FA7441B06599B0088748F /* SettingAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAboutTableViewController.h; sourceTree = "<group>"; };
 		CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAboutTableViewController.m; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
@@ -598,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */,
+				CF673971295A883B005B274C /* TweetRain-standalone.entitlements */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1724,7 +1726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TweetRain-standalone.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1771,7 +1773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TweetRain-standalone.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
