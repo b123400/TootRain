@@ -20,6 +20,26 @@
 		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
+		CF1FE3A029548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
+		CF1FE3A129548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
+		CF1FE3B029559F7700CABB47 /* BRMisskeyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3AF29559F7700CABB47 /* BRMisskeyAccount.m */; };
+		CF1FE3B129559F7700CABB47 /* BRMisskeyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3AF29559F7700CABB47 /* BRMisskeyAccount.m */; };
+		CF1FE3B42955B74800CABB47 /* BRMisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3B32955B74800CABB47 /* BRMisskeyUser.m */; };
+		CF1FE3B52955B74800CABB47 /* BRMisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3B32955B74800CABB47 /* BRMisskeyUser.m */; };
+		CF1FE3B8295606B400CABB47 /* MisskeyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3B7295606B400CABB47 /* MisskeyAccount.m */; };
+		CF1FE3B9295606B400CABB47 /* MisskeyAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3B7295606B400CABB47 /* MisskeyAccount.m */; };
+		CF1FE3BC2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3BB2956FF2300CABB47 /* BRMisskeyStatus.m */; };
+		CF1FE3BD2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3BB2956FF2300CABB47 /* BRMisskeyStatus.m */; };
+		CF1FE3C02957013700CABB47 /* BRMisskeyEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3BF2957013700CABB47 /* BRMisskeyEmoji.m */; };
+		CF1FE3C12957013700CABB47 /* BRMisskeyEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3BF2957013700CABB47 /* BRMisskeyEmoji.m */; };
+		CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3C32957301E00CABB47 /* BRMisskeyStreamHandle.m */; };
+		CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3C32957301E00CABB47 /* BRMisskeyStreamHandle.m */; };
+		CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */; };
+		CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */; };
+		CF1FE3CC295734C800CABB47 /* MisskeyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CB295734C800CABB47 /* MisskeyStatus.m */; };
+		CF1FE3CD295734C800CABB47 /* MisskeyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CB295734C800CABB47 /* MisskeyStatus.m */; };
+		CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CF2957356000CABB47 /* MisskeyUser.m */; };
+		CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CF2957356000CABB47 /* MisskeyUser.m */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */; };
 		CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */; };
@@ -39,6 +59,14 @@
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
 		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
+		CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */; };
+		CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */; };
+		CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */; };
+		CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */; };
+		CF402907295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */; };
+		CF402908295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */; };
+		CF402909295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */; };
+		CF40290A295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */; };
 		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */; };
@@ -275,6 +303,26 @@
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceInputWindowController.h; sourceTree = "<group>"; };
 		CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstanceInputWindowController.m; sourceTree = "<group>"; };
+		CF1FE39E29548BF800CABB47 /* BRMisskeyClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyClient.h; sourceTree = "<group>"; };
+		CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyClient.m; sourceTree = "<group>"; };
+		CF1FE3AE29559F7700CABB47 /* BRMisskeyAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyAccount.h; sourceTree = "<group>"; };
+		CF1FE3AF29559F7700CABB47 /* BRMisskeyAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyAccount.m; sourceTree = "<group>"; };
+		CF1FE3B22955B74800CABB47 /* BRMisskeyUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyUser.h; sourceTree = "<group>"; };
+		CF1FE3B32955B74800CABB47 /* BRMisskeyUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyUser.m; sourceTree = "<group>"; };
+		CF1FE3B6295606B400CABB47 /* MisskeyAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MisskeyAccount.h; sourceTree = "<group>"; };
+		CF1FE3B7295606B400CABB47 /* MisskeyAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisskeyAccount.m; sourceTree = "<group>"; };
+		CF1FE3BA2956FF2300CABB47 /* BRMisskeyStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStatus.h; sourceTree = "<group>"; };
+		CF1FE3BB2956FF2300CABB47 /* BRMisskeyStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStatus.m; sourceTree = "<group>"; };
+		CF1FE3BE2957013700CABB47 /* BRMisskeyEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyEmoji.h; sourceTree = "<group>"; };
+		CF1FE3BF2957013700CABB47 /* BRMisskeyEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyEmoji.m; sourceTree = "<group>"; };
+		CF1FE3C22957301E00CABB47 /* BRMisskeyStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStreamHandle.h; sourceTree = "<group>"; };
+		CF1FE3C32957301E00CABB47 /* BRMisskeyStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStreamHandle.m; sourceTree = "<group>"; };
+		CF1FE3C62957343A00CABB47 /* MisskeyStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MisskeyStreamHandle.h; sourceTree = "<group>"; };
+		CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisskeyStreamHandle.m; sourceTree = "<group>"; };
+		CF1FE3CA295734C800CABB47 /* MisskeyStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MisskeyStatus.h; sourceTree = "<group>"; };
+		CF1FE3CB295734C800CABB47 /* MisskeyStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisskeyStatus.m; sourceTree = "<group>"; };
+		CF1FE3CE2957356000CABB47 /* MisskeyUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MisskeyUser.h; sourceTree = "<group>"; };
+		CF1FE3CF2957356000CABB47 /* MisskeyUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisskeyUser.m; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -307,6 +355,13 @@
 		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
 		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
 		CF3D617B269B21B400786DD9 /* BRSlackAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackAccount.m; sourceTree = "<group>"; };
+		CF4028FC295958310066FB84 /* SettingAccountDetailMisskeyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailMisskeyView.h; sourceTree = "<group>"; };
+		CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailMisskeyView.m; sourceTree = "<group>"; };
+		CF40290029595BD40066FB84 /* BRMisskeyStreamSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStreamSource.h; sourceTree = "<group>"; };
+		CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStreamSource.m; sourceTree = "<group>"; };
+		CF402904295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyStreamSourceSelectionWindowController.h; sourceTree = "<group>"; };
+		CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMisskeyStreamSourceSelectionWindowController.m; sourceTree = "<group>"; };
+		CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRMisskeyStreamSourceSelectionWindowController.xib; sourceTree = "<group>"; };
 		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
 		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
 		CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -557,6 +612,7 @@
 				CF9F62081563D548004C6514 /* Settings */,
 				CFD131942688745A00B6EDB3 /* BRMastodonClient */,
 				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
+				CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -690,6 +746,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */ = {
+			isa = PBXGroup;
+			children = (
+				CF1FE39E29548BF800CABB47 /* BRMisskeyClient.h */,
+				CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */,
+				CF1FE3AE29559F7700CABB47 /* BRMisskeyAccount.h */,
+				CF1FE3AF29559F7700CABB47 /* BRMisskeyAccount.m */,
+				CF1FE3B22955B74800CABB47 /* BRMisskeyUser.h */,
+				CF1FE3B32955B74800CABB47 /* BRMisskeyUser.m */,
+				CF1FE3BA2956FF2300CABB47 /* BRMisskeyStatus.h */,
+				CF1FE3BB2956FF2300CABB47 /* BRMisskeyStatus.m */,
+				CF1FE3BE2957013700CABB47 /* BRMisskeyEmoji.h */,
+				CF1FE3BF2957013700CABB47 /* BRMisskeyEmoji.m */,
+				CF1FE3C22957301E00CABB47 /* BRMisskeyStreamHandle.h */,
+				CF1FE3C32957301E00CABB47 /* BRMisskeyStreamHandle.m */,
+				CF40290029595BD40066FB84 /* BRMisskeyStreamSource.h */,
+				CF40290129595BD40066FB84 /* BRMisskeyStreamSource.m */,
+				CF402904295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.h */,
+				CF402905295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m */,
+				CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */,
+			);
+			path = BRMisskeyClient;
+			sourceTree = "<group>";
+		};
 		CF3D6174269B1BED00786DD9 /* BRSlackClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +803,8 @@
 				CF5DE46D26A03A610040BD63 /* MastodonStreamHandle.m */,
 				CF5DE46F26A03A8E0040BD63 /* SlackStreamHandle.h */,
 				CF5DE47026A03A8E0040BD63 /* SlackStreamHandle.m */,
+				CF1FE3C62957343A00CABB47 /* MisskeyStreamHandle.h */,
+				CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */,
 			);
 			name = StreamController;
 			sourceTree = "<group>";
@@ -823,6 +905,8 @@
 				CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */,
 				CFDDE44F293754D100E64EF5 /* SettingAccountDetailMastodonView.h */,
 				CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */,
+				CF4028FC295958310066FB84 /* SettingAccountDetailMisskeyView.h */,
+				CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */,
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
@@ -858,6 +942,12 @@
 				CF5DE46426A02ACF0040BD63 /* MastodonAccount.m */,
 				CF5DE46626A02B640040BD63 /* SlackAccount.h */,
 				CF5DE46726A02B640040BD63 /* SlackAccount.m */,
+				CF1FE3B6295606B400CABB47 /* MisskeyAccount.h */,
+				CF1FE3B7295606B400CABB47 /* MisskeyAccount.m */,
+				CF1FE3CA295734C800CABB47 /* MisskeyStatus.h */,
+				CF1FE3CB295734C800CABB47 /* MisskeyStatus.m */,
+				CF1FE3CE2957356000CABB47 /* MisskeyUser.h */,
+				CF1FE3CF2957356000CABB47 /* MisskeyUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1092,6 +1182,7 @@
 				CFE39FDE1A769623004644C8 /* RainDropDetailViewController.xib in Resources */,
 				CFA161F426B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CF5DE47F26A06AAA0040BD63 /* emoji.json in Resources */,
+				CF402909295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */,
 				CFE39FE81A769638004644C8 /* ComposeStatusViewController.xib in Resources */,
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
@@ -1115,6 +1206,7 @@
 				CF5D2D2C29350BC400745D63 /* BRSlackChannelSelectionWindowController.xib in Resources */,
 				CF5D2D2E29350BC400745D63 /* emoji.json in Resources */,
 				CF5D2D2F29350BC400745D63 /* ComposeStatusViewController.xib in Resources */,
+				CF40290A295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */,
 				CF5D2D7D29350DA900745D63 /* MainMenu-standalone.xib in Resources */,
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
@@ -1277,8 +1369,10 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CF1FE3B42955B74800CABB47 /* BRMisskeyUser.m in Sources */,
 				CFB319872935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF75438E13686342009E7292 /* TransparentView.m in Sources */,
+				CF1FE3A029548BF800CABB47 /* BRMisskeyClient.m in Sources */,
 				CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */,
 				CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */,
 				CF5DE46826A02B640040BD63 /* SlackAccount.m in Sources */,
@@ -1286,6 +1380,7 @@
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
+				CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */,
 				CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */,
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
@@ -1301,20 +1396,27 @@
 				CF5DE47426A046EF0040BD63 /* BRSlackUser.m in Sources */,
 				CF5DE47726A048470040BD63 /* BRSlackMessage.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
+				CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
+				CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
 				CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */,
 				CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */,
 				CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */,
 				CF5DE46526A02ACF0040BD63 /* MastodonAccount.m in Sources */,
+				CF1FE3C02957013700CABB47 /* BRMisskeyEmoji.m in Sources */,
 				CF5DE47126A03A8E0040BD63 /* SlackStreamHandle.m in Sources */,
 				CFB3197D2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */,
+				CF1FE3B029559F7700CABB47 /* BRMisskeyAccount.m in Sources */,
 				CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
+				CF402907295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */,
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
+				CF1FE3BC2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
+				CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
@@ -1329,11 +1431,14 @@
 				CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */,
 				CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */,
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF1FE3B8295606B400CABB47 /* MisskeyAccount.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
+				CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
 				CF5DE46E26A03A610040BD63 /* MastodonStreamHandle.m in Sources */,
 				CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */,
 				CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */,
+				CF1FE3CC295734C800CABB47 /* MisskeyStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,8 +1448,10 @@
 			files = (
 				CF5D2D3429350BC400745D63 /* main.m in Sources */,
 				CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
+				CF1FE3B52955B74800CABB47 /* BRMisskeyUser.m in Sources */,
 				CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */,
 				CF5D2D3529350BC400745D63 /* TransparentView.m in Sources */,
+				CF1FE3A129548BF800CABB47 /* BRMisskeyClient.m in Sources */,
 				CF5D2D3629350BC400745D63 /* CustomTitleBar.m in Sources */,
 				CF5D2D3729350BC400745D63 /* BRMastodonUser.m in Sources */,
 				CF5D2D3829350BC400745D63 /* SlackAccount.m in Sources */,
@@ -1352,6 +1459,7 @@
 				CF5D2D3A29350BC400745D63 /* CustomDragView.m in Sources */,
 				CF5D2D3B29350BC400745D63 /* NSFileManager+DirectoryLocations.m in Sources */,
 				CF5D2D3C29350BC400745D63 /* BRMastodonApp.m in Sources */,
+				CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */,
 				CF5D2D3D29350BC400745D63 /* NSView+Fade.m in Sources */,
 				CF5D2D3E29350BC400745D63 /* User.m in Sources */,
 				CF5D2D3F29350BC400745D63 /* SettingViewController.m in Sources */,
@@ -1367,20 +1475,27 @@
 				CF5D2D4929350BC400745D63 /* BRSlackUser.m in Sources */,
 				CF5D2D4A29350BC400745D63 /* BRSlackMessage.m in Sources */,
 				CF5D2D4B29350BC400745D63 /* SettingManager.m in Sources */,
+				CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
+				CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
 				CF5D2D4C29350BC400745D63 /* InstanceInputWindowController.m in Sources */,
 				CF5D2D4D29350BC400745D63 /* Status.m in Sources */,
 				CF5D2D4E29350BC400745D63 /* BRMastodonStatus.m in Sources */,
 				CF5D2D4F29350BC400745D63 /* BRMastodonClient.m in Sources */,
 				CF5D2D5029350BC400745D63 /* BRMastodonEmoji.m in Sources */,
 				CF5D2D5129350BC400745D63 /* MastodonAccount.m in Sources */,
+				CF1FE3C12957013700CABB47 /* BRMisskeyEmoji.m in Sources */,
 				CF5D2D5229350BC400745D63 /* SlackStreamHandle.m in Sources */,
 				CFB3197E2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m in Sources */,
 				CF5D2D5329350BC400745D63 /* MastodonUser.m in Sources */,
+				CF1FE3B129559F7700CABB47 /* BRMisskeyAccount.m in Sources */,
 				CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
+				CF402908295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.m in Sources */,
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
+				CF1FE3BD2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
+				CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
@@ -1395,11 +1510,14 @@
 				CF5D2D6129350BC400745D63 /* DummyStatus.m in Sources */,
 				CF5D2D6229350BC400745D63 /* BRSlackChannel.m in Sources */,
 				CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF1FE3B9295606B400CABB47 /* MisskeyAccount.m in Sources */,
 				CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */,
+				CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */,
 				CF5D2D6729350BC400745D63 /* MastodonStreamHandle.m in Sources */,
 				CF5D2D6829350BC400745D63 /* ComposeStatusViewController.m in Sources */,
 				CF5D2D6929350BC400745D63 /* BRMastodonOAuthResult.m in Sources */,
+				CF1FE3CD295734C800CABB47 /* MisskeyStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1731,7 +1849,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = CC63FD9H8S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1777,7 +1895,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = CC63FD9H8S;
 				ENABLE_HARDENED_RUNTIME = YES;

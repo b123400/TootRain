@@ -13,14 +13,13 @@
                 <outlet property="accountsTableView" destination="27" id="49"/>
                 <outlet property="addAccountButton" destination="fiF-hU-guj" id="rcI-tK-B8D"/>
                 <outlet property="appearanceSettingView" destination="142" id="217"/>
-                <outlet property="authorizeButton" destination="273" id="276"/>
-                <outlet property="authorizeView" destination="278" id="281"/>
                 <outlet property="cursorBehaviourPopup" destination="cIa-fJ-O5a" id="QYz-Nq-xBt"/>
                 <outlet property="deleteAccountButton" destination="rAs-hj-cxA" id="CJC-ho-Nm8"/>
                 <outlet property="fontLabel" destination="202" id="241"/>
                 <outlet property="hoverBackgroundColorWell" destination="216" id="234"/>
-                <outlet property="instanceHostField" destination="Mjb-8B-DVp" id="CpO-RU-MeD"/>
                 <outlet property="mastodonDetailView" destination="bxq-bw-Mu3" id="u7h-a4-jpX"/>
+                <outlet property="misskeyDetailView" destination="pgS-YJ-cPw" id="EGO-Q4-rN5"/>
+                <outlet property="noAccountDetailView" destination="Co5-yX-bZX" id="u6l-P7-cgh"/>
                 <outlet property="opacitySlider" destination="196" id="230"/>
                 <outlet property="reconnectButton" destination="WEP-VZ-77N" id="I0f-Wu-DNn"/>
                 <outlet property="removeLinksCheckBox" destination="242" id="4Fo-Ue-VUc"/>
@@ -146,7 +145,8 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addAccountButtonTapped:" target="-2" id="gDA-sW-xd5"/>
+                        <action selector="addAccountButtonClicked:" target="-2" id="w3Y-aP-z8D"/>
+                        <outlet property="menu" destination="abI-7t-kq6" id="9BQ-RE-bkD"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-M3-akf">
@@ -167,7 +167,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="deleteAccountTapped:" target="-2" id="E4R-CL-3Df"/>
+                        <action selector="deleteAccountClicked:" target="-2" id="nTe-kA-VzC"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-VZ-77N">
@@ -449,45 +449,6 @@
             </subviews>
             <point key="canvasLocation" x="134.5" y="-232"/>
         </customView>
-        <customView identifier="hostNameEnterView" id="278">
-            <rect key="frame" x="0.0" y="0.0" width="469" height="269"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="279">
-                    <rect key="frame" x="70" y="182" width="329" height="55"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Please enter your Mastodon / Pleroma instance host name." id="280">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjb-8B-DVp">
-                    <rect key="frame" x="47" y="153" width="374" height="21"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="eSe-64-AVo">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="273">
-                    <rect key="frame" x="144" y="66" width="183" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="274">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                    </buttonCell>
-                    <connections>
-                        <action selector="authorizeButtonTapped:" target="-2" id="277"/>
-                    </connections>
-                </button>
-            </subviews>
-            <point key="canvasLocation" x="680" y="155"/>
-        </customView>
         <customView id="bxq-bw-Mu3" customClass="SettingAccountDetailMastodonView">
             <rect key="frame" x="0.0" y="0.0" width="349" height="253"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -659,7 +620,7 @@ DQ
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MKi-pN-991">
-                            <rect key="frame" x="18" y="123" width="84" height="16"/>
+                            <rect key="frame" x="38" y="123" width="64" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Channels:" id="Ju7-ZP-pVG">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -744,7 +705,6 @@ DQ
                         <constraint firstItem="sUB-D9-nhh" firstAttribute="top" secondItem="9Mu-nv-fV8" secondAttribute="top" constant="12" id="JZb-ZM-9nD"/>
                         <constraint firstItem="TtK-r8-Cjs" firstAttribute="leading" secondItem="vjI-Cy-kGi" secondAttribute="leading" id="K91-7X-mvT"/>
                         <constraint firstItem="b3j-DD-Oiq" firstAttribute="trailing" secondItem="Q7d-Dt-NmB" secondAttribute="trailing" id="LQH-Fv-kOV"/>
-                        <constraint firstItem="MKi-pN-991" firstAttribute="leading" secondItem="sUB-D9-nhh" secondAttribute="leading" id="MuA-VW-AAB"/>
                         <constraint firstItem="MKi-pN-991" firstAttribute="trailing" secondItem="sUB-D9-nhh" secondAttribute="trailing" id="Pev-nv-g32"/>
                         <constraint firstItem="sUB-D9-nhh" firstAttribute="leading" secondItem="9Mu-nv-fV8" secondAttribute="leading" constant="20" symbolic="YES" id="SIB-fD-LNH"/>
                         <constraint firstItem="dAq-qo-jjJ" firstAttribute="top" secondItem="sUB-D9-nhh" secondAttribute="bottom" constant="8" symbolic="YES" id="TgG-WQ-ceu"/>
@@ -771,6 +731,175 @@ DQ
                 <outlet property="teamNameTextField" destination="dCb-R3-J9K" id="zLg-Wh-L2P"/>
             </connections>
             <point key="canvasLocation" x="195" y="830"/>
+        </customView>
+        <menu id="abI-7t-kq6">
+            <items>
+                <menuItem title="Mastodon / Pleroma" id="ALi-2p-We1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addMastodonAccountClicked:" target="-2" id="lHz-2t-Ysv"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Misskey" id="vT3-jM-6sE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addMisskeyAccountClicked:" target="-2" id="c1S-7c-dyq"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Slack" hidden="YES" id="DEG-ph-RVs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addSlackAccountClicked:" target="-2" id="PUB-Jz-zTJ"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-312" y="338"/>
+        </menu>
+        <customView id="Co5-yX-bZX">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="258"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uf3-fn-ZbV">
+                    <rect key="frame" x="151" y="105" width="92" height="32"/>
+                    <buttonCell key="cell" type="push" title="Authorise" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nRu-Np-tlI">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addAccountButtonClicked:" target="-2" id="dTG-so-iZ0"/>
+                        <outlet property="menu" destination="abI-7t-kq6" id="6Y2-7Y-20p"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="naL-ST-1g8">
+                    <rect key="frame" x="18" y="172" width="357" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Please add an account first." id="N3w-nW-cig">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="uf3-fn-ZbV" firstAttribute="top" secondItem="naL-ST-1g8" secondAttribute="bottom" constant="40" id="6WZ-6Y-s6z"/>
+                <constraint firstAttribute="trailing" secondItem="naL-ST-1g8" secondAttribute="trailing" constant="20" symbolic="YES" id="DRE-XZ-xXT"/>
+                <constraint firstItem="naL-ST-1g8" firstAttribute="leading" secondItem="Co5-yX-bZX" secondAttribute="leading" constant="20" symbolic="YES" id="ZJW-If-k1U"/>
+                <constraint firstItem="uf3-fn-ZbV" firstAttribute="centerX" secondItem="Co5-yX-bZX" secondAttribute="centerX" id="aDS-5m-kNx"/>
+                <constraint firstItem="naL-ST-1g8" firstAttribute="top" secondItem="Co5-yX-bZX" secondAttribute="top" constant="70" id="jqT-ky-ehK"/>
+            </constraints>
+            <point key="canvasLocation" x="636" y="171"/>
+        </customView>
+        <customView id="pgS-YJ-cPw" customClass="SettingAccountDetailMisskeyView">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HaN-F8-JyH">
+                    <rect key="frame" x="18" y="225" width="84" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="yKv-qA-574"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Service:" id="qn5-hR-fxc">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-KI-XRN">
+                    <rect key="frame" x="106" y="225" width="53" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Misskey" id="H4Q-LW-D00">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-aD-ywF">
+                    <rect key="frame" x="27" y="201" width="75" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Account ID:" id="zor-g6-bel">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNo-RC-rB2">
+                    <rect key="frame" x="106" y="201" width="26" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="123" id="o0n-19-1Z6">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJW-Dr-Ndj">
+                    <rect key="frame" x="58" y="177" width="44" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Name:" id="iWh-jO-lyt">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Ub-4j-L66">
+                    <rect key="frame" x="106" y="177" width="144" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="@b123400@misskey.io" id="e7W-Ir-wtF">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gZA-uw-uZ6">
+                    <rect key="frame" x="44" y="153" width="58" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Streams:" id="yEh-2q-E3b">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wFY-oJ-2gk">
+                    <rect key="frame" x="106" y="121" width="225" height="48"/>
+                    <textFieldCell key="cell" title="Global Timeline, Global Timeline, Global Timeline, Global Timeline, Global Timeline" id="hL6-yB-3Vt">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VoP-jt-Yrp">
+                    <rect key="frame" x="101" y="86" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vD8-Jh-0SX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="misskeyOptionClicked:" target="-2" id="pJJ-h9-eZS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wFY-oJ-2gk" secondAttribute="trailing" constant="20" symbolic="YES" id="1tr-V1-4Cl"/>
+                <constraint firstItem="SNo-RC-rB2" firstAttribute="leading" secondItem="QFf-aD-ywF" secondAttribute="trailing" constant="8" symbolic="YES" id="3qF-MS-ERF"/>
+                <constraint firstItem="JJW-Dr-Ndj" firstAttribute="trailing" secondItem="QFf-aD-ywF" secondAttribute="trailing" id="5Fl-dW-sW8"/>
+                <constraint firstItem="HaN-F8-JyH" firstAttribute="top" secondItem="pgS-YJ-cPw" secondAttribute="top" constant="12" id="AyB-RC-BFU"/>
+                <constraint firstItem="VoP-jt-Yrp" firstAttribute="top" secondItem="wFY-oJ-2gk" secondAttribute="bottom" constant="8" symbolic="YES" id="Dmr-Na-pIb"/>
+                <constraint firstItem="bTX-KI-XRN" firstAttribute="leading" secondItem="HaN-F8-JyH" secondAttribute="trailing" constant="8" symbolic="YES" id="DuM-y6-6Z3"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SNo-RC-rB2" secondAttribute="trailing" constant="20" symbolic="YES" id="Gnd-8u-yzf"/>
+                <constraint firstItem="VoP-jt-Yrp" firstAttribute="leading" secondItem="wFY-oJ-2gk" secondAttribute="leading" id="JoL-Y2-1Ay"/>
+                <constraint firstItem="JJW-Dr-Ndj" firstAttribute="top" secondItem="QFf-aD-ywF" secondAttribute="bottom" constant="8" symbolic="YES" id="VgF-mj-JhI"/>
+                <constraint firstItem="wFY-oJ-2gk" firstAttribute="top" secondItem="2Ub-4j-L66" secondAttribute="bottom" constant="8" symbolic="YES" id="Vxl-p0-SCB"/>
+                <constraint firstItem="gZA-uw-uZ6" firstAttribute="trailing" secondItem="JJW-Dr-Ndj" secondAttribute="trailing" id="YEu-qU-uvB"/>
+                <constraint firstItem="2Ub-4j-L66" firstAttribute="top" secondItem="SNo-RC-rB2" secondAttribute="bottom" constant="8" symbolic="YES" id="b3p-w9-9UO"/>
+                <constraint firstItem="wFY-oJ-2gk" firstAttribute="leading" secondItem="gZA-uw-uZ6" secondAttribute="trailing" constant="8" symbolic="YES" id="cdh-Ez-FwN"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bTX-KI-XRN" secondAttribute="trailing" constant="20" symbolic="YES" id="ctn-hW-vbu"/>
+                <constraint firstItem="bTX-KI-XRN" firstAttribute="top" secondItem="HaN-F8-JyH" secondAttribute="top" id="dWh-yq-uSD"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Ub-4j-L66" secondAttribute="trailing" constant="20" symbolic="YES" id="dva-WA-LBO"/>
+                <constraint firstItem="QFf-aD-ywF" firstAttribute="top" secondItem="HaN-F8-JyH" secondAttribute="bottom" constant="8" symbolic="YES" id="gCX-Rp-Du1"/>
+                <constraint firstItem="QFf-aD-ywF" firstAttribute="trailing" secondItem="HaN-F8-JyH" secondAttribute="trailing" id="lWf-Wg-e8z"/>
+                <constraint firstItem="HaN-F8-JyH" firstAttribute="leading" secondItem="pgS-YJ-cPw" secondAttribute="leading" constant="20" symbolic="YES" id="oOz-Gt-0WH"/>
+                <constraint firstItem="SNo-RC-rB2" firstAttribute="top" secondItem="bTX-KI-XRN" secondAttribute="bottom" constant="8" symbolic="YES" id="sfd-BR-ZHz"/>
+                <constraint firstItem="gZA-uw-uZ6" firstAttribute="top" secondItem="JJW-Dr-Ndj" secondAttribute="bottom" constant="8" symbolic="YES" id="wF2-rk-8jN"/>
+                <constraint firstItem="2Ub-4j-L66" firstAttribute="leading" secondItem="JJW-Dr-Ndj" secondAttribute="trailing" constant="8" symbolic="YES" id="z0o-cb-SbD"/>
+            </constraints>
+            <connections>
+                <outlet property="accountIdTextField" destination="SNo-RC-rB2" id="nMa-Qj-z3M"/>
+                <outlet property="displayNameTextField" destination="2Ub-4j-L66" id="73P-tm-Mrd"/>
+                <outlet property="streamsTextField" destination="wFY-oJ-2gk" id="qFO-82-3lW"/>
+            </connections>
+            <point key="canvasLocation" x="195" y="1154"/>
         </customView>
     </objects>
     <resources>

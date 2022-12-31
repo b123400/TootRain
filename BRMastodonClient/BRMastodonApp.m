@@ -83,7 +83,7 @@
     [components setQueryItems:@[
         [NSURLQueryItem queryItemWithName:@"response_type" value:@"code"],
         [NSURLQueryItem queryItemWithName:@"client_id" value:self.clientId],
-        [NSURLQueryItem queryItemWithName:@"redirect_uri" value:OAUTH_REDIRECT_DEST],
+        [NSURLQueryItem queryItemWithName:@"redirect_uri" value:MASTODON_OAUTH_REDIRECT_DEST],
         [NSURLQueryItem queryItemWithName:@"scope" value:@"read write"],
     ]];
     return [components URL];

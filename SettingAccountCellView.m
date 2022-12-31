@@ -28,11 +28,14 @@
         return;
     }
     switch (objectValue.accountType) {
-        case SettingAccountCellAccountTypeMastodon:
+        case SettingAccountTypeMastodon:
             [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
             break;
-        case SettingAccountCellAccountTypeSlack:
+        case SettingAccountTypeSlack:
             [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
+            break;
+        case SettingAccountTypeMisskey:
+            [self.imageView setImage:[NSImage imageNamed:@"Misskey"]];
             break;
     }
     self.textField.stringValue = objectValue.accountName;
@@ -43,8 +46,6 @@
         [self.connectStatusImageView setImage:[NSImage imageNamed:@"NSStatusNone"]];
         [self.connectStatusTextField setStringValue:NSLocalizedString(@"Disconnected", @"Account table cell")];
     }
-    
-    
 }
 
 - (IBAction)serviceImageView:(NSImageView *)sender {

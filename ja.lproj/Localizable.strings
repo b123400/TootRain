@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "Accounts" = "アカウント";
 
+/* Misskey source type */
+"Antenna - %@" = "アンテナ - %@";
+
 /* No comment provided by engineer. */
 "Appearance" = "見た目";
 
@@ -9,6 +12,9 @@
 
 /* No comment provided by engineer. */
 "Bookmarked" = "ブックマした";
+
+/* Misskey source type */
+"Channel - %@" = "チャンネル - %@";
 
 /* setting account reconnect button */
 "Connect" = "接続";
@@ -37,11 +43,23 @@
 /* No comment provided by engineer. */
 "Font: %@ %.0f" = "フォント: %1$@ %2$.0f";
 
+/* Misskey source type */
+"Global Timeline" = "グローバル";
+
 /* source name */
 "Hashtag Local: %@" = "ローカルハッシュタグ: %@";
 
 /* source name */
 "Hashtag: %@" = "ハッシュタグ: %@";
+
+/* Misskey source type */
+"Home Timeline" = "ホームタイムライン";
+
+/* Misskey source type */
+"Hybrid Timeline" = "ソーシャルタイムライン";
+
+/* Misskey source type */
+"List - %@" = "リスト - %@";
 
 /* source name */
 "List: %@" = "リスト: %@";
@@ -49,8 +67,23 @@
 /* No comment provided by engineer. */
 "Loading" = "読み込み中";
 
+/* Misskey source type */
+"Local Timeline" = "ローカルタイムライン";
+
+/* Misskey source type */
+"Main (Reply and Renote)" = "リプライとリノート";
+
 /* No comment provided by engineer. */
 "Need to re-login %@" = "%@ に再ログインしてください";
+
+/* No comment provided by engineer. */
+"Please enter your Mastodon / Pleroma instance host name." = "Mastodon / Pleroma の host nameを入れてください";
+
+/* No comment provided by engineer. */
+"Please enter your Misskey instance host name." = "Misskey の host nameを入れてください";
+
+/* No comment provided by engineer. */
+"Please enter your Slack workspace URL." = "Slack の workspace URL を入れてください";
 
 /* source name */
 "Public" = "公開";

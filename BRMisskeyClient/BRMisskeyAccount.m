@@ -1,0 +1,196 @@
+//
+//  BRMisskeyAccount.m
+//  TweetRain
+//
+//  Created by b123400 on 2022/12/23.
+//
+
+#import "BRMisskeyAccount.h"
+
+@implementation BRMisskeyAccount
+
++ (NSArray<BRMisskeyAccount*> *)allAccounts {
+    NSMutableArray *result = [NSMutableArray array];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *servers = (NSDictionary*)[defaults objectForKey:@"BRMisskeyAccount"];
+    if (!servers) {
+        return result;
+    }
+    for (NSString *host in servers) {
+        NSDictionary *server = servers[host];
+        for (NSString *accountId in server) {
+            BRMisskeyAccount *account = [BRMisskeyAccount accountWithHostName:host accountId:accountId];
+            if (!account) continue;
+            [result addObject:account];
+        }
+    }
+    return result;
+}
+
++ (instancetype)accountWithHostName:(NSString *)hostName accountId:(NSString *)accountId {
+    if (!hostName) return nil;
+    
+    // Access token
+    NSDictionary *dict = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrServer: hostName,
+        (id)kSecReturnAttributes: (id)kCFBooleanTrue,
+        (id)kSecAttrType: [NSNumber numberWithUnsignedInt:'otok'],
+        (id)kSecAttrAccount: accountId,
+        (id)kSecReturnData: (id)kCFBooleanTrue
+    };
+
+    // Look up server in the keychain
+    NSDictionary *found = nil;
+    CFDictionaryRef foundCF;
+    OSStatus err = SecItemCopyMatching((__bridge CFDictionaryRef) dict, (CFTypeRef*)&foundCF);
+
+    // Check if found
+    found = (__bridge NSDictionary*)(foundCF);
+    if (!found)
+        return nil;
+
+    // Found
+    NSString *accessToken = [[NSString alloc] initWithData:found[(id)kSecValueData] encoding:NSUTF8StringEncoding];
+
+    // Found
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *servers = (NSDictionary*)[defaults objectForKey:@"BRMisskeyAccount"];
+    NSDictionary *accounts = (NSDictionary*)servers[hostName];
+    NSString *host = accounts[accountId][@"host"];
+    if (!host) {
+        return nil;
+    }
+    return [[BRMisskeyAccount alloc] initWithHostName:(NSString *)hostName
+                                            accountId:accountId
+                                          accessToken:accessToken
+                                           dictionary:accounts[accountId]
+    ];
+}
+
+- (instancetype)initWithHostName:(NSString *)hostName
+                       accountId:(NSString *)accountId
+                     accessToken:accessToken
+                      dictionary:(NSDictionary *)dict {
+    if (self = [super init]) {
+        self.hostName = hostName;
+        self.accountId = accountId;
+        self.accessToken = accessToken;
+        self.displayName = dict[@"displayName"];
+        
+        if ([dict[@"streamSources"] isKindOfClass:[NSArray class]]) {
+            NSMutableArray *a = [NSMutableArray array];
+            for (NSDictionary *sourceDict in dict[@"streamSources"]) {
+                [a addObject:[[BRMisskeyStreamSource alloc] initWithDictionary:sourceDict]];
+            }
+            self.streamSources = a;
+        } else {
+            self.streamSources = @[];
+        }
+    }
+    return self;
+}
+
+- (instancetype)initNewAccountWithHostName:(NSString *)hostName
+                               accessToken:(NSString *)accessToken
+                                      user:(BRMisskeyUser *)user {
+    if (self = [super init]) {
+        self.hostName = hostName;
+        self.accessToken = accessToken;
+        self.accountId = user.userID;
+        self.displayName = [NSString stringWithFormat:@"@%@@%@", user.username, [[NSURL URLWithString:hostName] host]];
+        BRMisskeyStreamSource *s = [[BRMisskeyStreamSource alloc] init];
+        s.type = BRMisskeyStreamSourceTypeHome;
+        self.streamSources = @[s];
+    }
+    return self;
+}
+
+- (void)save {
+    // Access token
+    NSDictionary *dict = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecReturnAttributes: (id)kCFBooleanTrue,
+        (id)kSecAttrServer: self.hostName,
+        (id)kSecAttrAccount: self.accountId,
+    };
+
+    // Remove any old values from the keychain
+    OSStatus err = SecItemDelete((__bridge CFDictionaryRef) dict);
+    NSLog(@"Access token delete: %d", err);
+    
+    // Create dictionary of parameters to add
+    dict = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecAttrType: [NSNumber numberWithUnsignedInt:'otok'],
+        (id)kSecAttrServer: self.hostName,
+        (id)kSecValueData: [self.accessToken dataUsingEncoding:NSUTF8StringEncoding],
+        (id)kSecAttrAccount: self.accountId,
+    };
+
+    // Try to save to keychain
+    err = SecItemAdd((__bridge CFDictionaryRef) dict, NULL);
+    NSLog(@"Access token save: %d", err);
+    
+    // @{
+    //   "hostname.com": @{
+    //     @"user12345": @{
+    //       @"accountId": @"user12345",
+    //       @"url": @"https://.......",
+    //       @"host": @"https://joinmastodon.org",
+    //     }
+    //   }
+    // };
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *servers = [(NSDictionary*)[defaults objectForKey:@"BRMisskeyAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];
+    NSMutableDictionary *accounts = [(NSDictionary*)servers[self.hostName] mutableCopy] ?: [NSMutableDictionary dictionary];
+    accounts[self.accountId] = [self dictionaryRepresentation];
+    servers[self.hostName] = accounts;
+    [defaults setObject:servers forKey:@"BRMisskeyAccount"];
+    [defaults synchronize];
+}
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{
+        @"accountId": self.accountId,
+        @"displayName": self.displayName,
+        @"host": self.hostName,
+        @"streamSources": [self.streamSources valueForKeyPath:@"dictionaryRepresentation"],
+    };
+}
+
+- (void)deleteAccount {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *servers = [(NSDictionary*)[defaults objectForKey:@"BRMisskeyAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];
+    NSMutableDictionary *accounts = [(NSDictionary*)servers[self.hostName] mutableCopy] ?: [NSMutableDictionary dictionary];
+    [accounts removeObjectForKey:self.accountId];
+    servers[self.hostName] = accounts;
+    [defaults setObject:servers forKey:@"BRMisskeyAccount"];
+    [defaults synchronize];
+    
+    // Access token
+    NSDictionary *dict = @{
+        (id)kSecClass: (id)kSecClassInternetPassword,
+        (id)kSecReturnAttributes: (id)kCFBooleanTrue,
+        (id)kSecAttrServer: self.hostName,
+        (id)kSecAttrAccount: self.accountId,
+    };
+
+    // Remove any old values from the keychain
+    OSStatus err = SecItemDelete((__bridge CFDictionaryRef) dict);
+    NSLog(@"Access token delete: %d", err);
+}
+
+- (NSString *)identifier {
+    return [NSString stringWithFormat:@"%@:%@", self.hostName, self.accountId];
+}
+
+- (NSString *)shortDisplayName {
+    return self.displayName;
+}
+
+- (NSString *)displayNameForStreamSource {
+    return [[self.streamSources valueForKeyPath:@"displayName"] componentsJoinedByString:@", "];
+}
+
+@end

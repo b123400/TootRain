@@ -37,12 +37,6 @@
 /* Class = "NSButtonCell"; title = "Truncate status"; ObjectID = "245"; */
 "245.title" = "長さ制限";
 
-/* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
-"274.title" = "認証";
-
-/* Class = "NSTextFieldCell"; title = "Please enter your Mastodon / Pleroma instance host name."; ObjectID = "280"; */
-"280.title" = "Mastodon / Pleroma の host nameを入れてください";
-
 /* Class = "NSTextFieldCell"; title = "Window level"; ObjectID = "301"; */
 "301.title" = "ウインドスタイル";
 
@@ -67,6 +61,9 @@
 /* Class = "NSTextFieldCell"; title = "Display Name:"; ObjectID = "cgn-Ke-zF5"; */
 "cgn-Ke-zF5.title" = "名前:";
 
+/* Class = "NSMenuItem"; title = "Slack"; ObjectID = "DEG-ph-RVs"; */
+"DEG-ph-RVs.title" = "";
+
 /* Class = "NSTextFieldCell"; title = "User timeline and notification"; ObjectID = "dNi-U1-ep6"; */
 "dNi-U1-ep6.title" = "ユーザータイムラインと通知";
 
@@ -75,6 +72,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "f1B-JK-9g0"; */
 "f1B-JK-9g0.title" = "サービス:";
+
+/* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
+"iWh-jO-lyt.title" = "名前:";
 
 /* Class = "NSTextFieldCell"; title = "Channels:"; ObjectID = "Ju7-ZP-pVG"; */
 "Ju7-ZP-pVG.title" = "チャンネル:";
@@ -85,8 +85,17 @@
 /* Class = "NSTextFieldCell"; title = "Source:"; ObjectID = "mpM-DR-vTU"; */
 "mpM-DR-vTU.title" = "ソース:";
 
+/* Class = "NSTextFieldCell"; title = "Please add an account first."; ObjectID = "N3w-nW-cig"; */
+"N3w-nW-cig.title" = "まずはアカウントを追加してください";
+
 /* Class = "NSTextFieldCell"; title = "Connected"; ObjectID = "Nf7-Pe-Ijj"; */
 "Nf7-Pe-Ijj.title" = "接続済み";
+
+/* Class = "NSButtonCell"; title = "Authorise"; ObjectID = "nRu-Np-tlI"; */
+"nRu-Np-tlI.title" = "認証";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qn5-hR-fxc"; */
+"qn5-hR-fxc.title" = "サービス:";
 
 /* Class = "NSTextFieldCell"; title = "Team ID:"; ObjectID = "qUD-ZY-g8W"; */
 "qUD-ZY-g8W.title" = "チームID:";
@@ -100,9 +109,18 @@
 /* Class = "NSTextFieldCell"; title = "Team Name:"; ObjectID = "VBL-L2-CZ7"; */
 "VBL-L2-CZ7.title" = "チーム名:";
 
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "vD8-Jh-0SX"; */
+"vD8-Jh-0SX.title" = "オプション";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 一時停止";
 
+/* Class = "NSTextFieldCell"; title = "Streams:"; ObjectID = "yEh-2q-E3b"; */
+"yEh-2q-E3b.title" = "ストリーム:";
+
 /* Class = "NSButtonCell"; title = "Options"; ObjectID = "ZJa-GJ-bc5"; */
 "ZJa-GJ-bc5.title" = "オプション";
+
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "zor-g6-bel"; */
+"zor-g6-bel.title" = "アカウントID:";
 

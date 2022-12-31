@@ -27,6 +27,12 @@ typedef enum : NSUInteger {
     WindowLevelAboveDesktop = 2,
 } WindowLevel;
 
+typedef enum : NSUInteger {
+    SettingAccountTypeMastodon,
+    SettingAccountTypeSlack,
+    SettingAccountTypeMisskey,
+} SettingAccountType;
+
 @interface SettingManager : NSObject{
     
 }

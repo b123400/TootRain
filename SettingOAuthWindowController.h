@@ -10,6 +10,7 @@
 #import "BRMastodonApp.h"
 #import "BRMastodonAccount.h"
 #import "BRSlackAccount.h"
+#import "BRMisskeyAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,14 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)settingOAuthWindowController:(id)sender didLoggedInAccount:(BRMastodonAccount *)account;
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account;
+- (void)settingOAuthWindowController:(nonnull id)sender didLoggedInMisskeyAccount:(nonnull BRMisskeyAccount *)account;
 - (void)settingOAuthWindowController:(id)sender receivedError:(NSError *)error;
 
 @end
 
 @interface SettingOAuthWindowController : NSWindowController <WKNavigationDelegate>
 
-- (instancetype) initWithApp:(BRMastodonApp *)app;
+- (instancetype)initWithApp:(BRMastodonApp *)app;
 - (instancetype)initWithSlackURL:(NSURL *)url;
+- (instancetype)initWithMisskeyHostName:(NSURL *)url;
 
 @property (weak) id<SettingOAuthWindowControllerDelegate> delegate;
 @property (strong) WKWebView *webView;

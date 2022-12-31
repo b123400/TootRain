@@ -12,6 +12,8 @@
 #import "SlackAccount.h"
 #import "BRMastodonAccount.h"
 #import "BRSlackAccount.h"
+#import "BRMisskeyAccount.h"
+#import "MisskeyAccount.h"
 
 @interface SettingManager ()
 
@@ -70,6 +72,9 @@ static NSMutableArray *savedAccounts=nil;
     }
     for (BRSlackAccount *acc in [BRSlackAccount allAccounts]) {
         [accounts addObject:[[SlackAccount alloc] initWithSlackAccount:acc]];
+    }
+    for (BRMisskeyAccount *acc in [BRMisskeyAccount allAccounts]) {
+        [accounts addObject:[[MisskeyAccount alloc] initWithMisskeyAccount:acc]];
     }
     self.accounts = accounts;
 }

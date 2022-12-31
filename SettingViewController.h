@@ -26,9 +26,6 @@
 
 @property (weak) IBOutlet NSScrollView *tableViewScrollView;
 
-@property (weak) IBOutlet NSTextField *instanceHostField;
-@property (strong) IBOutlet NSButton *authorizeButton;
-@property (strong) IBOutlet NSView *authorizeView;
 @property (weak) IBOutlet NSButton *addAccountButton;
 @property (weak) IBOutlet NSButton *deleteAccountButton;
 
@@ -41,7 +38,11 @@
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
 
-- (void)addAccountWithHostName:(NSString *)hostName;
-- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType;
+
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType
+          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
 
 @end

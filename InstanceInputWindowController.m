@@ -9,6 +9,8 @@
 
 @interface InstanceInputWindowController ()
 
+@property (weak) IBOutlet NSTextField *descriptionTextField;
+
 @end
 
 @implementation InstanceInputWindowController
@@ -20,7 +22,29 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self reloadUI];
+}
+
+- (void)setAccountType:(SettingAccountType )accountType {
+    _accountType = accountType;
+    [self reloadUI];
+}
+
+- (void)reloadUI {
+    switch (self.accountType) {
+        case SettingAccountTypeMastodon:
+            self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Mastodon / Pleroma instance host name.", @"");
+            self.descriptionTextField.placeholderString = @"https://";
+            break;
+        case SettingAccountTypeSlack:
+            self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Slack workspace URL.", @"");
+            self.descriptionTextField.placeholderString = @"https://xxxxxxx.slack.com";
+            break;
+        case SettingAccountTypeMisskey:
+            self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Misskey instance host name.", @"");
+            self.descriptionTextField.placeholderString = @"https://";
+            break;
+    }
 }
 
 - (NSString*)hostName {

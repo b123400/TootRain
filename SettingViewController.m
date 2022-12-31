@@ -20,13 +20,19 @@
 #import "SettingAccountDetailMastodonView.h"
 #import "SettingAccountDetailSlackView.h"
 #import "BRMastodonSourceSelectionWindowController.h"
+#import "BRMisskeyClient.h"
+#import "MisskeyAccount.h"
+#import "SettingAccountDetailMisskeyView.h"
+#import "BRMisskeyStreamSourceSelectionWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
 @property (weak) IBOutlet NSBox *accountDetailBox;
+@property (weak) IBOutlet NSView *noAccountDetailView;
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
+@property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
 @property Account *detailSelectedAccount;
 
@@ -148,9 +154,10 @@
             obj.accountName = account.shortDisplayName;
             obj.isConnected = [account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier];
             obj.accountType =
-                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountCellAccountTypeSlack
-                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountCellAccountTypeMastodon
-                : SettingAccountCellAccountTypeMastodon;
+                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountTypeSlack
+                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountTypeMastodon
+                : [account isKindOfClass:[MisskeyAccount class]] ? SettingAccountTypeMisskey
+                : SettingAccountTypeMastodon;
             return obj;
         }
         return nil;
@@ -172,18 +179,20 @@
 
 #pragma mark Accounts
 
-- (void)addAccountWithHostName:(NSString *)hostName {
-    [self addAccountWithHostName:hostName updatingSlackAccount:nil];
+- (void)addAccountWithHostName:(NSString *)hostName accountType:(SettingAccountType)accountType {
+    [self addAccountWithHostName:hostName accountType:accountType updatingSlackAccount:nil];
 }
 
-- (void)addAccountWithHostName:(NSString *)hostName updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
+- (void)addAccountWithHostName:(NSString *)hostName
+                   accountType:(SettingAccountType)accountType
+          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
     if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
         hostName = [NSString stringWithFormat:@"https://%@", hostName];
     }
     if ([hostName hasSuffix:@"/"]) {
         hostName = [hostName substringToIndex:hostName.length - 1];
     }
-    if ([hostName hasSuffix:@".slack.com"]) {
+    if (accountType == SettingAccountTypeSlack || [hostName hasSuffix:@".slack.com"]) {
         SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
         oauthController.delegate = self;
         oauthController.updatingSlackAccount = slackAccount;
@@ -191,37 +200,62 @@
         self.oauthController = oauthController;
         return;
     }
-    [[BRMastodonClient shared] registerAppFor:hostName
-                            completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
-        NSLog(@"App: %@, Error: %@", app, error);
-        NSLog(@"URL: %@", [app authorisationURL]);
-        if (!error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
-                oauthController.delegate = self;
-                [oauthController showWindow:self];
-                self.oauthController = oauthController;
-            });
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSAlert *alert = [NSAlert alertWithError:error];
-                [alert runModal];
-            });
-        }
-    }];
+    if (accountType == SettingAccountTypeMastodon) {
+        [[BRMastodonClient shared] registerAppFor:hostName
+                                completionHandler:^(BRMastodonApp * _Nonnull app, NSError * _Nonnull error) {
+            NSLog(@"App: %@, Error: %@", app, error);
+            NSLog(@"URL: %@", [app authorisationURL]);
+            if (!error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithApp:app];
+                    oauthController.delegate = self;
+                    [oauthController showWindow:self];
+                    self.oauthController = oauthController;
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSAlert *alert = [NSAlert alertWithError:error];
+                    [alert runModal];
+                });
+            }
+        }];
+        return;
+    }
+    if (accountType == SettingAccountTypeMisskey) {
+        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithMisskeyHostName:[NSURL URLWithString:hostName]];
+        oauthController.delegate = self;
+        [oauthController showWindow:self];
+        self.oauthController = oauthController;
+    }
 }
 
-- (IBAction)addAccountButtonTapped:(id)sender {
+- (IBAction)addAccountButtonClicked:(NSButton *)sender {
+    NSPoint point = NSMakePoint(sender.frame.origin.x, sender.frame.origin.y);
+    [sender.menu popUpMenuPositioningItem:nil atLocation:point inView:sender.superview];
+}
+
+- (IBAction)addMastodonAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeMastodon];
+}
+- (IBAction)addMisskeyAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeMisskey];
+}
+- (IBAction)addSlackAccountClicked:(id)sender {
+    [self showInstanceInputWindowWithAccountType: SettingAccountTypeSlack];
+}
+
+- (void)showInstanceInputWindowWithAccountType:(SettingAccountType)accountType {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
+    controller.accountType = accountType;
     [self.window beginSheet:controller.window
           completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            [self addAccountWithHostName:[controller hostName]];
+            [self addAccountWithHostName:[controller hostName] accountType:controller.accountType];
         }
     }];
 }
 
-- (IBAction)deleteAccountTapped:(id)sender {
+- (IBAction)deleteAccountClicked:(id)sender {
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
     Account *account = [SettingManager sharedManager].accounts[row];
@@ -231,15 +265,15 @@
     [self updateAccountView];
 }
 
-- (IBAction)authorizeButtonTapped:(id)sender {
-    [self addAccountWithHostName:self.instanceHostField.stringValue];
-}
-
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInAccount:(nonnull BRMastodonAccount *)account {
     [self handleDidLoginAccount:account];
 }
 
 - (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
+    [self handleDidLoginAccount:account];
+}
+
+- (void)settingOAuthWindowController:(id)sender didLoggedInMisskeyAccount:(nonnull BRMisskeyAccount *)account {
     [self handleDidLoginAccount:account];
 }
 
@@ -256,6 +290,8 @@
             [[SettingManager sharedManager] setSelectedAccount:[[MastodonAccount alloc] initWithMastodonAccount:(BRMastodonAccount*)newAccount]];
         } else if ([newAccount isKindOfClass:[BRSlackAccount class]]) {
             [[SettingManager sharedManager] setSelectedAccount:[[SlackAccount alloc] initWithSlackAccount:(BRSlackAccount*)newAccount]];
+        } else if ([newAccount isKindOfClass:[BRMisskeyAccount class]]) {
+            [[SettingManager sharedManager] setSelectedAccount:[[MisskeyAccount alloc] initWithMisskeyAccount:(BRMisskeyAccount*)newAccount]];
         }
     });
 }
@@ -270,29 +306,33 @@
 - (void)updateAccountView {
     Account *lastDetailSelectedAccount = self.detailSelectedAccount;
     [[SettingManager sharedManager] reloadAccounts];
-    if ([SettingManager sharedManager].accounts.count != 0) {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = NO;
-        [self.authorizeView removeFromSuperview];
-    } else {
-        self.tableViewScrollView.hidden = self.addAccountButton.hidden = self.deleteAccountButton.hidden = YES;
-        [accountsSettingView addSubview:self.authorizeView];
-    }
     [accountsTableView reloadData];
 
     NSUInteger index = [self indexOfAccountByIdentifier:lastDetailSelectedAccount];
     if (index != NSNotFound) {
         [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
                        byExtendingSelection:NO];
+    } else {
+        [self updateAccountDetailView];
     }
 }
 
 - (void)updateAccountDetailView {
+    if ([[[SettingManager sharedManager] accounts] count] == 0) {
+        self.accountDetailBox.contentView = self.noAccountDetailView;
+        self.reconnectButton.enabled = NO;
+        return;
+    }
+    self.reconnectButton.enabled = YES;
     if ([self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
         [self.mastodonDetailView setAccount:(MastodonAccount *)self.detailSelectedAccount];
     } else if ([self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) {
         self.accountDetailBox.contentView = self.slackDetailView;
         [self.slackDetailView setAccount:(SlackAccount *)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[MisskeyAccount class]]) {
+        self.accountDetailBox.contentView = self.misskeyDetailView;
+        [self.misskeyDetailView setAccount:(MisskeyAccount*)self.detailSelectedAccount];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
     if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
@@ -345,6 +385,23 @@
                 }
             }];
         });
+    }];
+}
+
+- (IBAction)misskeyOptionClicked:(id)sender {
+    BRMisskeyStreamSourceSelectionWindowController *controller = [[BRMisskeyStreamSourceSelectionWindowController alloc] init];
+    // TODO: add more sources like antenna and userList
+    MisskeyAccount *account = (MisskeyAccount *)self.detailSelectedAccount;
+    controller.account = account.misskeyAccount;
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            account.misskeyAccount.streamSources = controller.selectedSources;
+            [account.misskeyAccount save];
+            [self updateAccountView];
+            
+            // Reconnect
+            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:account.identifier]];
+        }
     }];
 }
 
