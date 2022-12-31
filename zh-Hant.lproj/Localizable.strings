@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "Accounts" = "帳號";
 
+/* Misskey source type */
+"Antenna - %@" = "天線 - %@";
+
 /* No comment provided by engineer. */
 "Appearance" = "外觀";
 
@@ -9,6 +12,9 @@
 
 /* No comment provided by engineer. */
 "Bookmarked" = "加書籤了";
+
+/* Misskey source type */
+"Channel - %@" = "頻道 - %@";
 
 /* setting account reconnect button */
 "Connect" = "連接";
@@ -37,11 +43,23 @@
 /* No comment provided by engineer. */
 "Font: %@ %.0f" = "字形: %1$@ %2$.0f";
 
+/* Misskey source type */
+"Global Timeline" = "公開時間軸";
+
 /* source name */
 "Hashtag Local: %@" = "本地Hashtag: %@";
 
 /* source name */
 "Hashtag: %@" = "Hashtag: %@";
+
+/* Misskey source type */
+"Home Timeline" = "首頁的時間軸";
+
+/* Misskey source type */
+"Hybrid Timeline" = "社群時間軸";
+
+/* Misskey source type */
+"List - %@" = "清單 - %@";
 
 /* source name */
 "List: %@" = "列表: %@";
@@ -49,8 +67,23 @@
 /* No comment provided by engineer. */
 "Loading" = "載入中";
 
+/* Misskey source type */
+"Local Timeline" = "本地時間軸";
+
+/* Misskey source type */
+"Main (Reply and Renote)" = "回覆與轉傳";
+
 /* No comment provided by engineer. */
 "Need to re-login %@" = "需要重新登入 %@";
+
+/* No comment provided by engineer. */
+"Please enter your Mastodon / Pleroma instance host name." = "請輸入你的Mastodon / Pleroma host name";
+
+/* No comment provided by engineer. */
+"Please enter your Misskey instance host name." = "請輸入你的Misskey host name";
+
+/* No comment provided by engineer. */
+"Please enter your Slack workspace URL." = "請輸入你的Slack workspace URL";
 
 /* source name */
 "Public" = "公開";

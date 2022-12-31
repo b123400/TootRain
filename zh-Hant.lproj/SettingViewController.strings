@@ -37,12 +37,6 @@
 /* Class = "NSButtonCell"; title = "Truncate status"; ObjectID = "245"; */
 "245.title" = "限制長度";
 
-/* Class = "NSButtonCell"; title = "Authorize"; ObjectID = "274"; */
-"274.title" = "認證";
-
-/* Class = "NSTextFieldCell"; title = "Please enter your Mastodon / Pleroma instance host name."; ObjectID = "280"; */
-"280.title" = "請輸入你的Mastodon / Pleroma host name";
-
 /* Class = "NSTextFieldCell"; title = "Window level"; ObjectID = "301"; */
 "301.title" = "視窗的優先程度";
 
@@ -76,11 +70,14 @@
 /* Class = "NSTextFieldCell"; title = "hello"; ObjectID = "eGz-zk-VS4"; */
 "eGz-zk-VS4.title" = "";
 
-/* Class = "NSTextFieldCell"; placeholderString = "https://"; ObjectID = "eSe-64-AVo"; */
-"eSe-64-AVo.placeholderString" = "";
-
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "f1B-JK-9g0"; */
 "f1B-JK-9g0.title" = "服務:";
+
+/* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
+"iWh-jO-lyt.title" = "名字:";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "joj-Kr-CET"; */
+"joj-Kr-CET.title" = "";
 
 /* Class = "NSTextFieldCell"; title = "Channels:"; ObjectID = "Ju7-ZP-pVG"; */
 "Ju7-ZP-pVG.title" = "頻道";
@@ -91,11 +88,20 @@
 /* Class = "NSTextFieldCell"; title = "Source:"; ObjectID = "mpM-DR-vTU"; */
 "mpM-DR-vTU.title" = "來源:";
 
+/* Class = "NSTextFieldCell"; title = "Please add an account first."; ObjectID = "N3w-nW-cig"; */
+"N3w-nW-cig.title" = "請先登入一個帳戶";
+
 /* Class = "NSTextFieldCell"; title = "Connected"; ObjectID = "Nf7-Pe-Ijj"; */
 "Nf7-Pe-Ijj.title" = "已連接";
 
+/* Class = "NSButtonCell"; title = "Authorise"; ObjectID = "nRu-Np-tlI"; */
+"nRu-Np-tlI.title" = "認證";
+
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qn5-hR-fxc"; */
+"qn5-hR-fxc.title" = "服務:";
+
 /* Class = "NSTextFieldCell"; title = "Team ID:"; ObjectID = "qUD-ZY-g8W"; */
-"qUD-ZY-g8W.title" = "";
+"qUD-ZY-g8W.title" = "團隊ID:";
 
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qvJ-rF-35W"; */
 "qvJ-rF-35W.title" = "服務:";
@@ -106,9 +112,21 @@
 /* Class = "NSTextFieldCell"; title = "Team Name:"; ObjectID = "VBL-L2-CZ7"; */
 "VBL-L2-CZ7.title" = "Team名：";
 
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "vD8-Jh-0SX"; */
+"vD8-Jh-0SX.title" = "選項";
+
+/* Class = "NSMenuItem"; title = "Screen 1 (1440x900)"; ObjectID = "waU-Ph-Fmu"; */
+"waU-Ph-Fmu.title" = "";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 暫停";
 
+/* Class = "NSTextFieldCell"; title = "Streams:"; ObjectID = "yEh-2q-E3b"; */
+"yEh-2q-E3b.title" = "來源:";
+
 /* Class = "NSButtonCell"; title = "Options"; ObjectID = "ZJa-GJ-bc5"; */
 "ZJa-GJ-bc5.title" = "選項";
+
+/* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "zor-g6-bel"; */
+"zor-g6-bel.title" = "帳號ID:";
 
