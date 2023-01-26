@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)identifier;
 - (NSString *)displayNameForStreamSource;
 - (void)deleteAccount;
+- (void)setEmojiDict:(NSDictionary<NSString *, BRMisskeyEmoji *> *)dict;
+- (NSURL *)urlForEmoji:(NSString *)emoji;
 
 @end
 

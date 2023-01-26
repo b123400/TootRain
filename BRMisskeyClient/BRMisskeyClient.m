@@ -140,13 +140,20 @@
             NSDictionary *eventDict = jsonDict[@"body"];
             NSString *eventType = eventDict[@"type"];
             if ([eventType isEqualTo:@"note"] || [eventType isEqualTo:@"reply"] || [eventType isEqualTo:@"mention"]) {
-                BRMisskeyStatus *status = [[BRMisskeyStatus alloc] initWithJSONDictionary:eventDict[@"body"]];
+                BRMisskeyStatus *status = [[BRMisskeyStatus alloc] initWithJSONDictionary:eventDict[@"body"] account:account];
                 handler.onStatus(status);
             }
         }
     }];
     [self.taskToHandleMapping setObject:handler forKey:task];
     [task resume];
+
+    [self getEmojiListWithAccount:account completionHandler:^(NSDictionary<NSString *,BRMisskeyEmoji *> * _Nullable emojis, NSError * _Nullable error) {
+        if (emojis) {
+            [account setEmojiDict:emojis];
+        }
+    }];
+
     return handler;
 }
 
@@ -316,6 +323,37 @@ didOpenWithProtocol:(NSString *)protocol {
             [sources addObject:source];
         }
         callback(sources, nil);
+    }];
+    [task resume];
+}
+
+- (void)getEmojiListWithAccount:(BRMisskeyAccount *)account
+              completionHandler:(void (^_Nonnull)(NSDictionary<NSString *, BRMisskeyEmoji *> * _Nullable emojis, NSError * _Nullable error))callback {
+    NSURLComponents *components = [NSURLComponents componentsWithString:account.hostName];
+    [components setPath:@"/api/emojis"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
+    [request setHTTPMethod:@"GET"];
+    typeof(self) __weak _self = self;
+    NSURLSessionDataTask *task = [_self.urlSession dataTaskWithRequest:request
+                                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSError *decodeError = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        NSMutableDictionary *emojis = [NSMutableDictionary dictionary];
+        for (NSDictionary *dict in result[@"emojis"]) {
+            BRMisskeyEmoji *emoji = [[BRMisskeyEmoji alloc] initWithJSONDictionary:dict];
+            [emojis setObject:emoji forKey:emoji.name];
+        }
+        callback(emojis, nil);
     }];
     [task resume];
 }

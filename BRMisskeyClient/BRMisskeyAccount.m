@@ -193,4 +193,23 @@
     return [[self.streamSources valueForKeyPath:@"displayName"] componentsJoinedByString:@", "];
 }
 
++ (NSMutableDictionary *)accountIdToEmojiDicts {
+    static NSMutableDictionary<NSString *, NSDictionary<NSString *, BRMisskeyEmoji*>*> *dict = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dict = [NSMutableDictionary dictionary];
+    });
+    return dict;
+}
+
+- (void)setEmojiDict:(NSDictionary<NSString *, BRMisskeyEmoji *> *)dict {
+    [[BRMisskeyAccount accountIdToEmojiDicts] setObject:dict forKey:self.accountId];
+}
+
+- (NSURL *)urlForEmoji:(NSString *)code {
+    NSDictionary *emojiDict = [[BRMisskeyAccount accountIdToEmojiDicts] objectForKey:self.accountId];
+    BRMisskeyEmoji *emoji = emojiDict[code];
+    return emoji.URL;
+}
+
 @end

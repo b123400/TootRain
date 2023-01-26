@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getChannelSourcesWithAccount:(BRMisskeyAccount *)account
                    completionHandler:(void (^_Nonnull)(NSArray<BRMisskeyStreamSource *> * _Nullable sources, NSError * _Nullable error))callback;
 
+- (void)getEmojiListWithAccount:(BRMisskeyAccount *)account
+              completionHandler:(void (^_Nonnull)(NSDictionary<NSString *, BRMisskeyEmoji *> * _Nullable emojis, NSError * _Nullable error))callback;
+
 @end
 
 NS_ASSUME_NONNULL_END
