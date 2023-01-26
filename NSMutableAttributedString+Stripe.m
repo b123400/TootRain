@@ -7,6 +7,7 @@
 
 #import "NSMutableAttributedString+Stripe.h"
 #import "NSImage+Resize.h"
+#import "NSTextAttachment+Image.h"
 
 @implementation NSMutableAttributedString (Stripe)
 
@@ -82,28 +83,34 @@
         index = r.length + r.location;
         if (attributes[NSAttachmentAttributeName]) {
             NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
-            NSImage *image = nil;
-            @try {
-                image = [[NSImage alloc] initWithData:[[attachment fileWrapper] regularFileContents]];
-                if (!image) {
-                    image = [attachment image];
-                }
-                if (!image) {
-                    // This call sometimes get EXC_BAD_ACCESS, we try the above ways first:
-                    // -[NSImage retain]: message sent to deallocated instance
-                    image = [attachment imageForBounds:attachment.bounds
-                                         textContainer:nil
-                                        characterIndex:r.location];
-                }
-            } @catch (NSException *exception) {
-                // ignore
-            }
+            NSImage *image = [attachment tryGetImage];
             if (image && (image.size.height > height)) {
                 int newWidth = height / image.size.height * image.size.width;
                 NSImage *newImage = [image resized:NSMakeSize(newWidth, height)];
                 [attachment setImage:newImage];
                 attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
             }
+        }
+    }
+}
+
+- (void)replaceImagesWithPlaceholdersWithHeight:(CGFloat)height {
+    NSRange r = NSMakeRange(NSNotFound, 0);
+    NSInteger index = 0;
+    while (index < self.length) {
+        NSDictionary<NSAttributedStringKey, id> *attributes = [self attributesAtIndex:index effectiveRange:&r];
+        if (r.location == NSNotFound) break;
+        index = r.length + r.location;
+        if (attributes[NSAttachmentAttributeName]) {
+            NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
+            NSImage *image = [attachment tryGetImage];
+            if (image && (image.size.height > height)) {
+                int newWidth = height / image.size.height * image.size.width;
+                NSImage *newImage = [[NSImage alloc] initWithSize:NSMakeSize(newWidth, height)];
+                [attachment setImage:newImage];
+                attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+            }
+            [self addAttribute:kPlaceholderOriginalImageAttributeName value:image range:r];
         }
     }
 }

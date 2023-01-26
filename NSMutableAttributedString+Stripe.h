@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define kPlaceholderOriginalImageAttributeName @"PlaceholderOriginalImageAttributeName"
+
 @interface NSMutableAttributedString (Stripe)
 
 - (void)removeNewLines;
@@ -17,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeLinkAttributes;
 - (void)removeImages;
 - (void)resizeImagesWithHeight:(CGFloat)height;
+- (void)replaceImagesWithPlaceholdersWithHeight:(CGFloat)height;
 
 @end
 

@@ -206,6 +206,8 @@
 		CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
+		CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
+		CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
 		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
@@ -480,6 +482,8 @@
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
+		CFC856E529823CA5007E3EB3 /* NSTextAttachment+Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextAttachment+Image.h"; sourceTree = "<group>"; };
+		CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextAttachment+Image.m"; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
 		CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TweetRain-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCA49BD1AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -696,6 +700,8 @@
 				CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */,
 				CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */,
 				CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */,
+				CFC856E529823CA5007E3EB3 /* NSTextAttachment+Image.h */,
+				CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1386,6 +1392,7 @@
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
 				CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */,
 				CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */,
+				CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
@@ -1465,6 +1472,7 @@
 				CF5D2D3F29350BC400745D63 /* SettingViewController.m in Sources */,
 				CF5D2D4029350BC400745D63 /* MastodonStatus.m in Sources */,
 				CF5D2D4129350BC400745D63 /* BRSlackClient.m in Sources */,
+				CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5D2D4229350BC400745D63 /* BRMastodonStreamHandle.m in Sources */,
 				CF5D2D4329350BC400745D63 /* DBPrefsWindowController.m in Sources */,
 				CF5D2D4429350BC400745D63 /* CenteredTextCell.m in Sources */,

@@ -86,7 +86,36 @@
 	}else{
 		[profileImageView setHidden:YES];
 	}
-	
+    
+    for (int i = 0; i < contentTextField.attributedStringValue.length; i++) {
+        NSRange charRange = NSMakeRange(i, 1);
+        if (![contentTextField.attributedStringValue containsAttachmentsInRange:charRange]) continue;
+        
+        NSDictionary *attributes = [contentTextField.attributedStringValue attributesAtIndex:i effectiveRange:nil];
+        NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
+        NSImage *customImage = attributes[kPlaceholderOriginalImageAttributeName];
+        
+        if (!attachment || !customImage) continue;
+        
+        NSRect textBounds = [contentTextField.cell titleRectForBounds:contentTextField.bounds];
+        NSLayoutManager *lm = [[NSLayoutManager alloc] init];
+        NSTextStorage *ts = [[NSTextStorage alloc] initWithAttributedString:contentTextField.attributedStringValue];
+        NSTextContainer *tc = [[NSTextContainer alloc] initWithContainerSize:textBounds.size];
+        [lm setTextStorage:ts];
+        [lm addTextContainer:tc];
+        tc.lineFragmentPadding = 2;
+        lm.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
+        
+        NSRange r;
+        NSRange glyphRange = [lm glyphRangeForCharacterRange:charRange actualCharacterRange:&r];
+        CGRect charRect = [lm boundingRectForGlyphRange:glyphRange inTextContainer:tc];
+
+        NSImageView *imageView = [[NSImageView alloc] initWithFrame:[contentTextField convertRect:charRect toView:self.view]];
+        [imageView setImageAlignment:NSImageAlignTop];
+        [imageView setImage:customImage];
+        [self.view addSubview:imageView];
+    }
+
 	[self startAnimation];
 }
 
@@ -269,7 +298,11 @@
     
     [attrString removeNewLines];
     [attrString removeColors];
-    [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
+    if (YES) { // animated gif
+        [attrString replaceImagesWithPlaceholdersWithHeight:[[[SettingManager sharedManager] font] pointSize]];
+    } else {
+        [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
+    }
     if ([[SettingManager sharedManager] removeLinks]) {
         [attrString removeLinks];
     } else {
