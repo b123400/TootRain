@@ -104,13 +104,16 @@
         if (attributes[NSAttachmentAttributeName]) {
             NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
             NSImage *image = [attachment tryGetImage];
-            if (image && (image.size.height > height)) {
-                int newWidth = height / image.size.height * image.size.width;
-                NSImage *newImage = [[NSImage alloc] initWithSize:NSMakeSize(newWidth, height)];
+            if (image) {
+                [self addAttribute:kPlaceholderOriginalImageAttributeName value:image range:r];
+                int width = image.size.width;
+                if (image.size.height > height) {
+                    width = height / image.size.height * image.size.width;
+                }
+                NSImage *newImage = [[NSImage alloc] initWithSize:NSMakeSize(width, height)];
                 [attachment setImage:newImage];
                 attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
             }
-            [self addAttribute:kPlaceholderOriginalImageAttributeName value:image range:r];
         }
     }
 }

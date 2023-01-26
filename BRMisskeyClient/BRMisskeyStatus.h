@@ -8,11 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "BRMisskeyUser.h"
 #import "BRMisskeyEmoji.h"
+#import "BRMisskeyAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRMisskeyStatus : NSObject
 
+@property (nonatomic, strong) BRMisskeyAccount *account;
 @property (nonatomic, strong) BRMisskeyUser *user;
 @property (nonatomic, strong) NSArray<BRMisskeyEmoji*> *emojis;
 
@@ -23,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) BRMisskeyStatus *renote;
 
 
-- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary account:(BRMisskeyAccount *)account;
 
 - (NSAttributedString *)attributedStringWithEmojisReplaced;
 

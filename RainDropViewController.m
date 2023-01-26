@@ -55,7 +55,7 @@
 	float viewWidth=contentTextField.frame.size.width+margin*2;
 	float viewHeight=contentTextField.frame.size.height+margin*2;
 	
-	if ([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]) {
+	if ([[SettingManager sharedManager]showProfileImage] && status.user.profileImageURL) {
 		viewWidth+=profileImageView.frame.size.width+margin;
 		if(viewHeight<profileImageView.frame.size.height+margin*2){
 			viewHeight=profileImageView.frame.size.height+margin*2;
@@ -75,14 +75,16 @@
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	
-	if([[SettingManager sharedManager]showProfileImage] && ![status isKindOfClass:[DummyStatus class]]){
+	if([[SettingManager sharedManager]showProfileImage]){
 		CGRect frame=contentTextField.frame;
 		frame.origin.x+=profileImageView.frame.size.width+margin;
 		contentTextField.frame=frame;
 		
 		[profileImageView setHidden:NO];
-		profileImageView.frame=CGRectMake(margin, margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
-		[profileImageView setImageURL:status.user.profileImageURL];
+		profileImageView.frame = CGRectMake(margin, margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
+        if (status.user.profileImageURL) {
+            [profileImageView setImageURL:status.user.profileImageURL];
+        }
 	}else{
 		[profileImageView setHidden:YES];
 	}
