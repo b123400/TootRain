@@ -112,7 +112,7 @@
 	[shadowColorWell setColor:[[SettingManager sharedManager]shadowColor]];
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
 	NSFont *theFont=[[SettingManager sharedManager]font];
-	[fontLabel setStringValue:[NSString stringWithFormat:@"Font: %@ %.0f",[theFont displayName],[theFont pointSize]]];
+	[self.chooseFontButton setTitle:[NSString stringWithFormat:@"%@ %.0f",[theFont displayName],[theFont pointSize]]];
     
     [self updateAccountView];
     
@@ -497,7 +497,17 @@
 	NSFont *theFont=manager.selectedFont;
     [[SettingManager sharedManager] setFont:theFont];
 	
-    [fontLabel setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Font: %@ %.0f",nil),[theFont displayName],[theFont pointSize]]];
+    [self.chooseFontButton setTitle:[NSString stringWithFormat:@"%@ %.0f",[theFont displayName],[theFont pointSize]]];
 }
+
+- (IBAction)appIconDefaultButtonClicked:(id)sender {
+    self.appIconDefaultButton.state = NSControlStateValueOn;
+    self.appIconRIPButton.state = NSControlStateValueOff;
+}
+- (IBAction)appIconRIPButtonClicked:(id)sender {
+    self.appIconDefaultButton.state = NSControlStateValueOff;
+    self.appIconRIPButton.state = NSControlStateValueOn;
+}
+
 
 @end

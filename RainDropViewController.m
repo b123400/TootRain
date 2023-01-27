@@ -174,6 +174,7 @@
 #pragma mark timing
 -(float)animationDuration{
 	//full duration from one side of the screen to the other side
+    // TODO: make this configurable
 	return 10;
 }
 -(float)durationUntilDisappear{
