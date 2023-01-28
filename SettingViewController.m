@@ -103,6 +103,7 @@
         self.truncateStatusField.enabled = self.truncateStatusStepper.enabled = NO;
     }
     self.truncateStatusField.integerValue = self.truncateStatusStepper.integerValue = [[SettingManager sharedManager] truncateStatusLength];
+    self.animateGifCheckbox.state = [[SettingManager sharedManager] animateGif] ? NSControlStateValueOn : NSControlStateValueOff;
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
     self.shadowCheckbox.state = [[SettingManager sharedManager] showShadow] ? NSControlStateValueOn : NSControlStateValueOff;
@@ -111,8 +112,17 @@
 	[textColorWell setColor:[[SettingManager sharedManager] textColor]];
 	[shadowColorWell setColor:[[SettingManager sharedManager]shadowColor]];
 	[hoverBackgroundColorWell setColor:[[SettingManager sharedManager]hoverBackgroundColor]];
+    [self.speedSlider setFloatValue:[[SettingManager sharedManager] speed]];
 	NSFont *theFont=[[SettingManager sharedManager]font];
 	[self.chooseFontButton setTitle:[NSString stringWithFormat:@"%@ %.0f",[theFont displayName],[theFont pointSize]]];
+
+    self.appIconDefaultButton.state = self.appIconRIPButton.state = NSControlStateValueOff;
+    NSString *appIcon = [[SettingManager sharedManager] customIcon];
+    if ([appIcon isEqual:@"Mastodon"]) { // TODO: RIP
+        self.appIconRIPButton.state = NSControlStateValueOn;
+    } else {
+        self.appIconDefaultButton.state = NSControlStateValueOn;
+    }
     
     [self updateAccountView];
     
@@ -462,6 +472,11 @@
     self.truncateStatusField.integerValue = num;
 }
 
+- (IBAction)animateGifCheckboxChanged:(id)sender {
+    BOOL enabled = [(NSButton*)sender state] == NSControlStateValueOn;
+    [[SettingManager sharedManager] setAnimateGif:enabled];
+}
+
 - (IBAction)opacitySliderChanged:(id)sender {
 	NSSlider* slider=sender;
     [[SettingManager sharedManager] setOpacity:slider.floatValue];
@@ -486,6 +501,11 @@
 	NSColorWell *well=sender;
     [[SettingManager sharedManager] setHoverBackgroundColor:well.color];
 }
+
+- (IBAction)speedSliderChanged:(id)sender {
+    [[SettingManager sharedManager] setSpeed:[(NSSlider*)sender floatValue]];
+}
+
 - (IBAction)chooseFontClicked:(id)sender {
 	NSFontManager * fontManager = [NSFontManager sharedFontManager];
 	[fontManager setTarget:self];
@@ -503,11 +523,12 @@
 - (IBAction)appIconDefaultButtonClicked:(id)sender {
     self.appIconDefaultButton.state = NSControlStateValueOn;
     self.appIconRIPButton.state = NSControlStateValueOff;
+    [[SettingManager sharedManager] setCustomIcon:nil];
 }
 - (IBAction)appIconRIPButtonClicked:(id)sender {
     self.appIconDefaultButton.state = NSControlStateValueOff;
     self.appIconRIPButton.state = NSControlStateValueOn;
+    [[SettingManager sharedManager] setCustomIcon:@"Mastodon"]; // RIP
 }
-
 
 @end
