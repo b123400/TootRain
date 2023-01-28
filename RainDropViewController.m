@@ -75,16 +75,14 @@
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if([[SettingManager sharedManager]showProfileImage] && status.user.profileImageURL){
 		CGRect frame=contentTextField.frame;
 		frame.origin.x+=profileImageView.frame.size.width+margin;
 		contentTextField.frame=frame;
 		
 		[profileImageView setHidden:NO];
 		profileImageView.frame = CGRectMake(margin, margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
-        if (status.user.profileImageURL) {
-            [profileImageView setImageURL:status.user.profileImageURL];
-        }
+        [profileImageView setImageURL:status.user.profileImageURL];
 	}else{
 		[profileImageView setHidden:YES];
 	}
