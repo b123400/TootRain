@@ -14,6 +14,7 @@
 #define kWindowLevelChanged @"kWindowLevelChanged"
 #define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kSelectedAccountChanged @"kSelectedAccountChanged"
+#define kRainDropSpeedChanegdNotification @"kRainDropSpeedChanegdNotification"
 
 typedef enum : NSUInteger {
     CursorBehaviourPause = 0,
@@ -43,6 +44,8 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSInteger truncateStatusLength;
 @property (nonatomic) float opacity;
 @property (nonatomic) BOOL showShadow;
+@property (nonatomic) BOOL animateGif;
+@property (nonatomic) float speed;
 
 #if TARGET_OS_IPHONE
 
@@ -61,6 +64,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSFont *font;
 @property (nonatomic) CursorBehaviour cursorBehaviour;
 @property (nonatomic) WindowLevel windowLevel;
+@property (nonatomic) NSString *customIcon;
 
 #endif
 
