@@ -483,10 +483,16 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="animateGifCheckboxChanged:" target="-2" id="7EJ-ze-fm4"/>
+                    </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eKK-EW-4ed">
                     <rect key="frame" x="179" y="76" width="216" height="20"/>
                     <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="5" maxValue="20" doubleValue="10" tickMarkPosition="above" sliderType="linear" id="hXv-2N-4Zc"/>
+                    <connections>
+                        <action selector="speedSliderChanged:" target="-2" id="hFP-9d-WKu"/>
+                    </connections>
                 </slider>
                 <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="216">
                     <rect key="frame" x="181" y="102" width="44" height="23"/>

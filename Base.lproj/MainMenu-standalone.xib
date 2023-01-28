@@ -73,6 +73,18 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="File" id="FMC-2X-3VZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="jpX-i9-Oh8">
+                        <items>
+                            <menuItem title="Close" keyEquivalent="w" id="McF-yT-VkX">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="sMr-XO-Rm2"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Edit" id="217">
                     <menu key="submenu" title="Edit" id="205">
                         <items>
