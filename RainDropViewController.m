@@ -35,8 +35,15 @@
 	status=_status;
 	paused=YES;
 	margin=5;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appearanceSettingChanged:) name:kRainDropAppearanceChangedNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appearanceSettingChanged:)
+                                                 name:kRainDropAppearanceChangedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(restartAnimation)
+                                                 name:kRainDropSpeedChanegdNotification
+                                               object:nil];
+
     // need to restart animation once window level is changed
     // because there is a bug in OS X which stops CAAnimation when window level is changed.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowLevelChanged object:nil];
@@ -172,8 +179,7 @@
 #pragma mark timing
 -(float)animationDuration{
 	//full duration from one side of the screen to the other side
-    // TODO: make this configurable
-	return 10;
+    return 25 - [[SettingManager sharedManager] speed];
 }
 -(float)durationUntilDisappear{
 	if(paused){
@@ -206,9 +212,7 @@
 	if(paused){
 		return frame;
 	}
-	float percentage=[self durationUntilDisappear]/[self animationDuration];
-	frame.origin.x=(self.view.window.frame.size.width + frame.size.width)*percentage - frame.size.width;
-	return frame;
+    return self.view.layer.presentationLayer.frame;
 }
 #pragma mark interaction
 - (void)didMouseOver {
