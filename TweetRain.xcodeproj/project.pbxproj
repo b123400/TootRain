@@ -208,6 +208,8 @@
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
 		CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
 		CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
+		CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */; };
+		CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */; };
 		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
 		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
 		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
@@ -484,6 +486,8 @@
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
 		CFC856E529823CA5007E3EB3 /* NSTextAttachment+Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextAttachment+Image.h"; sourceTree = "<group>"; };
 		CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextAttachment+Image.m"; sourceTree = "<group>"; };
+		CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderHighlightButton.h; sourceTree = "<group>"; };
+		CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderHighlightButton.m; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
 		CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TweetRain-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCA49BD1AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 				CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */,
 				CFC856E529823CA5007E3EB3 /* NSTextAttachment+Image.h */,
 				CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */,
+				CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */,
+				CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1387,6 +1393,7 @@
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
 				CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */,
+				CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
 				CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */,
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
 				CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */,
@@ -1467,6 +1474,7 @@
 				CF5D2D3B29350BC400745D63 /* NSFileManager+DirectoryLocations.m in Sources */,
 				CF5D2D3C29350BC400745D63 /* BRMastodonApp.m in Sources */,
 				CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */,
+				CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
 				CF5D2D3D29350BC400745D63 /* NSView+Fade.m in Sources */,
 				CF5D2D3E29350BC400745D63 /* User.m in Sources */,
 				CF5D2D3F29350BC400745D63 /* SettingViewController.m in Sources */,

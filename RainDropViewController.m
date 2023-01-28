@@ -17,6 +17,8 @@
 
 - (NSAttributedString*)attributedStringForStatus;
 
+@property (nonatomic, strong) NSArray<NSView *> *gifImageViews;
+
 @end
 
 @implementation RainDropViewController
@@ -35,8 +37,15 @@
 	status=_status;
 	paused=YES;
 	margin=5;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appearanceSettingChanged:) name:kRainDropAppearanceChangedNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appearanceSettingChanged:)
+                                                 name:kRainDropAppearanceChangedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(restartAnimation)
+                                                 name:kRainDropSpeedChanegdNotification
+                                               object:nil];
+
     // need to restart animation once window level is changed
     // because there is a bug in OS X which stops CAAnimation when window level is changed.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowLevelChanged object:nil];
@@ -61,6 +70,7 @@
 			viewHeight=profileImageView.frame.size.height+margin*2;
 		}
 	}
+    profileImageView.animates = [[SettingManager sharedManager] animateGif];
 	
 	[[self view] setFrame:CGRectMake(0,0,viewWidth, viewHeight)];
     self.view.wantsLayer = YES;
@@ -75,48 +85,18 @@
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	
-	if([[SettingManager sharedManager]showProfileImage]){
+	if([[SettingManager sharedManager]showProfileImage] && status.user.profileImageURL){
 		CGRect frame=contentTextField.frame;
 		frame.origin.x+=profileImageView.frame.size.width+margin;
 		contentTextField.frame=frame;
 		
 		[profileImageView setHidden:NO];
 		profileImageView.frame = CGRectMake(margin, margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
-        if (status.user.profileImageURL) {
-            [profileImageView setImageURL:status.user.profileImageURL];
-        }
+        [profileImageView setImageURL:status.user.profileImageURL];
 	}else{
 		[profileImageView setHidden:YES];
 	}
-    
-    for (int i = 0; i < contentTextField.attributedStringValue.length; i++) {
-        NSRange charRange = NSMakeRange(i, 1);
-        if (![contentTextField.attributedStringValue containsAttachmentsInRange:charRange]) continue;
-        
-        NSDictionary *attributes = [contentTextField.attributedStringValue attributesAtIndex:i effectiveRange:nil];
-        NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
-        NSImage *customImage = attributes[kPlaceholderOriginalImageAttributeName];
-        
-        if (!attachment || !customImage) continue;
-        
-        NSRect textBounds = [contentTextField.cell titleRectForBounds:contentTextField.bounds];
-        NSLayoutManager *lm = [[NSLayoutManager alloc] init];
-        NSTextStorage *ts = [[NSTextStorage alloc] initWithAttributedString:contentTextField.attributedStringValue];
-        NSTextContainer *tc = [[NSTextContainer alloc] initWithContainerSize:textBounds.size];
-        [lm setTextStorage:ts];
-        [lm addTextContainer:tc];
-        tc.lineFragmentPadding = 2;
-        lm.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
-        
-        NSRange r;
-        NSRange glyphRange = [lm glyphRangeForCharacterRange:charRange actualCharacterRange:&r];
-        CGRect charRect = [lm boundingRectForGlyphRange:glyphRange inTextContainer:tc];
-
-        NSImageView *imageView = [[NSImageView alloc] initWithFrame:[contentTextField convertRect:charRect toView:self.view]];
-        [imageView setImageAlignment:NSImageAlignTop];
-        [imageView setImage:customImage];
-        [self.view addSubview:imageView];
-    }
+    [self setupSubviewsForGifs];
 
 	[self startAnimation];
 }
@@ -174,7 +154,7 @@
 #pragma mark timing
 -(float)animationDuration{
 	//full duration from one side of the screen to the other side
-	return 10;
+    return 25 - [[SettingManager sharedManager] speed];
 }
 -(float)durationUntilDisappear{
 	if(paused){
@@ -207,9 +187,7 @@
 	if(paused){
 		return frame;
 	}
-	float percentage=[self durationUntilDisappear]/[self animationDuration];
-	frame.origin.x=(self.view.window.frame.size.width + frame.size.width)*percentage - frame.size.width;
-	return frame;
+    return self.view.layer.presentationLayer.frame;
 }
 #pragma mark interaction
 - (void)didMouseOver {
@@ -295,12 +273,12 @@
 
 #pragma mark appearance
 
-- (NSAttributedString*)attributedStringForStatus{
+- (NSAttributedString*)attributedStringForStatus {
     NSMutableAttributedString *attrString = [(status.attributedText ?: [[NSAttributedString alloc] initWithString:status.text]) mutableCopy];
-    
+
     [attrString removeNewLines];
     [attrString removeColors];
-    if (YES) { // animated gif
+    if ([[SettingManager sharedManager] animateGif]) {
         [attrString replaceImagesWithPlaceholdersWithHeight:[[[SettingManager sharedManager] font] pointSize]];
     } else {
         [attrString resizeImagesWithHeight:[[[SettingManager sharedManager] font] pointSize]];
@@ -326,8 +304,49 @@
     return attrString;
 }
 
+- (void)setupSubviewsForGifs {
+    for (NSView *v in self.gifImageViews) {
+        [v removeFromSuperview];
+    }
+    self.gifImageViews = nil;
+    if (![[SettingManager sharedManager] animateGif]) return;
+    NSMutableArray *newGifViews = [NSMutableArray array];
+    for (int i = 0; i < contentTextField.attributedStringValue.length; i++) {
+        NSRange charRange = NSMakeRange(i, 1);
+        if (![contentTextField.attributedStringValue containsAttachmentsInRange:charRange]) continue;
+        
+        NSDictionary *attributes = [contentTextField.attributedStringValue attributesAtIndex:i effectiveRange:nil];
+        NSTextAttachment *attachment = attributes[NSAttachmentAttributeName];
+        NSImage *customImage = attributes[kPlaceholderOriginalImageAttributeName];
+        
+        if (!attachment || !customImage) continue;
+        
+        NSRect textBounds = [contentTextField.cell titleRectForBounds:contentTextField.bounds];
+        NSLayoutManager *lm = [[NSLayoutManager alloc] init];
+        NSTextStorage *ts = [[NSTextStorage alloc] initWithAttributedString:contentTextField.attributedStringValue];
+        NSTextContainer *tc = [[NSTextContainer alloc] initWithContainerSize:textBounds.size];
+        [lm setTextStorage:ts];
+        [lm addTextContainer:tc];
+        tc.lineFragmentPadding = 2;
+        lm.typesetterBehavior = NSTypesetterBehavior_10_2_WithCompatibility;
+        
+        NSRange r;
+        NSRange glyphRange = [lm glyphRangeForCharacterRange:charRange actualCharacterRange:&r];
+        CGRect charRect = [lm boundingRectForGlyphRange:glyphRange inTextContainer:tc];
+
+        NSImageView *imageView = [[NSImageView alloc] initWithFrame:[contentTextField convertRect:charRect toView:self.view]];
+        [imageView setImageAlignment:NSImageAlignTop];
+        [imageView setImage:customImage];
+        [self.view addSubview:imageView];
+        [newGifViews addObject:imageView];
+    }
+    self.gifImageViews = newGifViews;
+}
+
 - (void)appearanceSettingChanged:(NSNotification*)notification {
     [contentTextField setAttributedStringValue:[self attributedStringForStatus]];
+    [self setupSubviewsForGifs];
+    profileImageView.animates = [[SettingManager sharedManager] animateGif];
     self.view.alphaValue = [[SettingManager sharedManager] opacity];
     [self.view setNeedsDisplay:YES];
 }

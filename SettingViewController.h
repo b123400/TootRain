@@ -10,6 +10,7 @@
 #import "DBPrefsWindowController.h"
 #import "SettingManager.h"
 #import "BRSlackAccount.h"
+#import "BorderHighlightButton.h"
 
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
 	IBOutlet NSView *accountsSettingView;
@@ -21,7 +22,6 @@
 	IBOutlet NSColorWell *textColorWell;
     IBOutlet NSColorWell *shadowColorWell;
 	IBOutlet NSColorWell *hoverBackgroundColorWell;
-	IBOutlet NSTextField *fontLabel;
 }
 
 @property (weak) IBOutlet NSScrollView *tableViewScrollView;
@@ -37,6 +37,13 @@
 @property (weak) IBOutlet NSTextField *truncateStatusField;
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
+@property (weak) IBOutlet NSButton *animateGifCheckbox;
+@property (weak) IBOutlet NSButton *chooseFontButton;
+@property (weak) IBOutlet NSSlider *speedSlider;
+
+
+@property (weak) IBOutlet BorderHighlightButton *appIconDefaultButton;
+@property (weak) IBOutlet BorderHighlightButton *appIconRIPButton;
 
 - (void)addAccountWithHostName:(NSString *)hostName
                    accountType:(SettingAccountType)accountType;

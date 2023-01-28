@@ -87,8 +87,10 @@
             if (image && (image.size.height > height)) {
                 int newWidth = height / image.size.height * image.size.width;
                 NSImage *newImage = [image resized:NSMakeSize(newWidth, height)];
-                [attachment setImage:newImage];
-                attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+                NSTextAttachment *newAttachment = [[NSTextAttachment alloc] init];
+                [newAttachment setImage:newImage];
+                newAttachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+                [self addAttribute:NSAttachmentAttributeName value:newAttachment range:r];
             }
         }
     }
@@ -111,8 +113,10 @@
                     width = height / image.size.height * image.size.width;
                 }
                 NSImage *newImage = [[NSImage alloc] initWithSize:NSMakeSize(width, height)];
-                [attachment setImage:newImage];
-                attachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+                NSTextAttachment *newAttachment = [[NSTextAttachment alloc] init];
+                [newAttachment setImage:newImage];
+                newAttachment.bounds = NSMakeRect(0, 0, newImage.size.width, newImage.size.height);
+                [self addAttribute:NSAttachmentAttributeName value:newAttachment range:r];
             }
         }
     }

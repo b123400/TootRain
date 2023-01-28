@@ -172,6 +172,34 @@ static NSMutableArray *savedAccounts=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
+- (BOOL)animateGif {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"animateGif"];
+    if (!num) {
+        return YES;
+    }
+    return [num boolValue];
+}
+
+- (void)setAnimateGif:(BOOL)animateGif {
+    [[NSUserDefaults standardUserDefaults] setBool:animateGif forKey:@"animateGif"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (float)speed {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"speed"];
+    if (!num) {
+        return 15;
+    }
+    return [num floatValue];
+}
+
+- (void)setSpeed:(float)speed {
+    [[NSUserDefaults standardUserDefaults] setFloat:speed forKey:@"speed"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropSpeedChanegdNotification object:nil];
+}
+
 #if TARGET_OS_IPHONE
 
 - (UIColor*)textColor {
@@ -314,6 +342,16 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"font"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
+}
+
+- (NSString *)customIcon {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"customIcon"];
+}
+
+- (void)setCustomIcon:(NSString *)customIcon {
+    [[NSUserDefaults standardUserDefaults] setObject:customIcon forKey:@"customIcon"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:customIcon]];
 }
 
 #endif
