@@ -17,6 +17,8 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{
                                                               @"NSApplicationCrashOnExceptions": @YES
                                                               }];
+    NSImage *icon = [NSImage imageNamed:[[SettingManager sharedManager] customIcon]];
+    [[NSApplication sharedApplication] setApplicationIconImage:icon];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	
