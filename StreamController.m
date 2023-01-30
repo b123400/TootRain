@@ -17,13 +17,10 @@
 #import "MastodonStatus.h"
 #import "DummyStatus.h"
 #import "BRSlackClient.h"
-#import "MastodonAccount.h"
-#import "SlackAccount.h"
 #import "StreamHandle.h"
 #import "MastodonStreamHandle.h"
 #import "SlackStreamHandle.h"
 #import "SettingViewController.h"
-#import "MisskeyAccount.h"
 #import "BRMisskeyClient.h"
 #import "MisskeyStreamHandle.h"
 
@@ -92,8 +89,8 @@ static StreamController *shared;
         [self.streamHandle disconnect];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-    if ([selectedAccount isKindOfClass:[MastodonAccount class]]) {
-        BRMastodonAccount *mastondonAccount = [(MastodonAccount *)selectedAccount mastodonAccount];
+    if ([selectedAccount isKindOfClass:[BRMastodonAccount class]]) {
+        BRMastodonAccount *mastondonAccount = (BRMastodonAccount *)selectedAccount;
         BRMastodonStreamHandle *brHandle = [[BRMastodonClient shared] streamingStatusesWithAccount:mastondonAccount];
         MastodonStreamHandle *newHandle = [[MastodonStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MastodonStatus * _Nonnull status) {
@@ -108,8 +105,8 @@ static StreamController *shared;
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), mastondonAccount.displayName]];
         };
         self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[SlackAccount class]]) {
-        BRSlackAccount *slackAccount = [(SlackAccount *)selectedAccount slackAccount];
+    } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
+        BRSlackAccount *slackAccount = selectedAccount;
         BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
         SlackStreamHandle *newHandle = [[SlackStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onConnected = ^{
@@ -136,8 +133,8 @@ static StreamController *shared;
             }
         };
         self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[MisskeyAccount class]]) {
-        BRMisskeyAccount *misskeyAccount = [(MisskeyAccount *)selectedAccount misskeyAccount];
+    } else if ([selectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
+        BRMisskeyAccount *misskeyAccount = (BRMisskeyAccount *)selectedAccount;
         BRMisskeyStreamHandle *brHandle = [[BRMisskeyClient shared] streamStatusWithAccount:misskeyAccount];
         MisskeyStreamHandle *newHandle = [[MisskeyStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MisskeyStatus * _Nonnull status) {

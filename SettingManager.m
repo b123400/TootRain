@@ -8,12 +8,9 @@
 
 #import "SettingManager.h"
 #import "NSFileManager+DirectoryLocations.h"
-#import "MastodonAccount.h"
-#import "SlackAccount.h"
 #import "BRMastodonAccount.h"
 #import "BRSlackAccount.h"
 #import "BRMisskeyAccount.h"
-#import "MisskeyAccount.h"
 
 @interface SettingManager ()
 
@@ -67,15 +64,9 @@ static NSMutableArray *savedAccounts=nil;
 
 - (void)reloadAccounts {
     NSMutableArray *accounts = [NSMutableArray array];
-    for (BRMastodonAccount *acc in [BRMastodonAccount allAccounts]) {
-        [accounts addObject:[[MastodonAccount alloc] initWithMastodonAccount:acc]];
-    }
-    for (BRSlackAccount *acc in [BRSlackAccount allAccounts]) {
-        [accounts addObject:[[SlackAccount alloc] initWithSlackAccount:acc]];
-    }
-    for (BRMisskeyAccount *acc in [BRMisskeyAccount allAccounts]) {
-        [accounts addObject:[[MisskeyAccount alloc] initWithMisskeyAccount:acc]];
-    }
+    [accounts addObjectsFromArray:[BRMastodonAccount allAccounts]];
+    [accounts addObjectsFromArray:[BRSlackAccount allAccounts]];
+    [accounts addObjectsFromArray:[BRMisskeyAccount allAccounts]];
     self.accounts = accounts;
 }
 

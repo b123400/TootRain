@@ -18,10 +18,10 @@
 
 @implementation SettingAccountDetailMisskeyView
 
-- (void)setAccount:(MisskeyAccount *)account {
-    self.accountIdTextField.stringValue = account.misskeyAccount.accountId;
+- (void)setAccount:(BRMisskeyAccount *)account {
+    self.accountIdTextField.stringValue = account.accountId;
     self.displayNameTextField.stringValue = account.displayName;
-    self.streamsTextField.stringValue = [account.misskeyAccount displayNameForStreamSource];
+    self.streamsTextField.stringValue = [account displayNameForStreamSource];
 }
 
 @end

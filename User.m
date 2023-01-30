@@ -9,6 +9,5 @@
 #import "User.h"
 
 @implementation User
-@synthesize username,userID,screenName,otherInfos,profileImageURL,description;
 
 @end

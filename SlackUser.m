@@ -11,7 +11,6 @@
 
 - (instancetype)initWithSlackUser:(BRSlackUser *)user {
     if (self = [super init]) {
-        self.userID = user.userId;
         self.username = user.username;
         self.screenName = user.displayName;
         self.profileImageURL = user.profileImageURL;

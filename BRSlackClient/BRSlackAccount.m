@@ -46,6 +46,10 @@
     return self;
 }
 
+- (NSString *)identifier {
+    return self.uuid;
+}
+
 - (NSString *)displayName {
     NSString *channelName = [self.channelNames componentsJoinedByString:@", "];
     if (channelName.length > 30) {

@@ -8,10 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "BRMisskeyUser.h"
 #import "BRMisskeyStreamSource.h"
+#import "Account.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRMisskeyAccount : NSObject
+@interface BRMisskeyAccount : Account
 
 @property (nonatomic, strong) NSString *hostName;
 @property (nonatomic, strong) NSString *accountId;

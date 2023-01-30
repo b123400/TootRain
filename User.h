@@ -12,21 +12,10 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-@interface User : NSObject {
-	NSString *username;
-	NSString *screenName;
-	NSString *userID;
-	NSString *description;
-	
-	NSURL *profileImageURL;
-	
-	NSMutableDictionary *otherInfos;
-}
+@interface User : NSObject
 
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *screenName;
-@property (nonatomic,strong) NSString *userID;
-@property (nonatomic,strong) NSString *description;
 
 @property (nonatomic,strong) NSURL *profileImageURL;
 

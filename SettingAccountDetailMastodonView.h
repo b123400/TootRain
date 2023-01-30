@@ -6,13 +6,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MastodonAccount.h"
+#import "BRMastodonAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingAccountDetailMastodonView : NSView
 
-- (void)setAccount:(MastodonAccount *)account;
+- (void)setAccount:(BRMastodonAccount *)account;
 
 @end
 

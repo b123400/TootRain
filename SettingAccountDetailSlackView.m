@@ -19,8 +19,7 @@
 
 @implementation SettingAccountDetailSlackView
 
-- (void)setAccount:(SlackAccount *)account {
-    BRSlackAccount *a = account.slackAccount;
+- (void)setAccount:(BRSlackAccount *)a {
     self.accountIdTextField.stringValue = a.accountId;
     self.teamIdTextField.stringValue = a.teamId;
     self.teamNameTextField.stringValue = a.teamName;

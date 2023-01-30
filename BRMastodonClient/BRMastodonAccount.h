@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "BRMastodonApp.h"
 #import "BRMastodonOAuthResult.h"
+#import "Account.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ typedef enum : NSUInteger {
     BRMastodonStreamSourceDirect,
 } BRMastodonStreamSource;
 
-@interface BRMastodonAccount : NSObject
+@interface BRMastodonAccount : Account
 
 @property (nonatomic, strong) BRMastodonApp *app;
 @property (nonatomic, strong) NSString *accountId;
@@ -50,10 +51,6 @@ typedef enum : NSUInteger {
 - (void)save;
 
 - (void)renew:(BRMastodonOAuthResult *)oauthResult;
-- (void)deleteAccount;
-
-- (NSString *)identifier;
-- (NSString *)shortDisplayName;
 - (NSString *)displayNameForStreamSource;
 
 @end

@@ -12,8 +12,6 @@
 #import "SettingOAuthWindowController.h"
 #import "InstanceInputWindowController.h"
 #import "Account.h"
-#import "MastodonAccount.h"
-#import "SlackAccount.h"
 #import "BRSlackClient.h"
 #import "BRSlackChannelSelectionWindowController.h"
 #import "SettingAccountCellObject.h"
@@ -21,7 +19,6 @@
 #import "SettingAccountDetailSlackView.h"
 #import "BRMastodonSourceSelectionWindowController.h"
 #import "BRMisskeyClient.h"
-#import "MisskeyAccount.h"
 #import "SettingAccountDetailMisskeyView.h"
 #import "BRMisskeyStreamSourceSelectionWindowController.h"
 
@@ -164,9 +161,9 @@
             obj.accountName = account.shortDisplayName;
             obj.isConnected = [account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier];
             obj.accountType =
-                  [account isKindOfClass:[SlackAccount class]] ? SettingAccountTypeSlack
-                : [account isKindOfClass:[MastodonAccount class]] ? SettingAccountTypeMastodon
-                : [account isKindOfClass:[MisskeyAccount class]] ? SettingAccountTypeMisskey
+                  [account isKindOfClass:[BRSlackAccount class]] ? SettingAccountTypeSlack
+                : [account isKindOfClass:[BRMastodonAccount class]] ? SettingAccountTypeMastodon
+                : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
                 : SettingAccountTypeMastodon;
             return obj;
         }
@@ -296,13 +293,7 @@
         self.oauthController = nil;
         
         [[SettingManager sharedManager] setSelectedAccount: nil];
-        if ([newAccount isKindOfClass:[BRMastodonAccount class]]) {
-            [[SettingManager sharedManager] setSelectedAccount:[[MastodonAccount alloc] initWithMastodonAccount:(BRMastodonAccount*)newAccount]];
-        } else if ([newAccount isKindOfClass:[BRSlackAccount class]]) {
-            [[SettingManager sharedManager] setSelectedAccount:[[SlackAccount alloc] initWithSlackAccount:(BRSlackAccount*)newAccount]];
-        } else if ([newAccount isKindOfClass:[BRMisskeyAccount class]]) {
-            [[SettingManager sharedManager] setSelectedAccount:[[MisskeyAccount alloc] initWithMisskeyAccount:(BRMisskeyAccount*)newAccount]];
-        }
+        [[SettingManager sharedManager] setSelectedAccount:newAccount];
     });
 }
 
@@ -334,15 +325,15 @@
         return;
     }
     self.reconnectButton.enabled = YES;
-    if ([self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) {
+    if ([self.detailSelectedAccount isKindOfClass:[BRMastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
-        [self.mastodonDetailView setAccount:(MastodonAccount *)self.detailSelectedAccount];
-    } else if ([self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) {
+        [self.mastodonDetailView setAccount:(BRMastodonAccount*)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[BRSlackAccount class]]) {
         self.accountDetailBox.contentView = self.slackDetailView;
-        [self.slackDetailView setAccount:(SlackAccount *)self.detailSelectedAccount];
-    } else if ([self.detailSelectedAccount isKindOfClass:[MisskeyAccount class]]) {
+        [self.slackDetailView setAccount:(BRSlackAccount *)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
         self.accountDetailBox.contentView = self.misskeyDetailView;
-        [self.misskeyDetailView setAccount:(MisskeyAccount*)self.detailSelectedAccount];
+        [self.misskeyDetailView setAccount:(BRMisskeyAccount*)self.detailSelectedAccount];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
     if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
@@ -353,16 +344,16 @@
 }
 
 - (IBAction)mastodonOptionClicked:(id)sender {
-    if (![self.detailSelectedAccount isKindOfClass:[MastodonAccount class]]) return;
-    MastodonAccount *a = (MastodonAccount*)self.detailSelectedAccount;
-    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] initWithAccount:a.mastodonAccount];
+    if (![self.detailSelectedAccount isKindOfClass:[BRMastodonAccount class]]) return;
+    BRMastodonAccount *a = (BRMastodonAccount*)self.detailSelectedAccount;
+    BRMastodonSourceSelectionWindowController *controller = [[BRMastodonSourceSelectionWindowController alloc] initWithAccount:a];
     [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode != NSModalResponseOK) return;
-        a.mastodonAccount.source = controller.selectedSource;
-        a.mastodonAccount.sourceHashtag = controller.hashtag;
-        a.mastodonAccount.sourceListId = controller.listId;
-        a.mastodonAccount.sourceListName = controller.listName;
-        [a.mastodonAccount save];
+        a.source = controller.selectedSource;
+        a.sourceHashtag = controller.hashtag;
+        a.sourceListId = controller.listId;
+        a.sourceListName = controller.listName;
+        [a save];
         
         BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
         NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
@@ -376,21 +367,21 @@
 }
 
 - (IBAction)slackOptionClicked:(id)sender {
-    if (![self.detailSelectedAccount isKindOfClass:[SlackAccount class]]) return;
-    SlackAccount *account = (SlackAccount *)self.detailSelectedAccount;
-    [[BRSlackClient shared] getChannelListWithAccount:account.slackAccount
+    if (![self.detailSelectedAccount isKindOfClass:[BRSlackAccount class]]) return;
+    BRSlackAccount *account = (BRSlackAccount *)self.detailSelectedAccount;
+    [[BRSlackClient shared] getChannelListWithAccount:account
                                     completionHandler:^(NSArray<BRSlackChannel *> * _Nonnull channels, NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
             controller.channels = channels;
-            controller.selectedChannelIds = account.slackAccount.channelIds;
-            controller.selectedThreadId = account.slackAccount.threadId;
+            controller.selectedChannelIds = account.channelIds;
+            controller.selectedThreadId = account.threadId;
             [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
                 if (returnCode == NSModalResponseOK) {
-                    account.slackAccount.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
-                    account.slackAccount.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
-                    account.slackAccount.threadId = controller.selectedThreadId;
-                    [account.slackAccount save];
+                    account.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
+                    account.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
+                    account.threadId = controller.selectedThreadId;
+                    [account save];
                     [self updateAccountView];
                 }
             }];
@@ -400,13 +391,12 @@
 
 - (IBAction)misskeyOptionClicked:(id)sender {
     BRMisskeyStreamSourceSelectionWindowController *controller = [[BRMisskeyStreamSourceSelectionWindowController alloc] init];
-    // TODO: add more sources like antenna and userList
-    MisskeyAccount *account = (MisskeyAccount *)self.detailSelectedAccount;
-    controller.account = account.misskeyAccount;
+    BRMisskeyAccount *account = (BRMisskeyAccount *)self.detailSelectedAccount;
+    controller.account = account;
     [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            account.misskeyAccount.streamSources = controller.selectedSources;
-            [account.misskeyAccount save];
+            account.streamSources = controller.selectedSources;
+            [account save];
             [self updateAccountView];
             
             // Reconnect

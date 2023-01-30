@@ -19,8 +19,7 @@
 
 @implementation SettingAccountDetailMastodonView
 
-- (void)setAccount:(MastodonAccount *)account {
-    BRMastodonAccount *a = account.mastodonAccount;
+- (void)setAccount:(BRMastodonAccount *)a {
     self.accountIdTextField.stringValue = a.accountId;
     self.urlTextField.stringValue = a.url;
     self.displayNameTextField.stringValue = a.displayName;

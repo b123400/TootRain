@@ -6,13 +6,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SlackAccount.h"
+#import "BRSlackAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingAccountDetailSlackView : NSView
 
-- (void)setAccount:(SlackAccount *)account;
+- (void)setAccount:(BRSlackAccount *)account;
 
 @end
 

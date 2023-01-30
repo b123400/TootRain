@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Account.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRSlackAccount : NSObject
+@interface BRSlackAccount : Account
 
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSURL *url;

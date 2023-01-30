@@ -6,13 +6,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MisskeyAccount.h"
+#import "BRMisskeyAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingAccountDetailMisskeyView : NSView
 
-- (void)setAccount:(MisskeyAccount *)account;
+- (void)setAccount:(BRMisskeyAccount *)account;
 
 @end
 

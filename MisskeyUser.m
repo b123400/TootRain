@@ -11,7 +11,6 @@
 
 - (instancetype)initWithMisskeyUser:(BRMisskeyUser *)user {
     if (self = [super init]) {
-        self.userID = user.userID;
         self.username = user.username;
         self.screenName = user.displayName;
         self.profileImageURL = user.profileImageURL;
