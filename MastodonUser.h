@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MastodonUser : User
 
 @property (nonatomic, strong) BRMastodonUser* mastodonUser;
+@property (nonatomic, strong) NSAttributedString *attributedScreenName;
+
 
 - (instancetype)initWithMastodonUser:(BRMastodonUser *)user;
 

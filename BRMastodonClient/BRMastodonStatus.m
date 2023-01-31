@@ -6,20 +6,23 @@
 //
 
 #import "BRMastodonStatus.h"
+#import "BRMastodonClient.h"
 
 @implementation BRMastodonStatus
 
 - (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account {
     if (self = [super init]) {
         NSDictionary *reblogDict = dict[@"reblog"];
-        if ([dict[@"reblog"] isKindOfClass:[NSDictionary class]]) {
-            self = [self initWithJSONDict:dict[@"reblog"] account:account];
-            self.rebloggedByUser = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
+        if ([reblogDict isKindOfClass:[NSDictionary class]]) {
+            self = [self initWithJSONDict:reblogDict account:account];
+            self.rebloggedByUser = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]
+                                                                          account:account];
             return self;
         }
         
         self.account = account;
-        self.user = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]];
+        self.user = [[BRMastodonUser alloc] initWithJSONDictionary:dict[@"account"]
+                                                           account:account];
         self.statusID = dict[@"id"];
         self.createdAt = [[[NSISO8601DateFormatter alloc] init] dateFromString:dict[@"created_at"]];
         self.text = dict[@"content"];
@@ -51,21 +54,7 @@
 }
 
 - (NSAttributedString *)attributedStringWithEmojisReplaced {
-    NSMutableString *text = [self.text mutableCopy];
-    for (BRMastodonEmoji *emoji in self.emojis) {
-        [text replaceOccurrencesOfString:[NSString stringWithFormat:@":%@:", emoji.shortcode]
-                              withString:[NSString stringWithFormat:@"<img src=\"%@\">", emoji.URL]
-                                 options:NSCaseInsensitiveSearch
-                                   range:NSMakeRange(0, text.length)];
-    }
-    
-    NSDictionary *options = @{
-        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
-    };
-    return [[NSAttributedString alloc] initWithHTML:[text dataUsingEncoding:NSUTF8StringEncoding]
-                                            options:options
-                                 documentAttributes:nil];
+    return [BRMastodonClient attributedString:self.text withEmojisReplaced:self.emojis];
 }
 
 @end

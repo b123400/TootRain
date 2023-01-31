@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MisskeyUser : User
 
 @property (nonatomic, strong) BRMisskeyUser* misskeyUser;
+@property (nonatomic, strong) NSAttributedString *attributedScreenName;
 
 - (instancetype)initWithMisskeyUser:(BRMisskeyUser *)user;
 

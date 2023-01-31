@@ -6,8 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BRMisskeyUser.h"
 #import "BRMisskeyStreamSource.h"
+#import "BRMisskeyEmoji.h"
 #import "Account.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -24,7 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initNewAccountWithHostName:(NSString *)hostName
                                accessToken:(NSString *)accessToken
-                                      user:(BRMisskeyUser *)user;
+                                 accountId:(NSString *)accountId
+                                  username:(NSString *)username;
 
 - (void)save;
 
@@ -33,7 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)displayNameForStreamSource;
 - (void)deleteAccount;
 - (void)setEmojiDict:(NSDictionary<NSString *, BRMisskeyEmoji *> *)dict;
-- (NSURL *)urlForEmoji:(NSString *)emoji;
+- (NSURL *)urlForEmoji:(NSString *)emoji host:(NSString * _Nullable)host;
+- (NSAttributedString *)attributedString:(NSString *)string
+                                withHost:(NSString * _Nullable)host
+                          emojisReplaced:(NSArray<BRMisskeyEmoji*>  * _Nullable)emojis;
 
 @end
 

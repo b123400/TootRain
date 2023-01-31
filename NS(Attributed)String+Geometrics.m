@@ -25,7 +25,7 @@ NSInteger gNSStringGeometricsTypesetterBehavior = NSTypesetterLatestBehavior ;
         NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init] ;
         [layoutManager addTextContainer:textContainer] ;
         [textStorage addLayoutManager:layoutManager] ;
-        [layoutManager setHyphenationFactor:0.0] ;
+        [layoutManager setHyphenationFactor:0.0];
         if (gNSStringGeometricsTypesetterBehavior != NSTypesetterLatestBehavior) {
             [layoutManager setTypesetterBehavior:gNSStringGeometricsTypesetterBehavior] ;
         }

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) BRMisskeyAccount *account;
 @property (nonatomic, strong) BRMisskeyUser *user;
-@property (nonatomic, strong) NSArray<BRMisskeyEmoji*> *emojis;
+@property (nonatomic, strong, nullable) NSArray<BRMisskeyEmoji*> *emojis;
 
 @property (nonatomic, strong) NSString *statusID;
 @property (nonatomic, strong) NSString *text;

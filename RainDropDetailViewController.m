@@ -39,8 +39,17 @@
 }
 -(void)loadView{
 	[super loadView];
-    nameField.stringValue=status.user.screenName ?: @"";
-	usernameField.stringValue=[NSString stringWithFormat:@"@%@", status.user.username];
+    NSAttributedString *nameAttributedString = status.user.attributedScreenName;
+    if (nameAttributedString) {
+        NSMutableAttributedString *str = [nameAttributedString mutableCopy];
+        [str addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:16] range:NSMakeRange(0, str.length)];
+        nameAttributedString = str;
+    } else {
+        nameAttributedString = [[NSAttributedString alloc] init];
+    }
+    
+    nameField.attributedStringValue = nameAttributedString;
+	usernameField.stringValue = [NSString stringWithFormat:@"@%@", status.user.username];
 
     NSMutableAttributedString *attributedString = [status.attributedText mutableCopy];
 	[attributedString addAttribute:NSFontAttributeName value:contentTextField.font range:NSMakeRange(0, attributedString.length)];
@@ -98,6 +107,7 @@
     }
 	
 	[profileImageView setImageURL:status.user.profileImageURL];
+    [profileImageView setAnimates:[[SettingManager sharedManager] animateGif]];
 }
 
 #pragma mark button actions

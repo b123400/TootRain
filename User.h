@@ -21,4 +21,6 @@
 
 @property (nonatomic,strong) NSMutableDictionary *otherInfos;
 
+- (NSAttributedString *)attributedScreenName;
+
 @end

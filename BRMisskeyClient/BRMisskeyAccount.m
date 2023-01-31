@@ -6,6 +6,7 @@
 //
 
 #import "BRMisskeyAccount.h"
+#import "BRMisskeyUser.h"
 
 @implementation BRMisskeyAccount
 
@@ -93,12 +94,13 @@
 
 - (instancetype)initNewAccountWithHostName:(NSString *)hostName
                                accessToken:(NSString *)accessToken
-                                      user:(BRMisskeyUser *)user {
+                                 accountId:(NSString *)accountId
+                                  username:(NSString *)username {
     if (self = [super init]) {
         self.hostName = hostName;
         self.accessToken = accessToken;
-        self.accountId = user.userID;
-        self.displayName = [NSString stringWithFormat:@"@%@@%@", user.username, [[NSURL URLWithString:hostName] host]];
+        self.accountId = accountId;
+        self.displayName = [NSString stringWithFormat:@"@%@@%@", username, [[NSURL URLWithString:hostName] host]];
         BRMisskeyStreamSource *s = [[BRMisskeyStreamSource alloc] init];
         s.type = BRMisskeyStreamSourceTypeHome;
         self.streamSources = @[s];
@@ -206,10 +208,55 @@
     [[BRMisskeyAccount accountIdToEmojiDicts] setObject:dict forKey:self.accountId];
 }
 
-- (NSURL *)urlForEmoji:(NSString *)code {
+- (NSURL *)urlForEmoji:(NSString *)code host:(NSString * _Nullable)host {
     NSDictionary *emojiDict = [[BRMisskeyAccount accountIdToEmojiDicts] objectForKey:self.accountId];
     BRMisskeyEmoji *emoji = emojiDict[code];
-    return emoji.URL;
+    if (emoji.URL) {
+        return emoji.URL;
+    }
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:self.hostName];
+    if (!host) {
+        [urlComponents setPath:[NSString stringWithFormat:@"/emoji/%@.webp", code]];
+    } else {
+        [urlComponents setPath:[NSString stringWithFormat:@"/emoji/%@@%@.webp", code, host]];
+    }
+    return [urlComponents URL];
+}
+
+- (NSAttributedString *)attributedString:(NSString *)string
+                                withHost:(NSString * _Nullable)host
+                          emojisReplaced:(NSArray<BRMisskeyEmoji*>  * _Nullable)emojis
+                                    {
+    NSMutableString *text = [string mutableCopy];
+    if (!emojis) {
+        // Since misskey v13 the emojis field is gone from the response
+        // Thank you @uakihir0 for this regex
+        // https://github.com/uakihir0/SocialHub/commit/d6577a4fa535ba226fdf5e97bfbd1777d2048b17#diff-94352a4ed45b0f89971e682d1a08e80495c4dfa6685d5bde8b80dadf3f5a507bR867
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@":([a-zA-Z0-9_]+(@[a-zA-Z0-9-.]+)?):" options:0 error:nil];
+        NSArray<NSTextCheckingResult*> *results = [regex matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+        // Loop from back so replacing strings won't affect the range
+        for (int i = results.count - 1; i >= 0; i--) {
+            NSTextCheckingResult *r = results[i];
+            NSRange range = [r rangeAtIndex:0];
+            NSString *emojiToken = [[text substringWithRange:range] stringByReplacingOccurrencesOfString:@":" withString:@""]; // e.g. ":hello:" "hello@example.com"
+            NSURL *emojiURL = [self urlForEmoji:emojiToken host:host];
+            [text replaceCharactersInRange:range withString:[NSString stringWithFormat:@"<img src=\"%@\">", emojiURL.absoluteString]];
+        }
+    } else {
+        for (BRMisskeyEmoji *emoji in emojis) {
+            [text replaceOccurrencesOfString:[NSString stringWithFormat:@":%@:", emoji.name]
+                                  withString:[NSString stringWithFormat:@"<img src=\"%@\">", emoji.URL.absoluteString]
+                                     options:NSCaseInsensitiveSearch
+                                       range:NSMakeRange(0, text.length)];
+        }
+    }
+    NSDictionary *options = @{
+        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
+    };
+    return [[NSAttributedString alloc] initWithHTML:[text dataUsingEncoding:NSUTF8StringEncoding]
+                                            options:options
+                                 documentAttributes:nil];
 }
 
 @end

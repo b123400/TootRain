@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRMastodonClient : NSObject
 
 + (instancetype)shared;
++ (NSAttributedString *)attributedString:(NSString *)string withEmojisReplaced:(NSArray<BRMastodonEmoji*> *)emojis;
 
 - (void)registerAppFor:(NSString*)hostname completionHandler:(void (^)(BRMastodonApp * _Nullable app, NSError * _Nullable error))callback;
 

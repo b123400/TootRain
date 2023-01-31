@@ -79,10 +79,12 @@
             return;
         }
         NSString *accessToken = result[@"token"];
-        BRMisskeyUser *user = [[BRMisskeyUser alloc] initWithJSONDictionary:result[@"user"]];
+        BRMisskeyUser *user = [[BRMisskeyUser alloc] initWithJSONDictionary:result[@"user"] account:nil];
         BRMisskeyAccount *account = [[BRMisskeyAccount alloc] initNewAccountWithHostName:host.absoluteString
                                                                              accessToken:accessToken
-                                                                                    user:user];
+                                                                               accountId:user.userID
+                                                                                username:user.username];
+        user.account = account;
         [account save];
         callback(account, error);
     }];

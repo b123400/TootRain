@@ -624,4 +624,22 @@ didOpenWithProtocol:(NSString *)protocol {
     return nil;
 }
 
++ (NSAttributedString *)attributedString:(NSString *)string withEmojisReplaced:(NSArray<BRMastodonEmoji*> *)emojis {
+    NSMutableString *text = [string mutableCopy];
+    for (BRMastodonEmoji *emoji in emojis) {
+        [text replaceOccurrencesOfString:[NSString stringWithFormat:@":%@:", emoji.shortcode]
+                              withString:[NSString stringWithFormat:@"<img src=\"%@\">", emoji.URL]
+                                 options:NSCaseInsensitiveSearch
+                                   range:NSMakeRange(0, text.length)];
+    }
+    
+    NSDictionary *options = @{
+        NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)
+    };
+    return [[NSAttributedString alloc] initWithHTML:[text dataUsingEncoding:NSUTF8StringEncoding]
+                                            options:options
+                                 documentAttributes:nil];
+}
+
 @end

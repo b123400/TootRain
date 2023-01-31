@@ -6,10 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BRMastodonAccount.h"
+#import "BRMastodonEmoji.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRMastodonUser : NSObject
+
+@property (nonatomic, strong) BRMastodonAccount *account;
 
 @property (nonatomic,strong) NSString *username; // e.g. "b"
 @property (nonatomic,strong) NSString *accountName; // e.g. "b" "b@is-he.re"
@@ -20,7 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSURL *profileImageURL;
 @property (nonatomic,strong) NSURL *URL;
 
-- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary;
+@property (nonatomic, strong) NSArray<BRMastodonEmoji*> *emojis;
+
+- (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary account:(BRMastodonAccount *)account;
+
+- (NSAttributedString *)attributedScreenName;
 
 @end
 

@@ -106,7 +106,7 @@ static StreamController *shared;
         };
         self.streamHandle = newHandle;
     } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
-        BRSlackAccount *slackAccount = selectedAccount;
+        BRSlackAccount *slackAccount = (BRSlackAccount*)selectedAccount;
         BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
         SlackStreamHandle *newHandle = [[SlackStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onConnected = ^{

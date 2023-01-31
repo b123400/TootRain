@@ -88,7 +88,6 @@
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    BRMisskeyStreamSource *source = self.sources[row];
     return @([self.selectedIndexSet containsIndex:row]);
 }
 
@@ -98,7 +97,6 @@
 }
 
 -(void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    BRMisskeyStreamSource *source = self.sources[row];
     if ([object boolValue]) {
         [self.selectedIndexSet addIndex:row];
     } else {
