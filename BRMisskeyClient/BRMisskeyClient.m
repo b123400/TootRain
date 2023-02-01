@@ -227,6 +227,7 @@ didOpenWithProtocol:(NSString *)protocol {
     [components setPath:@"/api/antennas/list"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *body = @{@"limit": @999, @"i": account.accessToken};
     [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
     typeof(self) __weak _self = self;
@@ -263,6 +264,7 @@ didOpenWithProtocol:(NSString *)protocol {
     [components setPath:@"/api/users/lists/list"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *body = @{@"limit": @999, @"i": account.accessToken};
     [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
     typeof(self) __weak _self = self;
@@ -299,6 +301,7 @@ didOpenWithProtocol:(NSString *)protocol {
     [components setPath:@"/api/channels/followed"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:components.URL];
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *body = @{@"limit": @100, @"i": account.accessToken};
     [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:body options:0 error:nil]];
     typeof(self) __weak _self = self;
