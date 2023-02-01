@@ -285,51 +285,43 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 - (NSColor*)textColor{
-	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"textColor"];
-	if (theData == nil)return [NSColor whiteColor];
-	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+    return [self settingDataWithKey:@"textColor" ofClass:[NSColor class] defaultValue:[NSColor whiteColor]];
 }
 
 - (void)setTextColor:(NSColor*)color {
-    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:color requiringSecureCoding:NO error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"textColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (NSColor*)shadowColor{
-	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"shadowColor"];
-	if (theData == nil)return [NSColor blackColor];
-	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+    return [self settingDataWithKey:@"shadowColor" ofClass:[NSColor class] defaultValue:[NSColor blackColor]];
 }
 
 - (void)setShadowColor:(NSColor*)color {
-    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:color requiringSecureCoding:NO error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"shadowColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
 }
 
 - (NSColor*) hoverBackgroundColor {
-	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"hoverBackgroundColor"];
-	if (theData == nil)return [NSColor whiteColor];
-	return (NSColor *)[NSUnarchiver unarchiveObjectWithData:theData];
+    return [self settingDataWithKey:@"hoverBackgroundColor" ofClass:[NSColor class] defaultValue:[NSColor whiteColor]];
 }
 
 - (void)setHoverBackgroundColor:(NSColor*)color {
-    NSData *theData=[NSArchiver archivedDataWithRootObject:color];
+    NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:color requiringSecureCoding:NO error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"hoverBackgroundColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (NSFont*)font{
-	NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:@"font"];
-	if (theData == nil)return [NSFont fontWithName:@"Arial" size:36];
-	return (NSFont *)[NSUnarchiver unarchiveObjectWithData:theData];
+    return [self settingDataWithKey:@"textColor" ofClass:[NSFont class] defaultValue:[NSFont fontWithName:@"Arial" size:36]];
 }
 
 - (void)setFont:(NSFont*)font {
-    NSData *theData=[NSArchiver archivedDataWithRootObject:font];
+    NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:font requiringSecureCoding:NO error:nil];
     [[NSUserDefaults standardUserDefaults] setObject:theData forKey:@"font"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearanceChangedNotification object:nil];
@@ -343,6 +335,23 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] setObject:customIcon forKey:@"customIcon"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:customIcon]];
+}
+
+- (id)settingDataWithKey:(NSString *)key ofClass:(Class)class defaultValue:(id)defaultValue {
+    NSData *theData=[[NSUserDefaults standardUserDefaults] dataForKey:key];
+    if (theData == nil)return defaultValue;
+    id keyedResult = [NSKeyedUnarchiver unarchivedObjectOfClass:class
+                                                       fromData:theData
+                                                          error:nil];
+    if (keyedResult) return keyedResult;
+    id legacyResult = [NSUnarchiver unarchiveObjectWithData:theData];
+    if ([legacyResult isKindOfClass:class]) {
+        NSData *newData = [NSKeyedArchiver archivedDataWithRootObject:legacyResult requiringSecureCoding:NO error:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:newData forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return legacyResult;
+    }
+    return defaultValue;
 }
 
 #endif
