@@ -4,6 +4,9 @@
 /* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
 "5VI-7m-dre.title" = "螢幕";
 
+/* Class = "NSButtonCell"; title = "Animate GIF"; ObjectID = "9Yz-ih-lZ6"; */
+"9Yz-ih-lZ6.title" = "自動播放GIF";
+
 /* Class = "NSTableColumn"; headerCell.title = "Accounts"; ObjectID = "30"; */
 "30.headerCell.title" = "帳號";
 
@@ -19,11 +22,11 @@
 /* Class = "NSTextFieldCell"; title = "Opacity"; ObjectID = "195"; */
 "195.title" = "透明度";
 
-/* Class = "NSButtonCell"; title = "Choose font"; ObjectID = "201"; */
+/* Class = "NSButtonCell"; title = "Arial Bold 18"; ObjectID = "201"; */
 "201.title" = "選擇字體";
 
-/* Class = "NSTextFieldCell"; title = "Font: Arial Bold 18"; ObjectID = "203"; */
-"203.title" = "Font: Arial Bold 18";
+/* Class = "NSTextFieldCell"; title = "Font"; ObjectID = "203"; */
+"203.title" = "字體";
 
 /* Class = "NSTextFieldCell"; title = "Text colour"; ObjectID = "210"; */
 "210.title" = "文字顏色";
@@ -31,10 +34,10 @@
 /* Class = "NSTextFieldCell"; title = "Hover background colour"; ObjectID = "215"; */
 "215.title" = "Hover 時的背景顏色";
 
-/* Class = "NSButtonCell"; title = "Remove Links"; ObjectID = "243"; */
+/* Class = "NSButtonCell"; title = "Remove links"; ObjectID = "243"; */
 "243.title" = "隱藏URL";
 
-/* Class = "NSButtonCell"; title = "Truncate status"; ObjectID = "245"; */
+/* Class = "NSButtonCell"; title = "Truncate text"; ObjectID = "245"; */
 "245.title" = "限制長度";
 
 /* Class = "NSTextFieldCell"; title = "Window level"; ObjectID = "301"; */
@@ -67,11 +70,17 @@
 /* Class = "NSButtonCell"; title = "Reconnect"; ObjectID = "dr8-Yd-xvd"; */
 "dr8-Yd-xvd.title" = "重新連接";
 
+/* Class = "NSTextFieldCell"; title = "App Icon"; ObjectID = "dXu-83-00A"; */
+"dXu-83-00A.title" = "App Icon";
+
 /* Class = "NSTextFieldCell"; title = "hello"; ObjectID = "eGz-zk-VS4"; */
 "eGz-zk-VS4.title" = "";
 
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "f1B-JK-9g0"; */
 "f1B-JK-9g0.title" = "服務:";
+
+/* Class = "NSTextFieldCell"; title = "Speed"; ObjectID = "fGS-E2-t2S"; */
+"fGS-E2-t2S.title" = "速度";
 
 /* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
 "iWh-jO-lyt.title" = "名字:";

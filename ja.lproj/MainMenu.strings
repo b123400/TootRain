@@ -1,3 +1,6 @@
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "9rq-1G-PFJ"; */
+"9rq-1G-PFJ.title" = "閉じる";
+
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
 "19.title" = "ウインドウ";
 
@@ -72,4 +75,10 @@
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
 "490.title" = "ヘルプ";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "ke0-VQ-hvx"; */
+"ke0-VQ-hvx.title" = "ファイル";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
+"Kq3-UG-BWh.title" = "ファイル";
 

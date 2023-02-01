@@ -40,9 +40,6 @@
 /* No comment provided by engineer. */
 "Failed" = "失敗了";
 
-/* No comment provided by engineer. */
-"Font: %@ %.0f" = "字形: %1$@ %2$.0f";
-
 /* Misskey source type */
 "Global Timeline" = "公開時間軸";
 

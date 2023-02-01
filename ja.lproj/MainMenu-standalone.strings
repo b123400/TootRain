@@ -73,6 +73,15 @@
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
 "490.title" = "ヘルプ";
 
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "FMC-2X-3VZ"; */
+"FMC-2X-3VZ.title" = "ファイル";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "jpX-i9-Oh8"; */
+"jpX-i9-Oh8.title" = "ファイル";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "McF-yT-VkX"; */
+"McF-yT-VkX.title" = "閉じる";
+
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
 "TRN-i4-5na.title" = "アップデートを確認...";
 

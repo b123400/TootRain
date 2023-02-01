@@ -40,9 +40,6 @@
 /* No comment provided by engineer. */
 "Failed" = "失敗しました";
 
-/* No comment provided by engineer. */
-"Font: %@ %.0f" = "フォント: %1$@ %2$.0f";
-
 /* Misskey source type */
 "Global Timeline" = "グローバル";
 
