@@ -113,10 +113,12 @@
 	NSFont *theFont=[[SettingManager sharedManager]font];
 	[self.chooseFontButton setTitle:[NSString stringWithFormat:@"%@ %.0f",[theFont displayName],[theFont pointSize]]];
 
-    self.appIconDefaultButton.state = self.appIconRIPButton.state = NSControlStateValueOff;
+    self.appIconDefaultButton.state = self.appIconRIPButton.state = self.appIconRIP2Button.state = NSControlStateValueOff;
     NSString *appIcon = [[SettingManager sharedManager] customIcon];
-    if ([appIcon isEqual:@"Mastodon"]) { // TODO: RIP
+    if ([appIcon isEqual:@"RIP"]) {
         self.appIconRIPButton.state = NSControlStateValueOn;
+    } else if ([appIcon isEqual:@"RIP2"]) {
+        self.appIconRIP2Button.state = NSControlStateValueOn;
     } else {
         self.appIconDefaultButton.state = NSControlStateValueOn;
     }
@@ -512,13 +514,18 @@
 
 - (IBAction)appIconDefaultButtonClicked:(id)sender {
     self.appIconDefaultButton.state = NSControlStateValueOn;
-    self.appIconRIPButton.state = NSControlStateValueOff;
+    self.appIconRIPButton.state = self.appIconRIP2Button.state = NSControlStateValueOff;
     [[SettingManager sharedManager] setCustomIcon:nil];
 }
 - (IBAction)appIconRIPButtonClicked:(id)sender {
-    self.appIconDefaultButton.state = NSControlStateValueOff;
+    self.appIconDefaultButton.state = self.appIconRIP2Button.state = NSControlStateValueOff;
     self.appIconRIPButton.state = NSControlStateValueOn;
-    [[SettingManager sharedManager] setCustomIcon:@"Mastodon"]; // RIP
+    [[SettingManager sharedManager] setCustomIcon:@"RIP1"];
+}
+- (IBAction)appIconRIP2ButtonClicked:(id)sender {
+    self.appIconDefaultButton.state = self.appIconRIPButton.state = NSControlStateValueOff;
+    self.appIconRIP2Button.state = NSControlStateValueOn;
+    [[SettingManager sharedManager] setCustomIcon:@"RIP2"];
 }
 
 @end

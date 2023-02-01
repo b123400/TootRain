@@ -44,6 +44,7 @@
 
 @property (weak) IBOutlet BorderHighlightButton *appIconDefaultButton;
 @property (weak) IBOutlet BorderHighlightButton *appIconRIPButton;
+@property (weak) IBOutlet BorderHighlightButton *appIconRIP2Button;
 
 - (void)addAccountWithHostName:(NSString *)hostName
                    accountType:(SettingAccountType)accountType;
