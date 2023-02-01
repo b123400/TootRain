@@ -47,7 +47,7 @@
     } else {
         nameAttributedString = [[NSAttributedString alloc] init];
     }
-    
+
     nameField.attributedStringValue = nameAttributedString;
 	usernameField.stringValue = [NSString stringWithFormat:@"@%@", status.user.username];
 
@@ -65,23 +65,6 @@
             [attributedString addAttribute:NSCursorAttributeName value:[NSCursor pointingHandCursor] range:r];
         }
     }
-    
-	CGRect frame=contentTextField.frame;
-    NSSize minSize = [attributedString sizeForWidth:frame.size.width height:MAXFLOAT];
-	
-	float viewWidth=minSize.width+contentTextField.frame.origin.x+12;
-	if(viewWidth<355){
-		viewWidth=355;
-	}
-	float viewHeight=minSize.height+(32+12+48+12*2);
-	if(viewHeight<100){
-		viewHeight=100;
-	}
-	[[self view] setFrame:CGRectMake(0,0,viewWidth, viewHeight)];
-	
-	frame.size=minSize;
-	frame.origin.y=viewHeight-(12*2+48)-minSize.height;
-	contentTextField.frame=frame;
     
     if (status.bookmarked) {
         [self.bookmarkButton setEnabled:NO];

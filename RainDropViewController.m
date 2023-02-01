@@ -36,7 +36,7 @@
 - (id)initWithStatus:(Status*)_status{
 	status=_status;
 	paused=YES;
-	margin=5;
+	margin=0;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appearanceSettingChanged:)
                                                  name:kRainDropAppearanceChangedNotification
@@ -81,7 +81,7 @@
 	NSView *parentView=[[self view]superview];
 	[[self view] setFrame:CGRectMake(parentView.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
 	CGRect rect=contentTextField.frame;
-	rect.origin.x=rect.origin.y=5;
+	rect.origin.x = rect.origin.y = margin;
 	rect.size.width+=5;
 	contentTextField.frame=rect;
 	

@@ -9,12 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "Status.h"
 #import "WebImageView.h"
+#import "BRAnimatedTextField.h"
 
 @interface RainDropDetailViewController : NSViewController{
 	Status *status;
-	NSTextField *__weak contentTextField;
+    BRAnimatedTextField *__weak contentTextField;
 	WebImageView *__weak profileImageView;
-	NSTextField *__weak nameField;
+    BRAnimatedTextField *__weak nameField;
 	NSTextField *__weak usernameField;
 }
 @property (weak) IBOutlet NSTextField *contentTextField;
