@@ -11,7 +11,7 @@
 @implementation User
 
 - (NSAttributedString *)attributedScreenName {
-    return [[NSAttributedString alloc] initWithString:self.screenName];
+    return [[NSAttributedString alloc] initWithString:self.screenName ?: @""];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "Status.h"
 #import "RainDropView.h"
 #import "WebImageView.h"
+#import "BRAnimatedTextField.h"
 
 @protocol RainDropViewControllerDelegate
 
@@ -18,7 +19,7 @@
 @end
 
 @interface RainDropViewController : NSViewController <RainDropViewDelegate,NSPopoverDelegate> {
-	NSTextField *__weak contentTextField;
+    BRAnimatedTextField *__weak contentTextField;
 	
 	Status *status;
 	NSDate *animationEnd;

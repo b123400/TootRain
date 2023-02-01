@@ -187,6 +187,8 @@
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
 		CFA161F426B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA161F626B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib */; };
 		CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
+		CFA22FCD2989197B00DD85F4 /* BRAnimatedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */; };
+		CFA22FCE2989197B00DD85F4 /* BRAnimatedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */; };
 		CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */; };
 		CFA511201369AD11004A81D7 /* CustomTitleBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5111F1369AD11004A81D7 /* CustomTitleBar.m */; };
 		CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA5115E1369B18D004A81D7 /* CustomDragView.m */; };
@@ -450,6 +452,8 @@
 		CFA161FA26B926DC00BFC5EA /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BRSlackChannelSelectionWindowController.strings"; sourceTree = "<group>"; };
 		CFA1BB5614DC514D000566A0 /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
 		CFA1BB5714DC514D000566A0 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
+		CFA22FCB2989197B00DD85F4 /* BRAnimatedTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAnimatedTextField.h; sourceTree = "<group>"; };
+		CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAnimatedTextField.m; sourceTree = "<group>"; };
 		CFA312A526B27D58008F4BA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		CFA312A726B27DDB008F4BA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InstanceInputWindowController.xib; sourceTree = "<group>"; };
 		CFA312AA26B27DE0008F4BA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InstanceInputWindowController.strings"; sourceTree = "<group>"; };
@@ -696,6 +700,8 @@
 				CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */,
 				CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */,
 				CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */,
+				CFA22FCB2989197B00DD85F4 /* BRAnimatedTextField.h */,
+				CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1361,6 +1367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA22FCD2989197B00DD85F4 /* BRAnimatedTextField.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				CFB319832935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
 				CF1FE3B42955B74800CABB47 /* BRMisskeyUser.m in Sources */,
@@ -1439,6 +1446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA22FCE2989197B00DD85F4 /* BRAnimatedTextField.m in Sources */,
 				CF5D2D3429350BC400745D63 /* main.m in Sources */,
 				CFB319842935E69400BD2C18 /* SettingAccountCellView.m in Sources */,
 				CF1FE3B52955B74800CABB47 /* BRMisskeyUser.m in Sources */,

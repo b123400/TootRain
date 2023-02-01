@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="304"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="724" translatesAutoresizingMaskIntoConstraints="NO" id="3">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="724" translatesAutoresizingMaskIntoConstraints="NO" id="3" customClass="BRAnimatedTextField">
                     <rect key="frame" x="59" y="243" width="728" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" focusRingType="none" title="ﾗﾗﾗﾗﾗﾗﾗﾗﾗﾗ┗┏┗┏( ･´つ･｀)┛┓┛ﾗﾗﾗ" id="4" customClass="RainDropTextFieldCell">
