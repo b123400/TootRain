@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		3215878632DBBD3D07F06611 /* Pods_TootRain_standalone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADB1A45FAF0211C3BC344554 /* Pods_TootRain_standalone.framework */; };
-		5C8188B3562934678C1E6BCD /* Pods_TweetRain_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D982291F0369F2605FB7E7 /* Pods_TweetRain_ios.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9FA6D7D2262648D3F2034C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */; };
-		CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF0C61B41ABD849900C170FC /* RainDropViewController.xib */; };
-		CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */; };
+		9FA6D7D2262648D3F2034C75 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		A0A38CCE2FE7797211543265 /* Pods_TootRain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */; };
 		CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */; };
 		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
@@ -39,17 +36,6 @@
 		CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CF2957356000CABB47 /* MisskeyUser.m */; };
 		CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CF2957356000CABB47 /* MisskeyUser.m */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
-		CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */; };
-		CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */; };
-		CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */; };
-		CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */; };
-		CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */; };
-		CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AAAE71ABADDE3002EC003 /* ViewController.m */; };
-		CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1BB5714DC514D000566A0 /* SettingManager.m */; };
-		CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
-		CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
-		CF2AAAF11ABB05DA002EC003 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
-		CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2AAAF31ABB1698002EC003 /* Main.storyboard */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
 		CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A187615D64F4100D8E07F /* FloodWindowController.m */; };
 		CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3A187715D64F4100D8E07F /* FloodWindowController.xib */; };
@@ -67,7 +53,6 @@
 		CF40290A295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */; };
 		CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
 		CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52029F2938F02600B9B749 /* BRMastodonList.m */; };
-		CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */; };
 		CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */; };
 		CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -135,9 +120,7 @@
 		CF5D2D6929350BC400745D63 /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
 		CF5D2D6B29350BC400745D63 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
 		CF5D2D6C29350BC400745D63 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1C1A0476DC003EB806 /* Accounts.framework */; };
-		CF5D2D6D29350BC400745D63 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1A1A047554003EB806 /* Social.framework */; };
 		CF5D2D6E29350BC400745D63 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
-		CF5D2D6F29350BC400745D63 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */; };
 		CF5D2D7029350BC400745D63 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
 		CF5D2D7129350BC400745D63 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
 		CF5D2D7229350BC400745D63 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
@@ -154,32 +137,19 @@
 		CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC52692A6A500E904D0 /* BRMastodonStatus.m */; };
 		CF5E5EC92692A8AA00E904D0 /* BRMastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */; };
 		CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandle.m */; };
-		CF620A1B1A047554003EB806 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1A1A047554003EB806 /* Social.framework */; };
 		CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF620A1C1A0476DC003EB806 /* Accounts.framework */; };
 		CF620A211A057CBE003EB806 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF620A201A057CBE003EB806 /* StreamController.m */; };
 		CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */; };
 		CF75438E13686342009E7292 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75438D13686342009E7292 /* TransparentView.m */; };
 		CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		CF78F50D1B07C0FA006192DE /* AuthAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */; };
 		CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */; };
 		CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */; };
 		CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */; };
-		CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */; };
-		CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */; };
-		CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */; };
-		CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */; };
-		CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF85346A1CC4133C004D1FFC /* InfoPlist.strings */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
-		CF8DC2241CDE789800128E68 /* BRSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2231CDE789800128E68 /* BRSearchViewController.m */; };
-		CF8DC2271CDE7CB600128E68 /* TextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
 		CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
 		CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAC15D4124900DD6DEA /* WebKit.framework */; };
-		CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */; };
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
-		CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */; };
-		CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */; };
 		CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B022694BC6800DFE9BD /* MastodonStatus.m */; };
 		CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B052694BD0100DFE9BD /* MastodonUser.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
@@ -210,9 +180,6 @@
 		CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
 		CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */; };
 		CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */; };
-		CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49BE1AB8AA6F00E922C9 /* main.m */; };
-		CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */; };
-		CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */; };
 		CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB21ED1A1FBA2500202991 /* Images.xcassets */; };
 		CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */; };
 		CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */; };
@@ -221,10 +188,8 @@
 		CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
 		CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
 		CFDDE44D293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
-		CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
 		CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
 		CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
-		CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE450293754D100E64EF5 /* SettingAccountDetailMastodonView.m */; };
 		CFE39F891A7649B9004644C8 /* Errors.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F8B1A7649B9004644C8 /* Errors.strings */; };
 		CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F901A764B8C004644C8 /* Localizable.strings */; };
 		CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE39F941A764F59004644C8 /* SettingViewController.xib */; };
@@ -237,20 +202,9 @@
 		CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */; };
 		CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEC43F92695DC5200E66DD0 /* DummyStatus.m */; };
-		CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */; };
 		CFFAE5E015E02D3400389518 /* RainDropDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */; };
 		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CFCA49D31AB8AA6F00E922C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CFCA49B91AB8AA6F00E922C9;
-			remoteInfo = "TweetRain-ios";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CF53F65E139CCE51003AB55B /* Copy Files */ = {
@@ -285,7 +239,6 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.debug.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.debug.xcconfig"; sourceTree = "<group>"; };
-		52D982291F0369F2605FB7E7 /* Pods_TweetRain_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TweetRain_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.release.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.release.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,12 +246,8 @@
 		ADB1A45FAF0211C3BC344554 /* Pods_TootRain_standalone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain_standalone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
 		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
+		BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropViewController.h; sourceTree = "<group>"; };
-		CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropViewController.m; sourceTree = "<group>"; };
-		CF0C61B41ABD849900C170FC /* RainDropViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropViewController.xib; sourceTree = "<group>"; };
-		CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropContainerView.h; sourceTree = "<group>"; };
-		CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropContainerView.m; sourceTree = "<group>"; };
 		CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonEmoji.h; sourceTree = "<group>"; };
 		CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonEmoji.m; sourceTree = "<group>"; };
 		CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
@@ -327,18 +276,6 @@
 		CF1FE3CF2957356000CABB47 /* MisskeyUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MisskeyUser.m; sourceTree = "<group>"; };
 		CF2A37D313752E6E001CAAAB /* User.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc.preprocessed; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
-		CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
-		CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
-		CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAccountTableViewController.h; sourceTree = "<group>"; };
-		CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAccountTableViewController.m; sourceTree = "<group>"; };
-		CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		CF2AAAE61ABADDE3002EC003 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CF2AAAE71ABADDE3002EC003 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CF2AAAF41ABB1698002EC003 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		CF34B7521AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ComposeStatusViewController.strings"; sourceTree = "<group>"; };
@@ -366,11 +303,8 @@
 		CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRMisskeyStreamSourceSelectionWindowController.xib; sourceTree = "<group>"; };
 		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
 		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
-		CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		CF5AB3BC293DCD8900C8AC7B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		CF5AB3BD293DCD8900C8AC7B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF5D2D7929350BC400745D63 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
+		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TweetRain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
 		CF5D2D7C29350DA900745D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-standalone.xib"; sourceTree = "<group>"; };
 		CF5D2D7F29350DE600745D63 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu-standalone.strings"; sourceTree = "<group>"; };
 		CF5D2D8129350DE700745D63 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/MainMenu-standalone.strings"; sourceTree = "<group>"; };
@@ -397,49 +331,28 @@
 		CF5E5EC82692A8AA00E904D0 /* BRMastodonUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonUser.m; sourceTree = "<group>"; };
 		CF5E5ECA2692CE2C00E904D0 /* BRMastodonStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonStreamHandle.h; sourceTree = "<group>"; };
 		CF5E5ECB2692CE2C00E904D0 /* BRMastodonStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonStreamHandle.m; sourceTree = "<group>"; };
-		CF620A1A1A047554003EB806 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1C1A0476DC003EB806 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
 		CF620A1F1A057CBE003EB806 /* StreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamController.h; sourceTree = "<group>"; };
 		CF620A201A057CBE003EB806 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
 		CF673971295A883B005B274C /* TweetRain-standalone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TweetRain-standalone.entitlements"; sourceTree = "<group>"; };
-		CF6FA7441B06599B0088748F /* SettingAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAboutTableViewController.h; sourceTree = "<group>"; };
-		CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAboutTableViewController.m; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		CF75C5D41371947B0099F8E0 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
-		CF78F50B1B07C0FA006192DE /* AuthAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAccountTableViewController.h; sourceTree = "<group>"; };
-		CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthAccountTableViewController.m; sourceTree = "<group>"; };
 		CF7A0F79269F0E08009B0CE8 /* BRSlackChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackChannel.h; sourceTree = "<group>"; };
 		CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannel.m; sourceTree = "<group>"; };
 		CF7A0F7C269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackChannelSelectionWindowController.h; sourceTree = "<group>"; };
 		CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannelSelectionWindowController.m; sourceTree = "<group>"; };
 		CF7A0F81269F18EA009B0CE8 /* BRSlackStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackStreamHandle.h; sourceTree = "<group>"; };
 		CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackStreamHandle.m; sourceTree = "<group>"; };
-		CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
-		CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
-		CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RainDropDetailViewController.xib; sourceTree = "<group>"; };
-		CF82C2C31AC861DE00F0DC05 /* SettingColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingColorViewController.h; sourceTree = "<group>"; };
-		CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingColorViewController.m; sourceTree = "<group>"; };
-		CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRNavigationViewController.h; sourceTree = "<group>"; };
-		CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRNavigationViewController.m; sourceTree = "<group>"; };
-		CF8534691CC4133C004D1FFC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
-		CF8DC2221CDE789800128E68 /* BRSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSearchViewController.h; sourceTree = "<group>"; };
-		CF8DC2231CDE789800128E68 /* BRSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSearchViewController.m; sourceTree = "<group>"; };
-		CF8DC2251CDE7CB600128E68 /* TextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldTableViewCell.h; sourceTree = "<group>"; };
-		CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldTableViewCell.m; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEAC15D4124900DD6DEA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodAppDelegate.m; sourceTree = "<group>"; };
-		CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
-		CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
-		CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		CF927B012694BC6800DFE9BD /* MastodonStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonStatus.h; sourceTree = "<group>"; };
 		CF927B022694BC6800DFE9BD /* MastodonStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastodonStatus.m; sourceTree = "<group>"; };
 		CF927B042694BD0100DFE9BD /* MastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonUser.h; sourceTree = "<group>"; };
@@ -458,7 +371,6 @@
 		CFA1BB5714DC514D000566A0 /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
 		CFA22FCB2989197B00DD85F4 /* BRAnimatedTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAnimatedTextField.h; sourceTree = "<group>"; };
 		CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAnimatedTextField.m; sourceTree = "<group>"; };
-		CFA312A526B27D58008F4BA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		CFA312A726B27DDB008F4BA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InstanceInputWindowController.xib; sourceTree = "<group>"; };
 		CFA312AA26B27DE0008F4BA0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InstanceInputWindowController.strings"; sourceTree = "<group>"; };
 		CFA312AC26B27DE0008F4BA0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InstanceInputWindowController.strings; sourceTree = "<group>"; };
@@ -488,15 +400,8 @@
 		CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderHighlightButton.h; sourceTree = "<group>"; };
 		CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderHighlightButton.m; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
-		CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TweetRain-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFCA49BD1AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFCA49BE1AB8AA6F00E922C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TweetRain-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFCA49D71AB8AA6F00E922C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetRain_iosTests.m; sourceTree = "<group>"; };
 		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
-		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TweetRain/Images.xcassets; sourceTree = "<group>"; };
+		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CFD13195268874CE00B6EDB3 /* BRMastodonClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonClient.h; sourceTree = "<group>"; };
 		CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonClient.m; sourceTree = "<group>"; };
 		CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonApp.h; sourceTree = "<group>"; };
@@ -532,8 +437,6 @@
 		CFEBAC22293B214900447421 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/BRMastodonSourceSelectionWindowController.strings"; sourceTree = "<group>"; };
 		CFEC43F82695DC5200E66DD0 /* DummyStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyStatus.h; sourceTree = "<group>"; };
 		CFEC43F92695DC5200E66DD0 /* DummyStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyStatus.m; sourceTree = "<group>"; };
-		CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingFontTableViewController.h; sourceTree = "<group>"; };
-		CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingFontTableViewController.m; sourceTree = "<group>"; };
 		CFFAE5DD15E02D3400389518 /* RainDropDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainDropDetailViewController.h; sourceTree = "<group>"; };
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
@@ -549,13 +452,12 @@
 			files = (
 				CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */,
 				CF620A1D1A0476DC003EB806 /* Accounts.framework in Frameworks */,
-				CF620A1B1A047554003EB806 /* Social.framework in Frameworks */,
 				CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */,
-				CF8FDEAF15D4125200DD6DEA /* libxml2.dylib in Frameworks */,
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
 				CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */,
 				CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */,
-				9FA6D7D2262648D3F2034C75 /* (null) in Frameworks */,
+				9FA6D7D2262648D3F2034C75 /* BuildFile in Frameworks */,
+				A0A38CCE2FE7797211543265 /* Pods_TootRain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,28 +467,11 @@
 			files = (
 				CF5D2D6B29350BC400745D63 /* Security.framework in Frameworks */,
 				CF5D2D6C29350BC400745D63 /* Accounts.framework in Frameworks */,
-				CF5D2D6D29350BC400745D63 /* Social.framework in Frameworks */,
 				CF5D2D6E29350BC400745D63 /* QuartzCore.framework in Frameworks */,
-				CF5D2D6F29350BC400745D63 /* libxml2.dylib in Frameworks */,
 				CF5D2D7029350BC400745D63 /* WebKit.framework in Frameworks */,
 				CF5D2D7129350BC400745D63 /* libz.1.2.5.dylib in Frameworks */,
 				CF5D2D7229350BC400745D63 /* Cocoa.framework in Frameworks */,
 				3215878632DBBD3D07F06611 /* Pods_TootRain_standalone.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFCA49B71AB8AA6F00E922C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5C8188B3562934678C1E6BCD /* Pods_TweetRain_ios.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFCA49CF1AB8AA6F00E922C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +508,7 @@
 				CF01B4CD29A888C2004397DF /* ScriptCommand */,
 			);
 			name = Classes;
+			path = TweetRain;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -637,7 +523,6 @@
 			isa = PBXGroup;
 			children = (
 				CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */,
-				CF8FDEAE15D4125200DD6DEA /* libxml2.dylib */,
 				CF8FDEAC15D4124900DD6DEA /* WebKit.framework */,
 				CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */,
 				CF8FDEA815D4123700DD6DEA /* Cocoa.framework */,
@@ -652,14 +537,12 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* TootRain.app */,
-				CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */,
-				CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */,
 				CF5D2D7929350BC400745D63 /* TootRain.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* Smarkin */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */,
@@ -667,14 +550,11 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				CFCA49BB1AB8AA6F00E922C9 /* TweetRain-ios */,
-				CFCA49D51AB8AA6F00E922C9 /* TweetRain-iosTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				503D4542FE18381EB2403948 /* Pods */,
-				CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */,
 			);
-			name = Smarkin;
+			name = TootRain;
 			sourceTree = "<group>";
 		};
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
@@ -712,6 +592,7 @@
 				CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */,
 			);
 			name = "Other Sources";
+			path = TweetRain;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -721,6 +602,7 @@
 				CFE39F901A764B8C004644C8 /* Localizable.strings */,
 				CFCB21ED1A1FBA2500202991 /* Images.xcassets */,
 				8D1107310486CEB800E47090 /* TweetRain-Info.plist */,
+				CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				CF11767F15E90BD0001138F2 /* Credits.rtf */,
 				CF5DE47E26A06AAA0040BD63 /* emoji.json */,
@@ -730,6 +612,7 @@
 				CFC4802529A7B67100FF0E2D /* tootrain.sdef */,
 			);
 			name = Resources;
+			path = TweetRain;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -737,11 +620,10 @@
 			children = (
 				CFD1319B2688939D00B6EDB3 /* Security.framework */,
 				CF620A1C1A0476DC003EB806 /* Accounts.framework */,
-				CF620A1A1A047554003EB806 /* Social.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				52D982291F0369F2605FB7E7 /* Pods_TweetRain_ios.framework */,
 				ADB1A45FAF0211C3BC344554 /* Pods_TootRain_standalone.framework */,
+				BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -833,57 +715,6 @@
 			name = StreamController;
 			sourceTree = "<group>";
 		};
-		CF80401B1ABE0D7100DF3D59 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				CF2AAADF1ABADDE3002EC003 /* AuthViewController.h */,
-				CF2AAAE01ABADDE3002EC003 /* AuthViewController.m */,
-				CF2AAAE11ABADDE3002EC003 /* AuthViewController.xib */,
-				CF78F50B1B07C0FA006192DE /* AuthAccountTableViewController.h */,
-				CF78F50C1B07C0FA006192DE /* AuthAccountTableViewController.m */,
-			);
-			name = Auth;
-			sourceTree = "<group>";
-		};
-		CF80401C1ABE0D7D00DF3D59 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				CF2AAAE41ABADDE3002EC003 /* SettingViewController.h */,
-				CF2AAAE51ABADDE3002EC003 /* SettingViewController.m */,
-				CF2AAAE21ABADDE3002EC003 /* SettingAccountTableViewController.h */,
-				CF2AAAE31ABADDE3002EC003 /* SettingAccountTableViewController.m */,
-				CF82C2C31AC861DE00F0DC05 /* SettingColorViewController.h */,
-				CF82C2C41AC861DE00F0DC05 /* SettingColorViewController.m */,
-				CFF1BCD81AE41C47004EDAFE /* SettingFontTableViewController.h */,
-				CFF1BCD91AE41C47004EDAFE /* SettingFontTableViewController.m */,
-				CF6FA7441B06599B0088748F /* SettingAboutTableViewController.h */,
-				CF6FA7451B06599B0088748F /* SettingAboutTableViewController.m */,
-			);
-			name = Setting;
-			sourceTree = "<group>";
-		};
-		CF8040221ABE0DAC00DF3D59 /* Rain Drop */ = {
-			isa = PBXGroup;
-			children = (
-				CF0C61B61ABD8F2800C170FC /* RainDropContainerView.h */,
-				CF0C61B71ABD8F2800C170FC /* RainDropContainerView.m */,
-				CF0C61A11ABB4C3600C170FC /* RainDropViewController.h */,
-				CF0C61A21ABB4C3600C170FC /* RainDropViewController.m */,
-				CF0C61B41ABD849900C170FC /* RainDropViewController.xib */,
-			);
-			name = "Rain Drop";
-			sourceTree = "<group>";
-		};
-		CF8040231ABE0DC100DF3D59 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				CF80401D1ABE0DA100DF3D59 /* RainDropDetailViewController.h */,
-				CF80401E1ABE0DA100DF3D59 /* RainDropDetailViewController.m */,
-				CF80401F1ABE0DA100DF3D59 /* RainDropDetailViewController.xib */,
-			);
-			name = Detail;
-			sourceTree = "<group>";
-		};
 		CF8534641CC3E351004D1FFC /* RainDrop Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,27 +723,6 @@
 				CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */,
 			);
 			name = "RainDrop Detail";
-			sourceTree = "<group>";
-		};
-		CF8DC2281CDE7CBB00128E68 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				CF8DC2221CDE789800128E68 /* BRSearchViewController.h */,
-				CF8DC2231CDE789800128E68 /* BRSearchViewController.m */,
-				CF8DC2251CDE7CB600128E68 /* TextFieldTableViewCell.h */,
-				CF8DC2261CDE7CB600128E68 /* TextFieldTableViewCell.m */,
-			);
-			name = Search;
-			sourceTree = "<group>";
-		};
-		CF912ACA1ABF07BC00B9426B /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				CF912ACB1ABF07E000B9426B /* ComposeStatusViewController.h */,
-				CF912ACC1ABF07E000B9426B /* ComposeStatusViewController.m */,
-				CF912ACD1ABF07E000B9426B /* ComposeStatusViewController.xib */,
-			);
-			name = Actions;
 			sourceTree = "<group>";
 		};
 		CF9F62081563D548004C6514 /* Settings */ = {
@@ -968,56 +778,6 @@
 				CF1FE3CF2957356000CABB47 /* MisskeyUser.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		CFCA49BB1AB8AA6F00E922C9 /* TweetRain-ios */ = {
-			isa = PBXGroup;
-			children = (
-				CF2AAADD1ABADDE3002EC003 /* AppDelegate.h */,
-				CF2AAADE1ABADDE3002EC003 /* AppDelegate.m */,
-				CF2AAAE61ABADDE3002EC003 /* ViewController.h */,
-				CF2AAAE71ABADDE3002EC003 /* ViewController.m */,
-				CF82C2C81AC89A1E00F0DC05 /* BRNavigationViewController.h */,
-				CF82C2C91AC89A1E00F0DC05 /* BRNavigationViewController.m */,
-				CF8DC2281CDE7CBB00128E68 /* Search */,
-				CF8040221ABE0DAC00DF3D59 /* Rain Drop */,
-				CF8040231ABE0DC100DF3D59 /* Detail */,
-				CF912ACA1ABF07BC00B9426B /* Actions */,
-				CF80401B1ABE0D7100DF3D59 /* Auth */,
-				CF80401C1ABE0D7D00DF3D59 /* Setting */,
-				CFCA49C91AB8AA6F00E922C9 /* Images.xcassets */,
-				CF2AAAF31ABB1698002EC003 /* Main.storyboard */,
-				CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */,
-			);
-			path = "TweetRain-ios";
-			sourceTree = "<group>";
-		};
-		CFCA49BC1AB8AA6F00E922C9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CFCA49BD1AB8AA6F00E922C9 /* Info.plist */,
-				CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */,
-				CFCA49BE1AB8AA6F00E922C9 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CFCA49D51AB8AA6F00E922C9 /* TweetRain-iosTests */ = {
-			isa = PBXGroup;
-			children = (
-				CFCA49D81AB8AA6F00E922C9 /* TweetRain_iosTests.m */,
-				CFCA49D61AB8AA6F00E922C9 /* Supporting Files */,
-			);
-			path = "TweetRain-iosTests";
-			sourceTree = "<group>";
-		};
-		CFCA49D61AB8AA6F00E922C9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CF85346A1CC4133C004D1FFC /* InfoPlist.strings */,
-				CFCA49D71AB8AA6F00E922C9 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CFD131942688745A00B6EDB3 /* BRMastodonClient */ = {
@@ -1080,7 +840,7 @@
 				CF5D2D3329350BC400745D63 /* Sources */,
 				CF5D2D6A29350BC400745D63 /* Frameworks */,
 				CF5D2D7429350BC400745D63 /* Copy Files */,
-				CF5D2D7529350BC400745D63 /* [CP] Embed Pods Frameworks */,
+				1C92C749DC72BEF557DD96BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1091,44 +851,6 @@
 			productName = Smarkin;
 			productReference = CF5D2D7929350BC400745D63 /* TootRain.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CFCA49DE1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-ios" */;
-			buildPhases = (
-				69265FAC2877D38CC689E691 /* [CP] Check Pods Manifest.lock */,
-				CFCA49B61AB8AA6F00E922C9 /* Sources */,
-				CFCA49B71AB8AA6F00E922C9 /* Frameworks */,
-				CFCA49B81AB8AA6F00E922C9 /* Resources */,
-				CF6FECE31B08B39D009191A5 /* ShellScript */,
-				229604CE01DD0B5062614F83 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "TweetRain-ios";
-			productName = "TweetRain-ios";
-			productReference = CFCA49BA1AB8AA6F00E922C9 /* TweetRain-ios.app */;
-			productType = "com.apple.product-type.application";
-		};
-		CFCA49D11AB8AA6F00E922C9 /* TweetRain-iosTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CFCA49DF1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-iosTests" */;
-			buildPhases = (
-				CFCA49CE1AB8AA6F00E922C9 /* Sources */,
-				CFCA49CF1AB8AA6F00E922C9 /* Frameworks */,
-				CFCA49D01AB8AA6F00E922C9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CFCA49D41AB8AA6F00E922C9 /* PBXTargetDependency */,
-			);
-			name = "TweetRain-iosTests";
-			productName = "TweetRain-iosTests";
-			productReference = CFCA49D21AB8AA6F00E922C9 /* TweetRain-iosTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -1150,14 +872,6 @@
 					CF5D2D2029350BC400745D63 = {
 						DevelopmentTeam = CC63FD9H8S;
 					};
-					CFCA49B91AB8AA6F00E922C9 = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = CC63FD9H8S;
-					};
-					CFCA49D11AB8AA6F00E922C9 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = CFCA49B91AB8AA6F00E922C9;
-					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */;
@@ -1170,15 +884,13 @@
 				ja,
 				"zh-Hant",
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* Smarkin */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* TootRain */,
 				CF5D2D2029350BC400745D63 /* TootRain-standalone */,
-				CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */,
-				CFCA49D11AB8AA6F00E922C9 /* TweetRain-iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1234,28 +946,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFCA49B81AB8AA6F00E922C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF0C61B51ABD849900C170FC /* RainDropViewController.xib in Resources */,
-				CF2AAAEA1ABADDE3002EC003 /* AuthViewController.xib in Resources */,
-				CFCA49CA1AB8AA6F00E922C9 /* Images.xcassets in Resources */,
-				CF5AB3BB293DCD7A00C8AC7B /* Localizable.strings in Resources */,
-				CF912ACF1ABF07E000B9426B /* ComposeStatusViewController.xib in Resources */,
-				CF8040211ABE0DA100DF3D59 /* RainDropDetailViewController.xib in Resources */,
-				CF2AAAF51ABB1698002EC003 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFCA49D01AB8AA6F00E922C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF8534681CC4133C004D1FFC /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1281,50 +971,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		229604CE01DD0B5062614F83 /* [CP] Embed Pods Frameworks */ = {
+		1C92C749DC72BEF557DD96BF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Color-Picker-for-iOS/Color_Picker_for_iOS.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/UIImage+BlurredFrame/UIImage_BlurredFrame.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Color_Picker_for_iOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImage_BlurredFrame.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		69265FAC2877D38CC689E691 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TweetRain-ios-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF5D2D2129350BC400745D63 /* [CP] Check Pods Manifest.lock */ = {
@@ -1348,37 +1010,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		CF5D2D7529350BC400745D63 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone-frameworks.sh",
-				"${PODS_ROOT}/Sparkle/Sparkle.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF6FECE31B08B39D009191A5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" be3de76eb1918a93b4d68a8e87b983750d738aed 14ee308c3c10a8baa8cccc093c1c4c9c00d34c8c4b0b69aa8e7aa5dd0dae61c0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1543,53 +1174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFCA49B61AB8AA6F00E922C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF2AAAF11ABB05DA002EC003 /* User.m in Sources */,
-				CF2AAAED1ABADDE3002EC003 /* ViewController.m in Sources */,
-				CF6FA7461B06599B0088748F /* SettingAboutTableViewController.m in Sources */,
-				CF2AAAEB1ABADDE3002EC003 /* SettingAccountTableViewController.m in Sources */,
-				CF8DC2241CDE789800128E68 /* BRSearchViewController.m in Sources */,
-				CF2AAAE81ABADDE3002EC003 /* AppDelegate.m in Sources */,
-				CF0C61A41ABB4C3600C170FC /* RainDropViewController.m in Sources */,
-				CF2AAAEE1ABAF317002EC003 /* SettingManager.m in Sources */,
-				CF2AAAE91ABADDE3002EC003 /* AuthViewController.m in Sources */,
-				CF78F50D1B07C0FA006192DE /* AuthAccountTableViewController.m in Sources */,
-				CFF1BCDA1AE41C47004EDAFE /* SettingFontTableViewController.m in Sources */,
-				CF912ACE1ABF07E000B9426B /* ComposeStatusViewController.m in Sources */,
-				CFCA49BF1AB8AA6F00E922C9 /* main.m in Sources */,
-				CF2AAAEC1ABADDE3002EC003 /* SettingViewController.m in Sources */,
-				CF8DC2271CDE7CB600128E68 /* TextFieldTableViewCell.m in Sources */,
-				CF82C2CA1AC89A1E00F0DC05 /* BRNavigationViewController.m in Sources */,
-				CF2AAAF01ABB0038002EC003 /* StreamController.m in Sources */,
-				CF82C2C61AC861DE00F0DC05 /* SettingColorViewController.m in Sources */,
-				CF8040201ABE0DA100DF3D59 /* RainDropDetailViewController.m in Sources */,
-				CFDDE453293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
-				CFDDE44E293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */,
-				CF2AAAEF1ABAFFEE002EC003 /* Status.m in Sources */,
-				CF0C61B81ABD8F2800C170FC /* RainDropContainerView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFCA49CE1AB8AA6F00E922C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CFCA49D91AB8AA6F00E922C9 /* TweetRain_iosTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CFCA49D41AB8AA6F00E922C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CFCA49B91AB8AA6F00E922C9 /* TweetRain-ios */;
-			targetProxy = CFCA49D31AB8AA6F00E922C9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -1612,25 +1197,6 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		CF2AAAF31ABB1698002EC003 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF2AAAF41ABB1698002EC003 /* Base */,
-				CFA312A526B27D58008F4BA0 /* zh-Hant */,
-				CF5AB3BC293DCD8900C8AC7B /* ja */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CF5AB3B9293DCD7A00C8AC7B /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF5AB3BA293DCD7A00C8AC7B /* zh-Hant */,
-				CF5AB3BD293DCD8900C8AC7B /* ja */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		CF5D2D7B29350DA900745D63 /* MainMenu-standalone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1639,14 +1205,6 @@
 				CF5D2D8129350DE700745D63 /* ja */,
 			);
 			name = "MainMenu-standalone.xib";
-			sourceTree = "<group>";
-		};
-		CF85346A1CC4133C004D1FFC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF8534691CC4133C004D1FFC /* zh-Hant */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		CFA161F626B926D600BFC5EA /* BRSlackChannelSelectionWindowController.xib */ = {
@@ -1755,8 +1313,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TweetRain-Info.plist";
+				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1798,8 +1356,8 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TweetRain-Info.plist";
+				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1829,7 +1387,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
+				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1848,7 +1406,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = $SDKROOT/usr/include/libxml2;
+				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1883,8 +1441,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TootRain-standalone-Info.plist";
+				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1928,8 +1486,8 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TootRain-standalone-Info.plist";
+				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1947,184 +1505,6 @@
 				SDKROOT = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		CFCA49DA1AB8AA6F00E922C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/TweetRain-ios",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TweetRain-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a897e675-ef3b-41e9-8736-87d3f30b3a63";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CFCA49DB1AB8AA6F00E922C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/TweetRain-ios",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TweetRain-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "549572c5-bcd2-449d-a063-ba8dc186f2b1";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CFCA49DC1AB8AA6F00E922C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TweetRain-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRain-ios.app/TweetRain-ios";
-			};
-			name = Debug;
-		};
-		CFCA49DD1AB8AA6F00E922C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TweetRain-iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TweetRain-ios.app/TweetRain-ios";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -2154,24 +1534,6 @@
 			buildConfigurations = (
 				CF5D2D7729350BC400745D63 /* Debug */,
 				CF5D2D7829350BC400745D63 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CFCA49DE1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-ios" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFCA49DA1AB8AA6F00E922C9 /* Debug */,
-				CFCA49DB1AB8AA6F00E922C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CFCA49DF1AB8AA6F00E922C9 /* Build configuration list for PBXNativeTarget "TweetRain-iosTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFCA49DC1AB8AA6F00E922C9 /* Debug */,
-				CFCA49DD1AB8AA6F00E922C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

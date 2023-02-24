@@ -1,34 +1,16 @@
 PODS:
-  - Color-Picker-for-iOS (2.0)
-  - SDWebImage (3.7.2):
-    - SDWebImage/Core (= 3.7.2)
-  - SDWebImage/Core (3.7.2)
   - Sparkle (2.3.0)
-  - SVProgressHUD (1.1.2)
-  - "UIImage+BlurredFrame (0.0.4)"
 
 DEPENDENCIES:
-  - Color-Picker-for-iOS (~> 2.0)
-  - SDWebImage
   - Sparkle
-  - SVProgressHUD
-  - "UIImage+BlurredFrame"
 
 SPEC REPOS:
   trunk:
-    - Color-Picker-for-iOS
-    - SDWebImage
     - Sparkle
-    - SVProgressHUD
-    - "UIImage+BlurredFrame"
 
 SPEC CHECKSUMS:
-  Color-Picker-for-iOS: 2988926c7a3ceb6f472d6c3c225cbc88d4be3635
-  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   Sparkle: 568478a5d774eee0f5dab78535456c95fb8211b4
-  SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
-  "UIImage+BlurredFrame": ad2f7195c6947ea3117c7d202f75a51958d5061a
 
-PODFILE CHECKSUM: a995269ce52f898774752ad2862aeb53f4b58b09
+PODFILE CHECKSUM: 1fade7ceafb5a5d7dcbef958d0e96547ed75c2ff
 
 COCOAPODS: 1.11.3
