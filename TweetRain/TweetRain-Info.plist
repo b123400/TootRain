@@ -32,6 +32,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ShowStatusIntent</string>
+	</array>
 	<key>OSAScriptingDefinition</key>
 	<string>tootrain.sdef</string>
 </dict>

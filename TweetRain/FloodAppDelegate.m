@@ -9,21 +9,23 @@
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
 #import "BRSlackClient.h"
+#import "ShowStatusIntentHandler.h"
 
 @implementation FloodAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[self newWindow:self];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:@{
-                                                              @"NSApplicationCrashOnExceptions": @YES
-                                                              }];
     NSImage *icon = [NSImage imageNamed:[[SettingManager sharedManager] customIcon]];
     [[NSApplication sharedApplication] setApplicationIconImage:icon];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
-	
 	return NO;
 }
+
+- (id)application:(NSApplication *)application handlerForIntent:(INIntent *)intent API_AVAILABLE(macos(11.0)){
+    return [[ShowStatusIntentHandler alloc] init];
+}
+
 -(IBAction)newWindow:(id)sender{
 	if(![[SettingManager sharedManager] selectedAccount]){
 		[[SettingViewController sharedPrefsWindowController] showWindow:self];

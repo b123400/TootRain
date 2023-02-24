@@ -20,6 +20,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>ShowStatusIntent</string>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.social-networking</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,6 +36,10 @@
 	<string>MainMenu-standalone</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ShowStatusIntent</string>
+	</array>
 	<key>OSAScriptingDefinition</key>
 	<string>tootrain.sdef</string>
 	<key>SUEnableInstallerLauncherService</key>
