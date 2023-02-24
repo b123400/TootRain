@@ -24,5 +24,6 @@
 + (instancetype)shared;
 
 - (void)startStreaming;
+- (void)showStatus:(Status *)status;
 
 @end

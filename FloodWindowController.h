@@ -10,9 +10,6 @@
 #import "StreamController.h"
 
 @interface FloodWindowController : NSWindowController<StreamControllerDelegate>{
-	NSMutableArray *currentRequests;
-	IBOutlet NSButton *moveButton;
-	
 	NSMutableArray *rainDrops;
 	
 	CGPoint lastMousePosition;

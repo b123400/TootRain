@@ -202,6 +202,10 @@
 		CFB319882935EE3600BD2C18 /* SettingAccountCellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB319862935EE3600BD2C18 /* SettingAccountCellObject.m */; };
 		CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */; };
 		CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC3791D139A7FB10072F001 /* CenteredTextCell.m */; };
+		CFC4802829A7B6C100FF0E2D /* ShowStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC4802729A7B6C100FF0E2D /* ShowStatusCommand.m */; };
+		CFC4802929A7B6C100FF0E2D /* ShowStatusCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC4802729A7B6C100FF0E2D /* ShowStatusCommand.m */; };
+		CFC4802A29A7B70200FF0E2D /* tootrain.sdef in Resources */ = {isa = PBXBuildFile; fileRef = CFC4802529A7B67100FF0E2D /* tootrain.sdef */; };
+		CFC4802B29A7B70200FF0E2D /* tootrain.sdef in Resources */ = {isa = PBXBuildFile; fileRef = CFC4802529A7B67100FF0E2D /* tootrain.sdef */; };
 		CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
 		CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */; };
 		CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */; };
@@ -476,6 +480,9 @@
 		CFB3613913996A3D0005F33D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		CFC3791C139A7FB10072F001 /* CenteredTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenteredTextCell.h; sourceTree = "<group>"; };
 		CFC3791D139A7FB10072F001 /* CenteredTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenteredTextCell.m; sourceTree = "<group>"; };
+		CFC4802529A7B67100FF0E2D /* tootrain.sdef */ = {isa = PBXFileReference; lastKnownFileType = text; path = tootrain.sdef; sourceTree = "<group>"; };
+		CFC4802629A7B6C100FF0E2D /* ShowStatusCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowStatusCommand.h; sourceTree = "<group>"; };
+		CFC4802729A7B6C100FF0E2D /* ShowStatusCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowStatusCommand.m; sourceTree = "<group>"; };
 		CFC856E529823CA5007E3EB3 /* NSTextAttachment+Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextAttachment+Image.h"; sourceTree = "<group>"; };
 		CFC856E629823CA5007E3EB3 /* NSTextAttachment+Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextAttachment+Image.m"; sourceTree = "<group>"; };
 		CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderHighlightButton.h; sourceTree = "<group>"; };
@@ -613,6 +620,7 @@
 				CFD131942688745A00B6EDB3 /* BRMastodonClient */,
 				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
 				CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */,
+				CF01B4CD29A888C2004397DF /* ScriptCommand */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -719,6 +727,7 @@
 				CF5D2D7B29350DA900745D63 /* MainMenu-standalone.xib */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				CFC9AD5915EBD63D00CC52F9 /* icon.iconset */,
+				CFC4802529A7B67100FF0E2D /* tootrain.sdef */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -750,6 +759,15 @@
 				DFFFF986A977E98B00F671E9 /* Pods-TootRain-standalone.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF01B4CD29A888C2004397DF /* ScriptCommand */ = {
+			isa = PBXGroup;
+			children = (
+				CFC4802629A7B6C100FF0E2D /* ShowStatusCommand.h */,
+				CFC4802729A7B6C100FF0E2D /* ShowStatusCommand.m */,
+			);
+			path = ScriptCommand;
 			sourceTree = "<group>";
 		};
 		CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */ = {
@@ -1175,6 +1193,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
+				CFC4802A29A7B70200FF0E2D /* tootrain.sdef in Resources */,
 				CFE39F891A7649B9004644C8 /* Errors.strings in Resources */,
 				CFCB21EE1A1FBA2500202991 /* Images.xcassets in Resources */,
 				CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */,
@@ -1199,6 +1218,7 @@
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
+				CFC4802B29A7B70200FF0E2D /* tootrain.sdef in Resources */,
 				CF5D2D2829350BC400745D63 /* Images.xcassets in Resources */,
 				CF5D2D2929350BC400745D63 /* FloodWindowController.xib in Resources */,
 				CF5D2D2A29350BC400745D63 /* RainDropViewController.xib in Resources */,
@@ -1423,6 +1443,7 @@
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
 				CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */,
 				CFDDE451293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
+				CFC4802829A7B6C100FF0E2D /* ShowStatusCommand.m in Sources */,
 				CFABC704268D73E600A25EF4 /* SettingOAuthWindowController.m in Sources */,
 				CFE8F5BD15D7E88600815830 /* RainDropViewController.m in Sources */,
 				CFE8F5C015D7E9F100815830 /* RainDropView.m in Sources */,
@@ -1502,6 +1523,7 @@
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
 				CF5D2D5A29350BC400745D63 /* BRSlackStreamHandle.m in Sources */,
 				CFDDE452293754D100E64EF5 /* SettingAccountDetailMastodonView.m in Sources */,
+				CFC4802929A7B6C100FF0E2D /* ShowStatusCommand.m in Sources */,
 				CF5D2D5B29350BC400745D63 /* SettingOAuthWindowController.m in Sources */,
 				CF5D2D5C29350BC400745D63 /* RainDropViewController.m in Sources */,
 				CF5D2D5D29350BC400745D63 /* RainDropView.m in Sources */,

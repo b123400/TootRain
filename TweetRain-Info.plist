@@ -24,11 +24,15 @@
 	<string>public.app-category.social-networking</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2021 b123400. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>tootrain.sdef</string>
 </dict>
 </plist>

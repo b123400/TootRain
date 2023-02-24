@@ -94,9 +94,7 @@ static StreamController *shared;
         BRMastodonStreamHandle *brHandle = [[BRMastodonClient shared] streamingStatusesWithAccount:mastondonAccount];
         MastodonStreamHandle *newHandle = [[MastodonStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MastodonStatus * _Nonnull status) {
-            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
-                [_self.delegate streamController:_self didReceivedStatus:status];
-            }
+            [_self showStatus:status];
         };
         newHandle.onConnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), mastondonAccount.displayName]];
@@ -116,9 +114,7 @@ static StreamController *shared;
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), slackAccount.teamName]];
         };
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
-            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
-                [_self.delegate streamController:_self didReceivedStatus:message];
-            }
+            [_self showStatus:message];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
             if ([error.domain isEqualTo:@"BRSlackClient"] && error.code == 401) {
@@ -138,9 +134,7 @@ static StreamController *shared;
         BRMisskeyStreamHandle *brHandle = [[BRMisskeyClient shared] streamStatusWithAccount:misskeyAccount];
         MisskeyStreamHandle *newHandle = [[MisskeyStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MisskeyStatus * _Nonnull status) {
-            if ([_self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
-                [_self.delegate streamController:_self didReceivedStatus:status];
-            }
+            [_self showStatus:status];
         };
         newHandle.onConnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), misskeyAccount.displayName]];
@@ -158,8 +152,14 @@ static StreamController *shared;
 #elif TARGET_OS_MAC
     DummyStatus *status = [[DummyStatus alloc] init];
     status.text = text;
-    [self.delegate streamController:self didReceivedStatus:status];
+    [self showStatus:status];
 #endif
+}
+
+- (void)showStatus:(Status *)status {
+    if ([self.delegate respondsToSelector:@selector(streamController:didReceivedStatus:)]) {
+        [self.delegate streamController:self didReceivedStatus:status];
+    }
 }
 
 @end

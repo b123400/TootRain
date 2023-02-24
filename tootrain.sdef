@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary xmlns:xi="http://www.w3.org/2003/XInclude">
+    <suite name="Acceptable Commands" code="SVrb" description="">
+        <command name="show status" code="SVrbDpCm" description="">
+            <cocoa class="ShowStatusCommand"/>
+            <direct-parameter description="">
+                <type type="text"/>
+            </direct-parameter>
+            <parameter name="avatar" code="arg2" type="text" optional="yes"
+                    description="">
+                    <cocoa key="profileImageURL"/>
+            </parameter>
+        </command>
+    </suite>
+</dictionary>

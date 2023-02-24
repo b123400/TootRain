@@ -23,8 +23,6 @@
 @implementation FloodWindowController
 
 -(id)init{
-	
-	currentRequests=[[NSMutableArray alloc] init];
 	rainDrops=[[NSMutableArray alloc]init];
     
 	timer=[NSTimer scheduledTimerWithTimeInterval:0.1
