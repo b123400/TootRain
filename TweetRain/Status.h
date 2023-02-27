@@ -11,30 +11,20 @@
 #import "BRMastodonStatus.h"
 
 @interface Status : NSObject{
-	User *user;
-	
-	NSString *statusID;
-	NSDate *createdAt;
-	NSString *text;
-	
-	BOOL liked;
-	
-	NSMutableDictionary *entities;
-	NSMutableDictionary *otherInfos;
 }
-@property (strong,nonatomic) User *user;
-@property (strong,nonatomic) NSString *statusID;
-@property (strong,nonatomic) NSDate *createdAt;
-@property (strong,nonatomic) NSString *text;
+@property (strong, nonatomic, nullable) User *user;
+@property (strong, nonatomic, nonnull) NSString *statusID;
+@property (strong, nonatomic, nullable) NSDate *createdAt;
+@property (strong, nonatomic, nullable) NSString *text;
 
-@property (assign,nonatomic) BOOL favourited;
-@property (assign,nonatomic) BOOL bookmarked;
-@property (assign,nonatomic) BOOL reblogged;
+@property (assign, nonatomic) BOOL favourited;
+@property (assign, nonatomic) BOOL bookmarked;
+@property (assign, nonatomic) BOOL reblogged;
 
-@property (strong,nonatomic) NSAttributedString *attributedText;
+@property (strong, nonatomic, nullable) NSAttributedString *attributedText;
 
 - (BOOL)canReply;
-- (void)replyToStatusWithText:(NSString *)text
+- (void)replyToStatusWithText:(NSString * _Nonnull)text
             completionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
 
 - (BOOL)canBookmark;
@@ -45,5 +35,7 @@
 
 - (BOOL)canReblog;
 - (void)reblogStatusWithCompletionHandler:(void (^_Nonnull)(NSError * _Nullable error))callback;
+
+- (NSString * _Nonnull)textForScripting;
 
 @end

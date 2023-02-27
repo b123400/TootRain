@@ -40,4 +40,21 @@
     [NSException raise:NSGenericException format:@"Not implemented"];
 }
 
+- (NSUniqueIDSpecifier *)objectSpecifier {
+    NSScriptClassDescription *appDescription = (NSScriptClassDescription *)[NSApp classDescription];
+    return [[NSUniqueIDSpecifier alloc] initWithContainerClassDescription:appDescription containerSpecifier:nil key:@"statuses" uniqueID:self.statusID];
+}
+
+- (NSString *)textForScripting {
+    return self.text ?: self.attributedText.string ?: @"";
+}
+
+- (NSString *)usernameForScripting {
+    return self.user.username ?: @"";
+}
+
+- (NSString *)screenNameForScripting {
+    return self.user.screenName ?: @"";
+}
+
 @end

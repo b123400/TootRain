@@ -12,5 +12,27 @@
                     <cocoa key="profileImageURL"/>
             </parameter>
         </command>
+        <class name="application" code="capp" description="TootRain’s top level scripting object." plural="applications" inherits="application">
+            <cocoa class="BRApplication"/>
+            <element type="status" access="r">
+                <cocoa key="statuses"/>
+            </element>
+        </class>
+        
+        <class name="status" code="STAT" description="A status" inherits="item" plural="statuses">
+            <cocoa class="Status"/>
+            <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the status.">
+                <cocoa key="statusID"/>
+            </property>
+            <property name="body" code="body" description="The plain text content of the status." type="text" access="r">
+                <cocoa key="textForScripting"/>
+            </property>
+            <property name="username" code="Unam" description="The username of the author." type="text" access="r">
+                <cocoa key="usernameForScripting"/>
+            </property>
+            <property name="screenName" code="pnam" description="The screen name of the author" type="text" access="r">
+                <cocoa key="screenNameForScripting"/>
+            </property>
+        </class>
     </suite>
 </dictionary>

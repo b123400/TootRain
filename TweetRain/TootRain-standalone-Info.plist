@@ -35,7 +35,7 @@
 	<key>NSMainNibFile</key>
 	<string>MainMenu-standalone</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>BRApplication</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ShowStatusIntent</string>

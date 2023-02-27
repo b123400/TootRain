@@ -10,13 +10,13 @@
 #import "StreamController.h"
 
 @interface FloodWindowController : NSWindowController<StreamControllerDelegate>{
-	NSMutableArray *rainDrops;
-	
 	CGPoint lastMousePosition;
 	NSTimer *timer;
 	
 	NSMutableSet<NSString*> *shownStatusIds;
 }
+
+@property (nonatomic, strong) NSMutableArray *rainDrops;
 
 -(void)resetFrame;
 

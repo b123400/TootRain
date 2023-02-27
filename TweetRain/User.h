@@ -14,12 +14,11 @@
 
 @interface User : NSObject
 
-@property (nonatomic,strong) NSString *username;
-@property (nonatomic,strong) NSString *screenName;
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *screenName;
 
-@property (nonatomic,strong) NSURL *profileImageURL;
-
-@property (nonatomic,strong) NSMutableDictionary *otherInfos;
+@property (nonatomic, strong) NSURL *profileImageURL;
 
 - (NSAttributedString *)attributedScreenName;
 

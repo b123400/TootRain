@@ -23,7 +23,7 @@
 @implementation FloodWindowController
 
 -(id)init{
-	rainDrops=[[NSMutableArray alloc]init];
+    self.rainDrops=[[NSMutableArray alloc]init];
     
 	timer=[NSTimer scheduledTimerWithTimeInterval:0.1
 										   target:self
@@ -102,7 +102,7 @@
         thisViewController.view.frame=frame;
         [[[_self window] contentView]addSubview: [thisViewController view]];
         thisViewController.delegate=self;
-        [rainDrops addObject:thisViewController];
+        [self.rainDrops addObject:thisViewController];
     });
 }
 
@@ -119,7 +119,7 @@
 #pragma mark position calculation
 -(float)ySuggestionForStatusViewController:(RainDropViewController*)controller atY:(float)thisY{
 	float minY=thisY;
-	for(RainDropViewController *thisController in rainDrops){
+	for(RainDropViewController *thisController in self.rainDrops){
 		if((thisController.view.frame.origin.y<=thisY&&
 			thisController.view.frame.origin.y+thisController.view.frame.size.height>=thisY)||
 		   (thisController.view.frame.origin.y<=thisY+controller.view.frame.size.height&&
@@ -146,7 +146,7 @@
 #pragma mark animation
 -(void)rainDropDidDisappear:(RainDropViewController*)rainDrop{
 	[[rainDrop view] removeFromSuperview];
-	[rainDrops removeObject:rainDrop];
+	[self.rainDrops removeObject:rainDrop];
     if (rainDrop.status.statusID != nil) {
         [shownStatusIds removeObject:rainDrop.status.statusID];
     }
@@ -160,7 +160,7 @@
 	if (!CGPointEqualToPoint(lastMousePosition,point)) {
 		lastMousePosition = point;
 		//moved
-		for (RainDropViewController *thisController in rainDrops) {
+		for (RainDropViewController *thisController in self.rainDrops) {
 			if ([thisController isPopoverShown]) {
 				//a raindrop is already paused
                 windowShouldIgnoreMouse = NO;
@@ -168,7 +168,7 @@
 				return;
 			}
 		}
-		for (RainDropViewController *thisController in rainDrops) {
+		for (RainDropViewController *thisController in self.rainDrops) {
 			CGRect rect = [thisController visibleFrame];
 			if (CGRectContainsPoint(rect, point)) {
                 if (cursorBehaviour == CursorBehaviourPause) {

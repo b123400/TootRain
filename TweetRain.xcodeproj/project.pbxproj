@@ -184,6 +184,8 @@
 		CFD13197268874CE00B6EDB3 /* BRMastodonClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */; };
 		CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */; };
 		CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1319B2688939D00B6EDB3 /* Security.framework */; };
+		CFD7C52029AB99E80053A661 /* BRApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD7C51F29AB99E80053A661 /* BRApplication.m */; };
+		CFD7C52129AB99E80053A661 /* BRApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD7C51F29AB99E80053A661 /* BRApplication.m */; };
 		CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */; };
 		CFD824D6268E21EA00BEB0AC /* BRMastodonOAuthResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD824D5268E21EA00BEB0AC /* BRMastodonOAuthResult.m */; };
 		CFDDE44C293754C200E64EF5 /* SettingAccountDetailSlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE44B293754C200E64EF5 /* SettingAccountDetailSlackView.m */; };
@@ -410,6 +412,8 @@
 		CFD1319826887C9F00B6EDB3 /* BRMastodonApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonApp.h; sourceTree = "<group>"; };
 		CFD1319926887C9F00B6EDB3 /* BRMastodonApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonApp.m; sourceTree = "<group>"; };
 		CFD1319B2688939D00B6EDB3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CFD7C51E29AB99E80053A661 /* BRApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRApplication.h; sourceTree = "<group>"; };
+		CFD7C51F29AB99E80053A661 /* BRApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRApplication.m; sourceTree = "<group>"; };
 		CFD824D1268E19B900BEB0AC /* BRMastodonAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonAccount.h; sourceTree = "<group>"; };
 		CFD824D2268E19B900BEB0AC /* BRMastodonAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonAccount.m; sourceTree = "<group>"; };
 		CFD824D4268E21EA00BEB0AC /* BRMastodonOAuthResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonOAuthResult.h; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */,
 				CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */,
+				CFD7C51E29AB99E80053A661 /* BRApplication.h */,
+				CFD7C51F29AB99E80053A661 /* BRApplication.m */,
 				CF3A187515D64F4100D8E07F /* FloodWindowController.h */,
 				CF3A187615D64F4100D8E07F /* FloodWindowController.m */,
 				CF3A187715D64F4100D8E07F /* FloodWindowController.xib */,
@@ -1074,6 +1080,7 @@
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BC2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
+				CFD7C52029AB99E80053A661 /* BRApplication.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
@@ -1156,6 +1163,7 @@
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BD2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
+				CFD7C52129AB99E80053A661 /* BRApplication.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
 				CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,

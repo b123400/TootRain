@@ -11,6 +11,7 @@
 
 - (instancetype)initWithMastodonUser:(BRMastodonUser *)user {
     if (self = [super init]) {
+        self.userID = user.userID;
         self.username = user.accountName;
         self.screenName = user.displayName;
         self.profileImageURL = user.profileImageURL;
