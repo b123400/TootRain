@@ -17,6 +17,7 @@
 	[self newWindow:self];
     NSImage *icon = [NSImage imageNamed:[[SettingManager sharedManager] customIcon]];
     [[NSApplication sharedApplication] setApplicationIconImage:icon];
+    [NSApp unhide:self];
 }
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	return NO;
