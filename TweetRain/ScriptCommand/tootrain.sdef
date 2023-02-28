@@ -24,8 +24,11 @@
             <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the status.">
                 <cocoa key="statusID"/>
             </property>
-            <property name="body" code="body" description="The plain text content of the status." type="text" access="r">
+            <property name="body" code="body" description="The raw text content of the status, post from Mastodon usually contains a HTML text." type="text" access="r">
                 <cocoa key="textForScripting"/>
+            </property>
+            <property name="rawBody" code="Rawb" description="The plain text content of the status." type="text" access="r">
+                <cocoa key="rawTextForScripting"/>
             </property>
             <property name="username" code="Unam" description="The username of the author." type="text" access="r">
                 <cocoa key="usernameForScripting"/>

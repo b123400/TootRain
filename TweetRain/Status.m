@@ -46,6 +46,10 @@
 }
 
 - (NSString *)textForScripting {
+    return self.attributedText.string ?: self.text ?: @"";
+}
+
+- (NSString *)rawTextForScripting {
     return self.text ?: self.attributedText.string ?: @"";
 }
 
