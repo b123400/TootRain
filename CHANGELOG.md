@@ -1,6 +1,11 @@
 # Change Log
 
-## 1.6 - Unreleased
+## 1.7 - 2023-03-01
+
+- Added AppleScript support
+- Added Shortcuts support
+
+## 1.6 - 2023-02-01
 
 - Support animated GIF and PNG
 - Support emoji in display name
