@@ -507,6 +507,7 @@
 - (void)changeFont:(id)sender{
 	NSFontManager *manager=sender;
 	NSFont *theFont=manager.selectedFont;
+    theFont = [manager convertFont:theFont];
     [[SettingManager sharedManager] setFont:theFont];
 	
     [self.chooseFontButton setTitle:[NSString stringWithFormat:@"%@ %.0f",[theFont displayName],[theFont pointSize]]];
