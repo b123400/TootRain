@@ -317,7 +317,7 @@ static NSMutableArray *savedAccounts=nil;
 }
 
 - (NSFont*)font{
-    return [self settingDataWithKey:@"textColor" ofClass:[NSFont class] defaultValue:[NSFont fontWithName:@"Arial" size:36]];
+    return [self settingDataWithKey:@"font" ofClass:[NSFont class] defaultValue:[NSFont fontWithName:@"Arial" size:36]];
 }
 
 - (void)setFont:(NSFont*)font {
