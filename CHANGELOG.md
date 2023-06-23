@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.7.1 - 2023-06-12
+
+- Fixed issue with font setting (#1)
+
 ## 1.7 - 2023-03-01
 
 - Added AppleScript support
