@@ -27,8 +27,9 @@
 {
 	if(backgroundColor){
 		[backgroundColor setFill];
-		NSRectFill(dirtyRect);
+		NSRectFill(self.bounds);
 	}
+    [super drawRect:dirtyRect];
 }
 - (void)viewDidMoveToSuperview{
 	if(self.superview){
