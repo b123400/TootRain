@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.7.2 - 2023-09-29
+
+- Fixed issue on macOS 14 Sonoma
+
 ## 1.7.1 - 2023-06-12
 
 - Fixed issue with font setting (#1)
