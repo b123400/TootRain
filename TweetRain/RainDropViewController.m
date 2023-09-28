@@ -34,9 +34,9 @@
     return self;
 }
 - (id)initWithStatus:(Status*)_status{
-	status=_status;
-	paused=YES;
-	margin=0;
+	status = _status;
+	paused = YES;
+	margin = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appearanceSettingChanged:)
                                                  name:kRainDropAppearanceChangedNotification
@@ -79,7 +79,8 @@
 
 -(void)viewDidMovedToSuperview:(id)sender{
 	NSView *parentView=[[self view]superview];
-	[[self view] setFrame:CGRectMake(parentView.frame.size.width, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    [[self view] setFrame:CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    self.view.layer.transform = CATransform3DMakeTranslation(parentView.frame.size.width, 0, 0);
 	CGRect rect=contentTextField.frame;
 	rect.origin.x = rect.origin.y = margin;
 	rect.size.width+=5;
@@ -103,20 +104,34 @@
 #pragma mark animation
 
 -(void)startAnimation{
-	if(!paused){
+	if (!paused) {
 		return;
 	}
-	paused=NO;
-	CGPoint target=CGPointMake(self.view.frame.size.width*-1, self.view.frame.origin.y);
-	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
-    animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
-    animation.duration=[self animationDuration] * ((self.view.frame.origin.x + self.view.frame.size.width) / (self.view.superview.frame.size.width + self.view.frame.size.width));
-	animation.toValue = [NSValue valueWithPoint:target];
-	animation.delegate=self;
-	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
-	[[self.view animator] setFrameOrigin:target];
-	
-	animationEnd=[[NSDate alloc] initWithTimeIntervalSinceNow:animation.duration];
+	paused = NO;
+    
+    CALayer *layer = self.view.layer;
+    if ([layer animationForKey:@"move"]) {
+        CFTimeInterval pausedTime = [layer timeOffset];
+        layer.speed = 1.0;
+        layer.timeOffset = 0.0;
+        layer.beginTime = 0.0;
+        CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+        layer.beginTime = timeSincePause;
+    } else {
+        CGFloat animationDuration = [self animationDuration];
+        
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(self.view.superview.frame.size.width, 0, 0)];
+        animation.duration = animationDuration;
+        animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeTranslation(- self.view.frame.size.width, 0, 0)];
+        animation.fillMode = kCAFillModeBoth;
+        animation.removedOnCompletion = NO;
+        
+        animation.delegate = self;
+        [self.view.layer addAnimation:animation forKey:@"move"];
+        
+        animationEnd = [[NSDate alloc] initWithTimeIntervalSinceNow:animationDuration];
+    }
 }
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
 	if(flag){
@@ -128,19 +143,14 @@
 	if(paused){
 		return;
 	}
-    // The view flickers if we don't use animation to stop
-	CGRect target=[self visibleFrame];
     paused = YES;
-	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frameOrigin"];
-    //animation.fromValue = [NSValue valueWithPoint:self.view.frame.origin];
-	animation.duration=0.01;
-	animation.toValue = [NSValue valueWithPoint:target.origin];
-	[self.view setAnimations:[NSDictionary dictionaryWithObject:animation forKey:@"frameOrigin"]];
-	[[self.view animator] setFrameOrigin:target.origin];
-	self.view.frame = target;
+
+    CFTimeInterval pausedTime = [self.view.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    self.view.layer.speed = 0.0;
+    self.view.layer.timeOffset = pausedTime;
 	
-	if(animationEnd){
-		animationEnd=nil;
+	if (animationEnd) {
+		animationEnd = nil;
 	}
 }
 
@@ -182,10 +192,6 @@
 }
 #pragma mark geometry
 - (CGRect)visibleFrame {
-    CGRect frame = self.view.frame;
-	if(paused){
-		return frame;
-	}
     return self.view.layer.presentationLayer.frame;
 }
 #pragma mark interaction
@@ -241,23 +247,20 @@
     }
 }
 - (void)viewDidClicked:(id)sender {
-	if(![self paused]){
+	if (![self paused]) {
 		[self pauseAnimation];
 	}
     if ([status isKindOfClass:[DummyStatus class]]) return;
-	if(!popover){
+	if (!popover) {
 		popover=[[NSPopover alloc] init];
 		NSViewController *newController=[[RainDropDetailViewController alloc]initWithStatus:status];
 		popover.contentViewController=newController;
 		popover.behavior=NSPopoverBehaviorTransient;
 		popover.delegate=self;
 	}
-	if(![popover isShown]){
-		NSPoint mouseLoc=[self.view.window mouseLocationOutsideOfEventStream];
-		NSPoint localLoc=[self.view convertPoint:mouseLoc fromView:nil];
-		CGRect frame=CGRectMake(localLoc.x, 0, 1, self.view.frame.size.height);
-		[popover showRelativeToRect:frame ofView:self.view preferredEdge:NSMaxYEdge];
-	}else{
+	if (![popover isShown]) {
+        [popover showRelativeToRect:[self visibleFrame] ofView:self.view.superview preferredEdge:NSMaxYEdge];
+	} else {
 		[popover close];
 	}
 }

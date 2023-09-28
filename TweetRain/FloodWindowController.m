@@ -184,4 +184,16 @@
         [self.window setIgnoresMouseEvents:windowShouldIgnoreMouse];
 	}
 }
+- (void)mouseUp:(NSEvent *)event {
+    NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+    CGPoint point = NSPointToCGPoint(mouseLoc);
+    for (RainDropViewController *thisController in self.rainDrops) {
+        CGRect rect = [thisController visibleFrame];
+        if (CGRectContainsPoint(rect, point)) {
+            [thisController viewDidClicked:self];
+            return;
+        }
+    }
+    [super mouseUp:event];
+}
 @end
