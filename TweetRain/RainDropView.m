@@ -37,15 +37,12 @@
 	}
 }
 - (void)mouseUp:(NSEvent *)theEvent{
-	[delegate viewDidClicked:self];
 	[super mouseUp:theEvent];
 }
 -(void)mouseEntered:(NSEvent *)theEvent{
-	NSLog(@"entered");
 	[super mouseEntered:theEvent];
 }
 -(void)mouseExited:(NSEvent *)theEvent{
-	NSLog(@"out");
 	[super mouseExited:theEvent];
 }
 
