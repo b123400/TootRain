@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.7.3 - 2023-10-05
+
+- Fixed issue with AppleScript integration
+
 ## 1.7.2 - 2023-09-29
 
 - Fixed issue on macOS 14 Sonoma
