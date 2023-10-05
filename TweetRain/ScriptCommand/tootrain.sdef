@@ -12,7 +12,7 @@
                     <cocoa key="profileImageURL"/>
             </parameter>
         </command>
-        <class name="application" code="capp" description="TootRain’s top level scripting object." plural="applications" inherits="application">
+        <class name="application" code="capp" description="TootRain’s top level scripting object." plural="applications">
             <cocoa class="BRApplication"/>
             <element type="status" access="r">
                 <cocoa key="statuses"/>
