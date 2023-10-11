@@ -57,7 +57,7 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:[self.app authorisationURL]];
         [self.webView loadRequest:request];
     } else if (self.slackURL) {
-        self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36";
+        self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
         [self.webView loadRequest:[NSURLRequest requestWithURL:self.slackURL]];
     } else if (self.misskeyHostName) {
         NSURL *url = [[BRMisskeyClient shared] authURLWithHost:self.misskeyHostName];
