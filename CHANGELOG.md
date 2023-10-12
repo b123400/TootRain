@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.7.4 - 2023-10-12
+
+- Fixed issue with Slack login
+
 ## 1.7.3 - 2023-10-05
 
 - Fixed issue with AppleScript integration
