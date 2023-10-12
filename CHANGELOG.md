@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.7.5 - 2023-10-13
+
+- Fixed issue with "Check for updates..." is not clickable
+
 ## 1.7.4 - 2023-10-12
 
 - Fixed issue with Slack login
