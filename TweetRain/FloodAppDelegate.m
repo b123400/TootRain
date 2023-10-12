@@ -10,6 +10,10 @@
 #import "SettingManager.h"
 #import "BRSlackClient.h"
 #import "ShowStatusIntentHandler.h"
+// Need this for menu bar update item
+#ifdef STANDALONE
+#import "Sparkle/SPUStandardUpdaterController.h"
+#endif
 
 @implementation FloodAppDelegate
 
