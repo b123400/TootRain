@@ -384,7 +384,15 @@
                     account.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
                     account.threadId = controller.selectedThreadId;
                     [account save];
+                    
+                    BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
+                    NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
+
                     [self updateAccountView];
+                    
+                    if (needReconnect) {
+                        [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:currentAccountIdentifier]];
+                    }
                 }
             }];
         });
