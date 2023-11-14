@@ -77,10 +77,25 @@
                 callback(nil, error);
                 return;
             }
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"token\":\"([^\"]+)" options:0 error:nil];
+
+            NSString *token = nil;
             NSString *resBody = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSArray<NSTextCheckingResult*> *results = [regex matchesInString:resBody options:0 range:NSMakeRange(0, resBody.length)];
-            NSString *token = [resBody substringWithRange:[[results firstObject] rangeAtIndex:1]];
+            NSRange start = [resBody rangeOfString:@"JSON.stringify("];
+            if (start.location != NSNotFound) {
+                NSRange end = [resBody rangeOfString:@");" options:0 range:NSMakeRange(NSMaxRange(start), resBody.length - NSMaxRange(start))];
+                if (end.location != NSNotFound) {
+                    NSString *jsonString = [resBody substringWithRange:NSMakeRange(NSMaxRange(start), end.location - NSMaxRange(start))];
+                    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                                             options:0
+                                                                               error:nil];
+                    token = jsonDict[@"teams"][teamId][@"token"];
+                }
+            }
+            if (!token) {
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"token\":\"([^\"]+)" options:0 error:nil];
+                NSArray<NSTextCheckingResult*> *results = [regex matchesInString:resBody options:0 range:NSMakeRange(0, resBody.length)];
+                token = [resBody substringWithRange:[[results firstObject] rangeAtIndex:1]];
+            }
             NSLog(@"Token: %@", token);
             
             [_self getChannelListWithToken:token
