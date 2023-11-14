@@ -141,6 +141,7 @@
     NSMutableDictionary *params = @{
         @"token": token,
         @"limit": @"100",
+        @"types": @"public_channel,private_channel",
     }.mutableCopy;
     [params setObject:token forKey:@"token"];
     if (cursor) {
