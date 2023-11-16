@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.6 - 2023-11-16
+
+- Support private channel in Slack
+- Fixed issue with Slack login
+- Respect content warning
+
 ## 1.7.5 - 2023-10-13
 
 - Fixed issue with "Check for updates..." is not clickable
