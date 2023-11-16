@@ -45,6 +45,14 @@
     return [[NSUniqueIDSpecifier alloc] initWithContainerClassDescription:appDescription containerSpecifier:nil key:@"statuses" uniqueID:self.statusID];
 }
 
+- (NSString * _Nonnull)spoilerOrText {
+    return self.spoilerText.length ? self.spoilerText : self.text;
+}
+
+- (NSAttributedString * _Nonnull)attributedSpoilerOrText {
+    return self.attributedSpoilerText.length ? self.attributedSpoilerText : self.attributedText ?: [[NSAttributedString alloc] initWithString:self.text];
+}
+
 - (NSString *)textForScripting {
     return self.attributedText.string ?: self.text ?: @"";
 }

@@ -17,6 +17,7 @@
         self.statusID = status.statusID;
         self.createdAt = status.createdAt;
         self.text = status.text;
+        self.spoilerText = status.spoiler;
         self.favourited = status.favourited;
         self.reblogged = status.reblogged;
         self.bookmarked = status.bookmarked;
@@ -26,6 +27,7 @@
         // Make attributed string in init, so the images are loaded when status is init-ed
         // such that we can load the image in background
         self.attributedText = [status attributedStringWithEmojisReplaced];
+        self.attributedSpoilerText = [status attributedSpoilerWithEmojisReplaced];
     }
     return self;
 }
