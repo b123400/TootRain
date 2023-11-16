@@ -42,4 +42,10 @@
                            emojisReplaced:self.emojis];
 }
 
+- (NSAttributedString *)attributedContentWarningWithEmojisReplaced {
+    return [self.account attributedString:self.contentWarning
+                                 withHost:self.user.host
+                           emojisReplaced:self.emojis];
+}
+
 @end

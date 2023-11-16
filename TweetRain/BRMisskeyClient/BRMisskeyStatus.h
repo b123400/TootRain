@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithJSONDictionary:(NSDictionary *)dictionary account:(BRMisskeyAccount *)account;
 
 - (NSAttributedString *)attributedStringWithEmojisReplaced;
+- (NSAttributedString *)attributedContentWarningWithEmojisReplaced;
 
 @end
 

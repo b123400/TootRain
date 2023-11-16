@@ -16,12 +16,17 @@
 @property (strong, nonatomic, nonnull) NSString *statusID;
 @property (strong, nonatomic, nullable) NSDate *createdAt;
 @property (strong, nonatomic, nullable) NSString *text;
+@property (strong, nonatomic, nullable) NSString *spoilerText;
 
 @property (assign, nonatomic) BOOL favourited;
 @property (assign, nonatomic) BOOL bookmarked;
 @property (assign, nonatomic) BOOL reblogged;
 
 @property (strong, nonatomic, nullable) NSAttributedString *attributedText;
+@property (strong, nonatomic, nullable) NSAttributedString *attributedSpoilerText;
+
+- (NSString * _Nonnull)spoilerOrText;
+- (NSAttributedString * _Nonnull)attributedSpoilerOrText;
 
 - (BOOL)canReply;
 - (void)replyToStatusWithText:(NSString * _Nonnull)text

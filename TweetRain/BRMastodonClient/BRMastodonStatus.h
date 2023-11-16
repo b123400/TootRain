@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *statusID;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) NSString *spoiler;
 
 @property (nonatomic, assign) BOOL favourited;
 @property (nonatomic, assign) BOOL bookmarked;
@@ -32,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithJSONDict:(NSDictionary *)dict account:(BRMastodonAccount *)account;
 - (NSAttributedString *)attributedString;
 - (NSAttributedString *)attributedStringWithEmojisReplaced;
+- (NSAttributedString *)attributedSpoilerWithEmojisReplaced;
 
 @end
 

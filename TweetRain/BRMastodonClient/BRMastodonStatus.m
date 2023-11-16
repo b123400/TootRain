@@ -26,6 +26,7 @@
         self.statusID = dict[@"id"];
         self.createdAt = [[[NSISO8601DateFormatter alloc] init] dateFromString:dict[@"created_at"]];
         self.text = dict[@"content"];
+        self.spoiler = dict[@"spoiler_text"];
         self.favourited = [dict[@"favourited"] boolValue];
         self.bookmarked = [dict[@"bookmarked"] boolValue];
         self.reblogged = [dict[@"reblogged"] boolValue];
@@ -55,6 +56,10 @@
 
 - (NSAttributedString *)attributedStringWithEmojisReplaced {
     return [BRMastodonClient attributedString:self.text withEmojisReplaced:self.emojis];
+}
+
+- (NSAttributedString *)attributedSpoilerWithEmojisReplaced {
+    return [BRMastodonClient attributedString:self.spoiler withEmojisReplaced:self.emojis];
 }
 
 @end

@@ -19,11 +19,13 @@
             self.user = [[MisskeyUser alloc] initWithMisskeyUser:status.user];
             self.statusID = status.statusID;
             self.text = status.text;
+            self.spoilerText = status.contentWarning;
             self.misskeyStatus = status;
             
             // Make attributed string in init, so the images are loaded when status is init-ed
             // such that we can load the image in background
             self.attributedText = [status attributedStringWithEmojisReplaced];
+            self.attributedSpoilerText = [status attributedContentWarningWithEmojisReplaced];
         }
     }
     return self;
