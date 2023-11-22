@@ -26,6 +26,8 @@
 @property (strong, nonatomic, nullable) NSAttributedString *attributedText;
 @property (strong, nonatomic, nullable) NSAttributedString *attributedSpoilerText;
 
+@property (strong, nonatomic) NSDate *objectCreated;
+
 - (NSString * _Nonnull)spoilerOrText;
 - (NSAttributedString * _Nonnull)attributedSpoilerOrText;
 

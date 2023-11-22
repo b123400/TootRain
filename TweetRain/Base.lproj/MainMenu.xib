@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -133,7 +133,17 @@
                 <menuItem title="Format" id="375">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="View" id="295"/>
+                <menuItem title="View" id="295">
+                    <menu key="submenu" title="View" id="wfV-YU-kZP">
+                        <items>
+                            <menuItem title="History..." keyEquivalent="H" id="pKK-4s-XpB">
+                                <connections>
+                                    <action selector="openHistoryWindow:" target="494" id="bGk-7n-vZa"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="19"/>
                 <menuItem title="Help" id="490">
                     <modifierMask key="keyEquivalentModifierMask"/>

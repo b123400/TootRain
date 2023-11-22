@@ -10,6 +10,7 @@
 #import "SettingManager.h"
 #import "BRSlackClient.h"
 #import "ShowStatusIntentHandler.h"
+#import "History Window/HistoryWindowController.h"
 // Need this for menu bar update item
 #ifdef STANDALONE
 #import "Sparkle/SPUStandardUpdaterController.h"
@@ -46,6 +47,10 @@
 
 -(FloodWindowController*)windowController{
 	return windowController;
+}
+
+- (IBAction)openHistoryWindow:(id)sender {
+    [[HistoryWindowController shared] showWindow:self];
 }
 
 @end

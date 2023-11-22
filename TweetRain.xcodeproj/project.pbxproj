@@ -43,6 +43,10 @@
 		CF3A187915D64F4100D8E07F /* FloodWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3A187715D64F4100D8E07F /* FloodWindowController.xib */; };
 		CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A188015D651A100D8E07F /* FloodWindow.m */; };
 		CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */; };
+		CF3C54E02B0E3DE500A6B561 /* HistoryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C54DE2B0E3DE500A6B561 /* HistoryWindowController.m */; };
+		CF3C54E12B0E3DE500A6B561 /* HistoryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C54DE2B0E3DE500A6B561 /* HistoryWindowController.m */; };
+		CF3C54E22B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3C54DF2B0E3DE500A6B561 /* HistoryWindowController.xib */; };
+		CF3C54E32B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3C54DF2B0E3DE500A6B561 /* HistoryWindowController.xib */; };
 		CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */; };
 		CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3D617B269B21B400786DD9 /* BRSlackAccount.m */; };
 		CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4028FD295958310066FB84 /* SettingAccountDetailMisskeyView.m */; };
@@ -295,6 +299,9 @@
 		CF3A187F15D651A100D8E07F /* FloodWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodWindow.h; sourceTree = "<group>"; };
 		CF3A188015D651A100D8E07F /* FloodWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloodWindow.m; sourceTree = "<group>"; };
 		CF3A188A15D6E82D00D8E07F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		CF3C54DD2B0E3DE500A6B561 /* HistoryWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryWindowController.h; sourceTree = "<group>"; };
+		CF3C54DE2B0E3DE500A6B561 /* HistoryWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryWindowController.m; sourceTree = "<group>"; };
+		CF3C54DF2B0E3DE500A6B561 /* HistoryWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryWindowController.xib; sourceTree = "<group>"; };
 		CF3D6175269B1C1C00786DD9 /* BRSlackClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackClient.h; sourceTree = "<group>"; };
 		CF3D6176269B1C1C00786DD9 /* BRSlackClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackClient.m; sourceTree = "<group>"; };
 		CF3D617A269B21B400786DD9 /* BRSlackAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackAccount.h; sourceTree = "<group>"; };
@@ -505,6 +512,7 @@
 				CFE8F5C115D7FC4900815830 /* RainDropTextFieldCell.h */,
 				CFE8F5C215D7FC4900815830 /* RainDropTextFieldCell.m */,
 				CF8534641CC3E351004D1FFC /* RainDrop Detail */,
+				CF3C54DC2B0E3DCA00A6B561 /* History Window */,
 				CFC396F526886FF800DED41A /* Model */,
 				CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */,
 				CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */,
@@ -686,6 +694,16 @@
 				CF402906295967710066FB84 /* BRMisskeyStreamSourceSelectionWindowController.xib */,
 			);
 			path = BRMisskeyClient;
+			sourceTree = "<group>";
+		};
+		CF3C54DC2B0E3DCA00A6B561 /* History Window */ = {
+			isa = PBXGroup;
+			children = (
+				CF3C54DD2B0E3DE500A6B561 /* HistoryWindowController.h */,
+				CF3C54DE2B0E3DE500A6B561 /* HistoryWindowController.m */,
+				CF3C54DF2B0E3DE500A6B561 /* HistoryWindowController.xib */,
+			);
+			path = "History Window";
 			sourceTree = "<group>";
 		};
 		CF3D6174269B1BED00786DD9 /* BRSlackClient */ = {
@@ -931,6 +949,7 @@
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
+				CF3C54E22B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +975,7 @@
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
 				CF5D2D3229350BC400745D63 /* Credits.rtf in Resources */,
+				CF3C54E32B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,6 +1100,7 @@
 				CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */,
 				CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BC2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
+				CF3C54E02B0E3DE500A6B561 /* HistoryWindowController.m in Sources */,
 				CF5DE47D26A054E10040BD63 /* SlackStatus.m in Sources */,
 				CFD7C52029AB99E80053A661 /* BRApplication.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
@@ -1163,6 +1184,7 @@
 				CF5D2D5429350BC400745D63 /* FloodAppDelegate.m in Sources */,
 				CF5D2D5529350BC400745D63 /* BRSlackChannelSelectionWindowController.m in Sources */,
 				CF1FE3BD2956FF2300CABB47 /* BRMisskeyStatus.m in Sources */,
+				CF3C54E12B0E3DE500A6B561 /* HistoryWindowController.m in Sources */,
 				CF5D2D5629350BC400745D63 /* SlackStatus.m in Sources */,
 				CFD7C52129AB99E80053A661 /* BRApplication.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,

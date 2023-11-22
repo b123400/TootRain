@@ -12,6 +12,7 @@
 #import "SettingViewController.h"
 #import "MastodonStatus.h"
 #import "BRMastodonStatus.h"
+#import "History Window/HistoryWindowController.h"
 
 @interface FloodWindowController ()
 
@@ -103,6 +104,8 @@
         [[[_self window] contentView]addSubview: [thisViewController view]];
         thisViewController.delegate=self;
         [self.rainDrops addObject:thisViewController];
+        
+        [[HistoryWindowController shared] addStatus:status];
     });
 }
 

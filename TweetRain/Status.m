@@ -11,6 +11,12 @@
 @implementation Status
 @synthesize user,statusID,createdAt,text,favourited,reblogged,bookmarked,attributedText;
 
+- (instancetype)init {
+    self = [super init];
+    self.objectCreated = [NSDate date];
+    return self;
+}
+
 - (BOOL)canReply {
     return NO;
 }
