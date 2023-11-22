@@ -30,6 +30,7 @@
         self.favourited = [dict[@"favourited"] boolValue];
         self.bookmarked = [dict[@"bookmarked"] boolValue];
         self.reblogged = [dict[@"reblogged"] boolValue];
+        self.url = [NSURL URLWithString:dict[@"url"]];
         
         if (!dict[@"emojis"]) {
             self.emojis = @[];

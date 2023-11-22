@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *statusID;
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString * _Nullable contentWarning;
+@property (nonatomic, strong, nullable) NSString * contentWarning;
+@property (nonatomic, nullable, strong) NSURL *url;
 
 @property (nonatomic, strong) BRMisskeyStatus *renote;
 

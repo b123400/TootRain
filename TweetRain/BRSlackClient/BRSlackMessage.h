@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSArray<NSString *> *emojis;
+@property (nonatomic, nullable, strong) NSURL *url;
 
 - (instancetype)initWithJSONDict:(NSDictionary *)dict user:(BRSlackUser *)user account:(BRSlackAccount *)account;
 - (NSAttributedString *)attributedString;

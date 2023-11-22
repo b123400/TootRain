@@ -88,6 +88,8 @@
     if (!status.canReply) {
         self.replyButton.hidden = YES;
     }
+    
+    self.openInBrowserButton.hidden = status.url == nil;
 	
 	[profileImageView setImageURL:status.user.profileImageURL];
     [profileImageView setAnimates:[[SettingManager sharedManager] animateGif]];
@@ -156,6 +158,12 @@
     }];
 	[(NSButton*)sender setEnabled:NO];
 	[(NSButton*)sender setTitle:@"..."];
+}
+
+- (IBAction)openInBrowserClicked:(id)sender {
+    if (status.url) {
+        [[NSWorkspace sharedWorkspace] openURL:status.url];
+    }
 }
 
 @end

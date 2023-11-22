@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *spoiler;
+@property (nonatomic, nullable, strong) NSURL *url;
 
 @property (nonatomic, assign) BOOL favourited;
 @property (nonatomic, assign) BOOL bookmarked;

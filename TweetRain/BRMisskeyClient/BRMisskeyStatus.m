@@ -28,6 +28,7 @@
         self.statusID = dictionary[@"id"];
         self.text = [dictionary[@"text"] isKindOfClass:[NSString class]] ? dictionary[@"text"] : @"";
         self.contentWarning = [dictionary[@"cw"] isKindOfClass:[NSString class]] ? dictionary[@"cw"] : @"";
+        self.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/notes/%@", self.account.hostName, self.statusID]];
         
         if ([dictionary[@"renote"] isKindOfClass:[NSDictionary class]]) {
             self.renote = [[BRMisskeyStatus alloc] initWithJSONDictionary:dictionary[@"renote"] account:account];

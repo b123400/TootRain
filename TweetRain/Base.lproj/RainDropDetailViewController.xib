@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,6 +12,7 @@
                 <outlet property="contentTextField" destination="9" id="65"/>
                 <outlet property="favButton" destination="22" id="uUD-zb-WdL"/>
                 <outlet property="nameField" destination="109" id="113"/>
+                <outlet property="openInBrowserButton" destination="wnk-Od-inr" id="cQf-Oh-WhQ"/>
                 <outlet property="profileImageView" destination="3" id="66"/>
                 <outlet property="replyButton" destination="38" id="rlx-Wo-ecB"/>
                 <outlet property="repostButton" destination="26" id="Pou-Xf-ScB"/>
@@ -42,10 +43,20 @@
                     </textFieldCell>
                 </textField>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="108">
-                    <rect key="frame" x="182" y="20" width="278" height="20"/>
+                    <rect key="frame" x="53" y="20" width="407" height="20"/>
                     <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wnk-Od-inr">
+                            <rect key="frame" x="280" y="-7" width="134" height="32"/>
+                            <buttonCell key="cell" type="push" title="Open in Browser" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mwY-rf-Pyx">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="openInBrowserClicked:" target="-2" id="LW1-E0-Pq6"/>
+                            </connections>
+                        </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22">
-                            <rect key="frame" x="229" y="-7" width="56" height="32"/>
+                            <rect key="frame" x="227" y="-7" width="55" height="32"/>
                             <buttonCell key="cell" type="push" title="Fav" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="23">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -56,7 +67,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="34">
-                            <rect key="frame" x="135" y="-7" width="96" height="32"/>
+                            <rect key="frame" x="134" y="-7" width="95" height="32"/>
                             <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="35">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -78,7 +89,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="26">
-                            <rect key="frame" x="59" y="-7" width="78" height="32"/>
+                            <rect key="frame" x="59" y="-7" width="77" height="32"/>
                             <buttonCell key="cell" type="push" title="Repost" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="27">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -93,14 +104,17 @@
                         <constraint firstItem="38" firstAttribute="top" secondItem="108" secondAttribute="top" id="1mv-sr-lAA"/>
                         <constraint firstItem="38" firstAttribute="leading" secondItem="108" secondAttribute="leading" id="29b-Yx-qUB"/>
                         <constraint firstItem="34" firstAttribute="top" secondItem="108" secondAttribute="top" id="6zj-v4-GgZ"/>
-                        <constraint firstAttribute="trailing" secondItem="22" secondAttribute="trailing" id="7FR-Vd-ekk"/>
                         <constraint firstItem="26" firstAttribute="top" secondItem="108" secondAttribute="top" id="QC2-Li-vU8"/>
                         <constraint firstAttribute="bottom" secondItem="34" secondAttribute="bottom" id="X5S-HD-pro"/>
+                        <constraint firstItem="wnk-Od-inr" firstAttribute="top" secondItem="108" secondAttribute="top" id="XOc-s4-V5p"/>
                         <constraint firstAttribute="bottom" secondItem="38" secondAttribute="bottom" id="Z5z-c6-mtc"/>
                         <constraint firstItem="22" firstAttribute="top" secondItem="108" secondAttribute="top" id="bzq-Wv-P4f"/>
+                        <constraint firstAttribute="trailing" secondItem="wnk-Od-inr" secondAttribute="trailing" id="cHM-Ud-iKO"/>
+                        <constraint firstAttribute="bottom" secondItem="wnk-Od-inr" secondAttribute="bottom" id="cTk-1h-xAj"/>
                         <constraint firstItem="34" firstAttribute="leading" secondItem="26" secondAttribute="trailing" constant="12" symbolic="YES" id="eVK-sK-3Ne"/>
                         <constraint firstItem="26" firstAttribute="leading" secondItem="38" secondAttribute="trailing" constant="12" symbolic="YES" id="hsf-3b-EKD"/>
                         <constraint firstAttribute="bottom" secondItem="22" secondAttribute="bottom" id="n4x-wy-I2F"/>
+                        <constraint firstItem="wnk-Od-inr" firstAttribute="leading" secondItem="22" secondAttribute="trailing" constant="12" symbolic="YES" id="uVv-7g-0Yv"/>
                         <constraint firstItem="22" firstAttribute="leading" secondItem="34" secondAttribute="trailing" constant="12" symbolic="YES" id="w8L-6H-m7n"/>
                         <constraint firstAttribute="bottom" secondItem="26" secondAttribute="bottom" id="xpe-ku-VQ9"/>
                     </constraints>
@@ -138,7 +152,7 @@
                 <constraint firstAttribute="trailing" secondItem="111" secondAttribute="trailing" constant="20" symbolic="YES" id="jjj-1a-e3C"/>
                 <constraint firstItem="3" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="nFP-fE-5aW"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="153.5"/>
+            <point key="canvasLocation" x="140" y="153"/>
         </customView>
     </objects>
 </document>
