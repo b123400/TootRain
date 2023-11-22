@@ -119,7 +119,7 @@
                         <constraint firstAttribute="bottom" secondItem="26" secondAttribute="bottom" id="xpe-ku-VQ9"/>
                     </constraints>
                 </customView>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="109" customClass="BRAnimatedTextField">
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="109" customClass="BRAnimatedTextField">
                     <rect key="frame" x="74" y="125" width="388" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name here" id="110">
                         <font key="font" metaFont="system" size="16"/>
@@ -127,7 +127,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="111">
+                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="111">
                     <rect key="frame" x="74" y="100" width="388" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="@username here" id="112">
                         <font key="font" size="15" name="ArialMT"/>
