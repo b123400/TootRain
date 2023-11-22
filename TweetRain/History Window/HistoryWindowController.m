@@ -53,7 +53,7 @@
 - (void)cleanOldStatuses {
     NSInteger index = -1;
     for (NSInteger i = 0; i < self.statuses.count; i++) {
-        if ([[NSDate date] timeIntervalSinceDate:self.statuses[i].objectCreated] > 10 /* 3 mins */) {
+        if ([[NSDate date] timeIntervalSinceDate:self.statuses[i].objectCreated] > 180 /* 3 mins */) {
             index = i;
         } else {
             break;
