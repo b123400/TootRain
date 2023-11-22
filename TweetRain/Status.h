@@ -17,6 +17,7 @@
 @property (strong, nonatomic, nullable) NSDate *createdAt;
 @property (strong, nonatomic, nullable) NSString *text;
 @property (strong, nonatomic, nullable) NSString *spoilerText;
+@property (strong, nonatomic, nullable) NSURL *url;
 
 @property (assign, nonatomic) BOOL favourited;
 @property (assign, nonatomic) BOOL bookmarked;

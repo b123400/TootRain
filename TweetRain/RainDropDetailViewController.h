@@ -26,6 +26,7 @@
 @property (weak) IBOutlet NSButton *favButton;
 @property (weak) IBOutlet NSButton *bookmarkButton;
 @property (weak) IBOutlet NSButton *replyButton;
+@property (weak) IBOutlet NSButton *openInBrowserButton;
 
 -(id)initWithStatus:(Status*)status;
 
