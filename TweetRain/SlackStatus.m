@@ -14,6 +14,7 @@
     if (self = [super init]) {
         self.user = [[SlackUser alloc] initWithSlackUser:message.user];
         self.text = message.text;
+        self.url = message.url;
         
         self.slackMessage = message;
 

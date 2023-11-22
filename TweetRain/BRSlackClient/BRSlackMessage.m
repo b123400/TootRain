@@ -16,6 +16,11 @@
         self.text = dict[@"text"];
         
         self.emojis = [self findEmojiFromNestedObj:dict[@"blocks"]];
+        NSString *channelId = dict[@"channel"];
+        NSString *ts = dict[@"ts"];
+        if ([channelId isKindOfClass:[NSString class]] && [ts isKindOfClass:[NSString class]]) {
+            self.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/archives/%@/p%@", self.account.url.absoluteString, channelId, [ts stringByReplacingOccurrencesOfString:@"." withString:@""]]];
+        }
     }
     return self;
 }

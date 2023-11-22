@@ -21,6 +21,7 @@
             self.text = status.text;
             self.spoilerText = status.contentWarning;
             self.misskeyStatus = status;
+            self.url = status.url;
             
             // Make attributed string in init, so the images are loaded when status is init-ed
             // such that we can load the image in background

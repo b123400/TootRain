@@ -21,6 +21,7 @@
         self.favourited = status.favourited;
         self.reblogged = status.reblogged;
         self.bookmarked = status.bookmarked;
+        self.url = status.url;
         
         self.mastodonStatus = status;
 
