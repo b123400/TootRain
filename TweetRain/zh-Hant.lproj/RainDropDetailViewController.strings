@@ -31,3 +31,6 @@
 /* Class = "NSTextFieldCell"; title = "@username here"; ObjectID = "112"; */
 "112.title" = "@username here";
 
+/* Class = "NSButtonCell"; title = "Open in Browser"; ObjectID = "mwY-rf-Pyx"; */
+"mwY-rf-Pyx.title" = "在瀏覽器打開";
+

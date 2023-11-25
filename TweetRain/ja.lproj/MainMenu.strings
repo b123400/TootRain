@@ -26,7 +26,7 @@
 "131.title" = "サービス";
 
 /* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
-"134.title" = "TootRainを隠す";
+"134.title" = "TweetRainを非表示";
 
 /* Class = "NSMenuItem"; title = "Quit TootRain"; ObjectID = "136"; */
 "136.title" = "TootRainを終了";
@@ -35,7 +35,7 @@
 "145.title" = "ほかを非表示";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "すべて表示";
+"150.title" = "すべてを表示";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
 "197.title" = "コピー";
@@ -81,4 +81,10 @@
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
 "Kq3-UG-BWh.title" = "ファイル";
+
+/* Class = "NSMenuItem"; title = "History..."; ObjectID = "pKK-4s-XpB"; */
+"pKK-4s-XpB.title" = "履歴...";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "wfV-YU-kZP"; */
+"wfV-YU-kZP.title" = "表示";
 
