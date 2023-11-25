@@ -62,6 +62,9 @@
     if (index >= 0) {
         [self.statuses removeObjectsInRange:NSMakeRange(0, index + 1)];
     }
+    if (self.statuses.count > 500) {
+        [self.statuses removeObjectsInRange:NSMakeRange(0, self.statuses.count - 500)];
+    }
     [self.tableView reloadData];
 }
 
