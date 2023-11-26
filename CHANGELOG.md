@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.0 - 2023-11-25
+
+- Added a History window to view recent statuses
+- Added an "Open in Browser" button
+- Fixed issue when fetching statuses with AppleScript
+
 ## 1.7.6 - 2023-11-16
 
 - Support private channel in Slack
