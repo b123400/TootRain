@@ -36,8 +36,13 @@
 @property (weak) IBOutlet NSButton *truncateStatusCheckBox;
 @property (weak) IBOutlet NSTextField *truncateStatusField;
 @property (weak) IBOutlet NSStepper *truncateStatusStepper;
+@property (weak) IBOutlet NSTextField *historyPreserveLimitField;
+@property (weak) IBOutlet NSStepper *historyPreserveLimitStepper;
+@property (weak) IBOutlet NSTextField *historyPreserveDurationLabel;
+@property (weak) IBOutlet NSSlider *historyPreserveDurationSlider;
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
 @property (weak) IBOutlet NSButton *animateGifCheckbox;
+@property (weak) IBOutlet NSButton *ignoreContentWarningsCheckbox;
 @property (weak) IBOutlet NSButton *chooseFontButton;
 @property (weak) IBOutlet NSSlider *speedSlider;
 

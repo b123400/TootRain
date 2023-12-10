@@ -101,6 +101,18 @@
     }
     self.truncateStatusField.integerValue = self.truncateStatusStepper.integerValue = [[SettingManager sharedManager] truncateStatusLength];
     self.animateGifCheckbox.state = [[SettingManager sharedManager] animateGif] ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    self.ignoreContentWarningsCheckbox.state = [[SettingManager sharedManager] ignoreContentWarnings] ? NSControlStateValueOn : NSControlStateValueOff;
+    self.historyPreserveLimitStepper.integerValue = self.historyPreserveLimitField.integerValue = [[SettingManager sharedManager] historyPreserveLimit];
+    
+    NSTimeInterval historyPreserveLimit = [[SettingManager sharedManager] historyPreserveDuration];
+    self.historyPreserveDurationSlider.doubleValue = historyPreserveLimit;
+    
+    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+    formatter.unitsStyle = NSDateComponentsFormatterUnitsStyleShort;
+    formatter.allowedUnits = NSCalendarUnitMinute;
+    self.historyPreserveDurationLabel.stringValue = [formatter stringFromTimeInterval:historyPreserveLimit];
+
 	opacitySlider.floatValue=[[SettingManager sharedManager]opacity];
 	
     self.shadowCheckbox.state = [[SettingManager sharedManager] showShadow] ? NSControlStateValueOn : NSControlStateValueOff;
@@ -475,6 +487,30 @@
 - (IBAction)animateGifCheckboxChanged:(id)sender {
     BOOL enabled = [(NSButton*)sender state] == NSControlStateValueOn;
     [[SettingManager sharedManager] setAnimateGif:enabled];
+}
+
+- (IBAction)ignoreContentWarningsCheckboxChanged:(id)sender {
+    BOOL enabled = [(NSButton*)sender state] == NSControlStateValueOn;
+    [[SettingManager sharedManager] setIgnoreContentWarnings:enabled];
+}
+
+- (IBAction)historyPreserveLimitFieldChanged:(id)sender {
+    NSInteger num = [self.historyPreserveLimitField integerValue];
+    self.historyPreserveLimitField.integerValue = self.historyPreserveLimitStepper.integerValue = MIN(1500, MAX(0, num));
+    [[SettingManager sharedManager] setHistoryPreserveLimit:num];
+}
+- (IBAction)historyPreserveLimitSteppedChanged:(id)sender {
+    NSTimeInterval num = [sender doubleValue];
+    [[SettingManager sharedManager] setHistoryPreserveLimit:num];
+    self.historyPreserveLimitField.doubleValue = num;
+}
+- (IBAction)historyPreserveDurationSliderChanged:(id)sender {
+    NSSlider* slider=sender;
+    [[SettingManager sharedManager] setHistoryPreserveDuration:[slider doubleValue]];
+    NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+    formatter.unitsStyle = NSDateComponentsFormatterUnitsStyleShort;
+    formatter.allowedUnits = NSCalendarUnitMinute;
+    self.historyPreserveDurationLabel.stringValue = [formatter stringFromTimeInterval:[slider doubleValue]];
 }
 
 - (IBAction)opacitySliderChanged:(id)sender {
