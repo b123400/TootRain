@@ -58,7 +58,9 @@
         [self.webView loadRequest:request];
     } else if (self.slackURL) {
         self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
-        [self.webView loadRequest:[NSURLRequest requestWithURL:self.slackURL]];
+        // Force open in app, prevent redirect to another team
+        NSURL *openInAppURL = [[NSURL URLWithString:@"/ssb/redirect" relativeToURL:self.slackURL] absoluteURL];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:openInAppURL]];
     } else if (self.misskeyHostName) {
         NSURL *url = [[BRMisskeyClient shared] authURLWithHost:self.misskeyHostName];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -136,7 +138,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
             }
             decisionHandler(WKNavigationActionPolicyCancel);
             return;
-        } else if ([url.scheme isEqualTo:@"https"] && [url.path hasPrefix:@"/client/"]) {
+        } else if ([url.scheme isEqualTo:@"https"] && [url.path hasPrefix:@"/messages"]) {
             // it's already logged in, force it to open-in-app
             decisionHandler(WKNavigationActionPolicyCancel);
             NSURL *openInAppURL = [[NSURL URLWithString:@"/ssb/redirect" relativeToURL:url] absoluteURL];
