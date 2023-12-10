@@ -82,6 +82,9 @@
 /* Class = "NSTextFieldCell"; title = "Speed"; ObjectID = "fGS-E2-t2S"; */
 "fGS-E2-t2S.title" = "速度";
 
+/* Class = "NSTextFieldCell"; title = "History Preserve Duration"; ObjectID = "gqU-Zg-Ow2"; */
+"gqU-Zg-Ow2.title" = "履歴保存時限";
+
 /* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
 "iWh-jO-lyt.title" = "名前:";
 
@@ -121,11 +124,17 @@
 /* Class = "NSButtonCell"; title = "Options"; ObjectID = "vD8-Jh-0SX"; */
 "vD8-Jh-0SX.title" = "オプション";
 
+/* Class = "NSButtonCell"; title = "Ignore content warnings"; ObjectID = "W13-dl-d3L"; */
+"W13-dl-d3L.title" = "コンテンツ警告を無視";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 一時停止";
 
 /* Class = "NSTextFieldCell"; title = "Streams:"; ObjectID = "yEh-2q-E3b"; */
 "yEh-2q-E3b.title" = "ストリーム:";
+
+/* Class = "NSTextFieldCell"; title = "History Preserve Limit"; ObjectID = "YWO-cs-lYh"; */
+"YWO-cs-lYh.title" = "履歴保存上限";
 
 /* Class = "NSButtonCell"; title = "Options"; ObjectID = "ZJa-GJ-bc5"; */
 "ZJa-GJ-bc5.title" = "オプション";
