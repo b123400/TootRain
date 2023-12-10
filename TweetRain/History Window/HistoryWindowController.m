@@ -9,6 +9,7 @@
 #import "RainDropDetailViewController.h"
 #import "DummyStatus.h"
 #import "NSMutableAttributedString+Stripe.h"
+#import "SettingManager.h"
 
 @interface HistoryWindowController () <NSTableViewDelegate, NSTableViewDataSource, NSPopoverDelegate>
 
@@ -53,7 +54,7 @@
 - (void)cleanOldStatuses {
     NSInteger index = -1;
     for (NSInteger i = 0; i < self.statuses.count; i++) {
-        if ([[NSDate date] timeIntervalSinceDate:self.statuses[i].objectCreated] > 180 /* 3 mins */) {
+        if ([[NSDate date] timeIntervalSinceDate:self.statuses[i].objectCreated] > [[SettingManager sharedManager] historyPreserveDuration]) {
             index = i;
         } else {
             break;
@@ -62,8 +63,9 @@
     if (index >= 0) {
         [self.statuses removeObjectsInRange:NSMakeRange(0, index + 1)];
     }
-    if (self.statuses.count > 500) {
-        [self.statuses removeObjectsInRange:NSMakeRange(0, self.statuses.count - 500)];
+    NSInteger limit = [[SettingManager sharedManager] historyPreserveLimit];
+    if (self.statuses.count > limit) {
+        [self.statuses removeObjectsInRange:NSMakeRange(0, self.statuses.count - limit)];
     }
     [self.tableView reloadData];
 }

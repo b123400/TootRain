@@ -276,8 +276,9 @@
 #pragma mark appearance
 
 - (NSAttributedString*)attributedStringForStatus {
-    // TODO: setting to switch for spoiler
-    NSMutableAttributedString *attrString = [status.attributedSpoilerOrText mutableCopy];
+    NSMutableAttributedString *attrString = [[SettingManager sharedManager] ignoreContentWarnings]
+        ? [status.attributedText mutableCopy]
+        : [status.attributedSpoilerOrText mutableCopy];
 
     [attrString removeNewLines];
     [attrString removeColors];
