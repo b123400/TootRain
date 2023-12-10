@@ -46,6 +46,9 @@ typedef enum : NSUInteger {
 @property (nonatomic) BOOL showShadow;
 @property (nonatomic) BOOL animateGif;
 @property (nonatomic) float speed;
+@property (nonatomic) BOOL ignoreContentWarnings;
+@property (nonatomic) NSInteger historyPreserveLimit;
+@property (nonatomic) NSTimeInterval historyPreserveDuration;
 
 #if TARGET_OS_IPHONE
 

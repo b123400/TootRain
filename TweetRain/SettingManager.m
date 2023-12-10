@@ -191,6 +191,42 @@ static NSMutableArray *savedAccounts=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropSpeedChanegdNotification object:nil];
 }
 
+- (BOOL)ignoreContentWarnings {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"ignoreContentWarnings"];
+    return [num boolValue];
+}
+
+- (void)setIgnoreContentWarnings:(BOOL)value {
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"ignoreContentWarnings"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSInteger)historyPreserveLimit {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"historyPreserveLimit"];
+    if (!num) {
+        return 500;
+    }
+    return [num integerValue];
+}
+
+- (void)setHistoryPreserveLimit:(NSInteger)value {
+    [[NSUserDefaults standardUserDefaults] setFloat:value forKey:@"historyPreserveLimit"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSTimeInterval)historyPreserveDuration {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"historyPreserveDuration"];
+    if (!num) {
+        return 180;
+    }
+    return [num doubleValue];
+}
+
+- (void)setHistoryPreserveDuration:(NSTimeInterval)value {
+    [[NSUserDefaults standardUserDefaults] setDouble:value forKey:@"historyPreserveDuration"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #if TARGET_OS_IPHONE
 
 - (UIColor*)textColor {
