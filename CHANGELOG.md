@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.9.0 - 2023-12-11
+
+- Added settings for History preservation time and limit
+- Added setting to ignore content warning
+
 ## 1.8.0 - 2023-11-25
 
 - Added a History window to view recent statuses
