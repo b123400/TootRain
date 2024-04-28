@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -224,8 +224,8 @@
             </constraints>
             <point key="canvasLocation" x="107" y="298"/>
         </customView>
-        <customView id="142">
-            <rect key="frame" x="0.0" y="0.0" width="413" height="517"/>
+        <customView misplaced="YES" id="142">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="517"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="186">
@@ -249,7 +249,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="244">
-                    <rect key="frame" x="179" y="352" width="121" height="18"/>
+                    <rect key="frame" x="179" y="352" width="137" height="18"/>
                     <buttonCell key="cell" type="check" title="Truncate text" bezelStyle="regularSquare" imagePosition="left" inset="2" id="245">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -267,7 +267,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="196">
-                    <rect key="frame" x="179" y="193" width="216" height="20"/>
+                    <rect key="frame" x="179" y="193" width="232" height="20"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" minValue="0.10000000000000001" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="197"/>
                     <connections>
                         <action selector="opacitySliderChanged:" target="-2" id="231"/>
@@ -319,14 +319,15 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="302">
-                    <rect key="frame" x="178" y="447" width="219" height="25"/>
-                    <popUpButtonCell key="cell" type="push" title="Above Desktop" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="307" id="303">
+                    <rect key="frame" x="178" y="447" width="235" height="25"/>
+                    <popUpButtonCell key="cell" type="push" title="Above Menu Bar" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="305" id="303">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="304">
                             <items>
                                 <menuItem title="Above Menu Bar" id="305"/>
                                 <menuItem title="Above All Windows" tag="1" id="306"/>
+                                <menuItem title="Above All Windows (avoid Dock)" tag="3" id="1QK-hP-jeA"/>
                                 <menuItem title="Above Desktop" state="on" tag="2" id="307"/>
                             </items>
                         </menu>
@@ -344,7 +345,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hA4-r8-joS">
-                    <rect key="frame" x="178" y="477" width="219" height="25"/>
+                    <rect key="frame" x="178" y="477" width="235" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="Screen 1 (1440x900)" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="waU-Ph-Fmu" id="xGe-FM-7DV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -359,14 +360,14 @@
                     </connections>
                 </popUpButton>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WTp-ws-7CY">
-                    <rect key="frame" x="305" y="347" width="19" height="28"/>
+                    <rect key="frame" x="321" y="347" width="19" height="28"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" minValue="10" maxValue="500" doubleValue="50" id="RIh-vy-pMn"/>
                     <connections>
                         <action selector="truncateStatusSteppedChanged:" target="-2" id="dVi-so-pWI"/>
                     </connections>
                 </stepper>
                 <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="phw-jJ-rIj">
-                    <rect key="frame" x="326" y="351" width="67" height="21"/>
+                    <rect key="frame" x="342" y="351" width="67" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="67" id="uaT-hZ-AD0"/>
                     </constraints>
@@ -417,7 +418,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIa-fJ-O5a">
-                    <rect key="frame" x="178" y="417" width="219" height="25"/>
+                    <rect key="frame" x="178" y="417" width="235" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="Click through" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="AMX-Sr-Nw2" id="jov-wc-JrH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -494,7 +495,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eKK-EW-4ed">
-                    <rect key="frame" x="179" y="76" width="216" height="20"/>
+                    <rect key="frame" x="179" y="76" width="232" height="20"/>
                     <sliderCell key="cell" controlSize="small" state="on" alignment="left" minValue="5" maxValue="20" doubleValue="10" tickMarkPosition="above" sliderType="linear" id="hXv-2N-4Zc"/>
                     <connections>
                         <action selector="speedSliderChanged:" target="-2" id="hFP-9d-WKu"/>
@@ -573,7 +574,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ifu-IO-mvS">
-                    <rect key="frame" x="357" y="256" width="38" height="16"/>
+                    <rect key="frame" x="373" y="256" width="38" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="3 min" id="IdC-cV-BaE">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -581,7 +582,7 @@
                     </textFieldCell>
                 </textField>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qCb-sP-Imd">
-                    <rect key="frame" x="179" y="254" width="174" height="20"/>
+                    <rect key="frame" x="179" y="254" width="190" height="20"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="600" doubleValue="180" tickMarkPosition="above" sliderType="linear" id="I5R-MO-CdQ"/>
                     <connections>
                         <action selector="historyPreserveDurationSliderChanged:" target="-2" id="du7-Hd-0T4"/>

@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
     WindowLevelAboveMenuBar = 0,
     WindowLevelAboveAllWindows = 1,
     WindowLevelAboveDesktop = 2,
+    WindowLevelAboveAllWindowsNoDock = 3,
 } WindowLevel;
 
 typedef enum : NSUInteger {
