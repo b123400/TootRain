@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray<Status*> *statuses;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -36,6 +37,9 @@
     self = [super initWithWindowNibName:@"HistoryWindowController"];
     self.statuses = [NSMutableArray array];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(cleanOldStatuses) userInfo:nil repeats:YES];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     return self;
 }
 
@@ -79,10 +83,18 @@
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSMutableAttributedString *attrString = [[self.statuses[row] attributedSpoilerOrText] mutableCopy];
-    [attrString addAttributes:@{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont systemFontSize]]} range:NSMakeRange(0, attrString.length)];
-    [attrString resizeImagesWithHeight:20];
-    return attrString;
+    Status *status = self.statuses[row];
+    NSMutableAttributedString *attrString = [[status attributedSpoilerOrText] mutableCopy];
+    if ([tableColumn.identifier isEqual:@"content"]) {
+        [attrString addAttributes:@{NSFontAttributeName: [NSFont systemFontOfSize:[NSFont systemFontSize]]} range:NSMakeRange(0, attrString.length)];
+        [attrString resizeImagesWithHeight:20];
+        return attrString;
+    } else if ([tableColumn.identifier isEqual:@"user"]) {
+        return status.user.screenName ?: status.user.username;
+    } else if ([tableColumn.identifier isEqual:@"timestamp"]) {
+        return [self.dateFormatter stringFromDate:status.createdAt ?: status.objectCreated];
+    }
+    return @"";
 }
 
 - (IBAction)tableViewDidDoubleClick:(id)sender {
