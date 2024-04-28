@@ -9,7 +9,7 @@
 #import "Status.h"
 
 @implementation Status
-@synthesize user,statusID,createdAt,text,favourited,reblogged,bookmarked,attributedText;
+@synthesize user,statusID,createdAt,text,favourited,reblogged,bookmarked;
 
 - (instancetype)init {
     self = [super init];
@@ -53,6 +53,10 @@
 
 - (NSString * _Nonnull)spoilerOrText {
     return self.spoilerText.length ? self.spoilerText : self.text;
+}
+
+- (NSAttributedString *)attributedText {
+    return _attributedText ?: [[NSAttributedString alloc] initWithString:self.text];
 }
 
 - (NSAttributedString * _Nonnull)attributedSpoilerOrText {
