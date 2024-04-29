@@ -227,6 +227,20 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (BOOL)flipUpDown {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"flipUpDown"];
+    if (!num) {
+        return NO;
+    }
+    return [num boolValue];
+}
+
+- (void)setFlipUpDown:(BOOL)flipUpDown {
+    [[NSUserDefaults standardUserDefaults] setBool:flipUpDown forKey:@"flipUpDown"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFlipUpDownChangedNotification object:nil];
+}
+
 #if TARGET_OS_IPHONE
 
 - (UIColor*)textColor {

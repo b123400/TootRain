@@ -103,6 +103,7 @@
     self.animateGifCheckbox.state = [[SettingManager sharedManager] animateGif] ? NSControlStateValueOn : NSControlStateValueOff;
     
     self.ignoreContentWarningsCheckbox.state = [[SettingManager sharedManager] ignoreContentWarnings] ? NSControlStateValueOn : NSControlStateValueOff;
+    self.flipUpDownCheckbox.state = [[SettingManager sharedManager] flipUpDown] ? NSControlStateValueOn : NSControlStateValueOff;
     self.historyPreserveLimitStepper.integerValue = self.historyPreserveLimitField.integerValue = [[SettingManager sharedManager] historyPreserveLimit];
     
     NSTimeInterval historyPreserveLimit = [[SettingManager sharedManager] historyPreserveDuration];
@@ -492,6 +493,11 @@
 - (IBAction)ignoreContentWarningsCheckboxChanged:(id)sender {
     BOOL enabled = [(NSButton*)sender state] == NSControlStateValueOn;
     [[SettingManager sharedManager] setIgnoreContentWarnings:enabled];
+}
+
+- (IBAction)flipUpDownCheckvoxChanged:(id)sender {
+    BOOL enabled = [(NSButton*)sender state] == NSControlStateValueOn;
+    [[SettingManager sharedManager] setFlipUpDown:enabled];
 }
 
 - (IBAction)historyPreserveLimitFieldChanged:(id)sender {

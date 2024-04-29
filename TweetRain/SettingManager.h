@@ -15,6 +15,7 @@
 #define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kSelectedAccountChanged @"kSelectedAccountChanged"
 #define kRainDropSpeedChanegdNotification @"kRainDropSpeedChanegdNotification"
+#define kFlipUpDownChangedNotification @"kFlipUpDownChangedNotification"
 
 typedef enum : NSUInteger {
     CursorBehaviourPause = 0,
@@ -50,6 +51,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) BOOL ignoreContentWarnings;
 @property (nonatomic) NSInteger historyPreserveLimit;
 @property (nonatomic) NSTimeInterval historyPreserveDuration;
+@property (nonatomic) BOOL flipUpDown;
 
 #if TARGET_OS_IPHONE
 

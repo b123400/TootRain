@@ -43,6 +43,7 @@
 @property (weak) IBOutlet NSButton *removeLinksCheckBox;
 @property (weak) IBOutlet NSButton *animateGifCheckbox;
 @property (weak) IBOutlet NSButton *ignoreContentWarningsCheckbox;
+@property (weak) IBOutlet NSButton *flipUpDownCheckbox;
 @property (weak) IBOutlet NSButton *chooseFontButton;
 @property (weak) IBOutlet NSSlider *speedSlider;
 
