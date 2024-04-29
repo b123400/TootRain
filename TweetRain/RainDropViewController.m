@@ -197,7 +197,7 @@
 #pragma mark interaction
 - (void)didMouseOver {
     CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
-    if (cursorBehaviour == CursorBehaviourClickThrough) {
+    if (cursorBehaviour == CursorBehaviourClickThrough || cursorBehaviour == CursorBehaviourClipAround) {
         return;
     } else if (cursorBehaviour == CursorBehaviourHide) {
         [self.view setHidden:YES];

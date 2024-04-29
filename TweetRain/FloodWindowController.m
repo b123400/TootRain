@@ -13,8 +13,10 @@
 #import "MastodonStatus.h"
 #import "BRMastodonStatus.h"
 #import "History Window/HistoryWindowController.h"
+#import "TransparentView.h"
 
 @interface FloodWindowController ()
+@property (weak) IBOutlet TransparentView *backgroundView;
 
 -(BOOL)shouldShowStatus:(Status*)status;
 
@@ -167,7 +169,8 @@
 
 - (void)updateCursorLocation:(NSEvent*)event {
 	NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
-	CGPoint point = NSPointToCGPoint(mouseLoc);
+	CGPoint point = [self.window.contentView convertPoint:NSPointToCGPoint(mouseLoc) fromView:nil];
+    [self.backgroundView setCursorLocation:point];
     CursorBehaviour cursorBehaviour = [[SettingManager sharedManager] cursorBehaviour];
     BOOL windowShouldIgnoreMouse = YES;
 	if (!CGPointEqualToPoint(lastMousePosition,point)) {
@@ -199,7 +202,7 @@
 }
 - (void)mouseUp:(NSEvent *)event {
     NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
-    CGPoint point = NSPointToCGPoint(mouseLoc);
+    CGPoint point = [self.window.contentView convertPoint:NSPointToCGPoint(mouseLoc) fromView:nil];
     for (RainDropViewController *thisController in self.rainDrops) {
         CGRect rect = [thisController visibleFrame];
         if (CGRectContainsPoint(rect, point)) {
