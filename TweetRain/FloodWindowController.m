@@ -17,7 +17,6 @@
 @interface FloodWindowController ()
 
 -(BOOL)shouldShowStatus:(Status*)status;
--(float)largestPossibleYForStatusViewController:(RainDropViewController*)status;
 
 @end
 
@@ -101,7 +100,7 @@
         RainDropViewController *thisViewController=[[RainDropViewController alloc]initWithStatus:status];
         [thisViewController loadView];
         CGRect frame=thisViewController.view.frame;
-        frame.origin.y=[_self largestPossibleYForStatusViewController:thisViewController];
+        frame.origin.y=[_self suitableYForStatusViewController:thisViewController];
         if (frame.origin.y < 0) {
             // out of screen, discard
             return;
@@ -126,25 +125,30 @@
 	return YES;
 }
 #pragma mark position calculation
--(float)ySuggestionForStatusViewController:(RainDropViewController*)controller atY:(float)thisY{
-	float minY=thisY;
+-(float)ySuggestionForStatusViewController:(RainDropViewController*)controller atY:(float)thisY flipped:(BOOL)flipped {
+	float startY = thisY;
 	for(RainDropViewController *thisController in self.rainDrops){
-		if((thisController.view.frame.origin.y<=thisY&&
-			thisController.view.frame.origin.y+thisController.view.frame.size.height>=thisY)||
-		   (thisController.view.frame.origin.y<=thisY+controller.view.frame.size.height&&
-			thisController.view.frame.origin.y>=thisY)){
+		if((thisController.view.frame.origin.y <= thisY &&
+			thisController.view.frame.origin.y + thisController.view.frame.size.height >= thisY) ||
+		   (thisController.view.frame.origin.y <= thisY + controller.view.frame.size.height &&
+			thisController.view.frame.origin.y >= thisY)){
 			//y position overlap
 			if([thisController willCollideWithRainDrop:controller]){
-				minY=thisController.view.frame.origin.y-controller.view.frame.size.height-1;
+                if (!flipped) {
+                    startY = thisController.view.frame.origin.y - controller.view.frame.size.height - 1;
+                } else {
+                    startY += thisController.view.frame.size.height + 1;
+                }
 			}
 		}
 	}
-	return minY;
+	return startY;
 }
--(float)largestPossibleYForStatusViewController:(RainDropViewController*)controller{
-	float possibleY=self.window.frame.size.height-controller.view.frame.size.height;
-	while(possibleY>0){
-		float suggestion=[self ySuggestionForStatusViewController:controller atY:possibleY];
+-(float)suitableYForStatusViewController:(RainDropViewController*)controller{
+    BOOL isFlipped = [[SettingManager sharedManager] flipUpDown];
+    float possibleY = isFlipped ? 0 : self.window.frame.size.height - controller.view.frame.size.height;
+	while((!isFlipped && possibleY > 0) || (isFlipped && possibleY + controller.view.frame.size.height < self.window.frame.size.height)) {
+		float suggestion=[self ySuggestionForStatusViewController:controller atY:possibleY flipped:isFlipped];
 		if(suggestion==possibleY){
 			break;
 		}
