@@ -13,4 +13,7 @@
 
 }
 
+@property (assign, nonatomic) BOOL clipAroundCursor;
+@property (assign, nonatomic) CGPoint cursorLocation;
+
 @end
