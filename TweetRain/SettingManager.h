@@ -21,6 +21,7 @@ typedef enum : NSUInteger {
     CursorBehaviourPause = 0,
     CursorBehaviourHide = 1,
     CursorBehaviourClickThrough = 2,
+    CursorBehaviourClipAround = 3,
 } CursorBehaviour;
 
 typedef enum : NSUInteger {
