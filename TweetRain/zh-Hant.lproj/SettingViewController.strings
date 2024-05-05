@@ -1,6 +1,12 @@
 /* Class = "NSTextFieldCell"; title = "Cursor"; ObjectID = "00o-4n-sxD"; */
 "00o-4n-sxD.title" = "鼠標";
 
+/* Class = "NSMenuItem"; title = "Above All Windows (avoid Dock)"; ObjectID = "1QK-hP-jeA"; */
+"1QK-hP-jeA.title" = "在所有視窗之上（避開Dock）";
+
+/* Class = "NSButtonCell"; title = "Display from bottom"; ObjectID = "3w9-J6-mhU"; */
+"3w9-J6-mhU.title" = "把彈幕靠在螢幕下方";
+
 /* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
 "5VI-7m-dre.title" = "螢幕";
 
@@ -84,6 +90,9 @@
 
 /* Class = "NSTextFieldCell"; title = "History Preserve Duration"; ObjectID = "gqU-Zg-Ow2"; */
 "gqU-Zg-Ow2.title" = "紀錄時間上限";
+
+/* Class = "NSMenuItem"; title = "Clip around"; ObjectID = "hBs-ue-P5x"; */
+"hBs-ue-P5x.title" = "避開鼠標";
 
 /* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
 "iWh-jO-lyt.title" = "名字:";

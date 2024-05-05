@@ -1,6 +1,12 @@
 /* Class = "NSTextFieldCell"; title = "Cursor"; ObjectID = "00o-4n-sxD"; */
 "00o-4n-sxD.title" = "カーソル";
 
+/* Class = "NSMenuItem"; title = "Above All Windows (avoid Dock)"; ObjectID = "1QK-hP-jeA"; */
+"1QK-hP-jeA.title" = "すべてのウインドの上（Dockを避ける）";
+
+/* Class = "NSButtonCell"; title = "Display from bottom"; ObjectID = "3w9-J6-mhU"; */
+"3w9-J6-mhU.title" = "下に寄せる";
+
 /* Class = "NSTextFieldCell"; title = "Screen"; ObjectID = "5VI-7m-dre"; */
 "5VI-7m-dre.title" = "スクリーン";
 
@@ -84,6 +90,9 @@
 
 /* Class = "NSTextFieldCell"; title = "History Preserve Duration"; ObjectID = "gqU-Zg-Ow2"; */
 "gqU-Zg-Ow2.title" = "履歴保存時限";
+
+/* Class = "NSMenuItem"; title = "Clip around"; ObjectID = "hBs-ue-P5x"; */
+"hBs-ue-P5x.title" = "カーソルを避ける";
 
 /* Class = "NSTextFieldCell"; title = "Name:"; ObjectID = "iWh-jO-lyt"; */
 "iWh-jO-lyt.title" = "名前:";
