@@ -22,7 +22,7 @@
     if (self = [super initWithCoder:coder]) {
         self.wantsLayer = YES;
         self.clipsToBounds = YES;
-        self.clipAroundCursor = NO;
+        self.clipAroundCursor = [[SettingManager sharedManager] cursorBehaviour] == CursorBehaviourClipAround;
         _cursorLocation = CGPointMake(CGFLOAT_MAX, CGFLOAT_MAX);
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cursorModeChanged:) name:kCursorBehaviourChanged object:nil];
     }
