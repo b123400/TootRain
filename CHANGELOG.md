@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.10.1 - 2024-05-06
+- Fix issue with init clip cursor mode
+
+## 1.10.0 - 2024-05-06
+- Implemented clip to cursor mode
+- Option to display statuses at bottom
+- More columns in history window
+- Fixed issue with announcement statuses
+
 ## 1.9.0 - 2023-12-11
 
 - Added settings for History preservation time and limit
