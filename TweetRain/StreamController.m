@@ -101,6 +101,7 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), mastondonAccount.displayName]];
+            [_self reconnect];
         };
         self.streamHandle = newHandle;
     } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
@@ -112,6 +113,7 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), slackAccount.teamName]];
+            [_self reconnect];
         };
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             [_self showStatus:message];
@@ -141,6 +143,7 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), misskeyAccount.displayName]];
+            [_self reconnect];
         };
         self.streamHandle = newHandle;
     }
