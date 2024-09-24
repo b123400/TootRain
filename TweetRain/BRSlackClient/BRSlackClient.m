@@ -272,8 +272,19 @@
             }
         }
     }];
-    [task resume];
+    NSTimer * __block pingTimer = [NSTimer scheduledTimerWithTimeInterval:60
+                                                         repeats:YES
+                                                           block:^(NSTimer * _Nonnull timer) {
+        if (task.closeCode == NSURLSessionWebSocketCloseCodeInvalid) {
+            [task sendPingWithPongReceiveHandler:^(NSError * _Nullable error) {
+            }];
+        } else {
+            [pingTimer invalidate];
+            pingTimer = nil;
+        }
+    }];
     [self.taskToHandleMapping setObject:handle forKey:task];
+    [task resume];
     
     [self listEmojiWithAccount:account completionHandler:^(NSDictionary<NSString *,NSString *> * _Nullable emojis, NSError * _Nullable error) {
         if (emojis) {

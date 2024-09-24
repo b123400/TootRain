@@ -337,6 +337,17 @@
             }
             
         }];
+        NSTimer * __block pingTimer = [NSTimer scheduledTimerWithTimeInterval:60
+                                                             repeats:YES
+                                                               block:^(NSTimer * _Nonnull timer) {
+            if (task.closeCode == NSURLSessionWebSocketCloseCodeInvalid) {
+                [task sendPingWithPongReceiveHandler:^(NSError * _Nullable error) {
+                }];
+            } else {
+                [pingTimer invalidate];
+                pingTimer = nil;
+            }
+        }];
         [_self.taskToHandleMapping setObject:handler forKey:task];
         [task resume];
     }];
@@ -591,7 +602,10 @@ didOpenWithProtocol:(NSString *)protocol {
   didCloseWithCode:(NSURLSessionWebSocketCloseCode)closeCode
             reason:(NSData *)reason {
     BRMastodonStreamHandle *handler = [self.taskToHandleMapping objectForKey:webSocketTask];
+    NSString *reasonStr = [[NSString alloc] initWithData:reason encoding:NSUTF8StringEncoding];
+    NSLog(@"reason %@", reasonStr);
     if (!handler) return;
+
     if (handler.onDisconnected) {
         handler.onDisconnected();
     }
