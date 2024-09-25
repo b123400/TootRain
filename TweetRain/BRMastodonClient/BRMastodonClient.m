@@ -342,6 +342,10 @@
                                                                block:^(NSTimer * _Nonnull timer) {
             if (task.closeCode == NSURLSessionWebSocketCloseCodeInvalid) {
                 [task sendPingWithPongReceiveHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        [pingTimer invalidate];
+                        pingTimer = nil;
+                    }
                 }];
             } else {
                 [pingTimer invalidate];
