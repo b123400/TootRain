@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) Account *account;
 @property (nonatomic, strong) StreamHandle *streamHandle;
+@property (atomic, assign) bool scheduledReconnect;
 
 @end
 
@@ -81,6 +82,19 @@ static StreamController *shared;
     [self reconnect];
 }
 
+- (void)reconnectAfterAWhile {
+    if (self.scheduledReconnect) return;
+    self.scheduledReconnect = true;
+    if (self.streamHandle) {
+        [self.streamHandle disconnect];
+    }
+    typeof(self) __weak _self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _self.scheduledReconnect = false;
+        [_self reconnect];
+    });
+}
+
 - (void)reconnect {
     typeof(self) __weak _self = self;
     if (!self.account) return;
@@ -100,8 +114,12 @@ static StreamController *shared;
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), mastondonAccount.displayName]];
         };
         newHandle.onDisconnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), mastondonAccount.displayName]];
-            [_self reconnect];
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), mastondonAccount.displayName]];
+            [_self reconnectAfterAWhile];
+        };
+        newHandle.onError = ^(NSError * _Nonnull error) {
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), mastondonAccount.displayName]];
+            [_self reconnectAfterAWhile];
         };
         self.streamHandle = newHandle;
     } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
@@ -112,11 +130,14 @@ static StreamController *shared;
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), slackAccount.displayName]];
         };
         newHandle.onDisconnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), slackAccount.teamName]];
-            [_self reconnect];
+            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), slackAccount.teamName]];
+            [_self reconnectAfterAWhile];
         };
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             [_self showStatus:message];
+        };
+        newHandle.onError = ^(NSError * _Nonnull error) {
+            [_self reconnectAfterAWhile];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
             if ([error.domain isEqualTo:@"BRSlackClient"] && error.code == 401) {
@@ -143,7 +164,10 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), misskeyAccount.displayName]];
-            [_self reconnect];
+            [_self reconnectAfterAWhile];
+        };
+        newHandle.onError = ^(NSError * _Nonnull error) {
+            [_self reconnectAfterAWhile];
         };
         self.streamHandle = newHandle;
     }
