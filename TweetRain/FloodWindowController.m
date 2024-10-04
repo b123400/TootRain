@@ -113,6 +113,7 @@
         [self.rainDrops addObject:thisViewController];
         
         [[HistoryWindowController shared] addStatus:status];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRainDropAppearedNotification object:thisViewController];
     });
 }
 

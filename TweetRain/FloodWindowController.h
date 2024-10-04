@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "StreamController.h"
 
+#define kRainDropAppearedNotification @"kRainDropAppearedNotification"
+
 @interface FloodWindowController : NSWindowController<StreamControllerDelegate>{
 	CGPoint lastMousePosition;
 	NSTimer *timer;
