@@ -74,6 +74,9 @@
 "Need to re-login %@" = "%@ に再ログインしてください";
 
 /* No comment provided by engineer. */
+"New version of TootRain available!" = "TootRainの新しいバージョンがあります！";
+
+/* No comment provided by engineer. */
 "Please enter your Mastodon / Pleroma instance host name." = "Mastodon / Pleroma の host nameを入れてください";
 
 /* No comment provided by engineer. */
@@ -93,6 +96,9 @@
 
 /* setting account reconnect button */
 "Reconnect" = "再接続";
+
+/* No comment provided by engineer. */
+"Reconnecting to %@" = "%@ に再接続中";
 
 /* No comment provided by engineer. */
 "Repost" = "ブースト";
