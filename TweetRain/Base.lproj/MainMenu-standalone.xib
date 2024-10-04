@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -157,7 +157,11 @@
             </items>
             <point key="canvasLocation" x="140" y="154"/>
         </menu>
-        <customObject id="494" customClass="FloodAppDelegate"/>
+        <customObject id="494" customClass="FloodAppDelegate">
+            <connections>
+                <outlet property="updaterController" destination="zvv-1O-xN1" id="QiK-GY-tE2"/>
+            </connections>
+        </customObject>
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="zvv-1O-xN1" customClass="SPUStandardUpdaterController"/>
     </objects>

@@ -14,6 +14,7 @@
 #import "BRMastodonStatus.h"
 #import "History Window/HistoryWindowController.h"
 #import "TransparentView.h"
+#import "NewUpdateStatus.h"
 
 @interface FloodWindowController ()
 @property (weak) IBOutlet TransparentView *backgroundView;
@@ -37,6 +38,8 @@
     
     [StreamController shared].delegate = self;
     [[StreamController shared] startStreaming];
+    
+    [self checkForUpdate];
 	
 	return [self initWithWindowNibName:@"FloodWindowController"];
 }
@@ -212,5 +215,24 @@
         }
     }
     [super mouseUp:event];
+}
+
+#pragma - Check for update
+- (void)checkForUpdate {
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:@"https://api.github.com/repos/b123400/TootRain/tags"] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSArray *tags = [NSJSONSerialization JSONObjectWithData:data options:nil error:nil];
+        if (![tags isKindOfClass:[NSArray class]]) return;
+        NSString *tagName = [tags firstObject][@"name"];
+        if (![tagName hasPrefix:@"tootrain-"]) return;
+        NSString *latestVersion = [tagName stringByReplacingOccurrencesOfString:@"tootrain-" withString:@""];
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+        if ([latestVersion compare:appVersion options:NSNumericSearch] == NSOrderedDescending) {
+            NewUpdateStatus *status = [[NewUpdateStatus alloc] init];
+            status.text = NSLocalizedString(@"New version of TootRain available!", @"");
+            [self streamController:[StreamController shared] didReceivedStatus:status];
+        }
+    }];
+    [task resume];
 }
 @end

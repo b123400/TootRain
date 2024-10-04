@@ -10,11 +10,19 @@
 #import <WebKit/WebKit.h>
 #import "SettingViewController.h"
 #import "FloodWindowController.h"
+// Need this for menu bar update item
+#ifdef STANDALONE
+#import "Sparkle/SPUStandardUpdaterController.h"
+#endif
 
 @interface FloodAppDelegate : NSObject <NSApplicationDelegate> {
 	FloodWindowController *windowController;
 	SettingViewController *settingController;
 }
+
+#ifdef STANDALONE
+@property (weak) IBOutlet SPUStandardUpdaterController *updaterController;
+#endif
 
 - (FloodWindowController*)windowController;
 

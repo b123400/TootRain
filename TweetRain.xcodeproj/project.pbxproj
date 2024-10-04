@@ -16,6 +16,8 @@
 		CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */; };
 		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
+		CF13AC9B2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */; };
+		CF13AC9C2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */; };
 		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
 		CF1FE3A029548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
 		CF1FE3A129548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
@@ -262,6 +264,8 @@
 		CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		CF1106EB1CC41546006CAE38 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ComposeStatusViewController.strings; sourceTree = "<group>"; };
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		CF13AC992CB02C1F00B83041 /* NewUpdateStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewUpdateStatus.h; sourceTree = "<group>"; };
+		CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewUpdateStatus.m; sourceTree = "<group>"; };
 		CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceInputWindowController.h; sourceTree = "<group>"; };
 		CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstanceInputWindowController.m; sourceTree = "<group>"; };
 		CF1FE39E29548BF800CABB47 /* BRMisskeyClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyClient.h; sourceTree = "<group>"; };
@@ -800,6 +804,8 @@
 				CF5DE47926A054D20040BD63 /* SlackUser.m */,
 				CFEC43F82695DC5200E66DD0 /* DummyStatus.h */,
 				CFEC43F92695DC5200E66DD0 /* DummyStatus.m */,
+				CF13AC992CB02C1F00B83041 /* NewUpdateStatus.h */,
+				CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */,
 				CF5DE46026A02A7E0040BD63 /* Account.h */,
 				CF5DE46126A02A7E0040BD63 /* Account.m */,
 				CF1FE3CA295734C800CABB47 /* MisskeyStatus.h */,
@@ -1084,6 +1090,7 @@
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
+				CF13AC9C2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */,
 				CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */,
 				CF9F9E371534567B000AE741 /* Status.m in Sources */,
 				CF5E5EC62692A6A500E904D0 /* BRMastodonStatus.m in Sources */,
@@ -1168,6 +1175,7 @@
 				CF5D2D4B29350BC400745D63 /* SettingManager.m in Sources */,
 				CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
+				CF13AC9B2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */,
 				CF5D2D4C29350BC400745D63 /* InstanceInputWindowController.m in Sources */,
 				CF5D2D4D29350BC400745D63 /* Status.m in Sources */,
 				CF5D2D4E29350BC400745D63 /* BRMastodonStatus.m in Sources */,

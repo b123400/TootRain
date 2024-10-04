@@ -11,10 +11,6 @@
 #import "BRSlackClient.h"
 #import "ShowStatusIntentHandler.h"
 #import "History Window/HistoryWindowController.h"
-// Need this for menu bar update item
-#ifdef STANDALONE
-#import "Sparkle/SPUStandardUpdaterController.h"
-#endif
 
 @interface FloodAppDelegate ()
 @property (nonatomic, strong) NSTimer *iconAnimationTimer;

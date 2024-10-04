@@ -12,6 +12,11 @@
 #import "SettingViewController.h"
 #import "NSMutableAttributedString+Stripe.h"
 #import "DummyStatus.h"
+#import "NewUpdateStatus.h"
+#import "FloodAppDelegate.h"
+#ifdef STANDALONE
+#import "Sparkle/SPUStandardUpdaterController.h"
+#endif
 
 @interface RainDropViewController () <CAAnimationDelegate>
 
@@ -251,6 +256,16 @@
 		[self pauseAnimation];
 	}
     if ([status isKindOfClass:[DummyStatus class]]) return;
+    if ([status isKindOfClass:[NewUpdateStatus class]]) {
+#ifdef STANDALONE
+        FloodAppDelegate *delegate = [[NSApplication sharedApplication] delegate];
+        [delegate.updaterController checkForUpdates:self];
+#else
+        NSURL *url = [NSURL URLWithString:@"https://apps.apple.com/us/app/tootrain/id1579538917"];
+        [[NSWorkspace sharedWorkspace] openURL:url];
+#endif
+        return;
+    }
 	if (!popover) {
 		popover=[[NSPopover alloc] init];
 		NSViewController *newController=[[RainDropDetailViewController alloc]initWithStatus:status];
