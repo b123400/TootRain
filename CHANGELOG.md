@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.0.1 - 2024-10-05
+- Fixed jerky icon animation
+
 ## 2.0.0 - 2024-10-05
 - Improved error handling and reconnection
 - New icon with animation
