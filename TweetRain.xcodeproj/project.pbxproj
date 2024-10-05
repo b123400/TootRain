@@ -897,7 +897,7 @@
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
-						DevelopmentTeam = CC63FD9H8S;
+						DevelopmentTeam = 3P89U4ZCGD;
 						LastSwiftMigration = 1300;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -907,7 +907,7 @@
 						};
 					};
 					CF5D2D2029350BC400745D63 = {
-						DevelopmentTeam = CC63FD9H8S;
+						DevelopmentTeam = 3P89U4ZCGD;
 					};
 				};
 			};
@@ -1351,8 +1351,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 140;
-				DEVELOPMENT_TEAM = CC63FD9H8S;
+				CURRENT_PROJECT_VERSION = 200;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1366,10 +1366,11 @@
 				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1397,9 +1398,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = CC63FD9H8S;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1411,10 +1412,11 @@
 				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
 				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1482,8 +1484,8 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 140;
-				DEVELOPMENT_TEAM = CC63FD9H8S;
+				CURRENT_PROJECT_VERSION = 200;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1505,7 +1507,7 @@
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1533,9 +1535,9 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 140;
+				CURRENT_PROJECT_VERSION = 200;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = CC63FD9H8S;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1555,7 +1557,7 @@
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.10.1;
+				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
