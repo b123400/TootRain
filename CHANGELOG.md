@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.0 - 2024-10-05
+- Improved error handling and reconnection
+- New icon with animation
+
 ## 1.10.1 - 2024-05-06
 - Fix issue with init clip cursor mode
 
