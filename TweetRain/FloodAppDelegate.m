@@ -55,6 +55,7 @@
                 if (self.pendingAnimationCount) {
                     [self iconAnimation];
                 }
+                return;
             }
             NSImage *image = [NSImage imageNamed:[NSString stringWithFormat:@"AppIcon-animation%02d", iconIndex]];
             [[NSApplication sharedApplication] setApplicationIconImage:image];
