@@ -44,6 +44,9 @@
             self.descriptionTextField.stringValue = NSLocalizedString(@"Please enter your Misskey instance host name.", @"");
             self.descriptionTextField.placeholderString = @"https://";
             break;
+        case SettingAccountTypeIrc:
+            // nope
+            break;
     }
 }
 

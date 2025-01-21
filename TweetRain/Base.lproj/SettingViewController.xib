@@ -984,10 +984,10 @@
                         <action selector="addMisskeyAccountClicked:" target="-2" id="c1S-7c-dyq"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Slack" hidden="YES" id="DEG-ph-RVs">
+                <menuItem title="IRC" id="ql0-TC-bZ1">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="addSlackAccountClicked:" target="-2" id="PUB-Jz-zTJ"/>
+                        <action selector="addIrcAccountClicked:" target="-2" id="9rc-ZQ-JwE"/>
                     </connections>
                 </menuItem>
             </items>

@@ -21,6 +21,8 @@
 #import "BRMisskeyClient.h"
 #import "SettingAccountDetailMisskeyView.h"
 #import "BRMisskeyStreamSourceSelectionWindowController.h"
+#import "IRC/BRIrcAccount.h"
+#import "IRC/BRIrcLoginWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -262,9 +264,16 @@
 - (IBAction)addMisskeyAccountClicked:(id)sender {
     [self showInstanceInputWindowWithAccountType: SettingAccountTypeMisskey];
 }
-- (IBAction)addSlackAccountClicked:(id)sender {
-    [self showInstanceInputWindowWithAccountType: SettingAccountTypeSlack];
+
+- (IBAction)addIrcAccountClicked:(id)sender {
+    BRIrcLoginWindowController *controller = [[BRIrcLoginWindowController alloc] init];
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSModalResponseOK) return;
+        [controller.account save];
+        [self updateAccountView];
+    }];
 }
+
 
 - (void)showInstanceInputWindowWithAccountType:(SettingAccountType)accountType {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];

@@ -172,6 +172,10 @@
 		CF9B469B2D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
 		CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
 		CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
+		CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
+		CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
+		CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
+		CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
@@ -400,6 +404,9 @@
 		CF9B468E2D3E176400CDFE61 /* SharedDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedDefine.h; sourceTree = "<group>"; };
 		CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcAccount.h; sourceTree = "<group>"; };
 		CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcAccount.m; sourceTree = "<group>"; };
+		CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcLoginWindowController.h; sourceTree = "<group>"; };
+		CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcLoginWindowController.m; sourceTree = "<group>"; };
+		CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRIrcLoginWindowController.xib; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -791,6 +798,9 @@
 			children = (
 				CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */,
 				CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */,
+				CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */,
+				CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */,
+				CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */,
 				CF9B46852D3E176400CDFE61 /* ConnectionController.h */,
 				CF9B46862D3E176400CDFE61 /* ConnectionController.m */,
 				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
@@ -1002,6 +1012,7 @@
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
+				CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E22B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1029,6 +1040,7 @@
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
 				CF5D2D3229350BC400745D63 /* Credits.rtf in Resources */,
+				CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E32B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1166,6 +1178,7 @@
 				CFD7C52029AB99E80053A661 /* BRApplication.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
+				CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
 				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
@@ -1257,6 +1270,7 @@
 				CFD7C52129AB99E80053A661 /* BRApplication.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
 				CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
+				CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
 				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
