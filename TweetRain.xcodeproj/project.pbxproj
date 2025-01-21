@@ -170,6 +170,8 @@
 		CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
 		CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
 		CF9B469B2D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
+		CF9B469E2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */; };
+		CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */; };
 		CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
 		CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
 		CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
@@ -402,6 +404,8 @@
 		CF9B468C2D3E176400CDFE61 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		CF9B468D2D3E176400CDFE61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF9B468E2D3E176400CDFE61 /* SharedDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedDefine.h; sourceTree = "<group>"; };
+		CF9B469C2D3E192B00CDFE61 /* SettingAccountDetailIrcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailIrcView.h; sourceTree = "<group>"; };
+		CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailIrcView.m; sourceTree = "<group>"; };
 		CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcAccount.h; sourceTree = "<group>"; };
 		CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcAccount.m; sourceTree = "<group>"; };
 		CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcLoginWindowController.h; sourceTree = "<group>"; };
@@ -834,6 +838,8 @@
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
+				CF9B469C2D3E192B00CDFE61 /* SettingAccountDetailIrcView.h */,
+				CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */,
 				CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */,
 				CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */,
 				CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */,
@@ -1141,6 +1147,7 @@
 				CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
+				CF9B469E2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
 				CF9B46912D3E176400CDFE61 /* ConnectionController.m in Sources */,
 				CF9B46922D3E176400CDFE61 /* IrcMain.mm in Sources */,
 				CF9B46932D3E176400CDFE61 /* IRCMessage.m in Sources */,
@@ -1233,6 +1240,7 @@
 				CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5D2D4229350BC400745D63 /* BRMastodonStreamHandle.m in Sources */,
 				CF5D2D4329350BC400745D63 /* DBPrefsWindowController.m in Sources */,
+				CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
 				CF9B46972D3E176400CDFE61 /* ConnectionController.m in Sources */,
 				CF9B46982D3E176400CDFE61 /* IrcMain.mm in Sources */,
 				CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */,

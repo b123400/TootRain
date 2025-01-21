@@ -21,6 +21,7 @@
 #import "BRMisskeyClient.h"
 #import "SettingAccountDetailMisskeyView.h"
 #import "BRMisskeyStreamSourceSelectionWindowController.h"
+#import "SettingAccountDetailIrcView.h"
 #import "IRC/BRIrcAccount.h"
 #import "IRC/BRIrcLoginWindowController.h"
 
@@ -32,6 +33,7 @@
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
 @property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
+@property (strong) IBOutlet SettingAccountDetailIrcView *ircDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
 @property Account *detailSelectedAccount;
 
@@ -358,6 +360,9 @@
     } else if ([self.detailSelectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
         self.accountDetailBox.contentView = self.misskeyDetailView;
         [self.misskeyDetailView setAccount:(BRMisskeyAccount*)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[BRIrcAccount class]]) {
+        self.accountDetailBox.contentView = self.ircDetailView;
+        [self.ircDetailView setAccount:(BRIrcAccount *)self.detailSelectedAccount];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
     if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
