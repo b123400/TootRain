@@ -158,6 +158,18 @@
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
 		CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B022694BC6800DFE9BD /* MastodonStatus.m */; };
 		CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B052694BD0100DFE9BD /* MastodonUser.m */; };
+		CF9B46902D3E176400CDFE61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF9B468D2D3E176400CDFE61 /* README.md */; };
+		CF9B46912D3E176400CDFE61 /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46862D3E176400CDFE61 /* ConnectionController.m */; };
+		CF9B46922D3E176400CDFE61 /* IrcMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46872D3E176400CDFE61 /* IrcMain.mm */; };
+		CF9B46932D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
+		CF9B46942D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
+		CF9B46952D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
+		CF9B46962D3E176400CDFE61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF9B468D2D3E176400CDFE61 /* README.md */; };
+		CF9B46972D3E176400CDFE61 /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46862D3E176400CDFE61 /* ConnectionController.m */; };
+		CF9B46982D3E176400CDFE61 /* IrcMain.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46872D3E176400CDFE61 /* IrcMain.mm */; };
+		CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
+		CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
+		CF9B469B2D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
@@ -374,6 +386,16 @@
 		CF927B042694BD0100DFE9BD /* MastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonUser.h; sourceTree = "<group>"; };
 		CF927B052694BD0100DFE9BD /* MastodonUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastodonUser.m; sourceTree = "<group>"; };
 		CF948FF826B2883400C3BCE4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/RainDropDetailViewController.strings; sourceTree = "<group>"; };
+		CF9B46852D3E176400CDFE61 /* ConnectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
+		CF9B46862D3E176400CDFE61 /* ConnectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
+		CF9B46872D3E176400CDFE61 /* IrcMain.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IrcMain.mm; sourceTree = "<group>"; };
+		CF9B46882D3E176400CDFE61 /* IRCMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRCMessage.h; sourceTree = "<group>"; };
+		CF9B46892D3E176400CDFE61 /* IRCMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRCMessage.m; sourceTree = "<group>"; };
+		CF9B468A2D3E176400CDFE61 /* IRCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRCProtocol.h; sourceTree = "<group>"; };
+		CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRCProtocol.m; sourceTree = "<group>"; };
+		CF9B468C2D3E176400CDFE61 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		CF9B468D2D3E176400CDFE61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CF9B468E2D3E176400CDFE61 /* SharedDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedDefine.h; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -527,6 +549,7 @@
 				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
 				CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */,
 				CF01B4CD29A888C2004397DF /* ScriptCommand */,
+				CF9B468F2D3E176400CDFE61 /* IRC */,
 			);
 			name = Classes;
 			path = TweetRain;
@@ -759,6 +782,23 @@
 			name = "RainDrop Detail";
 			sourceTree = "<group>";
 		};
+		CF9B468F2D3E176400CDFE61 /* IRC */ = {
+			isa = PBXGroup;
+			children = (
+				CF9B46852D3E176400CDFE61 /* ConnectionController.h */,
+				CF9B46862D3E176400CDFE61 /* ConnectionController.m */,
+				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
+				CF9B46882D3E176400CDFE61 /* IRCMessage.h */,
+				CF9B46892D3E176400CDFE61 /* IRCMessage.m */,
+				CF9B468A2D3E176400CDFE61 /* IRCProtocol.h */,
+				CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */,
+				CF9B468C2D3E176400CDFE61 /* Makefile */,
+				CF9B468D2D3E176400CDFE61 /* README.md */,
+				CF9B468E2D3E176400CDFE61 /* SharedDefine.h */,
+			);
+			path = IRC;
+			sourceTree = "<group>";
+		};
 		CF9F62081563D548004C6514 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -939,6 +979,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CF9B46902D3E176400CDFE61 /* README.md in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
@@ -965,6 +1006,7 @@
 			files = (
 				CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */,
 				CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CF9B46962D3E176400CDFE61 /* README.md in Resources */,
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
@@ -1080,6 +1122,11 @@
 				CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
+				CF9B46912D3E176400CDFE61 /* ConnectionController.m in Sources */,
+				CF9B46922D3E176400CDFE61 /* IrcMain.mm in Sources */,
+				CF9B46932D3E176400CDFE61 /* IRCMessage.m in Sources */,
+				CF9B46942D3E176400CDFE61 /* IRCProtocol.m in Sources */,
+				CF9B46952D3E176400CDFE61 /* Makefile in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
 				CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */,
 				CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */,
@@ -1165,6 +1212,11 @@
 				CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5D2D4229350BC400745D63 /* BRMastodonStreamHandle.m in Sources */,
 				CF5D2D4329350BC400745D63 /* DBPrefsWindowController.m in Sources */,
+				CF9B46972D3E176400CDFE61 /* ConnectionController.m in Sources */,
+				CF9B46982D3E176400CDFE61 /* IrcMain.mm in Sources */,
+				CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */,
+				CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */,
+				CF9B469B2D3E176400CDFE61 /* Makefile in Sources */,
 				CF5D2D4429350BC400745D63 /* CenteredTextCell.m in Sources */,
 				CF5D2D4529350BC400745D63 /* NSImage+Resize.m in Sources */,
 				CF5D2D4629350BC400745D63 /* BRMastodonAccount.m in Sources */,
