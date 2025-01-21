@@ -35,6 +35,7 @@ typedef enum : NSUInteger {
     SettingAccountTypeMastodon,
     SettingAccountTypeSlack,
     SettingAccountTypeMisskey,
+    SettingAccountTypeIrc,
 } SettingAccountType;
 
 @interface SettingManager : NSObject{

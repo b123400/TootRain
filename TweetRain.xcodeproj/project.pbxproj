@@ -170,6 +170,8 @@
 		CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
 		CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
 		CF9B469B2D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
+		CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
+		CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
@@ -396,6 +398,8 @@
 		CF9B468C2D3E176400CDFE61 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		CF9B468D2D3E176400CDFE61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF9B468E2D3E176400CDFE61 /* SharedDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedDefine.h; sourceTree = "<group>"; };
+		CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcAccount.h; sourceTree = "<group>"; };
+		CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcAccount.m; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -785,6 +789,8 @@
 		CF9B468F2D3E176400CDFE61 /* IRC */ = {
 			isa = PBXGroup;
 			children = (
+				CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */,
+				CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */,
 				CF9B46852D3E176400CDFE61 /* ConnectionController.h */,
 				CF9B46862D3E176400CDFE61 /* ConnectionController.m */,
 				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
@@ -1111,6 +1117,7 @@
 				CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
+				CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
 				CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */,
 				CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
@@ -1201,6 +1208,7 @@
 				CF5D2D3929350BC400745D63 /* BRSlackAccount.m in Sources */,
 				CF5D2D3A29350BC400745D63 /* CustomDragView.m in Sources */,
 				CF5D2D3B29350BC400745D63 /* NSFileManager+DirectoryLocations.m in Sources */,
+				CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CF5D2D3C29350BC400745D63 /* BRMastodonApp.m in Sources */,
 				CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */,
 				CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,

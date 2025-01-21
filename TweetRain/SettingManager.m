@@ -11,6 +11,7 @@
 #import "BRMastodonAccount.h"
 #import "BRSlackAccount.h"
 #import "BRMisskeyAccount.h"
+#import "IRC/BRIrcAccount.h"
 
 @interface SettingManager ()
 
@@ -67,6 +68,7 @@ static NSMutableArray *savedAccounts=nil;
     [accounts addObjectsFromArray:[BRMastodonAccount allAccounts]];
     [accounts addObjectsFromArray:[BRSlackAccount allAccounts]];
     [accounts addObjectsFromArray:[BRMisskeyAccount allAccounts]];
+    [accounts addObjectsFromArray:[BRIrcAccount allAccounts]];
     self.accounts = accounts;
 }
 
