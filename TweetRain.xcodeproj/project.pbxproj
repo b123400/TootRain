@@ -13,6 +13,8 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9FA6D7D2262648D3F2034C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0A38CCE2FE7797211543265 /* Pods_TootRain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */; };
+		CF05F4F72D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */; };
+		CF05F4F82D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */; };
 		CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */; };
 		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
@@ -278,6 +280,8 @@
 		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
 		BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlyPortValueFormatter.h; sourceTree = "<group>"; };
+		CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlyPortValueFormatter.m; sourceTree = "<group>"; };
 		CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonEmoji.h; sourceTree = "<group>"; };
 		CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonEmoji.m; sourceTree = "<group>"; };
 		CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
@@ -805,6 +809,8 @@
 				CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */,
 				CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */,
 				CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */,
+				CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */,
+				CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */,
 				CF9B46852D3E176400CDFE61 /* ConnectionController.h */,
 				CF9B46862D3E176400CDFE61 /* ConnectionController.m */,
 				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
@@ -1160,6 +1166,7 @@
 				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CF5DE47426A046EF0040BD63 /* BRSlackUser.m in Sources */,
 				CF5DE47726A048470040BD63 /* BRSlackMessage.m in Sources */,
+				CF05F4F82D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
@@ -1253,6 +1260,7 @@
 				CF5D2D4829350BC400745D63 /* StreamController.m in Sources */,
 				CF5D2D4929350BC400745D63 /* BRSlackUser.m in Sources */,
 				CF5D2D4A29350BC400745D63 /* BRSlackMessage.m in Sources */,
+				CF05F4F72D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */,
 				CF5D2D4B29350BC400745D63 /* SettingManager.m in Sources */,
 				CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,

@@ -442,6 +442,21 @@
     }];
 }
 
+- (IBAction)ircOptionClicked:(id)sender {
+    NSUInteger index = [accountsTableView selectedRow];
+    if (index == -1) return;
+    Account *detailSelectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    if (![detailSelectedAccount isKindOfClass:[BRIrcAccount class]]) return;
+    BRIrcLoginWindowController *controller = [[BRIrcLoginWindowController alloc] init];
+    controller.account = (BRIrcAccount*)detailSelectedAccount;
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSModalResponseOK) return;
+        [controller.account save];
+        [self updateAccountView];
+        // TODO: reconnect?
+    }];
+}
+
 -(void)tableViewSelectionDidChange:(NSNotification *)notification {
     NSUInteger index = [accountsTableView selectedRow];
     if (index == -1) return;

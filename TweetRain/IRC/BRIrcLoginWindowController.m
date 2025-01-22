@@ -6,6 +6,7 @@
 //
 
 #import "BRIrcLoginWindowController.h"
+#import "OnlyPortValueFormatter.h"
 
 @interface BRIrcLoginWindowController () <NSTableViewDelegate, NSTableViewDataSource>
 @property (weak) IBOutlet NSTextField *hostTextField;
@@ -29,7 +30,10 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    // Force UI reload
+    self.account = self.account;
+    
+    self.portTextField.formatter = [[OnlyPortValueFormatter alloc] init];
 }
 - (void)setAccount:(BRIrcAccount *)account {
     _account = account;
@@ -38,7 +42,7 @@
     self.tlsCheckBox.state = account.tls ? NSControlStateValueOn : NSControlStateValueOff;
     self.nickTextField.stringValue = account.nick ?: @"";
     self.passTextField.stringValue = account.pass ?: @"";
-    self.channels = [account mutableCopy];
+    self.channels = [account.channels mutableCopy];
     [self.channelsTableView reloadData];
 }
 

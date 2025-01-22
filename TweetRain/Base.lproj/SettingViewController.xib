@@ -1017,7 +1017,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="slackOptionClicked:" target="-2" id="79n-8B-lKd"/>
+                        <action selector="ircOptionClicked:" target="-2" id="H2W-UY-YI0"/>
                     </connections>
                 </button>
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="quk-0h-g4C">
