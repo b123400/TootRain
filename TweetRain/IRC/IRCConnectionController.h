@@ -4,13 +4,17 @@
 #define PING_TIME 110
 
 #import <Foundation/Foundation.h>
-#import "SharedDefine.h"
 #import "IRCProtocol.h"
 #import "IRCMessage.h"
 
 @class IRCMessage;
 
-@interface ConnectionController : NSObject <NSStreamDelegate> {
+typedef enum{
+    kStateDisconnected = 0,
+    kStateConnected = 1
+} IRCConnectionState;
+
+@interface IRCConnectionController : NSObject <NSStreamDelegate> {
 	NSInputStream *ingoingConnection;
 	NSOutputStream *outgoingConnection;
 	NSString *dataStream;
@@ -22,7 +26,7 @@
 }
 
 @property (assign) id delegate;
-@property connectionState state;
+@property IRCConnectionState state;
 @property (assign) int port;
 @property int mode;
 @property (strong) NSString* host;

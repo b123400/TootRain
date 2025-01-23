@@ -1,11 +1,11 @@
-#import "ConnectionController.h"
+#import "IRCConnectionController.h"
 
-@interface ConnectionController()
+@interface IRCConnectionController()
 -(const char*)simpleCStringConvert:(NSString*)string;
 -(void)sendPingback;
 @end
 
-@implementation ConnectionController
+@implementation IRCConnectionController
 
 #ifdef __DEBUG
 	const char *connected_host;

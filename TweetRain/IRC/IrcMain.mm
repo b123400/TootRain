@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "ConnectionController.h"
+#import "IRCConnectionController.h"
 
 @interface testClass : NSObject {}
 @end
@@ -17,7 +17,7 @@ int main1(int argc, const char * argv[])
         
         testClass *c = [[testClass alloc] init];
 
-        ConnectionController* client = [[ConnectionController alloc] init];
+        IRCConnectionController* client = [[IRCConnectionController alloc] init];
 
         [client setHost:@"light.wa.us.SwiftIRC.net"]; //first server of google list 
         [client setPort:6667];
