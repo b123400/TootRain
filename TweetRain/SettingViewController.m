@@ -183,6 +183,7 @@
                   [account isKindOfClass:[BRSlackAccount class]] ? SettingAccountTypeSlack
                 : [account isKindOfClass:[BRMastodonAccount class]] ? SettingAccountTypeMastodon
                 : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
+                : [account isKindOfClass:[BRIrcAccount class]] ? SettingAccountTypeIrc
                 : SettingAccountTypeMastodon;
             return obj;
         }
