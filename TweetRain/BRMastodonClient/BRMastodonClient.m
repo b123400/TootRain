@@ -337,6 +337,7 @@
             }
             
         }];
+        handler.task = task;
         NSTimer * __block pingTimer = [NSTimer scheduledTimerWithTimeInterval:60
                                                              repeats:YES
                                                                block:^(NSTimer * _Nonnull timer) {
