@@ -23,6 +23,9 @@
 #import "SettingViewController.h"
 #import "BRMisskeyClient.h"
 #import "MisskeyStreamHandle.h"
+#import "IRC/BRIrcAccount.h"
+#import "IRC/BRIrcClient.h"
+#import "IrcStreamHandle.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -168,6 +171,14 @@ static StreamController *shared;
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
             [_self reconnectAfterAWhile];
+        };
+        self.streamHandle = newHandle;
+    } else if ([selectedAccount isKindOfClass:[BRIrcAccount class]]) {
+        BRIrcAccount *ircAccount = (BRIrcAccount *)selectedAccount;
+        BRIrcStreamHandle *handle = [[BRIrcClient shared] streamWithAccount:ircAccount];
+        IrcStreamHandle *newHandle = [[IrcStreamHandle alloc] initWithHandle:handle];
+        newHandle.onStatus = ^(DummyStatus * _Nonnull status) {
+            [_self showNotificationWithText:status.text];
         };
         self.streamHandle = newHandle;
     }

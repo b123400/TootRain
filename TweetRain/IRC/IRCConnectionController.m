@@ -53,8 +53,7 @@
 	[ingoingConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	[outgoingConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     
-    BOOL ssl = YES;
-    if (ssl) {
+    if (self.ssl) {
         NSDictionary *dict = @{
             (NSString*)kCFStreamSSLValidatesCertificateChain: (id)kCFBooleanFalse,     // allow self-signed certificate
             (NSString*)kCFStreamSSLLevel: @"kCFStreamSocketSecurityLevelTLSv1_2"    // don't understand, why there isn't a constant for version 1.2
@@ -65,7 +64,7 @@
 
         if (!sslSetRead || !sslSetWrite) {
 //            throw ConnectionError.sslConfigurationFailed
-            NSLog(@"oh no");
+            NSLog(@"Cannot set SSL");
         }
     }
 

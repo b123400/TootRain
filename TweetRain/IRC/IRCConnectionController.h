@@ -14,6 +14,10 @@ typedef enum{
     kStateConnected = 1
 } IRCConnectionState;
 
+@protocol IRCConnectionControllerDelegate
+-(void)clientHasReceivedBytes:(NSMutableArray<IRCMessage*>*)messageArray;
+@end
+
 @interface IRCConnectionController : NSObject <NSStreamDelegate> {
 	NSInputStream *ingoingConnection;
 	NSOutputStream *outgoingConnection;
@@ -25,7 +29,7 @@ typedef enum{
 	BOOL isAFK;
 }
 
-@property (assign) id delegate;
+@property (assign) id<IRCConnectionControllerDelegate> delegate;
 @property IRCConnectionState state;
 @property (assign) int port;
 @property int mode;
@@ -33,6 +37,7 @@ typedef enum{
 @property (strong) NSString* nick;
 @property (strong) NSString* name;
 @property (strong) NSString* pass;
+@property (assign) BOOL ssl;
 @property BOOL printIncomingStream;
 
 //Lib calls

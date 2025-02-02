@@ -153,6 +153,12 @@
 		CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */; };
 		CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */; };
 		CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */; };
+		CF8152C92D4F4EF500D58CDC /* BRIrcClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */; };
+		CF8152CA2D4F4EF500D58CDC /* BRIrcClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */; };
+		CF8152CE2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */; };
+		CF8152CF2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */; };
+		CF8152D22D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */; };
+		CF8152D32D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
 		CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
@@ -385,6 +391,12 @@
 		CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannelSelectionWindowController.m; sourceTree = "<group>"; };
 		CF7A0F81269F18EA009B0CE8 /* BRSlackStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackStreamHandle.h; sourceTree = "<group>"; };
 		CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackStreamHandle.m; sourceTree = "<group>"; };
+		CF8152C72D4F4EF500D58CDC /* BRIrcClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcClient.h; sourceTree = "<group>"; };
+		CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcClient.m; sourceTree = "<group>"; };
+		CF8152CC2D4F4F0700D58CDC /* BRIrcStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcStreamHandle.h; sourceTree = "<group>"; };
+		CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcStreamHandle.m; sourceTree = "<group>"; };
+		CF8152D02D4F5DDB00D58CDC /* IrcStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IrcStreamHandle.h; sourceTree = "<group>"; };
+		CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IrcStreamHandle.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -784,6 +796,8 @@
 				CF5DE47026A03A8E0040BD63 /* SlackStreamHandle.m */,
 				CF1FE3C62957343A00CABB47 /* MisskeyStreamHandle.h */,
 				CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */,
+				CF8152D02D4F5DDB00D58CDC /* IrcStreamHandle.h */,
+				CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */,
 			);
 			name = StreamController;
 			sourceTree = "<group>";
@@ -808,6 +822,10 @@
 				CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */,
 				CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */,
 				CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */,
+				CF8152C72D4F4EF500D58CDC /* BRIrcClient.h */,
+				CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */,
+				CF8152CC2D4F4F0700D58CDC /* BRIrcStreamHandle.h */,
+				CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */,
 				CF9B46852D3E176400CDFE61 /* IRCConnectionController.h */,
 				CF9B46862D3E176400CDFE61 /* IRCConnectionController.m */,
 				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
@@ -1148,6 +1166,7 @@
 				CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */,
 				CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */,
+				CF8152C92D4F4EF500D58CDC /* BRIrcClient.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
 				CF9B469E2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
 				CF9B46912D3E176400CDFE61 /* IRCConnectionController.m in Sources */,
@@ -1188,6 +1207,7 @@
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
+				CF8152CF2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */,
 				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
@@ -1204,6 +1224,7 @@
 				CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */,
 				CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */,
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF8152D22D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
@@ -1241,6 +1262,7 @@
 				CF5D2D4129350BC400745D63 /* BRSlackClient.m in Sources */,
 				CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5D2D4229350BC400745D63 /* BRMastodonStreamHandle.m in Sources */,
+				CF8152CA2D4F4EF500D58CDC /* BRIrcClient.m in Sources */,
 				CF5D2D4329350BC400745D63 /* DBPrefsWindowController.m in Sources */,
 				CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
 				CF9B46972D3E176400CDFE61 /* IRCConnectionController.m in Sources */,
@@ -1281,6 +1303,7 @@
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
 				CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
 				CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
+				CF8152CE2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */,
 				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
@@ -1297,6 +1320,7 @@
 				CF5D2D6129350BC400745D63 /* DummyStatus.m in Sources */,
 				CF5D2D6229350BC400745D63 /* BRSlackChannel.m in Sources */,
 				CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF8152D32D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */,
 				CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */,
 				CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */,
