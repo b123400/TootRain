@@ -281,9 +281,13 @@
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
     Account *account = [SettingManager sharedManager].accounts[row];
+    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    BOOL deletingSelectedAccount = [account.identifier isEqual:selectedAccount.identifier];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
+    if (deletingSelectedAccount) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
+    }
     [self updateAccountView];
 }
 
