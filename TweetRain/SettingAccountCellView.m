@@ -37,6 +37,9 @@
         case SettingAccountTypeMisskey:
             [self.imageView setImage:[NSImage imageNamed:@"Misskey"]];
             break;
+        case SettingAccountTypeIrc:
+            [self.imageView setImage:[NSImage imageNamed:@"IRC"]];
+            break;
     }
     self.textField.stringValue = objectValue.accountName;
     if (objectValue.isConnected) {

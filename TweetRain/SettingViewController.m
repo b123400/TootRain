@@ -21,6 +21,9 @@
 #import "BRMisskeyClient.h"
 #import "SettingAccountDetailMisskeyView.h"
 #import "BRMisskeyStreamSourceSelectionWindowController.h"
+#import "SettingAccountDetailIrcView.h"
+#import "IRC/BRIrcAccount.h"
+#import "IRC/BRIrcLoginWindowController.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
@@ -30,6 +33,7 @@
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
 @property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
+@property (strong) IBOutlet SettingAccountDetailIrcView *ircDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
 @property Account *detailSelectedAccount;
 
@@ -179,6 +183,7 @@
                   [account isKindOfClass:[BRSlackAccount class]] ? SettingAccountTypeSlack
                 : [account isKindOfClass:[BRMastodonAccount class]] ? SettingAccountTypeMastodon
                 : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
+                : [account isKindOfClass:[BRIrcAccount class]] ? SettingAccountTypeIrc
                 : SettingAccountTypeMastodon;
             return obj;
         }
@@ -262,9 +267,16 @@
 - (IBAction)addMisskeyAccountClicked:(id)sender {
     [self showInstanceInputWindowWithAccountType: SettingAccountTypeMisskey];
 }
-- (IBAction)addSlackAccountClicked:(id)sender {
-    [self showInstanceInputWindowWithAccountType: SettingAccountTypeSlack];
+
+- (IBAction)addIrcAccountClicked:(id)sender {
+    BRIrcLoginWindowController *controller = [[BRIrcLoginWindowController alloc] init];
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSModalResponseOK) return;
+        [controller.account save];
+        [self updateAccountView];
+    }];
 }
+
 
 - (void)showInstanceInputWindowWithAccountType:(SettingAccountType)accountType {
     InstanceInputWindowController *controller = [[InstanceInputWindowController alloc] init];
@@ -353,6 +365,9 @@
     } else if ([self.detailSelectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
         self.accountDetailBox.contentView = self.misskeyDetailView;
         [self.misskeyDetailView setAccount:(BRMisskeyAccount*)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[BRIrcAccount class]]) {
+        self.accountDetailBox.contentView = self.ircDetailView;
+        [self.ircDetailView setAccount:(BRIrcAccount *)self.detailSelectedAccount];
     }
     Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
     if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
@@ -429,6 +444,21 @@
             // Reconnect
             [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:account.identifier]];
         }
+    }];
+}
+
+- (IBAction)ircOptionClicked:(id)sender {
+    NSUInteger index = [accountsTableView selectedRow];
+    if (index == -1) return;
+    Account *detailSelectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
+    if (![detailSelectedAccount isKindOfClass:[BRIrcAccount class]]) return;
+    BRIrcLoginWindowController *controller = [[BRIrcLoginWindowController alloc] init];
+    controller.account = (BRIrcAccount*)detailSelectedAccount;
+    [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSModalResponseOK) return;
+        [controller.account save];
+        [self updateAccountView];
+        // TODO: reconnect?
     }];
 }
 

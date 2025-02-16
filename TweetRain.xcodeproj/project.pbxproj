@@ -13,6 +13,8 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9FA6D7D2262648D3F2034C75 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A0A38CCE2FE7797211543265 /* Pods_TootRain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */; };
+		CF05F4F72D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */; };
+		CF05F4F82D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */; };
 		CF0EA22C2695C7280081F186 /* BRMastodonEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */; };
 		CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA22E2695CEB80081F186 /* NSImage+Resize.m */; };
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
@@ -151,6 +153,12 @@
 		CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7A269F0E08009B0CE8 /* BRSlackChannel.m */; };
 		CF7A0F7F269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */; };
 		CF7A0F83269F18EA009B0CE8 /* BRSlackStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */; };
+		CF8152C92D4F4EF500D58CDC /* BRIrcClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */; };
+		CF8152CA2D4F4EF500D58CDC /* BRIrcClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */; };
+		CF8152CE2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */; };
+		CF8152CF2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */; };
+		CF8152D22D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */; };
+		CF8152D32D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */; };
 		CF8BBF4615E3EE6A0064D90B /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */; };
 		CF8FDEA915D4123700DD6DEA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEA815D4123700DD6DEA /* Cocoa.framework */; };
 		CF8FDEAB15D4124200DD6DEA /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8FDEAA15D4124200DD6DEA /* libz.1.2.5.dylib */; };
@@ -158,6 +166,24 @@
 		CF8FDEB115D4131200DD6DEA /* FloodAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8FDEB015D4131200DD6DEA /* FloodAppDelegate.m */; };
 		CF927B032694BC6800DFE9BD /* MastodonStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B022694BC6800DFE9BD /* MastodonStatus.m */; };
 		CF927B062694BD0100DFE9BD /* MastodonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF927B052694BD0100DFE9BD /* MastodonUser.m */; };
+		CF9B46902D3E176400CDFE61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF9B468D2D3E176400CDFE61 /* README.md */; };
+		CF9B46912D3E176400CDFE61 /* IRCConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46862D3E176400CDFE61 /* IRCConnectionController.m */; };
+		CF9B46932D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
+		CF9B46942D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
+		CF9B46952D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
+		CF9B46962D3E176400CDFE61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF9B468D2D3E176400CDFE61 /* README.md */; };
+		CF9B46972D3E176400CDFE61 /* IRCConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46862D3E176400CDFE61 /* IRCConnectionController.m */; };
+		CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46892D3E176400CDFE61 /* IRCMessage.m */; };
+		CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */; };
+		CF9B469B2D3E176400CDFE61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = CF9B468C2D3E176400CDFE61 /* Makefile */; };
+		CF9B469E2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */; };
+		CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */; };
+		CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
+		CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
+		CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
+		CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
+		CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
+		CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
 		CF9F9E371534567B000AE741 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F9E361534567B000AE741 /* Status.m */; };
@@ -258,6 +284,8 @@
 		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
 		BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlyPortValueFormatter.h; sourceTree = "<group>"; };
+		CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlyPortValueFormatter.m; sourceTree = "<group>"; };
 		CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonEmoji.h; sourceTree = "<group>"; };
 		CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonEmoji.m; sourceTree = "<group>"; };
 		CF0EA22D2695CEB80081F186 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
@@ -363,6 +391,12 @@
 		CF7A0F7D269F1073009B0CE8 /* BRSlackChannelSelectionWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackChannelSelectionWindowController.m; sourceTree = "<group>"; };
 		CF7A0F81269F18EA009B0CE8 /* BRSlackStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSlackStreamHandle.h; sourceTree = "<group>"; };
 		CF7A0F82269F18EA009B0CE8 /* BRSlackStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSlackStreamHandle.m; sourceTree = "<group>"; };
+		CF8152C72D4F4EF500D58CDC /* BRIrcClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcClient.h; sourceTree = "<group>"; };
+		CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcClient.m; sourceTree = "<group>"; };
+		CF8152CC2D4F4F0700D58CDC /* BRIrcStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcStreamHandle.h; sourceTree = "<group>"; };
+		CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcStreamHandle.m; sourceTree = "<group>"; };
+		CF8152D02D4F5DDB00D58CDC /* IrcStreamHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IrcStreamHandle.h; sourceTree = "<group>"; };
+		CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IrcStreamHandle.m; sourceTree = "<group>"; };
 		CF8BBF4315E3EE690064D90B /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
 		CF8BBF4415E3EE690064D90B /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
 		CF8FDEA815D4123700DD6DEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -374,6 +408,22 @@
 		CF927B042694BD0100DFE9BD /* MastodonUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastodonUser.h; sourceTree = "<group>"; };
 		CF927B052694BD0100DFE9BD /* MastodonUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastodonUser.m; sourceTree = "<group>"; };
 		CF948FF826B2883400C3BCE4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/RainDropDetailViewController.strings; sourceTree = "<group>"; };
+		CF9B46852D3E176400CDFE61 /* IRCConnectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRCConnectionController.h; sourceTree = "<group>"; };
+		CF9B46862D3E176400CDFE61 /* IRCConnectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRCConnectionController.m; sourceTree = "<group>"; };
+		CF9B46872D3E176400CDFE61 /* IrcMain.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IrcMain.mm; sourceTree = "<group>"; };
+		CF9B46882D3E176400CDFE61 /* IRCMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRCMessage.h; sourceTree = "<group>"; };
+		CF9B46892D3E176400CDFE61 /* IRCMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRCMessage.m; sourceTree = "<group>"; };
+		CF9B468A2D3E176400CDFE61 /* IRCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRCProtocol.h; sourceTree = "<group>"; };
+		CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRCProtocol.m; sourceTree = "<group>"; };
+		CF9B468C2D3E176400CDFE61 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		CF9B468D2D3E176400CDFE61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CF9B469C2D3E192B00CDFE61 /* SettingAccountDetailIrcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingAccountDetailIrcView.h; sourceTree = "<group>"; };
+		CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingAccountDetailIrcView.m; sourceTree = "<group>"; };
+		CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcAccount.h; sourceTree = "<group>"; };
+		CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcAccount.m; sourceTree = "<group>"; };
+		CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcLoginWindowController.h; sourceTree = "<group>"; };
+		CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcLoginWindowController.m; sourceTree = "<group>"; };
+		CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRIrcLoginWindowController.xib; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -527,6 +577,7 @@
 				CF3D6174269B1BED00786DD9 /* BRSlackClient */,
 				CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */,
 				CF01B4CD29A888C2004397DF /* ScriptCommand */,
+				CF9B468F2D3E176400CDFE61 /* IRC */,
 			);
 			name = Classes;
 			path = TweetRain;
@@ -745,6 +796,8 @@
 				CF5DE47026A03A8E0040BD63 /* SlackStreamHandle.m */,
 				CF1FE3C62957343A00CABB47 /* MisskeyStreamHandle.h */,
 				CF1FE3C72957343A00CABB47 /* MisskeyStreamHandle.m */,
+				CF8152D02D4F5DDB00D58CDC /* IrcStreamHandle.h */,
+				CF8152D12D4F5DDB00D58CDC /* IrcStreamHandle.m */,
 			);
 			name = StreamController;
 			sourceTree = "<group>";
@@ -757,6 +810,33 @@
 				CFE39FE01A769623004644C8 /* RainDropDetailViewController.xib */,
 			);
 			name = "RainDrop Detail";
+			sourceTree = "<group>";
+		};
+		CF9B468F2D3E176400CDFE61 /* IRC */ = {
+			isa = PBXGroup;
+			children = (
+				CF9B46A02D3E1BC400CDFE61 /* BRIrcAccount.h */,
+				CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */,
+				CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */,
+				CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */,
+				CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */,
+				CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */,
+				CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */,
+				CF8152C72D4F4EF500D58CDC /* BRIrcClient.h */,
+				CF8152C82D4F4EF500D58CDC /* BRIrcClient.m */,
+				CF8152CC2D4F4F0700D58CDC /* BRIrcStreamHandle.h */,
+				CF8152CD2D4F4F0700D58CDC /* BRIrcStreamHandle.m */,
+				CF9B46852D3E176400CDFE61 /* IRCConnectionController.h */,
+				CF9B46862D3E176400CDFE61 /* IRCConnectionController.m */,
+				CF9B46872D3E176400CDFE61 /* IrcMain.mm */,
+				CF9B46882D3E176400CDFE61 /* IRCMessage.h */,
+				CF9B46892D3E176400CDFE61 /* IRCMessage.m */,
+				CF9B468A2D3E176400CDFE61 /* IRCProtocol.h */,
+				CF9B468B2D3E176400CDFE61 /* IRCProtocol.m */,
+				CF9B468C2D3E176400CDFE61 /* Makefile */,
+				CF9B468D2D3E176400CDFE61 /* README.md */,
+			);
+			path = IRC;
 			sourceTree = "<group>";
 		};
 		CF9F62081563D548004C6514 /* Settings */ = {
@@ -778,6 +858,8 @@
 				CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */,
 				CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */,
 				CFA312A826B27DDB008F4BA0 /* InstanceInputWindowController.xib */,
+				CF9B469C2D3E192B00CDFE61 /* SettingAccountDetailIrcView.h */,
+				CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */,
 				CFABC701268D73E600A25EF4 /* SettingOAuthWindowController.h */,
 				CFABC702268D73E600A25EF4 /* SettingOAuthWindowController.m */,
 				CFABC703268D73E600A25EF4 /* SettingOAuthWindowController.xib */,
@@ -939,6 +1021,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				CFEBAC1B293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CF9B46902D3E176400CDFE61 /* README.md in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				CFABC705268D73E600A25EF4 /* SettingOAuthWindowController.xib in Resources */,
 				CFE39F921A764F59004644C8 /* SettingViewController.xib in Resources */,
@@ -955,6 +1038,7 @@
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
+				CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E22B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,6 +1049,7 @@
 			files = (
 				CF5D2D2329350BC400745D63 /* InfoPlist.strings in Resources */,
 				CFEBAC1C293B214300447421 /* BRMastodonSourceSelectionWindowController.xib in Resources */,
+				CF9B46962D3E176400CDFE61 /* README.md in Resources */,
 				CF5D2D2529350BC400745D63 /* SettingOAuthWindowController.xib in Resources */,
 				CF5D2D2629350BC400745D63 /* SettingViewController.xib in Resources */,
 				CF5D2D2729350BC400745D63 /* Errors.strings in Resources */,
@@ -981,6 +1066,7 @@
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
 				CF5D2D3229350BC400745D63 /* Credits.rtf in Resources */,
+				CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E32B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,6 +1155,7 @@
 				CF3D617C269B21B400786DD9 /* BRSlackAccount.m in Sources */,
 				CFA5115F1369B18D004A81D7 /* CustomDragView.m in Sources */,
 				CF75C5D51371947B0099F8E0 /* NSFileManager+DirectoryLocations.m in Sources */,
+				CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
 				CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */,
 				CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
@@ -1079,7 +1166,13 @@
 				CF3D6177269B1C1C00786DD9 /* BRSlackClient.m in Sources */,
 				CFC856E729823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5E5ECC2692CE2C00E904D0 /* BRMastodonStreamHandle.m in Sources */,
+				CF8152C92D4F4EF500D58CDC /* BRIrcClient.m in Sources */,
 				CFB3613A13996A3D0005F33D /* DBPrefsWindowController.m in Sources */,
+				CF9B469E2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
+				CF9B46912D3E176400CDFE61 /* IRCConnectionController.m in Sources */,
+				CF9B46932D3E176400CDFE61 /* IRCMessage.m in Sources */,
+				CF9B46942D3E176400CDFE61 /* IRCProtocol.m in Sources */,
+				CF9B46952D3E176400CDFE61 /* Makefile in Sources */,
 				CFC3791E139A7FB10072F001 /* CenteredTextCell.m in Sources */,
 				CF0EA22F2695CEB80081F186 /* NSImage+Resize.m in Sources */,
 				CFD824D3268E19B900BEB0AC /* BRMastodonAccount.m in Sources */,
@@ -1087,6 +1180,7 @@
 				CF620A211A057CBE003EB806 /* StreamController.m in Sources */,
 				CF5DE47426A046EF0040BD63 /* BRSlackUser.m in Sources */,
 				CF5DE47726A048470040BD63 /* BRSlackMessage.m in Sources */,
+				CF05F4F82D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */,
 				CFA1BB5814DC514D000566A0 /* SettingManager.m in Sources */,
 				CF1FE3C82957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290229595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
@@ -1112,6 +1206,8 @@
 				CFD7C52029AB99E80053A661 /* BRApplication.m in Sources */,
 				CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */,
 				CF1FE3C42957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
+				CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
+				CF8152CF2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */,
 				CF5202A02938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF3A188115D651A100D8E07F /* FloodWindow.m in Sources */,
 				CF5DE46B26A03A2E0040BD63 /* StreamHandle.m in Sources */,
@@ -1128,6 +1224,7 @@
 				CFEC43FA2695DC5200E66DD0 /* DummyStatus.m in Sources */,
 				CF7A0F7B269F0E08009B0CE8 /* BRSlackChannel.m in Sources */,
 				CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF8152D22D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */,
 				CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */,
 				CF4028FE295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5DE47A26A054D20040BD63 /* SlackUser.m in Sources */,
@@ -1154,6 +1251,7 @@
 				CF5D2D3929350BC400745D63 /* BRSlackAccount.m in Sources */,
 				CF5D2D3A29350BC400745D63 /* CustomDragView.m in Sources */,
 				CF5D2D3B29350BC400745D63 /* NSFileManager+DirectoryLocations.m in Sources */,
+				CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CF5D2D3C29350BC400745D63 /* BRMastodonApp.m in Sources */,
 				CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */,
 				CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
@@ -1164,7 +1262,13 @@
 				CF5D2D4129350BC400745D63 /* BRSlackClient.m in Sources */,
 				CFC856E829823CA5007E3EB3 /* NSTextAttachment+Image.m in Sources */,
 				CF5D2D4229350BC400745D63 /* BRMastodonStreamHandle.m in Sources */,
+				CF8152CA2D4F4EF500D58CDC /* BRIrcClient.m in Sources */,
 				CF5D2D4329350BC400745D63 /* DBPrefsWindowController.m in Sources */,
+				CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */,
+				CF9B46972D3E176400CDFE61 /* IRCConnectionController.m in Sources */,
+				CF9B46992D3E176400CDFE61 /* IRCMessage.m in Sources */,
+				CF9B469A2D3E176400CDFE61 /* IRCProtocol.m in Sources */,
+				CF9B469B2D3E176400CDFE61 /* Makefile in Sources */,
 				CF5D2D4429350BC400745D63 /* CenteredTextCell.m in Sources */,
 				CF5D2D4529350BC400745D63 /* NSImage+Resize.m in Sources */,
 				CF5D2D4629350BC400745D63 /* BRMastodonAccount.m in Sources */,
@@ -1172,6 +1276,7 @@
 				CF5D2D4829350BC400745D63 /* StreamController.m in Sources */,
 				CF5D2D4929350BC400745D63 /* BRSlackUser.m in Sources */,
 				CF5D2D4A29350BC400745D63 /* BRSlackMessage.m in Sources */,
+				CF05F4F72D41183A0009C292 /* OnlyPortValueFormatter.m in Sources */,
 				CF5D2D4B29350BC400745D63 /* SettingManager.m in Sources */,
 				CF1FE3C92957343A00CABB47 /* MisskeyStreamHandle.m in Sources */,
 				CF40290329595BD40066FB84 /* BRMisskeyStreamSource.m in Sources */,
@@ -1197,6 +1302,8 @@
 				CFD7C52129AB99E80053A661 /* BRApplication.m in Sources */,
 				CF5D2D5729350BC400745D63 /* FloodWindowController.m in Sources */,
 				CF1FE3C52957301E00CABB47 /* BRMisskeyStreamHandle.m in Sources */,
+				CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */,
+				CF8152CE2D4F4F0700D58CDC /* BRIrcStreamHandle.m in Sources */,
 				CF5202A12938F02600B9B749 /* BRMastodonList.m in Sources */,
 				CF5D2D5829350BC400745D63 /* FloodWindow.m in Sources */,
 				CF5D2D5929350BC400745D63 /* StreamHandle.m in Sources */,
@@ -1213,6 +1320,7 @@
 				CF5D2D6129350BC400745D63 /* DummyStatus.m in Sources */,
 				CF5D2D6229350BC400745D63 /* BRSlackChannel.m in Sources */,
 				CF5D2D6329350BC400745D63 /* NSMutableAttributedString+Stripe.m in Sources */,
+				CF8152D32D4F5DDB00D58CDC /* IrcStreamHandle.m in Sources */,
 				CF5D2D6429350BC400745D63 /* WebImageView.m in Sources */,
 				CF4028FF295958310066FB84 /* SettingAccountDetailMisskeyView.m in Sources */,
 				CF5D2D6629350BC400745D63 /* SlackUser.m in Sources */,
