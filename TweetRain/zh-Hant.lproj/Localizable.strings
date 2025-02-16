@@ -77,6 +77,9 @@
 "New version of TootRain available!" = "有新版本的TootRain！";
 
 /* No comment provided by engineer. */
+"No" = "否";
+
+/* No comment provided by engineer. */
 "Please enter your Mastodon / Pleroma instance host name." = "請輸入你的Mastodon / Pleroma host name";
 
 /* No comment provided by engineer. */
@@ -117,4 +120,7 @@
 
 /* source name */
 "User Notification" = "用戶通知";
+
+/* No comment provided by engineer. */
+"Yes" = "是";
 

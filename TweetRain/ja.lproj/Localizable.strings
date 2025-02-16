@@ -77,6 +77,9 @@
 "New version of TootRain available!" = "TootRainの新しいバージョンがあります！";
 
 /* No comment provided by engineer. */
+"No" = "いいえ";
+
+/* No comment provided by engineer. */
 "Please enter your Mastodon / Pleroma instance host name." = "Mastodon / Pleroma の host nameを入れてください";
 
 /* No comment provided by engineer. */
@@ -117,4 +120,7 @@
 
 /* source name */
 "User Notification" = "ユーザー通知";
+
+/* No comment provided by engineer. */
+"Yes" = "はい";
 

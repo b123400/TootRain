@@ -70,9 +70,6 @@
 /* Class = "NSTextFieldCell"; title = "Display Name:"; ObjectID = "cgn-Ke-zF5"; */
 "cgn-Ke-zF5.title" = "名前:";
 
-/* Class = "NSMenuItem"; title = "Slack"; ObjectID = "DEG-ph-RVs"; */
-"DEG-ph-RVs.title" = "";
-
 /* Class = "NSTextFieldCell"; title = "User timeline and notification"; ObjectID = "dNi-U1-ep6"; */
 "dNi-U1-ep6.title" = "ユーザータイムラインと通知";
 
@@ -103,6 +100,9 @@
 /* Class = "NSMenuItem"; title = "Hover → Hide"; ObjectID = "lmq-cX-QGB"; */
 "lmq-cX-QGB.title" = "Hover → 隠す";
 
+/* Class = "NSButtonCell"; title = "Options"; ObjectID = "lW3-W8-dLU"; */
+"lW3-W8-dLU.title" = "オプション";
+
 /* Class = "NSTextFieldCell"; title = "Source:"; ObjectID = "mpM-DR-vTU"; */
 "mpM-DR-vTU.title" = "ソース:";
 
@@ -124,6 +124,9 @@
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qvJ-rF-35W"; */
 "qvJ-rF-35W.title" = "サービス:";
 
+/* Class = "NSTextFieldCell"; title = "Host:"; ObjectID = "r9G-fM-336"; */
+"r9G-fM-336.title" = "ホスト:";
+
 /* Class = "NSButtonCell"; title = "Options"; ObjectID = "u8X-fX-YPs"; */
 "u8X-fX-YPs.title" = "オプション";
 
@@ -136,11 +139,23 @@
 /* Class = "NSButtonCell"; title = "Ignore content warnings"; ObjectID = "W13-dl-d3L"; */
 "W13-dl-d3L.title" = "コンテンツ警告を無視";
 
+/* Class = "NSTextFieldCell"; title = "Channels:"; ObjectID = "Xbk-G8-Ji5"; */
+"Xbk-G8-Ji5.title" = "チャンネル:";
+
 /* Class = "NSMenuItem"; title = "Hover → Pause"; ObjectID = "xbN-iI-YZQ"; */
 "xbN-iI-YZQ.title" = "Hover → 一時停止";
 
+/* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "XkP-K2-gRx"; */
+"XkP-K2-gRx.title" = "サービス:";
+
 /* Class = "NSTextFieldCell"; title = "Streams:"; ObjectID = "yEh-2q-E3b"; */
 "yEh-2q-E3b.title" = "ストリーム:";
+
+/* Class = "NSTextFieldCell"; title = "Nick:"; ObjectID = "YQA-OB-dyi"; */
+"YQA-OB-dyi.title" = "ニックネーム:";
+
+/* Class = "NSTextFieldCell"; title = "IRC (IRC)"; ObjectID = "YUg-hW-O7F"; */
+"YUg-hW-O7F.title" = "";
 
 /* Class = "NSTextFieldCell"; title = "History Preserve Limit"; ObjectID = "YWO-cs-lYh"; */
 "YWO-cs-lYh.title" = "履歴保存上限";
@@ -150,4 +165,7 @@
 
 /* Class = "NSTextFieldCell"; title = "Account ID:"; ObjectID = "zor-g6-bel"; */
 "zor-g6-bel.title" = "アカウントID:";
+
+/* Class = "NSTextFieldCell"; title = "Port:"; ObjectID = "zTn-EM-ART"; */
+"zTn-EM-ART.title" = "ポート:";
 

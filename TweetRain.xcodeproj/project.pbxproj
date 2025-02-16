@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,8 @@
 		CF11768015E90BD0001138F2 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF11767F15E90BD0001138F2 /* Credits.rtf */; };
 		CF13AC9B2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */; };
 		CF13AC9C2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */; };
+		CF146DF52D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */; };
+		CF146DF62D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */; };
 		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
 		CF1FE3A029548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
 		CF1FE3A129548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
@@ -180,9 +182,7 @@
 		CF9B469F2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B469D2D3E192B00CDFE61 /* SettingAccountDetailIrcView.m */; };
 		CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
 		CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */; };
-		CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
 		CF9B46A82D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
-		CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */; };
 		CF9B46AA2D3E319700CDFE61 /* BRIrcLoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */; };
 		CF9BFCDA26946F400008A4C1 /* NSMutableAttributedString+Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */; };
 		CF9BFCDD26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */; };
@@ -294,6 +294,8 @@
 		CF11767F15E90BD0001138F2 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CF13AC992CB02C1F00B83041 /* NewUpdateStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewUpdateStatus.h; sourceTree = "<group>"; };
 		CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewUpdateStatus.m; sourceTree = "<group>"; };
+		CF146DF32D619DF400BBBB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BRIrcLoginWindowController.xib; sourceTree = "<group>"; };
+		CF146DF72D619DF400BBBB64 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/BRIrcLoginWindowController.xcstrings; sourceTree = "<group>"; };
 		CF1B79BF268EEE6100FCCB58 /* InstanceInputWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstanceInputWindowController.h; sourceTree = "<group>"; };
 		CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstanceInputWindowController.m; sourceTree = "<group>"; };
 		CF1FE39E29548BF800CABB47 /* BRMisskeyClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMisskeyClient.h; sourceTree = "<group>"; };
@@ -423,7 +425,6 @@
 		CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcAccount.m; sourceTree = "<group>"; };
 		CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRIrcLoginWindowController.h; sourceTree = "<group>"; };
 		CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRIrcLoginWindowController.m; sourceTree = "<group>"; };
-		CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BRIrcLoginWindowController.xib; sourceTree = "<group>"; };
 		CF9BFCD826946F400008A4C1 /* NSMutableAttributedString+Stripe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Stripe.h"; sourceTree = "<group>"; };
 		CF9BFCD926946F400008A4C1 /* NSMutableAttributedString+Stripe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Stripe.m"; sourceTree = "<group>"; };
 		CF9BFCDB26947D8E0008A4C1 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -819,7 +820,7 @@
 				CF9B46A12D3E1BC400CDFE61 /* BRIrcAccount.m */,
 				CF9B46A42D3E319700CDFE61 /* BRIrcLoginWindowController.h */,
 				CF9B46A52D3E319700CDFE61 /* BRIrcLoginWindowController.m */,
-				CF9B46A62D3E319700CDFE61 /* BRIrcLoginWindowController.xib */,
+				CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */,
 				CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */,
 				CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */,
 				CF8152C72D4F4EF500D58CDC /* BRIrcClient.h */,
@@ -1038,7 +1039,7 @@
 				CFA312A626B27DDB008F4BA0 /* InstanceInputWindowController.xib in Resources */,
 				CFE39F8E1A764B8C004644C8 /* Localizable.strings in Resources */,
 				CF11768015E90BD0001138F2 /* Credits.rtf in Resources */,
-				CF9B46A72D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
+				CF146DF52D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E22B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,7 +1067,7 @@
 				CF5D2D3029350BC400745D63 /* InstanceInputWindowController.xib in Resources */,
 				CF5D2D3129350BC400745D63 /* Localizable.strings in Resources */,
 				CF5D2D3229350BC400745D63 /* Credits.rtf in Resources */,
-				CF9B46A92D3E319700CDFE61 /* BRIrcLoginWindowController.xib in Resources */,
+				CF146DF62D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */,
 				CF3C54E32B0E3DE500A6B561 /* HistoryWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1354,6 +1355,15 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF146DF32D619DF400BBBB64 /* Base */,
+				CF146DF72D619DF400BBBB64 /* mul */,
+			);
+			name = BRIrcLoginWindowController.xib;
+			sourceTree = "<group>";
+		};
 		CF5D2D7B29350DA900745D63 /* MainMenu-standalone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1476,7 +1486,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
@@ -1522,7 +1535,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1613,7 +1629,10 @@
 				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = (
@@ -1663,7 +1682,10 @@
 				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 2.0.1;
 				ONLY_ACTIVE_ARCH = NO;

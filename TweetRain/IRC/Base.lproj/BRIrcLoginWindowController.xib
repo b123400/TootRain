@@ -170,7 +170,7 @@ Gw
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="RJS-Nd-tG0">
-                            <rect key="frame" x="1" y="111" width="237" height="16"/>
+                            <rect key="frame" x="1" y="109" width="237" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="7kL-te-vVm">
@@ -207,7 +207,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k20-uN-5Gb">
-                        <rect key="frame" x="129" y="58" width="197" height="22"/>
+                        <rect key="frame" x="129" y="59" width="198" height="22"/>
                         <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VhE-jX-otM">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -231,7 +231,7 @@ Gw
                 <constraints>
                     <constraint firstItem="oft-6k-L6R" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="0lq-3N-LyM"/>
                     <constraint firstAttribute="trailing" secondItem="J9m-2j-ejh" secondAttribute="trailing" constant="20" symbolic="YES" id="1P7-dI-VnR"/>
-                    <constraint firstItem="k20-uN-5Gb" firstAttribute="top" secondItem="fXc-ig-ROr" secondAttribute="bottom" id="27J-v3-rVe"/>
+                    <constraint firstItem="k20-uN-5Gb" firstAttribute="top" secondItem="fXc-ig-ROr" secondAttribute="bottom" constant="-1" id="27J-v3-rVe"/>
                     <constraint firstItem="VYv-iX-6cn" firstAttribute="leading" secondItem="ZnI-Nz-Xhw" secondAttribute="leading" id="31g-0R-ZCu"/>
                     <constraint firstItem="ltk-h0-yNS" firstAttribute="leading" secondItem="VYv-iX-6cn" secondAttribute="trailing" id="3Pe-7o-YSD"/>
                     <constraint firstItem="ziS-NK-nzf" firstAttribute="centerY" secondItem="ogB-nj-g2v" secondAttribute="centerY" id="4ie-fq-owV"/>
@@ -246,7 +246,7 @@ Gw
                     <constraint firstItem="IZY-FA-iO5" firstAttribute="leading" secondItem="8bz-5O-5rb" secondAttribute="trailing" constant="8" symbolic="YES" id="K44-7V-ccL"/>
                     <constraint firstAttribute="bottom" secondItem="sgg-F3-W18" secondAttribute="bottom" constant="20" symbolic="YES" id="Lmc-Wt-JlX"/>
                     <constraint firstItem="ogB-nj-g2v" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="LxE-bo-swt"/>
-                    <constraint firstItem="k20-uN-5Gb" firstAttribute="trailing" secondItem="ZnI-Nz-Xhw" secondAttribute="trailing" id="P2h-7P-0q1"/>
+                    <constraint firstItem="k20-uN-5Gb" firstAttribute="trailing" secondItem="ZnI-Nz-Xhw" secondAttribute="trailing" constant="1" id="P2h-7P-0q1"/>
                     <constraint firstItem="xkk-Xg-2Po" firstAttribute="leading" secondItem="sgg-F3-W18" secondAttribute="trailing" constant="12" symbolic="YES" id="PG0-np-K9C"/>
                     <constraint firstItem="Dqp-kw-Rx4" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="PjH-yc-dlE"/>
                     <constraint firstItem="VYv-iX-6cn" firstAttribute="top" secondItem="ZnI-Nz-Xhw" secondAttribute="bottom" id="TUv-ML-wQB"/>
