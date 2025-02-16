@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "AppIcon-animation15.png",
+      "filename" : "AppIcon-animation24.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "AppIcon-animation15@2x.png",
+      "filename" : "AppIcon-animation24@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
