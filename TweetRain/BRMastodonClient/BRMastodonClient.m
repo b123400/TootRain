@@ -183,9 +183,16 @@
                                                                         url:result[@"url"]
                                                                 displayName:accountDisplayName
                                                                 oauthResult:oauthResult];
-        [account save];
-        callback(account, nil);
-        
+        [self getInstanceInfoWithApp:app
+                   completionHandler:^(BRMastodonInstanceInfo * _Nullable result, NSError * _Nullable error) {
+            if (!error && result) {
+                account.software = result.software;
+            } else {
+                // Ignore error, isPleroma isn't that important
+            }
+            [account save];
+            callback(account, nil);
+        }];
     }];
     [task resume];
 }

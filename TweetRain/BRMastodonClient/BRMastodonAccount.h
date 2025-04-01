@@ -44,6 +44,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *sourceHashtag;
 @property (nonatomic, strong) NSString *sourceListId;
 @property (nonatomic, strong) NSString *sourceListName;
+@property (nonatomic, assign) BRMastodonInstanceSoftware software;
 
 + (NSArray<BRMastodonAccount*> *)allAccounts;
 

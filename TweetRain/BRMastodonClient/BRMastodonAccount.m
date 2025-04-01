@@ -120,6 +120,7 @@
         self.sourceHashtag = dict[@"hashtag"] ?: @"";
         self.sourceListId = dict[@"listId"] ?: @"";
         self.sourceListName = dict[@"listName"] ?: @"";
+        self.software = [dict[@"software"] unsignedIntegerValue] ?: BRMastodonInstanceSoftwareMastodon;
     }
     return self;
 }
@@ -234,6 +235,7 @@
         @"hashtag": self.sourceHashtag ?: @"",
         @"listId": self.sourceListId ?: @"",
         @"listName": self.sourceListName ?: @"",
+        @"software": @(self.software),
     };
 }
 
