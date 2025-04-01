@@ -24,6 +24,13 @@ typedef enum : NSUInteger {
     BRMastodonStreamSourceDirect,
 } BRMastodonStreamSource;
 
+typedef enum : NSUInteger {
+    BRMastodonInstanceSoftwareMastodon = 0,
+    BRMastodonInstanceSoftwarePleroma = 1,
+    BRMastodonInstanceSoftwareAkkoma = 2,
+    BRMastodonInstanceSoftwareHometown = 3,
+} BRMastodonInstanceSoftware;
+
 @interface BRMastodonAccount : Account
 
 @property (nonatomic, strong) BRMastodonApp *app;

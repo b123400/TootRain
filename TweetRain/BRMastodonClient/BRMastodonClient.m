@@ -274,6 +274,38 @@
     return request;
 }
 
+- (void)getInstanceInfoWithApp:(BRMastodonApp *)app
+             completionHandler:(void (^) (BRMastodonInstanceInfo * _Nullable result, NSError * _Nullable error))callback {
+    NSURL *endpoint = [NSURL URLWithString:@"/api/v1/instance" relativeToURL:[NSURL URLWithString:app.hostName]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpoint];
+    [request setHTTPMethod:@"GET"];
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request
+                                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            callback(nil, error);
+            return;
+        }
+        NSLog(@"str %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSError *decodeError = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&decodeError];
+        if (![result isKindOfClass:[NSDictionary class]] || decodeError != nil) {
+            NSLog(@"Decode error: %@", decodeError);
+            callback(nil, decodeError);
+            return;
+        }
+        if (result[@"error"]) {
+            NSError *responseError = [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:@{@"response": result}];
+            NSLog(@"responseError: %@", responseError);
+            callback(nil, responseError);
+            return;
+        }
+        BRMastodonInstanceInfo *info = [[BRMastodonInstanceInfo alloc] initWithJSONDictionary:result];
+        callback(info, error);
+    }];
+    [task resume];
+}
+
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account {
     BRMastodonStreamSource source = account.source;
     __block BRMastodonStreamHandle *handler = [[BRMastodonStreamHandle alloc] init];

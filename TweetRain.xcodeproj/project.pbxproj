@@ -43,6 +43,8 @@
 		CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE3CF2957356000CABB47 /* MisskeyUser.m */; };
 		CF2A37D513752E6E001CAAAB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2A37D413752E6E001CAAAB /* User.m */; };
 		CF2F8BDB1390E0CB00D733CA /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */; };
+		CF30D46B2D9B9D9500164F52 /* BRMastodonInstanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CF30D46A2D9B9D9500164F52 /* BRMastodonInstanceInfo.m */; };
+		CF30D46C2D9B9D9500164F52 /* BRMastodonInstanceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CF30D46A2D9B9D9500164F52 /* BRMastodonInstanceInfo.m */; };
 		CF363B9629A8F933000D6CBB /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CF363B9529A8F933000D6CBB /* Intents.intentdefinition */; };
 		CF363B9729A8F933000D6CBB /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CF363B9529A8F933000D6CBB /* Intents.intentdefinition */; };
 		CF3A187815D64F4100D8E07F /* FloodWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3A187615D64F4100D8E07F /* FloodWindowController.m */; };
@@ -320,6 +322,8 @@
 		CF2A37D413752E6E001CAAAB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		CF2F8BD91390E0CB00D733CA /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		CF2F8BDA1390E0CB00D733CA /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		CF30D4692D9B9D9500164F52 /* BRMastodonInstanceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonInstanceInfo.h; sourceTree = "<group>"; };
+		CF30D46A2D9B9D9500164F52 /* BRMastodonInstanceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonInstanceInfo.m; sourceTree = "<group>"; };
 		CF34B7521AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ComposeStatusViewController.strings"; sourceTree = "<group>"; };
 		CF34B7531AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SettingViewController.strings"; sourceTree = "<group>"; };
 		CF34B7541AADA48200C6A58E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -920,6 +924,8 @@
 				CF52029F2938F02600B9B749 /* BRMastodonList.m */,
 				CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */,
 				CF0EA22B2695C7280081F186 /* BRMastodonEmoji.m */,
+				CF30D4692D9B9D9500164F52 /* BRMastodonInstanceInfo.h */,
+				CF30D46A2D9B9D9500164F52 /* BRMastodonInstanceInfo.m */,
 				CFB3197A2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.h */,
 				CFB3197B2935D1A900BD2C18 /* BRMastodonSourceSelectionWindowController.m */,
 				CFEBAC1E293B214300447421 /* BRMastodonSourceSelectionWindowController.xib */,
@@ -1159,6 +1165,7 @@
 				CF9B46A32D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CFD1319A26887C9F00B6EDB3 /* BRMastodonApp.m in Sources */,
 				CF1FE3D02957356000CABB47 /* MisskeyUser.m in Sources */,
+				CF30D46C2D9B9D9500164F52 /* BRMastodonInstanceInfo.m in Sources */,
 				CFC856EB29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
 				CF66A55C1372CFE7000B1AFF /* NSView+Fade.m in Sources */,
 				CF2A37D513752E6E001CAAAB /* User.m in Sources */,
@@ -1255,6 +1262,7 @@
 				CF9B46A22D3E1BC400CDFE61 /* BRIrcAccount.m in Sources */,
 				CF5D2D3C29350BC400745D63 /* BRMastodonApp.m in Sources */,
 				CF1FE3D12957356000CABB47 /* MisskeyUser.m in Sources */,
+				CF30D46B2D9B9D9500164F52 /* BRMastodonInstanceInfo.m in Sources */,
 				CFC856EC29829B12007E3EB3 /* BorderHighlightButton.m in Sources */,
 				CF5D2D3D29350BC400745D63 /* NSView+Fade.m in Sources */,
 				CF5D2D3E29350BC400745D63 /* User.m in Sources */,

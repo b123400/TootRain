@@ -12,6 +12,7 @@
 #import "BRMastodonStatus.h"
 #import "BRMastodonStreamHandle.h"
 #import "BRMastodonList.h"
+#import "BRMastodonInstanceInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshAccessTokenWithApp:(BRMastodonApp *)app
                      refreshToken:(NSString *)refreshToken
                 completionHandler:(void (^)(BRMastodonOAuthResult * _Nullable result, NSError * _Nullable error))callback;
+
+- (void)getInstanceInfoWithApp:(BRMastodonApp *)app
+             completionHandler:(void (^) (BRMastodonInstanceInfo * _Nullable result, NSError * _Nullable error))callback;
 
 - (BRMastodonStreamHandle *)streamingStatusesWithAccount:(BRMastodonAccount *)account;
 
