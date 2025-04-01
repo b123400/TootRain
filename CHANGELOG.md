@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.1.1 - 2025-04-01
+- Show name and icon for Pleroma, Akkoma, Hometown
+
 ## 2.1.0 - 2025-02-16
 - Added beta IRC support
 - Updated icon animation
