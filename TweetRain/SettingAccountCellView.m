@@ -29,7 +29,20 @@
     }
     switch (objectValue.accountType) {
         case SettingAccountTypeMastodon:
-            [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
+            switch (objectValue.software) {
+                case BRMastodonInstanceSoftwarePleroma:
+                    [self.imageView setImage:[NSImage imageNamed:@"Pleroma"]];
+                    break;
+                case BRMastodonInstanceSoftwareAkkoma:
+                    [self.imageView setImage:[NSImage imageNamed:@"Akkoma"]];
+                    break;
+                case BRMastodonInstanceSoftwareHometown:
+                    [self.imageView setImage:[NSImage imageNamed:@"Hometown"]];
+                    break;
+                case BRMastodonInstanceSoftwareMastodon:
+                default:
+                    [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
+            }
             break;
         case SettingAccountTypeSlack:
             [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
@@ -51,6 +64,4 @@
     }
 }
 
-- (IBAction)serviceImageView:(NSImageView *)sender {
-}
 @end

@@ -185,6 +185,7 @@
                 : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
                 : [account isKindOfClass:[BRIrcAccount class]] ? SettingAccountTypeIrc
                 : SettingAccountTypeMastodon;
+            obj.software = [account isKindOfClass:[BRMastodonAccount class]] ? [(BRMastodonAccount*)account software] : 0;
             return obj;
         }
         return nil;

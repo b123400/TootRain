@@ -58,7 +58,7 @@
                     <rect key="frame" x="20" y="42" width="160" height="253"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ky8-xs-Bhw">
                         <rect key="frame" x="1" y="1" width="158" height="251"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="fullWidth" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="40" rowSizeStyle="automatic" headerView="wAq-wN-Znd" viewBased="YES" id="27">
                                 <rect key="frame" x="0.0" y="0.0" width="158" height="223"/>
@@ -825,6 +825,7 @@
             <connections>
                 <outlet property="accountIdTextField" destination="ftY-Bq-ohK" id="oB8-8S-axC"/>
                 <outlet property="displayNameTextField" destination="sos-Ug-Tbs" id="cG0-QE-jdA"/>
+                <outlet property="serviceNameTextField" destination="h4A-PN-54n" id="TUT-xK-PGe"/>
                 <outlet property="sourceTextField" destination="bPd-as-n2w" id="rOj-Ry-LOT"/>
                 <outlet property="urlTextField" destination="qoD-KM-NS2" id="4ML-DH-oTV"/>
             </connections>

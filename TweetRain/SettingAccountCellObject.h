@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SettingManager.h"
+#import "BRMastodonClient/BRMastodonAccount.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) SettingAccountType accountType;
 @property (strong, nonatomic) NSString *accountName;
 @property (assign) BOOL isConnected;
+
+// Special handling for pleroma, basically same as mastodon but with a different icon
+@property (assign, nonatomic) BRMastodonInstanceSoftware software;
 
 @end
 

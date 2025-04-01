@@ -10,6 +10,7 @@
 
 @interface SettingAccountDetailMastodonView ()
 
+@property (weak) IBOutlet NSTextField *serviceNameTextField;
 @property (weak) IBOutlet NSTextField *accountIdTextField;
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSTextField *displayNameTextField;
@@ -24,6 +25,21 @@
     self.urlTextField.stringValue = a.url;
     self.displayNameTextField.stringValue = a.displayName;
     self.sourceTextField.stringValue = [a displayNameForStreamSource];
+    switch (a.software) {
+        case BRMastodonInstanceSoftwarePleroma:
+            self.serviceNameTextField.stringValue = @"Pleroma";
+            break;
+        case BRMastodonInstanceSoftwareAkkoma:
+            self.serviceNameTextField.stringValue = @"Akkoma";
+            break;
+        case BRMastodonInstanceSoftwareHometown:
+            self.serviceNameTextField.stringValue = @"Hometown";
+            break;
+        case BRMastodonInstanceSoftwareMastodon:
+        default:
+            self.serviceNameTextField.stringValue = @"Mastodon";
+            break;
+    }
 }
 
 @end
