@@ -85,9 +85,6 @@
 /* No comment provided by engineer. */
 "Please enter your Misskey instance host name." = "Misskey の host nameを入れてください";
 
-/* No comment provided by engineer. */
-"Please enter your Slack workspace URL." = "Slack の workspace URL を入れてください";
-
 /* source name */
 "Public" = "公開";
 

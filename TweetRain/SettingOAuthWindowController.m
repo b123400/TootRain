@@ -8,14 +8,11 @@
 #import "SettingOAuthWindowController.h"
 #import "BRMastodonClient.h"
 #import "BRMastodonOAuthResult.h"
-#import "BRSlackClient.h"
 #import "BRMisskeyClient.h"
 
 @interface SettingOAuthWindowController ()
 @property (strong, nonatomic) BRMastodonApp *app;
-@property (strong, nonatomic) NSURL *slackURL;
 @property (strong, nonatomic) NSURL *misskeyHostName;
-@property (assign, nonatomic) BOOL isHandlingSlack;
 @end
 
 @implementation SettingOAuthWindowController
@@ -27,13 +24,6 @@
 - (instancetype)initWithApp:(BRMastodonApp *)app {
     if (self = [self init]) {
         self.app = app;
-    }
-    return self;
-}
-
-- (instancetype)initWithSlackURL:(NSURL *)url {
-    if (self = [self init]) {
-        self.slackURL = url;
     }
     return self;
 }
@@ -56,11 +46,6 @@
     if (self.app) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[self.app authorisationURL]];
         [self.webView loadRequest:request];
-    } else if (self.slackURL) {
-        self.webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36";
-        // Force open in app, prevent redirect to another team
-        NSURL *openInAppURL = [[NSURL URLWithString:@"/ssb/redirect" relativeToURL:self.slackURL] absoluteURL];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:openInAppURL]];
     } else if (self.misskeyHostName) {
         NSURL *url = [[BRMisskeyClient shared] authURLWithHost:self.misskeyHostName];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -115,38 +100,6 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
             }];
         }
         return;
-    }
-    if (self.slackURL) {
-        if ([url.scheme isEqualToString:@"slack"]) {
-            if (!self.isHandlingSlack) {
-                self.isHandlingSlack = YES;
-                [[BRSlackClient shared] receivedMagicLoginURL:url
-                                                   withWindow:self.window
-                                              updatingAccount:self.updatingSlackAccount
-                                            completionHandler:^(BRSlackAccount * _Nonnull account, NSError * _Nonnull error) {
-                    if (account) {
-                        [_self.delegate settingOAuthWindowController:_self didLoggedInSlackAccount:account];
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            if (error) {
-                                [[NSAlert alertWithError:error] runModal];
-                            }
-                            [_self.window close];
-                        });
-                    }
-                }];
-            }
-            decisionHandler(WKNavigationActionPolicyCancel);
-            return;
-        } else if ([url.scheme isEqualTo:@"https"] && [url.path hasPrefix:@"/messages"]) {
-            // it's already logged in, force it to open-in-app
-            decisionHandler(WKNavigationActionPolicyCancel);
-            NSURL *openInAppURL = [[NSURL URLWithString:@"/ssb/redirect" relativeToURL:url] absoluteURL];
-            [webView loadRequest:[NSURLRequest requestWithURL:openInAppURL]];
-            return;
-        } else {
-            NSLog(@"URL: %@", url);
-        }
     }
     decisionHandler(WKNavigationActionPolicyAllow);
 }

@@ -13,13 +13,10 @@
 #import "BRMastodonClient.h"
 #import "BRMastodonStatus.h"
 #import "BRMastodonStreamHandle.h"
-#import "BRSlackStreamHandle.h"
 #import "MastodonStatus.h"
 #import "DummyStatus.h"
-#import "BRSlackClient.h"
 #import "StreamHandle.h"
 #import "MastodonStreamHandle.h"
-#import "SlackStreamHandle.h"
 #import "SettingViewController.h"
 #import "BRMisskeyClient.h"
 #import "MisskeyStreamHandle.h"
@@ -123,36 +120,6 @@ static StreamController *shared;
         newHandle.onError = ^(NSError * _Nonnull error) {
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), mastondonAccount.displayName]];
             [_self reconnectAfterAWhile];
-        };
-        self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
-        BRSlackAccount *slackAccount = (BRSlackAccount*)selectedAccount;
-        BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
-        SlackStreamHandle *newHandle = [[SlackStreamHandle alloc] initWithHandle:brHandle];
-        newHandle.onConnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Connecting to %@",nil), slackAccount.displayName]];
-        };
-        newHandle.onDisconnected = ^{
-            [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), slackAccount.teamName]];
-            [_self reconnectAfterAWhile];
-        };
-        newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
-            [_self showStatus:message];
-        };
-        newHandle.onError = ^(NSError * _Nonnull error) {
-            [_self reconnectAfterAWhile];
-        };
-        newHandle.onError = ^(NSError * _Nonnull error) {
-            if ([error.domain isEqualTo:@"BRSlackClient"] && error.code == 401) {
-                [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Need to re-login %@",nil), slackAccount.teamName]];
-                BRSlackAccount *account = error.userInfo[@"account"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[SettingViewController sharedPrefsWindowController] showWindow:_self];
-                    [(SettingViewController*)[SettingViewController sharedPrefsWindowController] addAccountWithHostName: [account.url absoluteString]
-                                                                                                            accountType:SettingAccountTypeSlack
-                                                                                                   updatingSlackAccount:slackAccount];
-                });
-            }
         };
         self.streamHandle = newHandle;
     } else if ([selectedAccount isKindOfClass:[BRMisskeyAccount class]]) {

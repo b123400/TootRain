@@ -44,9 +44,6 @@
                     [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
             }
             break;
-        case SettingAccountTypeSlack:
-            [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
-            break;
         case SettingAccountTypeMisskey:
             [self.imageView setImage:[NSImage imageNamed:@"Misskey"]];
             break;

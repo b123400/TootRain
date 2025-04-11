@@ -85,9 +85,6 @@
 /* No comment provided by engineer. */
 "Please enter your Misskey instance host name." = "請輸入你的Misskey host name";
 
-/* No comment provided by engineer. */
-"Please enter your Slack workspace URL." = "請輸入你的Slack workspace URL";
-
 /* source name */
 "Public" = "公開";
 

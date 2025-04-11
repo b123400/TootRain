@@ -9,7 +9,6 @@
 #import "SettingManager.h"
 #import "NSFileManager+DirectoryLocations.h"
 #import "BRMastodonAccount.h"
-#import "BRSlackAccount.h"
 #import "BRMisskeyAccount.h"
 #import "IRC/BRIrcAccount.h"
 
@@ -66,7 +65,6 @@ static NSMutableArray *savedAccounts=nil;
 - (void)reloadAccounts {
     NSMutableArray *accounts = [NSMutableArray array];
     [accounts addObjectsFromArray:[BRMastodonAccount allAccounts]];
-    [accounts addObjectsFromArray:[BRSlackAccount allAccounts]];
     [accounts addObjectsFromArray:[BRMisskeyAccount allAccounts]];
     [accounts addObjectsFromArray:[BRIrcAccount allAccounts]];
     self.accounts = accounts;
