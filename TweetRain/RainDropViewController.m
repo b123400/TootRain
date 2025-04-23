@@ -57,7 +57,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartAnimation) name:kWindowScreenChanged object:nil];
 	return [self initWithNibName:@"RainDropViewController" bundle:nil];
 }
--(void)loadView{
+- (void)loadView {
 	[super loadView];
 	[(RainDropView*)self.view setDelegate:self];
 	
@@ -65,14 +65,19 @@
 	
 	[contentTextField setAttributedStringValue:attributedString];
 	[contentTextField sizeToFit];
+    
+    CGFloat fontSize = [[[SettingManager sharedManager] font] pointSize];
+    profileImageView.frame = CGRectMake(profileImageView.frame.origin.x,
+                                        profileImageView.frame.origin.y,
+                                        fontSize, fontSize);
 	
-	float viewWidth=contentTextField.frame.size.width+margin*2;
-	float viewHeight=contentTextField.frame.size.height+margin*2;
+	float viewWidth = contentTextField.frame.size.width + margin*2;
+	float viewHeight = contentTextField.frame.size.height + margin*2;
 	
 	if ([[SettingManager sharedManager]showProfileImage] && status.user.profileImageURL) {
-		viewWidth+=profileImageView.frame.size.width+margin;
-		if(viewHeight<profileImageView.frame.size.height+margin*2){
-			viewHeight=profileImageView.frame.size.height+margin*2;
+		viewWidth += profileImageView.frame.size.width + margin;
+		if (viewHeight < profileImageView.frame.size.height + margin*2) {
+			viewHeight = profileImageView.frame.size.height + margin*2;
 		}
 	}
     profileImageView.animates = [[SettingManager sharedManager] animateGif];
@@ -82,24 +87,24 @@
 	self.view.alphaValue = [[SettingManager sharedManager] opacity];
 }
 
--(void)viewDidMovedToSuperview:(id)sender{
-	NSView *parentView=[[self view]superview];
+- (void)viewDidMovedToSuperview:(id)sender {
+	NSView *parentView = [[self view] superview];
     [[self view] setFrame:CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     self.view.layer.transform = CATransform3DMakeTranslation(parentView.frame.size.width, 0, 0);
-	CGRect rect=contentTextField.frame;
+	CGRect rect = contentTextField.frame;
 	rect.origin.x = rect.origin.y = margin;
-	rect.size.width+=5;
-	contentTextField.frame=rect;
+	rect.size.width += 5;
+	contentTextField.frame = rect;
 	
-	if([[SettingManager sharedManager]showProfileImage] && status.user.profileImageURL){
-		CGRect frame=contentTextField.frame;
-		frame.origin.x+=profileImageView.frame.size.width+margin;
-		contentTextField.frame=frame;
+	if ([[SettingManager sharedManager] showProfileImage] && status.user.profileImageURL) {
+		CGRect frame = contentTextField.frame;
+		frame.origin.x += profileImageView.frame.size.width+margin;
+		contentTextField.frame = frame;
 		
 		[profileImageView setHidden:NO];
-		profileImageView.frame = CGRectMake(margin, margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
+        profileImageView.frame = CGRectMake(margin, self.view.frame.size.height - profileImageView.frame.size.height - margin, profileImageView.frame.size.width, profileImageView.frame.size.height);
         [profileImageView setImageURL:status.user.profileImageURL];
-	}else{
+	} else {
 		[profileImageView setHidden:YES];
 	}
 
