@@ -23,7 +23,8 @@
 
 + (instancetype)shared;
 
-- (void)startStreaming;
+- (void)startStreamingWithAccount:(Account *)account;
+- (void)disconnectStreamWithAccount:(Account *)account;
 - (void)showStatus:(Status *)status;
 
 @end

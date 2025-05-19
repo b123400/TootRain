@@ -37,7 +37,9 @@
     shownStatusIds = [[NSMutableSet alloc] init];
     
     [StreamController shared].delegate = self;
-    [[StreamController shared] startStreaming];
+    for (Account *account in [[SettingManager sharedManager] streamingAccounts]) {
+        [[StreamController shared] startStreamingWithAccount:account];
+    }
     
     [self checkForUpdate];
 	

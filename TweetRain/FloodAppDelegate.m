@@ -71,10 +71,10 @@
 }
 
 -(IBAction)newWindow:(id)sender{
-	if(![[SettingManager sharedManager] selectedAccount]){
+    if (![[SettingManager sharedManager] streamingAccounts].count) {
 		[[SettingViewController sharedPrefsWindowController] showWindow:self];
 	}
-    if(!windowController){
+    if (!windowController) {
         windowController=[[FloodWindowController alloc]init];
     }
     [windowController showWindow:self];
