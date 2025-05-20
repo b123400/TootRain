@@ -75,10 +75,6 @@ static StreamController *shared;
     return self;
 }
 
-- (void)startStreamingWithAccount:(Account *)account {
-    [self reconnectWithAccount:account];
-}
-
 - (void)disconnectStreamWithAccount:(Account *)account {
     StreamState *state = self.streams[account.identifier];
     if (!state) return;
@@ -89,7 +85,7 @@ static StreamController *shared;
 - (void)reconnectAfterAWhileWithAccount:(Account *)account {
     StreamState *state = self.streams[account.identifier];
     if (!state) {
-        [self reconnectWithAccount:account];
+        [self startStreamingWithAccount:account];
         return;
     }
     if (state.scheduledReconnect) return;
@@ -100,11 +96,11 @@ static StreamController *shared;
     typeof(self) __weak _self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         state.scheduledReconnect = false;
-        [_self reconnectWithAccount:account];
+        [_self startStreamingWithAccount:account];
     });
 }
 
-- (void)reconnectWithAccount:(Account *)account {
+- (void)startStreamingWithAccount:(Account *)account {
     if (!account) return;
     typeof(self) __weak _self = self;
     

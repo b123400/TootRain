@@ -193,8 +193,9 @@
 	return nil;
 }
 
-- (IBAction)reconnectClicked:(id)sender {
-    [[SettingManager sharedManager] setStreamingState:YES forAccount:self.detailSelectedAccount];
+- (IBAction)connectOrDisconnectClicked:(id)sender {
+    BOOL isStreaming = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
+    [[SettingManager sharedManager] setStreamingState:!isStreaming forAccount:self.detailSelectedAccount];
     [self updateAccountView];
 }
 
@@ -367,9 +368,9 @@
     }
     BOOL isStreaming = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
     if (isStreaming) {
-        self.reconnectButton.title = NSLocalizedString(@"Reconnect", @"setting account reconnect button");
+        self.reconnectButton.title = NSLocalizedString(@"Disconnect", @"setting account disconnect button");
     } else {
-        self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account reconnect button");
+        self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account connect button");
     }
 }
 
