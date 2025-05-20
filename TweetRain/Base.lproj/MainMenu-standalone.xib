@@ -136,9 +136,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Format" id="375">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="flm-kh-3lL">
                         <items>
@@ -150,9 +147,30 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Window" id="19"/>
-                <menuItem title="Help" id="490">
+                <menuItem title="Connections" id="C8O-vf-Cyz">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Connections" id="6UJ-X6-YBK">
+                        <items>
+                            <menuItem title="Item" id="n85-A9-iME">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                        <connections>
+                            <outlet property="delegate" destination="494" id="OaK-AN-iSn"/>
+                        </connections>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="pPt-zv-8ei">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="w2u-br-GTa">
+                        <items>
+                            <menuItem title="Application Help" keyEquivalent="?" id="bHn-UY-SYC">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="M5U-LL-ftk"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="140" y="154"/>

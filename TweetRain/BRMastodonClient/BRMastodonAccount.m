@@ -361,4 +361,18 @@
     return nil;
 }
 
+- (NSImage *)serviceImage {
+    switch (self.software) {
+        case BRMastodonInstanceSoftwarePleroma:
+            return [NSImage imageNamed:@"Pleroma"];
+        case BRMastodonInstanceSoftwareAkkoma:
+            return [NSImage imageNamed:@"Akkoma"];
+        case BRMastodonInstanceSoftwareHometown:
+            return [NSImage imageNamed:@"Hometown"];
+        case BRMastodonInstanceSoftwareMastodon:
+        default:
+            return [NSImage imageNamed:@"Mastodon"];
+    }
+}
+
 @end

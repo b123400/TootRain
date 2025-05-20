@@ -31,11 +31,26 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #endif
 
+@interface StreamState : NSObject
+@property (nonatomic, strong) Account *account;
+@property (nonatomic, strong) StreamHandle *handle;
+@property (atomic, assign) bool scheduledReconnect;
+@end
+
+@implementation StreamState
+
+- (instancetype)initWithAccount:(Account *)account {
+    if (self = [super init]) {
+        self.account = account;
+    }
+    return self;
+}
+
+@end
+
 @interface StreamController()
 
-@property (nonatomic, strong) Account *account;
-@property (nonatomic, strong) StreamHandle *streamHandle;
-@property (atomic, assign) bool scheduledReconnect;
+@property (nonatomic, strong) NSMutableDictionary<NSString*, StreamState*> *streams;
 
 @end
 
@@ -45,69 +60,60 @@ static StreamController *shared;
 
 + (instancetype)shared {
     if (!shared) {
-        shared = [[StreamController alloc] initWithAccount:[[SettingManager sharedManager] selectedAccount]];
+        shared = [[StreamController alloc] init];
     }
     return shared;
 }
 
 # pragma mark - instance methods
 
-- (id)initWithAccount:(Account*)account {
+- (id)init{
     self = [super init];
-
-    self.account = account;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(selectedAccountChanged:)
-                                                 name:kSelectedAccountChanged
-                                               object:nil];
+    
+    self.streams = [NSMutableDictionary dictionary];
 
     return self;
 }
 
-- (void)selectedAccountChanged:(NSNotification *)notification {
-    Account *changedToAccount = [[SettingManager sharedManager] selectedAccount];
-    if (!changedToAccount && self.streamHandle) {
-        // Nothing is selected, but we are connected to sth, need to disconnect
-        [self.streamHandle disconnect];
-        self.streamHandle = nil;
-        self.account = nil;
+- (void)disconnectStreamWithAccount:(Account *)account {
+    StreamState *state = self.streams[account.identifier];
+    if (!state) return;
+    [state.handle disconnect];
+    [self.streams removeObjectForKey:account.identifier];
+}
+
+- (void)reconnectAfterAWhileWithAccount:(Account *)account {
+    StreamState *state = self.streams[account.identifier];
+    if (!state) {
+        [self startStreamingWithAccount:account];
+        return;
     }
-
-    self.account = changedToAccount;
-    [self reconnect];
-}
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)startStreaming {
-    [self reconnect];
-}
-
-- (void)reconnectAfterAWhile {
-    if (self.scheduledReconnect) return;
-    self.scheduledReconnect = true;
-    if (self.streamHandle) {
-        [self.streamHandle disconnect];
+    if (state.scheduledReconnect) return;
+    state.scheduledReconnect = true;
+    if (state.handle) {
+        [state.handle disconnect];
     }
     typeof(self) __weak _self = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _self.scheduledReconnect = false;
-        [_self reconnect];
+        state.scheduledReconnect = false;
+        [_self startStreamingWithAccount:account];
     });
 }
 
-- (void)reconnect {
+- (void)startStreamingWithAccount:(Account *)account {
+    if (!account) return;
     typeof(self) __weak _self = self;
-    if (!self.account) return;
     
-    if (self.streamHandle) {
-        [self.streamHandle disconnect];
+    StreamState *state = self.streams[account.identifier];
+    
+    if (state) {
+        [state.handle disconnect];
+    } else {
+        state = [[StreamState alloc] initWithAccount:account];
+        self.streams[account.identifier] = state;
     }
-    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-    if ([selectedAccount isKindOfClass:[BRMastodonAccount class]]) {
-        BRMastodonAccount *mastondonAccount = (BRMastodonAccount *)selectedAccount;
+    if ([account isKindOfClass:[BRMastodonAccount class]]) {
+        BRMastodonAccount *mastondonAccount = (BRMastodonAccount *)account;
         BRMastodonStreamHandle *brHandle = [[BRMastodonClient shared] streamingStatusesWithAccount:mastondonAccount];
         MastodonStreamHandle *newHandle = [[MastodonStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MastodonStatus * _Nonnull status) {
@@ -118,15 +124,15 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), mastondonAccount.displayName]];
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), mastondonAccount.displayName]];
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
-        self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[BRSlackAccount class]]) {
-        BRSlackAccount *slackAccount = (BRSlackAccount*)selectedAccount;
+        state.handle = newHandle;
+    } else if ([account isKindOfClass:[BRSlackAccount class]]) {
+        BRSlackAccount *slackAccount = (BRSlackAccount*)account;
         BRSlackStreamHandle *brHandle = [[BRSlackClient shared] streamMessageWithAccount:slackAccount];
         SlackStreamHandle *newHandle = [[SlackStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onConnected = ^{
@@ -134,13 +140,13 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Reconnecting to %@",nil), slackAccount.teamName]];
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
         newHandle.onMessage = ^(SlackStatus * _Nonnull message) {
             [_self showStatus:message];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
             if ([error.domain isEqualTo:@"BRSlackClient"] && error.code == 401) {
@@ -154,9 +160,9 @@ static StreamController *shared;
                 });
             }
         };
-        self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
-        BRMisskeyAccount *misskeyAccount = (BRMisskeyAccount *)selectedAccount;
+        state.handle = newHandle;
+    } else if ([account isKindOfClass:[BRMisskeyAccount class]]) {
+        BRMisskeyAccount *misskeyAccount = (BRMisskeyAccount *)account;
         BRMisskeyStreamHandle *brHandle = [[BRMisskeyClient shared] streamStatusWithAccount:misskeyAccount];
         MisskeyStreamHandle *newHandle = [[MisskeyStreamHandle alloc] initWithHandle:brHandle];
         newHandle.onStatus = ^(MisskeyStatus * _Nonnull status) {
@@ -167,20 +173,20 @@ static StreamController *shared;
         };
         newHandle.onDisconnected = ^{
             [_self showNotificationWithText: [NSString stringWithFormat: NSLocalizedString(@"Disconnected from %@",nil), misskeyAccount.displayName]];
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
         newHandle.onError = ^(NSError * _Nonnull error) {
-            [_self reconnectAfterAWhile];
+            [_self reconnectAfterAWhileWithAccount:account];
         };
-        self.streamHandle = newHandle;
-    } else if ([selectedAccount isKindOfClass:[BRIrcAccount class]]) {
-        BRIrcAccount *ircAccount = (BRIrcAccount *)selectedAccount;
+        state.handle = newHandle;
+    } else if ([account isKindOfClass:[BRIrcAccount class]]) {
+        BRIrcAccount *ircAccount = (BRIrcAccount *)account;
         BRIrcStreamHandle *handle = [[BRIrcClient shared] streamWithAccount:ircAccount];
         IrcStreamHandle *newHandle = [[IrcStreamHandle alloc] initWithHandle:handle];
         newHandle.onStatus = ^(DummyStatus * _Nonnull status) {
             [_self showNotificationWithText:status.text];
         };
-        self.streamHandle = newHandle;
+        state.handle = newHandle;
     }
 }
 

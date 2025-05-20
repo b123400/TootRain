@@ -12,6 +12,7 @@
 #import "BRSlackAccount.h"
 #import "BRMisskeyAccount.h"
 #import "IRC/BRIrcAccount.h"
+#import "StreamController.h"
 
 @interface SettingManager ()
 
@@ -39,28 +40,57 @@ static NSMutableArray *savedAccounts=nil;
 
 #pragma mark accounts
 
-- (Account *)selectedAccount {
+- (NSArray<Account *> *)streamingAccounts {
     NSArray *accounts = self.accounts;
     if (accounts.count == 0) {
-        return nil;
+        return @[];
     }
-    NSString *selectedAccountId = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountId"];
-    for (Account *thisAccount in accounts) {
-        if ([thisAccount.identifier isEqualToString:selectedAccountId]) {
-            return thisAccount;
+    NSArray<NSString *> *streamingAccountIds = [[NSUserDefaults standardUserDefaults] arrayForKey:@"streamingAccountIds"] ?: @[];
+    if (!streamingAccountIds.count) {
+        // Migrate from the old single-streaming-account system
+        NSString *selectedAccountId = [[NSUserDefaults standardUserDefaults] stringForKey:@"selectedAccountId"];
+        if (selectedAccountId) {
+            streamingAccountIds = @[selectedAccountId];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedAccountId"];
         }
     }
-    return nil;
+    NSMutableArray *results = [NSMutableArray array];
+    for (Account *thisAccount in accounts) {
+        if ([streamingAccountIds containsObject:thisAccount.identifier]) {
+            [results addObject:thisAccount];
+        }
+    }
+    // Just in case if we have non-existing streaming account id saved
+    [[NSUserDefaults standardUserDefaults] setObject:[results valueForKeyPath:@"identifier"] forKey:@"streamingAccountIds"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return results;
 }
 
-- (void)setSelectedAccount:(Account*)account {
-    if (account) {
-        [[NSUserDefaults standardUserDefaults] setObject:account.identifier forKey:@"selectedAccountId"];
-    } else {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"selectedAccountId"];
+- (BOOL)isAccountStreaming:(Account *)account {
+    NSArray<NSString *> *streamingAccountIds = [[NSUserDefaults standardUserDefaults] arrayForKey:@"streamingAccountIds"];
+    return [streamingAccountIds containsObject:account.identifier];
+}
+
+- (void)setStreamingState:(BOOL)streaming forAccount:(Account *)account {
+    NSMutableArray<NSString *> *streamingAccountIds = [([[NSUserDefaults standardUserDefaults] arrayForKey:@"streamingAccountIds"] ?: @[]) mutableCopy];
+    BOOL updated = NO;
+    if (streaming) {
+        if (![streamingAccountIds containsObject:account.identifier]) {
+            [streamingAccountIds addObject:account.identifier];
+            updated = YES;
+        }
+        // Setting yes = reconnect
+        [[StreamController shared] startStreamingWithAccount:account];
+    } else if (!streaming && [streamingAccountIds containsObject:account.identifier]) {
+        updated = YES;
+        [streamingAccountIds removeObject:account.identifier];
+        [[StreamController shared] disconnectStreamWithAccount:account];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:streamingAccountIds forKey:@"streamingAccountIds"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
+    if (updated) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kStreamingAccountsChangedNotification object:nil];
+    }
 }
 
 - (void)reloadAccounts {

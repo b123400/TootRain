@@ -13,9 +13,9 @@
 #define kWindowScreenChanged @"kWindowScreenChanged"
 #define kWindowLevelChanged @"kWindowLevelChanged"
 #define kCursorBehaviourChanged @"kCursorBehaviourChanged"
-#define kSelectedAccountChanged @"kSelectedAccountChanged"
 #define kRainDropSpeedChanegdNotification @"kRainDropSpeedChanegdNotification"
 #define kFlipUpDownChangedNotification @"kFlipUpDownChangedNotification"
+#define kStreamingAccountsChangedNotification @"kStreamingAccountsChangedNotification"
 
 typedef enum : NSUInteger {
     CursorBehaviourPause = 0,
@@ -78,8 +78,9 @@ typedef enum : NSUInteger {
 
 +(SettingManager*)sharedManager;
 
-- (Account*)selectedAccount;
-- (void)setSelectedAccount:(Account*)account;
+- (NSArray *)streamingAccounts;
+- (BOOL)isAccountStreaming:(Account *)account;
+- (void)setStreamingState:(BOOL)streaming forAccount:(Account *)account;
 - (NSArray<Account*> *)accounts;
 - (Account *)accountWithIdentifier:(NSString *)identifier;
 - (void)reloadAccounts;

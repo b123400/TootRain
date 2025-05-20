@@ -25,7 +25,7 @@
 
 @implementation FloodWindowController
 
--(id)init{
+-(id)init {
     self.rainDrops=[[NSMutableArray alloc]init];
     
 	timer=[NSTimer scheduledTimerWithTimeInterval:0.1
@@ -37,7 +37,9 @@
     shownStatusIds = [[NSMutableSet alloc] init];
     
     [StreamController shared].delegate = self;
-    [[StreamController shared] startStreaming];
+    for (Account *account in [[SettingManager sharedManager] streamingAccounts]) {
+        [[StreamController shared] startStreamingWithAccount:account];
+    }
     
     [self checkForUpdate];
 	

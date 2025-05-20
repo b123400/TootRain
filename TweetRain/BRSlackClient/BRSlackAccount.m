@@ -76,6 +76,10 @@
     [defaults synchronize];
 }
 
+- (NSImage *)serviceImage {
+    return [NSImage imageNamed:@"Slack"];
+}
+
 - (void)deleteAccount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *accounts = [(NSDictionary*)[defaults objectForKey:@"BRSlackAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];

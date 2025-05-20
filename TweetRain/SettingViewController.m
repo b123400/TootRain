@@ -45,6 +45,10 @@
 
 -(instancetype)initWithWindowNibName:(NSString *)windowNibName {
     self = [super initWithWindowNibName:windowNibName];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(streamingAccountsChanged:)
+                                                 name:kStreamingAccountsChangedNotification
+                                               object:nil];
     return self;
 }
 
@@ -144,7 +148,7 @@
     
     // need to find using identifier becoz system api doesn't compare it well
     NSArray<Account*> *accounts = [[SettingManager sharedManager] accounts];
-    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
+    Account *selectedAccount = [[SettingManager sharedManager] streamingAccounts].firstObject;
     NSUInteger index = [self indexOfAccountByIdentifier:selectedAccount];
 
     if (index != NSNotFound) {
@@ -178,14 +182,8 @@
             Account *account = [[[SettingManager sharedManager] accounts] objectAtIndex:rowIndex];
             SettingAccountCellObject *obj = [[SettingAccountCellObject alloc] init];
             obj.accountName = account.shortDisplayName;
-            obj.isConnected = [account.identifier isEqualToString:[SettingManager sharedManager].selectedAccount.identifier];
-            obj.accountType =
-                  [account isKindOfClass:[BRSlackAccount class]] ? SettingAccountTypeSlack
-                : [account isKindOfClass:[BRMastodonAccount class]] ? SettingAccountTypeMastodon
-                : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
-                : [account isKindOfClass:[BRIrcAccount class]] ? SettingAccountTypeIrc
-                : SettingAccountTypeMastodon;
-            obj.software = [account isKindOfClass:[BRMastodonAccount class]] ? [(BRMastodonAccount*)account software] : 0;
+            obj.isConnected = [[SettingManager sharedManager] isAccountStreaming:account];
+            obj.serviceImage = account.serviceImage;
             return obj;
         }
         return nil;
@@ -193,8 +191,9 @@
 	return nil;
 }
 
-- (IBAction)reconnectClicked:(id)sender {
-    [[SettingManager sharedManager] setSelectedAccount:self.detailSelectedAccount];
+- (IBAction)connectOrDisconnectClicked:(id)sender {
+    BOOL isStreaming = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
+    [[SettingManager sharedManager] setStreamingState:!isStreaming forAccount:self.detailSelectedAccount];
     [self updateAccountView];
 }
 
@@ -294,13 +293,9 @@
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
     Account *account = [SettingManager sharedManager].accounts[row];
-    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-    BOOL deletingSelectedAccount = [account.identifier isEqual:selectedAccount.identifier];
+    [[SettingManager sharedManager] setStreamingState:NO forAccount:account];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
-    if (deletingSelectedAccount) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSelectedAccountChanged object:nil];
-    }
     [self updateAccountView];
 }
 
@@ -323,9 +318,8 @@
         [_self updateAccountView];
         [self.oauthController.window close];
         self.oauthController = nil;
-        
-        [[SettingManager sharedManager] setSelectedAccount: nil];
-        [[SettingManager sharedManager] setSelectedAccount:newAccount];
+
+        [[SettingManager sharedManager] setStreamingState:YES forAccount:newAccount];
     });
 }
 
@@ -370,11 +364,11 @@
         self.accountDetailBox.contentView = self.ircDetailView;
         [self.ircDetailView setAccount:(BRIrcAccount *)self.detailSelectedAccount];
     }
-    Account *selectedAccount = [[SettingManager sharedManager] selectedAccount];
-    if ([selectedAccount.identifier isEqualTo:self.detailSelectedAccount.identifier]) {
-        self.reconnectButton.title = NSLocalizedString(@"Reconnect", @"setting account reconnect button");
+    BOOL isStreaming = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
+    if (isStreaming) {
+        self.reconnectButton.title = NSLocalizedString(@"Disconnect", @"setting account disconnect button");
     } else {
-        self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account reconnect button");
+        self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account connect button");
     }
 }
 
@@ -390,13 +384,12 @@
         a.sourceListName = controller.listName;
         [a save];
         
-        BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
-        NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
+        BOOL needReconnect = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
 
         [self updateAccountView];
         
         if (needReconnect) {
-            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:currentAccountIdentifier]];
+            [[SettingManager sharedManager] setStreamingState:YES forAccount:self.detailSelectedAccount];
         }
     }];
 }
@@ -418,13 +411,13 @@
                     account.threadId = controller.selectedThreadId;
                     [account save];
                     
-                    BOOL needReconnect = self.detailSelectedAccount == [SettingManager sharedManager].selectedAccount;
+                    BOOL needReconnect = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
                     NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
 
                     [self updateAccountView];
                     
                     if (needReconnect) {
-                        [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:currentAccountIdentifier]];
+                        [[SettingManager sharedManager] setStreamingState:YES forAccount:self.detailSelectedAccount];
                     }
                 }
             }];
@@ -443,7 +436,7 @@
             [self updateAccountView];
             
             // Reconnect
-            [[SettingManager sharedManager] setSelectedAccount:[[SettingManager sharedManager] accountWithIdentifier:account.identifier]];
+            [[SettingManager sharedManager] setStreamingState:YES forAccount:account];
         }
     }];
 }
@@ -469,6 +462,10 @@
     Account *detailSelectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
     self.detailSelectedAccount = detailSelectedAccount;
     [self updateAccountDetailView];
+}
+
+- (void)streamingAccountsChanged:(NSNotification *)notification {
+    [self updateAccountView];
 }
 
 #pragma mark Appearance

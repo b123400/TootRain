@@ -27,33 +27,7 @@
     if (objectValue == nil) {
         return;
     }
-    switch (objectValue.accountType) {
-        case SettingAccountTypeMastodon:
-            switch (objectValue.software) {
-                case BRMastodonInstanceSoftwarePleroma:
-                    [self.imageView setImage:[NSImage imageNamed:@"Pleroma"]];
-                    break;
-                case BRMastodonInstanceSoftwareAkkoma:
-                    [self.imageView setImage:[NSImage imageNamed:@"Akkoma"]];
-                    break;
-                case BRMastodonInstanceSoftwareHometown:
-                    [self.imageView setImage:[NSImage imageNamed:@"Hometown"]];
-                    break;
-                case BRMastodonInstanceSoftwareMastodon:
-                default:
-                    [self.imageView setImage:[NSImage imageNamed:@"Mastodon"]];
-            }
-            break;
-        case SettingAccountTypeSlack:
-            [self.imageView setImage:[NSImage imageNamed:@"Slack"]];
-            break;
-        case SettingAccountTypeMisskey:
-            [self.imageView setImage:[NSImage imageNamed:@"Misskey"]];
-            break;
-        case SettingAccountTypeIrc:
-            [self.imageView setImage:[NSImage imageNamed:@"IRC"]];
-            break;
-    }
+    self.imageView.image = objectValue.serviceImage;
     self.textField.stringValue = objectValue.accountName;
     if (objectValue.isConnected) {
         [self.connectStatusImageView setImage:[NSImage imageNamed:@"NSStatusAvailable"]];
