@@ -272,20 +272,17 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		256AC3D80F4B6AC300CF3369 /* FloodAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloodAppDelegate.h; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetRain_Prefix.pch; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* TootRain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TootRain_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.debug.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.debug.xcconfig"; sourceTree = "<group>"; };
 		871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.release.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.release.xcconfig"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* TweetRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetRain-Info.plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* TootRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TootRain-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8E1F1DEC9C12F1EBA84E6C /* Pods-TootRain-standalone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain-standalone.debug.xcconfig"; path = "Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone.debug.xcconfig"; sourceTree = "<group>"; };
 		ADB1A45FAF0211C3BC344554 /* Pods_TootRain_standalone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain_standalone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.debug.xcconfig"; sourceTree = "<group>"; };
-		BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain.release.xcconfig"; path = "Target Support Files/Pods-TweetRain/Pods-TweetRain.release.xcconfig"; sourceTree = "<group>"; };
 		BFF2BD44186D534F8734E70D /* Pods_TootRain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TootRain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.debug.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		CF05F4F52D41183A0009C292 /* OnlyPortValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlyPortValueFormatter.h; sourceTree = "<group>"; };
 		CF05F4F62D41183A0009C292 /* OnlyPortValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlyPortValueFormatter.m; sourceTree = "<group>"; };
 		CF0EA22A2695C7280081F186 /* BRMastodonEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonEmoji.h; sourceTree = "<group>"; };
@@ -354,7 +351,7 @@
 		CF52029E2938F02600B9B749 /* BRMastodonList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonList.h; sourceTree = "<group>"; };
 		CF52029F2938F02600B9B749 /* BRMastodonList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonList.m; sourceTree = "<group>"; };
 		CF5D2D7929350BC400745D63 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TootRain-standalone-Info.plist"; path = "/Users/b123400/github/tweetrain/TweetRain/TootRain-standalone-Info.plist"; sourceTree = "<absolute>"; };
+		CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TootRain-standalone-Info.plist"; sourceTree = "<group>"; };
 		CF5D2D7C29350DA900745D63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-standalone.xib"; sourceTree = "<group>"; };
 		CF5D2D7F29350DE600745D63 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu-standalone.strings"; sourceTree = "<group>"; };
 		CF5D2D8129350DE700745D63 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/MainMenu-standalone.strings"; sourceTree = "<group>"; };
@@ -386,7 +383,7 @@
 		CF620A201A057CBE003EB806 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
 		CF66A55A1372CFE7000B1AFF /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		CF66A55B1372CFE7000B1AFF /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
-		CF673971295A883B005B274C /* TweetRain-standalone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TweetRain-standalone.entitlements"; sourceTree = "<group>"; };
+		CF673971295A883B005B274C /* TootRain-standalone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TootRain-standalone.entitlements"; sourceTree = "<group>"; };
 		CF75438C13686342009E7292 /* TransparentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		CF75438D13686342009E7292 /* TransparentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		CF75C5D31371947B0099F8E0 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
@@ -471,7 +468,7 @@
 		CFC856E929829B12007E3EB3 /* BorderHighlightButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderHighlightButton.h; sourceTree = "<group>"; };
 		CFC856EA29829B12007E3EB3 /* BorderHighlightButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderHighlightButton.m; sourceTree = "<group>"; };
 		CFC9AD5915EBD63D00CC52F9 /* icon.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icon.iconset; sourceTree = "<group>"; };
-		CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TweetRain.entitlements; sourceTree = "<group>"; };
+		CFCB21EC1A1FB4A500202991 /* TootRain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TootRain.entitlements; sourceTree = "<group>"; };
 		CFCB21ED1A1FBA2500202991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CFD13195268874CE00B6EDB3 /* BRMastodonClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMastodonClient.h; sourceTree = "<group>"; };
 		CFD13196268874CE00B6EDB3 /* BRMastodonClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMastodonClient.m; sourceTree = "<group>"; };
@@ -516,7 +513,6 @@
 		CFFAE5DE15E02D3400389518 /* RainDropDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainDropDetailViewController.m; sourceTree = "<group>"; };
 		CFFAE5F115E0E9DD00389518 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		CFFAE5F215E0E9DD00389518 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
-		D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TweetRain-ios.release.xcconfig"; path = "Target Support Files/Pods-TweetRain-ios/Pods-TweetRain-ios.release.xcconfig"; sourceTree = "<group>"; };
 		DFFFF986A977E98B00F671E9 /* Pods-TootRain-standalone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain-standalone.release.xcconfig"; path = "Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -585,7 +581,7 @@
 				CF9B468F2D3E176400CDFE61 /* IRC */,
 			);
 			name = Classes;
-			path = TweetRain;
+			path = TootRain;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -622,8 +618,8 @@
 		29B97314FDCFA39411CA2CEA /* TootRain */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB21EC1A1FB4A500202991 /* TweetRain.entitlements */,
-				CF673971295A883B005B274C /* TweetRain-standalone.entitlements */,
+				CFCB21EC1A1FB4A500202991 /* TootRain.entitlements */,
+				CF673971295A883B005B274C /* TootRain-standalone.entitlements */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -637,7 +633,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				256AC3F00F4B6AF500CF3369 /* TweetRain_Prefix.pch */,
+				256AC3F00F4B6AF500CF3369 /* TootRain_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				CF75438C13686342009E7292 /* TransparentView.h */,
 				CF75438D13686342009E7292 /* TransparentView.m */,
@@ -669,7 +665,7 @@
 				CFA22FCC2989197B00DD85F4 /* BRAnimatedTextField.m */,
 			);
 			name = "Other Sources";
-			path = TweetRain;
+			path = TootRain;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -678,7 +674,7 @@
 				CFE39F8B1A7649B9004644C8 /* Errors.strings */,
 				CFE39F901A764B8C004644C8 /* Localizable.strings */,
 				CFCB21ED1A1FBA2500202991 /* Images.xcassets */,
-				8D1107310486CEB800E47090 /* TweetRain-Info.plist */,
+				8D1107310486CEB800E47090 /* TootRain-Info.plist */,
 				CF5D2D7A29350BC400745D63 /* TootRain-standalone-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				CF11767F15E90BD0001138F2 /* Credits.rtf */,
@@ -688,7 +684,7 @@
 				CFC9AD5915EBD63D00CC52F9 /* icon.iconset */,
 			);
 			name = Resources;
-			path = TweetRain;
+			path = TootRain;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -707,10 +703,6 @@
 		503D4542FE18381EB2403948 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BE0CCF76F17FFD9CAF11A4E6 /* Pods-TweetRain.debug.xcconfig */,
-				BF10505359C0DE5172A70FD0 /* Pods-TweetRain.release.xcconfig */,
-				C3A3426B73E18230B2AA0F27 /* Pods-TweetRain-ios.debug.xcconfig */,
-				D9173EBE39B3F13615508419 /* Pods-TweetRain-ios.release.xcconfig */,
 				3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */,
 				871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */,
 				8E8E1F1DEC9C12F1EBA84E6C /* Pods-TootRain-standalone.debug.xcconfig */,
@@ -986,9 +978,7 @@
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
-						DevelopmentTeam = 3P89U4ZCGD;
 						LastSwiftMigration = 1300;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1000,7 +990,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TootRain" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1472,7 +1462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TootRain.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1489,8 +1479,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
+				INFOPLIST_FILE = "TootRain/TootRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
@@ -1523,7 +1513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = TweetRain.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TootRain.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1538,8 +1528,8 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
-				INFOPLIST_FILE = "TweetRain/TweetRain-Info.plist";
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
+				INFOPLIST_FILE = "TootRain/TootRain-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INSTALL_PATH = /Applications;
@@ -1611,7 +1601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = "TweetRain-standalone.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "TootRain-standalone.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1628,13 +1618,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"STANDALONE=1",
 				);
-				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
+				INFOPLIST_FILE = "TootRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1666,7 +1656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = "TweetRain-standalone.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "TootRain-standalone.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1681,13 +1671,13 @@
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TweetRain/TweetRain_Prefix.pch;
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"STANDALONE=1",
 				);
-				INFOPLIST_FILE = "TweetRain/TootRain-standalone-Info.plist";
+				INFOPLIST_FILE = "TootRain/TootRain-standalone-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TootRain;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1723,7 +1713,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TweetRain" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TootRain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
