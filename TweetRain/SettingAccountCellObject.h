@@ -13,12 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingAccountCellObject : NSObject
 
-@property (assign, nonatomic) SettingAccountType accountType;
+@property (strong, nonatomic) NSImage *serviceImage;
 @property (strong, nonatomic) NSString *accountName;
 @property (assign) BOOL isConnected;
-
-// Special handling for pleroma, basically same as mastodon but with a different icon
-@property (assign, nonatomic) BRMastodonInstanceSoftware software;
 
 @end
 

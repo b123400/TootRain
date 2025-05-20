@@ -21,6 +21,10 @@
     return @"";
 }
 
+- (NSImage *)serviceImage {
+    return nil;
+}
+
 - (void)deleteAccount {
     
 }

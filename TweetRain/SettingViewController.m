@@ -179,13 +179,7 @@
             SettingAccountCellObject *obj = [[SettingAccountCellObject alloc] init];
             obj.accountName = account.shortDisplayName;
             obj.isConnected = [[SettingManager sharedManager] isAccountStreaming:account];
-            obj.accountType =
-                  [account isKindOfClass:[BRSlackAccount class]] ? SettingAccountTypeSlack
-                : [account isKindOfClass:[BRMastodonAccount class]] ? SettingAccountTypeMastodon
-                : [account isKindOfClass:[BRMisskeyAccount class]] ? SettingAccountTypeMisskey
-                : [account isKindOfClass:[BRIrcAccount class]] ? SettingAccountTypeIrc
-                : SettingAccountTypeMastodon;
-            obj.software = [account isKindOfClass:[BRMastodonAccount class]] ? [(BRMastodonAccount*)account software] : 0;
+            obj.serviceImage = account.serviceImage;
             return obj;
         }
         return nil;

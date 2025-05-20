@@ -161,6 +161,10 @@
     };
 }
 
+- (NSImage *)serviceImage {
+    return [NSImage imageNamed:@"Misskey"];
+}
+
 - (void)deleteAccount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *servers = [(NSDictionary*)[defaults objectForKey:@"BRMisskeyAccount"] mutableCopy] ?: [NSMutableDictionary dictionary];

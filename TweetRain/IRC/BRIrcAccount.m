@@ -130,6 +130,11 @@
 - (NSString *)shortDisplayName {
     return self.displayName;
 }
+
+- (NSImage *)serviceImage {
+    return [NSImage imageNamed:@"IRC"];
+}
+
 - (void)deleteAccount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *accounts = [(NSArray*)[defaults objectForKey:@"BRIrcAccount"] mutableCopy] ?: [NSMutableArray array];
