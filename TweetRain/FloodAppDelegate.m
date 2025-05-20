@@ -12,7 +12,7 @@
 #import "ShowStatusIntentHandler.h"
 #import "History Window/HistoryWindowController.h"
 
-@interface FloodAppDelegate ()
+@interface FloodAppDelegate () <NSMenuDelegate>
 @property (nonatomic, strong) NSTimer *iconAnimationTimer;
 @property (nonatomic, assign) int pendingAnimationCount;
 @end
@@ -31,6 +31,7 @@
     
     [NSApp unhide:self];
 }
+
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{
 	return NO;
 }
@@ -79,6 +80,7 @@
     }
     [windowController showWindow:self];
 }
+
 -(IBAction)openSettingWindow:(id)sender{
 	[[SettingViewController sharedPrefsWindowController] showWindow:self];
 }
@@ -89,6 +91,34 @@
 
 - (IBAction)openHistoryWindow:(id)sender {
     [[HistoryWindowController shared] showWindow:self];
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    [menu removeAllItems];
+    NSArray *accounts = [[SettingManager sharedManager] accounts];
+    if (!accounts.count) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"No account available", @"Menubar")
+                                                      action:nil
+                                               keyEquivalent:@""];
+        item.enabled = NO;
+        [menu addItem:item];
+        return;
+    }
+    for (Account *account in accounts) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:account.shortDisplayName
+                                                      action:@selector(connectionItemClicked:)
+                                               keyEquivalent:@""];
+        item.target = self;
+        item.identifier = account.identifier;
+        item.image = account.serviceImage;
+        item.state = [[SettingManager sharedManager] isAccountStreaming:account] ? NSControlStateValueOn : NSControlStateValueOff;
+        [menu addItem:item];
+    }
+}
+
+- (void)connectionItemClicked:(NSMenuItem *)sender {
+    Account *account = [[SettingManager sharedManager] accountWithIdentifier:sender.identifier];
+    [[SettingManager sharedManager] setStreamingState:![[SettingManager sharedManager] isAccountStreaming:account] forAccount:account];
 }
 
 @end

@@ -73,18 +73,24 @@ static NSMutableArray *savedAccounts=nil;
 
 - (void)setStreamingState:(BOOL)streaming forAccount:(Account *)account {
     NSMutableArray<NSString *> *streamingAccountIds = [([[NSUserDefaults standardUserDefaults] arrayForKey:@"streamingAccountIds"] ?: @[]) mutableCopy];
+    BOOL updated = NO;
     if (streaming) {
         if (![streamingAccountIds containsObject:account.identifier]) {
             [streamingAccountIds addObject:account.identifier];
+            updated = YES;
         }
         // Setting yes = reconnect
         [[StreamController shared] startStreamingWithAccount:account];
     } else if (!streaming && [streamingAccountIds containsObject:account.identifier]) {
+        updated = YES;
         [streamingAccountIds removeObject:account.identifier];
         [[StreamController shared] disconnectStreamWithAccount:account];
     }
     [[NSUserDefaults standardUserDefaults] setObject:streamingAccountIds forKey:@"streamingAccountIds"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    if (updated) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kStreamingAccountsChangedNotification object:nil];
+    }
 }
 
 - (void)reloadAccounts {

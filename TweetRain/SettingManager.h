@@ -15,6 +15,7 @@
 #define kCursorBehaviourChanged @"kCursorBehaviourChanged"
 #define kRainDropSpeedChanegdNotification @"kRainDropSpeedChanegdNotification"
 #define kFlipUpDownChangedNotification @"kFlipUpDownChangedNotification"
+#define kStreamingAccountsChangedNotification @"kStreamingAccountsChangedNotification"
 
 typedef enum : NSUInteger {
     CursorBehaviourPause = 0,

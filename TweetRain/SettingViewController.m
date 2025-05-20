@@ -45,6 +45,10 @@
 
 -(instancetype)initWithWindowNibName:(NSString *)windowNibName {
     self = [super initWithWindowNibName:windowNibName];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(streamingAccountsChanged:)
+                                                 name:kStreamingAccountsChangedNotification
+                                               object:nil];
     return self;
 }
 
@@ -458,6 +462,10 @@
     Account *detailSelectedAccount = [[SettingManager sharedManager].accounts objectAtIndex:index];
     self.detailSelectedAccount = detailSelectedAccount;
     [self updateAccountDetailView];
+}
+
+- (void)streamingAccountsChanged:(NSNotification *)notification {
+    [self updateAccountView];
 }
 
 #pragma mark Appearance
