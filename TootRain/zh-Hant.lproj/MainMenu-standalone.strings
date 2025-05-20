@@ -22,8 +22,8 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "服務";
 
-/* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
-"134.title" = "隱藏TweetRain";
+/* Class = "NSMenuItem"; title = "Hide TootRain"; ObjectID = "134"; */
+"134.title" = "隱藏TootRain";
 
 /* Class = "NSMenuItem"; title = "Quit TootRain"; ObjectID = "136"; */
 "136.title" = "結束TootRain";

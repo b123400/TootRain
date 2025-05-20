@@ -1,3 +1,6 @@
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "9rq-1G-PFJ"; */
+"9rq-1G-PFJ.title" = "閉じる";
+
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
 "19.title" = "ウインドウ";
 
@@ -22,8 +25,8 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "サービス";
 
-/* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
-"134.title" = "TweetRainを非表示";
+/* Class = "NSMenuItem"; title = "Hide TootRain"; ObjectID = "134"; */
+"134.title" = "TootRainを非表示";
 
 /* Class = "NSMenuItem"; title = "Quit TootRain"; ObjectID = "136"; */
 "136.title" = "TootRainを終了";
@@ -73,21 +76,15 @@
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
 "490.title" = "ヘルプ";
 
-/* Class = "NSMenu"; title = "View"; ObjectID = "flm-kh-3lL"; */
-"flm-kh-3lL.title" = "表示";
+/* Class = "NSMenu"; title = "File"; ObjectID = "ke0-VQ-hvx"; */
+"ke0-VQ-hvx.title" = "ファイル";
 
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "FMC-2X-3VZ"; */
-"FMC-2X-3VZ.title" = "ファイル";
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
+"Kq3-UG-BWh.title" = "ファイル";
 
-/* Class = "NSMenu"; title = "File"; ObjectID = "jpX-i9-Oh8"; */
-"jpX-i9-Oh8.title" = "ファイル";
+/* Class = "NSMenuItem"; title = "History..."; ObjectID = "pKK-4s-XpB"; */
+"pKK-4s-XpB.title" = "履歴...";
 
-/* Class = "NSMenuItem"; title = "Close"; ObjectID = "McF-yT-VkX"; */
-"McF-yT-VkX.title" = "閉じる";
-
-/* Class = "NSMenuItem"; title = "History..."; ObjectID = "q0b-Uw-LcP"; */
-"q0b-Uw-LcP.title" = "履歴...";
-
-/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
-"TRN-i4-5na.title" = "アップデートを確認...";
+/* Class = "NSMenu"; title = "View"; ObjectID = "wfV-YU-kZP"; */
+"wfV-YU-kZP.title" = "表示";
 

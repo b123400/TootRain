@@ -7,7 +7,7 @@ build/
 *.pbxuser
 *.perspective
 *.perspectivev3
-TweetRain.xcodeproj/xcuserdata/
-TweetRain.xcworkspace/xcuserdata
+TootRain.xcodeproj/xcuserdata/
+TootRain.xcworkspace/xcuserdata
 Pods/Pods.xcodeproj/xcuserdata/b123400.xcuserdatad/xcschemes/xcschememanagement.plist
 Pods/

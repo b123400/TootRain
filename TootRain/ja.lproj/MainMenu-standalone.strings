@@ -1,8 +1,5 @@
-/* Class = "NSMenuItem"; title = "Close"; ObjectID = "9rq-1G-PFJ"; */
-"9rq-1G-PFJ.title" = "關閉";
-
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "視窗";
+"19.title" = "ウインドウ";
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
@@ -14,77 +11,83 @@
 "57.title" = "TootRain";
 
 /* Class = "NSMenuItem"; title = "About TootRain"; ObjectID = "58"; */
-"58.title" = "關於TootRain";
+"58.title" = "TootRainについて";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
-"129.title" = "偏好設定⋯";
+"129.title" = "環境設定…";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
-"130.title" = "服務";
+"130.title" = "サービス";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
-"131.title" = "服務";
+"131.title" = "サービス";
 
-/* Class = "NSMenuItem"; title = "Hide TweetRain"; ObjectID = "134"; */
-"134.title" = "隱藏TweetRain";
+/* Class = "NSMenuItem"; title = "Hide TootRain"; ObjectID = "134"; */
+"134.title" = "TootRainを非表示";
 
 /* Class = "NSMenuItem"; title = "Quit TootRain"; ObjectID = "136"; */
-"136.title" = "結束TootRain";
+"136.title" = "TootRainを終了";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "隱藏其他";
+"145.title" = "ほかを非表示";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "顯示全部";
+"150.title" = "すべてを表示";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
-"197.title" = "複製";
+"197.title" = "コピー";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "全選";
+"198.title" = "すべてを選択";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
-"199.title" = "剪下";
+"199.title" = "カット";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
-"202.title" = "刪除";
+"202.title" = "削除";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "貼上";
+"203.title" = "ペースト";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
-"205.title" = "編輯";
+"205.title" = "編集";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "還原";
+"207.title" = "取り消す";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
-"215.title" = "重做";
+"215.title" = "やり直す";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; */
-"217.title" = "編輯";
+"217.title" = "編集";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
-"295.title" = "查看";
+"295.title" = "表示";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "格式";
+"375.title" = "フォーマット";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
-"485.title" = "貼上並配合樣式";
+"485.title" = "ペーストしてスタイルを合わせる";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "輔助説明";
+"490.title" = "ヘルプ";
 
-/* Class = "NSMenu"; title = "File"; ObjectID = "ke0-VQ-hvx"; */
-"ke0-VQ-hvx.title" = "檔案";
+/* Class = "NSMenu"; title = "View"; ObjectID = "flm-kh-3lL"; */
+"flm-kh-3lL.title" = "表示";
 
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
-"Kq3-UG-BWh.title" = "檔案";
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "FMC-2X-3VZ"; */
+"FMC-2X-3VZ.title" = "ファイル";
 
-/* Class = "NSMenuItem"; title = "History..."; ObjectID = "pKK-4s-XpB"; */
-"pKK-4s-XpB.title" = "紀錄...";
+/* Class = "NSMenu"; title = "File"; ObjectID = "jpX-i9-Oh8"; */
+"jpX-i9-Oh8.title" = "ファイル";
 
-/* Class = "NSMenu"; title = "View"; ObjectID = "wfV-YU-kZP"; */
-"wfV-YU-kZP.title" = "查看";
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "McF-yT-VkX"; */
+"McF-yT-VkX.title" = "閉じる";
+
+/* Class = "NSMenuItem"; title = "History..."; ObjectID = "q0b-Uw-LcP"; */
+"q0b-Uw-LcP.title" = "履歴...";
+
+/* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
+"TRN-i4-5na.title" = "アップデートを確認...";
 
