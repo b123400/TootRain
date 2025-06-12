@@ -16,7 +16,7 @@
 /* Misskey source type */
 "Channel - %@" = "頻道 - %@";
 
-/* setting account reconnect button */
+/* setting account connect button */
 "Connect" = "連接";
 
 /* Account table cell */
@@ -27,6 +27,9 @@
 
 /* source name */
 "Direct" = "私信";
+
+/* setting account disconnect button */
+"Disconnect" = "中斷連線";
 
 /* Account table cell */
 "Disconnected" = "解除連接";
@@ -79,6 +82,9 @@
 /* No comment provided by engineer. */
 "No" = "否";
 
+/* Menubar */
+"No account available" = "沒有帳戶";
+
 /* No comment provided by engineer. */
 "Please enter your Mastodon / Pleroma instance host name." = "請輸入你的Mastodon / Pleroma host name";
 
@@ -96,9 +102,6 @@
 
 /* source name */
 "Public Remote" = "聯邦公開";
-
-/* setting account reconnect button */
-"Reconnect" = "重新連接";
 
 /* No comment provided by engineer. */
 "Reconnecting to %@" = "正在重新連接到%@";

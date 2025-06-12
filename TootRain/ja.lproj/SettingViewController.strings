@@ -115,6 +115,9 @@
 /* Class = "NSButtonCell"; title = "Authorise"; ObjectID = "nRu-Np-tlI"; */
 "nRu-Np-tlI.title" = "認証";
 
+/* Class = "NSTextFieldCell"; title = "Yes"; ObjectID = "ppR-GZ-uWZ"; */
+"ppR-GZ-uWZ.title" = "";
+
 /* Class = "NSTextFieldCell"; title = "Service:"; ObjectID = "qn5-hR-fxc"; */
 "qn5-hR-fxc.title" = "サービス:";
 
@@ -153,9 +156,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Nick:"; ObjectID = "YQA-OB-dyi"; */
 "YQA-OB-dyi.title" = "ニックネーム:";
-
-/* Class = "NSTextFieldCell"; title = "IRC (IRC)"; ObjectID = "YUg-hW-O7F"; */
-"YUg-hW-O7F.title" = "";
 
 /* Class = "NSTextFieldCell"; title = "History Preserve Limit"; ObjectID = "YWO-cs-lYh"; */
 "YWO-cs-lYh.title" = "履歴保存上限";

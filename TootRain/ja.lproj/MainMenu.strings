@@ -1,9 +1,6 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "9rq-1G-PFJ"; */
 "9rq-1G-PFJ.title" = "閉じる";
 
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "ウインドウ";
-
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
@@ -67,14 +64,14 @@
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
 "295.title" = "表示";
 
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "フォーマット";
-
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
 "485.title" = "ペーストしてスタイルを合わせる";
 
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "ヘルプ";
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "CLQ-7m-XUy"; */
+"CLQ-7m-XUy.title" = "ヘルプ";
+
+/* Class = "NSMenu"; title = "Connections"; ObjectID = "iHx-tg-G9L"; */
+"iHx-tg-G9L.title" = "接続";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "ke0-VQ-hvx"; */
 "ke0-VQ-hvx.title" = "ファイル";
@@ -82,9 +79,18 @@
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
 "Kq3-UG-BWh.title" = "ファイル";
 
+/* Class = "NSMenuItem"; title = "Connections"; ObjectID = "Mdv-Jz-bfz"; */
+"Mdv-Jz-bfz.title" = "接続";
+
 /* Class = "NSMenuItem"; title = "History..."; ObjectID = "pKK-4s-XpB"; */
 "pKK-4s-XpB.title" = "履歴...";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "wfV-YU-kZP"; */
 "wfV-YU-kZP.title" = "表示";
+
+/* Class = "NSMenuItem"; title = "Application Help"; ObjectID = "wz3-n1-tYg"; */
+"wz3-n1-tYg.title" = "Applicationヘルプ";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "xYj-mg-ZTW"; */
+"xYj-mg-ZTW.title" = "ヘルプ";
 

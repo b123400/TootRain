@@ -1,5 +1,5 @@
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "ウインドウ";
+/* Class = "NSMenu"; title = "Connections"; ObjectID = "6UJ-X6-YBK"; */
+"6UJ-X6-YBK.title" = "接続";
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
@@ -64,14 +64,14 @@
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
 "295.title" = "表示";
 
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "フォーマット";
-
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
 "485.title" = "ペーストしてスタイルを合わせる";
 
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "ヘルプ";
+/* Class = "NSMenuItem"; title = "Application Help"; ObjectID = "bHn-UY-SYC"; */
+"bHn-UY-SYC.title" = "Applicationヘルプ";
+
+/* Class = "NSMenuItem"; title = "Connections"; ObjectID = "C8O-vf-Cyz"; */
+"C8O-vf-Cyz.title" = "接続";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "flm-kh-3lL"; */
 "flm-kh-3lL.title" = "表示";
@@ -85,9 +85,15 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "McF-yT-VkX"; */
 "McF-yT-VkX.title" = "閉じる";
 
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "pPt-zv-8ei"; */
+"pPt-zv-8ei.title" = "ヘルプ";
+
 /* Class = "NSMenuItem"; title = "History..."; ObjectID = "q0b-Uw-LcP"; */
 "q0b-Uw-LcP.title" = "履歴...";
 
 /* Class = "NSMenuItem"; title = "Check for Updates…"; ObjectID = "TRN-i4-5na"; */
 "TRN-i4-5na.title" = "アップデートを確認...";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "w2u-br-GTa"; */
+"w2u-br-GTa.title" = "ヘルプ";
 

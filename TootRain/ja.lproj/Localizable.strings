@@ -16,7 +16,7 @@
 /* Misskey source type */
 "Channel - %@" = "チャンネル - %@";
 
-/* setting account reconnect button */
+/* setting account connect button */
 "Connect" = "接続";
 
 /* Account table cell */
@@ -27,6 +27,9 @@
 
 /* source name */
 "Direct" = "ダイレクトメッセージ";
+
+/* setting account disconnect button */
+"Disconnect" = "接続解除";
 
 /* Account table cell */
 "Disconnected" = "接続解除";
@@ -79,6 +82,9 @@
 /* No comment provided by engineer. */
 "No" = "いいえ";
 
+/* Menubar */
+"No account available" = "アカウントがありません";
+
 /* No comment provided by engineer. */
 "Please enter your Mastodon / Pleroma instance host name." = "Mastodon / Pleroma の host nameを入れてください";
 
@@ -96,9 +102,6 @@
 
 /* source name */
 "Public Remote" = "他のサーバーの公開投稿";
-
-/* setting account reconnect button */
-"Reconnect" = "再接続";
 
 /* No comment provided by engineer. */
 "Reconnecting to %@" = "%@ に再接続中";

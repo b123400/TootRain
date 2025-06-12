@@ -1,9 +1,6 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "9rq-1G-PFJ"; */
 "9rq-1G-PFJ.title" = "關閉";
 
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "視窗";
-
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
@@ -67,14 +64,14 @@
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "295"; */
 "295.title" = "查看";
 
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "375"; */
-"375.title" = "格式";
-
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "485"; */
 "485.title" = "貼上並配合樣式";
 
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "輔助説明";
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "CLQ-7m-XUy"; */
+"CLQ-7m-XUy.title" = "輔助説明";
+
+/* Class = "NSMenu"; title = "Connections"; ObjectID = "iHx-tg-G9L"; */
+"iHx-tg-G9L.title" = "連線";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "ke0-VQ-hvx"; */
 "ke0-VQ-hvx.title" = "檔案";
@@ -82,9 +79,18 @@
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "Kq3-UG-BWh"; */
 "Kq3-UG-BWh.title" = "檔案";
 
+/* Class = "NSMenuItem"; title = "Connections"; ObjectID = "Mdv-Jz-bfz"; */
+"Mdv-Jz-bfz.title" = "連線";
+
 /* Class = "NSMenuItem"; title = "History..."; ObjectID = "pKK-4s-XpB"; */
 "pKK-4s-XpB.title" = "紀錄...";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "wfV-YU-kZP"; */
 "wfV-YU-kZP.title" = "查看";
+
+/* Class = "NSMenuItem"; title = "Application Help"; ObjectID = "wz3-n1-tYg"; */
+"wz3-n1-tYg.title" = "Application輔助説明";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "xYj-mg-ZTW"; */
+"xYj-mg-ZTW.title" = "輔助説明";
 
