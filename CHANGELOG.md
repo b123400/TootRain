@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.2.0 - 2025-06-15
+- Added support for concurrent streaming
+- Added connention menu to the menu bar
+
 ## 2.1.1 - 2025-04-01
 - Show name and icon for Pleroma, Akkoma, Hometown
 
