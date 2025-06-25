@@ -58,6 +58,7 @@
     [self resetFrame];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowScreenChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:kWindowLevelChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetFrame) name:NSApplicationDidChangeScreenParametersNotification object:nil];
     [self.window setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorFullScreenAuxiliary];
 }
 
