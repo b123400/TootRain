@@ -12,11 +12,8 @@
 #import "SettingOAuthWindowController.h"
 #import "InstanceInputWindowController.h"
 #import "Account.h"
-#import "BRSlackClient.h"
-#import "BRSlackChannelSelectionWindowController.h"
 #import "SettingAccountCellObject.h"
 #import "SettingAccountDetailMastodonView.h"
-#import "SettingAccountDetailSlackView.h"
 #import "BRMastodonSourceSelectionWindowController.h"
 #import "BRMisskeyClient.h"
 #import "SettingAccountDetailMisskeyView.h"
@@ -31,7 +28,6 @@
 @property (weak) IBOutlet NSBox *accountDetailBox;
 @property (weak) IBOutlet NSView *noAccountDetailView;
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
-@property (weak) IBOutlet SettingAccountDetailSlackView *slackDetailView;
 @property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
 @property (strong) IBOutlet SettingAccountDetailIrcView *ircDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
@@ -207,25 +203,11 @@
 #pragma mark Accounts
 
 - (void)addAccountWithHostName:(NSString *)hostName accountType:(SettingAccountType)accountType {
-    [self addAccountWithHostName:hostName accountType:accountType updatingSlackAccount:nil];
-}
-
-- (void)addAccountWithHostName:(NSString *)hostName
-                   accountType:(SettingAccountType)accountType
-          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount {
     if (![hostName hasPrefix:@"http://"] && ![hostName hasPrefix:@"https://"]) {
         hostName = [NSString stringWithFormat:@"https://%@", hostName];
     }
     if ([hostName hasSuffix:@"/"]) {
         hostName = [hostName substringToIndex:hostName.length - 1];
-    }
-    if (accountType == SettingAccountTypeSlack || [hostName hasSuffix:@".slack.com"]) {
-        SettingOAuthWindowController *oauthController = [[SettingOAuthWindowController alloc] initWithSlackURL:[NSURL URLWithString:hostName]];
-        oauthController.delegate = self;
-        oauthController.updatingSlackAccount = slackAccount;
-        [oauthController showWindow:self];
-        self.oauthController = oauthController;
-        return;
     }
     if (accountType == SettingAccountTypeMastodon) {
         [[BRMastodonClient shared] registerAppFor:hostName
@@ -303,10 +285,6 @@
     [self handleDidLoginAccount:account];
 }
 
-- (void)settingOAuthWindowController:(nonnull id)sender didLoggedInSlackAccount:(nonnull BRSlackAccount *)account {
-    [self handleDidLoginAccount:account];
-}
-
 - (void)settingOAuthWindowController:(id)sender didLoggedInMisskeyAccount:(nonnull BRMisskeyAccount *)account {
     [self handleDidLoginAccount:account];
 }
@@ -354,9 +332,6 @@
     if ([self.detailSelectedAccount isKindOfClass:[BRMastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
         [self.mastodonDetailView setAccount:(BRMastodonAccount*)self.detailSelectedAccount];
-    } else if ([self.detailSelectedAccount isKindOfClass:[BRSlackAccount class]]) {
-        self.accountDetailBox.contentView = self.slackDetailView;
-        [self.slackDetailView setAccount:(BRSlackAccount *)self.detailSelectedAccount];
     } else if ([self.detailSelectedAccount isKindOfClass:[BRMisskeyAccount class]]) {
         self.accountDetailBox.contentView = self.misskeyDetailView;
         [self.misskeyDetailView setAccount:(BRMisskeyAccount*)self.detailSelectedAccount];
@@ -391,37 +366,6 @@
         if (needReconnect) {
             [[SettingManager sharedManager] setStreamingState:YES forAccount:self.detailSelectedAccount];
         }
-    }];
-}
-
-- (IBAction)slackOptionClicked:(id)sender {
-    if (![self.detailSelectedAccount isKindOfClass:[BRSlackAccount class]]) return;
-    BRSlackAccount *account = (BRSlackAccount *)self.detailSelectedAccount;
-    [[BRSlackClient shared] getChannelListWithAccount:account
-                                    completionHandler:^(NSArray<BRSlackChannel *> * _Nonnull channels, NSError * _Nonnull error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            BRSlackChannelSelectionWindowController *controller = [[BRSlackChannelSelectionWindowController alloc] init];
-            controller.channels = channels;
-            controller.selectedChannelIds = account.channelIds;
-            controller.selectedThreadId = account.threadId;
-            [self.window beginSheet:controller.window completionHandler:^(NSModalResponse returnCode) {
-                if (returnCode == NSModalResponseOK) {
-                    account.channelIds = [controller.selectedChannels valueForKeyPath:@"channelId"];
-                    account.channelNames = [controller.selectedChannels valueForKeyPath:@"name"];
-                    account.threadId = controller.selectedThreadId;
-                    [account save];
-                    
-                    BOOL needReconnect = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
-                    NSString *currentAccountIdentifier = self.detailSelectedAccount.identifier;
-
-                    [self updateAccountView];
-                    
-                    if (needReconnect) {
-                        [[SettingManager sharedManager] setStreamingState:YES forAccount:self.detailSelectedAccount];
-                    }
-                }
-            }];
-        });
     }];
 }
 

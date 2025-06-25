@@ -8,7 +8,6 @@
 
 #import "FloodAppDelegate.h"
 #import "SettingManager.h"
-#import "BRSlackClient.h"
 #import "ShowStatusIntentHandler.h"
 #import "History Window/HistoryWindowController.h"
 
