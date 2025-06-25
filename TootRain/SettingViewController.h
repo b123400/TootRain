@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
 #import "SettingManager.h"
-#import "BRSlackAccount.h"
 #import "BorderHighlightButton.h"
 
 @interface SettingViewController : DBPrefsWindowController <NSTableViewDataSource,NSTableViewDelegate> {
@@ -54,9 +53,5 @@
 
 - (void)addAccountWithHostName:(NSString *)hostName
                    accountType:(SettingAccountType)accountType;
-
-- (void)addAccountWithHostName:(NSString *)hostName
-                   accountType:(SettingAccountType)accountType
-          updatingSlackAccount:(BRSlackAccount * _Nullable)slackAccount;
 
 @end
