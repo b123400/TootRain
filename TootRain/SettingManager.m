@@ -97,6 +97,8 @@ static NSMutableArray *savedAccounts=nil;
     [accounts addObjectsFromArray:[BRMastodonAccount allAccounts]];
     [accounts addObjectsFromArray:[BRMisskeyAccount allAccounts]];
     [accounts addObjectsFromArray:[BRIrcAccount allAccounts]];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"BRSlackAccount"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     self.accounts = accounts;
 }
 
