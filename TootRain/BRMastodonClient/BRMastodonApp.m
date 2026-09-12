@@ -33,11 +33,11 @@
 
     // Look up server in the keychain
     NSDictionary *found = nil;
-    CFDictionaryRef foundCF;
+    CFDictionaryRef foundCF = NULL;
     OSStatus err = SecItemCopyMatching((__bridge CFDictionaryRef) dict, (CFTypeRef*)&foundCF);
 
     // Check if found
-    found = (__bridge NSDictionary*)(foundCF);
+    found = CFBridgingRelease(foundCF);
     if (!found)
         return nil;
 

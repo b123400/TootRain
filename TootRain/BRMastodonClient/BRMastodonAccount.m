@@ -53,11 +53,11 @@
 
     // Look up server in the keychain
     NSDictionary *found = nil;
-    CFDictionaryRef foundCF;
+    CFDictionaryRef foundCF = NULL;
     OSStatus err = SecItemCopyMatching((__bridge CFDictionaryRef) dict, (CFTypeRef*)&foundCF);
 
     // Check if found
-    found = (__bridge NSDictionary*)(foundCF);
+    found = CFBridgingRelease(foundCF);
     if (!found)
         return nil;
 
@@ -76,11 +76,11 @@
 
     // Look up server in the keychain
     NSDictionary *refreshTokenFound = nil;
-    CFDictionaryRef refreshTokenFoundCF;
+    CFDictionaryRef refreshTokenFoundCF = NULL;
     err = SecItemCopyMatching((__bridge CFDictionaryRef) dict, (CFTypeRef*)&refreshTokenFoundCF);
 
     // Check if found
-    refreshTokenFound = (__bridge NSDictionary*)(refreshTokenFoundCF);
+    refreshTokenFound = CFBridgingRelease(refreshTokenFoundCF);
     NSString *refreshToken = nil;
     if (refreshTokenFound) {
         refreshToken = [[NSString alloc] initWithData:refreshTokenFound[(id)kSecValueData] encoding:NSUTF8StringEncoding];
