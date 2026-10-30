@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		CF13AC9C2CB02C1F00B83041 /* NewUpdateStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13AC9A2CB02C1F00B83041 /* NewUpdateStatus.m */; };
 		CF146DF52D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */; };
 		CF146DF62D619DF400BBBB64 /* BRIrcLoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF146DF42D619DF400BBBB64 /* BRIrcLoginWindowController.xib */; };
+		CF17C1043082900000498CD3 /* SwiftCentrifuge in Frameworks */ = {isa = PBXBuildFile; productRef = CF17C1023082900000498CD3 /* SwiftCentrifuge */; };
+		CF17C1053082900000498CD3 /* SwiftCentrifuge in Frameworks */ = {isa = PBXBuildFile; productRef = CF17C1033082900000498CD3 /* SwiftCentrifuge */; };
 		CF1B79C2268EEE6100FCCB58 /* InstanceInputWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1B79C0268EEE6100FCCB58 /* InstanceInputWindowController.m */; };
 		CF1FE3A029548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
 		CF1FE3A129548BF800CABB47 /* BRMisskeyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1FE39F29548BF800CABB47 /* BRMisskeyClient.m */; };
@@ -467,11 +469,16 @@
 		DFFFF986A977E98B00F671E9 /* Pods-TootRain-standalone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain-standalone.release.xcconfig"; path = "Target Support Files/Pods-TootRain-standalone/Pods-TootRain-standalone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CF17C0EF30827BD000498CD3 /* TootRainEnterprise */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TootRainEnterprise; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF17C1043082900000498CD3 /* SwiftCentrifuge in Frameworks */,
 				CFD1319C2688939D00B6EDB3 /* Security.framework in Frameworks */,
 				CF3A188B15D6E82D00D8E07F /* QuartzCore.framework in Frameworks */,
 				CF8FDEAD15D4124A00DD6DEA /* WebKit.framework in Frameworks */,
@@ -486,6 +493,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF17C1053082900000498CD3 /* SwiftCentrifuge in Frameworks */,
 				CF5D2D6B29350BC400745D63 /* Security.framework in Frameworks */,
 				CF5D2D6E29350BC400745D63 /* QuartzCore.framework in Frameworks */,
 				CF5D2D7029350BC400745D63 /* WebKit.framework in Frameworks */,
@@ -529,6 +537,7 @@
 				CF1FE39D29548B8B00CABB47 /* BRMisskeyClient */,
 				CF01B4CD29A888C2004397DF /* ScriptCommand */,
 				CF9B468F2D3E176400CDFE61 /* IRC */,
+				CF17C0EF30827BD000498CD3 /* TootRainEnterprise */,
 			);
 			name = Classes;
 			path = TootRain;
@@ -862,7 +871,13 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				CF17C0EF30827BD000498CD3 /* TootRainEnterprise */,
+			);
 			name = TootRain;
+			packageProductDependencies = (
+				CF17C1023082900000498CD3 /* SwiftCentrifuge */,
+			);
 			productInstallPath = "$(HOME)/Applications";
 			productName = Smarkin;
 			productReference = 8D1107320486CEB800E47090 /* TootRain.app */;
@@ -883,7 +898,13 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				CF17C0EF30827BD000498CD3 /* TootRainEnterprise */,
+			);
 			name = "TootRain-standalone";
+			packageProductDependencies = (
+				CF17C1033082900000498CD3 /* SwiftCentrifuge */,
+			);
 			productInstallPath = "$(HOME)/Applications";
 			productName = Smarkin;
 			productReference = CF5D2D7929350BC400745D63 /* TootRain.app */;
@@ -898,7 +919,7 @@
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
-						LastSwiftMigration = 1300;
+						LastSwiftMigration = 2640;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -907,6 +928,7 @@
 					};
 					CF5D2D2029350BC400745D63 = {
 						DevelopmentTeam = 3P89U4ZCGD;
+						LastSwiftMigration = 2640;
 					};
 				};
 			};
@@ -921,6 +943,9 @@
 				"zh-Hant",
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* TootRain */;
+			packageReferences = (
+				CF17C1013082900000498CD3 /* XCRemoteSwiftPackageReference "centrifuge-swift" */,
+			);
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1385,7 +1410,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TootRain/TootRainEnterprise/TootRain-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1435,7 +1460,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TootRain/TootRainEnterprise/TootRain-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1457,6 +1482,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 			};
 			name = Debug;
 		};
@@ -1528,7 +1554,7 @@
 				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TootRain/TootRainEnterprise/TootRain-standalone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1582,7 +1608,7 @@
 				PRODUCT_NAME = TootRain;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TootRain/TootRainEnterprise/TootRain-standalone-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1618,6 +1644,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF17C1013082900000498CD3 /* XCRemoteSwiftPackageReference "centrifuge-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/centrifugal/centrifuge-swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF17C1023082900000498CD3 /* SwiftCentrifuge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF17C1013082900000498CD3 /* XCRemoteSwiftPackageReference "centrifuge-swift" */;
+			productName = SwiftCentrifuge;
+		};
+		CF17C1033082900000498CD3 /* SwiftCentrifuge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF17C1013082900000498CD3 /* XCRemoteSwiftPackageReference "centrifuge-swift" */;
+			productName = SwiftCentrifuge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }
