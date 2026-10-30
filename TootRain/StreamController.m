@@ -23,6 +23,7 @@
 #import "IRC/BRIrcAccount.h"
 #import "IRC/BRIrcClient.h"
 #import "IrcStreamHandle.h"
+#import "TootRain-Swift.h"
 
 #if TARGET_OS_IPHONE
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -73,6 +74,10 @@ static StreamController *shared;
 }
 
 - (void)disconnectStreamWithAccount:(Account *)account {
+    if ([TootRainEnterpriseClient isAccountUsingTootRainServer:account]) {
+        [[TootRainEnterpriseClient shared] stopStreamingWithAccount:account];
+        return;
+    }
     StreamState *state = self.streams[account.identifier];
     if (!state) return;
     [state.handle disconnect];
@@ -100,6 +105,13 @@ static StreamController *shared;
 - (void)startStreamingWithAccount:(Account *)account {
     if (!account) return;
     typeof(self) __weak _self = self;
+
+    // The TootRain server has one connection for every workspace, and the
+    // Centrifugo client reconnects on its own, so it is not handled as a stream.
+    if ([TootRainEnterpriseClient isAccountUsingTootRainServer:account]) {
+        [[TootRainEnterpriseClient shared] startStreamingWithAccount:account];
+        return;
+    }
     
     StreamState *state = self.streams[account.identifier];
     

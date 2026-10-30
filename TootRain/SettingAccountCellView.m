@@ -29,6 +29,11 @@
     }
     self.imageView.image = objectValue.serviceImage;
     self.textField.stringValue = objectValue.accountName;
+    if (objectValue.needsAuthentication) {
+        [self.connectStatusImageView setImage:[NSImage imageNamed:NSImageNameCaution]];
+        [self.connectStatusTextField setStringValue:NSLocalizedString(@"Need authentication", @"Account table cell")];
+        return;
+    }
     if (objectValue.isConnected) {
         [self.connectStatusImageView setImage:[NSImage imageNamed:@"NSStatusAvailable"]];
         [self.connectStatusTextField setStringValue:NSLocalizedString(@"Connected", @"Account table cell")];

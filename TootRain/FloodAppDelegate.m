@@ -10,6 +10,7 @@
 #import "SettingManager.h"
 #import "ShowStatusIntentHandler.h"
 #import "History Window/HistoryWindowController.h"
+#import "TootRain-Swift.h"
 
 @interface FloodAppDelegate () <NSMenuDelegate>
 @property (nonatomic, strong) NSTimer *iconAnimationTimer;
@@ -29,6 +30,8 @@
                                                object:nil];
     
     [NSApp unhide:self];
+
+    [[TootRainEnterpriseClient shared] applicationDidFinishLaunching];
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename{

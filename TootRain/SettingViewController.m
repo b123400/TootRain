@@ -21,16 +21,23 @@
 #import "SettingAccountDetailIrcView.h"
 #import "IRC/BRIrcAccount.h"
 #import "IRC/BRIrcLoginWindowController.h"
+#import "TootRain-Swift.h"
 
 @interface SettingViewController () <SettingOAuthWindowControllerDelegate>
 
 @property (strong, nonatomic) SettingOAuthWindowController *oauthController;
+@property (strong, nonatomic) TootRainEnterpriseAuthWindowController *slackAuthController;
+@property (strong, nonatomic) SettingAccountDetailSlackView *slackDetailView;
 @property (weak) IBOutlet NSBox *accountDetailBox;
 @property (weak) IBOutlet NSView *noAccountDetailView;
 @property (weak) IBOutlet SettingAccountDetailMastodonView *mastodonDetailView;
 @property (strong) IBOutlet SettingAccountDetailMisskeyView *misskeyDetailView;
 @property (strong) IBOutlet SettingAccountDetailIrcView *ircDetailView;
 @property (weak) IBOutlet NSButton *reconnectButton;
+/// Shown beside the Connect button while the TootRain server is being told
+/// which channels this session listens to, which is what connecting and
+/// disconnecting a Slack workspace amounts to.
+@property (strong, nonatomic) NSProgressIndicator *channelUpdateIndicator;
 @property Account *detailSelectedAccount;
 
 - (void)updateAccountView;
@@ -44,6 +51,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(streamingAccountsChanged:)
                                                  name:kStreamingAccountsChangedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(slackAccountsChanged:)
+                                                 name:[TootRainSlackAccount accountsChangedNotificationName]
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(slackChannelsChanged:)
+                                                 name:[TootRainChannelSubscriptions didChangeNotificationName]
                                                object:nil];
     return self;
 }
@@ -179,6 +194,7 @@
             SettingAccountCellObject *obj = [[SettingAccountCellObject alloc] init];
             obj.accountName = account.shortDisplayName;
             obj.isConnected = [[SettingManager sharedManager] isAccountStreaming:account];
+            obj.needsAuthentication = [TootRainEnterpriseClient accountNeedsAuthentication:account];
             obj.serviceImage = account.serviceImage;
             return obj;
         }
@@ -248,6 +264,35 @@
 }
 - (IBAction)addMisskeyAccountClicked:(id)sender {
     [self showInstanceInputWindowWithAccountType: SettingAccountTypeMisskey];
+}
+
+- (IBAction)addSlackAccountClicked:(id)sender {
+    typeof(self) __weak _self = self;
+    self.slackAuthController = [TootRainEnterpriseAuthWindowController beginLogInWithCompletion:^(TootRainSlackAccount * _Nullable account, NSError * _Nullable error) {
+        _self.slackAuthController = nil;
+        if (account) {
+            [_self handleDidLoginAccount:account];
+            [_self showChannelSelectionForSlackAccount:account];
+        } else if (error && error.localizedDescription.length) {
+            [[NSAlert alertWithError:error] runModal];
+        }
+    }];
+}
+
+// A workspace with no channels picked shows nothing at all, and picking them is
+// what the user came to do, so the picker opens itself on a workspace that has
+// just been linked. Its row is selected first, so the sheet comes up over the
+// pane it belongs to.
+- (void)showChannelSelectionForSlackAccount:(TootRainSlackAccount *)account {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUInteger index = [self indexOfAccountByIdentifier:account];
+        if (index == NSNotFound) return;
+        [accountsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index]
+                       byExtendingSelection:NO];
+        self.detailSelectedAccount = account;
+        [self updateAccountDetailView];
+        [self.slackDetailView showChannelSelection];
+    });
 }
 
 - (IBAction)addIrcAccountClicked:(id)sender {
@@ -343,9 +388,17 @@
     if ([[[SettingManager sharedManager] accounts] count] == 0) {
         self.accountDetailBox.contentView = self.noAccountDetailView;
         self.reconnectButton.enabled = NO;
+        [self setChannelUpdateInProgress:NO];
         return;
     }
-    self.reconnectButton.enabled = YES;
+    // A Slack workspace the server has let go has nothing to connect to until
+    // it is authorised again, and one whose channels are on their way to the
+    // server is already doing what the button asks.
+    BOOL isUpdatingChannels = [TootRainEnterpriseClient isAccountUsingTootRainServer:self.detailSelectedAccount]
+        && [TootRainChannelSubscriptions shared].isStating;
+    self.reconnectButton.enabled = ![TootRainEnterpriseClient accountNeedsAuthentication:self.detailSelectedAccount]
+        && !isUpdatingChannels;
+    [self setChannelUpdateInProgress:isUpdatingChannels];
     if ([self.detailSelectedAccount isKindOfClass:[BRMastodonAccount class]]) {
         self.accountDetailBox.contentView = self.mastodonDetailView;
         [self.mastodonDetailView setAccount:(BRMastodonAccount*)self.detailSelectedAccount];
@@ -355,12 +408,46 @@
     } else if ([self.detailSelectedAccount isKindOfClass:[BRIrcAccount class]]) {
         self.accountDetailBox.contentView = self.ircDetailView;
         [self.ircDetailView setAccount:(BRIrcAccount *)self.detailSelectedAccount];
+    } else if ([self.detailSelectedAccount isKindOfClass:[TootRainSlackAccount class]]) {
+        if (!self.slackDetailView) {
+            self.slackDetailView = [[SettingAccountDetailSlackView alloc] initWithFrame:self.accountDetailBox.contentView.bounds];
+        }
+        self.accountDetailBox.contentView = self.slackDetailView;
+        [self.slackDetailView setAccount:(TootRainSlackAccount *)self.detailSelectedAccount];
     }
     BOOL isStreaming = [[SettingManager sharedManager] isAccountStreaming:self.detailSelectedAccount];
     if (isStreaming) {
         self.reconnectButton.title = NSLocalizedString(@"Disconnect", @"setting account disconnect button");
     } else {
         self.reconnectButton.title = NSLocalizedString(@"Connect", @"setting account connect button");
+    }
+}
+
+/// The spinner lives beside the Connect button rather than in the nib, since
+/// it belongs to the one account type that was never in the nib. It is placed
+/// on Auto Layout's standard spacing, like everything else in the pane.
+- (void)setChannelUpdateInProgress:(BOOL)inProgress {
+    if (!self.channelUpdateIndicator) {
+        if (!inProgress || !self.reconnectButton.superview) return;
+        NSProgressIndicator *indicator = [[NSProgressIndicator alloc] init];
+        indicator.style = NSProgressIndicatorStyleSpinning;
+        indicator.controlSize = NSControlSizeSmall;
+        indicator.displayedWhenStopped = NO;
+        indicator.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.reconnectButton.superview addSubview:indicator];
+        NSDictionary *views = @{@"spinner": indicator, @"button": self.reconnectButton};
+        [NSLayoutConstraint activateConstraints:
+         [[NSLayoutConstraint constraintsWithVisualFormat:@"H:[spinner]-[button]"
+                                                  options:0
+                                                  metrics:nil
+                                                    views:views]
+          arrayByAddingObject:[indicator.centerYAnchor constraintEqualToAnchor:self.reconnectButton.centerYAnchor]]];
+        self.channelUpdateIndicator = indicator;
+    }
+    if (inProgress) {
+        [self.channelUpdateIndicator startAnimation:nil];
+    } else {
+        [self.channelUpdateIndicator stopAnimation:nil];
     }
 }
 
@@ -428,6 +515,19 @@
 - (void)streamingAccountsChanged:(NSNotification *)notification {
     [self updateAccountView];
 }
+
+- (void)slackAccountsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateAccountView];
+    });
+}
+
+- (void)slackChannelsChanged:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateAccountDetailView];
+    });
+}
+
 
 #pragma mark Appearance
 
