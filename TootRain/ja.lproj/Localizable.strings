@@ -124,3 +124,125 @@
 /* No comment provided by engineer. */
 "Yes" = "はい";
 
+/* slack account detail */
+"Channels…" = "チャンネル…";
+
+/* channel picker title */
+"Channels of %@" = "%@ のチャンネル";
+
+/* channel picker status */
+"Checked channels are shown as comments. %ld of %ld selected." = "チェックしたチャンネルのコメントが流れます。%ld / %ld 件選択中。";
+
+/* channel picker status */
+"Loading channels…" = "チャンネルを読み込んでいます…";
+
+/* auth window title */
+"Log in with Slack" = "Slack でログイン";
+
+/* server error */
+"Please invite the TootRain bot to this channel first." = "まず TootRain の bot をこのチャンネルに招待してください。";
+
+/* server error */
+"Please log in to TootRain with Slack first." = "まず Slack で TootRain にログインしてください。";
+
+/* slack account detail */
+"Service:" = "サービス：";
+
+/* slack error */
+"Slack answered with %ld." = "Slack が %ld を返しました。";
+
+/* slack account detail */
+"Slack (TootRain server)" = "Slack（TootRain サーバー）";
+
+/* slack error */
+"Slack refused the request: %@" = "Slack にリクエストを拒否されました：%@";
+
+/* slack error */
+"Slack sent a response TootRain could not read." = "Slack のレスポンスを読み取れませんでした。";
+
+/* slack account detail */
+"Slack user:" = "Slack ユーザー：";
+
+/* slack account detail */
+"Team ID:" = "チーム ID：";
+
+/* server error */
+"The TootRain server answered with %ld: %@" = "TootRain サーバーが %ld を返しました：%@";
+
+/* server error */
+"The TootRain server could not reach Slack, please try again later." = "TootRain サーバーが Slack に接続できませんでした。しばらくしてからもう一度お試しください。";
+
+/* auth error */
+"The TootRain server did not send back a Slack token." = "TootRain サーバーから Slack のトークンが返ってきませんでした。";
+
+/* server error */
+"The TootRain server does not know this Slack workspace." = "TootRain サーバーはこの Slack ワークスペースを知りません。";
+
+/* server error */
+"The TootRain server refused the request: %@" = "TootRain サーバーにリクエストを拒否されました：%@";
+
+/* network error */
+"The server sent a response TootRain could not read." = "サーバーのレスポンスを読み取れませんでした。";
+
+/* server error */
+"This Slack workspace is not linked to this TootRain session, please log in again." = "この Slack ワークスペースはこの TootRain セッションに連携されていません。もう一度ログインしてください。";
+
+/* server error */
+"This TootRain session is no longer valid, please log in again." = "この TootRain セッションは無効になりました。もう一度ログインしてください。";
+
+/* slack account detail */
+"Workspace:" = "ワークスペース：";
+
+/* server error */
+"You are not a member of this Slack channel, please join it in Slack first." = "この Slack チャンネルのメンバーではありません。先に Slack で参加してください。";
+
+/* slack error */
+"This Slack workspace has no access token, please log in again." = "この Slack ワークスペースにアクセストークンがありません。もう一度ログインしてください。";
+
+/* terminal disconnect */
+"TootRain stopped listening to Slack." = "TootRain は Slack の受信を停止しました。";
+
+/* terminal disconnect */
+"The TootRain server no longer knows this TootRain session. Please log in with Slack again." = "TootRain サーバーはこの TootRain セッションを認識しなくなりました。もう一度 Slack でログインしてください。";
+
+/* channel picker filter */
+"Filter channels" = "チャンネルを絞り込む";
+
+/* channel picker status */
+"No channel matches this filter." = "この条件に一致するチャンネルはありません。";
+
+/* slack account detail */
+"Re-authenticate" = "再認証";
+
+/* Account table cell */
+"Need authentication" = "再認証が必要";
+
+/* auth error */
+"The TootRain server refused the log-in: %@" = "TootRain サーバーにログインを拒否されました：%@";
+
+/* account removal confirmation */
+"Remove %@?" = "%@ を削除しますか？";
+
+/* account removal confirmation */
+"TootRain will stop showing comments from this account." = "このアカウントのコメントは表示されなくなります。";
+
+/* channel picker cancel button */
+"Cancel" = "キャンセル";
+
+/* channel picker status */
+"Saving channels…" = "チャンネルを保存しています…";
+
+/* channel picker rejection */
+"Some channels could not be added." = "一部のチャンネルを追加できませんでした。";
+
+/* channel picker rejection, a channel and why it was refused */
+"%@: %@" = "%@：%@";
+
+/* slack account detail */
+"Channels:" = "チャンネル：";
+
+/* slack account detail, no channels picked */
+"None" = "なし";
+
+/* channel set failure */
+"TootRain could not tell the server which channels to listen to." = "どのチャンネルを受信するかをサーバーに伝えられませんでした。";
