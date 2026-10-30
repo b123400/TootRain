@@ -246,3 +246,6 @@
 
 /* channel set failure */
 "TootRain could not tell the server which channels to listen to." = "どのチャンネルを受信するかをサーバーに伝えられませんでした。";
+
+/* channel picker status */
+"Updating channels…" = "チャンネルを更新しています…";

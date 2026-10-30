@@ -36,7 +36,7 @@ struct SlackCachedEmoji: Codable, Equatable {
     let url: URL
 }
 
-struct SlackChannel: Equatable {
+struct SlackChannel: Codable, Equatable {
     let id: String
     let name: String
     let isPrivate: Bool
@@ -44,6 +44,16 @@ struct SlackChannel: Equatable {
     /// TootRain server only grants a channel to someone who is in it, so one
     /// that is false here is not a channel the app can be given.
     let isMember: Bool
+}
+
+/// One of a workspace's user groups, which a message mentions by id:
+/// `<!subteam^S012ABC|@marketing>`. The handle is what such a mention reads as,
+/// and the name is the group's title, which is what is left to call it by when
+/// the handle is missing.
+struct SlackUserGroup: Codable, Equatable {
+    let id: String
+    let name: String
+    let handle: String?
 }
 
 enum SlackAPIError: LocalizedError {
@@ -68,8 +78,9 @@ enum SlackAPIError: LocalizedError {
     }
 }
 
-/// The slice of Slack's Web API the app needs: who it is talking as, and the
-/// workspace information a rain drop has to be rendered with.
+/// The slice of Slack's Web API the app needs: who it is talking as, the
+/// channels it may be let into, and the workspace information a rain drop has
+/// to be rendered with.
 final class SlackAPIClient {
 
     private static let pageSize = 200
@@ -153,6 +164,25 @@ final class SlackAPIClient {
             cursor = SlackAPIClient.nextCursor(in: json)
         } while cursor != nil
         return channels
+    }
+
+    /// The workspace's user groups, the disabled ones included: a message that
+    /// mentions a group that has since been turned off still has to be shown
+    /// with the group's name. Slack answers with all of them at once, so there
+    /// is no paging here.
+    func userGroups() async throws -> [SlackUserGroup] {
+        let json = try await get("usergroups.list",
+                                 query: [URLQueryItem(name: "include_disabled", value: "true")])
+        guard let raw = json["usergroups"] as? [[String: Any]] else {
+            throw SlackAPIError.malformedResponse
+        }
+        return raw.compactMap { group in
+            guard let id = group["id"] as? String else { return nil }
+            let handle = (group["handle"] as? String).flatMap { $0.isEmpty ? nil : $0 }
+            return SlackUserGroup(id: id,
+                                  name: group["name"] as? String ?? handle ?? id,
+                                  handle: handle)
+        }
     }
 
     // MARK: - Parsing

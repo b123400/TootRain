@@ -246,3 +246,6 @@
 
 /* channel set failure */
 "TootRain could not tell the server which channels to listen to." = "無法告訴伺服器要接收哪些頻道。";
+
+/* channel picker status */
+"Updating channels…" = "正在更新頻道…";

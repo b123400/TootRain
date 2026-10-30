@@ -205,7 +205,22 @@ class SlackChannelSelectionWindowController: NSWindowController {
         // which was made before the last set was stated.
         let isListening = TootRainChannelSubscriptions.isListening(to: account)
         let remembered = TootRainSlackAccount.account(teamId: account.teamId)?.channels ?? [:]
-        setBusy(true, status: NSLocalizedString("Loading channels…", comment: "channel picker status"))
+
+        // What the last fetch left cached goes up at once, so there is a list to
+        // read and filter while Slack is asked for it again. The ticks on it are
+        // the channels the app remembers picking, which is a good guess and not
+        // an answer: what a workspace that is switched on is listening to is the
+        // server's to say, and until it has said, there is nothing to press Done
+        // on either.
+        let cached = SlackInfoCache.shared.channels(teamId: account.teamId)
+        if cached.isEmpty {
+            setBusy(true, status: NSLocalizedString("Loading channels…", comment: "channel picker status"))
+        } else {
+            setBusy(true, status: NSLocalizedString("Updating channels…", comment: "channel picker status"))
+            present(channels: cached,
+                    picked: Picked(channelIds: Set(remembered.keys), names: remembered),
+                    isFinal: false)
+        }
 
         Task {
             do {
@@ -213,8 +228,12 @@ class SlackChannelSelectionWindowController: NSWindowController {
                     throw SlackAPIError.missingAccessToken
                 }
                 let channels = try await client.conversations()
+                // Slack has just said what this workspace's channels are, so the
+                // next picker, and the next message with a channel in it, can
+                // open on that rather than on what the last launch saw.
+                SlackInfoCache.shared.update(channels: channels, teamId: account.teamId)
                 let picked = try await self.picked(isListening: isListening, remembered: remembered)
-                await MainActor.run { self.present(channels: channels, picked: picked) }
+                await MainActor.run { self.present(channels: channels, picked: picked, isFinal: true) }
             } catch {
                 await MainActor.run { self.presentLoadingFailure(error) }
             }
@@ -238,9 +257,16 @@ class SlackChannelSelectionWindowController: NSWindowController {
         return Picked(channelIds: Set(memberships.map { $0.channelId }), names: names)
     }
 
-    private func present(channels: [SlackChannel], picked: Picked) {
+    /// Puts a list of channels on screen. `isFinal` says this one is Slack's
+    /// answer rather than the cached list shown while waiting for it: only then
+    /// do the ticks say what the server holds, which is what Done compares
+    /// against before it sends anything, and only then is the picker ready to
+    /// be used at all.
+    private func present(channels: [SlackChannel], picked: Picked, isFinal: Bool) {
         selectedChannelIds = picked.channelIds
-        openedWithChannelIds = picked.channelIds
+        if isFinal {
+            openedWithChannelIds = picked.channelIds
+        }
 
         var rows = channels
             .filter { $0.isMember }
@@ -257,7 +283,9 @@ class SlackChannelSelectionWindowController: NSWindowController {
         rows.append(contentsOf: unlisted.sorted { $0.name < $1.name })
 
         allRows = rows
-        setBusy(false)
+        if isFinal {
+            setBusy(false)
+        }
         applyFilter()
     }
 
