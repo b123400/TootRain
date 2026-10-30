@@ -275,6 +275,23 @@
     NSInteger row = [accountsTableView selectedRow];
     if (row == -1) return;
     Account *account = [SettingManager sharedManager].accounts[row];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.alertStyle = NSAlertStyleWarning;
+    alert.messageText = [NSString stringWithFormat:NSLocalizedString(@"Remove %@?", @"account removal confirmation"),
+                         account.shortDisplayName];
+    alert.informativeText = NSLocalizedString(@"TootRain will stop showing comments from this account.",
+                                              @"account removal confirmation");
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+    [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
+    // Esc says no, as it would for a Cancel button.
+    alert.buttons.lastObject.keyEquivalent = @"\033";
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertFirstButtonReturn) return;
+        [self removeAccount:account];
+    }];
+}
+
+- (void)removeAccount:(Account *)account {
     [[SettingManager sharedManager] setStreamingState:NO forAccount:account];
     [account deleteAccount];
     [[SettingManager sharedManager] reloadAccounts];
