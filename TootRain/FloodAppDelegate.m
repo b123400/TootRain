@@ -38,6 +38,27 @@
 	return NO;
 }
 
+// Steps 0-16: the cloud drifts up and fades out. Steps 17-25: a new one puffs out of the trunk. Step 0 is the resting icon.
+- (NSImage *)iconAtAnimationStep:(int)step {
+    BOOL leaving = step <= 16;
+    CGFloat progress = leaving ? step / 16.0 : (step - 16) / 9.0;
+    CGFloat scale = leaving ? 1 + 0.1 * progress : 0.3 + 0.7 * progress;
+    CGFloat alpha = leaving ? 1 - progress * progress : progress;  // squared: still visible once it is past the icon's edge
+    CGFloat rise = leaving ? 40 * progress : 0;  // ends above the artwork, inside Cloudless's transparent margin
+    return [NSImage imageWithSize:NSMakeSize(256, 256) flipped:NO drawingHandler:^BOOL(NSRect rect) {
+        [[NSImage imageNamed:@"Cloudless"] drawInRect:rect];
+        // Cloudless has the transparent margin the Dock expects (artwork is 206pt, inset 25pt); the cloud's numbers below are in full-bleed 256pt artwork coordinates.
+        NSAffineTransform *artwork = [NSAffineTransform transform];
+        [artwork translateXBy:25 yBy:25];
+        [artwork scaleBy:206.0 / 256];
+        [artwork concat];
+        // Scaled around the cloud's tail at (33, 172), where it leaves the trunk; the offsets are the tail's position inside Cloud.png.
+        NSRect cloud = NSMakeRect(33 - 7.5 * scale, 172 + rise - 8 * scale, 99 * scale, 71 * scale);
+        [[NSImage imageNamed:@"Cloud"] drawInRect:cloud fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:alpha];
+        return YES;
+    }];
+}
+
 - (void)iconAnimation {
     NSString *customIcon = [[SettingManager sharedManager] customIcon];
     if (customIcon) {
@@ -54,14 +75,13 @@
             if (iconIndex > 25) {
                 [self.iconAnimationTimer invalidate];
                 self.iconAnimationTimer = nil;
-                [[NSApplication sharedApplication] setApplicationIconImage:[NSImage imageNamed:@"AppIcon-animation00"]];
+                [[NSApplication sharedApplication] setApplicationIconImage:[self iconAtAnimationStep:0]];
                 if (self.pendingAnimationCount) {
                     [self iconAnimation];
                 }
                 return;
             }
-            NSImage *image = [NSImage imageNamed:[NSString stringWithFormat:@"AppIcon-animation%02d", iconIndex]];
-            [[NSApplication sharedApplication] setApplicationIconImage:image];
+            [[NSApplication sharedApplication] setApplicationIconImage:[self iconAtAnimationStep:iconIndex]];
             iconIndex++;
         }];
     } else {
