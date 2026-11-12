@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-15
+    strategy:
+      matrix:
+        scheme: [TootRain, TootRain-standalone]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pods
+        run: pod install
+
+      - name: Build
+        run: >
+          xcodebuild build
+          -workspace TootRain.xcworkspace
+          -scheme "${{ matrix.scheme }}"
+          -destination 'platform=macOS'
+          CODE_SIGNING_ALLOWED=NO
+
+      - name: Test
+        run: |
+          # xcodebuild fails on a scheme with no test targets, so skip until one is added
+          if ! grep -q TestableReference "TootRain.xcodeproj/xcshareddata/xcschemes/${{ matrix.scheme }}.xcscheme"; then
+            echo "::notice::No test targets in ${{ matrix.scheme }} scheme yet, skipping tests"
+            exit 0
+          fi
+          xcodebuild test \
+            -workspace TootRain.xcworkspace \
+            -scheme "${{ matrix.scheme }}" \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
