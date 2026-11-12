@@ -442,4 +442,9 @@ enum TootRainSystemConstants {
         let value = (saved["slack"] as? [String: Any])?["oauth-user-agent"] as? String
         return value?.isEmpty == false ? value : nil
     }
+
+    /// `slack.enabled`: whether adding a Slack account is offered. Missing counts as false.
+    static var slackEnabled: Bool {
+        (saved["slack"] as? [String: Any])?["enabled"] as? Bool == true
+    }
 }

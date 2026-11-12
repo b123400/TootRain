@@ -255,6 +255,8 @@
 }
 
 - (IBAction)addAccountButtonClicked:(NSButton *)sender {
+    NSInteger slackIndex = [sender.menu indexOfItemWithTarget:self andAction:@selector(addSlackAccountClicked:)];
+    [sender.menu itemAtIndex:slackIndex].hidden = ![TootRainEnterpriseClient shared].isSlackEnabled;
     NSPoint point = NSMakePoint(sender.frame.origin.x, sender.frame.origin.y);
     [sender.menu popUpMenuPositioningItem:nil atLocation:point inView:sender.superview];
 }
