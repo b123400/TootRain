@@ -249,3 +249,15 @@
 
 /* channel picker status */
 "Updating channels…" = "チャンネルを更新しています…";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %@." = "%@ のコメントの表示を停止しました。";
+
+/* slack linkage removed */
+"The TootRain server no longer has this Slack workspace. Please log in with Slack again." = "TootRain サーバーはこの Slack ワークスペースを保持しなくなりました。もう一度 Slack でログインしてください。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %ld Slack workspaces." = "%ld 件の Slack ワークスペースのコメントの表示を停止しました。";
+
+/* slack linkage removed */
+"%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain サーバーはこれらの Slack ワークスペースを保持しなくなりました。もう一度 Slack でログインしてください。";

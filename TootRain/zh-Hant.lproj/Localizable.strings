@@ -249,3 +249,15 @@
 
 /* channel picker status */
 "Updating channels…" = "正在更新頻道…";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %@." = "已停止顯示 %@ 的彈幕。";
+
+/* slack linkage removed */
+"The TootRain server no longer has this Slack workspace. Please log in with Slack again." = "TootRain 伺服器已不再持有這個 Slack 工作區。請重新使用 Slack 登入。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %ld Slack workspaces." = "已停止顯示 %ld 個 Slack 工作區的彈幕。";
+
+/* slack linkage removed */
+"%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain 伺服器已不再持有這些 Slack 工作區。請重新使用 Slack 登入。";

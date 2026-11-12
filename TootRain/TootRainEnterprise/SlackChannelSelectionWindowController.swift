@@ -181,10 +181,6 @@ class SlackChannelSelectionWindowController: NSWindowController {
         ]
         NSLayoutConstraint.activate(
             NSLayoutConstraint.standardSpaced([
-                // The spinner is in the far corner so that the status text
-                // starts in the same place whether or not anything is loading:
-                // a stopped spinner is not drawn, and one in front of the text
-                // would take the text's indent away with it.
                 "H:|-[status]-[spinner]-|",
                 "H:|-[filter]-|",
                 "H:|-[list]-|",
@@ -232,7 +228,8 @@ class SlackChannelSelectionWindowController: NSWindowController {
                 // next picker, and the next message with a channel in it, can
                 // open on that rather than on what the last launch saw.
                 SlackInfoCache.shared.update(channels: channels, teamId: account.teamId)
-                let picked = try await self.picked(isListening: isListening, remembered: remembered)
+                let picked = try await self.pickedChannelsFromServerAndSaveThem(
+                    isListening: isListening, remembered: remembered)
                 await MainActor.run { self.present(channels: channels, picked: picked, isFinal: true) }
             } catch {
                 await MainActor.run { self.presentLoadingFailure(error) }
@@ -240,21 +237,39 @@ class SlackChannelSelectionWindowController: NSWindowController {
         }
     }
 
-    /// What the ticks start as. For a workspace that is switched on it is what
-    /// the server actually holds, which can be less than the app has written
-    /// down — a channel the user has left is dropped at the server's end. For
-    /// one that is switched off the server holds nothing of it at all, so what
-    /// the app remembers is the only answer there is.
-    private func picked(isListening: Bool, remembered: [String: String]) async throws -> Picked {
+    /// What the ticks start as: for a workspace switched on, what the server
+    /// actually holds, which can be less than the app wrote down; for one
+    /// switched off, what the app remembers, the server holding nothing of it.
+    ///
+    /// The answer is written down here too — Cancel never undid more than the
+    /// ticks.
+    private func pickedChannelsFromServerAndSaveThem(isListening: Bool,
+                                                     remembered: [String: String])
+        async throws -> Picked {
         guard isListening else {
             return Picked(channelIds: Set(remembered.keys), names: remembered)
         }
         let memberships = try await serverAPI.channelMemberships(teamId: account.teamId)
-        var names: [String: String] = [:]
-        for membership in memberships {
-            if let name = membership.name, !name.isEmpty { names[membership.channelId] = name }
+        let channels = await MainActor.run { () -> [String: String] in
+            // Read back from where the account is saved: this picker was made
+            // before the last statement of the set.
+            let saved = TootRainSlackAccount.account(teamId: self.account.teamId)
+            // A workspace can be linked twice on one session, by two Slack
+            // users, and this listing is by workspace — so the other linkage's
+            // channels are neither this picker's to show nor its to write down.
+            let linkageId = saved?.linkageId?.intValue
+            var channels: [String: String] = [:]
+            for membership in memberships
+            where linkageId == nil || membership.linkageId == linkageId {
+                let name = membership.name ?? ""
+                channels[membership.channelId] = name.isEmpty ? membership.channelId : name
+            }
+            if let saved = saved {
+                self.subscriptions.saveChannelsFromServer(channels, for: saved)
+            }
+            return channels
         }
-        return Picked(channelIds: Set(memberships.map { $0.channelId }), names: names)
+        return Picked(channelIds: Set(channels.keys), names: channels)
     }
 
     /// Puts a list of channels on screen. `isFinal` says this one is Slack's

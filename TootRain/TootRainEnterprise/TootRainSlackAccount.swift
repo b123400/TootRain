@@ -197,24 +197,37 @@ class TootRainSlackAccount: Account {
     /// refreshed; one the server does not know has to be authorised again,
     /// because that is what being logged out from the server's side looks like
     /// from here.
-    static func reconcile(with overview: TootRainSessionOverview) {
+    ///
+    /// Answers with the workspaces this overview has just cost: the ones the
+    /// server no longer has that were fine until now. Telling the user is
+    /// `TootRainEnterpriseClient.syncAccountsWithOverviewAndTellUser(_:)`.
+    ///
+    /// On the main queue, where what is saved about an account is written.
+    @MainActor
+    @discardableResult
+    static func syncWithOverviewAndGetLostAccounts(
+        _ overview: TootRainSessionOverview) -> [TootRainSlackAccount] {
+        var lost: [TootRainSlackAccount] = []
         for account in allAccounts() {
             if let linkage = overview.slackLinkage(teamId: account.teamId,
                                                    slackUserId: account.slackUserId) {
                 account.linkageId = NSNumber(value: linkage.id)
                 account.needsAuthentication = false
-                // An account saved before the app kept a set of its own, or
-                // one linked on another computer: what the server already
-                // holds for it is what the user picked, and taking it now is
-                // what keeps the next statement of the whole set from giving
-                // it all up.
-                if account.channels == nil {
+                // The memberships are the whole of what the server holds for
+                // this account, so they are taken as what the app holds — but
+                // not for a workspace that is switched off, which the server
+                // holds nothing of by design. An account that has never had a
+                // set of its own is the exception: nothing else records the
+                // picks.
+                if account.channels == nil
+                    || TootRainChannelSubscriptions.isListening(to: account) {
                     var channels: [String: String] = [:]
                     for membership in linkage.memberships {
                         let name = membership.name ?? ""
                         channels[membership.channelId] = name.isEmpty ? membership.channelId : name
                     }
-                    account.channels = channels
+                    TootRainChannelSubscriptions.shared.saveChannelsFromServer(channels,
+                                                                               for: account)
                 }
                 if let name = linkage.workspace.name, !name.isEmpty {
                     account.teamName = name
@@ -223,11 +236,18 @@ class TootRainSlackAccount: Account {
                     account.slackUserName = displayName
                 }
             } else {
+                // Linked as far as the preferences knew, so this answer is
+                // where the user finds out — once, rather than every time the
+                // app asks and gets the same silence back.
+                if !account.needsAuthentication {
+                    lost.append(account)
+                }
                 account.needsAuthentication = true
             }
             account.save()
         }
         notifyAccountsChanged()
+        return lost
     }
 
     /// Every workspace has to be authorised again: the session they were all on
