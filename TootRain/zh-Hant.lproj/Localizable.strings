@@ -250,6 +250,18 @@
 /* channel picker status */
 "Updating channels…" = "正在更新頻道…";
 
+/* slack membership removed */
+"TootRain stopped showing comments from #%@." = "已停止顯示 #%@ 的彈幕。";
+
+/* slack membership removed */
+"The TootRain bot is no longer in this channel of %@, or the channel itself is gone. It has been taken off this workspace's channels." = "TootRain bot 已不在 %@ 的這個頻道，或者頻道本身已不存在。已將它從這個工作區的頻道中移除。";
+
+/* slack membership removed */
+"TootRain stopped showing comments from %ld channels of %@." = "已停止顯示 %2$@ 中 %1$ld 個頻道的彈幕。";
+
+/* slack membership removed */
+"%@ — the TootRain bot is no longer in these channels, or they are gone. They have been taken off this workspace's channels." = "%@ — TootRain bot 已不在這些頻道中，或者頻道本身已不存在。已將它們從這個工作區的頻道中移除。";
+
 /* slack linkage removed */
 "TootRain stopped showing comments from %@." = "已停止顯示 %@ 的彈幕。";
 

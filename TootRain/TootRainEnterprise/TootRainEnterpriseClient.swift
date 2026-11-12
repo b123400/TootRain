@@ -45,6 +45,11 @@ class TootRainEnterpriseClient: NSObject {
     /// 401 — and that is one piece of news. Cleared when there is a session to
     /// open a connection with again.
     private var hasSaidTheSessionIsGone = false
+    /// Channels this session has lost and not told the user about yet, by
+    /// workspace, and whether an alert about them is already on its way. Only
+    /// touched on the main queue.
+    private var lostChannelNames: [String: [String]] = [:]
+    private var hasScheduledLossAlert = false
 
     /// Only for diagnostics; written on the main queue because the library's
     /// callbacks arrive on its own.
@@ -388,10 +393,240 @@ class TootRainEnterpriseClient: NSObject {
     }
 }
 
+// MARK: - What arrives on the connection
+
+extension TootRainEnterpriseClient {
+
+    fileprivate func didReceiveData(_ data: Data, onChannel channel: String?) {
+        guard let payload = TootRainStreamPayload(data: data) else {
+            let text = String(data: data, encoding: .utf8) ?? data.base64EncodedString()
+            NSLog("TootRain: could not read what arrived on %@: %@",
+                  channel ?? "this connection", text)
+            return
+        }
+        switch payload {
+        case .event(let event):
+            handleStreamEvent(event)
+        case .message(let message):
+            showMessage(message, carriedBy: channel)
+        }
+    }
+
+    private func showMessage(_ message: TootRainStreamMessage, carriedBy channel: String?) {
+        // A message whose words are somewhere this app does not look, a file
+        // with nothing written with it being the usual one.
+        guard !message.text.isEmpty else { return }
+        guard message.provider == "slack" else {
+            // `text` sits outside the provider's own half for exactly this
+            // reason, so the words can still go up with nothing around them.
+            NSLog("TootRain: showing a %@ message plainly, since this version does not know that service",
+                  message.provider)
+            StreamController.shared()?.show(TootRainStreamStatus(provider: message.provider,
+                                                                 text: message.text))
+            return
+        }
+        guard let origin = SlackMessageOrigin(message: message) else {
+            NSLog("TootRain: ignoring a message on %@ that does not say where it came from",
+                  channel ?? "this connection")
+            return
+        }
+        guard let account = TootRainSlackAccount.account(teamId: origin.teamId) else {
+            NSLog("TootRain: ignoring a message from %@, which is not a workspace this app has",
+                  origin.teamId)
+            return
+        }
+        // A message already on its way when the user switched the workspace off.
+        guard TootRainChannelSubscriptions.isListening(to: account) else { return }
+        guard let controller = StreamController.shared() else { return }
+        // Built and handed on here, on the connection's own callback, the way
+        // the other services' statuses are: nothing in it waits on the network,
+        // so a queue between a comment and the screen would only cost it time.
+        // Two messages arriving together may land in either order.
+        let status = SlackStatus(text: message.text,
+                                 ts: origin.ts,
+                                 userId: origin.userId,
+                                 channelId: origin.channelId,
+                                 account: account)
+        // `-showStatus:`, whose window controller puts itself on the main queue.
+        controller.show(status)
+    }
+
+    private func handleStreamEvent(_ event: TootRainStreamEvent) {
+        switch event {
+        case .provider(let providerEvent):
+            handleProviderEvent(providerEvent)
+        case .linkageRemoved(let linkageId):
+            Task { @MainActor in self.handleLinkageRemoval(linkageId: linkageId) }
+        case .sessionRemoved:
+            Task { @MainActor in self.handleSessionRemoval() }
+        case .unknown(let name):
+            NSLog("TootRain: ignoring the event %@, which this version does not know", name)
+        }
+    }
+
+    private func handleProviderEvent(_ event: TootRainStreamProviderEvent) {
+        guard event.provider == "slack" else {
+            NSLog("TootRain: ignoring a %@ event, which this version knows nothing about",
+                  event.provider)
+            return
+        }
+        switch event.event {
+        case SlackMembershipRemoval.eventName:
+            guard let removal = SlackMembershipRemoval(event: event) else {
+                NSLog("TootRain: the server dropped a Slack channel without saying which")
+                return
+            }
+            Task { @MainActor in self.handleMembershipRemoval(removal) }
+        default:
+            NSLog("TootRain: ignoring the Slack event %@, which this version does not know",
+                  event.event)
+        }
+    }
+
+    /// The server let the membership go before saying so, so what is left is to
+    /// stop remembering the channel as picked — the next statement of the whole
+    /// set would otherwise ask for it back — and to tell the user.
+    ///
+    /// It says this to every connection the session has, the one whose request
+    /// caused it included, so each guard below keeps an alert from announcing
+    /// what the user did a moment ago.
+    @MainActor
+    private func handleMembershipRemoval(_ removal: SlackMembershipRemoval) {
+        guard let account = TootRainSlackAccount.account(teamId: removal.teamId) else {
+            NSLog("TootRain: the server dropped %@ of %@, which is not a workspace this app has",
+                  removal.channelId, removal.teamId)
+            return
+        }
+        // Switched off: its pairs were taken off the server by this app, and
+        // the picks are kept here to go back up when it is switched on again.
+        guard TootRainChannelSubscriptions.isListening(to: account) else { return }
+        NSLog("TootRain: %@ of %@ is no longer being listened to",
+              removal.channelId, removal.teamId)
+        // What it was called, while it is still written down. The cache is
+        // asked second, since a channel picked under an older name is better
+        // named by what the user picked than by what it is called now.
+        let name = account.channels?[removal.channelId]
+            ?? SlackInfoCache.shared.channel(id: removal.channelId, teamId: removal.teamId)?.name
+            ?? removal.channelId
+        // Already off what the app holds, so a set this app stated has settled.
+        guard TootRainChannelSubscriptions.shared
+            .removeSavedChannel(channelId: removal.channelId, of: account) else {
+            return
+        }
+        // The same echo arriving before the answer to the request that caused
+        // it, which is in fact the usual order.
+        guard !TootRainChannelSubscriptions.shared.isStating else { return }
+        scheduleLostChannelsAlert(channelName: name, of: account)
+    }
+
+    /// Gathers what has been lost and alerts a moment later, so a workspace
+    /// losing several channels at once — a linkage taken away drops every
+    /// channel it held — costs one alert rather than a dialog apiece.
+    @MainActor
+    private func scheduleLostChannelsAlert(channelName: String,
+                                           of account: TootRainSlackAccount) {
+        lostChannelNames[account.teamId, default: []].append(channelName)
+        guard !hasScheduledLossAlert else { return }
+        hasScheduledLossAlert = true
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            self.showScheduledLostChannelsAlerts()
+        }
+    }
+
+    @MainActor
+    private func showScheduledLostChannelsAlerts() {
+        hasScheduledLossAlert = false
+        let lost = lostChannelNames
+        lostChannelNames = [:]
+        for (teamId, names) in lost {
+            guard let account = TootRainSlackAccount.account(teamId: teamId) else { continue }
+            // A workspace gone from the session drops every channel it held on
+            // the way out, and the user has been told about the workspace.
+            guard !account.needsAuthentication else { continue }
+            showLostChannelsAlert(channelNames: names, of: account)
+        }
+    }
+
+    @MainActor
+    private func showLostChannelsAlert(channelNames: [String],
+                                       of account: TootRainSlackAccount) {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        if channelNames.count == 1, let only = channelNames.first {
+            alert.messageText = String(
+                format: NSLocalizedString("TootRain stopped showing comments from #%@.",
+                                          comment: "slack membership removed"),
+                only)
+            alert.informativeText = String(
+                format: NSLocalizedString("The TootRain bot is no longer in this channel of %@, or the channel itself is gone. It has been taken off this workspace's channels.",
+                                          comment: "slack membership removed"),
+                account.teamName)
+        } else {
+            alert.messageText = String(
+                format: NSLocalizedString("TootRain stopped showing comments from %ld channels of %@.",
+                                          comment: "slack membership removed"),
+                channelNames.count, account.teamName)
+            alert.informativeText = String(
+                format: NSLocalizedString("%@ — the TootRain bot is no longer in these channels, or they are gone. They have been taken off this workspace's channels.",
+                                          comment: "slack membership removed"),
+                channelNames.map { "#\($0)" }.joined(separator: ", "))
+        }
+        if let window = NSApp.keyWindow {
+            alert.beginSheetModal(for: window)
+        } else {
+            NSApp.activate(ignoringOtherApps: true)
+            alert.runModal()
+        }
+    }
+
+    /// A workspace the server has stopped holding, which can only be authorised
+    /// again. On the main queue, where what is saved about an account is
+    /// written.
+    @MainActor
+    private func handleLinkageRemoval(linkageId: Int?) {
+        // Without an id there is no workspace to answer for, and an account
+        // waiting for its first session overview has no id either.
+        guard let linkageId = linkageId else {
+            NSLog("TootRain: the server dropped a linkage without saying which")
+            refreshSessionInBackground()
+            return
+        }
+        let dropped = TootRainSlackAccount.allAccounts().first {
+            $0.linkageId?.intValue == linkageId
+        }
+        guard let account = dropped else {
+            // Rather than guess which workspace it was, ask the server what
+            // this session still holds.
+            NSLog("TootRain: the server dropped linkage %ld, which this app does not have",
+                  linkageId)
+            refreshSessionInBackground()
+            return
+        }
+        NSLog("TootRain: the server has dropped %@, which has to be authorised again",
+              account.teamName)
+        account.needsAuthentication = true
+        account.linkageId = nil
+        account.save()
+        TootRainSlackAccount.notifyAccountsChanged()
+        updateConnection()
+        showLostAccountsAlert(accounts: [account])
+    }
+
+    /// The last thing the connection will carry: the session itself is going.
+    /// The token is worth nothing after this, and whatever is still linked can
+    /// only be authorised on a new session.
+    @MainActor
+    private func handleSessionRemoval() {
+        NSLog("TootRain: the server is giving up this session")
+        disconnect()
+        TootRainSlackAccount.forgetSession()
+        showSessionIsGoneAlert()
+    }
+}
+
 // MARK: - CentrifugeClientDelegate
 
-/// The message schema is not settled yet, so for now everything that arrives is
-/// logged rather than turned into a rain drop.
 extension TootRainEnterpriseClient: CentrifugeClientDelegate {
 
     func onConnected(_ client: CentrifugeClient, _ event: CentrifugeConnectedEvent) {
@@ -430,12 +665,12 @@ extension TootRainEnterpriseClient: CentrifugeClientDelegate {
     }
 
     func onPublication(_ client: CentrifugeClient, _ event: CentrifugeServerPublicationEvent) {
-        let payload = String(data: event.data, encoding: .utf8) ?? event.data.base64EncodedString()
-        NSLog("TootRain: %@ published %@", event.channel, payload)
+        didReceiveData(event.data, onChannel: event.channel)
     }
 
+    /// Centrifugo can also push to one client without a channel in front of it,
+    /// which is where an event about the session itself may well arrive.
     func onMessage(_ client: CentrifugeClient, _ event: CentrifugeMessageEvent) {
-        let payload = String(data: event.data, encoding: .utf8) ?? event.data.base64EncodedString()
-        NSLog("TootRain: message %@", payload)
+        didReceiveData(event.data, onChannel: nil)
     }
 }
