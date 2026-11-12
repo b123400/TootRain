@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.2.0 - 2025-07-10
+## 2.2.1 - 2025-07-10
 - Fixed issue with window size when screen resolution changes
 - Removed Slack integration
 

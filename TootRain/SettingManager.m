@@ -12,6 +12,7 @@
 #import "BRMisskeyAccount.h"
 #import "IRC/BRIrcAccount.h"
 #import "StreamController.h"
+#import "TootRain-Swift.h"
 
 @interface SettingManager ()
 
@@ -89,6 +90,9 @@ static NSMutableArray *savedAccounts=nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
     if (updated) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kStreamingAccountsChangedNotification object:nil];
+        // The user asked for this one, so what the TootRain server makes of it
+        // is worth saying out loud rather than only logging.
+        [[TootRainEnterpriseClient shared] accountStreamingStateChangedWithAccount:account];
     }
 }
 
@@ -97,6 +101,8 @@ static NSMutableArray *savedAccounts=nil;
     [accounts addObjectsFromArray:[BRMastodonAccount allAccounts]];
     [accounts addObjectsFromArray:[BRMisskeyAccount allAccounts]];
     [accounts addObjectsFromArray:[BRIrcAccount allAccounts]];
+    [accounts addObjectsFromArray:[TootRainSlackAccount allAccounts]];
+    // Obsolete data from the old, direct-to-Slack integration
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"BRSlackAccount"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     self.accounts = accounts;

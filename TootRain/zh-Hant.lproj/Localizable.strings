@@ -124,3 +124,128 @@
 /* No comment provided by engineer. */
 "Yes" = "是";
 
+/* slack account detail */
+"Channels…" = "頻道…";
+
+/* channel picker title */
+"Channels of %@" = "%@ 的頻道";
+
+/* channel picker status */
+"Checked channels are shown as comments. %ld of %ld selected." = "勾選的頻道會變成彈幕。已選 %ld / %ld 個。";
+
+/* channel picker status */
+"Loading channels…" = "正在載入頻道…";
+
+/* auth window title */
+"Log in with Slack" = "用 Slack 登入";
+
+/* server error */
+"Please invite the TootRain bot to this channel first." = "請先把 TootRain bot 邀請到這個頻道。";
+
+/* server error */
+"Please log in to TootRain with Slack first." = "請先用 Slack 登入 TootRain。";
+
+/* slack account detail */
+"Service:" = "服務：";
+
+/* slack error */
+"Slack answered with %ld." = "Slack 回應了 %ld。";
+
+/* slack account detail */
+"Slack (TootRain server)" = "Slack（TootRain 伺服器）";
+
+/* slack error */
+"Slack refused the request: %@" = "Slack 拒絕了這個請求：%@";
+
+/* slack error */
+"Slack sent a response TootRain could not read." = "無法讀取 Slack 的回應。";
+
+/* slack account detail */
+"Slack user:" = "Slack 用戶：";
+
+/* slack account detail */
+"Team ID:" = "團隊 ID：";
+
+/* server error */
+"The TootRain server answered with %ld: %@" = "TootRain 伺服器回應了 %ld：%@";
+
+/* server error */
+"The TootRain server could not reach Slack, please try again later." = "TootRain 伺服器連不上 Slack，請稍後再試。";
+
+/* auth error */
+"The TootRain server did not send back a Slack token." = "TootRain 伺服器沒有回傳 Slack token。";
+
+/* server error */
+"The TootRain server does not know this Slack workspace." = "TootRain 伺服器不認識這個 Slack workspace。";
+
+/* server error */
+"The TootRain server refused the request: %@" = "TootRain 伺服器拒絕了這個請求：%@";
+
+/* network error */
+"The server sent a response TootRain could not read." = "無法讀取伺服器的回應。";
+
+/* server error */
+"This Slack workspace is not linked to this TootRain session, please log in again." = "這個 Slack workspace 沒有連結到這個 TootRain session，請重新登入。";
+
+/* server error */
+"This TootRain session is no longer valid, please log in again." = "這個 TootRain session 已失效，請重新登入。";
+
+/* slack account detail */
+"Workspace:" = "工作區：";
+
+/* server error */
+"You are not a member of this Slack channel, please join it in Slack first." = "你不是這個 Slack 頻道的成員，請先在 Slack 加入。";
+
+/* slack error */
+"This Slack workspace has no access token, please log in again." = "這個 Slack workspace 沒有 access token，請重新登入。";
+
+/* terminal disconnect */
+"TootRain stopped listening to Slack." = "TootRain 已停止接收 Slack 訊息。";
+
+/* terminal disconnect */
+"The TootRain server no longer knows this TootRain session. Please log in with Slack again." = "TootRain 伺服器已不認識這個 TootRain session，請重新使用 Slack 登入。";
+
+/* channel picker filter */
+"Filter channels" = "篩選頻道";
+
+/* channel picker status */
+"No channel matches this filter." = "沒有符合這個篩選條件的頻道。";
+
+/* slack account detail */
+"Re-authenticate" = "重新認證";
+
+/* Account table cell */
+"Need authentication" = "需要重新認證";
+
+/* auth error */
+"The TootRain server refused the log-in: %@" = "TootRain 伺服器拒絕了這次登入：%@";
+
+/* account removal confirmation */
+"Remove %@?" = "要移除 %@ 嗎？";
+
+/* account removal confirmation */
+"TootRain will stop showing comments from this account." = "TootRain 將不再顯示這個帳號的彈幕。";
+
+/* channel picker cancel button */
+"Cancel" = "取消";
+
+/* channel picker status */
+"Saving channels…" = "正在儲存頻道…";
+
+/* channel picker rejection */
+"Some channels could not be added." = "部分頻道無法加入。";
+
+/* channel picker rejection, a channel and why it was refused */
+"%@: %@" = "%@：%@";
+
+/* slack account detail */
+"Channels:" = "頻道：";
+
+/* slack account detail, no channels picked */
+"None" = "無";
+
+/* channel set failure */
+"TootRain could not tell the server which channels to listen to." = "無法告訴伺服器要接收哪些頻道。";
+
+/* channel picker status */
+"Updating channels…" = "正在更新頻道…";

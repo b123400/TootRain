@@ -1013,6 +1013,12 @@
                         <action selector="addIrcAccountClicked:" target="-2" id="9rc-ZQ-JwE"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Slack (Beta)" id="Tr1-Sl-ac0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addSlackAccountClicked:" target="-2" id="Tr2-Sl-ac1"/>
+                    </connections>
+                </menuItem>
             </items>
             <point key="canvasLocation" x="-312" y="338"/>
         </menu>

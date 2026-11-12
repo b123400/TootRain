@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSImage *serviceImage;
 @property (strong, nonatomic) NSString *accountName;
 @property (assign) BOOL isConnected;
+/// Set for an account the TootRain server no longer has, which can do nothing
+/// until the user authorises it again.
+@property (assign) BOOL needsAuthentication;
 
 @end
 

@@ -25,37 +25,37 @@
       "size" : "32x32"
     },
     {
-      "filename" : "Frame 4@128.png",
+      "filename" : "Frame 14@128.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "Frame 4@256.png",
+      "filename" : "Frame 14@256 1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "Frame 3@256.png",
+      "filename" : "Frame 14@256.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "Frame 3@512.png",
+      "filename" : "Frame 14@512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "Frame 3@512 1.png",
+      "filename" : "Frame 13@512.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "Frame 3.png",
+      "filename" : "Frame 13.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
