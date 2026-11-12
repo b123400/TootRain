@@ -322,6 +322,21 @@ final class TootRainServerAPI {
         return try decode(TootRainLinkageRemoval.self, from: data)
     }
 
+    // MARK: - System constants
+
+    /// The settings every app reads, as raw JSON. Needs no session, so this is
+    /// the one request that goes out without a token.
+    func systemConstants() async throws -> Data {
+        var request = URLRequest(url: environment.apiURL(path: "/api/system_constants"))
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(TootRainUserAgent.current, forHTTPHeaderField: "User-Agent")
+        let data = try await perform(request)
+        guard (try? JSONSerialization.jsonObject(with: data)) is [String: Any] else {
+            throw TootRainHTTPError.invalidResponse
+        }
+        return data
+    }
+
     // MARK: - Slack channel memberships
 
     /// What the session is listening to, for one workspace or for all of them.
@@ -396,5 +411,35 @@ final class TootRainServerAPI {
         // the status is what names that one.
         if status == 401 { return .unauthorized }
         return TootRainServerError.named(code: body.error, detail: body.detail)
+    }
+}
+
+/// The server's system constants, as last fetched. Asked for at every launch
+/// and saved, so a launch that cannot reach the server still has the last answer.
+enum TootRainSystemConstants {
+
+    private static let defaultsKey = "tootRainSystemConstants"
+
+    static func refreshInBackground() {
+        Task {
+            do {
+                // Saved as the raw JSON: user defaults cannot hold a JSON null.
+                let data = try await TootRainServerAPI.shared.systemConstants()
+                UserDefaults.standard.set(data, forKey: defaultsKey)
+            } catch {
+                NSLog("TootRain: could not fetch the system constants: %@", error.localizedDescription)
+            }
+        }
+    }
+
+    private static var saved: [String: Any] {
+        guard let data = UserDefaults.standard.data(forKey: defaultsKey) else { return [:] }
+        return (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+    }
+
+    /// `slack.oauth-user-agent`: what the Slack log-in web view calls itself.
+    static var slackOAuthUserAgent: String? {
+        let value = (saved["slack"] as? [String: Any])?["oauth-user-agent"] as? String
+        return value?.isEmpty == false ? value : nil
     }
 }

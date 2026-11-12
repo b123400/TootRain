@@ -57,6 +57,7 @@ class TootRainEnterpriseClient: NSObject {
     /// switched on — all in the background, so a launch with nothing linked
     /// opens no socket at all.
     @objc func applicationDidFinishLaunching() {
+        TootRainSystemConstants.refreshInBackground()
         refreshSessionInBackground()
         refreshSlackInfoInBackground()
         scheduleConnectionUpdate()
