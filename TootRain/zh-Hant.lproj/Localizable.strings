@@ -152,7 +152,7 @@
 "Slack answered with %ld." = "Slack 回應了 %ld。";
 
 /* slack account detail */
-"Slack (TootRain server)" = "Slack（TootRain 伺服器）";
+"Slack" = "Slack";
 
 /* slack error */
 "Slack refused the request: %@" = "Slack 拒絕了這個請求：%@";

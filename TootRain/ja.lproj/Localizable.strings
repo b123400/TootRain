@@ -152,7 +152,7 @@
 "Slack answered with %ld." = "Slack が %ld を返しました。";
 
 /* slack account detail */
-"Slack (TootRain server)" = "Slack（TootRain サーバー）";
+"Slack" = "Slack";
 
 /* slack error */
 "Slack refused the request: %@" = "Slack にリクエストを拒否されました：%@";
