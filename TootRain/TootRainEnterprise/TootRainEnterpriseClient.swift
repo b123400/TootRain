@@ -76,13 +76,8 @@ class TootRainEnterpriseClient: NSObject {
     /// Checks the saved session against the server's own view of it. What comes
     /// back says which Slack accounts the session still holds, and the accounts
     /// it does not name are the ones an administrator has logged out — they are
-    /// marked as needing authentication.
-    ///
-    /// A session that cannot be read at all is treated as one that is gone,
-    /// whatever the reason: the server refusing the token, the server being
-    /// unreachable, an answer that cannot be read. Every workspace is then
-    /// marked as needing authentication and the token is dropped, so the app
-    /// never carries on as if a session it cannot see is still there.
+    /// marked as needing authentication. See `handleSessionRequestFailure(_:)`
+    /// for a session that cannot be read.
     @objc func refreshSessionInBackground() {
         guard !TootRainSlackAccount.allAccounts().isEmpty else { return }
         guard session.hasToken else {
@@ -335,7 +330,7 @@ class TootRainEnterpriseClient: NSObject {
         guard case .sessionRefused = meaning else { return }
         // The token is worth nothing now, so it goes: the next log-in makes a new
         // session instead of offering this one again.
-        session.clear()
+        TootRainSlackAccount.forgetSession()
         refusedToken = nil
         showSessionIsGoneAlert()
     }
@@ -609,7 +604,13 @@ extension TootRainEnterpriseClient {
         account.linkageId = nil
         account.save()
         TootRainSlackAccount.notifyAccountsChanged()
-        updateConnection()
+        if TootRainSlackAccount.allAccounts().contains(where: { !$0.needsAuthentication }) {
+            updateConnection()
+        } else {
+            // The last linkage takes the session with it. session_removed comes
+            // next on this connection, left open to hear it, and this says it.
+            hasSaidTheSessionIsGone = true
+        }
         showLostAccountsAlert(accounts: [account])
     }
 
