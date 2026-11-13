@@ -53,11 +53,12 @@ final class SlackMessageTextTests: XCTestCase {
     }
 
     func testAttributedString() {
-        let rendered = SlackMessageText.attributedStringForText("a <@U1> &amp; <https://example.com|b>",
+        // A path, since the importer gives a bare host a trailing slash.
+        let rendered = SlackMessageText.attributedStringForText("a <@U1> &amp; <https://example.com/page|b>",
                                                                 teamId: teamId)
         XCTAssertEqual(rendered.string.trimmingCharacters(in: .whitespacesAndNewlines), "a @U1 & b")
         let label = (rendered.string as NSString).range(of: "b", options: .backwards)
         let link = rendered.attribute(.link, at: label.location, effectiveRange: nil)
-        XCTAssertEqual((link as? URL)?.absoluteString, "https://example.com")
+        XCTAssertEqual((link as? URL)?.absoluteString, "https://example.com/page")
     }
 }
