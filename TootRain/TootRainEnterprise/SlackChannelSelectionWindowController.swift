@@ -438,10 +438,11 @@ class SlackChannelSelectionWindowController: NSWindowController {
     }
 
     private func finishSaving(_ update: TootRainChannelMembershipUpdate?, wanted: Set<String>) {
-        // What the server holds afterwards is what the ticks are: it may be less
-        // than was asked for. A workspace that is switched off was not in the
-        // request at all — its channels are only written down — so there the
-        // ticks are what was picked.
+        // What the workspace keeps afterwards is what the ticks are: what the
+        // server holds, which may be less than was asked for, and what it could
+        // not reach Centrifugo or Slack for, which stays picked. A workspace that
+        // is switched off was not in the request at all — its channels are only
+        // written down — so there the ticks are what was picked.
         if let update = update, let linkageId = account.linkageId?.intValue {
             selectedChannelIds = update.channelIds(linkageId: linkageId)
             openedWithChannelIds = selectedChannelIds

@@ -76,11 +76,24 @@ struct TootRainChannelMembershipUpdate: Decodable {
     let removed: [TootRainChannelMembership]
     let rejected: [TootRainChannelMembershipRejection]
 
-    /// What one Slack account of the session ended up holding: Slack's channel
-    /// ids, and what Slack last called each of them. A channel the server knows
-    /// no name for is named by its id, so there is always something to show.
-    func channels(linkageId: Int) -> [String: String] {
+    /// What one Slack account of the session is to keep: Slack's channel ids,
+    /// and what Slack last called each of them. A channel the server knows no
+    /// name for is named by its id, so there is always something to show.
+    ///
+    /// That is what it ended up holding, and the pairs rejected with
+    /// `upstream_error` too: Centrifugo or Slack was out of reach, which says
+    /// nothing about the channel, so the next statement asks for it again.
+    /// The server names none of those, so they keep their name in `asked`, the
+    /// channels the app stated for this account.
+    func channels(linkageId: Int, asked: [String: String]) -> [String: String] {
         var channels: [String: String] = [:]
+        for rejection in rejections(linkageId: linkageId) {
+            if case .upstream = rejection.reason {
+                channels[rejection.channelId] = asked[rejection.channelId] ?? rejection.channelId
+            }
+        }
+        // Last: a removal Centrifugo refused is in both, its row put back, and
+        // goes by the server's name.
         for membership in memberships where membership.linkageId == linkageId {
             let name = membership.name ?? ""
             channels[membership.channelId] = name.isEmpty ? membership.channelId : name
@@ -88,8 +101,10 @@ struct TootRainChannelMembershipUpdate: Decodable {
         return channels
     }
 
+    /// The channels `channels(linkageId:asked:)` keeps, which do not depend on
+    /// what they are called.
     func channelIds(linkageId: Int) -> Set<String> {
-        Set(memberships.filter { $0.linkageId == linkageId }.map { $0.channelId })
+        Set(channels(linkageId: linkageId, asked: [:]).keys)
     }
 
     func rejections(linkageId: Int) -> [TootRainChannelMembershipRejection] {

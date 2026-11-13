@@ -149,44 +149,49 @@ final class TootRainChannelSubscriptions: NSObject {
         }
 
         var pairs: [TootRainChannelMembershipPair] = []
-        var named: Set<String> = []
+        // Each workspace's channels as stated, by team id, which is where one
+        // the server could not grant keeps its name.
+        var asked: [String: [String: String]] = [:]
         for account in accounts {
             guard let linkageId = account.linkageId?.intValue else {
                 NSLog("TootRain: the server has no linkage for %@, leaving its channels out",
                       account.teamId)
                 continue
             }
-            named.insert(account.teamId)
             let channels: [String: String]
             if let change = change, change.teamId == account.teamId {
                 channels = change.channels
             } else {
                 channels = account.channels ?? [:]
             }
+            asked[account.teamId] = channels
             pairs += channels.keys.sorted().map {
                 TootRainChannelMembershipPair(linkageId: linkageId, channelId: $0)
             }
         }
         // Stating the set without the workspace the picks belong to would take
         // its channels away rather than add them, so that is not sent at all.
-        if let change = change, !named.contains(change.teamId) {
+        if let change = change, asked[change.teamId] == nil {
             throw TootRainServerError.notLinked
         }
 
         let update = try await serverAPI.replaceChannelMemberships(pairs)
-        await commit(update, to: accounts)
+        await commit(update, to: accounts, asked: asked)
         return update
     }
 
     /// Takes the server's answer as what each workspace holds. It is the part
     /// to settle on: a channel the bot was never invited to is not in it,
-    /// however firmly the app asked for it.
+    /// however firmly the app asked for it. A channel the server could not
+    /// reach Centrifugo or Slack for is the exception, and stays picked.
     @MainActor
     private func commit(_ update: TootRainChannelMembershipUpdate,
-                        to accounts: [TootRainSlackAccount]) {
+                        to accounts: [TootRainSlackAccount],
+                        asked: [String: [String: String]]) {
         for account in accounts {
             guard let linkageId = account.linkageId?.intValue else { continue }
-            account.channels = update.channels(linkageId: linkageId)
+            account.channels = update.channels(linkageId: linkageId,
+                                               asked: asked[account.teamId] ?? [:])
             account.save()
         }
     }
