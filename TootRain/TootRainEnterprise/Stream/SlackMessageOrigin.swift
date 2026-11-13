@@ -17,7 +17,6 @@ struct SlackMessageOrigin {
     /// Missing on a message with nobody behind it, a workspace's own bot being
     /// the usual one.
     let userId: String?
-    let clientMessageId: String?
 
     init?(message: TootRainStreamMessage) {
         guard message.provider == "slack" else { return nil }
@@ -31,6 +30,5 @@ struct SlackMessageOrigin {
         self.channelId = channelId
         self.teamId = teamId
         self.userId = json["user"] as? String
-        self.clientMessageId = json["client_msg_id"] as? String
     }
 }

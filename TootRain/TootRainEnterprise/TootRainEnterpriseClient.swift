@@ -411,15 +411,6 @@ extension TootRainEnterpriseClient {
         // A message whose words are somewhere this app does not look, a file
         // with nothing written with it being the usual one.
         guard !message.text.isEmpty else { return }
-        guard message.provider == "slack" else {
-            // `text` sits outside the provider's own half for exactly this
-            // reason, so the words can still go up with nothing around them.
-            NSLog("TootRain: showing a %@ message plainly, since this version does not know that service",
-                  message.provider)
-            StreamController.shared()?.show(TootRainStreamStatus(provider: message.provider,
-                                                                 text: message.text))
-            return
-        }
         guard let origin = SlackMessageOrigin(message: message) else {
             NSLog("TootRain: ignoring a message on %@ that does not say where it came from",
                   channel ?? "this connection")
@@ -448,33 +439,12 @@ extension TootRainEnterpriseClient {
 
     private func handleStreamEvent(_ event: TootRainStreamEvent) {
         switch event {
-        case .provider(let providerEvent):
-            handleProviderEvent(providerEvent)
+        case .slackMembershipRemoved(let teamId, let channelId):
+            Task { @MainActor in self.handleMembershipRemoval(teamId: teamId, channelId: channelId) }
         case .linkageRemoved(let linkageId):
             Task { @MainActor in self.handleLinkageRemoval(linkageId: linkageId) }
         case .sessionRemoved:
             Task { @MainActor in self.handleSessionRemoval() }
-        case .unknown(let name):
-            NSLog("TootRain: ignoring the event %@, which this version does not know", name)
-        }
-    }
-
-    private func handleProviderEvent(_ event: TootRainStreamProviderEvent) {
-        guard event.provider == "slack" else {
-            NSLog("TootRain: ignoring a %@ event, which this version knows nothing about",
-                  event.provider)
-            return
-        }
-        switch event.event {
-        case SlackMembershipRemoval.eventName:
-            guard let removal = SlackMembershipRemoval(event: event) else {
-                NSLog("TootRain: the server dropped a Slack channel without saying which")
-                return
-            }
-            Task { @MainActor in self.handleMembershipRemoval(removal) }
-        default:
-            NSLog("TootRain: ignoring the Slack event %@, which this version does not know",
-                  event.event)
         }
     }
 
@@ -486,26 +456,25 @@ extension TootRainEnterpriseClient {
     /// caused it included, so each guard below keeps an alert from announcing
     /// what the user did a moment ago.
     @MainActor
-    private func handleMembershipRemoval(_ removal: SlackMembershipRemoval) {
-        guard let account = TootRainSlackAccount.account(teamId: removal.teamId) else {
+    private func handleMembershipRemoval(teamId: String, channelId: String) {
+        guard let account = TootRainSlackAccount.account(teamId: teamId) else {
             NSLog("TootRain: the server dropped %@ of %@, which is not a workspace this app has",
-                  removal.channelId, removal.teamId)
+                  channelId, teamId)
             return
         }
         // Switched off: its pairs were taken off the server by this app, and
         // the picks are kept here to go back up when it is switched on again.
         guard TootRainChannelSubscriptions.isListening(to: account) else { return }
-        NSLog("TootRain: %@ of %@ is no longer being listened to",
-              removal.channelId, removal.teamId)
+        NSLog("TootRain: %@ of %@ is no longer being listened to", channelId, teamId)
         // What it was called, while it is still written down. The cache is
         // asked second, since a channel picked under an older name is better
         // named by what the user picked than by what it is called now.
-        let name = account.channels?[removal.channelId]
-            ?? SlackInfoCache.shared.channel(id: removal.channelId, teamId: removal.teamId)?.name
-            ?? removal.channelId
+        let name = account.channels?[channelId]
+            ?? SlackInfoCache.shared.channel(id: channelId, teamId: teamId)?.name
+            ?? channelId
         // Already off what the app holds, so a set this app stated has settled.
         guard TootRainChannelSubscriptions.shared
-            .removeSavedChannel(channelId: removal.channelId, of: account) else {
+            .removeSavedChannel(channelId: channelId, of: account) else {
             return
         }
         // The same echo arriving before the answer to the request that caused
@@ -579,20 +548,14 @@ extension TootRainEnterpriseClient {
     /// again. On the main queue, where what is saved about an account is
     /// written.
     @MainActor
-    private func handleLinkageRemoval(linkageId: Int?) {
-        // Without an id there is no workspace to answer for, and an account
-        // waiting for its first session overview has no id either.
-        guard let linkageId = linkageId else {
-            NSLog("TootRain: the server dropped a linkage without saying which")
-            refreshSessionInBackground()
-            return
-        }
+    private func handleLinkageRemoval(linkageId: Int) {
         let dropped = TootRainSlackAccount.allAccounts().first {
             $0.linkageId?.intValue == linkageId
         }
         guard let account = dropped else {
-            // Rather than guess which workspace it was, ask the server what
-            // this session still holds.
+            // Usually the echo of this app's own removal. Otherwise, rather
+            // than guess which workspace it was — an account waiting for its
+            // first session overview has no id — ask what the session holds.
             NSLog("TootRain: the server dropped linkage %ld, which this app does not have",
                   linkageId)
             refreshSessionInBackground()
@@ -669,8 +632,8 @@ extension TootRainEnterpriseClient: CentrifugeClientDelegate {
         didReceiveData(event.data, onChannel: event.channel)
     }
 
-    /// Centrifugo can also push to one client without a channel in front of it,
-    /// which is where an event about the session itself may well arrive.
+    /// The server sends nothing this way — its events are publications on the
+    /// session's own channel — but anything that does come is read the same.
     func onMessage(_ client: CentrifugeClient, _ event: CentrifugeMessageEvent) {
         didReceiveData(event.data, onChannel: nil)
     }
