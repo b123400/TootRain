@@ -405,7 +405,7 @@ class SlackChannelSelectionWindowController: NSWindowController {
         Task {
             do {
                 let update = try await subscriptions.apply(channels: picks, to: account)
-                await MainActor.run { self.finishSaving(update, wanted: wanted) }
+                await MainActor.run { self.finishSaving(update, picks: picks) }
             } catch {
                 await MainActor.run {
                     self.setBusy(false)
@@ -437,14 +437,15 @@ class SlackChannelSelectionWindowController: NSWindowController {
         dismissWindow()
     }
 
-    private func finishSaving(_ update: TootRainChannelMembershipUpdate?, wanted: Set<String>) {
-        // What the workspace keeps afterwards is what the ticks are: what the
-        // server holds, which may be less than was asked for, and what it could
-        // not reach Centrifugo or Slack for, which stays picked. A workspace that
-        // is switched off was not in the request at all — its channels are only
-        // written down — so there the ticks are what was picked.
+    private func finishSaving(_ update: TootRainChannelMembershipUpdate?, picks: [String: String]) {
+        // What the workspace keeps afterwards is what the ticks are, read from
+        // the answer as the set is saved: what the server holds, which may be
+        // less than was asked for, but whatever it could not reach Centrifugo or
+        // Slack for stays as it was picked. A workspace that is switched off was
+        // not in the request at all — its channels are only written down — so
+        // there the ticks are what was picked.
         if let update = update, let linkageId = account.linkageId?.intValue {
-            selectedChannelIds = update.channelIds(linkageId: linkageId)
+            selectedChannelIds = Set(update.channels(linkageId: linkageId, asked: picks).keys)
             openedWithChannelIds = selectedChannelIds
             let rejected = update.rejections(linkageId: linkageId)
             if !rejected.isEmpty {
@@ -454,8 +455,8 @@ class SlackChannelSelectionWindowController: NSWindowController {
                 return
             }
         } else {
-            selectedChannelIds = wanted
-            openedWithChannelIds = wanted
+            selectedChannelIds = Set(picks.keys)
+            openedWithChannelIds = selectedChannelIds
         }
         dismissWindow()
     }

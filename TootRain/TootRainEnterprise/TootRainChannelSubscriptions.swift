@@ -149,8 +149,8 @@ final class TootRainChannelSubscriptions: NSObject {
         }
 
         var pairs: [TootRainChannelMembershipPair] = []
-        // Each workspace's channels as stated, by team id, which is where one
-        // the server could not grant keeps its name.
+        // Each workspace's channels as stated, by team id, which is what stands
+        // wherever the server could not reach Centrifugo or Slack.
         var asked: [String: [String: String]] = [:]
         for account in accounts {
             guard let linkageId = account.linkageId?.intValue else {
@@ -182,8 +182,8 @@ final class TootRainChannelSubscriptions: NSObject {
 
     /// Takes the server's answer as what each workspace holds. It is the part
     /// to settle on: a channel the bot was never invited to is not in it,
-    /// however firmly the app asked for it. A channel the server could not
-    /// reach Centrifugo or Slack for is the exception, and stays picked.
+    /// however firmly the app asked for it. A pair the server could not reach
+    /// Centrifugo or Slack for is the exception, and stays as it was asked for.
     @MainActor
     private func commit(_ update: TootRainChannelMembershipUpdate,
                         to accounts: [TootRainSlackAccount],

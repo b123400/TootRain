@@ -80,31 +80,25 @@ struct TootRainChannelMembershipUpdate: Decodable {
     /// and what Slack last called each of them. A channel the server knows no
     /// name for is named by its id, so there is always something to show.
     ///
-    /// That is what it ended up holding, and the pairs rejected with
-    /// `upstream_error` too: Centrifugo or Slack was out of reach, which says
-    /// nothing about the channel, so the next statement asks for it again.
-    /// The server names none of those, so they keep their name in `asked`, the
-    /// channels the app stated for this account.
+    /// That is what it ended up holding, except where the server answered
+    /// `upstream_error`: Centrifugo or Slack was out of reach, which says
+    /// nothing about the channel, so it stays as `asked`, the channels the app
+    /// stated for this account, has it — kept under that name if it was to be
+    /// added, left out if it was to be taken away, though the server put its
+    /// row back — and the next statement asks again.
     func channels(linkageId: Int, asked: [String: String]) -> [String: String] {
         var channels: [String: String] = [:]
-        for rejection in rejections(linkageId: linkageId) {
-            if case .upstream = rejection.reason {
-                channels[rejection.channelId] = asked[rejection.channelId] ?? rejection.channelId
-            }
-        }
-        // Last: a removal Centrifugo refused is in both, its row put back, and
-        // goes by the server's name.
         for membership in memberships where membership.linkageId == linkageId {
             let name = membership.name ?? ""
             channels[membership.channelId] = name.isEmpty ? membership.channelId : name
         }
+        for rejection in rejections(linkageId: linkageId) {
+            if case .upstream = rejection.reason {
+                // nil for a channel that was not asked for, which takes it out.
+                channels[rejection.channelId] = asked[rejection.channelId]
+            }
+        }
         return channels
-    }
-
-    /// The channels `channels(linkageId:asked:)` keeps, which do not depend on
-    /// what they are called.
-    func channelIds(linkageId: Int) -> Set<String> {
-        Set(channels(linkageId: linkageId, asked: [:]).keys)
     }
 
     func rejections(linkageId: Int) -> [TootRainChannelMembershipRejection] {
