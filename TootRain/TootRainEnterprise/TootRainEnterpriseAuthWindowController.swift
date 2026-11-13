@@ -105,7 +105,8 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
         let webView = WKWebView(frame: window.contentLayoutRect, configuration: WKWebViewConfiguration())
         webView.autoresizingMask = [.width, .height]
         webView.navigationDelegate = self
-        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/999.99 (KHTML, like Gecko) Chrome/999.0.0.0 Safari/999.99"
+        webView.customUserAgent = TootRainSystemConstants.slackOAuthUserAgent
+            ?? "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/999.99 (KHTML, like Gecko) Chrome/999.0.0.0 Safari/999.99"
         window.contentView = webView
         self.webView = webView
 

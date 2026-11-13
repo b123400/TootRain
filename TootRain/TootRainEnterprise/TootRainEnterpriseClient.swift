@@ -52,11 +52,15 @@ class TootRainEnterpriseClient: NSObject {
 
     // MARK: - Launch
 
+    /// Whether the add-account menu offers Slack. Accounts already added stay either way.
+    @objc var isSlackEnabled: Bool { TootRainSystemConstants.slackEnabled }
+
     /// Asks the server what the saved session still is, brings the workspace
     /// caches up to date, and opens the connection if there is a workspace
     /// switched on — all in the background, so a launch with nothing linked
     /// opens no socket at all.
     @objc func applicationDidFinishLaunching() {
+        TootRainSystemConstants.refreshInBackground()
         refreshSessionInBackground()
         refreshSlackInfoInBackground()
         scheduleConnectionUpdate()
