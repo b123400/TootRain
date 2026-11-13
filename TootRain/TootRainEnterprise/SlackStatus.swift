@@ -17,26 +17,17 @@ import Cocoa
 @objc(SlackUser)
 class SlackUser: User {
 
-    private let renderedScreenName: NSAttributedString
-
     /// `id` is missing on a message with no person behind it, a workspace's own
     /// bot being the usual one. The workspace itself is then the nearest thing
     /// to an author there is.
     init(id: String?, account: TootRainSlackAccount) {
         let cached = id.flatMap { SlackInfoCache.shared.user(id: $0, teamId: account.teamId) }
         let name = cached?.preferredName ?? id ?? account.teamName
-        // Slack lets a display name carry the workspace's own emoji.
-        renderedScreenName = SlackMessageText.attributedStringForText(name,
-                                                                      teamId: account.teamId)
         super.init()
         userID = id ?? account.teamId
         username = cached?.name ?? id ?? account.teamName
         screenName = name
         profileImageURL = cached?.avatarURL
-    }
-
-    override func attributedScreenName() -> NSAttributedString {
-        renderedScreenName
     }
 }
 
@@ -49,17 +40,12 @@ class SlackUser: User {
 @objc(SlackStatus)
 class SlackStatus: Status {
 
-    @objc let channelId: String
-    /// Slack's id for the message and its time at once.
-    @objc let ts: String
-
+    /// `ts` is Slack's id for the message and its time at once.
     @objc init(text: String,
                ts: String,
                userId: String?,
                channelId: String,
                account: TootRainSlackAccount) {
-        self.channelId = channelId
-        self.ts = ts
         super.init()
         statusID = "tootrain-slack:\(account.teamId):\(channelId):\(ts)"
         createdAt = SlackStatus.dateFromTimestamp(ts)
