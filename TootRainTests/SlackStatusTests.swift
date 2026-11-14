@@ -32,6 +32,24 @@ final class SlackStatusTests: XCTestCase {
         XCTAssertEqual(status.user?.screenName, "U1")
     }
 
+    func testAuthorNamedFromTheCache() {
+        let teamId = "T-TOOTRAIN-TESTS-AUTHOR"
+        SlackInfoCache.shared.update(
+            users: [SlackCachedUser(id: "U1", name: "alice", realName: nil, displayName: "Alice",
+                                    avatarURL: URL(string: "https://avatars.example/alice.png"))],
+            emoji: [], channels: [], userGroups: [], teamId: teamId)
+        defer { SlackInfoCache.shared.removeCache(teamId: teamId) }
+        let status = SlackStatus(text: "hi", ts: "1.2", userId: "U1", channelId: "C1",
+                                 account: TootRainSlackAccount(teamId: teamId,
+                                                               teamName: "Acme",
+                                                               teamDomain: nil,
+                                                               slackUserId: "U0",
+                                                               slackUserName: nil))
+        XCTAssertEqual(status.user?.screenName, "Alice")
+        XCTAssertEqual(status.user?.username, "alice")
+        XCTAssertEqual(status.user?.profileImageURL, URL(string: "https://avatars.example/alice.png"))
+    }
+
     func testNoLinkWithoutTheWorkspaceHost() {
         let status = SlackStatus(text: "hi", ts: "1.2", userId: "U1", channelId: "C1",
                                  account: account(teamDomain: nil))

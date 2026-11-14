@@ -6,14 +6,51 @@
 import XCTest
 @testable import TootRain
 
-/// Slack's mrkdwn as the renderer puts it on screen. Nothing is cached for this
-/// team, so every id is named by the message's own label or left as the id.
+/// Slack's mrkdwn as the renderer puts it on screen, for two teams: one whose
+/// users, groups, channels and emoji are cached as a refresh leaves them, and
+/// one with nothing cached, where an id is named by the message's own label or
+/// left as the id.
 final class SlackMessageTextTests: XCTestCase {
 
     private let teamId = "T-TOOTRAIN-TESTS"
+    private let cachedTeamId = "T-TOOTRAIN-TESTS-CACHED"
+
+    override func setUp() {
+        super.setUp()
+        SlackInfoCache.shared.update(
+            users: [SlackCachedUser(id: "U1", name: "alice", realName: "Alice Liddell",
+                                    displayName: "Alice", avatarURL: nil),
+                    SlackCachedUser(id: "U2", name: "bob", realName: "Bob Builder",
+                                    displayName: "", avatarURL: nil)],
+            emoji: [SlackCachedEmoji(name: "parrot",
+                                     url: URL(string: "https://emoji.example/parrot.gif")!)],
+            channels: [SlackChannel(id: "C1", name: "general", isPrivate: false, isMember: true)],
+            userGroups: [SlackUserGroup(id: "S1", name: "Developers", handle: "devs"),
+                         SlackUserGroup(id: "S2", name: "Design", handle: nil)],
+            teamId: cachedTeamId)
+    }
+
+    override func tearDown() {
+        SlackInfoCache.shared.removeCache(teamId: cachedTeamId)
+        super.tearDown()
+    }
 
     private func html(_ text: String) -> String {
         SlackMessageText.htmlForText(text, teamId: teamId)
+    }
+
+    private func cachedHTML(_ text: String) -> String {
+        SlackMessageText.htmlForText(text, teamId: cachedTeamId)
+    }
+
+    /// As Slack shows them: a person by the name they chose, or else their real
+    /// name, and a group by its handle, or else its title.
+    func testMentionsNamedFromTheCache() {
+        XCTAssertEqual(cachedHTML("hi <@U1> and <@U2>"), "hi @Alice and @Bob Builder")
+        XCTAssertEqual(cachedHTML("<!subteam^S1> <!subteam^S2>"), "@devs @Design")
+        XCTAssertEqual(cachedHTML("<#C1>"), "#general")
+        // A label Slack sent beats the cache.
+        XCTAssertEqual(cachedHTML("<#C1|old-name> <!subteam^S1|@team>"), "#old-name @team")
     }
 
     func testMentions() {
@@ -47,9 +84,17 @@ final class SlackMessageTextTests: XCTestCase {
         XCTAssertEqual(html("<!date^1392734382^{date}>"), "")
     }
 
-    /// Only a workspace's own emoji has an image; a skin tone never does.
+    /// The workspace's own emoji is an image, which the importer fetches; a skin
+    /// tone has no image of its own and goes.
+    func testEmojiWithAnImage() {
+        XCTAssertEqual(cachedHTML("so :parrot:"), #"so <img src="https://emoji.example/parrot.gif">"#)
+        XCTAssertEqual(cachedHTML(":parrot::skin-tone-2:!"), #"<img src="https://emoji.example/parrot.gif">!"#)
+    }
+
+    /// Slack's standard emoji are not in what emoji.list answers with.
     func testEmojiWithoutAnImage() {
         XCTAssertEqual(html(":smile::skin-tone-2: at 10:30:45"), ":smile: at 10:30:45")
+        XCTAssertEqual(cachedHTML(":smile:"), ":smile:")
     }
 
     func testAttributedString() {
