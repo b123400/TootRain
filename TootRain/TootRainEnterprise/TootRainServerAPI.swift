@@ -76,20 +76,29 @@ struct TootRainChannelMembershipUpdate: Decodable {
     let removed: [TootRainChannelMembership]
     let rejected: [TootRainChannelMembershipRejection]
 
-    /// What one Slack account of the session ended up holding: Slack's channel
-    /// ids, and what Slack last called each of them. A channel the server knows
-    /// no name for is named by its id, so there is always something to show.
-    func channels(linkageId: Int) -> [String: String] {
+    /// What one Slack account of the session is to keep: Slack's channel ids,
+    /// and what Slack last called each of them. A channel the server knows no
+    /// name for is named by its id, so there is always something to show.
+    ///
+    /// That is what it ended up holding, except where the server answered
+    /// `upstream_error`: Centrifugo or Slack was out of reach, which says
+    /// nothing about the channel, so it stays as `asked`, the channels the app
+    /// stated for this account, has it — kept under that name if it was to be
+    /// added, left out if it was to be taken away, though the server put its
+    /// row back — and the next statement asks again.
+    func channels(linkageId: Int, asked: [String: String]) -> [String: String] {
         var channels: [String: String] = [:]
         for membership in memberships where membership.linkageId == linkageId {
             let name = membership.name ?? ""
             channels[membership.channelId] = name.isEmpty ? membership.channelId : name
         }
+        for rejection in rejections(linkageId: linkageId) {
+            if case .upstream = rejection.reason {
+                // nil for a channel that was not asked for, which takes it out.
+                channels[rejection.channelId] = asked[rejection.channelId]
+            }
+        }
         return channels
-    }
-
-    func channelIds(linkageId: Int) -> Set<String> {
-        Set(memberships.filter { $0.linkageId == linkageId }.map { $0.channelId })
     }
 
     func rejections(linkageId: Int) -> [TootRainChannelMembershipRejection] {
