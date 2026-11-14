@@ -276,7 +276,7 @@
             [_self handleDidLoginAccount:account];
             [_self showChannelSelectionForSlackAccount:account];
         } else if (error && error.localizedDescription.length) {
-            [[NSAlert alertWithError:error] runModal];
+            [TootRainEnterpriseAuthWindowController presentLogInError:error forWindow:nil];
         }
     }];
 }

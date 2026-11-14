@@ -13,14 +13,15 @@ enum TootRainAuthError: LocalizedError {
     case missingTokens
     /// A log-in the server turned down. The code is for the app to act on; the
     /// message is the sentence the person would have read on the page they are
-    /// taken off the moment it loads.
-    case refused(code: String, message: String?)
+    /// taken off the moment it loads, and the help is that page's link to what
+    /// to do about it, when it had one.
+    case refused(code: String, message: String?, helpURL: URL?)
 
     var errorDescription: String? {
         switch self {
         case .missingTokens:
             return NSLocalizedString("The TootRain server did not send back a Slack token.", comment: "auth error")
-        case .refused(let code, let message):
+        case .refused(let code, let message, _):
             if let message = message, !message.isEmpty {
                 return message
             }
@@ -41,7 +42,8 @@ enum TootRainAuthError: LocalizedError {
 /// to give the account up again later.
 ///
 /// A log-in that did not work comes back the same way, as
-/// `tootrain://auth?error=<code>&message=<text>`. All of those are the person's
+/// `tootrain://auth?error=<code>&message=<text>`, with a `help_url` when the
+/// server's help has a page about that error. All of those are the person's
 /// to read except `invalid_app_session`, which says the session the app sent up
 /// is not one the server has: that one the app answers itself by throwing the
 /// session away and starting over, which makes a new one.
@@ -196,7 +198,9 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
             items.first { $0.name == name }?.value.flatMap { $0.isEmpty ? nil : $0 }
         }
         if let code = value("error") {
-            handleFailure(code: code, message: value("message"))
+            handleFailure(code: code,
+                          message: value("message"),
+                          helpURL: URL(helpURL: value("help_url")))
             return
         }
 
@@ -233,11 +237,11 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
     /// is the person's to read, so it is handed to the caller as an error; that
     /// one the app answers itself, once, by starting the log-in over with no
     /// session at all.
-    private func handleFailure(code: String, message: String?) {
+    private func handleFailure(code: String, message: String?, helpURL: URL?) {
         guard code == TootRainEnterpriseAuthWindowController.invalidAppSessionCode,
               !hasStartedOver,
               TootRainAppSession.shared.hasToken else {
-            finish(account: nil, error: TootRainAuthError.refused(code: code, message: message))
+            finish(account: nil, error: TootRainAuthError.refused(code: code, message: message, helpURL: helpURL))
             return
         }
         hasStartedOver = true
@@ -268,6 +272,32 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
 
         try await SlackInfoCache.shared.refresh(account: account)
         return account
+    }
+
+    /// Says why a log-in did not work, as a sheet on `window` or on its own
+    /// when there is none. A refusal the server's help has a page about gets a
+    /// button that opens it.
+    @objc(presentLogInError:forWindow:)
+    static func presentLogInError(_ error: Error, for window: NSWindow?) {
+        let alert = NSAlert(error: error)
+        var helpURL: URL?
+        if let error = error as? TootRainAuthError, case .refused(_, _, let url) = error {
+            helpURL = url
+        }
+        if helpURL != nil {
+            alert.addButton(withTitle: NSLocalizedString("OK", comment: "alert button"))
+            alert.addButton(withTitle: NSLocalizedString("Open Help", comment: "alert button, opens the help page about this error"))
+        }
+        let respond: (NSApplication.ModalResponse) -> Void = { response in
+            if response == .alertSecondButtonReturn, let helpURL = helpURL {
+                NSWorkspace.shared.open(helpURL)
+            }
+        }
+        if let window = window {
+            alert.beginSheetModal(for: window, completionHandler: respond)
+        } else {
+            respond(alert.runModal())
+        }
     }
 
     private func report(account: TootRainSlackAccount?, error: Error?) {

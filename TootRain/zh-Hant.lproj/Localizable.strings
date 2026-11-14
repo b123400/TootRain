@@ -235,9 +235,6 @@
 /* channel picker rejection */
 "Some channels could not be added." = "部分頻道無法加入。";
 
-/* channel picker rejection, a channel and why it was refused */
-"%@: %@" = "%@：%@";
-
 /* slack account detail */
 "Channels:" = "頻道：";
 
@@ -273,3 +270,9 @@
 
 /* slack linkage removed */
 "%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain 伺服器已不再持有這些 Slack 工作區。請重新使用 Slack 登入。";
+
+/* alert button */
+"OK" = "好";
+
+/* alert button, opens the help page about this error */
+"Open Help" = "打開說明";
