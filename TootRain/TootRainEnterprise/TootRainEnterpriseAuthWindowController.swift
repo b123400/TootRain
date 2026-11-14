@@ -62,6 +62,8 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
     private let teamId: String?
     private let completion: (TootRainSlackAccount?, Error?) -> Void
     private var webView: WKWebView!
+    private var loadingIndicator: NSProgressIndicator!
+    private var loadingObservation: NSKeyValueObservation?
     private var hasFinished = false
     /// So a server that keeps refusing the session cannot put the log-in into a
     /// loop: the second attempt carries no session at all.
@@ -102,13 +104,40 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
         window.center()
         super.init(window: window)
 
-        let webView = WKWebView(frame: window.contentLayoutRect, configuration: WKWebViewConfiguration())
+        let content = NSView(frame: window.contentLayoutRect)
+
+        let webView = WKWebView(frame: content.bounds, configuration: WKWebViewConfiguration())
         webView.autoresizingMask = [.width, .height]
         webView.navigationDelegate = self
         webView.customUserAgent = TootRainSystemConstants.slackOAuthUserAgent
             ?? "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/999.99 (KHTML, like Gecko) Chrome/999.0.0.0 Safari/999.99"
-        window.contentView = webView
+        content.addSubview(webView)
         self.webView = webView
+
+        let indicator = NSProgressIndicator()
+        indicator.style = .spinning
+        indicator.isDisplayedWhenStopped = false
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.setAccessibilityLabel(NSLocalizedString("Loading", comment: "auth window spinner"))
+        content.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: content.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: content.centerYAnchor),
+        ])
+        loadingIndicator = indicator
+
+        window.contentView = content
+
+        // Watching the web view itself rather than the navigation callbacks: it
+        // is the one thing that stays right across the redirects an OAuth
+        // log-in makes.
+        loadingObservation = webView.observe(\.isLoading, options: .initial) { webView, _ in
+            if webView.isLoading {
+                indicator.startAnimation(nil)
+            } else {
+                indicator.stopAnimation(nil)
+            }
+        }
 
         window.delegate = self
         webView.load(URLRequest(url: logInURL))
@@ -184,6 +213,9 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
             NSLog("TootRain: the log-in sent back no linkage id")
         }
         hasFinished = true
+        // The window stays up while the workspace is fetched, so the spinner
+        // carries on through it rather than leaving the last page sitting there.
+        loadingIndicator.startAnimation(nil)
         Task {
             do {
                 let account = try await TootRainEnterpriseAuthWindowController.link(
