@@ -53,17 +53,66 @@ struct TootRainChannelMembershipRejection: Decodable, Equatable {
     /// The server's code for why, read the same way as a refused request's.
     let error: String
     let detail: String?
+    /// Where the server's help says what to do about it, when it has a page
+    /// for this reason.
+    let helpUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case linkageId = "linkage_id"
         case channelId = "channel_id"
         case error
         case detail
+        case helpUrl = "help_url"
     }
 
     /// Why this pair did not happen, in words for the user.
     var reason: TootRainServerError {
         TootRainServerError.named(code: error, detail: detail)
+    }
+}
+
+/// The rejections of one answer that were refused for the same reason, which is
+/// how they are shown: the reason once, and the channels it goes for under it.
+struct TootRainChannelMembershipRejectionGroup {
+    let code: String
+    let reason: TootRainServerError
+    let channelIds: [String]
+    let helpURL: URL?
+}
+
+extension TootRainChannelMembershipRejection {
+
+    /// One group per reason, in the order the reasons first appear. Two
+    /// `slack_error`s with different details are different reasons.
+    static func grouped(_ rejections: [TootRainChannelMembershipRejection]) -> [TootRainChannelMembershipRejectionGroup] {
+        var order: [String] = []
+        var members: [String: [TootRainChannelMembershipRejection]] = [:]
+        for rejection in rejections {
+            let key = rejection.error + "\u{0}" + (rejection.detail ?? "")
+            if members[key] == nil { order.append(key) }
+            members[key, default: []].append(rejection)
+        }
+        return order.map { key in
+            let group = members[key]!
+            return TootRainChannelMembershipRejectionGroup(
+                code: group[0].error,
+                reason: group[0].reason,
+                channelIds: group.map { $0.channelId },
+                helpURL: group.lazy.compactMap { URL(helpURL: $0.helpUrl) }.first)
+        }
+    }
+}
+
+extension URL {
+
+    /// A help link the server sent along with a refusal. It ends up in the
+    /// user's browser, so only a web address is taken for one.
+    init?(helpURL string: String?) {
+        guard let string = string,
+              let url = URL(string: string),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "http" || scheme == "https" else { return nil }
+        self = url
     }
 }
 

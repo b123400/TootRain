@@ -237,7 +237,7 @@ class SettingAccountDetailSlackView: NSView {
             if let linked = linked {
                 self.setAccount(linked)
             } else if let error = error, let window = self.window {
-                NSAlert(error: error).beginSheetModal(for: window)
+                TootRainEnterpriseAuthWindowController.presentLogInError(error, for: window)
             }
         }
     }
