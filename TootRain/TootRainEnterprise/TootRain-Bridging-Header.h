@@ -5,3 +5,6 @@
 #import "Account.h"
 #import "SettingManager.h"
 #import "NSFileManager+DirectoryLocations.h"
+#import "Status.h"
+#import "User.h"
+#import "StreamController.h"

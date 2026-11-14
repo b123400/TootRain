@@ -77,6 +77,14 @@ final class TootRainChannelSubscriptions: NSObject {
             self.hasScheduledSync = false
             let askedFor = self.scheduledSyncWasAskedFor
             self.scheduledSyncWasAskedFor = false
+            // Nothing linked any more, which is the shape of the user having
+            // just removed their last workspace: switching it off states the
+            // set, and removing it takes the account away before that statement
+            // comes round. There is no set left to state and no session to
+            // state it to — the server lets a session go with its last linkage
+            // — so the only thing a request here could produce is an alert
+            // about the removal the user just asked for.
+            guard !TootRainSlackAccount.allAccounts().isEmpty else { return }
             Task {
                 do {
                     try await self.sync()
@@ -190,10 +198,38 @@ final class TootRainChannelSubscriptions: NSObject {
                         asked: [String: [String: String]]) {
         for account in accounts {
             guard let linkageId = account.linkageId?.intValue else { continue }
-            account.channels = update.channels(linkageId: linkageId,
-                                               asked: asked[account.teamId] ?? [:])
-            account.save()
+            saveChannelsFromServer(update.channels(linkageId: linkageId,
+                                                   asked: asked[account.teamId] ?? [:]),
+                                   for: account)
         }
+    }
+
+    // MARK: - Taking the server's word for what a workspace holds
+
+    /// Writes down what one workspace is listening to, tells the panes that
+    /// show it, and answers whether anything changed. Written to the account
+    /// handed in, not to one read back from the preferences.
+    @MainActor
+    @discardableResult
+    func saveChannelsFromServer(_ channels: [String: String],
+                                for account: TootRainSlackAccount) -> Bool {
+        guard account.channels != channels else { return false }
+        account.channels = channels
+        account.save()
+        notifyDidChange()
+        return true
+    }
+
+    /// Nothing is sent: the server is the one that said the channel has gone,
+    /// and it let the membership go before saying it.
+    @MainActor
+    @discardableResult
+    func removeSavedChannel(channelId: String, of account: TootRainSlackAccount) -> Bool {
+        guard var channels = account.channels,
+              channels.removeValue(forKey: channelId) != nil else {
+            return false
+        }
+        return saveChannelsFromServer(channels, for: account)
     }
 
     // MARK: - What the pane shows while a statement is in flight
@@ -257,6 +293,8 @@ final class TootRainChannelSubscriptions: NSObject {
     /// left out of the set afterwards is one there is nothing to be said about.
     private func refreshLinkageIds() async throws {
         let overview = try await serverAPI.session()
-        await MainActor.run { TootRainSlackAccount.reconcile(with: overview) }
+        await MainActor.run {
+            TootRainEnterpriseClient.shared.syncAccountsWithOverviewAndTellUser(overview)
+        }
     }
 }

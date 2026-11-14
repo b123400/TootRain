@@ -152,7 +152,7 @@
 "Slack answered with %ld." = "Slack が %ld を返しました。";
 
 /* slack account detail */
-"Slack (TootRain server)" = "Slack（TootRain サーバー）";
+"Slack" = "Slack";
 
 /* slack error */
 "Slack refused the request: %@" = "Slack にリクエストを拒否されました：%@";
@@ -249,3 +249,27 @@
 
 /* channel picker status */
 "Updating channels…" = "チャンネルを更新しています…";
+
+/* slack membership removed */
+"TootRain stopped showing comments from #%@." = "#%@ のコメントの表示を停止しました。";
+
+/* slack membership removed */
+"The TootRain bot is no longer in this channel of %@, or the channel itself is gone. It has been taken off this workspace's channels." = "%@ のこのチャンネルに TootRain の bot がいなくなった、またはチャンネル自体がなくなりました。このワークスペースの接続チャンネルから外しました。";
+
+/* slack membership removed */
+"TootRain stopped showing comments from %ld channels of %@." = "%2$@ の %1$ld 件のチャンネルのコメントの表示を停止しました。";
+
+/* slack membership removed */
+"%@ — the TootRain bot is no longer in these channels, or they are gone. They have been taken off this workspace's channels." = "%@ — これらのチャンネルに TootRain の bot がいなくなった、またはチャンネル自体がなくなりました。このワークスペースの接続チャンネルから外しました。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %@." = "%@ のコメントの表示を停止しました。";
+
+/* slack linkage removed */
+"The TootRain server no longer has this Slack workspace. Please log in with Slack again." = "TootRain サーバーはこの Slack ワークスペースを保持しなくなりました。もう一度 Slack でログインしてください。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %ld Slack workspaces." = "%ld 件の Slack ワークスペースのコメントの表示を停止しました。";
+
+/* slack linkage removed */
+"%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain サーバーはこれらの Slack ワークスペースを保持しなくなりました。もう一度 Slack でログインしてください。";

@@ -222,6 +222,16 @@
 		CFFAE5F315E0E9DD00389518 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFAE5F215E0E9DD00389518 /* WebImageView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7E57A1B2C3D4E5F600000007 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = TootRain;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		CF53F65E139CCE51003AB55B /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -255,6 +265,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.debug.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.debug.xcconfig"; sourceTree = "<group>"; };
+		7E57A1B2C3D4E5F600000001 /* TootRainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TootRainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		871CDCC3C795954A5CFAC940 /* Pods-TootRain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TootRain.release.xcconfig"; path = "Target Support Files/Pods-TootRain/Pods-TootRain.release.xcconfig"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TootRain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TootRain-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* TootRain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TootRain.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -470,10 +481,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		7E57A1B2C3D4E5F600000002 /* TootRainTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TootRainTests; sourceTree = "<group>"; };
 		CF17C0EF30827BD000498CD3 /* TootRainEnterprise */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TootRainEnterprise; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7E57A1B2C3D4E5F600000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,6 +589,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* TootRain.app */,
 				CF5D2D7929350BC400745D63 /* TootRain.app */,
+				7E57A1B2C3D4E5F600000001 /* TootRainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,6 +600,7 @@
 				CFCB21EC1A1FB4A500202991 /* TootRain.entitlements */,
 				CF673971295A883B005B274C /* TootRain-standalone.entitlements */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				7E57A1B2C3D4E5F600000002 /* TootRainTests */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -857,6 +878,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7E57A1B2C3D4E5F600000003 /* TootRainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E57A1B2C3D4E5F600000009 /* Build configuration list for PBXNativeTarget "TootRainTests" */;
+			buildPhases = (
+				7E57A1B2C3D4E5F600000004 /* Sources */,
+				7E57A1B2C3D4E5F600000005 /* Frameworks */,
+				7E57A1B2C3D4E5F600000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E57A1B2C3D4E5F600000008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				7E57A1B2C3D4E5F600000002 /* TootRainTests */,
+			);
+			name = TootRainTests;
+			productName = TootRainTests;
+			productReference = 7E57A1B2C3D4E5F600000001 /* TootRainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8D1107260486CEB800E47090 /* TootRain */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TootRain" */;
@@ -930,6 +972,10 @@
 						DevelopmentTeam = 3P89U4ZCGD;
 						LastSwiftMigration = 2640;
 					};
+					7E57A1B2C3D4E5F600000003 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 8D1107260486CEB800E47090;
+					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TootRain" */;
@@ -952,11 +998,19 @@
 			targets = (
 				8D1107260486CEB800E47090 /* TootRain */,
 				CF5D2D2029350BC400745D63 /* TootRain-standalone */,
+				7E57A1B2C3D4E5F600000003 /* TootRainTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7E57A1B2C3D4E5F600000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1079,6 +1133,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7E57A1B2C3D4E5F600000004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1253,6 +1314,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7E57A1B2C3D4E5F600000008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* TootRain */;
+			targetProxy = 7E57A1B2C3D4E5F600000007 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1365,6 +1434,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7E57A1B2C3D4E5F60000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = net.b123400.TootRainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TootRain.app/Contents/MacOS/TootRain";
+			};
+			name = Debug;
+		};
+		7E57A1B2C3D4E5F60000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3P89U4ZCGD;
+				GCC_PREFIX_HEADER = TootRain/TootRain_Prefix.pch;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = net.b123400.TootRainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TootRain.app/Contents/MacOS/TootRain";
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3FAECB8F9E368585B656450E /* Pods-TootRain.debug.xcconfig */;
@@ -1381,6 +1489,7 @@
 				CURRENT_PROJECT_VERSION = 250;
 				DEVELOPMENT_TEAM = 3P89U4ZCGD;
 				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1616,6 +1725,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7E57A1B2C3D4E5F600000009 /* Build configuration list for PBXNativeTarget "TootRainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E57A1B2C3D4E5F60000000A /* Debug */,
+				7E57A1B2C3D4E5F60000000B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "TootRain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
