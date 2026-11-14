@@ -96,7 +96,7 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
         self.teamId = teamId
         self.completion = completion
 
-        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 520, height: 680),
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 520, height: 740),
                               styleMask: [.titled, .closable, .resizable],
                               backing: .buffered,
                               defer: false)
@@ -107,7 +107,7 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
         let content = NSView(frame: window.contentLayoutRect)
 
         let webView = WKWebView(frame: content.bounds, configuration: WKWebViewConfiguration())
-        webView.autoresizingMask = [.width, .height]
+        webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         webView.customUserAgent = TootRainSystemConstants.slackOAuthUserAgent
             ?? "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/999.99 (KHTML, like Gecko) Chrome/999.0.0.0 Safari/999.99"
@@ -116,13 +116,18 @@ class TootRainEnterpriseAuthWindowController: NSWindowController, WKNavigationDe
 
         let indicator = NSProgressIndicator()
         indicator.style = .spinning
+        indicator.controlSize = .small
         indicator.isDisplayedWhenStopped = false
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.setAccessibilityLabel(NSLocalizedString("Loading", comment: "auth window spinner"))
         content.addSubview(indicator)
         NSLayoutConstraint.activate([
-            indicator.centerXAnchor.constraint(equalTo: content.centerXAnchor),
-            indicator.centerYAnchor.constraint(equalTo: content.centerYAnchor),
+            webView.topAnchor.constraint(equalTo: content.topAnchor),
+            webView.leftAnchor.constraint(equalTo: content.leftAnchor),
+            webView.rightAnchor.constraint(equalTo: content.rightAnchor),
+            webView.bottomAnchor.constraint(equalTo: indicator.topAnchor, constant: -8),
+            indicator.bottomAnchor.constraint(equalTo: content.bottomAnchor, constant: -8),
+            indicator.leftAnchor.constraint(equalTo: content.leftAnchor, constant: 8),
         ])
         loadingIndicator = indicator
 

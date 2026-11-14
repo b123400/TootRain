@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,32 +19,29 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="328" height="145"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="328" height="145"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1049"/>
+            <view key="contentView" misplaced="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geW-JJ-ygY">
-                        <rect key="frame" x="18" y="84" width="292" height="41"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geW-JJ-ygY">
+                        <rect key="frame" x="18" y="84" width="292" height="32"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Please enter your Mastodon / Pleroma instance host name." id="r2f-fk-aD8">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-FN-agi">
-                        <rect key="frame" x="20" y="55" width="288" height="21"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X3J-FN-agi">
+                        <rect key="frame" x="20" y="52" width="288" height="24"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="https://" drawsBackground="YES" id="vGr-dh-Yfo">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bx-Zk-8jh">
-                        <rect key="frame" x="182" y="13" width="133" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1bx-Zk-8jh">
+                        <rect key="frame" x="226" y="20" width="82" height="24"/>
                         <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fsa-mg-N0s">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -56,9 +53,8 @@ DQ
                             <action selector="authorizeButtonClicked:" target="-2" id="5SF-de-dc5"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pDX-IA-atW">
-                        <rect key="frame" x="85" y="13" width="99" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pDX-IA-atW">
+                        <rect key="frame" x="148" y="20" width="66" height="24"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6xE-Ge-8he">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -71,6 +67,19 @@ Gw
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="1bx-Zk-8jh" firstAttribute="leading" secondItem="pDX-IA-atW" secondAttribute="trailing" constant="12" symbolic="YES" id="1lw-WP-coI"/>
+                    <constraint firstItem="1bx-Zk-8jh" firstAttribute="top" secondItem="X3J-FN-agi" secondAttribute="bottom" constant="8" symbolic="YES" id="3Hh-88-C2G"/>
+                    <constraint firstAttribute="trailing" secondItem="1bx-Zk-8jh" secondAttribute="trailing" constant="20" symbolic="YES" id="Bqv-AZ-RO3"/>
+                    <constraint firstItem="geW-JJ-ygY" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="COZ-Vf-Q0E"/>
+                    <constraint firstAttribute="trailing" secondItem="X3J-FN-agi" secondAttribute="trailing" constant="20" symbolic="YES" id="Hyq-nc-xzT"/>
+                    <constraint firstAttribute="trailing" secondItem="geW-JJ-ygY" secondAttribute="trailing" constant="20" symbolic="YES" id="Iwd-za-zeZ"/>
+                    <constraint firstItem="geW-JJ-ygY" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" symbolic="YES" id="KY9-j6-JKF"/>
+                    <constraint firstItem="X3J-FN-agi" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="Nt4-Lr-vpz"/>
+                    <constraint firstAttribute="bottom" secondItem="pDX-IA-atW" secondAttribute="bottom" constant="20" symbolic="YES" id="VqU-rE-zoL"/>
+                    <constraint firstItem="X3J-FN-agi" firstAttribute="top" secondItem="geW-JJ-ygY" secondAttribute="bottom" constant="8" symbolic="YES" id="ebq-aL-0JI"/>
+                    <constraint firstAttribute="bottom" secondItem="1bx-Zk-8jh" secondAttribute="bottom" constant="20" symbolic="YES" id="rwW-GJ-Yv8"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

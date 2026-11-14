@@ -40,19 +40,24 @@
     [super windowDidLoad];
 
     self.webView = [[WKWebView alloc] initWithFrame:NSMakeRect(0, 0, self.window.contentView.frame.size.width, self.window.contentView.frame.size.height)];
-    [self.webView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.navigationDelegate = self;
     [self.window.contentView addSubview:self.webView];
 
     self.loadingIndicator = [[NSProgressIndicator alloc] init];
     self.loadingIndicator.style = NSProgressIndicatorStyleSpinning;
+    self.loadingIndicator.controlSize = NSControlSizeSmall;
     self.loadingIndicator.displayedWhenStopped = NO;
     self.loadingIndicator.translatesAutoresizingMaskIntoConstraints = NO;
     self.loadingIndicator.accessibilityLabel = NSLocalizedString(@"Loading", @"oauth window spinner");
     [self.window.contentView addSubview:self.loadingIndicator];
     [NSLayoutConstraint activateConstraints:@[
-        [self.loadingIndicator.centerXAnchor constraintEqualToAnchor:self.window.contentView.centerXAnchor],
-        [self.loadingIndicator.centerYAnchor constraintEqualToAnchor:self.window.contentView.centerYAnchor],
+        [self.webView.topAnchor constraintEqualToAnchor:self.window.contentView.topAnchor],
+        [self.webView.leftAnchor constraintEqualToAnchor:self.window.contentView.leftAnchor],
+        [self.webView.rightAnchor constraintEqualToAnchor:self.window.contentView.rightAnchor],
+        [self.webView.bottomAnchor constraintEqualToAnchor:self.loadingIndicator.topAnchor constant:-8],
+        [self.loadingIndicator.leftAnchor constraintEqualToAnchor:self.window.contentView.leftAnchor constant:8],
+        [self.loadingIndicator.bottomAnchor constraintEqualToAnchor:self.window.contentView.bottomAnchor constant:-8],
     ]];
     // Watching the web view itself rather than the navigation callbacks: it is
     // the one thing that stays right across the redirects an OAuth log-in makes.
