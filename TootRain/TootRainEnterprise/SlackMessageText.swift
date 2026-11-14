@@ -20,12 +20,6 @@ import Cocoa
 @objc(SlackMessageText)
 final class SlackMessageText: NSObject {
 
-    @objc(attributedStringForText:account:)
-    static func attributedStringForText(_ text: String,
-                                        account: TootRainSlackAccount) -> NSAttributedString {
-        attributedStringForText(text, teamId: account.teamId)
-    }
-
     static func attributedStringForText(_ text: String, teamId: String) -> NSAttributedString {
         let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
             .documentType: NSAttributedString.DocumentType.html,
@@ -166,8 +160,10 @@ final class SlackMessageText: NSObject {
             let name = label ?? group?.handle ?? group?.name
             return htmlEscapedText(mentionText(sigil: "@", name: name ?? id))
         }
+        // shortcut: a date reads as the fallback Slack requires, in the writer's
+        // time zone and words; format its `^` fields if dates from bots matter.
         if command.hasPrefix("date^") {
-            return htmlForDateCommand(command, fallback: label)
+            return htmlEscapedText(unescapedFromSlack(label ?? ""))
         }
         // @here, @channel, @everyone, and whatever else Slack comes to send.
         return htmlEscapedText(mentionText(sigil: "@", name: label ?? command))
@@ -178,71 +174,6 @@ final class SlackMessageText: NSObject {
     private static func mentionText(sigil: String, name: String) -> String {
         let name = unescapedFromSlack(name)
         return name.hasPrefix(sigil) ? name : sigil + name
-    }
-
-    // MARK: - Dates
-
-    /// `<!date^1392734382^Posted {date_num} {time_secs}^https://…|fallback>`:
-    /// the seconds, a template to put them in, and somewhere to point at. The
-    /// template is kept, since it is often the only thing that says what the
-    /// date is of.
-    private static func htmlForDateCommand(_ command: String, fallback: String?) -> String {
-        let parts = command.components(separatedBy: "^")
-        guard parts.count >= 2, let seconds = TimeInterval(parts[1]) else {
-            return htmlEscapedText(unescapedFromSlack(fallback ?? ""))
-        }
-        let moment = Date(timeIntervalSince1970: seconds)
-        let template = parts.count > 2 && !parts[2].isEmpty ? parts[2] : "{date_short} {time}"
-        var text = unescapedFromSlack(template)
-        for (token, write) in dateTokens where text.contains(token) {
-            text = text.replacingOccurrences(of: token, with: write(moment))
-        }
-        guard parts.count > 3, let url = urlFromTarget(parts[3]) else {
-            return htmlEscapedText(text)
-        }
-        return htmlAnchor(url: url, text: htmlEscapedText(text))
-    }
-
-    /// The tokens Slack documents, and what each is written as here. Theirs are
-    /// American English whatever the reader's language is; these follow the
-    /// system, so a date reads the way everything else on this Mac does.
-    private static let dateTokens: [(String, (Date) -> String)] = [
-        ("{date_num}", { formattedDateWithFormat($0, format: "yyyy-MM-dd") }),
-        ("{date_short_pretty}", { formattedDateWithStyles($0, dateStyle: .medium, relative: true) }),
-        ("{date_long_pretty}", { formattedDateWithStyles($0, dateStyle: .full, relative: true) }),
-        ("{date_pretty}", { formattedDateWithStyles($0, dateStyle: .long, relative: true) }),
-        ("{date_short}", { formattedDateWithStyles($0, dateStyle: .medium) }),
-        ("{date_long}", { formattedDateWithStyles($0, dateStyle: .full) }),
-        ("{date}", { formattedDateWithStyles($0, dateStyle: .long) }),
-        ("{time_secs}", { formattedDateWithStyles($0, timeStyle: .medium) }),
-        ("{time}", { formattedDateWithStyles($0, timeStyle: .short) }),
-        ("{ago}", { relativeDateText($0) }),
-    ]
-
-    private static func formattedDateWithStyles(_ moment: Date,
-                                                dateStyle: DateFormatter.Style = .none,
-                                                timeStyle: DateFormatter.Style = .none,
-                                                relative: Bool = false) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = dateStyle
-        formatter.timeStyle = timeStyle
-        formatter.doesRelativeDateFormatting = relative
-        return formatter.string(from: moment)
-    }
-
-    /// `{date_num}` is the one Slack spells out itself — zero-padded and in
-    /// that order — so it is written to the letter rather than to the locale.
-    private static func formattedDateWithFormat(_ moment: Date, format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = format
-        return formatter.string(from: moment)
-    }
-
-    private static func relativeDateText(_ moment: Date) -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        return formatter.localizedString(for: moment, relativeTo: Date())
     }
 
     // MARK: - Links

@@ -201,12 +201,8 @@ final class TootRainChannelSubscriptions: NSObject {
     // MARK: - Taking the server's word for what a workspace holds
 
     /// Writes down what one workspace is listening to, tells the panes that
-    /// show it, and answers whether anything changed.
-    ///
-    /// Every complete answer the server gives comes through here, so a channel
-    /// lost since the app last looked goes at the first sight of its absence
-    /// rather than being asked for again by the next statement. Written to the
-    /// account handed in, not to one read back from the preferences.
+    /// show it, and answers whether anything changed. Written to the account
+    /// handed in, not to one read back from the preferences.
     @MainActor
     @discardableResult
     func saveChannelsFromServer(_ channels: [String: String],

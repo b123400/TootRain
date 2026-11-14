@@ -118,15 +118,24 @@ final class SlackInfoCache {
                   account.teamName, userGroups.count, String(describing: error))
         }
 
-        let snapshot = Snapshot(teamId: account.teamId,
-                                updatedAt: Date(),
-                                users: users,
-                                emoji: emoji,
-                                channels: channels,
-                                userGroups: userGroups)
-        store(snapshot)
+        update(users: users, emoji: emoji, channels: channels, userGroups: userGroups,
+               teamId: account.teamId)
         NSLog("TootRain: cached %ld Slack users, %ld emoji, %ld channels and %ld user groups for %@",
               users.count, emoji.count, channels.count, userGroups.count, account.teamName)
+    }
+
+    /// Replaces everything cached for a workspace, as a refresh does.
+    func update(users: [SlackCachedUser],
+                emoji: [SlackCachedEmoji],
+                channels: [SlackChannel],
+                userGroups: [SlackUserGroup],
+                teamId: String) {
+        store(Snapshot(teamId: teamId,
+                       updatedAt: Date(),
+                       users: users,
+                       emoji: emoji,
+                       channels: channels,
+                       userGroups: userGroups))
     }
 
     /// Keeps the cached channels in step with a list the channel picker has just

@@ -213,14 +213,15 @@ class TootRainSlackAccount: Account {
                                                    slackUserId: account.slackUserId) {
                 account.linkageId = NSNumber(value: linkage.id)
                 account.needsAuthentication = false
-                // The memberships are the whole of what the server holds for
-                // this account, so they are taken as what the app holds — but
-                // not for a workspace that is switched off, which the server
-                // holds nothing of by design. An account that has never had a
-                // set of its own is the exception: nothing else records the
-                // picks.
-                if account.channels == nil
-                    || TootRainChannelSubscriptions.isListening(to: account) {
+                // An account saved before the app kept a set of its own, or
+                // one linked on another computer: what the server already
+                // holds for it is what the user picked, and taking it now is
+                // what keeps the next statement of the whole set from giving
+                // it all up. A set of its own is kept even when the server
+                // holds less: it may be a statement that never reached the
+                // server, and the next statement's answer drops what it has
+                // let go.
+                if account.channels == nil {
                     var channels: [String: String] = [:]
                     for membership in linkage.memberships {
                         let name = membership.name ?? ""
