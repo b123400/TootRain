@@ -235,9 +235,6 @@
 /* channel picker rejection */
 "Some channels could not be added." = "一部のチャンネルを追加できませんでした。";
 
-/* channel picker rejection, a channel and why it was refused */
-"%@: %@" = "%@：%@";
-
 /* slack account detail */
 "Channels:" = "チャンネル：";
 
@@ -273,3 +270,9 @@
 
 /* slack linkage removed */
 "%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain サーバーはこれらの Slack ワークスペースを保持しなくなりました。もう一度 Slack でログインしてください。";
+
+/* alert button */
+"OK" = "OK";
+
+/* alert button, opens the help page about this error */
+"Open Help" = "ヘルプを開く";

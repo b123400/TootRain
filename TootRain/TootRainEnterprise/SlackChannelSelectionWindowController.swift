@@ -66,6 +66,9 @@ class SlackChannelSelectionWindowController: NSWindowController {
     /// wrong after that has nowhere to be shown and is only logged.
     private var hasFailedToLoad = false
 
+    /// The sheet saying which channels were refused, while it is up.
+    private var rejectionsController: ChannelRejectionsWindowController?
+
     private var tableView: NSTableView!
     private var statusLabel: NSTextField!
     private var loadingIndicator: NSProgressIndicator!
@@ -473,19 +476,20 @@ class SlackChannelSelectionWindowController: NSWindowController {
     /// A channel the server would not grant does not take the rest of the set
     /// with it — the others are being listened to, and the ticks have already
     /// gone back to what the server actually holds — so the picker stays where
-    /// it is and says which ones did not happen, as its own sheet.
+    /// it is and says which ones did not happen, as its own sheet: each reason
+    /// once, with the channels it goes for under it.
     private func presentRejections(_ rejections: [TootRainChannelMembershipRejection]) {
         guard let window = window else { return }
-        let format = NSLocalizedString("%@: %@",
-                                       comment: "channel picker rejection, a channel and why it was refused")
-        let alert = NSAlert()
-        alert.alertStyle = .warning
-        alert.messageText = NSLocalizedString("Some channels could not be added.",
-                                              comment: "channel picker rejection")
-        alert.informativeText = rejections
-            .map { String(format: format, title(ofChannelId: $0.channelId), $0.reason.localizedDescription) }
-            .joined(separator: "\n")
-        alert.beginSheetModal(for: window)
+        let groups = TootRainChannelMembershipRejection.grouped(rejections).map {
+            ChannelRejectionsWindowController.Group(
+                reason: $0.reason.localizedDescription,
+                channels: $0.channelIds.map(title(ofChannelId:)),
+                helpURL: $0.helpURL)
+        }
+        let controller = ChannelRejectionsWindowController(groups: groups)
+        rejectionsController = controller
+        guard let sheet = controller.window else { return }
+        window.beginSheet(sheet) { [weak self] _ in self?.rejectionsController = nil }
     }
 
     /// The whole set failed rather than one channel of it, so nothing has
@@ -503,6 +507,111 @@ class SlackChannelSelectionWindowController: NSWindowController {
     }
 
     private func dismissWindow() {
+        guard let window = window else { return }
+        if let parent = window.sheetParent {
+            parent.endSheet(window)
+        } else {
+            window.close()
+        }
+    }
+}
+
+// MARK: - Refused channels
+
+/// What the server would not grant, a reason at a time: the reason, the
+/// channels it was given for, and a way to the help page about it when the
+/// server sent one.
+private class ChannelRejectionsWindowController: NSWindowController {
+
+    struct Group {
+        let reason: String
+        let channels: [String]
+        let helpURL: URL?
+    }
+
+    private static let textWidth: CGFloat = 380
+
+    private let groups: [Group]
+
+    init(groups: [Group]) {
+        self.groups = groups
+        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 420, height: 200),
+                              styleMask: [.titled],
+                              backing: .buffered,
+                              defer: false)
+        super.init(window: window)
+
+        let title = Self.label(NSLocalizedString("Some channels could not be added.",
+                                                 comment: "channel picker rejection"),
+                               font: .boldSystemFont(ofSize: NSFont.systemFontSize))
+        let stack = NSStackView(views: [title])
+        stack.orientation = .vertical
+        stack.alignment = .leading
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        for (index, group) in groups.enumerated() {
+            let reason = Self.label(group.reason, font: .systemFont(ofSize: NSFont.systemFontSize))
+            let channels = Self.label(ListFormatter.localizedString(byJoining: group.channels),
+                                      font: .systemFont(ofSize: NSFont.smallSystemFontSize))
+            channels.textColor = .secondaryLabelColor
+            let section = NSStackView(views: [reason, channels])
+            section.orientation = .vertical
+            section.alignment = .leading
+            section.spacing = 4
+            if group.helpURL != nil {
+                let help = NSButton(title: NSLocalizedString("Open Help", comment: "alert button, opens the help page about this error"),
+                                    target: self,
+                                    action: #selector(helpPressed(_:)))
+                help.bezelStyle = .rounded
+                help.controlSize = .small
+                help.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
+                help.tag = index
+                section.addArrangedSubview(help)
+            }
+            stack.addArrangedSubview(section)
+        }
+
+        let ok = NSButton(title: NSLocalizedString("OK", comment: "alert button"),
+                          target: self,
+                          action: #selector(okPressed(_:)))
+        ok.bezelStyle = .rounded
+        ok.keyEquivalent = "\r"
+        ok.translatesAutoresizingMaskIntoConstraints = false
+
+        let content = NSView()
+        content.addSubview(stack)
+        content.addSubview(ok)
+        NSLayoutConstraint.activate(
+            NSLayoutConstraint.standardSpaced([
+                "H:|-[stack]-|",
+                "H:[ok]-|",
+                "V:|-[stack]-[ok]-|",
+            ], views: ["stack": stack, "ok": ok])
+            + [stack.widthAnchor.constraint(equalToConstant: Self.textWidth)])
+        window.contentView = content
+        window.setContentSize(content.fittingSize)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    /// A label that wraps at the sheet's width, so a long list of channels
+    /// makes the sheet taller rather than wider.
+    private static func label(_ string: String, font: NSFont) -> NSTextField {
+        let label = NSTextField(wrappingLabelWithString: string)
+        label.font = font
+        label.preferredMaxLayoutWidth = textWidth
+        return label
+    }
+
+    @objc private func helpPressed(_ sender: NSButton) {
+        guard groups.indices.contains(sender.tag), let url = groups[sender.tag].helpURL else { return }
+        NSWorkspace.shared.open(url)
+    }
+
+    @objc private func okPressed(_ sender: Any?) {
         guard let window = window else { return }
         if let parent = window.sheetParent {
             parent.endSheet(window)
