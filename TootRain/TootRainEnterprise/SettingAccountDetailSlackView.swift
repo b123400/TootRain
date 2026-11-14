@@ -106,7 +106,7 @@ class SettingAccountDetailSlackView: NSView {
         let serviceRow = SettingAccountDetailSlackView.makeRow(
             title: NSLocalizedString("Service:", comment: "slack account detail"),
             value: SettingAccountDetailSlackView.makeValueLabel(
-                text: NSLocalizedString("Slack (TootRain server)", comment: "slack account detail")))
+                text: NSLocalizedString("Slack", comment: "slack account detail")))
 
         let rowViews = [serviceRow]
             + rows.map { SettingAccountDetailSlackView.makeRow(title: $0.0, value: $0.1) }

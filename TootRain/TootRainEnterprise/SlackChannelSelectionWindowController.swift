@@ -240,21 +240,30 @@ class SlackChannelSelectionWindowController: NSWindowController {
         }
     }
 
-    /// What the ticks start as. For a workspace that is switched on it is what
-    /// the server actually holds, which can be less than the app has written
-    /// down — a channel the user has left is dropped at the server's end. For
-    /// one that is switched off the server holds nothing of it at all, so what
-    /// the app remembers is the only answer there is.
+    /// What the ticks start as: for a workspace switched on, what the server
+    /// actually holds, which can be less than the app wrote down; for one
+    /// switched off, what the app remembers, the server holding nothing of it.
+    ///
+    /// Only the ticks: what the app wrote down may be a statement that never
+    /// reached the server, and the next statement's answer drops what it has
+    /// let go.
     private func picked(isListening: Bool, remembered: [String: String]) async throws -> Picked {
         guard isListening else {
             return Picked(channelIds: Set(remembered.keys), names: remembered)
         }
         let memberships = try await serverAPI.channelMemberships(teamId: account.teamId)
-        var names: [String: String] = [:]
-        for membership in memberships {
-            if let name = membership.name, !name.isEmpty { names[membership.channelId] = name }
+        // Read back from where the account is saved: this picker was made
+        // before the last statement of the set. A workspace can be linked twice
+        // on one session, by two Slack users, and this listing is by workspace —
+        // so the other linkage's channels are not this picker's to show.
+        let linkageId = TootRainSlackAccount.account(teamId: account.teamId)?.linkageId?.intValue
+        var channels: [String: String] = [:]
+        for membership in memberships
+        where linkageId == nil || membership.linkageId == linkageId {
+            let name = membership.name ?? ""
+            channels[membership.channelId] = name.isEmpty ? membership.channelId : name
         }
-        return Picked(channelIds: Set(memberships.map { $0.channelId }), names: names)
+        return Picked(channelIds: Set(channels.keys), names: channels)
     }
 
     /// Puts a list of channels on screen. `isFinal` says this one is Slack's

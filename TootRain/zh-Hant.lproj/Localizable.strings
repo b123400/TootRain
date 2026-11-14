@@ -152,7 +152,7 @@
 "Slack answered with %ld." = "Slack 回應了 %ld。";
 
 /* slack account detail */
-"Slack (TootRain server)" = "Slack（TootRain 伺服器）";
+"Slack" = "Slack";
 
 /* slack error */
 "Slack refused the request: %@" = "Slack 拒絕了這個請求：%@";
@@ -249,3 +249,27 @@
 
 /* channel picker status */
 "Updating channels…" = "正在更新頻道…";
+
+/* slack membership removed */
+"TootRain stopped showing comments from #%@." = "已停止顯示 #%@ 的彈幕。";
+
+/* slack membership removed */
+"The TootRain bot is no longer in this channel of %@, or the channel itself is gone. It has been taken off this workspace's channels." = "TootRain bot 已不在 %@ 的這個頻道，或者頻道本身已不存在。已將它從這個工作區的頻道中移除。";
+
+/* slack membership removed */
+"TootRain stopped showing comments from %ld channels of %@." = "已停止顯示 %2$@ 中 %1$ld 個頻道的彈幕。";
+
+/* slack membership removed */
+"%@ — the TootRain bot is no longer in these channels, or they are gone. They have been taken off this workspace's channels." = "%@ — TootRain bot 已不在這些頻道中，或者頻道本身已不存在。已將它們從這個工作區的頻道中移除。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %@." = "已停止顯示 %@ 的彈幕。";
+
+/* slack linkage removed */
+"The TootRain server no longer has this Slack workspace. Please log in with Slack again." = "TootRain 伺服器已不再持有這個 Slack 工作區。請重新使用 Slack 登入。";
+
+/* slack linkage removed */
+"TootRain stopped showing comments from %ld Slack workspaces." = "已停止顯示 %ld 個 Slack 工作區的彈幕。";
+
+/* slack linkage removed */
+"%@ — the TootRain server no longer has these Slack workspaces. Please log in with Slack again." = "%@ — TootRain 伺服器已不再持有這些 Slack 工作區。請重新使用 Slack 登入。";
